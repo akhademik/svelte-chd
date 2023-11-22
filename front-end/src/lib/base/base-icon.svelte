@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { ICONS } from '$lib/utils/icons'
+	import { icons } from '$lib/utils/icons'
 
-	export let name: keyof typeof ICONS
+	export let name: keyof typeof icons
 
-	$: icon = ICONS[name]
+	$: icon = icons[name]
 	$: width = icon.box_width
 	$: height = icon.box_height
 </script>
