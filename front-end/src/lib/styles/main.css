@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  --line-color: limegreen;
+  --bg-color: rgb(0 100 0 / 0.05);
+}
+
+body {
+  @apply bg-slate-700;
+}
+
+/* DEBUG CSS */
+
+/* * {
+	outline: 1px dashed var(--debug-color);
+	background: var(--bg-color);
+} */
+
+.o {
+  outline: 1px dashed var(--line-color);
+}
+
+.b {
+  background: var(--bg-color);
+}
+
+.ob {
+  outline: 1px dashed var(--line-color);
+  background: var(--bg-color);
+}
+/* DEBUG CSS */
