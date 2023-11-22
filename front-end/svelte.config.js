@@ -16,6 +16,7 @@ const config = {
 			$assets: './src/lib/assets/',
 			$base: './src/lib/base/',
 			$utils: './src/lib/utils/',
+			$i18n: './src/i18n/',
 		},
 	},
 	vitePlugin: {
