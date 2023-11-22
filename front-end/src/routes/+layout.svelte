@@ -3,8 +3,10 @@
 	import { setLocale } from '$i18n/i18n-svelte'
 	import { seo } from '$lib/utils/seo-info'
 
-	import '$lib/styles/main.css'
-	import '$lib/styles/tailwind.css'
+	import '$assets/styles/main.css'
+	import '$assets/styles/tailwind.css'
+
+	import { NavBar } from '$modules/nav-bar'
 
 	export let data
 	setLocale(data.locale)
@@ -14,5 +16,5 @@
 	title="CHD Travel - 2023"
 	description={seo.description}
 	keywords={seo.keywords} />
-
+<NavBar />
 <slot />

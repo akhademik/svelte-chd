@@ -1,14 +1,14 @@
-import type { BaseTranslation } from '../i18n-types';
+import type { Translation } from '../i18n-types';
 import { contact_page } from './t-contact-page';
 import { home_page } from './t-home-page';
 import { nav_bar } from './t-nav-bar';
 import { tours } from './t-tours-page';
 
-const en = {
+const vn = {
 	home_page,
 	nav_bar,
 	contact_page,
 	tours
-} satisfies BaseTranslation;
+} satisfies Translation;
 
-export default en;
+export default vn;
