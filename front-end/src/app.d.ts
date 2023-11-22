@@ -8,7 +8,6 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			locale: Locales
-			LL: TranslationFunctions
 		}
 		// interface PageData {}
 		// interface Platform {}

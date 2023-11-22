@@ -15,6 +15,9 @@
 		await loadLocaleAsync(new_locale)
 		setLocale(new_locale)
 
+		// set lang to cookie for server usage
+		document.cookie = `lang=${new_locale}; path=/; Secure; SameSite=Lax`
+
 		if (update_history_state) {
 			// update url to reflect locale changes
 			history.pushState({ locale: new_locale }, '', replace_locale_in_url(url, new_locale))
