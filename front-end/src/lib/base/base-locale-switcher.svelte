@@ -3,7 +3,7 @@
 	import { invalidateAll } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { BaseIcon } from '$base'
-	import { replace_locale_in_url } from '$i18n/i18n-helper'
+	import { persist_to_cookie, replace_locale_in_url } from '$i18n/i18n-helper'
 	import { locale, setLocale } from '$i18n/i18n-svelte'
 	import type { Locales } from '$i18n/i18n-types'
 	import { locales } from '$i18n/i18n-util'
@@ -14,9 +14,7 @@
 
 		await loadLocaleAsync(new_locale)
 		setLocale(new_locale)
-
-		// set lang to cookie for server usage
-		document.cookie = `lang=${new_locale}; path=/; Secure; SameSite=Lax`
+		persist_to_cookie(new_locale)
 
 		if (update_history_state) {
 			// update url to reflect locale changes

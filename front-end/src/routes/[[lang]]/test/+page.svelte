@@ -4,5 +4,5 @@
 </script>
 
 <h1>Test Page</h1>
-<h1>Locale: {$LL.HI()}</h1>
+<h1>Locale: {$LL.home_page.intro()}</h1>
 <BaseLocaleSwitcher />
