@@ -1,8 +1,14 @@
-import type { Translation } from '../i18n-types'
+import type { Translation } from '../i18n-types';
+import { contact_page } from './t-contact-page';
+import { home_page } from './t-home-page';
+import { nav_bar } from './t-nav-bar';
+import { tours } from './t-tours-page';
 
 const fr = {
-	// this is an example Translation, just rename or delete this folder if you want
-	HI: 'Welcome FR',
-} satisfies Translation
+	home_page,
+	nav_bar,
+	contact_page,
+	tours
+} satisfies Translation;
 
-export default fr
+export default fr;
