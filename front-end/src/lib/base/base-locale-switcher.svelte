@@ -8,8 +8,10 @@
 	import type { Locales } from '$i18n/i18n-types'
 	import { locales } from '$i18n/i18n-util'
 	import { loadLocaleAsync } from '$i18n/i18n-util.async'
+	import { nav_mobile } from '$stores/nav-store'
 
 	const switch_locale = async (new_locale: Locales, update_history_state = true) => {
+		$nav_mobile && nav_mobile.toggle()
 		if (!new_locale || $locale === new_locale) return
 
 		await loadLocaleAsync(new_locale)
