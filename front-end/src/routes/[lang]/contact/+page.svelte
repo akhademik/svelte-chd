@@ -1,1 +1,5 @@
-<h1>this is contact page</h1>
+<script lang="ts">
+	import { ContactPage } from '$modules/contact-page'
+</script>
+
+<ContactPage />
