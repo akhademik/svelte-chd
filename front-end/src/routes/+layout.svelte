@@ -16,5 +16,7 @@
 	title="CHD Travel - 2023"
 	description={seo.description}
 	keywords={seo.keywords} />
+
 <NavBar />
+
 <slot />

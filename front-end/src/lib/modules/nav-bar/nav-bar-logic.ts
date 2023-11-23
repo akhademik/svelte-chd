@@ -11,16 +11,16 @@ export const menu_items: MenuItem[] = [
 	{
 		id: 1,
 		text: 'home',
-		url: '/',
+		url: '',
 	},
 	{
 		id: 2,
 		text: 'day_tours',
-		url: 'day-tours',
+		url: '/day-tours',
 	},
 	{
 		id: 3,
 		text: 'highland_tours',
-		url: 'highland-tours',
+		url: '/highland-tours',
 	},
 ]
