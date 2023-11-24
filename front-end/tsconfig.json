@@ -16,6 +16,7 @@
 			"$utils/*": ["./src/lib/utils/*"],
 			"$modules/*": ["./src/lib/modules/*"],
 			"$stores/*": ["./src/lib/stores/*"],
+			"$types/*": ["./src/lib/types/*"],
 			"$i18n/*": ["./src/i18n/*"]
 		}
 	}

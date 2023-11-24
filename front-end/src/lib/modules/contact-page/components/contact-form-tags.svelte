@@ -37,7 +37,8 @@
 			class={`border-primary relative w-max cursor-pointer select-none border px-3 py-[6px] capitalize ${checked}`}>
 			{$LL.contact_page.tags[name]()}
 			<input
-				{name}
+				value={name}
+				name="selected_tag"
 				type="checkbox"
 				on:change={() => change(name)}
 				class="invisible absolute" />

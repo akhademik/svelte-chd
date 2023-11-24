@@ -1,20 +1,44 @@
+import { fail } from '@sveltejs/kit'
+import { form_schema } from '$utils/form-schema'
 import { superValidate } from 'sveltekit-superforms/server'
-import { z } from 'zod'
 
-const phone_check = /^(?:\(\+\d+\)|\+\d+)?[-.\s\d]+$/
-
-const schema = z.object({
-	name: z.string().min(3, 'form_name'),
-	email: z.string().email({ message: 'form_email' }),
-	phone: z.string().min(10, 'form_phone').regex(phone_check, 'form_phone'),
-	langs: z.string().min(2, 'form_langs'),
-	msg: z.string().min(2, 'form_msg'),
-})
+const URL = 'https://submit-form.com/FDkjl2H3'
 
 export const load = async () => {
-	// Server API:
-	const form = await superValidate(schema)
-
-	// Unless you throw, always return { form } in load and form actions.
+	const form = await superValidate(form_schema)
 	return { form }
+}
+
+export const actions = {
+	default: async ({ request }) => {
+		const clone_request = request.clone()
+		const form = await superValidate(request, form_schema)
+		const tags = await clone_request.formData()
+		const all_tags = tags.getAll('selected_tag')
+		const last_val = { ...form.data, tags: all_tags }
+		if (!form.valid) {
+			return fail(400, { form })
+		}
+
+		// TODO: Do something with the validated form.data
+		try {
+			const response = await fetch(URL, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json',
+				},
+				body: JSON.stringify(last_val),
+			})
+
+			if (!response.ok) {
+				console.error('Fetch failed:', response.status, response.statusText)
+				return
+			}
+
+			console.log('Form submitted successfully')
+		} catch (error) {
+			console.error('Fetch error:', error)
+		}
+	},
 }

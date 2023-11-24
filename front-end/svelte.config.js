@@ -19,6 +19,7 @@ const config = {
 			$modules: './src/lib/modules/',
 			$i18n: './src/i18n/',
 			$stores: './src/lib/stores/',
+			$types: './src/lib/types/',
 		},
 	},
 	vitePlugin: {
