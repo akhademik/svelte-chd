@@ -1,9 +1,7 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
-	import { createEventDispatcher } from 'svelte'
 
-	const dispatch = createEventDispatcher()
 	type Trans_Key = keyof Translation['contact_page']['tags']
 	type Tags = {
 		name: Trans_Key
@@ -26,7 +24,6 @@
 		index > -1 ? chosen_tags.splice(index, 1) : chosen_tags.push(tag)
 		// this to make the chosen_tags array reactive
 		chosen_tags = chosen_tags
-		dispatch('get-tags', chosen_tags)
 	}
 </script>
 

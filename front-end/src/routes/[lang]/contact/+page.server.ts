@@ -35,8 +35,6 @@ export const actions = {
 				console.error('Fetch failed:', response.status, response.statusText)
 				return
 			}
-
-			console.log('Form submitted successfully')
 		} catch (error) {
 			console.error('Fetch error:', error)
 		}

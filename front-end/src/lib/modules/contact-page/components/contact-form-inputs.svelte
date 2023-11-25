@@ -2,13 +2,10 @@
 	import LL from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
 	import { superForm } from 'sveltekit-superforms/client'
-	import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte'
-
-	import type { PageData } from '.svelte-kit/types/src/routes/[lang]/contact/$types'
 
 	type ErrKey = keyof Translation['contact_page']['err']
 
-	export let data: PageData
+	export let data
 	const { form, errors } = superForm(data.form)
 
 	$: err_clone = $errors as any
@@ -16,7 +13,6 @@
 	$: err_msg = err_keys.length > 1 ? (err_keys[1] as ErrKey) : (err_keys[0] as ErrKey)
 </script>
 
-<SuperDebug data={$form} />
 <div class="-my-3 h-6 text-red-500">
 	{#if err_msg}
 		<small>{$LL.contact_page.err[err_msg]()}</small>

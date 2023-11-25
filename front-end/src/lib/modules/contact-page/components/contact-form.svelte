@@ -4,10 +4,8 @@
 
 	import ContactFormInputs from './contact-form-inputs.svelte'
 	import ContactFormTags from './contact-form-tags.svelte'
-	import type { PageData } from '.svelte-kit/types/src/routes/[lang]/contact/$types'
 
-	export let data: PageData
-	let tags: string[] = []
+	export let data: unknown
 </script>
 
 <form
@@ -15,7 +13,7 @@
 	class="flex flex-col gap-5"
 	method="post">
 	<h1 class="w-[80%] font-bold">{$LL.contact_page.page.chose_tag()}</h1>
-	<ContactFormTags on:get-tags={({ detail }) => (tags = detail)} />
+	<ContactFormTags />
 	<ContactFormInputs {data} />
 	<button
 		type="submit"

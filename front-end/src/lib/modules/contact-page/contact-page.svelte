@@ -3,9 +3,8 @@
 	import ContactForm from './components/contact-form.svelte'
 	import ContactHeader from './components/contact-header.svelte'
 	import ContactReview from './components/contact-review.svelte'
-	import type { PageData } from '.svelte-kit/types/src/routes/[lang]/contact/$types'
 
-	export let data: PageData
+	export let data: unknown
 </script>
 
 <div class="font-roboto pt-4 lg:px-11">
