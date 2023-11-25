@@ -1,0 +1,55 @@
+<script lang="ts">
+	import LL from '$i18n/i18n-svelte'
+	import type { Translation } from '$i18n/i18n-types'
+	import { superForm } from 'sveltekit-superforms/client'
+
+	type ErrKey = keyof Translation['contact_page']['err']
+
+	export let data
+	const { form, errors } = superForm(data.form)
+
+	$: err_clone = $errors as any
+	$: err_keys = err_clone[Object.keys(err_clone)[0]] || []
+	$: err_msg = err_keys.length > 1 ? (err_keys[1] as ErrKey) : (err_keys[0] as ErrKey)
+</script>
+
+<div class="-my-3 h-6 text-red-500">
+	{#if err_msg}
+		<small>{$LL.contact_page.err[err_msg]()}</small>
+	{/if}
+</div>
+<div class="flex flex-col gap-y-2">
+	<input
+		bind:value={$form.name}
+		type="text"
+		name="name"
+		placeholder={$LL.contact_page.placeholder['name']()}
+		class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+	<div class="grid grid-cols-2 gap-2">
+		<input
+			bind:value={$form.email}
+			type="text"
+			name="email"
+			placeholder={$LL.contact_page.placeholder['email']()}
+			class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+		<input
+			bind:value={$form.phone}
+			type="text"
+			name="phone"
+			placeholder={$LL.contact_page.placeholder['phone']()}
+			class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+	</div>
+	<input
+		bind:value={$form.langs}
+		type="text"
+		name="langs"
+		placeholder={$LL.contact_page.placeholder['langs']()}
+		class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+	<textarea
+		bind:value={$form.msg}
+		name="msg"
+		rows="7"
+		placeholder={$LL.contact_page.placeholder['msg']()}
+		class="border-primary placeholder-secondary/70 w-full resize-none border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none"
+	></textarea>
+</div>
