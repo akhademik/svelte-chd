@@ -2,6 +2,7 @@
 	import '$assets/styles/main.css'
 	import '$assets/styles/tailwind.css'
 
+	import { BaseSeo } from '$base'
 	import { setLocale } from '$i18n/i18n-svelte'
 	import { MobileMenu } from '$modules/mobile-menu'
 	import { NavBar } from '$modules/nav-bar'
@@ -9,6 +10,8 @@
 	export let data
 	setLocale(data.locale)
 </script>
+
+<BaseSeo />
 
 <NavBar />
 <MobileMenu />
