@@ -173,6 +173,20 @@ type RootTranslation = {
 		 */
 		description: string
 	}
+	seo: {
+		/**
+		 * D​a​y​ ​T​o​u​r​s
+		 */
+		day_tours: string
+		/**
+		 * H​i​g​h​l​a​n​d​ ​T​o​u​r​s
+		 */
+		highland_tours: string
+		/**
+		 * C​o​n​t​a​c​t​ ​U​s
+		 */
+		contact: string
+	}
 }
 
 export type TranslationFunctions = {
@@ -333,6 +347,20 @@ export type TranslationFunctions = {
 		 * Dive into a world of day tour possibilities! Whether you crave natural wonders, cultural immersion, or thrilling adventures, our day tours cater to every wanderlust. Explore our diverse collection of handpicked experiences and seize the day with unforgettable adventures.
 		 */
 		description: () => LocalizedString
+	}
+	seo: {
+		/**
+		 * Day Tours
+		 */
+		day_tours: () => LocalizedString
+		/**
+		 * Highland Tours
+		 */
+		highland_tours: () => LocalizedString
+		/**
+		 * Contact Us
+		 */
+		contact: () => LocalizedString
 	}
 }
 
