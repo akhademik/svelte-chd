@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte'
+	import { page } from '$app/stores'
 	import { BaseButton, BaseIcon } from '$base'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { format_price, url_for } from '$utils/sanity'
@@ -7,7 +8,7 @@
 	export let tour
 
 	const { img_cover, tour_duration, tour_name, tour_intro, tour_slug, tour_price } = tour
-	// const tour_detail = `${route.name.toString()}/${tour_slug.current}`
+	const tour_detail = `/${$locale}/${$page.params.tourtype}/${tour_slug.current}`
 </script>
 
 <div class="border-secondary flex max-w-[355px] flex-col gap-3 rounded-lg border shadow-2xl">
@@ -35,7 +36,7 @@
 		</span>
 	</section>
 	<section class="flex items-center justify-between px-2 pb-2">
-		<a href="/tour_detail">
+		<a href={tour_detail}>
 			<BaseButton text={$LL.tours.click_detail()} />
 		</a>
 		<div class="text-right">
