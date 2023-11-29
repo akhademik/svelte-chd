@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 	import LL from '$i18n/i18n-svelte'
+	import type { Tour } from '$lib/types/tour.type'
 
 	import TourCard from './tour-card.svelte'
 
-	export let tours: unknown[]
+	export let tours: Tour[]
 	type Intro = 'intro_day' | 'intro_central'
 
 	$: intro = ($page.params.tourtype === 'day-tours' ? 'intro_day' : 'intro_central') as Intro

@@ -3,9 +3,10 @@
 	import { page } from '$app/stores'
 	import { BaseButton, BaseIcon } from '$base'
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import type { Tour } from '$lib/types/tour.type'
 	import { format_price, url_for } from '$utils/sanity'
 
-	export let tour
+	export let tour: Tour
 
 	const { img_cover, tour_duration, tour_name, tour_intro, tour_slug, tour_price } = tour
 	const tour_detail = `/${$locale}/${$page.params.tourtype}/${tour_slug.current}`
