@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 	import LL from '$i18n/i18n-svelte'
-	import type { Translation } from '$i18n/i18n-types'
 
-	type Intro = keyof Translation['tours']
+	import TourCard from './tour-card.svelte'
+
+	export let tours: unknown[]
+	type Intro = 'intro_day' | 'intro_central'
 
 	$: intro = ($page.params.tourtype === 'day-tours' ? 'intro_day' : 'intro_central') as Intro
 </script>
@@ -19,9 +21,8 @@
 
 	<section
 		class="mx-auto grid justify-items-center gap-2 sm:grid-cols-2 md:max-w-2xl lg:max-w-5xl lg:grid-cols-3">
-		<!-- <TourCard
-			v-for="(tour, index) in tours"
-			:key="index"
-			:tour="tour" /> -->
+		{#each tours as tour, index (index)}
+			<TourCard {tour} />
+		{/each}
 	</section>
 </div>

@@ -1,8 +1,8 @@
 import { createClient, type ClientConfig } from '@sanity/client'
-import { EXCHANGE_API_KEY, EXCHANGE_URL, SANITY_ID } from '$env/static/private'
+import { EXCHANGE_API_KEY, EXCHANGE_URL, VITE_SANITY_ID } from '$env/static/private'
 
 const config: ClientConfig = {
-	projectId: SANITY_ID,
+	projectId: VITE_SANITY_ID,
 	dataset: 'production',
 	useCdn: true,
 	apiVersion: '2023-11-03', // use current date (YYYY-MM-DD) to target the latest API version
