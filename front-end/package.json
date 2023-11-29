@@ -43,6 +43,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sanity/client": "^6.8.6",
+		"@sanity/image-url": "^1.0.2",
 		"concurrently": "^8.2.2",
 		"typesafe-i18n": "^5.26.2"
 	}
