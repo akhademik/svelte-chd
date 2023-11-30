@@ -3,10 +3,12 @@
 	import { page } from '$app/stores'
 	import { BaseButton, BaseIcon } from '$base'
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { tour_index_store } from '$lib/stores/tour-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_price, url_for } from '$utils/sanity'
 
 	export let tour: Tour
+	export let index: number
 
 	const { img_cover, tour_duration, tour_name, tour_intro, tour_slug, tour_price } = tour
 	const tour_detail = `/${$locale}/${$page.params.tourtype}/${tour_slug.current}`
@@ -37,7 +39,9 @@
 		</span>
 	</section>
 	<section class="flex items-center justify-between px-2 pb-2">
-		<a href={tour_detail}>
+		<a
+			href={tour_detail}
+			on:click={() => tour_index_store.set(index)}>
 			<BaseButton text={$LL.tours.click_detail()} />
 		</a>
 		<div class="text-right">
