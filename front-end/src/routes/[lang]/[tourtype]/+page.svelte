@@ -12,9 +12,7 @@
 	onMount(() => {
 		const unsubscribe = page.subscribe(async () => {
 			const path = $page.url.pathname.split('/')[2]
-			path === 'day-tours'
-				? set_seo(`CHD Travel - ${$LL.seo.day_tours()}`)
-				: set_seo(`CHD Travel - ${$LL.seo.highland_tours()}`)
+			path === 'day-tours' ? set_seo($LL.seo.day_tours()) : set_seo($LL.seo.highland_tours())
 			tours = await get_sanity_data(path)
 		})
 		return () => {
