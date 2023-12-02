@@ -1,5 +1,5 @@
 import type { Locales } from '$i18n/i18n-types'
-import type { Price } from '$lib/types/tour.type'
+import type { Tour } from '$lib/types/tour.type'
 
 import { get_exchange_rate } from './sanity'
 
@@ -28,8 +28,14 @@ export const format_pax_no = (key: string) => {
 	return result_dict[key as Key] || key
 }
 
-export const format_price_object = (price: Price) => {
-	const price_to_array = Object.entries(price.tour_price)
-	const price_exclude_type = price_to_array.filter(([key]) => key !== '_type')
-	return price_exclude_type
+export const format_price_object = (tour: Tour) => {
+	return Object.entries(tour.tour_price)
+		.filter(([key]) => key !== '_type')
+		.sort((a, b) => {
+			const matchA = a[0].match(/\d+/)
+			const matchB = b[0].match(/\d+/)
+			const numA = matchA ? parseInt(matchA[0]) : 0
+			const numB = matchB ? parseInt(matchB[0]) : 0
+			return numA - numB
+		}) as [string, number][]
 }

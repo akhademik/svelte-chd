@@ -6,8 +6,7 @@
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
 
 	export let tour: Tour
-
-	$: prices = format_price_object(tour.tour_price)
+	$: prices = format_price_object(tour)
 </script>
 
 <div
@@ -30,12 +29,12 @@
 				{$LL.tours.detail.highlights()}
 			</p>
 
-			{#each tour.tour_highlights as highlight, index (index)}
+			{#each tour.tour_highlights as { highlights }, index (index)}
 				<li class="flex gap-2">
 					<BaseIcon
 						name="arrow_right"
 						class="text-secondary w-6" />
-					{highlight}
+					{highlights[$locale]}
 				</li>
 			{/each}
 		</ul>
@@ -66,7 +65,7 @@
 				</thead>
 				<tbody
 					class="[&>tr:nth-child(even)]:bg-secondary/50 [&>tr:last-child]:border-primary/80 [&>tr:last-child]:border-b-4 [&>tr>td:nth-child(2)]:pr-3 [&>tr>td:nth-child(2)]:text-right [&>tr>td]:py-1.5 [&>tr>td]:pl-3">
-					{#each prices as [pax, price], index (index)}
+					{#each prices as [pax, price] (pax)}
 						<tr>
 							<td>Group of {format_pax_no(pax)} pax</td>
 							<td>{format_price(price, $locale)} /pax</td>

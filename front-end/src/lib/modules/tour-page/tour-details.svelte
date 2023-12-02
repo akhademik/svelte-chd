@@ -10,4 +10,4 @@
 
 <DetailsNavigation />
 <DetailsLeftPanel {tour} />
-<!-- <DetailsRightPanel {tour} /> -->
+<DetailsRightPanel {tour} />
