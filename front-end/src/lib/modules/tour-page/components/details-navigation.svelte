@@ -1,59 +1,62 @@
 <script lang="ts">
+	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
-	import { BaseIcon } from '$lib/base'
-	import { tour_index_store, tours_store } from '$lib/stores/tour-store'
+	import { BaseIcon } from '$base'
 	import type { Tour } from '$lib/types/tour.type'
+	import { get_length_and_index, get_sanity_data } from '$lib/utils/sanity'
+	import { tour_index_store } from '$stores/tour-store'
+	import { get_base_url } from '$utils/navigation'
+	import { onMount } from 'svelte'
 
-	const close = () => {
-		window.history.back()
-	}
+	let tours: Tour[]
+	let slug
+	const base_url = get_base_url($page)
 
-	const update_url = (index: number) => {
-		const slug = $tours_store[index].tour_slug.current
-		const current_url = $page.url.pathname
-		const url = current_url.substring(0, current_url.lastIndexOf('/') + 1)
-		history.pushState({}, '', url + slug)
+	const update_url = (_tours: Tour[], _index: number) => {
+		const slug = _tours[_index].tour_slug.current
+		history.pushState({}, '', base_url + slug)
 	}
 
 	const update_index = (action: string) => {
-		if (action === 'next') {
-			tour_index_store.set(index === slugs.length - 1 ? 0 : index + 1)
-		} else if (action === 'prev') {
-			tour_index_store.set(index === 0 ? slugs.length - 1 : index - 1)
-		}
+		const index = $tour_index_store
+		const new_index =
+			action === 'next'
+				? index === slug.length
+					? 0
+					: index + 1
+				: index === 0
+				  ? slug.length
+				  : index - 1
+		tour_index_store.set(new_index)
+		update_url(tours, index)
 		window.scrollTo({ top: 0, behavior: 'smooth' })
 	}
 
-	const css = {
-		btn: 'p-1.5 hover:bg-slate-500 bg-slate-200 [&>*]:text-primary [&>*]:hover:text-white animation-all duration-200 linear',
-	}
-
-	$: index = $tour_index_store
-	$: slugs = $tours_store.map((tour: Tour) => tour.tour_slug.current)
-	$: {
-		update_url($tour_index_store)
-	}
+	onMount(async () => {
+		tours = await get_sanity_data($page)
+		slug = get_length_and_index(tours, $page.params.slug)
+	})
 </script>
 
 <div
 	class="sticky top-0 z-30 flex w-full justify-between bg-white p-4 text-3xl lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-0.5 lg:bg-transparent">
 	<button
-		class={css.btn}
-		on:click={close}>
+		class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
+		on:click={() => goto(base_url)}>
 		<BaseIcon
 			name="close"
 			class="w-6" />
 	</button>
 	<div class="flex gap-0.5 lg:flex-col">
 		<button
-			class={css.btn}
+			class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
 			on:click={() => update_index('prev')}>
 			<BaseIcon
 				name="prev"
 				class="w-6" />
 		</button>
 		<button
-			class={css.btn}
+			class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
 			on:click={() => update_index('next')}>
 			<BaseIcon
 				name="next"

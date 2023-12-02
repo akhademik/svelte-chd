@@ -23,7 +23,7 @@ type Locale_Array = {
 type GeneralKeyString = {
 	[key: string]: string
 }
-type Price = {
+export type Price = {
 	_type: string
 } & { [key: string]: number }
 

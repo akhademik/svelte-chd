@@ -23,9 +23,7 @@
 	<section
 		class="mx-auto grid justify-items-center gap-2 sm:grid-cols-2 md:max-w-2xl lg:max-w-5xl lg:grid-cols-3">
 		{#each tours as tour, index (index)}
-			<TourCard
-				{tour}
-				{index} />
+			<TourCard {tour} />
 		{/each}
 	</section>
 </div>

@@ -1,14 +1,14 @@
 import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
-import type { Locales } from '$i18n/i18n-types'
+import type { Page } from '@sveltejs/kit'
 import type { Tour } from '$lib/types/tour.type'
 
 const config: ClientConfig = {
 	projectId: import.meta.env.VITE_SANITY_ID,
 	dataset: 'production',
 	useCdn: true,
-	apiVersion: '2023-11-03', // use current date (YYYY-MM-DD) to target the latest API version
+	apiVersion: '2023-11-03',
 }
 
 const builder = imageUrlBuilder(config as SanityProjectDetails)
@@ -23,7 +23,8 @@ const persist_data = {
 	},
 }
 
-export const get_sanity_data = async (db_name: string) => {
+export const get_sanity_data = async (page: Page) => {
+	const db_name = page.url.pathname.split('/')[2]
 	const time_now = Date.now()
 	const one_day = 1000 * 60 * 60 * 24
 
@@ -54,27 +55,9 @@ export const url_for = (source: SanityImageSource) => {
 	return builder.image(source)
 }
 
-export const format_price = (price: number, locale: Locales) => {
-	const locale_table = {
-		vn: { currency: 'VN', symbol: 'đ' },
-		en: { currency: 'USD', symbol: '$' },
-		fr: { currency: 'EUR', symbol: '€' },
-	}
-	const { currency, symbol } = locale_table[locale]
-	const rate = get_exchange_rate(currency)
-	const final_price = Math.round(price * rate)
-	return `${symbol} ${final_price.toLocaleString('en-us')}`
-}
-
-export const format_pax_no = (key: string) => {
-	type Key = keyof typeof result_dict
-	const result_dict = {
-		pax1: '01',
-		pax2: '02',
-		pax3_4: '03 - 04',
-		pax5_6: '05 - 06',
-		pax7_9: '07 - 09',
-		pax10_up: '> 10',
-	}
-	return result_dict[key as Key] || key
+export const get_length_and_index = (tours: Tour[], slug: string) => {
+	const slugs_array = tours.map(tour => tour.tour_slug.current)
+	const length = slugs_array.length - 1
+	const index = slugs_array.indexOf(slug)
+	return { length, index }
 }
