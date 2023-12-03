@@ -58,7 +58,7 @@
 			</p>
 			<table class="text-primary mx-auto mb-6 mt-3 min-w-[328px] sm:min-w-[450px]">
 				<thead class="bg-primary/80">
-					<tr class="text-white [&>th]:py-2">
+					<tr class="capitalize text-white [&>th]:py-2">
 						<th class="rounded-tl-lg">{$LL.tours.detail.pax_no()}</th>
 						<th class="rounded-tr-lg">{$LL.tours.detail.price()}</th>
 					</tr>
@@ -66,9 +66,13 @@
 				<tbody
 					class="[&>tr:nth-child(even)]:bg-secondary/50 [&>tr:last-child]:border-primary/80 [&>tr:last-child]:border-b-4 [&>tr>td:nth-child(2)]:pr-3 [&>tr>td:nth-child(2)]:text-right [&>tr>td]:py-1.5 [&>tr>td]:pl-3">
 					{#each prices as [pax, price] (pax)}
+						{@const solo = format_pax_no(pax) === '01'}
+						{@const group =
+							$LL.tours.detail.group() + ' ' + format_pax_no(pax) + ' ' + $LL.tours.detail.pax()}
 						<tr>
-							<td>Group of {format_pax_no(pax)} pax</td>
-							<td>{format_price(price, $locale)} /pax</td>
+							<!-- <td>Group of {format_pax_no(pax)} pax {solo}</td> -->
+							<td>{solo ? $LL.tours.detail.solo() : group} </td>
+							<td class="lowercase">{format_price(price, $locale)} /{$LL.tours.detail.pax()}</td>
 						</tr>
 					{/each}
 				</tbody>

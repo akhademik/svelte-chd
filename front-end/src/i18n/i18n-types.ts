@@ -202,9 +202,21 @@ type RootTranslation = {
 			 */
 			inclusion: string
 			/**
-			 * N​o​ ​o​f​ ​p​e​r​s​o​n
+			 * N​u​m​b​e​r​ ​o​f​ ​g​u​e​s​t​s
 			 */
 			pax_no: string
+			/**
+			 * p​a​x
+			 */
+			pax: string
+			/**
+			 * S​o​l​o​ ​g​u​e​s​t
+			 */
+			solo: string
+			/**
+			 * G​r​o​u​p​ ​o​f
+			 */
+			group: string
 		}
 	}
 	seo: {
@@ -411,9 +423,21 @@ export type TranslationFunctions = {
 			 */
 			inclusion: () => LocalizedString
 			/**
-			 * No of person
+			 * Number of guests
 			 */
 			pax_no: () => LocalizedString
+			/**
+			 * pax
+			 */
+			pax: () => LocalizedString
+			/**
+			 * Solo guest
+			 */
+			solo: () => LocalizedString
+			/**
+			 * Group of
+			 */
+			group: () => LocalizedString
 		}
 	}
 	seo: {

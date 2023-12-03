@@ -11,6 +11,9 @@ export const tours = {
 		itinerary: 'Brief Itinerary',
 		price: 'Price',
 		inclusion: 'Inclusions',
-		pax_no: 'No of person',
+		pax_no: 'Number of guests',
+		pax: 'pax',
+		solo: 'Solo guest',
+		group: 'Group of',
 	},
 }

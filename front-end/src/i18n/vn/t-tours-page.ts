@@ -11,6 +11,9 @@ export const tours = {
 		itinerary: 'Lịch Trình',
 		price: 'Giá',
 		inclusion: 'Bao Gồm',
-		pax_no: 'Số khách',
+		pax_no: 'Số lượng khách',
+		pax: 'khách',
+		solo: 'Khách cá nhân',
+		group: 'Nhóm',
 	},
 }

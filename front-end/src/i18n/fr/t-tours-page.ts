@@ -10,6 +10,9 @@ export const tours = {
 		itinerary: 'Bref Itinéraire',
 		price: 'Prix',
 		inclusion: 'Inclusions',
-		pax_no: 'Numéro de personne',
+		pax_no: 'Nombre de personnes',
+		pax: 'pax',
+		solo: 'Client seul',
+		group: 'Groupe de',
 	},
 }

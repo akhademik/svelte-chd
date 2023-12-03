@@ -10,7 +10,7 @@
 	export let tour: Tour
 
 	const { img_cover, tour_duration, tour_name, tour_intro, tour_slug, tour_price } = tour
-	const detail_href = `/${$locale}/${$page.params.tourtype}/${tour_slug.current}`
+	$: detail_href = `/${$locale}/${$page.params.tourtype}/${tour_slug.current}`
 </script>
 
 <div class="border-secondary flex max-w-[355px] flex-col gap-3 rounded-lg border shadow-2xl">
