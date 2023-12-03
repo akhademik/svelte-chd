@@ -8,7 +8,7 @@
 </script>
 
 <svelte:head>
-	<title>{$seo_title}</title>
+	<title>CHD Travel {$seo_title}</title>
 	<meta
 		name="description"
 		content={base.desc + ' ' + $seo_description} />

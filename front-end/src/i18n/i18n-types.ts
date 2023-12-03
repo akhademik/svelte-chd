@@ -172,6 +172,52 @@ type RootTranslation = {
 		 * D​i​v​e​ ​i​n​t​o​ ​a​ ​w​o​r​l​d​ ​o​f​ ​d​a​y​ ​t​o​u​r​ ​p​o​s​s​i​b​i​l​i​t​i​e​s​!​ ​W​h​e​t​h​e​r​ ​y​o​u​ ​c​r​a​v​e​ ​n​a​t​u​r​a​l​ ​w​o​n​d​e​r​s​,​ ​c​u​l​t​u​r​a​l​ ​i​m​m​e​r​s​i​o​n​,​ ​o​r​ ​t​h​r​i​l​l​i​n​g​ ​a​d​v​e​n​t​u​r​e​s​,​ ​o​u​r​ ​d​a​y​ ​t​o​u​r​s​ ​c​a​t​e​r​ ​t​o​ ​e​v​e​r​y​ ​w​a​n​d​e​r​l​u​s​t​.​ ​E​x​p​l​o​r​e​ ​o​u​r​ ​d​i​v​e​r​s​e​ ​c​o​l​l​e​c​t​i​o​n​ ​o​f​ ​h​a​n​d​p​i​c​k​e​d​ ​e​x​p​e​r​i​e​n​c​e​s​ ​a​n​d​ ​s​e​i​z​e​ ​t​h​e​ ​d​a​y​ ​w​i​t​h​ ​u​n​f​o​r​g​e​t​t​a​b​l​e​ ​a​d​v​e​n​t​u​r​e​s​.
 		 */
 		description: string
+		/**
+		 * f​r​o​m
+		 */
+		price_from: string
+		/**
+		 * D​e​t​a​i​l​s
+		 */
+		click_detail: string
+		detail: {
+			/**
+			 * T​o​u​r​ ​I​n​t​r​o
+			 */
+			intro: string
+			/**
+			 * H​i​g​h​l​i​g​h​t​s
+			 */
+			highlights: string
+			/**
+			 * B​r​i​e​f​ ​I​t​i​n​e​r​a​r​y
+			 */
+			itinerary: string
+			/**
+			 * P​r​i​c​e
+			 */
+			price: string
+			/**
+			 * I​n​c​l​u​s​i​o​n​s
+			 */
+			inclusion: string
+			/**
+			 * N​u​m​b​e​r​ ​o​f​ ​g​u​e​s​t​s
+			 */
+			pax_no: string
+			/**
+			 * p​a​x
+			 */
+			pax: string
+			/**
+			 * S​o​l​o​ ​g​u​e​s​t
+			 */
+			solo: string
+			/**
+			 * G​r​o​u​p​ ​o​f
+			 */
+			group: string
+		}
 	}
 	seo: {
 		/**
@@ -347,6 +393,52 @@ export type TranslationFunctions = {
 		 * Dive into a world of day tour possibilities! Whether you crave natural wonders, cultural immersion, or thrilling adventures, our day tours cater to every wanderlust. Explore our diverse collection of handpicked experiences and seize the day with unforgettable adventures.
 		 */
 		description: () => LocalizedString
+		/**
+		 * from
+		 */
+		price_from: () => LocalizedString
+		/**
+		 * Details
+		 */
+		click_detail: () => LocalizedString
+		detail: {
+			/**
+			 * Tour Intro
+			 */
+			intro: () => LocalizedString
+			/**
+			 * Highlights
+			 */
+			highlights: () => LocalizedString
+			/**
+			 * Brief Itinerary
+			 */
+			itinerary: () => LocalizedString
+			/**
+			 * Price
+			 */
+			price: () => LocalizedString
+			/**
+			 * Inclusions
+			 */
+			inclusion: () => LocalizedString
+			/**
+			 * Number of guests
+			 */
+			pax_no: () => LocalizedString
+			/**
+			 * pax
+			 */
+			pax: () => LocalizedString
+			/**
+			 * Solo guest
+			 */
+			solo: () => LocalizedString
+			/**
+			 * Group of
+			 */
+			group: () => LocalizedString
+		}
 	}
 	seo: {
 		/**

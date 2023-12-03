@@ -13,7 +13,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	// if no lang in cookie then use lang preferred in setting
 	const user_locale = cookie || get_preferred_locale(event)
-
+	if (url_lang === 'api') {
+		return resolve(event)
+	}
 	// redirect to user_locale if no lang was found or lang is not a correct locale
 	if (!url_lang || !isLocale(url_lang)) {
 		const new_path = [base, user_locale, ...url_path].join('/')

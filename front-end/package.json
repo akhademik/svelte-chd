@@ -1,24 +1,16 @@
 {
-	"name": "chd-travel-2023",
-	"version": "1",
 	"author": {
 		"name": "Akhademik"
 	},
-	"private": true,
-	"scripts": {
-		"all": "concurrently vite dev typesafe-i18n",
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write .",
-		"prepare": "svelte-kit sync",
-		"typesafe-i18n": "typesafe-i18n"
+	"dependencies": {
+		"@sanity/client": "^6.8.6",
+		"@sanity/image-url": "^1.0.2",
+		"concurrently": "^8.2.2",
+		"typesafe-i18n": "^5.26.2"
 	},
 	"devDependencies": {
 		"@ianvs/prettier-plugin-sort-imports": "^4.1.1",
+		"@portabletext/svelte": "^2.1.4",
 		"@sveltejs/adapter-auto": "^2.1.1",
 		"@sveltejs/kit": "^1.27.6",
 		"@typescript-eslint/eslint-plugin": "^6.12.0",
@@ -41,9 +33,20 @@
 		"vite": "^4.5.0",
 		"zod": "^3.22.4"
 	},
+	"name": "chd-travel-2023",
+	"private": true,
+	"scripts": {
+		"all": "concurrently 'vite dev' typesafe-i18n",
+		"build": "vite build",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
+		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"prepare": "svelte-kit sync",
+		"preview": "vite preview",
+		"typesafe-i18n": "typesafe-i18n"
+	},
 	"type": "module",
-	"dependencies": {
-		"concurrently": "^8.2.2",
-		"typesafe-i18n": "^5.26.2"
-	}
+	"version": "1"
 }

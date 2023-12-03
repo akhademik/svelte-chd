@@ -1,4 +1,6 @@
+export { default as BaseButton } from './base-button.svelte'
 export { default as BaseIcon } from './base-icon.svelte'
+export { default as BaseLoading } from './base-loading.svelte'
 export { default as BaseLocaleSwitcher } from './base-locale-switcher.svelte'
 export { default as BaseLogo } from './base-logo.svelte'
 export { default as BaseSeo } from './base-seo.svelte'
