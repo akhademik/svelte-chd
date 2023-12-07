@@ -52,6 +52,10 @@ type RootTranslation = {
 		contact: string
 	}
 	contact_page: {
+		/**
+		 * T​h​a​n​k​ ​y​o​u​!​ ​Y​o​u​r​ ​s​u​b​m​i​s​s​i​o​n​ ​h​a​s​ ​b​e​e​n​ ​s​e​n​t​.​ ​W​e​’​r​e​ ​e​x​c​i​t​e​d​ ​t​o​ ​s​t​a​r​t​ ​c​r​e​a​t​i​n​g​ ​a​ ​t​o​u​r​ ​t​h​a​t​ ​r​e​f​l​e​c​t​s​ ​y​o​u​r​ ​d​e​s​i​r​e​s​.
+		 */
+		success: string
 		page: {
 			/**
 			 * Y​o​u​r​ ​J​o​u​r​n​e​y​ ​S​t​a​r​t​s​ ​H​e​r​e
@@ -273,6 +277,10 @@ export type TranslationFunctions = {
 		contact: () => LocalizedString
 	}
 	contact_page: {
+		/**
+		 * Thank you! Your submission has been sent. We’re excited to start creating a tour that reflects your desires.
+		 */
+		success: () => LocalizedString
 		page: {
 			/**
 			 * Your Journey Starts Here

@@ -1,9 +1,11 @@
 export const contact_page = {
+	success:
+		'Merci ! Votre soumission a été envoyée. Nous sommes impatients de commencer à créer un circuit qui reflète vos désirs',
 	page: {
 		contact_us: 'Votre voyage commence ici',
 		have_question: `Vous avez une question ? Juste curieux ? Vous n'avez pas besoin de connaître toutes les réponses pour nous envoyer un message.`,
 		chose_tag: 'Veuillez choisir le service qui vous intéresse :',
-		submit: 'Soumettre'
+		submit: 'Soumettre',
 	},
 	tags: {
 		day_tour: `visite d'une journée`,
@@ -14,7 +16,7 @@ export const contact_page = {
 		ethnic: 'ethnique',
 		guide: 'guide',
 		transport: 'transport',
-		translate: 'traduction'
+		translate: 'traduction',
 	},
 	err: {
 		form_all: 'Veuillez remplir tous les champs.',
@@ -22,7 +24,7 @@ export const contact_page = {
 		form_email: 'Votre e-mail est invalide',
 		form_phone: "Votre numéro de téléphone n'est pas valide",
 		form_langs: 'Les langues ne doivent pas être vides',
-		form_msg: 'Les messages ne doivent pas être vides'
+		form_msg: 'Les messages ne doivent pas être vides',
 	},
 	placeholder: {
 		name: 'VOTRE NOM *',
@@ -31,6 +33,6 @@ export const contact_page = {
 		langs: 'LANGUES *',
 		msg: `MESSAGES *
 
-Dites-nous en plus sur votre demande`
-	}
-};
+Dites-nous en plus sur votre demande`,
+	},
+}

@@ -17,7 +17,7 @@
 	<ContactFormInputs {data} />
 	<button
 		type="submit"
-		class="border-primary before:bg-secondary relative self-end border px-8 py-2 text-xl font-bold uppercase before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:transition-all before:duration-300 hover:before:h-0 disabled:bg-white disabled:text-red-600 disabled:line-through">
+		class="border-primary before:bg-secondary relative self-end border px-8 py-2 text-xl font-bold uppercase before:absolute before:bottom-0 before:left-0 before:h-1 before:w-full before:transition-all before:duration-300 hover:before:h-0">
 		{$LL.contact_page.page.submit()}
 	</button>
 </form>
