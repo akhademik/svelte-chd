@@ -1,9 +1,11 @@
 export const contact_page = {
+	success:
+		'Thank you! Your submission has been sent. We’re excited to start creating a tour that reflects your desires.',
 	page: {
 		contact_us: 'Your Journey Starts Here',
 		have_question: `Have a question? Just curious? You don't have to know all the answers to drop us a line.`,
 		chose_tag: 'Please chose the service you are interested in:',
-		submit: 'submit'
+		submit: 'submit',
 	},
 	tags: {
 		day_tour: 'day tour',
@@ -14,7 +16,7 @@ export const contact_page = {
 		ethnic: 'ethnic',
 		guide: 'guide',
 		transport: 'transportation',
-		translate: 'translation'
+		translate: 'translation',
 	},
 	err: {
 		form_all: 'Please complete all fields',
@@ -22,7 +24,7 @@ export const contact_page = {
 		form_email: 'Your email is invalid',
 		form_phone: 'Your phone number is not valid',
 		form_langs: 'Languages must not be empty',
-		form_msg: 'Messages must not be empty'
+		form_msg: 'Messages must not be empty',
 	},
 	placeholder: {
 		name: 'YOUR NAME *',
@@ -31,6 +33,6 @@ export const contact_page = {
 		langs: 'LANGUAGES *',
 		msg: `MESSAGES *
 
-Tell us more about your inquiry`
-	}
-};
+Tell us more about your inquiry`,
+	},
+}
