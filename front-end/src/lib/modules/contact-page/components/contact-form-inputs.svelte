@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
-	import { redirect_to_home } from '$lib/utils/navigation'
+	import { redirect_to_home } from '$utils/navigation'
 	import toast from 'svelte-french-toast'
 	import { superForm } from 'sveltekit-superforms/client'
 

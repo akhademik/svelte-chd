@@ -5,6 +5,7 @@ import type { LayoutLoad } from './$types'
 
 export const load: LayoutLoad<{ locale: Locales }> = async ({ data: { locale } }) => {
 	// load dictionary into memory
+
 	await loadLocaleAsync(locale)
 
 	// pass locale to the "rendering context"
