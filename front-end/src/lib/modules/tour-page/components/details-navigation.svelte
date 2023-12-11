@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { BaseIcon } from '$base'
+	import { nav_animate_hidden } from '$lib/stores/nav-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_length_and_index, get_sanity_data } from '$lib/utils/sanity'
 	import { tour_index_store } from '$stores/tour-store'
@@ -11,6 +12,11 @@
 	let tours: Tour[]
 	let slug
 	const base_url = get_base_url($page)
+
+	const handle_close = () => {
+		nav_animate_hidden.set(false)
+		goto(base_url)
+	}
 
 	const update_url = (_tours: Tour[], _index: number) => {
 		const slug = _tours[_index].tour_slug.current
@@ -42,7 +48,7 @@
 	class="sticky top-0 z-30 flex w-full justify-between bg-white p-4 text-3xl lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-0.5 lg:bg-transparent">
 	<button
 		class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
-		on:click={() => goto(base_url)}>
+		on:click={() => handle_close()}>
 		<BaseIcon
 			name="close"
 			class="w-6" />

@@ -15,5 +15,14 @@ const set_mobile_store = () => {
 	}
 }
 
+const set_animate_hidden_store = () => {
+	const { subscribe, set } = writable(false)
+	return {
+		subscribe,
+		set,
+	}
+}
+
 export const nav_deg = set_deg_store()
 export const nav_mobile = set_mobile_store()
+export const nav_animate_hidden = set_animate_hidden_store()
