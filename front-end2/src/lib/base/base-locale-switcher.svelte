@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
-	import { invalidateAll } from '$app/navigation'
+	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { persist_to_cookie, replace_locale_in_url } from '$i18n/i18n-helper'
 	import { locale, setLocale } from '$i18n/i18n-svelte'
@@ -9,7 +9,7 @@
 	import { loadLocaleAsync } from '$i18n/i18n-util.async'
 	import { nav_mobile } from '$stores/nav-store'
 
-	const switch_locale = async (new_locale: Locales, update_history_state = true) => {
+	const switch_locale = async (new_locale: Locales) => {
 		if ($nav_mobile) nav_mobile.toggle()
 		if (!new_locale || $locale === new_locale) return
 
@@ -17,29 +17,22 @@
 		setLocale(new_locale)
 		persist_to_cookie(new_locale)
 
-		if (update_history_state) {
-			history.pushState({ locale: new_locale }, '', replace_locale_in_url(url, new_locale))
-		}
-
-		invalidateAll()
+		const targetUrl = replace_locale_in_url(url, new_locale)
+		await goto(targetUrl, { invalidateAll: true, keepFocus: true })
 	}
-
-	const handle_pop_state_event = async ({ state }: PopStateEvent) =>
-		switch_locale(state.locale, false)
 
 	let url = $derived($page.url)
 	let lang = $derived($page.params.lang as Locales)
 
 	$effect(() => {
 		if (browser && lang && lang !== $locale) {
-			document.querySelector('html')!.setAttribute('lang', lang)
-			switch_locale(lang, false)
-			history.replaceState({ ...history.state, locale: lang }, '', replace_locale_in_url(url, lang))
+			loadLocaleAsync(lang).then(() => {
+				setLocale(lang)
+				document.querySelector('html')?.setAttribute('lang', lang)
+			})
 		}
 	})
 </script>
-
-<svelte:window onpopstate={handle_pop_state_event} />
 
 <div class="flex items-center gap-1 text-xs uppercase tracking-wider">
 	{#each locales as l, index (l)}
