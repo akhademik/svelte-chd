@@ -19,7 +19,9 @@
 	$: if (tours) {
 		tour = tour_by_index(tours, $tour_index_store)!
 		nav_animate_hidden.set(true)
-		set_seo(tour.tour_name[$locale])
+		if (tour?.tour_name?.[$locale]) {
+			set_seo(tour.tour_name[$locale])
+		}
 		time_id = setTimeout(() => {
 			animate = true
 		}, 300)

@@ -10,7 +10,25 @@ const config: ClientConfig = {
 
 const client = createClient(config)
 
-const extract_fields = `best_sell, tour_highlights[]->{'highlights': tour_highlights}, tour_itinerary, "tour_includes": tour_includes->tour_includes, tour_tags, tour_price, tour_id, img_tour, img_cover, tour_duration, tour_slug,tour_intro, tour_name`
+const extract_fields = `
+	"best_sell": coalesce(best_sell, bestSell, false),
+	"tour_highlights": coalesce(
+		tour_highlights[]->{'highlights': coalesce(tour_highlights, highlights)},
+		tourHighlights[]->{'highlights': coalesce(tour_highlights, tourHighlights, highlights)},
+		[]
+	),
+	"tour_itinerary": coalesce(tour_itinerary, tourItinerary),
+	"tour_includes": coalesce(tour_includes->tour_includes, tourIncludes->tourIncludes, tour_includes->includes, []),
+	"tour_tags": coalesce(tour_tags, tourTags, []),
+	"tour_price": coalesce(tour_price, tourPrice),
+	"tour_id": coalesce(tour_id, tourId, ''),
+	"img_tour": coalesce(img_tour, imgTour),
+	"img_cover": coalesce(img_cover, imgCover),
+	"tour_duration": coalesce(tour_duration, tourDuration),
+	"tour_slug": coalesce(tour_slug, tourSlug),
+	"tour_intro": coalesce(tour_intro, tourIntro),
+	"tour_name": coalesce(tour_name, tourName)
+`
 
 const fetch_exchange_rate = async () => {
 	const url = EXCHANGE_URL
@@ -22,7 +40,13 @@ const fetch_exchange_rate = async () => {
 }
 
 const fetch_data = async (db_name: string) => {
-	const data = await client.fetch(`*[_type == '${db_name}']{${extract_fields}}`)
+	const type_condition =
+		db_name === 'day-tours'
+			? `_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']`
+			: db_name === 'highland-tours'
+				? `_type in ['highland-tours', 'tourCentral', 'highland_tours']`
+				: `_type == '${db_name}'`
+	const data = await client.fetch(`*[${type_condition}]{${extract_fields}}`)
 	const exchange_rate = await fetch_exchange_rate()
 	const modded_data = { tours: [...data], stale_time: Date.now(), exchange_rate: exchange_rate }
 	return modded_data

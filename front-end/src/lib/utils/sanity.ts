@@ -40,10 +40,25 @@ export const get_sanity_data = async (page: Page) => {
 	return data.tours
 }
 
+export const get_tour_slug = (tour: Tour, lang: string = 'en') => {
+	if (!tour?.tour_slug) return ''
+	if (typeof tour.tour_slug === 'string') return tour.tour_slug
+	if (tour.tour_slug.current) return tour.tour_slug.current
+	if (tour.tour_slug[lang]?.current) return tour.tour_slug[lang].current
+	if (tour.tour_slug.en?.current) return tour.tour_slug.en.current
+	if (tour.tour_slug.vn?.current) return tour.tour_slug.vn.current
+	if (tour.tour_slug.fr?.current) return tour.tour_slug.fr.current
+	return ''
+}
+
 export const tour_by_index = (tours: Tour[], index: number) => {
-	const slug = tours[index].tour_slug.current
-	const tour = tours.find((tour: Tour) => tour.tour_slug.current === slug)
-	return tour
+	if (!tours || !tours[index]) return tours?.[0]
+	const target_slug = get_tour_slug(tours[index])
+	const tour = tours.find((t: Tour) => {
+		const s = get_tour_slug(t)
+		return s === target_slug
+	})
+	return tour || tours[index]
 }
 
 export const get_exchange_rate = (rate: string) => {
@@ -56,8 +71,10 @@ export const url_for = (source: SanityImageSource) => {
 }
 
 export const get_length_and_index = (tours: Tour[], slug: string) => {
-	const slugs_array = tours.map(tour => tour.tour_slug.current)
+	if (!tours || tours.length === 0) return { length: 0, index: 0 }
+	const slugs_array = tours.map(tour => get_tour_slug(tour))
 	const length = slugs_array.length - 1
-	const index = slugs_array.indexOf(slug)
+	const found_index = slugs_array.indexOf(slug)
+	const index = found_index > -1 ? found_index : 0
 	return { length, index }
 }

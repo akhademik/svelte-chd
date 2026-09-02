@@ -8,7 +8,7 @@ export default defineConfig({
   name: 'default',
   title: 'chd-backend-v1',
 
-  projectId: 'jgkmyo6n',
+  projectId: 'uzyjbxdd',
   dataset: 'production',
 
   plugins: [deskTool(), visionTool(), unsplashImageAsset()],

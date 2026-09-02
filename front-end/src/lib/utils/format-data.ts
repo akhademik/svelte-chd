@@ -29,6 +29,7 @@ export const format_pax_no = (key: string) => {
 }
 
 export const format_price_object = (tour: Tour) => {
+	if (!tour?.tour_price) return []
 	return Object.entries(tour.tour_price)
 		.filter(([key]) => key !== '_type')
 		.sort((a, b) => {

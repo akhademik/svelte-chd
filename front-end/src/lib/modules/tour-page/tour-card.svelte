@@ -5,20 +5,23 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_price } from '$utils/format-data'
-	import { url_for } from '$utils/sanity'
+	import { get_tour_slug, url_for } from '$utils/sanity'
 
 	export let tour: Tour
 
-	const { img_cover, tour_duration, tour_name, tour_intro, tour_slug, tour_price } = tour
-	$: detail_href = `/${$locale}/${$page.params.tourtype}/${tour_slug.current}`
+	const { img_cover, tour_duration, tour_name, tour_intro, tour_price } = tour
+	$: slug = get_tour_slug(tour, $locale)
+	$: detail_href = `/${$locale}/${$page.params.tourtype}/${slug}`
 </script>
 
 <div class="flex max-w-[355px] flex-col gap-3 rounded-lg border border-secondary shadow-2xl">
-	<div class="relative aspect-square h-40 overflow-hidden rounded-t-lg">
-		<img
-			src={url_for(img_cover).width(400).auto('format').quality(60).url()}
-			alt={img_cover.caption}
-			class="h-full w-full object-cover" />
+	<div class="relative aspect-square h-40 overflow-hidden rounded-t-lg bg-primary/20">
+		{#if img_cover?.asset}
+			<img
+				src={url_for(img_cover).width(400).auto('format').quality(60).url()}
+				alt={img_cover.caption || tour_name?.[$locale] || 'Tour'}
+				class="h-full w-full object-cover" />
+		{/if}
 	</div>
 	<section class="flex flex-col gap-3 px-3">
 		<p
@@ -26,14 +29,14 @@
 			<BaseIcon
 				name="duration"
 				class="w-5" />
-			<span class="text-sm">{tour_duration[$locale]}</span>
+			<span class="text-sm">{tour_duration?.[$locale] || ''}</span>
 		</p>
 		<p class="font-bold capitalize text-secondary">
-			{tour_name[$locale]}
+			{tour_name?.[$locale] || ''}
 		</p>
 		<span class="line-clamp-6 border-y py-3 pb-1">
 			<PortableText
-				value={tour_intro[$locale]}
+				value={tour_intro?.[$locale] || []}
 				components={{}} />
 		</span>
 	</section>
@@ -43,7 +46,7 @@
 		</a>
 		<div class="text-right">
 			<p class="-mb-1 text-xs">{$LL.tours.price_from()}</p>
-			<p class="font-bold text-secondary">{format_price(tour_price.pax2, $locale)}</p>
+			<p class="font-bold text-secondary">{format_price(tour_price?.pax2 || 0, $locale)}</p>
 		</div>
 	</section>
 </div>

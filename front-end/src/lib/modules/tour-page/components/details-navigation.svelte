@@ -4,7 +4,7 @@
 	import { BaseIcon } from '$base'
 	import { nav_animate_hidden } from '$lib/stores/nav-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { get_length_and_index, get_sanity_data } from '$lib/utils/sanity'
+	import { get_length_and_index, get_sanity_data, get_tour_slug } from '$lib/utils/sanity'
 	import { tour_index_store } from '$stores/tour-store'
 	import { get_base_url } from '$utils/navigation'
 	import { onMount } from 'svelte'
@@ -19,7 +19,7 @@
 	}
 
 	const update_url = (_tours: Tour[], _index: number) => {
-		const slug = _tours[_index].tour_slug.current
+		const slug = get_tour_slug(_tours[_index])
 		history.pushState({}, '', base_url + slug)
 	}
 
