@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+html {
+	scroll-behavior: smooth;
+}
+
+/* Minimalist Scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+}
+::-webkit-scrollbar-track {
+	background: #faf9f6;
+}
+::-webkit-scrollbar-thumb {
+	background: #d5d2ca;
+	border-radius: 3px;
+}

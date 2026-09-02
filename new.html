@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="vi" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K’LANG Travel — Minimalist Travel Agency</title>
+
+    <!-- Google Fonts: Playfair Display (Serif sang trọng) & Plus Jakarta Sans (Minimal Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Playfair Display"', "serif"],
+              sans: ['"Plus Jakarta Sans"', "sans-serif"],
+            },
+            colors: {
+              stone: {
+                50: "#FAF9F6",
+                100: "#F5F4F0",
+                200: "#E7E5E0",
+                300: "#D5D2CA",
+                800: "#2A2A28",
+                900: "#191918",
+              },
+              forest: {
+                DEFAULT: "#2D3E35",
+                hover: "#223029",
+              },
+              terracotta: "#A65B44",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Ẩn thanh cuộn nhưng vẫn cuộn mượt */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #faf9f6;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #d5d2ca;
+        border-radius: 3px;
+      }
+      .lang-active {
+        font-weight: 600;
+        color: #191918;
+        border-bottom: 1.5px solid #191918;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-stone-50 text-stone-900 font-sans antialiased selection:bg-stone-200"
+  >
+    <!-- ==================== HEADER & NAVBAR ==================== -->
+    <header
+      class="fixed top-0 left-0 right-0 z-40 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/60 transition-all duration-300"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between"
+      >
+        <!-- Logo thương hiệu tối giản -->
+        <a href="#" class="group flex items-center gap-2">
+          <span
+            class="font-serif text-2xl tracking-widest font-medium uppercase"
+            >K’LANG</span
+          >
+          <span
+            class="text-xs tracking-widest uppercase text-stone-400 font-light border-l border-stone-300 pl-2 hidden sm:inline"
+            >Journeys</span
+          >
+        </a>
+
+        <!-- Menu chính -->
+        <nav
+          class="hidden md:flex items-center space-x-10 text-sm tracking-wide text-stone-600"
+        >
+          <a
+            href="#day-tours"
+            class="hover:text-stone-950 transition-colors duration-200"
+            data-i18n="nav_day"
+            >Tour Trong Ngày</a
+          >
+          <a
+            href="#highland-tours"
+            class="hover:text-stone-950 transition-colors duration-200"
+            data-i18n="nav_highland"
+            >Tour Tây Nguyên</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-stone-950 transition-colors duration-200"
+            data-i18n="nav_contact"
+            >Liên Hệ</a
+          >
+        </nav>
+
+        <!-- Bộ chọn ngôn ngữ (i18n) -->
+        <div class="flex items-center gap-1 text-xs tracking-wider uppercase">
+          <button
+            onclick="setLanguage('vi')"
+            id="lang-vi"
+            class="px-2 py-1 transition-all lang-active"
+          >
+            VI
+          </button>
+          <span class="text-stone-300">/</span>
+          <button
+            onclick="setLanguage('en')"
+            id="lang-en"
+            class="px-2 py-1 text-stone-400 hover:text-stone-800 transition-all"
+          >
+            EN
+          </button>
+          <span class="text-stone-300">/</span>
+          <button
+            onclick="setLanguage('fr')"
+            id="lang-fr"
+            class="px-2 py-1 text-stone-400 hover:text-stone-800 transition-all"
+          >
+            FR
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-20">
+      <!-- ==================== HERO SECTION ==================== -->
+      <section
+        class="relative min-h-[85vh] flex items-center justify-center px-6 border-b border-stone-200"
+      >
+        <div class="max-w-4xl mx-auto text-center py-20">
+          <p
+            class="text-xs uppercase tracking-[0.3em] text-stone-500 mb-6 font-medium"
+            data-i18n="hero_subtitle_tag"
+          >
+            Du lịch chậm & Trải nghiệm nguyên bản
+          </p>
+
+          <h1
+            class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal leading-[1.15] text-stone-900 mb-8 tracking-tight"
+            data-i18n="hero_title"
+          >
+            Chạm vào tâm hồn <br />
+            <span class="italic font-light">đại ngàn mộc mạc.</span>
+          </h1>
+
+          <p
+            class="text-stone-600 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed mb-10"
+            data-i18n="hero_desc"
+          >
+            Những hành trình tinh tế đưa bạn hòa mình vào văn hóa bản địa, rừng
+            thông hoang sơ và văn hóa cồng chiêng Tây Nguyên.
+          </p>
+
+          <div
+            class="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <a
+              href="#day-tours"
+              class="w-full sm:w-auto px-8 py-4 bg-stone-900 text-stone-50 text-xs uppercase tracking-widest hover:bg-stone-800 transition-all duration-300 inline-flex items-center justify-center gap-2"
+              data-i18n="hero_btn_explore"
+            >
+              <span>Khám phá các tour</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a
+              href="#contact"
+              class="w-full sm:w-auto px-8 py-4 border border-stone-300 text-stone-800 text-xs uppercase tracking-widest hover:bg-stone-100 transition-all duration-300 inline-flex items-center justify-center"
+              data-i18n="hero_btn_contact"
+            >
+              Tư vấn riêng
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TOUR TRONG NGÀY (DAY TOURS) ==================== -->
+      <section id="day-tours" class="py-24 px-6 border-b border-stone-200">
+        <div class="max-w-6xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+          >
+            <div>
+              <span
+                class="text-xs uppercase tracking-[0.25em] text-stone-400 font-medium block mb-3"
+                >01 / Excursions</span
+              >
+              <h2
+                class="font-serif text-3xl sm:text-4xl font-normal text-stone-900"
+                data-i18n="day_section_title"
+              >
+                Tour Trong Ngày
+              </h2>
+            </div>
+            <p
+              class="text-stone-500 text-sm max-w-md font-light"
+              data-i18n="day_section_sub"
+            >
+              Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một
+              ngày ngắn ngủi mà đáng nhớ.
+            </p>
+          </div>
+
+          <!-- Danh sách 3 Card Tour Trong Ngày -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1 -->
+            <div
+              class="group flex flex-col bg-white border border-stone-200/80 p-5 hover:border-stone-400 transition-all duration-300"
+            >
+              <div
+                class="aspect-[4/3] overflow-hidden bg-stone-100 mb-5 relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=900&auto=format&fit=crop"
+                  alt="Buôn Ma Thuột Coffee Trail"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900'
+                  "
+                />
+                <span
+                  class="absolute top-3 left-3 bg-stone-900/80 backdrop-blur-sm text-stone-100 text-[10px] uppercase tracking-wider px-2.5 py-1"
+                  data-i18n="day1_tag"
+                >
+                  1 Ngày • Cà Phê & Di Sản
+                </span>
+              </div>
+
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="font-serif text-xl mb-2 text-stone-900 group-hover:text-terracotta transition-colors"
+                    data-i18n="day1_title"
+                  >
+                    Dấu Chân Hương Cà Phê & Làng Gốm Liêng Hót
+                  </h3>
+                  <p
+                    class="text-stone-500 text-xs font-light leading-relaxed mb-6"
+                    data-i18n="day1_desc"
+                  >
+                    Trải nghiệm hái và tự rang hạt Robusta nguyên bản, tìm hiểu
+                    nghệ thuật gốm cổ truyền của người M'Nông.
+                  </p>
+                </div>
+
+                <div
+                  class="pt-4 border-t border-stone-100 flex items-center justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] text-stone-400 uppercase tracking-wider block"
+                      data-i18n="price_from"
+                      >Giá từ</span
+                    >
+                    <span class="text-sm font-medium text-stone-900"
+                      >850.000₫
+                      <span class="text-xs text-stone-400 font-normal"
+                        >/ khách</span
+                      ></span
+                    >
+                  </div>
+                  <button
+                    onclick="
+                      openBookingModal('Dấu Chân Hương Cà Phê & Làng Gốm')
+                    "
+                    class="text-xs uppercase tracking-wider text-stone-900 hover:text-terracotta flex items-center gap-1 font-medium transition-colors"
+                    data-i18n="btn_book_now"
+                  >
+                    Đặt tour
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="group flex flex-col bg-white border border-stone-200/80 p-5 hover:border-stone-400 transition-all duration-300"
+            >
+              <div
+                class="aspect-[4/3] overflow-hidden bg-stone-100 mb-5 relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1546708973-b339540b5162?q=80&w=900&auto=format&fit=crop"
+                  alt="Thác Dray Nur & Kayak Sông Sêrêpôk"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=900'
+                  "
+                />
+                <span
+                  class="absolute top-3 left-3 bg-stone-900/80 backdrop-blur-sm text-stone-100 text-[10px] uppercase tracking-wider px-2.5 py-1"
+                  data-i18n="day2_tag"
+                >
+                  1 Ngày • Thác Nước & Chèo Thuyền
+                </span>
+              </div>
+
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="font-serif text-xl mb-2 text-stone-900 group-hover:text-terracotta transition-colors"
+                    data-i18n="day2_title"
+                  >
+                    Thác Dray Nur & Chèo Kayak Sông Sêrêpôk
+                  </h3>
+                  <p
+                    class="text-stone-500 text-xs font-light leading-relaxed mb-6"
+                    data-i18n="day2_desc"
+                  >
+                    Chiêm ngưỡng ngọn thác hùng vĩ bậc nhất Tây Nguyên và thư
+                    thả chèo thuyền xuôi dòng sông chảy ngược huyền thoại.
+                  </p>
+                </div>
+
+                <div
+                  class="pt-4 border-t border-stone-100 flex items-center justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] text-stone-400 uppercase tracking-wider block"
+                      data-i18n="price_from"
+                      >Giá từ</span
+                    >
+                    <span class="text-sm font-medium text-stone-900"
+                      >1.150.000₫
+                      <span class="text-xs text-stone-400 font-normal"
+                        >/ khách</span
+                      ></span
+                    >
+                  </div>
+                  <button
+                    onclick="openBookingModal('Thác Dray Nur & Kayak Sêrêpôk')"
+                    class="text-xs uppercase tracking-wider text-stone-900 hover:text-terracotta flex items-center gap-1 font-medium transition-colors"
+                    data-i18n="btn_book_now"
+                  >
+                    Đặt tour
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="group flex flex-col bg-white border border-stone-200/80 p-5 hover:border-stone-400 transition-all duration-300"
+            >
+              <div
+                class="aspect-[4/3] overflow-hidden bg-stone-100 mb-5 relative"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=900&auto=format&fit=crop"
+                  alt="Bình Yên Hồ Lắk & Buôn Jun"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=900'
+                  "
+                />
+                <span
+                  class="absolute top-3 left-3 bg-stone-900/80 backdrop-blur-sm text-stone-100 text-[10px] uppercase tracking-wider px-2.5 py-1"
+                  data-i18n="day3_tag"
+                >
+                  1 Ngày • Hồ Tự Nhiên & Văn Hóa
+                </span>
+              </div>
+
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <h3
+                    class="font-serif text-xl mb-2 text-stone-900 group-hover:text-terracotta transition-colors"
+                    data-i18n="day3_title"
+                  >
+                    Bình Yên Hồ Lắk & Nhà Dài Buôn Jun
+                  </h3>
+                  <p
+                    class="text-stone-500 text-xs font-light leading-relaxed mb-6"
+                    data-i18n="day3_desc"
+                  >
+                    Thưởng ngoạn hoàng hôn êm đềm trên hồ Lắk bằng thuyền độc
+                    mộc, lắng nghe chuyện kể cổ tích bên bếp lửa nhà dài.
+                  </p>
+                </div>
+
+                <div
+                  class="pt-4 border-t border-stone-100 flex items-center justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] text-stone-400 uppercase tracking-wider block"
+                      data-i18n="price_from"
+                      >Giá từ</span
+                    >
+                    <span class="text-sm font-medium text-stone-900"
+                      >950.000₫
+                      <span class="text-xs text-stone-400 font-normal"
+                        >/ khách</span
+                      ></span
+                    >
+                  </div>
+                  <button
+                    onclick="openBookingModal('Hồ Lắk & Buôn Jun')"
+                    class="text-xs uppercase tracking-wider text-stone-900 hover:text-terracotta flex items-center gap-1 font-medium transition-colors"
+                    data-i18n="btn_book_now"
+                  >
+                    Đặt tour
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TOUR TÂY NGUYÊN (HIGHLAND EXPEDITIONS) ==================== -->
+      <section
+        id="highland-tours"
+        class="py-24 px-6 border-b border-stone-200 bg-stone-100/50"
+      >
+        <div class="max-w-6xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+          >
+            <div>
+              <span
+                class="text-xs uppercase tracking-[0.25em] text-stone-400 font-medium block mb-3"
+                >02 / Grand Expeditions</span
+              >
+              <h2
+                class="font-serif text-3xl sm:text-4xl font-normal text-stone-900"
+                data-i18n="highland_section_title"
+              >
+                Tour Tây Nguyên Trọn Vẹn
+              </h2>
+            </div>
+            <p
+              class="text-stone-500 text-sm max-w-md font-light"
+              data-i18n="highland_section_sub"
+            >
+              Hành trình nhiều ngày sâu lắng qua những cung đường sương mù, rừng
+              thông cổ thụ và âm vang đại ngàn.
+            </p>
+          </div>
+
+          <!-- 2 Khối Tour Lớn Sang Trọng -->
+          <div class="space-y-12">
+            <!-- Tour Lớn 1: Măng Đen & Kon Tum -->
+            <div
+              class="bg-white border border-stone-200/90 grid grid-cols-1 lg:grid-cols-12 overflow-hidden group"
+            >
+              <div
+                class="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden bg-stone-200"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop"
+                  alt="Măng Đen Mờ Sương"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://images.unsplash.com/photo-1511497584788-87676104235f?w=1200'
+                  "
+                />
+              </div>
+
+              <div
+                class="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between"
+              >
+                <div>
+                  <div
+                    class="flex items-center gap-3 text-xs uppercase tracking-wider text-stone-400 mb-4"
+                  >
+                    <span>3 Ngày 2 Đêm</span>
+                    <span>•</span>
+                    <span>Kon Tum — Măng Đen</span>
+                  </div>
+
+                  <h3
+                    class="font-serif text-2xl sm:text-3xl text-stone-900 mb-4 leading-snug"
+                    data-i18n="hl1_title"
+                  >
+                    Măng Đen & Kon Tum: Miền Sương Khói & Nhà Thờ Gỗ
+                  </h3>
+
+                  <p
+                    class="text-stone-600 text-sm font-light leading-relaxed mb-6"
+                    data-i18n="hl1_desc"
+                  >
+                    Thức giấc giữa rừng thông lãng đãng sương mù, ghé thăm Nhà
+                    Thờ Gỗ hơn 100 năm tuổi và các buôn làng người Ba Na bên
+                    dòng sông Đăk Bla.
+                  </p>
+
+                  <ul class="space-y-2 text-xs text-stone-600 mb-8">
+                    <li class="flex items-center gap-2">
+                      <span
+                        class="w-1.5 h-1.5 bg-stone-900 rounded-full"
+                      ></span>
+                      <span data-i18n="hl1_f1"
+                        >Lưu trú tại Homestay kiến trúc gỗ tối giản</span
+                      >
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span
+                        class="w-1.5 h-1.5 bg-stone-900 rounded-full"
+                      ></span>
+                      <span data-i18n="hl1_f2"
+                        >Thưởng thức ẩm thực lá rừng & gà nướng cơm lam</span
+                      >
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span
+                        class="w-1.5 h-1.5 bg-stone-900 rounded-full"
+                      ></span>
+                      <span data-i18n="hl1_f3"
+                        >Giao lưu cồng chiêng mộc mạc không thương mại hóa</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  class="pt-6 border-t border-stone-100 flex items-center justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] text-stone-400 uppercase tracking-wider block"
+                      data-i18n="price_from"
+                      >Giá trọn gói</span
+                    >
+                    <span class="text-base font-medium text-stone-900"
+                      >3.450.000₫
+                      <span class="text-xs text-stone-400 font-normal"
+                        >/ khách</span
+                      ></span
+                    >
+                  </div>
+                  <button
+                    onclick="openBookingModal('Măng Đen & Kon Tum (3N2Đ)')"
+                    class="px-5 py-2.5 bg-stone-900 text-stone-50 text-xs uppercase tracking-widest hover:bg-stone-800 transition-colors"
+                    data-i18n="btn_book_now"
+                  >
+                    Đặt chỗ
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tour Lớn 2: Buôn Ma Thuột & Chư Yang Sin -->
+            <div
+              class="bg-white border border-stone-200/90 grid grid-cols-1 lg:grid-cols-12 overflow-hidden group"
+            >
+              <div
+                class="lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden bg-stone-200 order-1 lg:order-2"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1200&auto=format&fit=crop"
+                  alt="Đại Ngàn Chư Yang Sin"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy"
+                  onerror="
+                    this.src =
+                      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200'
+                  "
+                />
+              </div>
+
+              <div
+                class="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between order-2 lg:order-1"
+              >
+                <div>
+                  <div
+                    class="flex items-center gap-3 text-xs uppercase tracking-wider text-stone-400 mb-4"
+                  >
+                    <span>4 Ngày 3 Đêm</span>
+                    <span>•</span>
+                    <span>Đắk Lắk — Chư Yang Sin</span>
+                  </div>
+
+                  <h3
+                    class="font-serif text-2xl sm:text-3xl text-stone-900 mb-4 leading-snug"
+                    data-i18n="hl2_title"
+                  >
+                    Huyền Thoại Đại Ngàn & Trekking Rừng Nguyên Sinh
+                  </h3>
+
+                  <p
+                    class="text-stone-600 text-sm font-light leading-relaxed mb-6"
+                    data-i18n="hl2_desc"
+                  >
+                    Chuyến đi dành cho những ai tìm kiếm sự tĩnh lặng tuyệt đối.
+                    Băng qua những tán cây pơ mu ngàn năm và lắng nghe hơi thở
+                    đất bazan.
+                  </p>
+
+                  <ul class="space-y-2 text-xs text-stone-600 mb-8">
+                    <li class="flex items-center gap-2">
+                      <span
+                        class="w-1.5 h-1.5 bg-stone-900 rounded-full"
+                      ></span>
+                      <span data-i18n="hl2_f1"
+                        >Trekking nhẹ nhàng dưới tán rừng nguyên sinh</span
+                      >
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span
+                        class="w-1.5 h-1.5 bg-stone-900 rounded-full"
+                      ></span>
+                      <span data-i18n="hl2_f2"
+                        >Cắm trại cao cấp (Glamping) bên bờ suối</span
+                      >
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span
+                        class="w-1.5 h-1.5 bg-stone-900 rounded-full"
+                      ></span>
+                      <span data-i18n="hl2_f3"
+                        >Chuyên gia bản địa đồng hành suốt tuyến</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+
+                <div
+                  class="pt-6 border-t border-stone-100 flex items-center justify-between"
+                >
+                  <div>
+                    <span
+                      class="text-[10px] text-stone-400 uppercase tracking-wider block"
+                      data-i18n="price_from"
+                      >Giá trọn gói</span
+                    >
+                    <span class="text-base font-medium text-stone-900"
+                      >4.890.000₫
+                      <span class="text-xs text-stone-400 font-normal"
+                        >/ khách</span
+                      ></span
+                    >
+                  </div>
+                  <button
+                    onclick="
+                      openBookingModal(
+                        'Huyền Thoại Đại Ngàn Chư Yang Sin (4N3Đ)',
+                      )
+                    "
+                    class="px-5 py-2.5 bg-stone-900 text-stone-50 text-xs uppercase tracking-widest hover:bg-stone-800 transition-colors"
+                    data-i18n="btn_book_now"
+                  >
+                    Đặt chỗ
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== LIÊN HỆ (CONTACT) ==================== -->
+      <section id="contact" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <!-- Thông tin liên hệ -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+              <div>
+                <span
+                  class="text-xs uppercase tracking-[0.25em] text-stone-400 font-medium block mb-3"
+                  >03 / Connect</span
+                >
+                <h2
+                  class="font-serif text-3xl sm:text-4xl font-normal text-stone-900 mb-6"
+                  data-i18n="contact_title"
+                >
+                  Khởi đầu hành trình của bạn.
+                </h2>
+                <p
+                  class="text-stone-600 text-sm font-light leading-relaxed mb-10"
+                  data-i18n="contact_desc"
+                >
+                  Dù bạn muốn một chuyến đi thiết kế riêng theo sở thích hay cần
+                  tư vấn lộ trình phù hợp, đội ngũ K’LANG luôn sẵn lòng lắng
+                  nghe.
+                </p>
+
+                <div class="space-y-6 text-sm text-stone-700">
+                  <div class="flex items-start gap-4">
+                    <div class="p-2.5 bg-stone-100 rounded-none text-stone-800">
+                      <i data-lucide="map-pin" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span
+                        class="text-xs text-stone-400 uppercase tracking-wider block"
+                        data-i18n="contact_addr_label"
+                        >Địa chỉ</span
+                      >
+                      <span class="font-medium text-stone-900"
+                        >12 Lê Duẩn, TP. Buôn Ma Thuột, Đắk Lắk</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <div class="p-2.5 bg-stone-100 rounded-none text-stone-800">
+                      <i data-lucide="phone" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span
+                        class="text-xs text-stone-400 uppercase tracking-wider block"
+                        data-i18n="contact_phone_label"
+                        >Điện thoại / Zalo</span
+                      >
+                      <span class="font-medium text-stone-900"
+                        >+84 (0) 905 123 456</span
+                      >
+                    </div>
+                  </div>
+
+                  <div class="flex items-start gap-4">
+                    <div class="p-2.5 bg-stone-100 rounded-none text-stone-800">
+                      <i data-lucide="mail" class="w-4 h-4"></i>
+                    </div>
+                    <div>
+                      <span
+                        class="text-xs text-stone-400 uppercase tracking-wider block"
+                        data-i18n="contact_email_label"
+                        >Email</span
+                      >
+                      <span class="font-medium text-stone-900"
+                        >hello@klangtravel.vn</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-8 mt-12 border-t border-stone-200">
+                <span
+                  class="text-xs text-stone-400 tracking-wider uppercase block mb-2"
+                  data-i18n="working_hours_label"
+                  >Thời gian làm việc</span
+                >
+                <p
+                  class="text-xs text-stone-600 font-light"
+                  data-i18n="working_hours_val"
+                >
+                  08:00 – 18:00 (Thứ Hai – Chủ Nhật)
+                </p>
+              </div>
+            </div>
+
+            <!-- Form gửi tin nhắn -->
+            <div
+              class="lg:col-span-7 bg-white p-8 sm:p-12 border border-stone-200/90"
+            >
+              <h3
+                class="font-serif text-2xl text-stone-900 mb-6"
+                data-i18n="form_title"
+              >
+                Gửi Lời Nhắn
+              </h3>
+
+              <form
+                id="contact-form"
+                onsubmit="handleFormSubmit(event)"
+                class="space-y-6"
+              >
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      class="block text-xs uppercase tracking-wider text-stone-500 mb-2"
+                      data-i18n="form_name"
+                      >Họ & Tên *</label
+                    >
+                    <input
+                      type="text"
+                      required
+                      class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-sm focus:bg-white focus:outline-none focus:border-stone-900 transition-colors"
+                      placeholder="Nguyễn Văn A"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="block text-xs uppercase tracking-wider text-stone-500 mb-2"
+                      data-i18n="form_phone"
+                      >Số Điện Thoại / Email *</label
+                    >
+                    <input
+                      type="text"
+                      required
+                      class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-sm focus:bg-white focus:outline-none focus:border-stone-900 transition-colors"
+                      placeholder="0901234567 hoặc email@..."
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label
+                    class="block text-xs uppercase tracking-wider text-stone-500 mb-2"
+                    data-i18n="form_tour_select"
+                    >Chuyến đi bạn quan tâm</label
+                  >
+                  <select
+                    id="tour-interest-select"
+                    class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-sm focus:bg-white focus:outline-none focus:border-stone-900 transition-colors text-stone-700"
+                  >
+                    <option value="general" data-i18n="opt_general">
+                      -- Tư vấn chung / Tour thiết kế riêng --
+                    </option>
+                    <option value="day_coffee" data-i18n="opt_day_coffee">
+                      Tour Ngày: Hương Cà Phê & Làng Gốm Liêng Hót
+                    </option>
+                    <option value="day_draynur" data-i18n="opt_day_draynur">
+                      Tour Ngày: Thác Dray Nur & Kayak Sêrêpôk
+                    </option>
+                    <option value="day_lak" data-i18n="opt_day_lak">
+                      Tour Ngày: Bình Yên Hồ Lắk & Buôn Jun
+                    </option>
+                    <option value="hl_mangden" data-i18n="opt_hl_mangden">
+                      Tour Tây Nguyên: Măng Đen & Kon Tum (3N2Đ)
+                    </option>
+                    <option value="hl_chuyangsin" data-i18n="opt_hl_chuyangsin">
+                      Tour Tây Nguyên: Trekking Chư Yang Sin (4N3Đ)
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    class="block text-xs uppercase tracking-wider text-stone-500 mb-2"
+                    data-i18n="form_msg"
+                    >Ghi Chú Hoặc Yêu Cầu Đặc Biệt</label
+                  >
+                  <textarea
+                    rows="4"
+                    class="w-full bg-stone-50 border border-stone-200 px-4 py-3 text-sm focus:bg-white focus:outline-none focus:border-stone-900 transition-colors"
+                    placeholder="Số lượng người dự kiến, ngày khởi hành..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full py-4 bg-stone-900 text-stone-50 text-xs uppercase tracking-widest hover:bg-stone-800 transition-colors flex items-center justify-center gap-2"
+                  data-i18n="form_btn_submit"
+                >
+                  <span>Gửi yêu cầu tư vấn</span>
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer
+      class="bg-stone-900 text-stone-400 py-16 px-6 text-xs border-t border-stone-800"
+    >
+      <div
+        class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="font-serif text-xl tracking-widest text-stone-100 uppercase"
+            >K’LANG</span
+          >
+          <span class="text-stone-600">|</span>
+          <span class="text-stone-400 font-light" data-i18n="footer_rights"
+            >© 2026 K’LANG Travel Agency. All rights reserved.</span
+          >
+        </div>
+
+        <div class="flex items-center space-x-8 text-stone-400 font-light">
+          <a
+            href="#day-tours"
+            class="hover:text-stone-200 transition-colors"
+            data-i18n="nav_day"
+            >Tour trong ngày</a
+          >
+          <a
+            href="#highland-tours"
+            class="hover:text-stone-200 transition-colors"
+            data-i18n="nav_highland"
+            >Tour Tây Nguyên</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-stone-200 transition-colors"
+            data-i18n="nav_contact"
+            >Liên hệ</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ==================== MODAL ĐẶT TOUR NHANH ==================== -->
+    <div
+      id="booking-modal"
+      class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="bg-white max-w-lg w-full p-8 border border-stone-200 shadow-2xl relative animate-in fade-in zoom-in-95 duration-200"
+      >
+        <button
+          onclick="closeBookingModal()"
+          class="absolute top-6 right-6 text-stone-400 hover:text-stone-900 transition-colors"
+        >
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <span
+          class="text-[10px] uppercase tracking-widest text-stone-400 block mb-1"
+          >Quick Booking</span
+        >
+        <h3
+          class="font-serif text-2xl text-stone-900 mb-2"
+          id="modal-tour-name"
+        >
+          Tên Tour
+        </h3>
+        <p
+          class="text-xs text-stone-500 mb-6 font-light"
+          data-i18n="modal_desc"
+        >
+          Vui lòng để lại số điện thoại hoặc email, chuyên viên tư vấn sẽ liên
+          hệ xác nhận lịch trình trong 15 phút.
+        </p>
+
+        <form onsubmit="handleModalSubmit(event)" class="space-y-4">
+          <div>
+            <label
+              class="block text-[11px] uppercase tracking-wider text-stone-500 mb-1"
+              data-i18n="form_name"
+              >Họ & Tên</label
+            >
+            <input
+              type="text"
+              required
+              class="w-full bg-stone-50 border border-stone-200 px-3 py-2.5 text-sm focus:outline-none focus:border-stone-900"
+              placeholder="Nguyễn Văn A"
+            />
+          </div>
+          <div>
+            <label
+              class="block text-[11px] uppercase tracking-wider text-stone-500 mb-1"
+              data-i18n="form_phone"
+              >Số Điện Thoại / WhatsApp</label
+            >
+            <input
+              type="text"
+              required
+              class="w-full bg-stone-50 border border-stone-200 px-3 py-2.5 text-sm focus:outline-none focus:border-stone-900"
+              placeholder="+84 ..."
+            />
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label
+                class="block text-[11px] uppercase tracking-wider text-stone-500 mb-1"
+                data-i18n="modal_date"
+                >Ngày dự kiến</label
+              >
+              <input
+                type="date"
+                class="w-full bg-stone-50 border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:border-stone-900 text-stone-700"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-[11px] uppercase tracking-wider text-stone-500 mb-1"
+                data-i18n="modal_guests"
+                >Số lượng khách</label
+              >
+              <input
+                type="number"
+                min="1"
+                value="2"
+                class="w-full bg-stone-50 border border-stone-200 px-3 py-2 text-sm focus:outline-none focus:border-stone-900"
+              />
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full mt-4 py-3 bg-stone-900 text-stone-50 text-xs uppercase tracking-widest hover:bg-stone-800 transition-colors"
+            data-i18n="modal_btn_confirm"
+          >
+            Xác nhận đặt tour
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ==================== TOAST THÔNG BÁO THÀNH CÔNG ==================== -->
+    <div
+      id="toast"
+      class="fixed bottom-6 right-6 z-50 bg-stone-900 text-stone-50 px-6 py-4 border-l-4 border-emerald-500 shadow-xl hidden flex items-center gap-3 transition-all duration-300 text-xs tracking-wide"
+    >
+      <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+      <span id="toast-msg"
+        >Yêu cầu đã được gửi thành công. Chúng tôi sẽ sớm liên hệ!</span
+      >
+    </div>
+
+    <!-- ==================== JAVASCRIPT & I18N SYSTEM ==================== -->
+    <script>
+      // Dữ liệu từ điển 3 ngôn ngữ: Tiếng Việt (vi), English (en), Français (fr)
+      const translations = {
+        vi: {
+          nav_day: "Tour Trong Ngày",
+          nav_highland: "Tour Tây Nguyên",
+          nav_contact: "Liên Hệ",
+          hero_subtitle_tag: "Du lịch chậm & Trải nghiệm nguyên bản",
+          hero_title:
+            'Chạm vào tâm hồn <br/><span class="italic font-light">đại ngàn mộc mạc.</span>',
+          hero_desc:
+            "Những hành trình tinh tế đưa bạn hòa mình vào văn hóa bản địa, rừng thông hoang sơ và văn hóa cồng chiêng Tây Nguyên.",
+          hero_btn_explore: "Khám phá các tour",
+          hero_btn_contact: "Tư vấn riêng",
+          day_section_title: "Tour Trong Ngày",
+          day_section_sub:
+            "Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.",
+          day1_tag: "1 Ngày • Cà Phê & Di Sản",
+          day1_title: "Dấu Chân Hương Cà Phê & Làng Gốm Liêng Hót",
+          day1_desc:
+            "Trải nghiệm hái và tự rang hạt Robusta nguyên bản, tìm hiểu nghệ thuật gốm cổ truyền của người M'Nông.",
+          day2_tag: "1 Ngày • Thác Nước & Chèo Thuyền",
+          day2_title: "Thác Dray Nur & Chèo Kayak Sông Sêrêpôk",
+          day2_desc:
+            "Chiêm ngưỡng ngọn thác hùng vĩ bậc nhất Tây Nguyên và thư thả chèo thuyền xuôi dòng sông chảy ngược huyền thoại.",
+          day3_tag: "1 Ngày • Hồ Tự Nhiên & Văn Hóa",
+          day3_title: "Bình Yên Hồ Lắk & Nhà Dài Buôn Jun",
+          day3_desc:
+            "Thưởng ngoạn hoàng hôn êm đềm trên hồ Lắk bằng thuyền độc mộc, lắng nghe chuyện kể cổ tích bên bếp lửa nhà dài.",
+          price_from: "Giá từ",
+          btn_book_now: "Đặt tour",
+          highland_section_title: "Tour Tây Nguyên Trọn Vẹn",
+          highland_section_sub:
+            "Hành trình nhiều ngày sâu lắng qua những cung đường sương mù, rừng thông cổ thụ và âm vang đại ngàn.",
+          hl1_title: "Măng Đen & Kon Tum: Miền Sương Khói & Nhà Thờ Gỗ",
+          hl1_desc:
+            "Thức giấc giữa rừng thông lãng đãng sương mù, ghé thăm Nhà Thờ Gỗ hơn 100 năm tuổi và các buôn làng người Ba Na bên dòng sông Đăk Bla.",
+          hl1_f1: "Lưu trú tại Homestay kiến trúc gỗ tối giản",
+          hl1_f2: "Thưởng thức ẩm thực lá rừng & gà nướng cơm lam",
+          hl1_f3: "Giao lưu cồng chiêng mộc mạc không thương mại hóa",
+          hl2_title: "Huyền Thoại Đại Ngàn & Trekking Rừng Nguyên Sinh",
+          hl2_desc:
+            "Chuyến đi dành cho những ai tìm kiếm sự tĩnh lặng tuyệt đối. Băng qua những tán cây pơ mu ngàn năm và lắng nghe hơi thở đất bazan.",
+          hl2_f1: "Trekking nhẹ nhàng dưới tán rừng nguyên sinh",
+          hl2_f2: "Cắm trại cao cấp (Glamping) bên bờ suối",
+          hl2_f3: "Chuyên gia bản địa đồng hành suốt tuyến",
+          contact_title: "Khởi đầu hành trình của bạn.",
+          contact_desc:
+            "Dù bạn muốn một chuyến đi thiết kế riêng theo sở thích hay cần tư vấn lộ trình phù hợp, đội ngũ K’LANG luôn sẵn lòng lắng nghe.",
+          contact_addr_label: "Địa chỉ",
+          contact_phone_label: "Điện thoại / Zalo",
+          contact_email_label: "Email",
+          working_hours_label: "Thời gian làm việc",
+          working_hours_val: "08:00 – 18:00 (Thứ Hai – Chủ Nhật)",
+          form_title: "Gửi Lời Nhắn",
+          form_name: "Họ & Tên *",
+          form_phone: "Số Điện Thoại / Email *",
+          form_tour_select: "Chuyến đi bạn quan tâm",
+          opt_general: "-- Tư vấn chung / Tour thiết kế riêng --",
+          opt_day_coffee: "Tour Ngày: Hương Cà Phê & Làng Gốm Liêng Hót",
+          opt_day_draynur: "Tour Ngày: Thác Dray Nur & Kayak Sêrêpôk",
+          opt_day_lak: "Tour Ngày: Bình Yên Hồ Lắk & Buôn Jun",
+          opt_hl_mangden: "Tour Tây Nguyên: Măng Đen & Kon Tum (3N2Đ)",
+          opt_hl_chuyangsin: "Tour Tây Nguyên: Trekking Chư Yang Sin (4N3Đ)",
+          form_msg: "Ghi Chú Hoặc Yêu Cầu Đặc Biệt",
+          form_btn_submit: "Gửi yêu cầu tư vấn",
+          footer_rights: "© 2026 K’LANG Travel Agency. Bảo lưu mọi quyền.",
+          modal_desc:
+            "Vui lòng để lại số điện thoại hoặc email, chuyên viên tư vấn sẽ liên hệ xác nhận lịch trình trong 15 phút.",
+          modal_date: "Ngày dự kiến",
+          modal_guests: "Số lượng khách",
+          modal_btn_confirm: "Xác nhận đặt tour",
+          toast_success:
+            "Cảm ơn bạn! Yêu cầu đã được gửi. Chúng tôi sẽ liên hệ trong ít phút.",
+        },
+        en: {
+          nav_day: "Day Tours",
+          nav_highland: "Highlands Tours",
+          nav_contact: "Contact",
+          hero_subtitle_tag: "Slow Travel & Authentic Encounters",
+          hero_title:
+            'Embrace the Spirit of the <br/><span class="italic font-light">Untamed Highlands.</span>',
+          hero_desc:
+            "Curated minimalist journeys immersing you into indigenous culture, misty pine plateaus, and authentic Gong heritage.",
+          hero_btn_explore: "Explore Tours",
+          hero_btn_contact: "Private Inquiries",
+          day_section_title: "Day Excursions",
+          day_section_sub:
+            "Unforgettable moments crafted into a single, enriching, unhurried day.",
+          day1_tag: "1 Day • Coffee Heritage & Crafts",
+          day1_title: "Robusta Coffee Trail & Lieng Hot Pottery",
+          day1_desc:
+            "Handpick and roast raw coffee beans, then discover timeless M'Nong traditional pottery.",
+          day2_tag: "1 Day • Waterfalls & Kayaking",
+          day2_title: "Dray Nur Falls & Serepok River Kayaking",
+          day2_desc:
+            "Marvel at Vietnam's most iconic waterfall and paddle along the legendary backward-flowing river.",
+          day3_tag: "1 Day • Natural Lake & Culture",
+          day3_title: "Serene Lak Lake & Jun Village Longhouse",
+          day3_desc:
+            "Gentle wooden dugout canoe rides at sunset, followed by storytelling by the sacred longhouse fire.",
+          price_from: "From",
+          btn_book_now: "Book Now",
+          highland_section_title: "Grand Highlands Expeditions",
+          highland_section_sub:
+            "Multi-day mindful journeys through misty passes, ancient pine forests, and ethnic hamlets.",
+          hl1_title: "Mang Den & Kon Tum: Mist, Pines & Wooden Cathedral",
+          hl1_desc:
+            "Awake to gentle morning fog, visit the 100-year-old wooden cathedral, and explore Ba Na villages along Dak Bla River.",
+          hl1_f1: "Stay at cozy minimalist timber lodge",
+          hl1_f2: "Authentic jungle leaf gastronomy & bamboo rice",
+          hl1_f3: "Respectful, non-commercial Gong cultural exchange",
+          hl2_title: "Highland Legends & Chu Yang Sin Rainforest Trek",
+          hl2_desc:
+            "For those seeking absolute serenity. Walk under thousand-year-old Fokienia trees on fertile basalt soil.",
+          hl2_f1: "Light mindful trekking through pristine canopy",
+          hl2_f2: "Riverside luxury glamping under the stars",
+          hl2_f3: "Accompanied by veteran local naturalist guides",
+          contact_title: "Begin Your Journey.",
+          contact_desc:
+            "Whether you seek a bespoke expedition or local recommendations, our travel curators are always at your service.",
+          contact_addr_label: "Address",
+          contact_phone_label: "Phone / WhatsApp",
+          contact_email_label: "Email",
+          working_hours_label: "Operating Hours",
+          working_hours_val: "08:00 AM – 06:00 PM (Mon – Sun)",
+          form_title: "Send an Inquiry",
+          form_name: "Full Name *",
+          form_phone: "Phone / Email *",
+          form_tour_select: "Selected Journey",
+          opt_general: "-- Custom Itinerary / General Consultation --",
+          opt_day_coffee: "Day Tour: Coffee Heritage & Lieng Hot Pottery",
+          opt_day_draynur: "Day Tour: Dray Nur Falls & Serepok Kayak",
+          opt_day_lak: "Day Tour: Lak Lake Serenity & Jun Village",
+          opt_hl_mangden: "Highlands Tour: Mang Den & Kon Tum (3D2N)",
+          opt_hl_chuyangsin: "Highlands Tour: Chu Yang Sin Rainforest (4D3N)",
+          form_msg: "Notes & Special Requests",
+          form_btn_submit: "Submit Request",
+          footer_rights: "© 2026 K’LANG Travel Agency. All rights reserved.",
+          modal_desc:
+            "Please provide your contact info. Our travel curator will reach out within 15 minutes.",
+          modal_date: "Preferred Date",
+          modal_guests: "Guests Count",
+          modal_btn_confirm: "Confirm Reservation",
+          toast_success:
+            "Thank you! Your request has been received. We will contact you shortly.",
+        },
+        fr: {
+          nav_day: "Excursions d'un jour",
+          nav_highland: "Hauts Plateaux",
+          nav_contact: "Contact",
+          hero_subtitle_tag: "Voyage Lent & Rencontres Authentiques",
+          hero_title:
+            'Ressentez l\'âme pure des <br/><span class="italic font-light">Hauts Plateaux sauvages.</span>',
+          hero_desc:
+            "Des itinéraires minimalistes et raffinés au cœur des forêts de pins, des cascades sacrées et de la culture des gongs.",
+          hero_btn_explore: "Découvrir nos circuits",
+          hero_btn_contact: "Sur mesure",
+          day_section_title: "Excursions d'une Journée",
+          day_section_sub:
+            "L'essence des Hauts Plateaux condensée en une journée douce et inoubliable.",
+          day1_tag: "1 Jour • Terroir Café & Potiers",
+          day1_title: "Sur la Route du Café Robusta & Poterie Lieng Hot",
+          day1_desc:
+            "Récolte et torréfaction artisanale du café, découverte des poteries traditionnelles M'Nông.",
+          day2_tag: "1 Jour • Cascades & Kayak",
+          day2_title: "Chutes de Dray Nur & Kayak sur la Sêrêpôk",
+          day2_desc:
+            "Admirez la plus majestueuse chute d'eau et naviguez sur la rivière mythique à contre-courant.",
+          day3_tag: "1 Jour • Lac Sauvage & Traditions",
+          day3_title: "Sérénité au Lac Lak & Village Jun",
+          day3_desc:
+            "Balade en pirogue au coucher du soleil et contes ancestraux au coin du feu dans la maison longue.",
+          price_from: "À partir de",
+          btn_book_now: "Réserver",
+          highland_section_title: "Grandes Expéditions",
+          highland_section_sub:
+            "Des périples immersifs de plusieurs jours au milieu des brumes et des forêts séculaires.",
+          hl1_title: "Mang Den & Kon Tum: Brume & Église en Bois",
+          hl1_desc:
+            "Réveil au milieu des pins brumeux, visite de l'église centenaire en bois et des villages Ba Na au bord de la rivière Dak Bla.",
+          hl1_f1: "Hébergement en lodge en bois minimaliste",
+          hl1_f2: "Dégustation culinaire aux feuilles sauvages et riz bambou",
+          hl1_f3: "Échange culturel respectueux avec les maîtres des gongs",
+          hl2_title: "Légendes Sauvages & Trek à Chu Yang Sin",
+          hl2_desc:
+            "Pour les adeptes du calme absolu. Marchez sous les cèdres millénaires sur une terre rouge fertile.",
+          hl2_f1: "Randonnée méditative en forêt primaire",
+          hl2_f2: "Glamping d'exception au bord de l'eau",
+          hl2_f3: "Accompagnement par des guides naturalistes locaux",
+          contact_title: "Commencez Votre Voyage.",
+          contact_desc:
+            "Que vous souhaitiez un itinéraire sur mesure ou des conseils précis, l'équipe K’LANG est à votre écoute.",
+          contact_addr_label: "Adresse",
+          contact_phone_label: "Téléphone / WhatsApp",
+          contact_email_label: "E-mail",
+          working_hours_label: "Heures d'ouverture",
+          working_hours_val: "08h00 – 18h00 (Lundi – Dimanche)",
+          form_title: "Envoyer un Message",
+          form_name: "Nom & Prénom *",
+          form_phone: "Téléphone / E-mail *",
+          form_tour_select: "Circuit souhaité",
+          opt_general: "-- Conseil général / Circuit sur mesure --",
+          opt_day_coffee: "Journée: Route du Café & Poterie Lieng Hot",
+          opt_day_draynur: "Journée: Chutes Dray Nur & Kayak",
+          opt_day_lak: "Journée: Sérénité au Lac Lak & Village Jun",
+          opt_hl_mangden: "Hauts Plateaux: Mang Den & Kon Tum (3J2N)",
+          opt_hl_chuyangsin: "Hauts Plateaux: Forêt de Chu Yang Sin (4J3N)",
+          form_msg: "Demandes Particulières",
+          form_btn_submit: "Envoyer la demande",
+          footer_rights: "© 2026 Agence K’LANG. Tous droits réservés.",
+          modal_desc:
+            "Laissez-nous vos coordonnées, un conseiller vous contactera d'ici 15 minutes.",
+          modal_date: "Date souhaitée",
+          modal_guests: "Nombre de voyageurs",
+          modal_btn_confirm: "Confirmer la réservation",
+          toast_success:
+            "Merci ! Votre demande a été reçue. Nous vous recontacterons très vite.",
+        },
+      };
+
+      let currentLang = "vi";
+
+      // Hàm đổi ngôn ngữ
+      function setLanguage(lang) {
+        if (!translations[lang]) return;
+        currentLang = lang;
+
+        // Cập nhật giao diện nút ngôn ngữ
+        ["vi", "en", "fr"].forEach((l) => {
+          const btn = document.getElementById(`lang-${l}`);
+          if (l === lang) {
+            btn.className = "px-2 py-1 transition-all lang-active";
+          } else {
+            btn.className =
+              "px-2 py-1 text-stone-400 hover:text-stone-800 transition-all";
+          }
+        });
+
+        // Cập nhật tất cả text có data-i18n
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+
+        // Cập nhật lại biểu tượng Lucide nếu có render lại
+        lucide.createIcons();
+      }
+
+      // Modal đặt tour
+      function openBookingModal(tourName) {
+        document.getElementById("modal-tour-name").textContent = tourName;
+        document.getElementById("booking-modal").classList.remove("hidden");
+      }
+
+      function closeBookingModal() {
+        document.getElementById("booking-modal").classList.add("hidden");
+      }
+
+      // Đóng modal khi bấm ra ngoài
+      document
+        .getElementById("booking-modal")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeBookingModal();
+          }
+        });
+
+      // Xử lý gửi form Modal
+      function handleModalSubmit(e) {
+        e.preventDefault();
+        closeBookingModal();
+        showToast(translations[currentLang].toast_success);
+        e.target.reset();
+      }
+
+      // Xử lý gửi form Contact chính
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        showToast(translations[currentLang].toast_success);
+        e.target.reset();
+      }
+
+      // Hiển thị Toast thông báo tối giản
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        const toastMsg = document.getElementById("toast-msg");
+        toastMsg.textContent = msg;
+        toast.classList.remove("hidden");
+        toast.classList.add("flex");
+
+        setTimeout(() => {
+          toast.classList.add("hidden");
+          toast.classList.remove("flex");
+        }, 4000);
+      }
+
+      // Khởi tạo icons khi tải trang xong
+      window.addEventListener("DOMContentLoaded", () => {
+        lucide.createIcons();
+      });
+    </script>
+  </body>
+</html>
