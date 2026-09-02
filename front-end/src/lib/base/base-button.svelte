@@ -3,6 +3,6 @@
 </script>
 
 <button
-	class="bg-secondary hover:bg-primary rounded-lg px-3 py-1 font-bold text-white transition-all duration-150">
+	class="rounded-lg bg-secondary px-3 py-1 font-bold text-white transition-all duration-150 hover:bg-primary">
 	{text}
 </button>

@@ -12,7 +12,7 @@
 </script>
 
 <a
-	class="text-primary text-sm font-bold uppercase"
+	class="text-sm font-bold uppercase text-primary"
 	href={`/${$locale}/contact`}
 	on:click={click}>
 	<BaseUnderlineText text={$LL.nav_bar.contact()} />

@@ -1,21 +1,19 @@
-<script
-	s
-	lang="ts">
+<script lang="ts">
 	import { BaseIcon } from '$base'
 </script>
 
 <section class="mt-16 hidden sm:block lg:mt-11">
-	<div class="border-secondary relative w-full border px-5 py-8 lg:p-11">
+	<div class="relative w-full border border-secondary px-5 py-8 lg:p-11">
 		<BaseIcon
 			name="elephant"
 			class="absolute bottom-0 left-2 w-10 -scale-x-100" />
 
 		<BaseIcon
 			name="stripes"
-			class="fill-secondary absolute -top-4 left-3 w-10 bg-white" />
+			class="absolute -top-4 left-3 w-10 bg-white fill-secondary" />
 		<BaseIcon
 			name="stripes"
-			class="fill-secondary absolute -bottom-4 right-3 w-10 bg-white" />
+			class="absolute -bottom-4 right-3 w-10 bg-white fill-secondary" />
 		<p class="line-clamp-3">
 			Me and my friends went to Buon Ma Thuot and didn’t have a plan for the national park. We
 			called the company and they were able to put a GREAT tour together for the next day. It was an

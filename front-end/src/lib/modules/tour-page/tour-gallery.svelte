@@ -31,7 +31,7 @@
 		out:fly={{ x: 200, duration: 300 }}>
 		<div class="flex flex-col items-center gap-5 py-5">
 			<h1
-				class="before:bg-secondary relative font-bold uppercase before:absolute before:-bottom-1 before:left-[15%] before:h-1 before:w-[70%]">
+				class="relative font-bold uppercase before:absolute before:-bottom-1 before:left-[15%] before:h-1 before:w-[70%] before:bg-secondary">
 				{$LL.tours[intro]()}
 			</h1>
 			<p>{$LL.tours.description()}</p>

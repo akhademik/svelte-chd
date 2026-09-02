@@ -1,18 +1,19 @@
-import { fail } from '@sveltejs/kit'
 import { form_schema } from '$utils/form-schema'
+import { fail } from '@sveltejs/kit'
+import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
 
 const URL = 'https://submit-form.com/FDkjl2H3'
 
 export const load = async () => {
-	const form = await superValidate(form_schema)
+	const form = await superValidate(zod(form_schema as any))
 	return { form }
 }
 
 export const actions = {
 	default: async ({ request }) => {
 		const clone_request = request.clone()
-		const form = await superValidate(request, form_schema)
+		const form = await superValidate(request, zod(form_schema as any))
 		const tags = await clone_request.formData()
 		const all_tags = tags.getAll('selected_tag')
 		const last_val = { ...form.data, tags: all_tags }

@@ -1,5 +1,5 @@
-import { createClient, type ClientConfig } from '@sanity/client'
 import { EXCHANGE_API_KEY, EXCHANGE_URL, VITE_SANITY_ID } from '$env/static/private'
+import { type ClientConfig, createClient } from '@sanity/client'
 
 const config: ClientConfig = {
 	projectId: VITE_SANITY_ID,

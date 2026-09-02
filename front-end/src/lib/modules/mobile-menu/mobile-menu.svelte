@@ -18,10 +18,10 @@
 	class="fixed inset-0 z-40 flex items-center bg-white transition-all duration-700 md:hidden"
 	class:-translate-x-[100%]={!$nav_mobile}>
 	<ul
-		class={`text-secondary flex flex-col gap-3 pl-6 font-bold uppercase tracking-wide ${fr_style}`}>
+		class={`flex flex-col gap-3 pl-6 font-bold uppercase tracking-wide text-secondary ${fr_style}`}>
 		{#each menu_items as { id, text, url } (id)}
 			{@const fixed_url = `/${$locale}${url}`}
-			<li class=" hover:bg-primary w-max transition-colors duration-300">
+			<li class=" w-max transition-colors duration-300 hover:bg-primary">
 				<a
 					href={fixed_url}
 					class="p-2"

@@ -1,5 +1,5 @@
-import { redirect, type Handle } from '@sveltejs/kit'
 import { base } from '$app/paths'
+import { type Handle, redirect } from '@sveltejs/kit'
 
 import { extract_url, get_lang_cookie, get_preferred_locale } from './i18n/i18n-helper.js'
 import { isLocale } from './i18n/i18n-util.js'

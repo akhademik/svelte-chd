@@ -11,7 +11,7 @@
 	import { nav_mobile } from '$stores/nav-store'
 
 	const switch_locale = async (new_locale: Locales, update_history_state = true) => {
-		$nav_mobile && nav_mobile.toggle()
+		if ($nav_mobile) nav_mobile.toggle()
 		if (!new_locale || $locale === new_locale) return
 
 		await loadLocaleAsync(new_locale)
@@ -40,8 +40,8 @@
 
 	$: url = $page.url
 	$: lang = $page.params.lang as Locales
-	$: browser && document.querySelector('html')!.setAttribute('lang', $locale)
 	$: if (browser) {
+		document.querySelector('html')!.setAttribute('lang', $locale)
 		switch_locale(lang, false)
 		history.replaceState({ ...history.state, locale: lang }, '', replace_locale_in_url(url, lang))
 	}

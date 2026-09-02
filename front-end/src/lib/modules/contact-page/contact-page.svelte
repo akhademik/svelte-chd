@@ -16,7 +16,7 @@
 
 {#if loaded}
 	<div
-		class="font-roboto pt-4 lg:px-11"
+		class="pt-4 font-roboto lg:px-11"
 		in:fly|global={{ x: -200, duration: 600, delay: 300 }}
 		out:fly={{ x: 200, duration: 300 }}>
 		<div class="flex flex-col gap-5 py-4">

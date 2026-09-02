@@ -21,7 +21,11 @@
 	let chosen_tags: Trans_Key[] = []
 	const change = (tag: Trans_Key) => {
 		const index = chosen_tags.indexOf(tag)
-		index > -1 ? chosen_tags.splice(index, 1) : chosen_tags.push(tag)
+		if (index > -1) {
+			chosen_tags.splice(index, 1)
+		} else {
+			chosen_tags.push(tag)
+		}
 		// this to make the chosen_tags array reactive
 		chosen_tags = chosen_tags
 	}
@@ -31,7 +35,7 @@
 	{#each tags as { name } (name)}
 		{@const checked = chosen_tags.includes(name) && 'bg-primary text-white'}
 		<label
-			class={`border-primary relative w-max cursor-pointer select-none border px-3 py-[6px] capitalize ${checked}`}>
+			class={`relative w-max cursor-pointer select-none border border-primary px-3 py-[6px] capitalize ${checked}`}>
 			{$LL.contact_page.tags[name]()}
 			<input
 				value={name}

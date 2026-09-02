@@ -4,7 +4,7 @@
 
 <section class="flex flex-col gap-8">
 	<h1
-		class="before:bg-secondary relative mx-auto w-max text-[6vmin] font-bold uppercase before:absolute before:bottom-0 before:h-1 before:w-full">
+		class="relative mx-auto w-max text-[6vmin] font-bold uppercase before:absolute before:bottom-0 before:h-1 before:w-full before:bg-secondary">
 		{$LL.contact_page.page.contact_us()}
 	</h1>
 	<p class="w-[80%] pl-3">

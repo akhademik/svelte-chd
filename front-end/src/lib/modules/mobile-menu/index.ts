@@ -1,1 +1,1 @@
-export { default as MobileMenu } from './mobile-menu.svelte';
+export { default as MobileMenu } from './mobile-menu.svelte'

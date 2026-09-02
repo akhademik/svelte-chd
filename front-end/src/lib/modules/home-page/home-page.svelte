@@ -24,7 +24,7 @@
 		</section>
 		<section class="flex items-center justify-center">
 			<div
-				class="border-primary/50 flex max-h-[80vh] items-center justify-center overflow-hidden rounded-lg border-2">
+				class="flex max-h-[80vh] items-center justify-center overflow-hidden rounded-lg border-2 border-primary/50">
 				<img
 					src={hero}
 					alt="elephant"

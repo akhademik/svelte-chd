@@ -19,10 +19,10 @@
 		class="h-12"
 		transition:fly={{ x: -200, duration: 600 }}>
 		<nav
-			class="md:border-b-primary/50 fixed top-0 z-50 w-full bg-white/80 px-3 py-2 backdrop-blur-[2px] md:border-b"
+			class="fixed top-0 z-50 w-full bg-white/80 px-3 py-2 backdrop-blur-[2px] md:border-b md:border-b-primary/50"
 			class:hidden={$nav_animate_hidden}>
 			<div
-				class="font-roboto text-primary flex items-center justify-between text-lg md:mx-auto md:max-w-7xl">
+				class="flex items-center justify-between font-roboto text-lg text-primary md:mx-auto md:max-w-7xl">
 				<BaseLogo />
 				<NavMenuItems />
 				<div class="hidden gap-2 md:flex">

@@ -1,5 +1,5 @@
 <div
-	class="font-roboto mx-auto flex min-h-[calc(100vh-100px)] max-w-6xl items-center justify-center px-5 py-5">
+	class="mx-auto flex min-h-[calc(100vh-100px)] max-w-6xl items-center justify-center px-5 py-5 font-roboto">
 	<div class="text-primary">
 		<h1 class="mb-1 text-center text-3xl font-bold uppercase leading-relaxed">
 			PLEASE KINDLY WAIT FOR A MOMENT
@@ -8,11 +8,11 @@
 		<div class="mt-10 flex w-full items-center justify-center text-center text-lg font-bold">
 			<button
 				type="button"
-				class="bg-primary/30 flex w-[14rem] items-center justify-between rounded-lg px-7 py-3"
+				class="flex w-[14rem] items-center justify-between rounded-lg bg-primary/30 px-7 py-3"
 				disabled>
 				<svg
 					aria-hidden="true"
-					class="fill-secondary text-primary h-8 w-8 animate-spin"
+					class="h-8 w-8 animate-spin fill-secondary text-primary"
 					viewBox="0 0 100 101"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg">

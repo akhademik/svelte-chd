@@ -1,5 +1,5 @@
-import type { RequestEvent } from '@sveltejs/kit'
 import { base } from '$app/paths'
+import type { RequestEvent } from '@sveltejs/kit'
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors'
 
 import type { Locales } from './i18n-types'

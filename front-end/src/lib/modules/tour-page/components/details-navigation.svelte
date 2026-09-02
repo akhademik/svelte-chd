@@ -31,8 +31,8 @@
 					? 0
 					: index + 1
 				: index === 0
-				  ? slug.length
-				  : index - 1
+					? slug.length
+					: index - 1
 		tour_index_store.set(new_index)
 		update_url(tours, index)
 		window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -40,14 +40,14 @@
 
 	onMount(async () => {
 		tours = await get_sanity_data($page)
-		slug = get_length_and_index(tours, $page.params.slug)
+		slug = get_length_and_index(tours, $page.params.slug || '')
 	})
 </script>
 
 <div
 	class="sticky top-0 z-30 flex w-full justify-between bg-white p-4 text-3xl lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-0.5 lg:bg-transparent">
 	<button
-		class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
+		class="animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:text-primary [&>*]:hover:text-white"
 		on:click={() => handle_close()}>
 		<BaseIcon
 			name="close"
@@ -55,14 +55,14 @@
 	</button>
 	<div class="flex gap-0.5 lg:flex-col">
 		<button
-			class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
+			class="animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:text-primary [&>*]:hover:text-white"
 			on:click={() => update_index('prev')}>
 			<BaseIcon
 				name="prev"
 				class="w-6" />
 		</button>
 		<button
-			class="[&>*]:text-primary animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:hover:text-white"
+			class="animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:text-primary [&>*]:hover:text-white"
 			on:click={() => update_index('next')}>
 			<BaseIcon
 				name="next"

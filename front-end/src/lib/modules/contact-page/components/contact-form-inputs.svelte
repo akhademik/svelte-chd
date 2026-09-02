@@ -30,32 +30,32 @@
 		type="text"
 		name="name"
 		placeholder={$LL.contact_page.placeholder['name']()}
-		class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+		class="w-full border border-primary bg-white/30 px-2 py-2 text-lg placeholder-secondary/70 hover:bg-white/40 focus:outline-none" />
 	<div class="grid grid-cols-2 gap-2">
 		<input
 			bind:value={$form.email}
 			type="text"
 			name="email"
 			placeholder={$LL.contact_page.placeholder['email']()}
-			class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+			class="w-full border border-primary bg-white/30 px-2 py-2 text-lg placeholder-secondary/70 hover:bg-white/40 focus:outline-none" />
 		<input
 			bind:value={$form.phone}
 			type="text"
 			name="phone"
 			placeholder={$LL.contact_page.placeholder['phone']()}
-			class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+			class="w-full border border-primary bg-white/30 px-2 py-2 text-lg placeholder-secondary/70 hover:bg-white/40 focus:outline-none" />
 	</div>
 	<input
 		bind:value={$form.langs}
 		type="text"
 		name="langs"
 		placeholder={$LL.contact_page.placeholder['langs']()}
-		class="border-primary placeholder-secondary/70 w-full border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none" />
+		class="w-full border border-primary bg-white/30 px-2 py-2 text-lg placeholder-secondary/70 hover:bg-white/40 focus:outline-none" />
 	<textarea
 		bind:value={$form.msg}
 		name="msg"
 		rows="7"
 		placeholder={$LL.contact_page.placeholder['msg']()}
-		class="border-primary placeholder-secondary/70 w-full resize-none border bg-white/30 px-2 py-2 text-lg hover:bg-white/40 focus:outline-none"
+		class="w-full resize-none border border-primary bg-white/30 px-2 py-2 text-lg placeholder-secondary/70 hover:bg-white/40 focus:outline-none"
 	></textarea>
 </div>

@@ -7,7 +7,6 @@
 	import { MobileMenu } from '$modules/mobile-menu'
 	import { NavBar } from '$modules/nav-bar'
 	import { Toaster } from 'svelte-french-toast'
-	import { fly } from 'svelte/transition'
 
 	export let data
 	setLocale(data.locale)
@@ -18,6 +17,6 @@
 <NavBar />
 <MobileMenu />
 
-<main class="text-primary font-roboto mx-auto max-w-7xl px-3 py-2 xl:px-0">
+<main class="mx-auto max-w-7xl px-3 py-2 font-roboto text-primary xl:px-0">
 	<slot />
 </main>

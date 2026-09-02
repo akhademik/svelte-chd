@@ -8,7 +8,7 @@
 
 {#key tour}
 	<div
-		class="bg-primary/80 relative flex min-h-[400px] flex-col items-center justify-end lg:bottom-0 lg:top-0 lg:w-1/2 lg:justify-center">
+		class="relative flex min-h-[400px] flex-col items-center justify-end bg-primary/80 lg:bottom-0 lg:top-0 lg:w-1/2 lg:justify-center">
 		<picture
 			class="absolute inset-0 p-3 lg:static lg:flex lg:items-center lg:justify-center lg:p-8">
 			<!-- For Mobile -->

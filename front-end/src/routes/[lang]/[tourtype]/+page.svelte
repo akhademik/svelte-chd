@@ -14,7 +14,11 @@
 		const unsubscribe = page.subscribe(async () => {
 			tours = await get_sanity_data($page)
 			const path = $page.url.pathname.split('/')[2]
-			path === 'day-tours' ? set_seo($LL.seo.day_tours()) : set_seo($LL.seo.highland_tours())
+			if (path === 'day-tours') {
+				set_seo($LL.seo.day_tours())
+			} else {
+				set_seo($LL.seo.highland_tours())
+			}
 		})
 		return () => {
 			set_seo('default')

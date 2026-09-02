@@ -1,6 +1,6 @@
-import type { Page } from '@sveltejs/kit'
 import { goto } from '$app/navigation'
 import type { Locales } from '$i18n/i18n-types'
+import type { Page } from '@sveltejs/kit'
 
 export const get_base_url = (page: Page) => {
 	const current_url = page.url.pathname

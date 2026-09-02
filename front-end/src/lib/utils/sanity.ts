@@ -1,8 +1,8 @@
+import type { Tour } from '$lib/types/tour.type'
 import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
 import type { Page } from '@sveltejs/kit'
-import type { Tour } from '$lib/types/tour.type'
 
 const config: ClientConfig = {
 	projectId: import.meta.env.VITE_SANITY_ID,
@@ -47,8 +47,8 @@ export const tour_by_index = (tours: Tour[], index: number) => {
 }
 
 export const get_exchange_rate = (rate: string) => {
-	const api_result = persist_data.get('day-tours' || 'highland-tours')
-	return api_result.exchange_rate[rate] || 1
+	const api_result = persist_data.get('day-tours') || persist_data.get('highland-tours')
+	return api_result?.exchange_rate?.[rate] || 1
 }
 
 export const url_for = (source: SanityImageSource) => {

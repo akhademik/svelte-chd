@@ -9,12 +9,12 @@
 	import TourDetails from '$modules/tour-page/tour-details.svelte'
 	import { set_seo } from '$stores/seo-store'
 	import { onMount } from 'svelte'
-	import { fade, fly, scale } from 'svelte/transition'
+	import { fade, fly } from 'svelte/transition'
 
 	let tour: Tour
 	let tours: Tour[]
 	let animate = false
-	let time_id: number
+	let time_id: ReturnType<typeof setTimeout>
 
 	$: if (tours) {
 		tour = tour_by_index(tours, $tour_index_store)!
@@ -43,7 +43,7 @@
 	<div transition:fade={{ duration: 300 }}>
 		{#key tour}
 			<div
-				class="font-roboto absolute inset-0 z-[999] flex h-max flex-col bg-white text-white sm:text-xl lg:h-screen lg:flex-row"
+				class="absolute inset-0 z-[999] flex h-max flex-col bg-white font-roboto text-white sm:text-xl lg:h-screen lg:flex-row"
 				in:fly={{ x: -200, duration: 400, delay: 400 }}
 				out:fly={{ x: 200, duration: 400 }}>
 				<TourDetails {tour} />
