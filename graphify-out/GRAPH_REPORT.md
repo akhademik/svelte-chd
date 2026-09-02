@@ -1,85 +1,115 @@
 # Graph Report - .  (2026-09-02)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 224 files · ~102,667 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 700 nodes · 1093 edges · 69 communities (61 shown, 8 thin omitted)
-- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.6)
+- 781 nodes · 1157 edges · 105 communities (50 shown, 55 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.55)
 - Token cost: 0 input · 0 output
 
-## Graph Freshness
-- Built from commit: `25076690`
-- Run `git rev-parse HEAD` and compare to check if the graph is stale.
-- Run `graphify update .` after code changes (no API cost).
-
 ## Community Hubs (Navigation)
-- front-end/src/i18n/i18n-svelte.ts
-- front-end2/src/i18n/i18n-svelte.ts
-- front-end2/src/lib/utils/sanity.ts
-- helper-functions.ts
-- front-end2/src/lib/base/index.ts
-- scripts
-- back-end/package.json
-- front-end/src/i18n/fr/index.ts
-- compilerOptions
-- devDependencies
-- compilerOptions
-- scripts
-- front-end/src/lib/types/tour.type.ts
-- front-end/src/lib/stores/nav-store.ts
-- front-end2/src/i18n/en/index.ts
-- front-end/src/i18n/en/index.ts
-- front-end/src/lib/base/index.ts
-- front-end/src/lib/utils/sanity.ts
-- front-end2/src/i18n/fr/index.ts
-- front-end2/src/i18n/vn/index.ts
-- front-end2/src/routes/[lang]/contact/+page.server.ts
-- devDependencies
-- devDependencies
-- front-end/src/lib/stores/seo-store.ts
-- $app/stores
-- front-end2/src/routes/api/tours/+server.ts
-- front-end/src/routes/[lang]/contact/+page.server.ts
-- front-end/src/routes/api/tours/+server.ts
-- front-end/src/routes/[lang]/[tourtype]/[slug]/+page.svelte
-- svelte-typewriter
-- autoprefixer
-- eslint-config-prettier
-- eslint-plugin-svelte
-- knip
-- postcss
-- prettier-plugin-svelte
-- prettier-plugin-tailwindcss
-- svelte-check
-- svelte-eslint-parser
-- @sveltejs/adapter-auto
-- @sveltejs/vite-plugin-svelte
-- sveltekit-superforms
-- tailwindcss
-- tslib
-- @types/node
-- @typescript-eslint/eslint-plugin
-- vite
-- zod
-- front-end2/.typesafe-i18n.json
-- front-end/.typesafe-i18n.json
-- front-end2/src/routes/[lang]/+layout.ts
-- front-end2/svelte.config.js
-- front-end/src/routes/[lang]/+layout.ts
-- front-end/svelte.config.js
+- Community 0
+- Community 1
+- Community 2
+- Community 3
+- Community 4
+- Community 5
+- Community 6
+- Community 7
+- Community 8
+- Community 9
+- Community 10
+- Community 11
+- Community 12
+- Community 13
+- Community 14
+- Community 15
+- Community 16
+- Community 17
+- Community 18
+- Community 19
+- Community 20
+- Community 21
+- Community 22
+- Community 23
+- Community 25
+- Community 26
+- Community 27
+- Community 29
+- Community 30
+- Community 31
+- Community 32
+- Community 33
+- Community 34
+- Community 35
+- Community 36
+- Community 37
+- Community 38
+- Community 39
+- Community 40
+- Community 41
+- Community 42
+- Community 43
+- Community 44
+- Community 45
+- Community 46
+- Community 47
+- Community 48
+- Community 49
+- Community 50
+- Community 51
+- Community 52
+- Community 53
+- Community 54
+- Community 55
+- Community 56
+- Community 57
+- Community 58
+- Community 59
+- Community 60
+- Community 61
+- Community 62
+- Community 63
+- Community 64
+- Community 66
+- Community 67
+- Community 68
+- Community 69
+- Community 70
+- Community 71
+- Community 72
+- Community 73
+- Community 74
+- Community 75
+- Community 76
+- Community 77
+- Community 78
+- Community 79
+- Community 80
+- Community 81
+- Community 82
+- Community 83
+- Community 84
+- Community 85
+- Community 86
+- Community 87
+- Community 88
+- Community 89
+- Community 91
 
 ## God Nodes (most connected - your core abstractions)
-1. `compilerOptions` - 15 edges
-2. `Locales` - 12 edges
+1. `scripts` - 33 edges
+2. `compilerOptions` - 15 edges
 3. `Locales` - 12 edges
-4. `scripts` - 11 edges
+4. `Locales` - 12 edges
 5. `scripts` - 11 edges
-6. `compilerOptions` - 9 edges
-7. `compilerOptions` - 9 edges
-8. `loadLocaleAsync()` - 7 edges
-9. `loadLocaleAsync()` - 7 edges
-10. `add_thousand_separator()` - 6 edges
+6. `scripts` - 11 edges
+7. `scripts` - 9 edges
+8. `compilerOptions` - 9 edges
+9. `compilerOptions` - 9 edges
+10. `loadLocaleAsync()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `prepare()` --calls--> `add_thousand_separator()`  [EXTRACTED]
@@ -96,211 +126,159 @@
 ## Import Cycles
 - None detected.
 
-## Communities (69 total, 8 thin omitted)
+## Communities (105 total, 55 thin omitted)
 
-### Community 0 - "front-end/src/i18n/i18n-svelte.ts"
-Cohesion: 0.07
+### Community 0 - "Community 0"
+Cohesion: 0.06
 Nodes (36): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+28 more)
 
-### Community 1 - "front-end2/src/i18n/i18n-svelte.ts"
+### Community 1 - "Community 1"
 Cohesion: 0.07
-Nodes (35): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+27 more)
+Nodes (38): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+30 more)
 
-### Community 2 - "front-end2/src/lib/utils/sanity.ts"
-Cohesion: 0.07
-Nodes (20): booking_modal, BookingModalState, tour_index_store, GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String (+12 more)
-
-### Community 3 - "helper-functions.ts"
+### Community 2 - "Community 2"
 Cohesion: 0.09
-Nodes (28): add_thousand_separator(), CNumberInput(), parseNumber(), prepare(), prepare(), BASE_FIELDS, Field, GenerateField (+20 more)
+Nodes (30): add_thousand_separator(), CNumberInput(), parseNumber(), keywords, prepare(), prepare(), BASE_FIELDS, Field (+22 more)
 
-### Community 4 - "front-end2/src/lib/base/index.ts"
+### Community 3 - "Community 3"
 Cohesion: 0.05
-Nodes (14): Translation, menu_items, MenuItem, MenuLink, nav_animate_hidden, nav_deg, nav_mobile, seo_description (+6 more)
+Nodes (37): description, name, private, scripts, build, build:all, build:be, build:fe (+29 more)
 
-### Community 5 - "scripts"
+### Community 4 - "Community 4"
 Cohesion: 0.06
-Nodes (37): concurrently, author, name, dependencies, concurrently, @portabletext/svelte, @sanity/client, @sanity/image-url (+29 more)
+Nodes (32): dependencies, react, react-dom, react-is, sanity, @sanity/vision, styled-components, license (+24 more)
 
-### Community 6 - "back-end/package.json"
-Cohesion: 0.07
-Nodes (30): dependencies, react, react-dom, react-is, sanity, @sanity/vision, styled-components, keywords (+22 more)
+### Community 5 - "Community 5"
+Cohesion: 0.08
+Nodes (12): Translation, contact_page, home_page, nav_bar, seo, tours, menu_items, MenuItem (+4 more)
 
-### Community 7 - "front-end/src/i18n/fr/index.ts"
-Cohesion: 0.10
-Nodes (14): contact_page, home_page, nav_bar, seo, tours, Translation, contact_page, home_page (+6 more)
+### Community 6 - "Community 6"
+Cohesion: 0.06
+Nodes (30): author, name, dependencies, concurrently, @portabletext/svelte, @sanity/client, @sanity/image-url, svelte-french-toast (+22 more)
 
-### Community 8 - "compilerOptions"
+### Community 7 - "Community 7"
+Cohesion: 0.06
+Nodes (30): author, name, dependencies, concurrently, @portabletext/svelte, @sanity/client, @sanity/image-url, svelte-french-toast (+22 more)
+
+### Community 8 - "Community 8"
 Cohesion: 0.08
 Nodes (23): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, incremental, isolatedModules, jsx, lib (+15 more)
 
-### Community 9 - "devDependencies"
-Cohesion: 0.09
-Nodes (23): devDependencies, eslint, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui, @types/react (+15 more)
-
-### Community 10 - "compilerOptions"
-Cohesion: 0.09
-Nodes (21): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentCasingInFileNames, resolveJsonModule, skipLibCheck, sourceMap (+13 more)
-
-### Community 11 - "scripts"
+### Community 9 - "Community 9"
 Cohesion: 0.11
-Nodes (17): author, name, name, private, scripts, all, build, check (+9 more)
+Nodes (19): devDependencies, eslint, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui, @types/react (+11 more)
 
-### Community 12 - "front-end/src/lib/types/tour.type.ts"
+### Community 10 - "Community 10"
 Cohesion: 0.15
 Nodes (9): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tour, format_price() (+1 more)
 
-### Community 13 - "front-end/src/lib/stores/nav-store.ts"
+### Community 11 - "Community 11"
+Cohesion: 0.15
+Nodes (3): seo_description, seo_keywords, seo_title
+
+### Community 12 - "Community 12"
 Cohesion: 0.19
 Nodes (3): nav_animate_hidden, nav_deg, nav_mobile
 
-### Community 14 - "front-end2/src/i18n/en/index.ts"
+### Community 13 - "Community 13"
+Cohesion: 0.19
+Nodes (5): booking_modal, BookingModalState, tour_modal, TourModalState, Tour
+
+### Community 14 - "Community 14"
 Cohesion: 0.24
 Nodes (6): contact_page, home_page, nav_bar, seo, tours, BaseTranslation
 
-### Community 15 - "front-end/src/i18n/en/index.ts"
-Cohesion: 0.24
-Nodes (6): contact_page, home_page, nav_bar, seo, tours, BaseTranslation
-
-### Community 16 - "front-end/src/lib/base/index.ts"
-Cohesion: 0.18
-Nodes (3): Icon, Icons, NOTE:
-
-### Community 17 - "front-end/src/lib/utils/sanity.ts"
+### Community 15 - "Community 15"
 Cohesion: 0.23
 Nodes (7): logger, builder, config, get_length_and_index(), get_tour_slug(), persist_data, tour_by_index()
 
-### Community 18 - "front-end2/src/i18n/fr/index.ts"
+### Community 16 - "Community 16"
+Cohesion: 0.17
+Nodes (11): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentCasingInFileNames, resolveJsonModule, skipLibCheck, sourceMap (+3 more)
+
+### Community 17 - "Community 17"
+Cohesion: 0.24
+Nodes (6): contact_page, home_page, nav_bar, seo, tours, BaseTranslation
+
+### Community 18 - "Community 18"
+Cohesion: 0.23
+Nodes (7): logger, builder, config, get_length_and_index(), get_tour_slug(), persist_data, tour_by_index()
+
+### Community 19 - "Community 19"
+Cohesion: 0.17
+Nodes (11): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentCasingInFileNames, resolveJsonModule, skipLibCheck, sourceMap (+3 more)
+
+### Community 21 - "Community 21"
 Cohesion: 0.27
 Nodes (5): contact_page, home_page, nav_bar, seo, tours
 
-### Community 19 - "front-end2/src/i18n/vn/index.ts"
+### Community 22 - "Community 22"
 Cohesion: 0.27
 Nodes (5): contact_page, home_page, nav_bar, seo, tours
 
-### Community 20 - "front-end2/src/routes/[lang]/contact/+page.server.ts"
+### Community 23 - "Community 23"
+Cohesion: 0.27
+Nodes (5): contact_page, home_page, nav_bar, seo, tours
+
+### Community 25 - "Community 25"
+Cohesion: 0.24
+Nodes (6): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price
+
+### Community 26 - "Community 26"
 Cohesion: 0.28
 Nodes (4): form_schema, actions, TODO: Do something with the validated form.data, actions
 
-### Community 21 - "devDependencies"
-Cohesion: 0.25
-Nodes (8): devDependencies, prettier, svelte, @typescript-eslint/parser, svelte, @typescript-eslint/parser, prettier, @typescript-eslint/parser
+### Community 27 - "Community 27"
+Cohesion: 0.22
+Nodes (4): seo_description, seo_keywords, seo_title, ./$types
 
-### Community 22 - "devDependencies"
-Cohesion: 0.25
-Nodes (8): @sveltejs/kit, devDependencies, prettier, svelte, @sveltejs/kit, prettier, svelte, @sveltejs/kit
+### Community 29 - "Community 29"
+Cohesion: 0.29
+Nodes (7): devDependencies, autoprefixer, eslint, @sveltejs/vite-plugin-svelte, autoprefixer, eslint, @sveltejs/vite-plugin-svelte
 
-### Community 23 - "front-end/src/lib/stores/seo-store.ts"
-Cohesion: 0.25
-Nodes (3): seo_description, seo_keywords, seo_title
+### Community 30 - "Community 30"
+Cohesion: 0.29
+Nodes (7): devDependencies, autoprefixer, eslint, @sveltejs/vite-plugin-svelte, autoprefixer, eslint, @sveltejs/vite-plugin-svelte
 
-### Community 25 - "front-end2/src/routes/api/tours/+server.ts"
+### Community 32 - "Community 32"
 Cohesion: 0.47
 Nodes (5): client, config, fetch_data(), fetch_exchange_rate(), GET()
 
-### Community 26 - "front-end/src/routes/[lang]/contact/+page.server.ts"
+### Community 33 - "Community 33"
 Cohesion: 0.40
 Nodes (3): form_schema, actions, TODO: Do something with the validated form.data
 
-### Community 27 - "front-end/src/routes/api/tours/+server.ts"
+### Community 34 - "Community 34"
 Cohesion: 0.47
 Nodes (5): client, config, fetch_data(), fetch_exchange_rate(), GET()
 
-### Community 29 - "svelte-typewriter"
-Cohesion: 0.50
-Nodes (3): svelte-typewriter, svelte-typewriter, svelte-typewriter
+### Community 35 - "Community 35"
+Cohesion: 0.40
+Nodes (3): Icon, Icons, NOTE:
 
-### Community 30 - "autoprefixer"
-Cohesion: 0.67
-Nodes (3): autoprefixer, autoprefixer, autoprefixer
-
-### Community 31 - "eslint-config-prettier"
-Cohesion: 0.67
-Nodes (3): eslint-config-prettier, eslint-config-prettier, eslint-config-prettier
-
-### Community 32 - "eslint-plugin-svelte"
-Cohesion: 0.67
-Nodes (3): eslint-plugin-svelte, eslint-plugin-svelte, eslint-plugin-svelte
-
-### Community 33 - "knip"
-Cohesion: 0.67
-Nodes (3): knip, knip, knip
-
-### Community 34 - "postcss"
-Cohesion: 0.67
-Nodes (3): postcss, postcss, postcss
-
-### Community 35 - "prettier-plugin-svelte"
-Cohesion: 0.67
-Nodes (3): prettier-plugin-svelte, prettier-plugin-svelte, prettier-plugin-svelte
-
-### Community 36 - "prettier-plugin-tailwindcss"
-Cohesion: 0.67
-Nodes (3): prettier-plugin-tailwindcss, prettier-plugin-tailwindcss, prettier-plugin-tailwindcss
-
-### Community 37 - "svelte-check"
-Cohesion: 0.67
-Nodes (3): svelte-check, svelte-check, svelte-check
-
-### Community 38 - "svelte-eslint-parser"
-Cohesion: 0.67
-Nodes (3): svelte-eslint-parser, svelte-eslint-parser, svelte-eslint-parser
-
-### Community 39 - "@sveltejs/adapter-auto"
-Cohesion: 0.67
-Nodes (3): @sveltejs/adapter-auto, @sveltejs/adapter-auto, @sveltejs/adapter-auto
-
-### Community 40 - "@sveltejs/vite-plugin-svelte"
-Cohesion: 0.67
-Nodes (3): @sveltejs/vite-plugin-svelte, @sveltejs/vite-plugin-svelte, @sveltejs/vite-plugin-svelte
-
-### Community 41 - "sveltekit-superforms"
-Cohesion: 0.67
-Nodes (3): sveltekit-superforms, sveltekit-superforms, sveltekit-superforms
-
-### Community 42 - "tailwindcss"
-Cohesion: 0.67
-Nodes (3): tailwindcss, tailwindcss, tailwindcss
-
-### Community 43 - "tslib"
-Cohesion: 0.67
-Nodes (3): tslib, tslib, tslib
-
-### Community 44 - "@types/node"
-Cohesion: 0.67
-Nodes (3): @types/node, @types/node, @types/node
-
-### Community 45 - "@typescript-eslint/eslint-plugin"
-Cohesion: 0.67
-Nodes (3): @typescript-eslint/eslint-plugin, @typescript-eslint/eslint-plugin, @typescript-eslint/eslint-plugin
-
-### Community 46 - "vite"
-Cohesion: 0.67
-Nodes (3): vite, vite, vite
-
-### Community 47 - "zod"
-Cohesion: 0.67
-Nodes (3): zod, zod, zod
+### Community 38 - "Community 38"
+Cohesion: 0.40
+Nodes (3): Icon, Icons, NOTE:
 
 ## Knowledge Gaps
-- **176 isolated node(s):** `locale_translations`, `target`, `dom`, `dom.iterable`, `esnext` (+171 more)
+- **279 isolated node(s):** `name`, `private`, `version`, `main`, `license` (+274 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **55 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `devDependencies` connect `devDependencies` to `devDependencies`, `scripts`, `devDependencies`, `svelte-typewriter`, `autoprefixer`, `eslint-config-prettier`, `eslint-plugin-svelte`, `knip`, `postcss`, `prettier-plugin-svelte`, `prettier-plugin-tailwindcss`, `svelte-check`, `svelte-eslint-parser`, `@sveltejs/adapter-auto`, `@sveltejs/vite-plugin-svelte`, `sveltekit-superforms`, `tailwindcss`, `tslib`, `@types/node`, `@typescript-eslint/eslint-plugin`, `vite`, `zod`?**
-  _High betweenness centrality (0.208) - this node is a cross-community bridge._
-- **Why does `devDependencies` connect `devDependencies` to `scripts`, `devDependencies`, `devDependencies`, `svelte-typewriter`, `autoprefixer`, `eslint-config-prettier`, `eslint-plugin-svelte`, `knip`, `postcss`, `prettier-plugin-svelte`, `prettier-plugin-tailwindcss`, `svelte-check`, `svelte-eslint-parser`, `@sveltejs/adapter-auto`, `@sveltejs/vite-plugin-svelte`, `sveltekit-superforms`, `tailwindcss`, `tslib`, `@types/node`, `@typescript-eslint/eslint-plugin`, `vite`, `zod`?**
-  _High betweenness centrality (0.208) - this node is a cross-community bridge._
-- **What connects `locale_translations`, `target`, `dom` to the rest of the system?**
-  _176 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `front-end/src/i18n/i18n-svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.0670762928827445 - nodes in this community are weakly interconnected._
-- **Should `front-end2/src/i18n/i18n-svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06927551560021153 - nodes in this community are weakly interconnected._
-- **Should `front-end2/src/lib/utils/sanity.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
-- **Should `helper-functions.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.09302325581395349 - nodes in this community are weakly interconnected._
+- **Why does `devDependencies` connect `Community 30` to `Community 7`, `Community 67`, `Community 68`, `Community 69`, `Community 70`, `Community 71`, `Community 72`, `Community 73`, `Community 74`, `Community 75`, `Community 76`, `Community 77`, `Community 78`, `Community 79`, `Community 80`, `Community 81`, `Community 82`, `Community 83`, `Community 84`, `Community 85`, `Community 86`, `Community 87`, `Community 88`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `devDependencies` connect `Community 29` to `Community 6`, `Community 42`, `Community 43`, `Community 44`, `Community 45`, `Community 46`, `Community 47`, `Community 48`, `Community 49`, `Community 50`, `Community 51`, `Community 52`, `Community 53`, `Community 54`, `Community 55`, `Community 56`, `Community 57`, `Community 58`, `Community 59`, `Community 60`, `Community 61`, `Community 62`, `Community 63`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `keywords` connect `Community 2` to `Community 4`?**
+  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **What connects `name`, `private`, `version` to the rest of the system?**
+  _279 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 0` be split into smaller, more focused modules?**
+  _Cohesion score 0.059676044330775786 - nodes in this community are weakly interconnected._
+- **Should `Community 1` be split into smaller, more focused modules?**
+  _Cohesion score 0.07205387205387205 - nodes in this community are weakly interconnected._
+- **Should `Community 2` be split into smaller, more focused modules?**
+  _Cohesion score 0.08792270531400966 - nodes in this community are weakly interconnected._

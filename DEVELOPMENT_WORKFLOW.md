@@ -7,17 +7,28 @@
 ## 🔒 1. Quy tắc Quản lý Gói (Package Manager Rule)
 
 - **BẮT BUỘC DÙNG `pnpm`** (Tuyệt đối không dùng `npm` hoặc `yarn`).
-- Dự án gồm 2 khu vực:
-  - `front-end/`: SvelteKit, TypeScript, TailwindCSS, Typesafe-i18n
+- Dự án gồm các khu vực:
+  - `front-end/`: SvelteKit, TypeScript, TailwindCSS, Typesafe-i18n (Legacy)
+  - `front-end2/`: SvelteKit (Svelte 5 runes), TypeScript, TailwindCSS Minimalist UI, Mobile-first responsive
   - `back-end/`: Sanity Content Studio v3, React, TypeScript
 
 ```bash
-# Frontend
-cd front-end && pnpm install
+# Cài đặt toàn bộ dự án từ thư mục gốc
+pnpm install
 
-# Backend
+# Hoặc cài riêng từng phần:
+cd front-end2 && pnpm install
 cd back-end && pnpm install
 ```
+
+### 🚀 Lệnh Nhanh Tại Thư Mục Gốc (Root Scripts):
+- **Dev Frontend (front-end2)**: `pnpm dev` (hoặc `pnpm dev:fe2`)
+- **Dev Backend (Sanity Studio)**: `pnpm dev:be`
+- **Build**: `pnpm build` (hoặc `pnpm build:all`)
+- **Kiểm tra toàn bộ (Check & Lint)**: `pnpm check:all` & `pnpm lint:all`
+- **Format toàn bộ**: `pnpm format:all`
+- **i18n Watch/Sync**: `pnpm i18n` (chạy typesafe-i18n cho front-end2)
+
 
 ---
 
@@ -56,10 +67,10 @@ Mỗi khi chỉnh sửa mã nguồn, tuân thủ đúng trình tự sau:
 
 ## ⚡ 3. Bảng Lệnh Kiểm Tra Theo Module
 
-### Frontend (`front-end/`)
-- **Lint**: `pnpm lint` (hoặc `pnpm eslint .`)
+### Frontend (`front-end2/` & `front-end/`)
+- **Lint**: `pnpm lint` (hoặc `pnpm prettier --check . && eslint .`)
 - **Type Check**: `pnpm check` (`svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`)
-- **Format**: `pnpm format` / `pnpm prettier --check .`
+- **Format**: `pnpm format` / `pnpm prettier --write .`
 - **Test**: `pnpm test` (khi có test suite)
 - **Knip**: `pnpm knip` (hoặc `npx knip`)
 

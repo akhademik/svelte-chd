@@ -9,18 +9,19 @@
 Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau:
 
 1. **Linting (`pnpm lint`)**:
-   - Frontend: `cd front-end && pnpm lint`
+   - Frontend (Modern): `cd front-end2 && pnpm lint`
+   - Frontend (Legacy): `cd front-end && pnpm lint`
    - Backend: `cd back-end && pnpm eslint .`
 2. **Type Checking (`pnpm check` / `tsc`)**:
-   - Frontend: `cd front-end && pnpm check`
+   - Frontend: `cd front-end2 && pnpm check`
    - Backend: `cd back-end && pnpm tsc --noEmit`
 3. **Formatting (`pnpm format` / Prettier)**:
-   - Frontend: `cd front-end && pnpm format`
+   - Frontend: `cd front-end2 && pnpm format`
    - Backend: `cd back-end && pnpm prettier --write .`
 4. **Testing (`pnpm test`)**:
    - Chạy các bài test đơn vị hoặc tích hợp khi có test suite.
 5. **Dead Code & Dependency Analysis (`knip`)**:
-   - Frontend: `cd front-end && pnpm knip`
+   - Frontend: `cd front-end2 && pnpm knip`
    - Backend: `cd back-end && pnpm knip`
 6. **Đồng Bộ Knowledge Graph (`/graphify`)**:
    - Chạy `/graphify` tại thư mục gốc dự án để cập nhật đồ thị kiến trúc, phân tích phụ thuộc.
