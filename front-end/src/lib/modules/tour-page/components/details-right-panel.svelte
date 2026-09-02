@@ -5,15 +5,19 @@
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
 
-	export let tour: Tour
-	$: prices = format_price_object(tour)
+	interface Props {
+		tour: Tour
+	}
+
+	let { tour }: Props = $props()
+	let prices = $derived(format_price_object(tour))
 </script>
 
 {#key tour}
 	<div
-		class="flex flex-col justify-center gap-4 p-5 text-primary lg:fixed lg:right-0 lg:h-full lg:w-1/2 lg:overflow-y-auto lg:px-8">
-		<div class="mx-auto h-full max-w-4xl">
-			<div class="my-6 flex flex-col gap-2 lg:mt-32">
+		class="flex w-full flex-1 flex-col justify-start gap-4 p-5 text-primary lg:h-full lg:overflow-y-auto lg:p-10 lg:pt-16">
+		<div class="mx-auto w-full max-w-2xl">
+			<div class="my-4 flex flex-col gap-2">
 				<p
 					class="relative pb-2 font-bold text-secondary before:absolute before:bottom-0 before:h-[1px] before:w-full before:bg-primary/30">
 					{$LL.tours.detail.intro()}
@@ -64,32 +68,37 @@
 						class="relative pb-2 font-bold text-secondary before:absolute before:bottom-0 before:h-[1px] before:w-full before:bg-primary/30">
 						{$LL.tours.detail.price()}
 					</p>
-					<table class="mx-auto mb-6 mt-3 min-w-[328px] text-primary sm:min-w-[450px]">
-						<thead class="bg-primary/80">
-							<tr class="capitalize text-white [&>th]:py-2">
-								<th class="rounded-tl-lg">{$LL.tours.detail.pax_no()}</th>
-								<th class="rounded-tr-lg">{$LL.tours.detail.price()}</th>
-							</tr>
-						</thead>
-						<tbody
-							class="[&>tr:last-child]:border-b-4 [&>tr:last-child]:border-primary/80 [&>tr:nth-child(even)]:bg-secondary/50 [&>tr>td:nth-child(2)]:pr-3 [&>tr>td:nth-child(2)]:text-right [&>tr>td]:py-1.5 [&>tr>td]:pl-3">
-							{#each prices as [pax, price] (pax)}
-								{@const solo = format_pax_no(pax) === '01'}
-								{@const group =
-									$LL.tours.detail.group() +
-									' ' +
-									format_pax_no(pax) +
-									' ' +
-									$LL.tours.detail.pax()}
-								<tr>
-									<!-- <td>Group of {format_pax_no(pax)} pax {solo}</td> -->
-									<td>{solo ? $LL.tours.detail.solo() : group} </td>
-									<td class="lowercase"
-										>{format_price(price, $locale)} /{$LL.tours.detail.pax()}</td>
+					<div class="overflow-x-auto">
+						<table class="my-3 w-full max-w-xl text-left font-roboto text-sm sm:text-base">
+							<thead class="bg-primary text-white">
+								<tr class="capitalize">
+									<th class="rounded-tl-lg px-4 py-3 font-semibold">{$LL.tours.detail.pax_no()}</th>
+									<th class="rounded-tr-lg px-4 py-3 text-right font-semibold"
+										>{$LL.tours.detail.price()}</th>
 								</tr>
-							{/each}
-						</tbody>
-					</table>
+							</thead>
+							<tbody class="divide-y divide-primary/10 border-b-2 border-primary/40 bg-slate-50/50">
+								{#each prices as [pax, price] (pax)}
+									{@const solo = format_pax_no(pax) === '01'}
+									{@const group =
+										$LL.tours.detail.group() +
+										' ' +
+										format_pax_no(pax) +
+										' ' +
+										$LL.tours.detail.pax()}
+									<tr class="transition-colors hover:bg-secondary/20">
+										<td class="px-4 py-2.5 font-medium text-primary"
+											>{solo ? $LL.tours.detail.solo() : group}</td>
+										<td class="px-4 py-2.5 text-right font-bold text-secondary">
+											{format_price(price, $locale)}
+											<span class="text-xs font-normal text-primary/70"
+												>/{$LL.tours.detail.pax()}</span>
+										</td>
+									</tr>
+								{/each}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			{/if}
 

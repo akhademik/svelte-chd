@@ -1,8 +1,11 @@
+import { dev } from '$app/environment'
 import type { Tour } from '$lib/types/tour.type'
 import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
 import type { Page } from '@sveltejs/kit'
+
+import { logger } from './logger'
 
 const config: ClientConfig = {
 	projectId: import.meta.env.VITE_SANITY_ID,
@@ -15,9 +18,14 @@ const builder = imageUrlBuilder(config as SanityProjectDetails)
 
 const persist_data = {
 	set: (db_name: string, data: unknown) => {
-		localStorage.setItem(`chd-${db_name}`, JSON.stringify(data))
+		if (typeof localStorage !== 'undefined') {
+			localStorage.setItem(`chd-${db_name}`, JSON.stringify(data))
+		}
 	},
 	get: (db_name: string) => {
+		if (dev || typeof localStorage === 'undefined') {
+			return null
+		}
 		const data = localStorage.getItem(`chd-${db_name}`)
 		return data ? JSON.parse(data) : null
 	},
@@ -29,13 +37,16 @@ export const get_sanity_data = async (page: Page) => {
 	const one_day = 1000 * 60 * 60 * 24
 
 	let data = persist_data.get(db_name)
-	const less_than_24h = time_now - data?.stale_time < one_day
+	const less_than_24h = data && time_now - data?.stale_time < one_day
 
 	if (!data || !less_than_24h) {
-		console.log('fresh data')
+		logger.log(`Fetching fresh Sanity data for: ${db_name}`)
 		const res = await fetch(`/api/tours?${db_name}`)
 		data = await res.json()
+		logger.log(`Received ${data?.tours?.length || 0} tours for: ${db_name}`, data)
 		persist_data.set(db_name, data)
+	} else {
+		logger.log(`Using cached data for: ${db_name}`)
 	}
 	return data.tours
 }

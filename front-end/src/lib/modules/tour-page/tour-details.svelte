@@ -5,9 +5,15 @@
 	import DetailsNavigation from './components/details-navigation.svelte'
 	import DetailsRightPanel from './components/details-right-panel.svelte'
 
-	export let tour: Tour
+	interface Props {
+		tour: Tour
+	}
+
+	let { tour }: Props = $props()
 </script>
 
-<DetailsNavigation />
-<DetailsLeftPanel {tour} />
-<DetailsRightPanel {tour} />
+<div class="relative flex min-h-screen w-full flex-col lg:h-screen lg:flex-row lg:overflow-hidden">
+	<DetailsNavigation />
+	<DetailsLeftPanel {tour} />
+	<DetailsRightPanel {tour} />
+</div>

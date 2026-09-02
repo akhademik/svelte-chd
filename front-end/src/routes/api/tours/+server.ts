@@ -23,7 +23,18 @@ const extract_fields = `
 	"tour_price": coalesce(tour_price, tourPrice),
 	"tour_id": coalesce(tour_id, tourId, ''),
 	"img_tour": coalesce(img_tour, imgTour),
-	"img_cover": coalesce(img_cover, imgCover),
+	"img_cover": coalesce(
+		img_cover,
+		imgCover,
+		select(
+			_id == "0a1af5fa-4d70-49de-8b2d-0f29aa9747e8" => *[_id == "image-0ca90a2840de3bb8fa533d08210c95e19ff36f90-3110x4083-jpg"][0]{ "asset": {"_ref": _id, "_type": "reference"}, "caption": "Bim Bip Waterfall" },
+			_id == "766f62ab-aa6f-478f-a9bc-32972a1327d1" => *[_id == "image-44c707f6417176fc97b66bc7542ad78266ae52a4-7360x4912-jpg"][0]{ "asset": {"_ref": _id, "_type": "reference"}, "caption": "Lak Lake Activities" },
+			_id == "a04d5f28-865b-4016-b62e-0f8fe9eeb0e5" => *[_id == "image-81e54ddcdeec9904de30cae644651628773846bc-4443x2962-jpg"][0]{ "asset": {"_ref": _id, "_type": "reference"}, "caption": "Cocoa Experience & Rafting" },
+			_id == "e401a830-747f-4e2e-8f7c-a06dcba24baf" => *[_id == "image-e540e6e12bfb294486900665fccfaeda7947cd9c-1200x700-jpg"][0]{ "asset": {"_ref": _id, "_type": "reference"}, "caption": "Ta Dung Topview" },
+			_id == "a9c1031e-3971-4d2d-a5a8-b1360e1c0b97" => *[_id == "image-d234c37e8579a12dc8ae7844705f02d605d6bd66-1226x690-jpg"][0]{ "asset": {"_ref": _id, "_type": "reference"}, "caption": "Central Highlands Tour" },
+			*[_type == "sanity.imageAsset"][0]{ "asset": {"_ref": _id, "_type": "reference"}, "caption": "CHD Travel" }
+		)
+	),
 	"tour_duration": coalesce(tour_duration, tourDuration),
 	"tour_slug": coalesce(tour_slug, tourSlug),
 	"tour_intro": coalesce(tour_intro, tourIntro),
