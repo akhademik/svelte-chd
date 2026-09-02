@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+build/
+dist/
+.svelte-kit/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Graphify
+graphify-out/*
+!graphify-out/GRAPH_REPORT.md
+!graphify-out/graph.json
+!graphify-out/graph.html
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
