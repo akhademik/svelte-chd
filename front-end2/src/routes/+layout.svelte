@@ -2,7 +2,7 @@
 	import '$assets/styles/main.css'
 	import '$assets/styles/tailwind.css'
 
-	import { BaseBookingModal, BaseFooter, BaseSeo } from '$base'
+	import { BaseBookingModal, BaseFooter, BaseSeo, BaseTourDetailModal } from '$base'
 	import { setLocale } from '$i18n/i18n-svelte'
 	import { MobileMenu } from '$modules/mobile-menu'
 	import { NavBar } from '$modules/nav-bar'
@@ -29,3 +29,4 @@
 
 <BaseFooter />
 <BaseBookingModal />
+<BaseTourDetailModal />

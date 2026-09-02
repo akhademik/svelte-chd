@@ -51,7 +51,7 @@
 {#if $booking_modal.isOpen}
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/60 p-4 backdrop-blur-sm"
+		class="fixed inset-0 z-50 flex items-end justify-center bg-stone-900/60 p-0 backdrop-blur-sm sm:items-center sm:p-4"
 		role="button"
 		tabindex="0"
 		onclick={close}
@@ -59,13 +59,13 @@
 		<!-- Modal box -->
 		<div
 			transition:scale={{ start: 0.95, duration: 200 }}
-			class="relative w-full max-w-lg border border-stone-200 bg-white p-8 text-stone-900 shadow-2xl"
+			class="relative max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-t-2xl border-t border-stone-200 bg-white p-6 text-stone-900 shadow-2xl sm:rounded-none sm:border sm:p-8"
 			role="presentation"
 			onclick={e => e.stopPropagation()}
 			onkeydown={e => e.stopPropagation()}>
 			<button
 				onclick={close}
-				class="absolute right-6 top-6 text-stone-400 transition-colors hover:text-stone-900"
+				class="absolute right-4 top-4 rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-900 sm:right-6 sm:top-6"
 				aria-label="Close modal">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

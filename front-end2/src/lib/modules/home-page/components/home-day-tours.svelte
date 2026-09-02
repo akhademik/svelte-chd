@@ -2,6 +2,7 @@
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
+	import { tour_modal } from '$lib/stores/modal-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_price } from '$lib/utils/format-data'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
@@ -37,15 +38,18 @@
 
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
 			{#each tours as tour (tour.tour_id || get_tour_slug(tour))}
-				{@const slug = get_tour_slug(tour, $locale)}
-				{@const detailHref = `/${$locale}/day-tours/${slug}`}
 				{@const title = tour.tour_name?.[$locale] || tour.tour_name?.en || 'Tour'}
 				{@const price = tour.tour_price?.pax2 || tour.tour_price?.pax1 || 0}
 				{@const duration = tour.tour_duration?.[$locale] || '1 Day'}
 
 				<div
-					class="group flex flex-col border border-stone-200/80 bg-white p-5 transition-all duration-300 hover:border-stone-400">
-					<div class="relative mb-5 aspect-[4/3] overflow-hidden bg-stone-100">
+					class="group flex flex-col border border-stone-200/80 bg-white p-5 transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+					<div
+						class="relative mb-5 aspect-[4/3] cursor-pointer overflow-hidden bg-stone-100"
+						role="button"
+						tabindex="0"
+						onclick={() => tour_modal.open(tour)}
+						onkeydown={e => e.key === 'Enter' && tour_modal.open(tour)}>
 						{#if tour.img_cover?.asset}
 							<img
 								src={url_for(tour.img_cover)
@@ -68,7 +72,12 @@
 						<div>
 							<h3
 								class="mb-2 line-clamp-2 min-h-[3.5rem] font-serif text-xl text-stone-900 transition-colors group-hover:text-terracotta">
-								<a href={detailHref}>{title}</a>
+								<button
+									type="button"
+									class="text-left font-serif text-xl font-normal text-stone-900 transition-colors hover:text-terracotta"
+									onclick={() => tour_modal.open(tour)}>
+									{title}
+								</button>
 							</h3>
 							<div class="mb-6 line-clamp-3 text-xs font-light leading-relaxed text-stone-500">
 								<PortableText
@@ -88,15 +97,10 @@
 								</span>
 							</div>
 							<div class="flex items-center gap-3">
-								<a
-									href={detailHref}
-									class="text-xs font-medium uppercase tracking-wider text-stone-500 transition-colors hover:text-stone-900">
-									{$LL.tours.click_detail()}
-								</a>
 								<button
-									onclick={() => booking_modal.open(title)}
-									class="flex items-center gap-1 text-xs font-medium uppercase tracking-wider text-stone-900 transition-colors hover:text-terracotta">
-									Book
+									onclick={() => tour_modal.open(tour)}
+									class="flex items-center gap-1 text-xs font-medium uppercase tracking-wider text-stone-600 transition-colors hover:text-terracotta">
+									<span>{$LL.tours.click_detail()}</span>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										class="h-3.5 w-3.5"
@@ -107,12 +111,17 @@
 										stroke-linecap="round"
 										stroke-linejoin="round">
 										<line
-											x1="7"
-											y1="17"
-											x2="17"
-											y2="7"></line>
-										<polyline points="7 7 17 7 17 17"></polyline>
+											x1="5"
+											y1="12"
+											x2="19"
+											y2="12"></line>
+										<polyline points="12 5 19 12 12 19"></polyline>
 									</svg>
+								</button>
+								<button
+									onclick={() => booking_modal.open(title)}
+									class="bg-stone-900 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">
+									{$locale === 'vn' ? 'Đặt Tour' : 'Book'}
 								</button>
 							</div>
 						</div>
