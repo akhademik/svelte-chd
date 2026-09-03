@@ -4,13 +4,13 @@ import {generate_field} from '../helper-functions'
 
 export default {
   title: 'Tour Tags',
-  name: 'tour_tags',
+  name: 'tourTags',
   type: 'document',
   icon: AiFillTags,
-  fields: [generate_field('Tour Tags', 'tour_tags', 'locale_string')],
+  fields: [generate_field('Tour Tags', 'tourTags', 'locale_string')],
   preview: {
     select: {
-      title: 'tour_tags.vn',
+      title: 'tourTags.vn',
     },
   },
 }

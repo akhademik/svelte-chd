@@ -1,17 +1,17 @@
 import {visionTool} from '@sanity/vision'
 import {defineConfig} from 'sanity'
 import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
-import {deskTool} from 'sanity/desk'
+import {structureTool} from 'sanity/structure'
 import {schemaTypes} from './schemas'
 
 export default defineConfig({
   name: 'default',
-  title: 'chd-backend-v1',
+  title: 'chd-backend-v2',
 
   projectId: 'uzyjbxdd',
   dataset: 'production',
 
-  plugins: [deskTool(), visionTool(), unsplashImageAsset()],
+  plugins: [structureTool(), visionTool(), unsplashImageAsset()],
 
   schema: {
     types: schemaTypes,

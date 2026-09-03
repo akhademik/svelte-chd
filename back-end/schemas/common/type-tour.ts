@@ -2,7 +2,7 @@ import {gen_price_range} from '../helper-functions'
 import {PRICE_RANGE} from './constants'
 
 export const tour_highlights_ref = {
-  name: 'tour_highlights',
+  name: 'tourHighlights',
   title: 'Các điểm chính trong tour',
   type: 'array',
   validation: (Rule: {required: () => any}) => Rule.required(),
@@ -11,7 +11,7 @@ export const tour_highlights_ref = {
       type: 'reference',
       to: [
         {
-          type: 'tour_highlights',
+          type: 'tourHighlights',
         },
       ],
     },
@@ -19,16 +19,15 @@ export const tour_highlights_ref = {
 }
 
 export const tour_tags_ref = {
-  name: 'tour_tags',
+  name: 'tourTags',
   title: 'Tour Tags',
   type: 'array',
-  validation: (Rule: {required: () => any}) => Rule.required(),
   of: [
     {
       type: 'reference',
       to: [
         {
-          type: 'tour_tags',
+          type: 'tourTags',
         },
       ],
     },
@@ -36,13 +35,13 @@ export const tour_tags_ref = {
 }
 
 export const tour_includes_ref = {
-  name: 'tour_includes',
+  name: 'tourIncludes',
   title: 'Tour bao gồm',
   type: 'reference',
   validation: (Rule: {required: () => any}) => Rule.required(),
   to: [
     {
-      type: 'tour_includes',
+      type: 'tourIncludes',
     },
   ],
 }
@@ -66,10 +65,10 @@ export const tour_price = {
 
 export const tour_slug = {
   title: 'Tour Slug',
-  name: 'tour_slug',
+  name: 'tourSlug',
   type: 'slug',
   options: {
-    source: `tour_name.en`,
+    source: `tourName.en`,
     maxLength: 96,
   },
 }

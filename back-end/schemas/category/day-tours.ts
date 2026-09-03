@@ -4,26 +4,26 @@ import {BASE_FIELDS} from '../common/base-fields'
 import {generate_field} from '../helper-functions'
 
 export default {
-  name: 'day-tours',
+  name: 'tourDaily',
   type: 'document',
   icon: GiWalk,
   title: 'Tour Hàng Ngày',
-  fields: [generate_field('Mã tour', 'tour_id', 'string', 'DL-'), ...BASE_FIELDS],
+  fields: [generate_field('Mã tour', 'tourID', 'string', 'DL-'), ...BASE_FIELDS],
 
   preview: {
     select: {
-      id: 'tour_id',
-      img: 'img_cover',
-      title: `tour_name.vn`,
-      isHot: 'best_sell',
-      price: 'tour_price.pax2',
+      id: 'tourID',
+      img: 'coverImg',
+      title: `tourName.vn`,
+      isHot: 'bestSellerTour',
+      price: 'tourPrice.pax2',
     },
     prepare(selection: any) {
       const {title, isHot, price, id, img} = selection
       return {
         media: img,
-        title: `${id} - ${title}`,
-        subtitle: `${isHot ? '"Best Sell" từ' : 'Từ'} ${add_thousand_separator(price)} vnđ  `,
+        title: `${id || ''} - ${title || ''}`,
+        subtitle: `${isHot ? '"Best Sell" từ' : 'Từ'} ${add_thousand_separator(String(price || ''))} vnđ  `,
       }
     },
   },

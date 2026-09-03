@@ -2,18 +2,18 @@ import {GiChecklist} from 'react-icons/gi'
 
 export default {
   title: 'Các Hạng Mục Bao Gồm',
-  name: 'tour_includes',
+  name: 'tourIncludes',
   icon: GiChecklist,
   type: 'document',
   fields: [
     {
       title: 'Tour Type',
-      name: 'tour_type',
+      name: 'tourType',
       type: 'string',
     },
     {
       title: 'Tour Inclusions',
-      name: 'tour_includes',
+      name: 'tourIncludes',
       type: 'array',
       of: [
         {
@@ -24,14 +24,14 @@ export default {
   ],
   preview: {
     select: {
-      title: 'tour_type',
-      items: 'tour_includes',
+      title: 'tourType',
+      items: 'tourIncludes',
     },
     prepare(selection: any) {
       const {title, items} = selection
       return {
         title,
-        subtitle: `Bao gồm ${items.length} mục `,
+        subtitle: `Bao gồm ${items?.length || 0} mục `,
       }
     },
   },

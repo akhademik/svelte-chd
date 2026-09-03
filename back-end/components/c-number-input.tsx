@@ -21,7 +21,7 @@ export const CNumberInput = (props: StringInputProps) => {
     [onChange],
   )
   return (
-    <Stack space={3}>
+    <Stack gap={3}>
       <div style={{display: 'flex', alignItems: 'center', columnGap: '5px'}}>
         <TextInput
           {...elementProps}

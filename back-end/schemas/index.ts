@@ -1,4 +1,5 @@
 import day_tours from './category/day-tours'
+import exchangeRates from './category/exchange-rates'
 import highland_tours from './category/highland-tours'
 import tour_highlights from './category/tour-highlights'
 import tour_includes from './category/tour-includes'
@@ -21,4 +22,5 @@ export const schemaTypes = [
   tour_highlights,
   tour_includes,
   tour_tags,
+  exchangeRates,
 ]

@@ -36,7 +36,7 @@ export const locale_slug = {
     name: locale.id,
     type: 'slug',
     options: {
-      source: `tour_name.${locale.id}`,
+      source: `tourName.${locale.id}`,
       maxLength: 96,
     },
     fieldset: locale.isDefault ? null : 'translations',

@@ -2,19 +2,19 @@ import {GiStarKey} from 'react-icons/gi'
 
 export default {
   title: 'Các Điểm Nổi Bật',
-  name: 'tour_highlights',
+  name: 'tourHighlights',
   icon: GiStarKey,
   type: 'document',
   fields: [
     {
       title: 'Các điểm chính trong tour',
-      name: 'tour_highlights',
+      name: 'tourHighlights',
       type: 'locale_string',
     },
   ],
   preview: {
     select: {
-      title: `tour_highlights.vn`,
+      title: 'tourHighlights.vn',
     },
   },
 }
