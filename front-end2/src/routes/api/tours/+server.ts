@@ -57,8 +57,11 @@ const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
 	if (!writeClient) return
 	try {
 		const today = new Date().toISOString().split('T')[0]
+		const latestRateId = 'exchange-rates-latest'
+
+		// 1. Create or overwrite the singleton latest exchange rate document
 		await writeClient.createOrReplace({
-			_id: 'exchange-rates-latest',
+			_id: latestRateId,
 			_type: 'exchangeRates',
 			exchangeDate: today,
 			rates: {
@@ -67,6 +70,39 @@ const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
 				rateEUR: eurRate > 0 ? Math.round(1 / eurRate) : 26000,
 			},
 		})
+
+		// 2. Link all tour documents to this latest rate doc
+		const toursWithOldRef = await writeClient.fetch<Array<{ _id: string; exchangeRates?: { _ref: string } }>>(
+			`*[_type in ['tourDaily', 'tourCentral', 'day-tours', 'highland-tours'] && defined(exchangeRates) && exchangeRates._ref != $latestId]{_id, exchangeRates}`,
+			{ latestId: latestRateId }
+		)
+
+		for (const tour of toursWithOldRef) {
+			await writeClient
+				.patch(tour._id)
+				.set({
+					exchangeRates: {
+						_type: 'reference',
+						_ref: latestRateId,
+					},
+				})
+				.commit()
+		}
+
+		// 3. Clean up obsolete old exchange rate documents (e.g. from 2023)
+		const oldRateDocs = await writeClient.fetch<Array<{ _id: string }>>(
+			`*[_type == 'exchangeRates' && _id != $latestId && !(_id in path('drafts.**'))]{_id}`,
+			{ latestId: latestRateId }
+		)
+
+		for (const oldDoc of oldRateDocs) {
+			try {
+				await writeClient.delete(oldDoc._id)
+			} catch (delErr) {
+				// Ignore if any referenced constraint prevents deletion temporarily
+				console.warn(`[Sanity Rate Cleanup Note]: Could not delete old doc ${oldDoc._id}`, delErr)
+			}
+		}
 	} catch (err) {
 		console.error('[Sanity Rate Sync Error]:', err)
 	}
@@ -74,7 +110,7 @@ const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
 
 const fallback_exchange_rate_from_sanity = async () => {
 	try {
-		const doc = await client.fetch(`*[_type == 'exchangeRates'] | order(_updatedAt desc)[0]`)
+		const doc = await client.fetch(`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]`)
 		if (doc?.rates?.rateUSD && doc?.rates?.rateEUR) {
 			return {
 				USD: 1 / doc.rates.rateUSD,
@@ -84,7 +120,7 @@ const fallback_exchange_rate_from_sanity = async () => {
 	} catch (err) {
 		console.error('[Sanity Rate Fallback Error]:', err)
 	}
-	return { USD: 0.000039, EUR: 0.000037 }
+	return { USD: 0.00003841, EUR: 0.00003317 }
 }
 
 const fetch_exchange_rate = async () => {
