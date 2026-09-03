@@ -62,11 +62,30 @@
 								class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
 								loading="lazy" />
 						{/if}
+						{#if tour.best_sell}
+							<span
+								class="absolute right-3 top-3 bg-terracotta px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-md">
+								★ Best Sell
+							</span>
+						{/if}
 						<span
 							class="absolute left-3 top-3 bg-stone-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wider text-stone-100 backdrop-blur-sm">
 							{duration}
 						</span>
 					</div>
+
+					{#if tour.tour_tags?.length}
+						<div class="mb-3 flex flex-wrap gap-1.5">
+							{#each tour.tour_tags as tag}
+								{@const tagName = tag?.tour_tags?.[$locale] || tag?.tour_tags?.en || tag?.tourTags?.[$locale] || tag?.tourTags?.en}
+								{#if tagName}
+									<span class="border border-stone-200 bg-stone-50 px-2 py-0.5 text-[9px] font-medium tracking-wide text-stone-600">
+										#{tagName}
+									</span>
+								{/if}
+							{/each}
+						</div>
+					{/if}
 
 					<div class="flex flex-1 flex-col justify-between">
 						<div>

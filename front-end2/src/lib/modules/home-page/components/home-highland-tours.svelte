@@ -45,7 +45,7 @@
 				<div
 					class="group grid grid-cols-1 overflow-hidden border border-stone-200/90 bg-white lg:grid-cols-12">
 					<div
-						class={`aspect-[16/10] cursor-pointer overflow-hidden bg-stone-200 lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}
+						class={`relative aspect-[16/10] cursor-pointer overflow-hidden bg-stone-200 lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}
 						role="button"
 						tabindex="0"
 						onclick={() => tour_modal.open(tour)}
@@ -62,16 +62,32 @@
 								class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 								loading="lazy" />
 						{/if}
+						{#if tour.best_sell}
+							<span
+								class="absolute left-4 top-4 bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-md">
+								★ Best Sell
+							</span>
+						{/if}
 					</div>
 
 					<div
 						class={`flex flex-col justify-between p-6 sm:p-8 lg:col-span-5 lg:p-10 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
 						<div>
 							<div
-								class="mb-4 flex items-center gap-3 text-xs uppercase tracking-wider text-stone-400">
+								class="mb-3 flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-stone-400">
 								<span>{duration}</span>
 								<span>•</span>
 								<span>Central Highlands</span>
+								{#if tour.tour_tags?.length}
+									{#each tour.tour_tags as tag}
+										{@const tagName = tag?.tour_tags?.[$locale] || tag?.tour_tags?.en || tag?.tourTags?.[$locale] || tag?.tourTags?.en}
+										{#if tagName}
+											<span class="rounded bg-stone-100 px-2 py-0.5 text-[9px] font-medium tracking-wide text-stone-700">
+												#{tagName}
+											</span>
+										{/if}
+									{/each}
+								{/if}
 							</div>
 
 							<h3

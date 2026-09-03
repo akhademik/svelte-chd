@@ -1,14 +1,22 @@
-import { EXCHANGE_API_KEY, EXCHANGE_URL, VITE_SANITY_ID } from '$env/static/private'
+import { EXCHANGE_API_KEY, EXCHANGE_URL, SANITY_WRITE_TOKEN, VITE_SANITY_ID } from '$env/static/private'
 import { type ClientConfig, createClient } from '@sanity/client'
 
 const config: ClientConfig = {
 	projectId: VITE_SANITY_ID,
 	dataset: 'production',
 	useCdn: true,
-	apiVersion: '2023-11-03', // use current date (YYYY-MM-DD) to target the latest API version
+	apiVersion: '2023-11-03',
 }
 
 const client = createClient(config)
+
+const writeClient = SANITY_WRITE_TOKEN
+	? createClient({
+			...config,
+			useCdn: false,
+			token: SANITY_WRITE_TOKEN,
+		})
+	: null
 
 const extract_fields = `
 	"best_sell": coalesce(best_sell, bestSell, false),
@@ -19,7 +27,11 @@ const extract_fields = `
 	),
 	"tour_itinerary": coalesce(tour_itinerary, tourItinerary),
 	"tour_includes": coalesce(tour_includes->tour_includes, tourIncludes->tourIncludes, tour_includes->includes, []),
-	"tour_tags": coalesce(tour_tags, tourTags, []),
+	"tour_tags": coalesce(
+		tour_tags[]->{'tour_tags': coalesce(tour_tags, tourTags)},
+		tourTags[]->{'tour_tags': coalesce(tour_tags, tourTags)},
+		[]
+	),
 	"tour_price": coalesce(tour_price, tourPrice),
 	"tour_id": coalesce(tour_id, tourId, ''),
 	"img_tour": coalesce(img_tour, imgTour),
@@ -41,13 +53,64 @@ const extract_fields = `
 	"tour_name": coalesce(tour_name, tourName)
 `
 
+const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
+	if (!writeClient) return
+	try {
+		const today = new Date().toISOString().split('T')[0]
+		await writeClient.createOrReplace({
+			_id: 'exchange-rates-latest',
+			_type: 'exchangeRates',
+			exchangeDate: today,
+			rates: {
+				_type: 'object',
+				rateUSD: usdRate > 0 ? Math.round(1 / usdRate) : 24000,
+				rateEUR: eurRate > 0 ? Math.round(1 / eurRate) : 26000,
+			},
+		})
+	} catch (err) {
+		console.error('[Sanity Rate Sync Error]:', err)
+	}
+}
+
+const fallback_exchange_rate_from_sanity = async () => {
+	try {
+		const doc = await client.fetch(`*[_type == 'exchangeRates'] | order(_updatedAt desc)[0]`)
+		if (doc?.rates?.rateUSD && doc?.rates?.rateEUR) {
+			return {
+				USD: 1 / doc.rates.rateUSD,
+				EUR: 1 / doc.rates.rateEUR,
+			}
+		}
+	} catch (err) {
+		console.error('[Sanity Rate Fallback Error]:', err)
+	}
+	return { USD: 0.000039, EUR: 0.000037 }
+}
+
 const fetch_exchange_rate = async () => {
-	const url = EXCHANGE_URL
-	const query = `${EXCHANGE_API_KEY}/latest/VND`
-	const result = await fetch(url + query)
-	const data = await result.json()
-	const extracted_rates = { USD: data.conversion_rates.USD, EUR: data.conversion_rates.EUR }
-	return extracted_rates
+	try {
+		const url = EXCHANGE_URL
+		const query = `${EXCHANGE_API_KEY}/latest/VND`
+		const result = await fetch(url + query, { signal: AbortSignal.timeout(4000) })
+		if (!result.ok) throw new Error(`Exchange API returned ${result.status}`)
+		const data = await result.json()
+
+		if (data?.conversion_rates?.USD && data?.conversion_rates?.EUR) {
+			const extracted_rates = {
+				USD: data.conversion_rates.USD,
+				EUR: data.conversion_rates.EUR,
+			}
+
+			// Background sync to Sanity database
+			sync_rate_to_sanity(extracted_rates.USD, extracted_rates.EUR).catch(() => {})
+
+			return extracted_rates
+		}
+		throw new Error('Invalid rate format from API')
+	} catch (error) {
+		console.warn('[Exchange Rate API Failed, using Sanity fallback]:', error)
+		return await fallback_exchange_rate_from_sanity()
+	}
 }
 
 const fetch_data = async (db_name: string) => {

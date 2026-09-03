@@ -3,16 +3,22 @@ import type { Tour } from '$lib/types/tour.type'
 
 import { get_exchange_rate } from './sanity'
 
-export const format_price = (price: number, locale: Locales) => {
-	const locale_table = {
-		vn: { currency: 'VN', symbol: 'đ' },
-		en: { currency: 'USD', symbol: '$' },
-		fr: { currency: 'EUR', symbol: '€' },
+export const format_price = (price: number, locale: Locales | string = 'en') => {
+	const currentLocale = (locale || 'en') as Locales
+	if (currentLocale === 'vn') {
+		return `đ ${Math.round(price).toLocaleString('vi-VN')}`
 	}
-	const { currency, symbol } = locale_table[locale]
-	const rate = get_exchange_rate(currency)
+
+	if (currentLocale === 'fr') {
+		const rate = get_exchange_rate('EUR')
+		const final_price = Math.round(price * rate)
+		return `€ ${final_price.toLocaleString('fr-FR')}`
+	}
+
+	// Default to 'en' (USD)
+	const rate = get_exchange_rate('USD')
 	const final_price = Math.round(price * rate)
-	return `${symbol} ${final_price.toLocaleString('en-us')}`
+	return `$ ${final_price.toLocaleString('en-US')}`
 }
 
 export const format_pax_no = (key: string) => {

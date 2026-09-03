@@ -4,6 +4,7 @@
 	import { get_sanity_data } from '$lib/utils/sanity'
 	import HomeContact from './components/home-contact.svelte'
 	import HomeDayTours from './components/home-day-tours.svelte'
+	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
 	import HomeHighlandTours from './components/home-highland-tours.svelte'
 
@@ -46,6 +47,7 @@
 	<BaseLoading />
 {:else}
 	<HomeHero />
+	<HomeFeaturedSlider tours={allTours} />
 	<HomeDayTours tours={dayTours} />
 	<HomeHighlandTours tours={highlandTours} />
 	<HomeContact
