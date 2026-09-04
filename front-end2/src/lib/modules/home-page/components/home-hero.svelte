@@ -70,9 +70,13 @@
 				</svg>
 			</a>
 			<a
-				href="#contact"
+				href={`/${$locale}/contact`}
 				class="inline-flex w-full items-center justify-center border border-stone-300 px-8 py-4 text-xs uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-100 sm:w-auto">
-				{$locale === 'vn' ? 'Tư vấn riêng' : $locale === 'fr' ? 'Sur mesure' : 'Private Inquiries'}
+				{$locale === 'vn'
+					? 'Liên hệ / Tư vấn'
+					: $locale === 'fr'
+						? 'Contact / Sur mesure'
+						: 'Contact Us'}
 			</a>
 		</div>
 	</div>

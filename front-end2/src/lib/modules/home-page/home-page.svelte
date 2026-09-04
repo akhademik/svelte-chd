@@ -2,7 +2,6 @@
 	import { BaseLoading } from '$lib/base'
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_sanity_data } from '$lib/utils/sanity'
-	import HomeContact from './components/home-contact.svelte'
 	import HomeDayTours from './components/home-day-tours.svelte'
 	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
@@ -14,7 +13,7 @@
 		data?: any
 	}
 
-	let { data }: Props = $props()
+	let { data: _data }: Props = $props()
 
 	let dayTours = $state<Tour[]>([])
 	let highlandTours = $state<Tour[]>([])
@@ -48,7 +47,4 @@
 	<HomeFeaturedSlider tours={allTours} />
 	<HomeDayTours tours={dayTours} />
 	<HomeHighlandTours tours={highlandTours} />
-	<HomeContact
-		{data}
-		{allTours} />
 {/if}
