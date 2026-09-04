@@ -4,7 +4,6 @@
 	import { booking_modal } from '$lib/stores/booking-store'
 	import { tour_modal } from '$lib/stores/modal-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { format_price } from '$lib/utils/format-data'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 
 	interface Props {
@@ -39,7 +38,6 @@
 		<div class="space-y-12">
 			{#each tours as tour, index (tour.tour_id || get_tour_slug(tour))}
 				{@const title = tour.tour_name?.[$locale] || tour.tour_name?.en || 'Highland Tour'}
-				{@const price = tour.tour_price?.pax2 || tour.tour_price?.pax1 || 0}
 				{@const duration = tour.tour_duration?.[$locale] || 'Multi-day'}
 
 				<div
@@ -125,45 +123,34 @@
 							{/if}
 						</div>
 
-						<div class="flex items-center justify-between border-t border-stone-100 pt-6">
-							<div>
-								<span class="block text-[10px] uppercase tracking-wider text-stone-400">
-									{$LL.tours.price_from()}
-								</span>
-								<span class="text-base font-medium text-stone-900">
-									{format_price(price, $locale)}
-									<span class="text-xs font-normal text-stone-400">/ pax</span>
-								</span>
-							</div>
-
-							<div class="flex items-center gap-3">
-								<button
-									onclick={() => tour_modal.open(tour)}
-									class="flex items-center gap-1 text-xs font-medium uppercase tracking-wider text-stone-600 transition-colors hover:text-terracotta">
-									<span>{$LL.tours.click_detail()}</span>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-3.5 w-3.5"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"
-										stroke-linecap="round"
-										stroke-linejoin="round">
-										<line
-											x1="5"
-											y1="12"
-											x2="19"
-											y2="12"></line>
-										<polyline points="12 5 19 12 12 19"></polyline>
-									</svg>
-								</button>
-								<button
-									onclick={() => booking_modal.open(title)}
-									class="bg-stone-900 px-4 py-2 text-xs uppercase tracking-widest text-stone-50 transition-colors hover:bg-stone-800 sm:px-5 sm:py-2.5">
-									{$locale === 'vn' ? 'Đặt Tour' : 'Book'}
-								</button>
-							</div>
+						<div
+							class="-mx-6 -mb-6 mt-6 flex items-center justify-between border-t border-stone-100 bg-stone-50/50 px-6 py-4 sm:-mx-8 sm:-mb-8 sm:px-8 lg:-mx-10 lg:-mb-10 lg:px-10">
+							<button
+								onclick={() => tour_modal.open(tour)}
+								class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-colors hover:text-stone-950">
+								<span>{$LL.tours.click_detail()}</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-3.5 w-3.5"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round">
+									<line
+										x1="5"
+										y1="12"
+										x2="19"
+										y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</button>
+							<button
+								onclick={() => booking_modal.open(title)}
+								class="bg-stone-900 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">
+								{$locale === 'vn' ? 'Đặt Tour' : 'Book Tour'}
+							</button>
 						</div>
 					</div>
 				</div>

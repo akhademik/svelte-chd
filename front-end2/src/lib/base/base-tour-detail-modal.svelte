@@ -261,7 +261,7 @@
 
 					<!-- Quick Highlights Bar -->
 					<div
-						class="grid grid-cols-2 gap-3 border border-stone-200/90 bg-white p-4 text-xs shadow-sm sm:grid-cols-4 sm:gap-4">
+						class="grid grid-cols-3 gap-3 border border-stone-200/90 bg-white p-4 text-xs shadow-sm sm:gap-4">
 						<div>
 							<span class="mb-0.5 block text-[10px] uppercase tracking-wider text-stone-400">
 								{activeLang === 'vn' ? 'Khởi hành' : activeLang === 'fr' ? 'Départ' : 'Departure'}
@@ -283,14 +283,6 @@
 										: 'Group Size'}
 							</span>
 							<span class="font-medium text-stone-800">1 - 10+ {$LL.tours.detail.pax()}</span>
-						</div>
-						<div>
-							<span class="mb-0.5 block text-[10px] uppercase tracking-wider text-stone-400">
-								{$LL.tours.price_from()}
-							</span>
-							<span class="text-sm font-semibold text-terracotta">
-								{format_price(minPrice, activeLang)}
-							</span>
 						</div>
 					</div>
 
@@ -399,31 +391,6 @@
 
 						<!-- Price Table -->
 						<div class="border border-stone-200/90 bg-white p-4 shadow-sm sm:p-5">
-							<h4
-								class="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-900">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-4 w-4 text-stone-600"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round">
-									<rect
-										x="2"
-										y="5"
-										width="20"
-										height="14"
-										rx="2"></rect>
-									<line
-										x1="2"
-										y1="10"
-										x2="22"
-										y2="10"></line>
-								</svg>
-								<span>{$LL.tours.detail.price()}</span>
-							</h4>
 							{#if prices.length > 0}
 								<div class="overflow-x-auto">
 									<table class="w-full text-left text-xs">
@@ -461,20 +428,8 @@
 
 				<!-- Modal Footer (Sticky bottom) -->
 				<div
-					class="sticky bottom-0 z-10 flex flex-col items-center justify-between gap-3 border-t border-stone-200 bg-white px-4 py-3.5 sm:flex-row sm:px-6 sm:py-4">
-					<div class="flex w-full items-baseline justify-between gap-2 sm:w-auto sm:justify-start">
-						<span class="text-[10px] uppercase tracking-wider text-stone-400">
-							{$LL.tours.price_from()}
-						</span>
-						<div>
-							<span class="font-serif text-xl font-normal text-stone-950 sm:text-2xl">
-								{format_price(minPrice, activeLang)}
-							</span>
-							<span class="text-xs font-light text-stone-500"> / {$LL.tours.detail.pax()}</span>
-						</div>
-					</div>
-
-					<div class="flex w-full items-center gap-3 sm:w-auto">
+					class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-stone-200 bg-white px-4 py-3.5 sm:px-6 sm:py-4">
+					<div class="flex w-full items-center justify-end gap-3 sm:w-auto">
 						<button
 							onclick={close}
 							class="w-1/2 border border-stone-300 px-5 py-2.5 text-xs uppercase tracking-wider text-stone-700 transition-colors hover:border-stone-900 hover:text-stone-900 sm:w-auto">
