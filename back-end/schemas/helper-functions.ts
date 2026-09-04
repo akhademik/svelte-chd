@@ -34,7 +34,7 @@ export const gen_price_range = (_range: PriceRange[]) => {
     const price: any = {
       title: each_price.title,
       name: each_price.id,
-      type: 'string',
+      type: 'number',
       fieldset: 'price_range',
       components: {
         input: CNumberInput,

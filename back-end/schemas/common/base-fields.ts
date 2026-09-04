@@ -1,6 +1,12 @@
 import {generate_field} from '../helper-functions'
 import {img_cover, img_tour} from './type-img'
-import {tour_highlights_ref, tour_includes_ref, tour_slug, tour_tags_ref} from './type-tour'
+import {
+  exchange_rates_ref,
+  tour_highlights_ref,
+  tour_includes_ref,
+  tour_slug,
+  tour_tags_ref,
+} from './type-tour'
 
 export const BASE_FIELDS = [
   generate_field('Bán chạy', 'bestSellerTour', 'boolean', false),
@@ -15,4 +21,5 @@ export const BASE_FIELDS = [
   tour_tags_ref,
   generate_field('Lịch trình chi tiết', 'tourItinerary', 'locale_content'),
   generate_field('Giá tour', 'tourPrice', 'tour_price'),
+  exchange_rates_ref,
 ]

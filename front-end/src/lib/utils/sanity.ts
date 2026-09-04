@@ -32,6 +32,9 @@ const persist_data = {
 }
 
 export const get_sanity_data = async (page: Page) => {
+	if (typeof window === 'undefined') {
+		return []
+	}
 	const db_name = page.url.pathname.split('/')[2]
 	const time_now = Date.now()
 	const one_day = 1000 * 60 * 60 * 24
@@ -41,14 +44,19 @@ export const get_sanity_data = async (page: Page) => {
 
 	if (!data || !less_than_24h) {
 		logger.log(`Fetching fresh Sanity data for: ${db_name}`)
-		const res = await fetch(`/api/tours?${db_name}`)
-		data = await res.json()
-		logger.log(`Received ${data?.tours?.length || 0} tours for: ${db_name}`, data)
-		persist_data.set(db_name, data)
+		try {
+			const res = await fetch(`/api/tours?${db_name}`)
+			data = await res.json()
+			logger.log(`Received ${data?.tours?.length || 0} tours for: ${db_name}`, data)
+			persist_data.set(db_name, data)
+		} catch (e) {
+			logger.log(`Error fetching Sanity data for ${db_name}:`, e)
+			return []
+		}
 	} else {
 		logger.log(`Using cached data for: ${db_name}`)
 	}
-	return data.tours
+	return data?.tours || []
 }
 
 export const get_tour_slug = (tour: Tour, lang: string = 'en') => {

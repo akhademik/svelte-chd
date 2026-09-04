@@ -80,9 +80,14 @@
 								<span>Central Highlands</span>
 								{#if tour.tour_tags?.length}
 									{#each tour.tour_tags as tag}
-										{@const tagName = tag?.tour_tags?.[$locale] || tag?.tour_tags?.en || tag?.tourTags?.[$locale] || tag?.tourTags?.en}
+										{@const tagName =
+											tag?.tour_tags?.[$locale] ||
+											tag?.tour_tags?.en ||
+											tag?.tourTags?.[$locale] ||
+											tag?.tourTags?.en}
 										{#if tagName}
-											<span class="rounded bg-stone-100 px-2 py-0.5 text-[9px] font-medium tracking-wide text-stone-700">
+											<span
+												class="rounded bg-stone-100 px-2 py-0.5 text-[9px] font-medium tracking-wide text-stone-700">
 												#{tagName}
 											</span>
 										{/if}

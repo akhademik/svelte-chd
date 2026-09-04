@@ -72,3 +72,15 @@ export const tour_slug = {
     maxLength: 96,
   },
 }
+
+export const exchange_rates_ref = {
+  title: 'Tỉ giá quy đổi',
+  name: 'exchangeRates',
+  type: 'reference',
+  to: [
+    {
+      type: 'exchangeRates',
+    },
+  ],
+  readOnly: true,
+}

@@ -4,7 +4,6 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Locales } from '$i18n/i18n-types'
 	import { booking_modal } from '$lib/stores/booking-store'
-	import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 	import { tour_modal } from '$lib/stores/modal-store'
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
 	import { url_for } from '$lib/utils/sanity'
@@ -12,7 +11,6 @@
 
 	let isOpen = $derived($tour_modal.isOpen)
 	let tour = $derived($tour_modal.tour)
-	let rates = $derived($exchange_rates_store)
 	let activeLang = $derived(($page.params.lang as Locales) || $locale || 'en')
 
 	let title = $derived(tour?.tour_name?.[activeLang] || tour?.tour_name?.en || 'Tour')
@@ -149,7 +147,11 @@
 							{/if}
 							{#if tourTags?.length}
 								{#each tourTags as tag}
-									{@const tagName = tag?.tour_tags?.[activeLang] || tag?.tour_tags?.en || tag?.tourTags?.[activeLang] || tag?.tourTags?.en}
+									{@const tagName =
+										tag?.tour_tags?.[activeLang] ||
+										tag?.tour_tags?.en ||
+										tag?.tourTags?.[activeLang] ||
+										tag?.tourTags?.en}
 									{#if tagName}
 										<span
 											class="border border-stone-200 bg-stone-100 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-stone-700">
@@ -176,28 +178,49 @@
 					{#if allImages.length > 0}
 						<div class="space-y-3">
 							<!-- Main Featured Image -->
-							<div class="relative aspect-[16/10] overflow-hidden bg-stone-200 shadow-sm sm:aspect-[16/9]">
+							<div
+								class="relative aspect-[16/10] overflow-hidden bg-stone-200 shadow-sm sm:aspect-[16/9]">
 								<img
-									src={url_for(allImages[activeImageIndex]).width(1000).height(625).auto('format').quality(85).url()}
+									src={url_for(allImages[activeImageIndex])
+										.width(1000)
+										.height(625)
+										.auto('format')
+										.quality(85)
+										.url()}
 									alt={allImages[activeImageIndex]?.caption || title}
 									class="h-full w-full object-cover transition-all duration-300" />
 
 								{#if allImages.length > 1}
 									<button
 										type="button"
-										onclick={() => (activeImageIndex = (activeImageIndex - 1 + allImages.length) % allImages.length)}
+										onclick={() =>
+											(activeImageIndex =
+												(activeImageIndex - 1 + allImages.length) % allImages.length)}
 										class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
 										aria-label="Previous image">
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
 									</button>
 									<button
 										type="button"
 										onclick={() => (activeImageIndex = (activeImageIndex + 1) % allImages.length)}
 										class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
 										aria-label="Next image">
-										<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											class="h-4 w-4"
+											viewBox="0 0 24 24"
+											fill="none"
+											stroke="currentColor"
+											stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
 									</button>
-									<div class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[11px] font-light text-white backdrop-blur-sm">
+									<div
+										class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[11px] font-light text-white backdrop-blur-sm">
 										{activeImageIndex + 1} / {allImages.length}
 									</div>
 								{/if}
@@ -211,10 +234,17 @@
 											type="button"
 											onclick={() => (activeImageIndex = idx)}
 											class={`relative aspect-[16/10] h-16 shrink-0 overflow-hidden border-2 transition-all ${
-												activeImageIndex === idx ? 'border-terracotta opacity-100 scale-105' : 'border-transparent opacity-60 hover:opacity-100'
+												activeImageIndex === idx
+													? 'scale-105 border-terracotta opacity-100'
+													: 'border-transparent opacity-60 hover:opacity-100'
 											}`}>
 											<img
-												src={url_for(imgItem).width(160).height(100).auto('format').quality(70).url()}
+												src={url_for(imgItem)
+													.width(160)
+													.height(100)
+													.auto('format')
+													.quality(70)
+													.url()}
 												alt={`Thumbnail ${idx + 1}`}
 												class="h-full w-full object-cover" />
 										</button>
@@ -241,7 +271,11 @@
 						</div>
 						<div>
 							<span class="mb-0.5 block text-[10px] uppercase tracking-wider text-stone-400">
-								{activeLang === 'vn' ? 'Quy mô nhóm' : activeLang === 'fr' ? 'Groupe' : 'Group Size'}
+								{activeLang === 'vn'
+									? 'Quy mô nhóm'
+									: activeLang === 'fr'
+										? 'Groupe'
+										: 'Group Size'}
 							</span>
 							<span class="font-medium text-stone-800">1 - 10+ {$LL.tours.detail.pax()}</span>
 						</div>
@@ -279,7 +313,8 @@
 								{#each highlights as item}
 									{@const hlText = item?.highlights?.[activeLang] || item?.highlights?.en || ''}
 									{#if hlText}
-										<div class="flex items-start gap-3 text-xs font-light text-stone-700 sm:text-sm">
+										<div
+											class="flex items-start gap-3 text-xs font-light text-stone-700 sm:text-sm">
 											<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
 											<span>{hlText}</span>
 										</div>
