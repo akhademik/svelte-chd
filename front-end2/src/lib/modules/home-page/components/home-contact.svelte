@@ -126,11 +126,39 @@
 					</div>
 				</div>
 
-				<div class="mt-12 border-t border-stone-200 pt-8">
-					<span class="mb-2 block text-xs uppercase tracking-wider text-stone-400">
-						{$locale === 'vn' ? 'Thời gian làm việc' : 'Operating Hours'}
-					</span>
-					<p class="text-xs font-light text-stone-600">08:00 – 18:00 (Mon – Sun)</p>
+				<div class="mt-8 space-y-4 border-t border-stone-200 pt-6">
+					<div>
+						<span class="mb-1 block text-xs uppercase tracking-wider text-stone-400">
+							{$locale === 'vn' ? 'Thời gian làm việc' : 'Operating Hours'}
+						</span>
+						<p class="text-xs font-light text-stone-600">08:00 – 18:00 (Mon – Sun)</p>
+					</div>
+
+					<!-- Google Maps Mini-Map Preview -->
+					<div class="overflow-hidden border border-stone-200 bg-stone-100">
+						<iframe
+							title="CHD Travel Location"
+							src="https://maps.google.com/maps?q=09+Nguyen+Binh,+Tan+Loi,+Buon+Ma+Thuot,+Dak+Lak,+Vietnam&t=&z=15&ie=UTF8&iwloc=&output=embed"
+							width="100%"
+							height="180"
+							style="border:0;"
+							allowfullscreen={false}
+							loading="lazy"
+							referrerpolicy="no-referrer-when-downgrade"
+							class="w-full">
+						</iframe>
+						<div
+							class="flex items-center justify-between bg-stone-50 px-3 py-2 text-[11px] text-stone-600">
+							<span class="font-medium text-stone-800">CHD Travel • Buôn Ma Thuột</span>
+							<a
+								href="https://maps.app.goo.gl/mr8NYztsShiNjfKQ9"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="font-medium text-terracotta hover:underline">
+								{$locale === 'vn' ? 'Xem trên Google Maps ↗' : 'View on Google Maps ↗'}
+							</a>
+						</div>
+					</div>
 				</div>
 			</div>
 

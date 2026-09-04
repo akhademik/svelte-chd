@@ -11,6 +11,11 @@
 	}
 
 	let { tours }: Props = $props()
+
+	let displayTours = $derived.by(() => {
+		const hot = tours.filter(t => t.best_sell)
+		return hot.length > 0 ? hot : tours
+	})
 </script>
 
 <section
@@ -36,7 +41,7 @@
 		</div>
 
 		<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each tours as tour (tour.tour_id || get_tour_slug(tour))}
+			{#each displayTours as tour (tour.tour_id || get_tour_slug(tour))}
 				{@const title = tour.tour_name?.[$locale] || tour.tour_name?.en || 'Tour'}
 				{@const duration = tour.tour_duration?.[$locale] || '1 Day'}
 
@@ -93,15 +98,16 @@
 					<div class="flex flex-1 flex-col justify-between">
 						<div>
 							<h3
-								class="mb-2 line-clamp-2 min-h-[3.5rem] font-serif text-xl text-stone-900 transition-colors group-hover:text-terracotta">
+								class="mb-2 font-serif text-xl text-stone-900 transition-colors group-hover:text-terracotta">
 								<button
 									type="button"
-									class="text-left font-serif text-xl font-normal text-stone-900 transition-colors hover:text-terracotta"
+									class="line-clamp-2 h-14 text-left font-serif text-xl font-normal text-stone-900 transition-colors hover:text-terracotta"
 									onclick={() => tour_modal.open(tour)}>
 									{title}
 								</button>
 							</h3>
-							<div class="mb-6 line-clamp-3 text-xs font-light leading-relaxed text-stone-500">
+							<div
+								class="mb-6 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-stone-500">
 								<PortableText
 									value={tour.tour_intro?.[$locale] || []}
 									components={{}} />

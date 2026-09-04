@@ -24,7 +24,7 @@ const writeClient = SANITY_WRITE_TOKEN
 	: null
 
 const extract_fields = `
-	"best_sell": coalesce(best_sell, bestSell, false),
+	"best_sell": coalesce(best_sell, bestSellerTour, bestSell, false),
 	"tour_highlights": coalesce(
 		tour_highlights[]->{'highlights': coalesce(tour_highlights, highlights)},
 		tourHighlights[]->{'highlights': coalesce(tour_highlights, tourHighlights, highlights)},

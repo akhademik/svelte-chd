@@ -6,7 +6,7 @@
 	import { booking_modal } from '$lib/stores/booking-store'
 	import { tour_modal } from '$lib/stores/modal-store'
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
-	import { url_for } from '$lib/utils/sanity'
+	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
 	let isOpen = $derived($tour_modal.isOpen)
@@ -37,14 +37,33 @@
 	})
 
 	let activeImageIndex = $state(0)
+	let previousPath = $state('')
 
 	$effect(() => {
-		if (isOpen) {
+		if (isOpen && tour) {
 			activeImageIndex = 0
 			const originalOverflow = document.body.style.overflow
 			document.body.style.overflow = 'hidden'
+
+			if (typeof window !== 'undefined') {
+				previousPath = window.location.pathname + window.location.search
+				const slug = get_tour_slug(tour, activeLang) || tour.tour_id || ''
+				const tourType =
+					tour.tour_duration?.vn?.includes('ngày') ||
+					tour.tour_duration?.en?.includes('day') ||
+					tour.tour_duration?.en?.includes('Day')
+						? 'day-tours'
+						: 'highland-tours'
+				if (slug && !window.location.pathname.includes(slug)) {
+					window.history.pushState({ modal: true }, '', `/${activeLang}/${tourType}/${slug}`)
+				}
+			}
+
 			return () => {
 				document.body.style.overflow = originalOverflow
+				if (typeof window !== 'undefined' && previousPath) {
+					window.history.pushState({}, '', previousPath)
+				}
 			}
 		}
 	})
@@ -184,16 +203,19 @@
 						<div class="space-y-3">
 							<!-- Main Featured Image -->
 							<div
-								class="relative aspect-[16/10] overflow-hidden bg-stone-200 shadow-sm sm:aspect-[16/9]">
-								<img
-									src={url_for(allImages[activeImageIndex])
-										.width(1000)
-										.height(625)
-										.auto('format')
-										.quality(85)
-										.url()}
-									alt={allImages[activeImageIndex]?.caption || title}
-									class="h-full w-full object-cover transition-all duration-300" />
+								class="relative aspect-[16/10] w-full overflow-hidden bg-stone-900 shadow-sm sm:aspect-[16/9]">
+								{#key activeImageIndex}
+									<img
+										transition:fade={{ duration: 200 }}
+										src={url_for(allImages[activeImageIndex])
+											.width(1000)
+											.height(625)
+											.auto('format')
+											.quality(85)
+											.url()}
+										alt={allImages[activeImageIndex]?.caption || title}
+										class="absolute inset-0 h-full w-full object-cover" />
+								{/key}
 
 								{#if allImages.length > 1}
 									<button
@@ -201,7 +223,7 @@
 										onclick={() =>
 											(activeImageIndex =
 												(activeImageIndex - 1 + allImages.length) % allImages.length)}
-										class="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+										class="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
 										aria-label="Previous image">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +236,7 @@
 									<button
 										type="button"
 										onclick={() => (activeImageIndex = (activeImageIndex + 1) % allImages.length)}
-										class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
+										class="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
 										aria-label="Next image">
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +247,7 @@
 											stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
 									</button>
 									<div
-										class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[11px] font-light text-white backdrop-blur-sm">
+										class="absolute bottom-3 right-3 z-10 rounded-full bg-black/60 px-2.5 py-0.5 text-[11px] font-light text-white backdrop-blur-sm">
 										{activeImageIndex + 1} / {allImages.length}
 									</div>
 								{/if}

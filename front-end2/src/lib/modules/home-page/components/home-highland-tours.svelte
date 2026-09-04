@@ -11,6 +11,11 @@
 	}
 
 	let { tours }: Props = $props()
+
+	let displayTours = $derived.by(() => {
+		const hot = tours.filter(t => t.best_sell)
+		return hot.length > 0 ? hot : tours
+	})
 </script>
 
 <section
@@ -36,7 +41,7 @@
 		</div>
 
 		<div class="space-y-12">
-			{#each tours as tour, index (tour.tour_id || get_tour_slug(tour))}
+			{#each displayTours as tour, index (tour.tour_id || get_tour_slug(tour))}
 				{@const title = tour.tour_name?.[$locale] || tour.tour_name?.en || 'Highland Tour'}
 				{@const duration = tour.tour_duration?.[$locale] || 'Multi-day'}
 

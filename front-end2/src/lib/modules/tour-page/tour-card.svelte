@@ -75,16 +75,17 @@
 			</div>
 
 			<h3
-				class="mb-3 line-clamp-2 min-h-[3.5rem] font-serif text-xl font-normal leading-snug text-stone-950 transition-colors group-hover:text-terracotta sm:text-2xl">
+				class="mb-3 font-serif text-xl font-normal leading-snug text-stone-950 transition-colors group-hover:text-terracotta sm:text-2xl">
 				<button
 					type="button"
-					class="text-left font-serif text-xl font-normal leading-snug text-stone-950 transition-colors hover:text-terracotta sm:text-2xl"
+					class="line-clamp-2 h-14 text-left font-serif text-xl font-normal leading-snug text-stone-950 transition-colors hover:text-terracotta sm:text-2xl"
 					onclick={() => tour_modal.open(tour)}>
 					{title}
 				</button>
 			</h3>
 
-			<div class="mb-2 line-clamp-3 text-xs font-light leading-relaxed text-stone-600">
+			<div
+				class="mb-2 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-stone-600">
 				<PortableText
 					value={tour_intro?.[$locale] || []}
 					components={{}} />
