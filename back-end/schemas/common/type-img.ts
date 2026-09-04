@@ -10,8 +10,12 @@ export const img_cover = {
     {
       name: 'caption',
       type: 'string',
-      title: 'Tiêu đề hình',
-      validation: (Rule: {required: () => any}) => Rule.required(),
+      title: 'Tiêu đề hình riêng (tùy chọn - mặc định lấy từ Media Library)',
+    },
+    {
+      name: 'alt',
+      type: 'string',
+      title: 'Mô tả hình Alt text (tùy chọn - mặc định lấy từ Media Library)',
     },
   ],
 }

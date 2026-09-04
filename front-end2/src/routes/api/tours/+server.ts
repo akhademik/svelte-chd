@@ -39,8 +39,36 @@ const extract_fields = `
 	),
 	"tour_price": coalesce(tour_price, tourPrice),
 	"tour_id": coalesce(tour_id, tourId, ''),
-	"img_tour": coalesce(img_tour, imgTour, []),
-	"img_cover": coalesce(img_cover, coverImg, imgCover),
+	"img_tour": coalesce(
+		img_tour[]{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		imgTour[]{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		[]
+	),
+	"img_cover": coalesce(
+		coverImg{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		img_cover{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		imgCover{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		}
+	),
 	"tour_duration": coalesce(tour_duration, tourDuration),
 	"tour_slug": coalesce(tour_slug, tourSlug),
 	"tour_intro": coalesce(tour_intro, tourIntro),
