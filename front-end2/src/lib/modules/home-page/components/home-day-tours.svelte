@@ -24,9 +24,6 @@
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 			<div>
-				<span class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
-					01 / Excursions
-				</span>
 				<h2 class="font-serif text-3xl font-normal text-stone-900 sm:text-4xl">
 					{$LL.nav_bar.day_tours()}
 				</h2>

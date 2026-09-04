@@ -111,8 +111,8 @@
 						</span>
 					</div>
 
-					<!-- Tour Title -->
-					<div class="mb-5 min-h-[4.5rem] sm:min-h-[5.5rem] lg:min-h-[6.5rem]">
+					<!-- Tour Title (Fixed Height Container) -->
+					<div class="mb-5 flex h-20 items-center sm:h-24 lg:h-28">
 						<h2
 							class="line-clamp-2 font-serif text-3xl font-normal leading-tight text-white sm:text-4xl lg:text-5xl">
 							<button
@@ -124,8 +124,8 @@
 						</h2>
 					</div>
 
-					<!-- Tour Highlights List -->
-					<div class="mb-8 min-h-[4.5rem] space-y-2">
+					<!-- Tour Highlights List (Fixed Height Container) -->
+					<div class="mb-8 flex h-20 flex-col justify-center space-y-2">
 						{#if currentTour.tour_highlights?.length}
 							{#each currentTour.tour_highlights.slice(0, 3) as item}
 								{@const hlText = item?.highlights?.[$locale] || item?.highlights?.en || ''}
@@ -140,10 +140,10 @@
 						{/if}
 					</div>
 
-					<!-- Tags -->
-					<div class="mb-8 flex min-h-[1.75rem] flex-wrap gap-2">
+					<!-- Tags (Fixed Height Container) -->
+					<div class="mb-8 flex h-7 flex-wrap items-center gap-2 overflow-hidden">
 						{#if currentTour.tour_tags?.length}
-							{#each currentTour.tour_tags as tag}
+							{#each currentTour.tour_tags.slice(0, 5) as tag}
 								{@const tagName =
 									tag?.tour_tags?.[$locale] ||
 									tag?.tour_tags?.en ||

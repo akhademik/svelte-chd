@@ -79,9 +79,20 @@
 			booking_modal.open(tourTitle)
 		}
 	}
+
+	const handleModalKeydown = (e: KeyboardEvent) => {
+		if (!isOpen) return
+		if (e.key === 'Escape') {
+			close()
+		} else if (e.key === 'ArrowLeft' && allImages.length > 1) {
+			activeImageIndex = (activeImageIndex - 1 + allImages.length) % allImages.length
+		} else if (e.key === 'ArrowRight' && allImages.length > 1) {
+			activeImageIndex = (activeImageIndex + 1) % allImages.length
+		}
+	}
 </script>
 
-<svelte:window onkeydown={e => e.key === 'Escape' && isOpen && close()} />
+<svelte:window onkeydown={handleModalKeydown} />
 
 {#if isOpen && tour}
 	<div

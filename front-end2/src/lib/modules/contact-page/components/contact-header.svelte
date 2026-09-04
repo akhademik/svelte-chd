@@ -3,7 +3,6 @@
 </script>
 
 <section class="mb-12 flex flex-col items-center gap-4 text-center">
-	<span class="text-xs font-medium uppercase tracking-[0.25em] text-stone-400"> 03 / Connect </span>
 	<h1 class="font-serif text-3xl font-normal text-stone-900 sm:text-5xl">
 		{$LL.contact_page.page.contact_us()}
 	</h1>

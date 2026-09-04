@@ -5,13 +5,18 @@
 <section
 	class="relative flex min-h-[85vh] items-center justify-center border-b border-stone-200 px-6">
 	<div class="mx-auto max-w-4xl py-20 text-center">
-		<p class="mb-6 text-xs font-medium uppercase tracking-[0.3em] text-stone-500">
-			{$locale === 'vn'
-				? 'Du lịch chậm & Trải nghiệm nguyên bản'
-				: $locale === 'fr'
-					? 'Voyage Lent & Rencontres Authentiques'
-					: 'Slow Travel & Authentic Encounters'}
-		</p>
+		<div class="mb-6 flex flex-col items-center gap-2">
+			<span class="font-serif text-sm italic tracking-widest text-terracotta">
+				"go local — see local — eat local"
+			</span>
+			<p class="text-xs font-medium uppercase tracking-[0.3em] text-stone-500">
+				{$locale === 'vn'
+					? 'Du lịch chậm & Trải nghiệm nguyên bản'
+					: $locale === 'fr'
+						? 'Voyage Lent & Rencontres Authentiques'
+						: 'Slow Travel & Authentic Encounters'}
+			</p>
+		</div>
 
 		<h1
 			class="mb-8 font-serif text-4xl font-normal leading-[1.15] tracking-tight text-stone-900 sm:text-6xl md:text-7xl">
