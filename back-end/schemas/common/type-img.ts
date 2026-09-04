@@ -6,18 +6,6 @@ export const img_cover = {
   options: {
     hotspot: true,
   },
-  fields: [
-    {
-      name: 'caption',
-      type: 'string',
-      title: 'Tiêu đề hình riêng (tùy chọn - mặc định lấy từ Media Library)',
-    },
-    {
-      name: 'alt',
-      type: 'string',
-      title: 'Mô tả hình Alt text (tùy chọn - mặc định lấy từ Media Library)',
-    },
-  ],
 }
 export const img_tour = {
   name: 'imgTour',
@@ -29,18 +17,6 @@ export const img_tour = {
       options: {
         hotspot: true,
       },
-      fields: [
-        {
-          name: 'caption',
-          type: 'string',
-          title: 'Tiêu đề hình / Tên hình (Caption)',
-        },
-        {
-          name: 'alt',
-          type: 'string',
-          title: 'Mô tả hình (Alt text)',
-        },
-      ],
     },
   ],
 }
