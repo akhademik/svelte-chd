@@ -18,6 +18,14 @@ export const locale_string = {
   fields: gen_locale_field(LOCALES, 'string'),
 }
 
+export const localeString = {
+  title: 'Localized string',
+  name: 'localeString',
+  type: 'object',
+  fieldsets: [locale_translations],
+  fields: gen_locale_field(LOCALES, 'string'),
+}
+
 export const locale_content = {
   title: 'Localized Content',
   name: 'locale_content',

@@ -19,6 +19,9 @@ export default {
         {
           type: 'locale_string',
         },
+        {
+          type: 'localeString',
+        },
       ],
     },
   ],
