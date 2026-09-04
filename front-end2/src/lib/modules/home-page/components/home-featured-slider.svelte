@@ -29,9 +29,17 @@
 		}
 	}
 
+	const handleKeydown = (e: KeyboardEvent) => {
+		if (e.key === 'ArrowRight') {
+			nextSlide()
+		} else if (e.key === 'ArrowLeft') {
+			prevSlide()
+		}
+	}
+
 	$effect(() => {
 		if (hotTours.length > 1) {
-			timer = setInterval(nextSlide, 6500)
+			timer = setInterval(nextSlide, 7000)
 			return () => clearInterval(timer)
 		}
 	})
@@ -46,14 +54,16 @@
 	)
 </script>
 
+<svelte:window onkeydown={handleKeydown} />
+
 {#if hotTours.length > 0 && currentTour}
 	<section class="relative overflow-hidden border-b border-stone-200 bg-stone-950 text-stone-100">
 		<!-- Background image with subtle overlay -->
-		<div class="absolute inset-0 z-0">
+		<div class="absolute inset-0 z-0 overflow-hidden bg-stone-950">
 			{#key currentIndex}
 				{#if currentTour.img_cover?.asset}
 					<img
-						transition:fade={{ duration: 800 }}
+						transition:fade={{ duration: 500 }}
 						src={url_for(currentTour.img_cover)
 							.width(1600)
 							.height(900)
@@ -61,7 +71,7 @@
 							.quality(80)
 							.url()}
 						alt={currentTour.img_cover?.caption || title}
-						class="h-full w-full object-cover opacity-35 brightness-90 filter" />
+						class="absolute inset-0 h-full w-full object-cover opacity-35 brightness-90 filter" />
 				{/if}
 			{/key}
 			<div
@@ -71,9 +81,9 @@
 
 		<div class="relative z-10 mx-auto max-w-6xl px-6 py-20 lg:py-28">
 			<div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
-				<div class="max-w-2xl">
+				<div class="w-full max-w-2xl">
 					<!-- Badge & Header -->
-					<div class="mb-4 flex flex-wrap items-center gap-3">
+					<div class="mb-4 flex h-7 items-center gap-3">
 						<span
 							class="inline-flex items-center gap-1.5 bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
 							<svg
@@ -102,35 +112,37 @@
 					</div>
 
 					<!-- Tour Title -->
-					<h2
-						class="mb-5 font-serif text-3xl font-normal leading-tight text-white sm:text-4xl lg:text-5xl">
-						<button
-							type="button"
-							class="text-left font-serif text-white transition-colors hover:text-stone-300"
-							onclick={() => tour_modal.open(currentTour)}>
-							{title}
-						</button>
-					</h2>
+					<div class="mb-5 min-h-[4.5rem] sm:min-h-[5.5rem] lg:min-h-[6.5rem]">
+						<h2
+							class="line-clamp-2 font-serif text-3xl font-normal leading-tight text-white sm:text-4xl lg:text-5xl">
+							<button
+								type="button"
+								class="text-left font-serif text-white transition-colors hover:text-stone-300"
+								onclick={() => tour_modal.open(currentTour)}>
+								{title}
+							</button>
+						</h2>
+					</div>
 
 					<!-- Tour Highlights List -->
-					{#if currentTour.tour_highlights?.length}
-						<div class="mb-8 space-y-2">
+					<div class="mb-8 min-h-[4.5rem] space-y-2">
+						{#if currentTour.tour_highlights?.length}
 							{#each currentTour.tour_highlights.slice(0, 3) as item}
 								{@const hlText = item?.highlights?.[$locale] || item?.highlights?.en || ''}
 								{#if hlText}
 									<div
 										class="flex items-center gap-2.5 text-xs font-light text-stone-300 sm:text-sm">
 										<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
-										<span>{hlText}</span>
+										<span class="line-clamp-1">{hlText}</span>
 									</div>
 								{/if}
 							{/each}
-						</div>
-					{/if}
+						{/if}
+					</div>
 
 					<!-- Tags -->
-					{#if currentTour.tour_tags?.length}
-						<div class="mb-8 flex flex-wrap gap-2">
+					<div class="mb-8 flex min-h-[1.75rem] flex-wrap gap-2">
+						{#if currentTour.tour_tags?.length}
 							{#each currentTour.tour_tags as tag}
 								{@const tagName =
 									tag?.tour_tags?.[$locale] ||
@@ -144,8 +156,8 @@
 									</span>
 								{/if}
 							{/each}
-						</div>
-					{/if}
+						{/if}
+					</div>
 
 					<!-- Action Buttons -->
 					<div class="flex flex-wrap items-center gap-4">

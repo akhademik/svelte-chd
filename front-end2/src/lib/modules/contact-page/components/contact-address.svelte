@@ -3,7 +3,7 @@
 	import { locale } from '$i18n/i18n-svelte'
 </script>
 
-<section class="flex flex-col gap-4 rounded-none border border-stone-200 bg-white p-6">
+<section class="flex flex-col gap-5 rounded-none border border-stone-200 bg-white p-6 sm:p-8">
 	<div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
 		<div class="flex flex-col items-start gap-1">
 			<BaseLogo />
@@ -19,27 +19,28 @@
 		</div>
 	</div>
 
-	<!-- Mini Google Map -->
-	<div class="mt-2 overflow-hidden border border-stone-200 bg-stone-100">
+	<!-- Mini Google Map (Focused on CHD Travel) -->
+	<div class="mt-2 overflow-hidden border border-stone-200 bg-stone-100 shadow-inner">
 		<iframe
 			title="CHD Travel Location"
-			src="https://maps.google.com/maps?q=09+Nguyen+Binh,+Tan+Loi,+Buon+Ma+Thuot,+Dak+Lak,+Vietnam&t=&z=15&ie=UTF8&iwloc=&output=embed"
+			src="https://maps.google.com/maps?q=CHD+Travel,+09+Nguyen+Binh,+Tan+Loi,+Buon+Ma+Thuot,+Dak+Lak&t=&z=17&ie=UTF8&iwloc=B&output=embed"
 			width="100%"
-			height="160"
+			height="260"
 			style="border:0;"
 			allowfullscreen={false}
 			loading="lazy"
 			referrerpolicy="no-referrer-when-downgrade"
 			class="w-full">
 		</iframe>
-		<div class="flex items-center justify-between bg-stone-50 px-3 py-2 text-[11px] text-stone-600">
-			<span class="font-medium text-stone-800">CHD Travel • Buôn Ma Thuột</span>
+		<div
+			class="flex items-center justify-between border-t border-stone-200 bg-stone-50 px-4 py-2.5 text-xs text-stone-600">
+			<span class="font-medium text-stone-900">📍 CHD Travel • 09 Nguyễn Bính</span>
 			<a
 				href="https://maps.app.goo.gl/mr8NYztsShiNjfKQ9"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="font-medium text-terracotta hover:underline">
-				{$locale === 'vn' ? 'Xem trên Google Maps ↗' : 'View on Google Maps ↗'}
+				{$locale === 'vn' ? 'Chỉ đường trên Google Maps ↗' : 'Get Directions ↗'}
 			</a>
 		</div>
 	</div>
