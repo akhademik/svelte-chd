@@ -111,10 +111,10 @@
 						</span>
 					</div>
 
-					<!-- Tour Title (Fixed Height Container) -->
-					<div class="mb-5 flex h-20 items-center sm:h-24 lg:h-28">
+					<!-- Tour Title (Fixed Height Container with generous space for multiline titles) -->
+					<div class="mb-5 flex h-28 items-center sm:h-32 lg:h-36">
 						<h2
-							class="line-clamp-2 font-serif text-3xl font-normal leading-tight text-white sm:text-4xl lg:text-5xl">
+							class="line-clamp-3 font-serif text-2xl font-normal leading-snug text-white sm:text-3xl lg:text-4xl">
 							<button
 								type="button"
 								class="text-left font-serif text-white transition-colors hover:text-stone-300"
