@@ -85,11 +85,10 @@
 						</thead>
 						<tbody class="divide-y divide-stone-100 bg-white">
 							{#each prices as [pax, price] (pax)}
-								{@const solo = format_pax_no(pax) === '01'}
-								{@const group = `${$LL.tours.detail.group()} ${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
+								{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
 								<tr class="transition-colors hover:bg-stone-50">
 									<td class="px-4 py-3 text-stone-800">
-										{solo ? $LL.tours.detail.solo() : group}
+										{paxText}
 									</td>
 									<td class="px-4 py-3 text-right font-medium text-stone-900">
 										{format_price(price, $locale)}

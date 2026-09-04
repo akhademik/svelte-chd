@@ -8,6 +8,8 @@
 	import HomeHero from './components/home-hero.svelte'
 	import HomeHighlandTours from './components/home-highland-tours.svelte'
 
+	import { onMount } from 'svelte'
+
 	interface Props {
 		data?: any
 	}
@@ -18,26 +20,22 @@
 	let highlandTours = $state<Tour[]>([])
 	let loading = $state(true)
 
-	$effect(() => {
-		const fetchAll = async () => {
-			loading = true
-			try {
-				const mockDayPage = { url: { pathname: '/vn/day-tours' } } as any
-				const mockHighlandPage = { url: { pathname: '/vn/highland-tours' } } as any
+	onMount(async () => {
+		loading = true
+		try {
+			const mockDayPage = { url: { pathname: '/vn/day-tours' } } as any
+			const mockHighlandPage = { url: { pathname: '/vn/highland-tours' } } as any
 
-				const [dData, hData] = await Promise.all([
-					get_sanity_data(mockDayPage),
-					get_sanity_data(mockHighlandPage),
-				])
+			const [dData, hData] = await Promise.all([
+				get_sanity_data(mockDayPage),
+				get_sanity_data(mockHighlandPage),
+			])
 
-				dayTours = dData || []
-				highlandTours = hData || []
-			} finally {
-				loading = false
-			}
+			dayTours = dData || []
+			highlandTours = hData || []
+		} finally {
+			loading = false
 		}
-
-		fetchAll()
 	})
 
 	let allTours = $derived([...dayTours, ...highlandTours])

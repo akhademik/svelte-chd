@@ -41,6 +41,11 @@
 	$effect(() => {
 		if (isOpen) {
 			activeImageIndex = 0
+			const originalOverflow = document.body.style.overflow
+			document.body.style.overflow = 'hidden'
+			return () => {
+				document.body.style.overflow = originalOverflow
+			}
 		}
 	})
 
@@ -430,11 +435,10 @@
 										</thead>
 										<tbody class="divide-y divide-stone-100">
 											{#each prices as [pax, price]}
-												{@const solo = format_pax_no(pax) === '01'}
-												{@const group = `${$LL.tours.detail.group()} ${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
+												{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
 												<tr class="transition-colors hover:bg-stone-50">
 													<td class="px-3 py-2 text-stone-700">
-														{solo ? $LL.tours.detail.solo() : group}
+														{paxText}
 													</td>
 													<td class="px-3 py-2 text-right font-medium text-stone-900">
 														{format_price(price, activeLang)}

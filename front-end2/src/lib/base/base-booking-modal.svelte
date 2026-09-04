@@ -10,6 +10,16 @@
 	let guests = $state(2)
 	let isSubmitting = $state(false)
 
+	$effect(() => {
+		if ($booking_modal.isOpen) {
+			const originalOverflow = document.body.style.overflow
+			document.body.style.overflow = 'hidden'
+			return () => {
+				document.body.style.overflow = originalOverflow
+			}
+		}
+	})
+
 	const close = () => {
 		booking_modal.close()
 	}
