@@ -1,9 +1,62 @@
-import { DISCORD_WEBHOOK_URL, NOTIFY_EMAIL, RESEND_API_KEY } from '$env/static/private'
+import {
+	DISCORD_WEBHOOK_URL,
+	NOTIFY_EMAIL,
+	RESEND_API_KEY,
+	VITE_SANITY_ID,
+} from '$env/static/private'
+import type { BlogPost } from '$lib/types/blog.type'
 import { form_schema, type FormSchema } from '$utils/form-schema'
+import { type ClientConfig, createClient } from '@sanity/client'
 import { fail } from '@sveltejs/kit'
 import { Resend } from 'resend'
 import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
+
+const sanityConfig: ClientConfig = {
+	projectId: VITE_SANITY_ID,
+	dataset: 'production',
+	useCdn: true,
+	apiVersion: '2023-11-03',
+}
+
+const sanityClient = createClient(sanityConfig)
+
+const extract_blog_fields = `
+	_id,
+	"title": coalesce(title, {}),
+	"slug": coalesce(slug, {}),
+	"category": coalesce(category, 'story'),
+	"excerpt": coalesce(excerpt, {}),
+	"coverImg": coalesce(
+		coverImg{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		img_cover{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		}
+	),
+	"img_tour": coalesce(
+		imgTour[]{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		img_tour[]{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		[]
+	),
+	"content": coalesce(content, {}),
+	"isFeatured": coalesce(isFeatured, false),
+	"publishedAt": coalesce(publishedAt, _createdAt),
+	"author": coalesce(author, 'CHD Travel Team')
+`
 
 const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 
@@ -53,7 +106,23 @@ const send_to_discord = async (data: SubmissionData) => {
 
 export const load = async () => {
 	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
-	return { form }
+
+	let featuredPosts: BlogPost[] = []
+	try {
+		featuredPosts = await sanityClient.fetch(
+			`*[_type == 'blogPost' && isFeatured == true] | order(publishedAt desc, _createdAt desc)[0...6]{${extract_blog_fields}}`
+		)
+		// Fallback to latest 3 posts if no featured post is explicitly tagged
+		if (!featuredPosts || featuredPosts.length === 0) {
+			featuredPosts = await sanityClient.fetch(
+				`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc)[0...3]{${extract_blog_fields}}`
+			)
+		}
+	} catch (err) {
+		console.warn('[Sanity Featured Blog load failed]:', err)
+	}
+
+	return { form, featuredPosts }
 }
 
 export const actions = {

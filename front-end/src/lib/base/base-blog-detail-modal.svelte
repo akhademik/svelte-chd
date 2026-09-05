@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 	import { PortableText } from '@portabletext/svelte'
-	import LL, { locale } from '$i18n/i18n-svelte'
+	import { locale } from '$i18n/i18n-svelte'
+
 	import type { Locales } from '$i18n/i18n-types'
 	import { blog_modal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
+
+	import BasePortableTextImage from './base-portable-text-image.svelte'
+	import BasePortableTextListItem from './base-portable-text-list-item.svelte'
 
 	let isOpen = $derived($blog_modal.isOpen)
 	let post = $derived($blog_modal.post as BlogPost | null)
@@ -25,16 +29,40 @@
 	)
 
 	let imgCover = $derived(post?.coverImg)
-	let imgTour = $derived(post?.img_tour || post?.imgTour || [])
+	let imgTour = $derived(post?.img_tour || post?.imgTour || (post as any)?.album || [])
 
 	let allImages = $derived.by(() => {
 		const imgs: any[] = []
-		if (imgCover?.asset) imgs.push(imgCover)
-		if (imgTour?.length) {
-			imgTour.forEach((img: any) => {
-				if (img?.asset) imgs.push(img)
+		const seenRefs = new Set<string>()
+
+		const addImg = (img: any) => {
+			if (!img) return
+			const ref =
+				img?.asset?._ref || img?.asset?._id || img?._id || (typeof img === 'string' ? img : null)
+			if (img?.asset || (typeof img === 'object' && (img._ref || img.url))) {
+				if (ref && seenRefs.has(ref)) return
+				if (ref) seenRefs.add(ref)
+				imgs.push(img)
+			}
+		}
+
+		// 1. Add Cover Image
+		addImg(imgCover)
+
+		// 2. Add Album Images
+		if (Array.isArray(imgTour) && imgTour.length > 0) {
+			imgTour.forEach(img => addImg(img))
+		}
+
+		// 3. Extract any image blocks embedded inside Rich Content
+		if (Array.isArray(content) && content.length > 0) {
+			content.forEach(block => {
+				if (block?._type === 'image' && block?.asset) {
+					addImg(block)
+				}
 			})
 		}
+
 		return imgs
 	})
 
@@ -43,11 +71,14 @@
 	$effect(() => {
 		if (isOpen && post) {
 			activeImageIndex = 0
-			const originalOverflow = document.body.style.overflow
-			document.body.style.overflow = 'hidden'
+			if (typeof document !== 'undefined') {
+				document.body.style.overflow = 'hidden'
+			}
 
 			return () => {
-				document.body.style.overflow = originalOverflow
+				if (typeof document !== 'undefined') {
+					document.body.style.overflow = ''
+				}
 			}
 		}
 	})
@@ -238,7 +269,16 @@
 						class="prose prose-stone max-w-none text-sm font-light leading-relaxed text-stone-800">
 						<PortableText
 							value={content}
-							components={{}} />
+							components={{
+								types: {
+									image: BasePortableTextImage,
+								},
+								listItem: {
+									normal: BasePortableTextListItem,
+									bullet: BasePortableTextListItem,
+									number: BasePortableTextListItem,
+								},
+							}} />
 					</div>
 				{/if}
 			</div>
@@ -248,14 +288,9 @@
 				class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-stone-200 bg-white px-4 py-3.5 sm:px-6 sm:py-4">
 				<button
 					onclick={close}
-					class="border border-stone-300 px-6 py-2.5 text-xs uppercase tracking-wider text-stone-700 transition-colors hover:border-stone-900 hover:text-stone-900">
+					class="bg-stone-900 px-6 py-2.5 text-xs uppercase tracking-widest text-stone-50 shadow-sm transition-colors hover:bg-stone-800">
 					{activeLang === 'vn' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
 				</button>
-				<a
-					href={`/${activeLang}/contact`}
-					class="bg-stone-900 px-6 py-2.5 text-xs uppercase tracking-widest text-stone-50 shadow-sm transition-colors hover:bg-stone-800">
-					{$LL.nav_bar.contact()}
-				</a>
 			</div>
 		</div>
 	</div>

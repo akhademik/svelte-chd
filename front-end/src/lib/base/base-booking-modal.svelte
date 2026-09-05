@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LL from '$i18n/i18n-svelte'
+	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import toast from 'svelte-french-toast'
 	import { fade, scale } from 'svelte/transition'
@@ -8,14 +8,18 @@
 	let contact = $state('')
 	let date = $state('')
 	let guests = $state(2)
+	let note = $state('')
 	let isSubmitting = $state(false)
 
 	$effect(() => {
 		if ($booking_modal.isOpen) {
-			const originalOverflow = document.body.style.overflow
-			document.body.style.overflow = 'hidden'
+			if (typeof document !== 'undefined') {
+				document.body.style.overflow = 'hidden'
+			}
 			return () => {
-				document.body.style.overflow = originalOverflow
+				if (typeof document !== 'undefined') {
+					document.body.style.overflow = ''
+				}
 			}
 		}
 	})
@@ -37,6 +41,8 @@
 					contact,
 					date,
 					guests,
+					note,
+					langs: $locale || 'en',
 				}),
 			})
 			if (res.ok) {
@@ -46,6 +52,7 @@
 				contact = ''
 				date = ''
 				guests = 2
+				note = ''
 			} else {
 				toast.error($LL.contact_page.err.err_submit())
 			}
@@ -165,6 +172,22 @@
 							bind:value={guests}
 							class="w-full border border-stone-200 bg-stone-50 px-3 py-2 text-sm focus:border-stone-900 focus:outline-none" />
 					</div>
+				</div>
+
+				<div>
+					<label
+						class="mb-1 block text-[11px] uppercase tracking-wider text-stone-500"
+						for="booking-note">
+						{$LL.contact_page.placeholder.msg()}
+					</label>
+					<textarea
+						id="booking-note"
+						rows="3"
+						bind:value={note}
+						class="w-full border border-stone-200 bg-stone-50 px-3 py-2 text-sm focus:border-stone-900 focus:outline-none"
+						placeholder={$locale === 'vn'
+							? 'Yêu cầu đặc biệt hoặc ghi chú thêm (tuỳ chọn)...'
+							: 'Special requests or additional notes (optional)...'}></textarea>
 				</div>
 
 				<button

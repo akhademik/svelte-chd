@@ -7,19 +7,28 @@ const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 export const POST = async ({ request }) => {
 	try {
 		const data = await request.json()
-		const { name, contact, date, guests, tour } = data
+		const { name, contact, date, guests, tour, note, langs } = data
 
 		if (!name || !contact) {
 			return json({ message: 'Missing required fields' }, { status: 400 })
 		}
 
+		const isEmail = contact.includes('@')
+		const email = isEmail ? contact : ''
+		const phone = isEmail ? '' : contact
+
 		const body_text = `
-Loại: Quick Booking
-Tour: ${tour || 'N/A'}
-Tên: ${name}
-Liên hệ (SĐT/Email): ${contact}
+Loại yêu cầu: Đặt tour (Booking)
+Tour: ${tour || 'Chưa chọn'}
+Tên khách hàng: ${name}
+Email: ${email || contact}
+SĐT: ${phone || contact}
+Ngôn ngữ: ${langs || 'vn'}
 Ngày dự kiến: ${date || 'Chưa xác định'}
 Số lượng khách: ${guests || 1}
+
+Nội dung / Ghi chú thêm:
+${note || 'Không có ghi chú thêm.'}
 `.trim()
 
 		const send_email = async () => {
@@ -30,7 +39,8 @@ Số lượng khách: ${guests || 1}
 			return resend.emails.send({
 				from: 'onboarding@resend.dev',
 				to: NOTIFY_EMAIL || 'hajtran@gmail.com',
-				subject: `[Booking Mới] ${tour || 'Tour'} - ${name}`,
+				replyTo: email || undefined,
+				subject: `[Đặt Tour] ${tour || 'Tour'} - ${name}`,
 				text: body_text,
 			})
 		}
@@ -41,7 +51,7 @@ Số lượng khách: ${guests || 1}
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					content: `⚡ **Đặt Tour Nhanh Mới (Quick Booking)**\n**Tour:** ${tour || 'N/A'}\n**Tên:** ${name}\n**Liên hệ:** ${contact}\n**Ngày:** ${date || 'Chưa xác định'}\n**Số khách:** ${guests || 1}`,
+					content: `🎯 **Yêu Cầu Đặt Tour Mới**\n**Tour:** ${tour || 'N/A'}\n**Khách hàng:** ${name}\n**Liên hệ:** ${contact}\n**Ngày khởi hành:** ${date || 'Chưa xác định'}\n**Số khách:** ${guests || 1}\n**Ghi chú:**\n> ${(note || 'Không có').replace(/\n/g, '\n> ')}`,
 				}),
 			})
 		}

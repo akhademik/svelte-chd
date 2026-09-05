@@ -6,11 +6,25 @@
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 
+	import BasePortableTextImage from '$lib/base/base-portable-text-image.svelte'
+	import BasePortableTextListItem from '$lib/base/base-portable-text-list-item.svelte'
+
 	interface Props {
 		tours: Tour[]
 	}
 
 	let { tours }: Props = $props()
+
+	const portableTextComponents = {
+		types: {
+			image: BasePortableTextImage,
+		},
+		listItem: {
+			normal: BasePortableTextListItem,
+			bullet: BasePortableTextListItem,
+			number: BasePortableTextListItem,
+		},
+	}
 
 	let displayTours = $derived.by(() => {
 		const langTours = tours.filter(t => Boolean(t.tour_name?.[$locale]))
@@ -108,7 +122,7 @@
 								class="mb-6 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-stone-500">
 								<PortableText
 									value={tour.tour_intro?.[$locale] || []}
-									components={{}} />
+									components={portableTextComponents} />
 							</div>
 						</div>
 

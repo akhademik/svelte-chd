@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pushState, replaceState } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
@@ -8,6 +9,19 @@
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
+	import BasePortableTextImage from './base-portable-text-image.svelte'
+	import BasePortableTextListItem from './base-portable-text-list-item.svelte'
+
+	const portableTextComponents = {
+		types: {
+			image: BasePortableTextImage,
+		},
+		listItem: {
+			normal: BasePortableTextListItem,
+			bullet: BasePortableTextListItem,
+			number: BasePortableTextListItem,
+		},
+	}
 
 	let isOpen = $derived($tour_modal.isOpen)
 	let tour = $derived($tour_modal.tour)
@@ -42,8 +56,9 @@
 	$effect(() => {
 		if (isOpen && tour) {
 			activeImageIndex = 0
-			const originalOverflow = document.body.style.overflow
-			document.body.style.overflow = 'hidden'
+			if (typeof document !== 'undefined') {
+				document.body.style.overflow = 'hidden'
+			}
 
 			if (typeof window !== 'undefined') {
 				previousPath = window.location.pathname + window.location.search
@@ -55,14 +70,16 @@
 						? 'day-tours'
 						: 'highland-tours'
 				if (slug && !window.location.pathname.includes(slug)) {
-					window.history.pushState({ modal: true }, '', `/${activeLang}/${tourType}/${slug}`)
+					pushState(`/${activeLang}/${tourType}/${slug}`, { modal: true })
 				}
 			}
 
 			return () => {
-				document.body.style.overflow = originalOverflow
+				if (typeof document !== 'undefined') {
+					document.body.style.overflow = ''
+				}
 				if (typeof window !== 'undefined' && previousPath) {
-					window.history.pushState({}, '', previousPath)
+					replaceState(previousPath, {})
 				}
 			}
 		}
@@ -202,11 +219,6 @@
 							class="font-serif text-2xl font-normal leading-tight text-stone-950 sm:text-3xl lg:text-4xl">
 							{title}
 						</h2>
-						{#if allImages[activeImageIndex]?.caption}
-							<p class="mt-1 text-xs font-light italic text-stone-500 sm:text-sm">
-								{allImages[activeImageIndex].caption}
-							</p>
-						{/if}
 					</div>
 
 					<!-- Interactive Image Gallery -->
@@ -328,7 +340,7 @@
 							<div class="text-xs font-light leading-relaxed text-stone-600 sm:text-sm">
 								<PortableText
 									value={intro}
-									components={{}} />
+									components={portableTextComponents} />
 							</div>
 						</div>
 					{/if}
@@ -363,7 +375,7 @@
 							<div class="text-xs font-light leading-relaxed text-stone-600 sm:text-sm">
 								<PortableText
 									value={itinerary}
-									components={{}} />
+									components={portableTextComponents} />
 							</div>
 						</div>
 					{/if}

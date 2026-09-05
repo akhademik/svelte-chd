@@ -3,6 +3,7 @@
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_sanity_data } from '$lib/utils/sanity'
 	import HomeDayTours from './components/home-day-tours.svelte'
+	import HomeFeaturedBlogs from './components/home-featured-blogs.svelte'
 	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
 	import HomeHighlandTours from './components/home-highland-tours.svelte'
@@ -13,7 +14,7 @@
 		data?: any
 	}
 
-	let { data: _data }: Props = $props()
+	let { data }: Props = $props()
 
 	let dayTours = $state<Tour[]>([])
 	let highlandTours = $state<Tour[]>([])
@@ -38,6 +39,7 @@
 	})
 
 	let allTours = $derived([...dayTours, ...highlandTours])
+	let featuredPosts = $derived(data?.featuredPosts || [])
 </script>
 
 {#if loading}
@@ -47,4 +49,5 @@
 	<HomeFeaturedSlider tours={allTours} />
 	<HomeDayTours tours={dayTours} />
 	<HomeHighlandTours tours={highlandTours} />
+	<HomeFeaturedBlogs posts={featuredPosts} />
 {/if}

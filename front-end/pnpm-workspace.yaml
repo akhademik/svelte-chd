@@ -2,3 +2,4 @@ allowBuilds:
   '@sveltejs/kit': true
   esbuild: true
   svelte-preprocess: true
+  workerd: set this to true or false

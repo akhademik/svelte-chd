@@ -7,6 +7,7 @@ export const img_cover = {
     hotspot: true,
   },
 }
+
 export const img_tour = {
   name: 'imgTour',
   title: 'Hình trong tour',
@@ -17,6 +18,32 @@ export const img_tour = {
       options: {
         hotspot: true,
       },
+    },
+  ],
+}
+
+export const img_blog = {
+  name: 'imgTour',
+  title: 'Album hình ảnh bài viết',
+  type: 'array',
+  of: [
+    {
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Chú thích ảnh',
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Văn bản thay thế (Alt text)',
+        },
+      ],
     },
   ],
 }
