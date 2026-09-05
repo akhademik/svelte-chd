@@ -6,7 +6,7 @@
 	import { superForm } from 'sveltekit-superforms/client'
 
 	interface Props {
-		data: any
+		data?: { form?: any; [key: string]: any }
 		allTours?: Tour[]
 	}
 

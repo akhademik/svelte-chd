@@ -1,24 +1,17 @@
-import { DISCORD_WEBHOOK_URL, NOTIFY_EMAIL, RESEND_API_KEY } from '$env/static/private'
+import { DISCORD_WEBHOOK_URL } from '$env/static/private'
+import { sendMail } from '$lib/server/email'
 import { fetchFeaturedBlogs, fetchToursByType } from '$lib/server/sanity-client'
 import { form_schema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
-import { Resend } from 'resend'
 import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
 import type { PageServerLoad } from './$types'
-
-const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 
 interface SubmissionData extends FormSchema {
 	tags?: string[]
 }
 
 const send_email = async (data: SubmissionData) => {
-	if (!resend || !RESEND_API_KEY) {
-		console.warn('[Resend]: RESEND_API_KEY not configured. Skipping email sending.')
-		return
-	}
-
 	const body_text = `
 Tên: ${data.name}
 Email: ${data.email}
@@ -30,9 +23,7 @@ Nội dung:
 ${data.msg}
 `.trim()
 
-	return resend.emails.send({
-		from: 'onboarding@resend.dev',
-		to: NOTIFY_EMAIL || 'hajtran@gmail.com',
+	return sendMail({
 		replyTo: data.email,
 		subject: `Liên hệ mới từ ${data.name}`,
 		text: body_text,

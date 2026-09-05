@@ -1,8 +1,6 @@
-import { DISCORD_WEBHOOK_URL, NOTIFY_EMAIL, RESEND_API_KEY } from '$env/static/private'
+import { DISCORD_WEBHOOK_URL } from '$env/static/private'
+import { sendMail } from '$lib/server/email'
 import { json } from '@sveltejs/kit'
-import { Resend } from 'resend'
-
-const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
 
 export const POST = async ({ request }) => {
 	try {
@@ -32,13 +30,7 @@ ${note || 'Không có ghi chú thêm.'}
 `.trim()
 
 		const send_email = async () => {
-			if (!resend || !RESEND_API_KEY) {
-				console.warn('[Resend]: RESEND_API_KEY not configured. Skipping booking email.')
-				return
-			}
-			return resend.emails.send({
-				from: 'onboarding@resend.dev',
-				to: NOTIFY_EMAIL || 'hajtran@gmail.com',
+			return sendMail({
 				replyTo: email || undefined,
 				subject: `[Đặt Tour] ${tour || 'Tour'} - ${name}`,
 				text: body_text,

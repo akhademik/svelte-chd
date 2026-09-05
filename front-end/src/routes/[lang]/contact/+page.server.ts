@@ -1,22 +1,16 @@
-import { DISCORD_WEBHOOK_URL, NOTIFY_EMAIL, RESEND_API_KEY } from '$env/static/private'
+import { DISCORD_WEBHOOK_URL } from '$env/static/private'
+import { sendMail } from '$lib/server/email'
 import { form_schema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
-import { Resend } from 'resend'
 import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
-
-const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null
+import type { PageServerLoad } from './$types'
 
 interface SubmissionData extends FormSchema {
 	tags?: string[]
 }
 
 const send_email = async (data: SubmissionData) => {
-	if (!resend || !RESEND_API_KEY) {
-		console.warn('[Resend]: RESEND_API_KEY not configured. Skipping email sending.')
-		return
-	}
-
 	const body_text = `
 Tên: ${data.name}
 Email: ${data.email}
@@ -28,9 +22,7 @@ Nội dung:
 ${data.msg}
 `.trim()
 
-	return resend.emails.send({
-		from: 'onboarding@resend.dev',
-		to: NOTIFY_EMAIL || 'hajtran@gmail.com',
+	return sendMail({
 		replyTo: data.email,
 		subject: `Liên hệ mới từ ${data.name}`,
 		text: body_text,
@@ -51,7 +43,10 @@ const send_to_discord = async (data: SubmissionData) => {
 	})
 }
 
-export const load = async () => {
+export const load: PageServerLoad = async ({ setHeaders }) => {
+	setHeaders({
+		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=7200',
+	})
 	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
 	return { form }
 }

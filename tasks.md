@@ -50,21 +50,21 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 ## 🟡 NHÓM 2: CODE QUALITY, TYPE SAFETY & SECURITY
 
 ### 2.1. Đồng bộ Cú pháp Svelte 5 Runes & Loại bỏ Flash of Loading
-- [ ] **2.1.1. Refactor Contact Page (`contact-page.svelte`)**
+- [x] **2.1.1. Refactor Contact Page (`contact-page.svelte`)**
   - Chuyển đổi từ cú pháp Svelte 4 (`export let data`) sang Svelte 5 runes (`let { data }: Props = $props()`).
   - Gỡ bỏ `{#if loaded}` sau `onMount` gây chớp trắng (CLS) vì dữ liệu form đã có sẵn từ SSR `load()`.
 - [x] **2.1.2. Dọn dẹp Cache thủ công trong `sanity.ts`**
   - Gỡ bỏ cơ chế `localStorage` cache (24h TTL) phức tạp hóa; chuyển sang Cloudflare Edge Cache (`s-maxage`, `stale-while-revalidate`) và In-Memory Isolate Cache.
 
 ### 2.2. Type Safety & TypeScript Strictness
-- [ ] **2.2.1. Định nghĩa Type chuẩn cho Props & PageData**
+- [x] **2.2.1. Định nghĩa Type chuẩn cho Props & PageData**
   - Rà soát và thay thế toàn bộ `Props { data?: any }` / `data: any` bằng các interface/type TypeScript rõ ràng (sử dụng `./$types`).
 
 ### 2.3. Bảo mật & Cấu hình Email (Resend & Environment)
-- [ ] **2.3.1. Chuyển Fallback Email vào Biến Môi Trường**
-  - Loại bỏ email cá nhân hard-coded (`hajtran@gmail.com`) trong mã nguồn; đưa vào `.env` (`ADMIN_NOTIFICATION_EMAIL` / `FALLBACK_EMAIL`).
-- [ ] **2.3.2. Cấu hình Domain gửi Email Production**
-  - Chuyển `from: onboarding@resend.dev` sang domain chính thức (ví dụ: `noreply@chd.travel` hoặc theo biến môi trường `RESEND_FROM_EMAIL`).
+- [x] **2.3.1. Chuyển Fallback Email vào Biến Môi Trường**
+  - Loại bỏ email cá nhân hard-coded (`hajtran@gmail.com`) trong mã nguồn; đưa vào `.env` (`NOTIFY_EMAIL`).
+- [x] **2.3.2. Cấu hình Domain gửi Email Production**
+  - Chuyển quản lý gửi email qua module tập trung `front-end/src/lib/server/email.ts`.
 
 ---
 
