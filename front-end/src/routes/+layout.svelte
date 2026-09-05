@@ -30,7 +30,7 @@
 <NavBar />
 <MobileMenu />
 
-<main class="min-h-screen bg-stone-50 font-sans text-stone-900 antialiased selection:bg-stone-200">
+<main class="min-h-screen bg-sand font-sans text-stone-800 antialiased selection:bg-sand-alt">
 	{#if children}
 		{@render children()}
 	{/if}
