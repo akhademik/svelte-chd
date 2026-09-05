@@ -3,66 +3,29 @@
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
 
-	import { blog_modal } from '$lib/stores/modal-store'
-
 	interface Props {
 		posts?: BlogPost[]
 	}
 
 	let { posts = [] }: Props = $props()
 
-	let activeFilter = $state<'all' | 'event' | 'story' | 'tips' | 'destination'>('all')
+	let activeFilter = $state<string>('all')
 
-	// Fallback mock posts only if no post exists in Sanity
-	const fallbackPosts: BlogPost[] = [
-		{
-			_id: 'fb-1',
-			title: {
-				vn: 'Lễ hội Cà phê Buôn Ma Thuột: Điểm hẹn văn hoá Tây Nguyên',
-				en: 'Buon Ma Thuot Coffee Festival: The Central Highlands Cultural Gathering',
-				fr: 'Festival du Café de Buon Ma Thuot: Rendez-vous Culturel',
-			},
-			slug: {
-				vn: { current: 'le-hoi-ca-phe-buon-ma-thuot' },
-				en: { current: 'buon-ma-thuot-coffee-festival' },
-			},
-			category: 'event',
-			excerpt: {
-				vn: 'Hội thi rang xay cà phê đặc sản, triển lãm văn hoá cồng chiêng và các tour trải nghiệm nông hộ khép kín quanh Đắk Lắk.',
-				en: 'Specialty coffee roasting competitions, gong performances, and immersive farm tours across Dak Lak.',
-			},
-			isFeatured: true,
-			publishedAt: '2026-03-01',
-			author: 'CHD Travel Team',
-		},
-		{
-			_id: 'fb-2',
-			title: {
-				vn: 'Một đêm ở nhà dài buôn Jun: Khi tiếng cồng chiêng vang bên bếp lửa',
-				en: 'A Night at Buon Jun Longhouse: Gong Rhythms by the Fire',
-				fr: 'Une Nuit dans la Maison Longue de Buon Jun',
-			},
-			slug: {
-				vn: { current: 'mot-dem-o-nha-dai-buon-jun' },
-				en: { current: 'a-night-at-buon-jun-longhouse' },
-			},
-			category: 'story',
-			excerpt: {
-				vn: 'Ký sự chuyến đi 2 ngày 1 đêm cùng đoàn khách: Ăn cơm lam gà nướng, uống rượu cần và nghe già làng kể khan.',
-				en: 'Reflections from our 2-day journey: Bamboo-cooked rice, grilled chicken, and ancient folk tales.',
-			},
-			publishedAt: '2026-02-15',
-			author: 'Trần Hoài Nam',
-		},
-	]
-
-	// Strict language filter: Only show posts that actually have title and content/excerpt in the current language
+	// Strict language filter
 	let availablePosts = $derived.by(() => {
-		const rawPosts = posts && posts.length > 0 ? posts : fallbackPosts
-		return rawPosts.filter(p => {
-			const hasTitle = Boolean(p.title?.[$locale as 'vn' | 'en' | 'fr'])
+		return posts.filter(p => {
+			const hasTitle = Boolean(
+				p.title?.[$locale as 'vn' | 'en' | 'fr'] || p.title?.vn || p.title?.en
+			)
 			return hasTitle
 		})
+	})
+
+	// Dynamic category list: Only show categories that have at least 1 post
+	let presentCategories = $derived.by(() => {
+		const categoryOrder = ['event', 'story', 'tips', 'destination']
+		const found = new Set(availablePosts.map(p => p.category).filter(Boolean))
+		return categoryOrder.filter(c => found.has(c as any))
 	})
 
 	let filteredPosts = $derived(
@@ -77,11 +40,11 @@
 	)
 
 	const getPostTitle = (p: BlogPost) => {
-		return p.title?.[$locale as 'vn'] || ''
+		return p.title?.[$locale as 'vn'] || p.title?.vn || p.title?.en || ''
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return p.excerpt?.[$locale as 'vn'] || ''
+		return p.excerpt?.[$locale as 'vn'] || p.excerpt?.vn || p.excerpt?.en || ''
 	}
 
 	const getPostCover = (p: BlogPost) => {
@@ -91,14 +54,20 @@
 		return null
 	}
 
-	const openBlogDetail = (p: BlogPost) => {
-		blog_modal.open(p)
+	const getPostSlug = (p: BlogPost) => {
+		return (
+			p.slug?.[$locale as 'vn' | 'en' | 'fr']?.current ||
+			p.slug?.current ||
+			p.slug?.vn?.current ||
+			p.slug?.en?.current ||
+			(typeof p.slug === 'string' ? p.slug : p._id)
+		)
 	}
 
 	const getCategoryName = (cat: string) => {
 		switch (cat) {
 			case 'event':
-				return $locale === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
+				return $locale === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Events'
 			case 'story':
 				return $locale === 'vn' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
 			case 'tips':
@@ -142,68 +111,46 @@
 					: 'Travel reflections, upcoming cultural festivals in Dak Lak, and local stories beyond standard itineraries.'}
 			</p>
 
-			<!-- Filter Pills -->
-			<div class="mt-8 flex flex-wrap gap-2.5 border-t border-stone-200/80 pt-6 text-xs">
-				<button
-					onclick={() => (activeFilter = 'all')}
-					class={`rounded-full px-5 py-2.5 font-medium transition-all ${
-						activeFilter === 'all'
-							? 'bg-stone-900 text-stone-50'
-							: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
-					}`}>
-					{$locale === 'vn' ? 'Tất cả bài viết' : 'All Posts'}
-				</button>
-				<button
-					onclick={() => (activeFilter = 'event')}
-					class={`rounded-full px-5 py-2.5 font-medium transition-all ${
-						activeFilter === 'event'
-							? 'bg-stone-900 text-stone-50'
-							: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
-					}`}>
-					{$locale === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Events'}
-				</button>
-				<button
-					onclick={() => (activeFilter = 'story')}
-					class={`rounded-full px-5 py-2.5 font-medium transition-all ${
-						activeFilter === 'story'
-							? 'bg-stone-900 text-stone-50'
-							: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
-					}`}>
-					{$locale === 'vn' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'}
-				</button>
-				<button
-					onclick={() => (activeFilter = 'tips')}
-					class={`rounded-full px-5 py-2.5 font-medium transition-all ${
-						activeFilter === 'tips'
-							? 'bg-stone-900 text-stone-50'
-							: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
-					}`}>
-					{$locale === 'vn' ? 'Kinh nghiệm du lịch' : 'Travel Tips'}
-				</button>
-				<button
-					onclick={() => (activeFilter = 'destination')}
-					class={`rounded-full px-5 py-2.5 font-medium transition-all ${
-						activeFilter === 'destination'
-							? 'bg-stone-900 text-stone-50'
-							: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
-					}`}>
-					{$locale === 'vn' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'}
-				</button>
-			</div>
+			<!-- Filter Pills: Only show categories with available posts -->
+			{#if presentCategories.length > 1}
+				<div class="mt-8 flex flex-wrap gap-2.5 border-t border-stone-200/80 pt-6 text-xs">
+					<button
+						onclick={() => (activeFilter = 'all')}
+						class={`rounded-full px-5 py-2.5 font-medium transition-all ${
+							activeFilter === 'all'
+								? 'bg-stone-900 text-stone-50'
+								: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
+						}`}>
+						{$locale === 'vn' ? 'Tất cả bài viết' : 'All Posts'}
+					</button>
+					{#each presentCategories as cat}
+						<button
+							onclick={() => (activeFilter = cat)}
+							class={`rounded-full px-5 py-2.5 font-medium transition-all ${
+								activeFilter === cat
+									? 'bg-stone-900 text-stone-50'
+									: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
+							}`}>
+							{getCategoryName(cat)}
+						</button>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</section>
 
 	<div class="mx-auto max-w-6xl px-6">
-		<!-- Featured Post (when All is selected and featured exists) -->
+		<!-- Featured Post -->
 		{#if activeFilter === 'all' && featuredPost}
 			{@const coverImgUrl = getPostCover(featuredPost)}
+			{@const featuredSlug = getPostSlug(featuredPost)}
+			{@const featuredLink = `/${$locale}/blog/${featuredSlug}`}
+			{@const featuredExcerpt = getPostExcerpt(featuredPost)}
+
 			<div
-				role="button"
-				tabindex="0"
-				onclick={() => openBlogDetail(featuredPost)}
-				onkeydown={e => (e.key === 'Enter' || e.key === ' ') && openBlogDetail(featuredPost)}
-				class="mb-12 grid cursor-pointer grid-cols-1 overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md lg:grid-cols-12">
-				<div
+				class="mb-12 grid grid-cols-1 overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md lg:grid-cols-12">
+				<a
+					href={featuredLink}
 					class="relative flex min-h-[280px] flex-col justify-between bg-stone-900 p-8 text-white lg:col-span-6 lg:p-12">
 					{#if coverImgUrl}
 						<div class="absolute inset-0 z-0">
@@ -227,15 +174,17 @@
 						<h2 class="font-serif text-2xl font-normal leading-tight text-stone-100 sm:text-3xl">
 							{getPostTitle(featuredPost)}
 						</h2>
-						<p class="mt-4 text-xs font-light leading-relaxed text-stone-300 sm:text-sm">
-							{getPostExcerpt(featuredPost)}
-						</p>
+						{#if featuredExcerpt}
+							<p class="mt-4 text-xs font-light leading-relaxed text-stone-300 sm:text-sm">
+								{featuredExcerpt}
+							</p>
+						{/if}
 					</div>
 					<div class="relative z-10 mt-6 flex items-center justify-between text-xs text-stone-400">
 						<span>{featuredPost.author || 'CHD Travel'}</span>
 						<span>{featuredPost.publishedAt?.split('T')[0] || ''}</span>
 					</div>
-				</div>
+				</a>
 
 				<div class="flex flex-col justify-center bg-stone-50 p-8 lg:col-span-6 lg:p-12">
 					<span class="text-xs uppercase tracking-widest text-stone-400">Highlights</span>
@@ -245,61 +194,81 @@
 							: '"Authentic moments and insights gathered from local Highland journeys."'}
 					</p>
 					<div class="mt-8 flex items-center gap-3">
-						<span
+						<a
+							href={featuredLink}
 							class="inline-block bg-stone-900 px-6 py-3 text-xs uppercase tracking-widest text-white transition-colors hover:bg-stone-800">
 							{$locale === 'vn' ? 'Đọc toàn bộ bài viết →' : 'Read Full Post →'}
-						</span>
+						</a>
 					</div>
 				</div>
 			</div>
 		{/if}
 
 		<!-- Posts Grid -->
-		<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-			{#each nonFeaturedPosts as post (post._id)}
-				{@const cardCover = getPostCover(post)}
-				<div
-					role="button"
-					tabindex="0"
-					onclick={() => openBlogDetail(post)}
-					onkeydown={e => (e.key === 'Enter' || e.key === ' ') && openBlogDetail(post)}
-					class="flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md">
-					{#if cardCover}
-						<div class="h-48 w-full overflow-hidden bg-stone-100">
-							<img
-								src={cardCover}
-								alt={getPostTitle(post)}
-								class="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+		{#if nonFeaturedPosts.length === 0 && !featuredPost}
+			<div
+				class="border border-dashed border-stone-300 bg-sand-card p-12 text-center text-sm text-stone-500">
+				{$locale === 'vn' ? 'Chưa có bài viết nào.' : 'No blog posts available.'}
+			</div>
+		{:else}
+			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+				{#each nonFeaturedPosts as post (post._id)}
+					{@const cardCover = getPostCover(post)}
+					{@const postSlug = getPostSlug(post)}
+					{@const postLink = `/${$locale}/blog/${postSlug}`}
+					{@const cardExcerpt = getPostExcerpt(post)}
+
+					<article
+						class="flex flex-col justify-between overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md">
+						<div>
+							{#if cardCover}
+								<a
+									href={postLink}
+									class="block h-48 w-full overflow-hidden bg-stone-100">
+									<img
+										src={cardCover}
+										alt={getPostTitle(post)}
+										class="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+								</a>
+							{/if}
+							<div class="p-6">
+								<div class="flex items-center justify-between">
+									<span
+										class={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${getCategoryBadgeClass(post.category)}`}>
+										{getCategoryName(post.category)}
+									</span>
+									<span class="text-[11px] text-stone-400"
+										>{post.publishedAt?.split('T')[0] || ''}</span>
+								</div>
+
+								<h3 class="mt-4 font-serif text-lg font-medium leading-snug text-stone-900">
+									<a
+										href={postLink}
+										class="hover:text-terracotta">
+										{getPostTitle(post)}
+									</a>
+								</h3>
+
+								{#if cardExcerpt}
+									<p class="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-stone-600">
+										{cardExcerpt}
+									</p>
+								{/if}
+							</div>
 						</div>
-					{/if}
-					<div class="p-6">
-						<div class="flex items-center justify-between">
-							<span
-								class={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${getCategoryBadgeClass(post.category)}`}>
-								{getCategoryName(post.category)}
-							</span>
-							<span class="text-[11px] text-stone-400"
-								>{post.publishedAt?.split('T')[0] || ''}</span>
+
+						<div
+							class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs text-stone-400">
+							<span>{post.author || 'CHD Travel'}</span>
+							<a
+								href={postLink}
+								class="font-medium text-terracotta hover:underline">
+								{$locale === 'vn' ? 'Xem chi tiết →' : 'Read more →'}
+							</a>
 						</div>
-
-						<h3 class="mt-4 font-serif text-lg font-medium leading-snug text-stone-900">
-							{getPostTitle(post)}
-						</h3>
-
-						<p class="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-stone-600">
-							{getPostExcerpt(post)}
-						</p>
-					</div>
-
-					<div
-						class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs text-stone-400">
-						<span>{post.author || 'CHD Travel'}</span>
-						<span class="font-medium text-terracotta hover:underline">
-							{$locale === 'vn' ? 'Xem chi tiết →' : 'Read more →'}
-						</span>
-					</div>
-				</div>
-			{/each}
-		</div>
+					</article>
+				{/each}
+			</div>
+		{/if}
 	</div>
 </div>

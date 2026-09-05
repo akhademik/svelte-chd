@@ -2,7 +2,6 @@
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
-	import { tour_modal } from '$lib/stores/modal-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 
@@ -47,7 +46,7 @@
 				{$locale === 'vn'
 					? 'Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.'
 					: $locale === 'fr'
-						? "L'essence des Hauts Plateaux condensée en một journée douce et inoubliable."
+						? "L'essence des Hauts Plateaux condensée en une journée douce et inoubliable."
 						: 'Unforgettable moments crafted into a single, enriching, unhurried day.'}
 			</p>
 		</div>
@@ -56,15 +55,14 @@
 			{#each displayTours as tour (tour.tour_id || get_tour_slug(tour))}
 				{@const title = tour.tour_name?.[$locale] || tour.tour_name?.en || 'Tour'}
 				{@const duration = tour.tour_duration?.[$locale] || '1 Day'}
+				{@const slug = get_tour_slug(tour, $locale) || tour.tour_id || ''}
+				{@const tourLink = `/${$locale}/day-tours/${slug}`}
 
 				<div
 					class="group flex flex-col border border-stone-200/80 bg-sand-card p-5 transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
-					<div
-						class="relative mb-5 aspect-[4/3] cursor-pointer overflow-hidden bg-stone-100"
-						role="button"
-						tabindex="0"
-						onclick={() => tour_modal.open(tour)}
-						onkeydown={e => e.key === 'Enter' && tour_modal.open(tour)}>
+					<a
+						href={tourLink}
+						class="relative mb-5 block aspect-[4/3] overflow-hidden bg-stone-100">
 						{#if tour.img_cover?.asset}
 							<img
 								src={url_for(tour.img_cover)
@@ -87,7 +85,7 @@
 							class="absolute left-3 top-3 bg-stone-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wider text-stone-100 backdrop-blur-sm">
 							{duration}
 						</span>
-					</div>
+					</a>
 
 					{#if tour.tour_tags?.length}
 						<div class="mb-3 flex flex-wrap gap-1.5">
@@ -111,12 +109,11 @@
 						<div>
 							<h3
 								class="mb-2 font-serif text-xl text-stone-900 transition-colors group-hover:text-terracotta">
-								<button
-									type="button"
-									class="line-clamp-2 h-14 text-left font-serif text-xl font-normal text-stone-900 transition-colors hover:text-terracotta"
-									onclick={() => tour_modal.open(tour)}>
+								<a
+									href={tourLink}
+									class="line-clamp-2 block h-14 text-left font-serif text-xl font-normal text-stone-900 transition-colors hover:text-terracotta">
 									{title}
-								</button>
+								</a>
 							</h3>
 							<div
 								class="mb-6 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-stone-500">
@@ -128,8 +125,8 @@
 
 						<div
 							class="-mx-5 -mb-5 mt-4 flex items-center justify-between border-t border-stone-100 bg-stone-50/50 px-5 py-3.5">
-							<button
-								onclick={() => tour_modal.open(tour)}
+							<a
+								href={tourLink}
 								class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-colors hover:text-stone-950">
 								<span>{$LL.tours.click_detail()}</span>
 								<svg
@@ -148,7 +145,7 @@
 										y2="12"></line>
 									<polyline points="12 5 19 12 12 19"></polyline>
 								</svg>
-							</button>
+							</a>
 							<button
 								onclick={() => booking_modal.open(title)}
 								class="bg-stone-900 px-4 py-2 text-xs font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">

@@ -2,7 +2,6 @@
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
-	import { tour_modal } from '$lib/stores/modal-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 
@@ -56,15 +55,14 @@
 			{#each displayTours as tour, index (tour.tour_id || get_tour_slug(tour))}
 				{@const title = tour.tour_name?.[$locale] || tour.tour_name?.en || 'Highland Tour'}
 				{@const duration = tour.tour_duration?.[$locale] || 'Multi-day'}
+				{@const slug = get_tour_slug(tour, $locale) || tour.tour_id || ''}
+				{@const tourLink = `/${$locale}/highland-tours/${slug}`}
 
 				<div
 					class="group grid grid-cols-1 overflow-hidden border border-stone-200/90 bg-sand-card lg:grid-cols-12">
-					<div
-						class={`relative aspect-[16/10] cursor-pointer overflow-hidden bg-stone-200 lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}
-						role="button"
-						tabindex="0"
-						onclick={() => tour_modal.open(tour)}
-						onkeydown={e => e.key === 'Enter' && tour_modal.open(tour)}>
+					<a
+						href={tourLink}
+						class={`relative block aspect-[16/10] overflow-hidden bg-stone-200 lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
 						{#if tour.img_cover?.asset}
 							<img
 								src={url_for(tour.img_cover)
@@ -83,7 +81,7 @@
 								★ Best Sell
 							</span>
 						{/if}
-					</div>
+					</a>
 
 					<div
 						class={`flex flex-col justify-between p-6 sm:p-8 lg:col-span-5 lg:p-10 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
@@ -112,12 +110,11 @@
 
 							<h3
 								class="mb-4 font-serif text-2xl leading-snug text-stone-900 transition-colors group-hover:text-terracotta sm:text-3xl">
-								<button
-									type="button"
-									class="text-left font-serif text-2xl leading-snug text-stone-900 transition-colors hover:text-terracotta sm:text-3xl"
-									onclick={() => tour_modal.open(tour)}>
+								<a
+									href={tourLink}
+									class="block text-left font-serif text-2xl leading-snug text-stone-900 transition-colors hover:text-terracotta sm:text-3xl">
 									{title}
-								</button>
+								</a>
 							</h3>
 
 							<div class="mb-6 line-clamp-3 text-sm font-light leading-relaxed text-stone-600">
@@ -142,8 +139,8 @@
 
 						<div
 							class="-mx-6 -mb-6 mt-6 flex items-center justify-between border-t border-stone-100 bg-stone-50/50 px-6 py-4 sm:-mx-8 sm:-mb-8 sm:px-8 lg:-mx-10 lg:-mb-10 lg:px-10">
-							<button
-								onclick={() => tour_modal.open(tour)}
+							<a
+								href={tourLink}
 								class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-colors hover:text-stone-950">
 								<span>{$LL.tours.click_detail()}</span>
 								<svg
@@ -162,7 +159,7 @@
 										y2="12"></line>
 									<polyline points="12 5 19 12 12 19"></polyline>
 								</svg>
-							</button>
+							</a>
 							<button
 								onclick={() => booking_modal.open(title)}
 								class="bg-stone-900 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">

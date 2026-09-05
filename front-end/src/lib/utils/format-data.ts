@@ -6,19 +6,20 @@ import { get_exchange_rate } from './sanity'
 export const format_price = (price: number, locale: Locales | string = 'en') => {
 	const currentLocale = (locale || 'en') as Locales
 	if (currentLocale === 'vn') {
-		return `đ ${Math.round(price).toLocaleString('vi-VN')}`
+		const inThousand = Math.round(price / 1000)
+		return `${inThousand.toLocaleString('vi-VN')}k`
 	}
 
 	if (currentLocale === 'fr') {
 		const rate = get_exchange_rate('EUR')
 		const final_price = Math.round(price * rate)
-		return `€ ${final_price.toLocaleString('fr-FR')}`
+		return `€${final_price.toLocaleString('fr-FR')}`
 	}
 
 	// Default to 'en' (USD)
 	const rate = get_exchange_rate('USD')
 	const final_price = Math.round(price * rate)
-	return `$ ${final_price.toLocaleString('en-US')}`
+	return `$${final_price.toLocaleString('en-US')}`
 }
 
 export const format_pax_no = (key: string) => {

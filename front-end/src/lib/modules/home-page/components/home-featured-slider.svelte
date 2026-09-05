@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
-	import { tour_modal } from '$lib/stores/modal-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_price } from '$lib/utils/format-data'
-	import { url_for } from '$lib/utils/sanity'
+	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
 
 	interface Props {
@@ -51,6 +50,20 @@
 	let price = $derived(currentTour?.tour_price?.pax2 || currentTour?.tour_price?.pax1 || 0)
 	let duration = $derived(
 		currentTour?.tour_duration?.[$locale] || currentTour?.tour_duration?.en || 'Full Day'
+	)
+
+	let tourType = $derived(
+		currentTour?.tour_duration?.vn?.includes('ngày') ||
+			currentTour?.tour_duration?.en?.includes('day') ||
+			currentTour?.tour_duration?.en?.includes('Day')
+			? 'day-tours'
+			: 'highland-tours'
+	)
+
+	let tourLink = $derived(
+		currentTour
+			? `/${$locale}/${tourType}/${get_tour_slug(currentTour, $locale) || currentTour.tour_id || ''}`
+			: '#'
 	)
 </script>
 
@@ -111,21 +124,20 @@
 						</span>
 					</div>
 
-					<!-- Tour Title (Clamped to 2 lines max with title tooltip to prevent layout shifts) -->
+					<!-- Tour Title -->
 					<div class="mb-5 flex min-h-[4rem] items-center sm:min-h-[4.5rem] lg:min-h-[5.5rem]">
 						<h2
 							class="line-clamp-2 font-serif text-xl font-normal leading-snug text-white sm:text-2xl lg:text-3xl"
 							{title}>
-							<button
-								type="button"
-								class="line-clamp-2 text-left font-serif text-white transition-colors hover:text-stone-300"
-								onclick={() => tour_modal.open(currentTour)}>
+							<a
+								href={tourLink}
+								class="line-clamp-2 text-left font-serif text-white transition-colors hover:text-stone-300">
 								{title}
-							</button>
+							</a>
 						</h2>
 					</div>
 
-					<!-- Tour Highlights List (Fixed Height Container) -->
+					<!-- Tour Highlights List -->
 					<div class="mb-8 flex h-20 flex-col justify-center space-y-2">
 						{#if currentTour.tour_highlights?.length}
 							{#each currentTour.tour_highlights.slice(0, 3) as item}
@@ -141,7 +153,7 @@
 						{/if}
 					</div>
 
-					<!-- Tags (Fixed Height Container) -->
+					<!-- Tags -->
 					<div class="mb-8 flex h-7 flex-wrap items-center gap-2 overflow-hidden">
 						{#if currentTour.tour_tags?.length}
 							{#each currentTour.tour_tags.slice(0, 5) as tag}
@@ -160,17 +172,17 @@
 						{/if}
 					</div>
 
-					<!-- Action Buttons -->
+					<!-- Action Buttons (Link directly to dedicated Tour Page) -->
 					<div class="flex flex-wrap items-center gap-4">
-						<button
-							onclick={() => tour_modal.open(currentTour)}
+						<a
+							href={tourLink}
 							class="bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-stone-950 transition-colors hover:bg-stone-200">
 							{$locale === 'vn'
 								? 'Xem Chi Tiết Tour'
 								: $locale === 'fr'
 									? 'Voir les Détails'
 									: 'View Details'}
-						</button>
+						</a>
 						<button
 							onclick={() => booking_modal.open(title)}
 							class="border border-stone-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white/10">

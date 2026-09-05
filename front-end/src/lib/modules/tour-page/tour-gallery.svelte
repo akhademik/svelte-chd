@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores'
+	import { page } from '$app/state'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
 	import { fly } from 'svelte/transition'
@@ -11,7 +11,7 @@
 	}
 
 	let { tours }: Props = $props()
-	let tourtype = $derived($page.params.tourtype)
+	let tourtype = $derived(page.params.tourtype)
 	let isDay = $derived(tourtype === 'day-tours')
 
 	let availableTours = $derived(tours.filter(t => Boolean(t.tour_name?.[$locale])))

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
-	import { blog_modal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
 
@@ -30,6 +29,16 @@
 			return url_for(p.coverImg).width(600).height(380).auto('format').quality(80).url()
 		}
 		return null
+	}
+
+	const getPostSlug = (p: BlogPost) => {
+		return (
+			p.slug?.[$locale as 'vn' | 'en' | 'fr']?.current ||
+			p.slug?.current ||
+			p.slug?.vn?.current ||
+			p.slug?.en?.current ||
+			(typeof p.slug === 'string' ? p.slug : p._id)
+		)
 	}
 
 	const getCategoryName = (cat: string) => {
@@ -100,16 +109,15 @@
 					{@const coverUrl = getPostCover(post)}
 					{@const title = getPostTitle(post)}
 					{@const excerpt = getPostExcerpt(post)}
+					{@const postLink = `/${$locale}/blog/${getPostSlug(post)}`}
 
-					<div
-						role="button"
-						tabindex="0"
-						onclick={() => blog_modal.open(post)}
-						onkeydown={e => (e.key === 'Enter' || e.key === ' ') && blog_modal.open(post)}
-						class="group flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200/90 bg-sand-card text-left transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+					<article
+						class="group flex flex-col justify-between overflow-hidden border border-stone-200/90 bg-sand-card text-left transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
 						<div>
 							{#if coverUrl}
-								<div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">
+								<a
+									href={postLink}
+									class="relative block aspect-[16/10] w-full overflow-hidden bg-stone-100">
 									<img
 										src={coverUrl}
 										alt={title}
@@ -120,7 +128,7 @@
 											{getCategoryName(post.category)}
 										</span>
 									</div>
-								</div>
+								</a>
 							{/if}
 
 							<div class="p-6">
@@ -131,7 +139,11 @@
 
 								<h3
 									class="font-serif text-lg font-medium leading-snug text-stone-900 transition-colors group-hover:text-terracotta">
-									{title}
+									<a
+										href={postLink}
+										class="hover:text-terracotta">
+										{title}
+									</a>
 								</h3>
 
 								{#if excerpt}
@@ -144,10 +156,14 @@
 
 						<div
 							class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs font-medium text-terracotta">
-							<span>{$locale === 'vn' ? 'Đọc bài viết' : 'Read Article'}</span>
-							<span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+							<a
+								href={postLink}
+								class="flex items-center gap-1.5 hover:underline">
+								<span>{$locale === 'vn' ? 'Đọc bài viết' : 'Read Article'}</span>
+								<span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+							</a>
 						</div>
-					</div>
+					</article>
 				{/each}
 			</div>
 

@@ -68,19 +68,15 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 
 ---
 
-## 🔵 NHÓM 3: TÍNH NĂNG MỞ RỘNG (FEATURES & UX)
+## 🔵 NHÓM 3: TÍNH NĂNG MỞ RỘNG & THIẾT KẾ ĐỒNG BỘ (FEATURES & UX)
 
-### 3.1. Trải nghiệm Đặt Tour & Form Liên Hệ
-- [ ] **3.1.1. Email Tự Động Xác Nhận (Auto-reply cho khách)**
-  - Gửi email xác nhận tự động tới khách hàng sau khi gửi form đặt tour/liên hệ thành công (bên cạnh email/Discord thông báo cho admin).
-- [ ] **3.1.2. URL & Routing Trang Chi Tiết Tour Độc Lập**
-  - Nâng cấp trải nghiệm từ fullscreen modal sang route trang độc lập chuẩn `/[lang]/[tourtype]/[slug]` có thể chia sẻ link trực tiếp và tối ưu SEO.
-
-### 3.2. Tìm kiếm, Lọc & Tỷ Giá Tiền Tệ
-- [ ] **3.2.1. Bộ lọc & Tìm kiếm Tour**
-  - Xây dựng thanh tìm kiếm và bộ lọc theo giá, thời lượng, địa điểm tại trang danh sách tour.
-- [ ] **3.2.2. Hoàn thiện / Dọn dẹp Switcher Tỷ Giá Hối Đoái**
-  - Đánh giá store `exchange-rates-store`: Hoặc hoàn thiện UI currency switcher cho khách quốc tế, hoặc dọn dẹp code dư thừa nếu không dùng.
+### 3.1. Trải nghiệm Tour & Thiết Kế Chuẩn Hệ Thống
+- [x] **3.1.1. Trang Chi Tiết Tour Độc Lập Theo Concept Thiết Kế ([LAYOUT_DESIGN_CONCEPT.md](LAYOUT_DESIGN_CONCEPT.md))**
+  - Chuyển từ fullscreen modal phủ màn hình sang cấu trúc trang chuẩn: Hero banner (`bg-sand-card`), Breadcrumb, Gallery ảnh tích hợp, Tổng quan hành trình, Điểm nhấn, Bảng giá & Lịch trình, Sticky Sidebar.
+  - Sử dụng toàn bộ token chuẩn: `text-moss` (H1/H2), `bg-sand`, `bg-sand-card`, `bg-terracotta`, padding `mx-auto max-w-6xl px-6`.
+- [x] **3.1.2. Giữ Danh Sách Tour Gọn Gàng & Tự Động Tỷ Giá**
+  - Giữ phong cách tối giản thanh lịch (bỏ thanh tìm kiếm/bộ lọc không cần thiết).
+  - Tự động hiển thị và quy đổi tiền tệ chuẩn xác theo ngôn ngữ (VNĐ / USD / EUR).
 
 ---
 

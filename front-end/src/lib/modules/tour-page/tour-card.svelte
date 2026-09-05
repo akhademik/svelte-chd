@@ -1,10 +1,10 @@
 <script lang="ts">
+	import { page } from '$app/state'
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
-	import { tour_modal } from '$lib/stores/modal-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { url_for } from '$utils/sanity'
+	import { get_tour_slug, url_for } from '$utils/sanity'
 
 	interface Props {
 		tour: Tour
@@ -17,18 +17,27 @@
 	let tour_name = $derived(tour.tour_name)
 	let tour_intro = $derived(tour.tour_intro)
 	let title = $derived(tour_name?.[$locale] || tour_name?.en || 'Tour')
+
+	let tourType = $derived(
+		page.params.tourtype ||
+			(tour.tour_duration?.vn?.includes('ngày') ||
+			tour.tour_duration?.en?.includes('day') ||
+			tour.tour_duration?.en?.includes('Day')
+				? 'day-tours'
+				: 'highland-tours')
+	)
+
+	let slug = $derived(get_tour_slug(tour, $locale) || tour.tour_id || '')
+	let tourLink = $derived(`/${$locale}/${tourType}/${slug}`)
 </script>
 
 <article
 	class="group flex h-full w-full flex-col justify-between border border-stone-200/90 bg-sand-card shadow-sm transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
 	<div>
-		<!-- Tour Cover Image (Click to open Modal) -->
-		<div
-			class="relative aspect-[16/11] cursor-pointer overflow-hidden bg-stone-100"
-			role="button"
-			tabindex="0"
-			onclick={() => tour_modal.open(tour)}
-			onkeydown={e => e.key === 'Enter' && tour_modal.open(tour)}>
+		<!-- Tour Cover Image (Link to dedicated Tour page) -->
+		<a
+			href={tourLink}
+			class="relative block aspect-[16/11] overflow-hidden bg-stone-100">
 			{#if img_cover?.asset}
 				<img
 					src={url_for(img_cover).width(600).height(412).auto('format').quality(75).url()}
@@ -42,7 +51,7 @@
 					{tour.tour_id}
 				</span>
 			{/if}
-		</div>
+		</a>
 
 		<!-- Tour Content -->
 		<div class="p-5 sm:p-6">
@@ -76,12 +85,11 @@
 
 			<h3
 				class="mb-3 font-serif text-xl font-normal leading-snug text-stone-950 transition-colors group-hover:text-terracotta sm:text-2xl">
-				<button
-					type="button"
-					class="line-clamp-2 h-14 text-left font-serif text-xl font-normal leading-snug text-stone-950 transition-colors hover:text-terracotta sm:text-2xl"
-					onclick={() => tour_modal.open(tour)}>
+				<a
+					href={tourLink}
+					class="line-clamp-2 h-14 font-serif text-xl font-normal leading-snug text-stone-950 transition-colors hover:text-terracotta sm:text-2xl">
 					{title}
-				</button>
+				</a>
 			</h3>
 
 			<div
@@ -96,8 +104,8 @@
 	<!-- Card Footer -->
 	<div
 		class="flex items-center justify-between border-t border-stone-100 bg-stone-50/50 px-5 py-3.5 sm:px-6">
-		<button
-			onclick={() => tour_modal.open(tour)}
+		<a
+			href={tourLink}
 			class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-colors hover:text-stone-950">
 			<span>{$LL.tours.click_detail()}</span>
 			<svg
@@ -116,7 +124,7 @@
 					y2="12"></line>
 				<polyline points="12 5 19 12 12 19"></polyline>
 			</svg>
-		</button>
+		</a>
 		<button
 			onclick={() => booking_modal.open(title)}
 			class="bg-stone-900 px-4 py-2 text-xs font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">
