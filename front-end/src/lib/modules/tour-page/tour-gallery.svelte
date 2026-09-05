@@ -24,7 +24,7 @@
 			<span class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
 				{isDay ? '01 / Excursions' : '02 / Grand Expeditions'}
 			</span>
-			<h1 class="font-serif text-3xl font-normal text-stone-900 sm:text-4xl">
+			<h1 class="font-serif text-3xl font-bold text-moss sm:text-4xl">
 				{isDay ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()}
 			</h1>
 		</div>

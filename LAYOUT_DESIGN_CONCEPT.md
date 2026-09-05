@@ -36,14 +36,17 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 ## 3. Typography (Kiểu chữ & Font)
 
 - **Headings (Tiêu đề)**: `font-serif` / `font-heading` (`"Sora"`, `sans-serif`)
-  - `H1`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight`
-  - `H2`: `font-serif text-2xl sm:text-3xl lg:text-4xl font-normal text-stone-900`
-  - `H3`: `font-serif text-xl sm:text-2xl font-normal text-stone-900`
-  - `Overline / Step marker`: `text-xs font-medium uppercase tracking-[0.25em] text-stone-400`
+  - `Page Header / Route Title (H1/H2 Section)`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-moss tracking-tight leading-tight` (Dùng màu **`text-moss`** (`#5F6E56`) và **`font-bold`** để tạo điểm nhấn nổi bật trên nền sand).
+  - `Content H1`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-moss tracking-tight leading-tight`
+  - `Content H2`: `font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-moss` hoặc `font-normal text-stone-900`
+  - `Content H3`: `font-serif text-xl sm:text-2xl font-normal text-stone-900`
+  - `Overline / Step marker`: `text-xs font-medium uppercase tracking-[0.25em] text-stone-400` hoặc `text-terracotta`
 - **Body & Controls**: `font-sans` (`"Plus Jakarta Sans"`, `sans-serif`)
   - `Body Text`: `text-sm sm:text-base font-light leading-relaxed text-stone-600`
   - `Tour Details Content`: `text-sm sm:text-base font-light leading-relaxed text-stone-700` (đảm bảo độ rõ nét, dễ đọc)
   - `Button / CTA Label`: `text-xs uppercase tracking-widest font-semibold`
+- **Quy chuẩn Chữ Đa ngôn ngữ (Casing Convention)**:
+  - **Toàn bộ Page Header Route / Navbar Labels** (`day tours`, `highland tours`, `about us`, `contact us`, `blog`...): **BẮT BUỘC dùng 100% lowercase** trên tất cả các ngôn ngữ (VN, EN, FR). Ví dụ FR dùng `excursion d'une journée`, `excursions en montagne` thay vì Title case.
 
 ---
 
@@ -55,6 +58,11 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 - **Card Styling**:
   - Viền mỏng: `border border-stone-200/90 bg-sand-card` (tránh dùng `bg-white` gắt chói).
   - Radius: Bo nhẹ góc tối thiểu (`rounded-none` hoặc `rounded-sm`) để giữ phong cách tạp chí cổ điển cao cấp.
+- **Modal Behavior (Tour Detail / Blog Detail / Booking Modal)**:
+  - Mobile View (`< sm`): Fullscreen hoàn toàn (`h-full max-h-screen w-full rounded-none border-0`), lớp phủ đặt `z-[60]` để đè lên trên Navbar và Mobile menu (`z-40`).
+  - Desktop View (`sm:` trở lên): Pop-up dạng hộp thoại (`sm:h-auto sm:max-h-[90vh] sm:border`).
+- **Hero Slider Title Clamping**:
+  - Giới hạn tối đa 2 dòng (`line-clamp-2`) kèm `title={title}` tooltip để tránh vỡ layout khi tên tour quá dài. Badge và duration sử dụng `min-h-[1.75rem] flex-wrap gap-2.5` để tự động xuống dòng linh hoạt.
 
 ---
 

@@ -47,8 +47,8 @@
 			}}
 			class={`px-2 py-1 transition-all ${
 				l === $locale
-					? 'border-b-[1.5px] border-stone-900 font-semibold text-stone-900'
-					: 'text-stone-400 hover:text-stone-800'
+					? 'border-b-[1.5px] border-stone-900 font-bold text-moss'
+					: 'text-stone-400 hover:text-terracotta'
 			}`}>
 			{l.toUpperCase()}
 		</a>

@@ -16,8 +16,7 @@
 								? 'À propos de nous'
 								: 'About CHD Travel'}
 					</span>
-					<h1
-						class="font-serif text-3xl font-normal leading-tight text-stone-900 sm:text-4xl lg:text-5xl">
+					<h1 class="font-serif text-3xl font-bold leading-tight text-moss sm:text-4xl lg:text-5xl">
 						{$locale === 'vn'
 							? 'Chúng tôi lớn lên cùng đất bazan này'
 							: $locale === 'fr'

@@ -39,7 +39,7 @@
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 			<div>
-				<h2 class="font-serif text-3xl font-normal text-stone-900 sm:text-4xl">
+				<h2 class="font-serif text-3xl font-bold text-moss sm:text-4xl">
 					{$LL.nav_bar.highland_tours()}
 				</h2>
 			</div>

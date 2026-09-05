@@ -133,8 +133,7 @@
 			<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-terracotta">
 				{$locale === 'vn' ? 'Góc chia sẻ' : 'Our Stories & Insights'}
 			</span>
-			<h1
-				class="font-serif text-3xl font-normal leading-tight text-stone-900 sm:text-4xl lg:text-5xl">
+			<h1 class="font-serif text-3xl font-bold leading-tight text-moss sm:text-4xl lg:text-5xl">
 				Blog CHD Travel
 			</h1>
 			<p class="mt-4 max-w-2xl text-sm font-light leading-relaxed text-stone-600 sm:text-base">

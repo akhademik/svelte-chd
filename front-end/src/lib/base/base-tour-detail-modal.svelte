@@ -114,7 +114,7 @@
 {#if isOpen && tour}
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-4 md:p-6"
+		class="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-0 backdrop-blur-sm sm:p-4 md:p-6"
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="modal-tour-title">
@@ -126,7 +126,7 @@
 			tabindex="-1"></button>
 		<div
 			transition:scale={{ start: 0.96, duration: 200 }}
-			class="relative z-10 flex h-[90vh] max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-t-2xl border-t border-stone-200 bg-stone-50 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:rounded-none sm:border">
+			class="relative z-10 flex h-full max-h-screen w-full max-w-4xl flex-col overflow-hidden rounded-none border-0 bg-stone-50 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-stone-200">
 			{#key activeLang}
 				<!-- Modal Header (Sticky top) -->
 				<div

@@ -83,9 +83,9 @@
 			<div class="flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between">
 				<div class="w-full max-w-2xl">
 					<!-- Badge & Header -->
-					<div class="mb-4 flex h-7 items-center gap-3">
+					<div class="mb-4 flex min-h-[1.75rem] flex-wrap items-center gap-2.5 sm:gap-3">
 						<span
-							class="inline-flex items-center gap-1.5 bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
+							class="inline-flex shrink-0 items-center gap-1.5 bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-3.5 w-3.5"
@@ -102,7 +102,7 @@
 						</span>
 						{#if currentTour.tour_id}
 							<span
-								class="border border-stone-700 bg-stone-900/80 px-2.5 py-0.5 font-mono text-xs text-stone-300">
+								class="shrink-0 border border-stone-700 bg-stone-900/80 px-2.5 py-0.5 font-mono text-xs text-stone-300">
 								{currentTour.tour_id}
 							</span>
 						{/if}
@@ -111,13 +111,14 @@
 						</span>
 					</div>
 
-					<!-- Tour Title (Fixed Height Container with generous space for multiline titles) -->
-					<div class="mb-5 flex h-28 items-center sm:h-32 lg:h-36">
+					<!-- Tour Title (Clamped to 2 lines max with title tooltip to prevent layout shifts) -->
+					<div class="mb-5 flex min-h-[4rem] items-center sm:min-h-[4.5rem] lg:min-h-[5.5rem]">
 						<h2
-							class="line-clamp-3 font-serif text-2xl font-normal leading-snug text-white sm:text-3xl lg:text-4xl">
+							class="line-clamp-2 font-serif text-xl font-normal leading-snug text-white sm:text-2xl lg:text-3xl"
+							{title}>
 							<button
 								type="button"
-								class="text-left font-serif text-white transition-colors hover:text-stone-300"
+								class="line-clamp-2 text-left font-serif text-white transition-colors hover:text-stone-300"
 								onclick={() => tour_modal.open(currentTour)}>
 								{title}
 							</button>

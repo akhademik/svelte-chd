@@ -37,7 +37,7 @@
 <div class="flex flex-col gap-4">
 	<div>
 		<label
-			class="mb-1 block text-xs uppercase tracking-wider text-stone-500"
+			class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
 			for="cfi-name">
 			{$LL.contact_page.placeholder.name()}
 		</label>
@@ -54,7 +54,7 @@
 	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 		<div>
 			<label
-				class="mb-1 block text-xs uppercase tracking-wider text-stone-500"
+				class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
 				for="cfi-email">
 				{$LL.contact_page.placeholder.email()}
 			</label>
@@ -69,7 +69,7 @@
 		</div>
 		<div>
 			<label
-				class="mb-1 block text-xs uppercase tracking-wider text-stone-500"
+				class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
 				for="cfi-phone">
 				{$LL.contact_page.placeholder.phone()}
 			</label>
@@ -86,7 +86,7 @@
 
 	<div>
 		<label
-			class="mb-1 block text-xs uppercase tracking-wider text-stone-500"
+			class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
 			for="cfi-langs">
 			{$LL.contact_page.placeholder.langs()}
 		</label>
@@ -101,7 +101,7 @@
 
 	<div>
 		<label
-			class="mb-1 block text-xs uppercase tracking-wider text-stone-500"
+			class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
 			for="cfi-msg">
 			{$LL.contact_page.placeholder.msg()}
 		</label>

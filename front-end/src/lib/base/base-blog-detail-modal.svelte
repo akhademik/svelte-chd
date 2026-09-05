@@ -119,7 +119,7 @@
 {#if isOpen && post}
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-4 md:p-6"
+		class="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-0 backdrop-blur-sm sm:p-4 md:p-6"
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="modal-blog-title">
@@ -131,7 +131,7 @@
 			tabindex="-1"></button>
 		<div
 			transition:scale={{ start: 0.96, duration: 200 }}
-			class="relative z-10 flex h-[90vh] max-h-[92vh] w-full max-w-4xl flex-col overflow-hidden rounded-t-2xl border-t border-stone-200 bg-stone-50 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:rounded-none sm:border">
+			class="relative z-10 flex h-full max-h-screen w-full max-w-4xl flex-col overflow-hidden rounded-none border-0 bg-stone-50 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-stone-200">
 			<!-- Modal Header (Sticky top) -->
 			<div
 				class="sticky top-0 z-20 flex items-center justify-between border-b border-stone-200 bg-white/95 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
@@ -179,6 +179,11 @@
 						class="font-serif text-2xl font-normal leading-tight text-stone-900 sm:text-3xl lg:text-4xl">
 						{title}
 					</h2>
+					{#if excerpt}
+						<p class="mt-3 text-sm font-light italic leading-relaxed text-stone-600 sm:text-base">
+							{excerpt}
+						</p>
+					{/if}
 					<div class="mt-3 flex items-center gap-4 text-xs text-stone-500">
 						<span>{post.author || 'CHD Travel Team'}</span>
 						<span>•</span>
