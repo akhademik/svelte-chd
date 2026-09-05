@@ -66,7 +66,7 @@ Mỗi khi chỉnh sửa mã nguồn, tuân thủ đúng trình tự sau:
 
 ## ⚡ 3. Bảng Lệnh Kiểm Tra Theo Module
 
-### Frontend (`front-end2/` & `front-end/`)
+### Frontend (`front-end/`)
 - **Lint**: `pnpm lint` (hoặc `pnpm prettier --check . && eslint .`)
 - **Type Check**: `pnpm check` (`svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`)
 - **Format**: `pnpm format` / `pnpm prettier --write .`

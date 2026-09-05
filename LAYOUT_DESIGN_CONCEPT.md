@@ -17,16 +17,18 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 
 | Token Key | HEX Code | Tailwind Class | Mục đích sử dụng |
 | :--- | :--- | :--- | :--- |
-| **Paper / Canvas** | `#FAF9F6` | `bg-stone-50` | Màu nền chính của toàn trang |
-| **Paper Alt / Card Muted** | `#F5F4F0` | `bg-stone-100` | Section xen kẽ (alt sections), nền input |
-| **Border / Divider** | `#E7E5E0` | `border-stone-200` | Viền card, divider, đường line phân cách |
-| **Border Soft** | `#D5D2CA` | `border-stone-300` | Viền interactive elements khi hover |
-| **Ink / Primary Text** | `#191918` | `text-stone-900` | Tiêu đề chính (Heading H1-H3), CTA chính |
-| **Ink Soft / Body Text** | `#5B5045` / `text-stone-600` | `text-stone-600` | Nội dung mô tả (Body text), phụ đề |
-| **Forest / Green Accent** | `#2D3E35` | `bg-forest`, `text-forest` | Màu nhận diện rừng Tây Nguyên, CTA thay thế |
-| **Forest Deep** | `#1E3129` | `bg-forest-hover` | Nền hero banner đậm, footer band |
-| **Terracotta / Clay** | `#A65B44` | `text-terracotta`, `bg-terracotta` | Điểm nhấn đất đỏ bazan, tag cảm nhận, badge |
-| **Gold / Ochre** | `#B8862E` | `text-amber-700`, `bg-amber-600` | Badge sự kiện, mốc timeline, highlight |
+| **Sand / Nền chính** | `#EAE3D3` / `#F3EEE0` | `bg-sand`, `bg-stone-50`, `bg-stone-100` | Nền chính toàn trang (ấm, sáng vừa, không trắng gắt) |
+| **Sand Alt / Nền phụ** | `#DFD6BF` | `bg-sand-alt`, `bg-stone-200` | Nền section xen kẽ để tách khối trực quan |
+| **Card / Nền nổi** | `#F3EEE0` / `#FFFFFF` | `bg-sand-card`, `bg-white` | Thẻ card, modal popover |
+| **Border / Divider** | `#DFD6BF` | `border-stone-200` | Viền card, divider, đường line phân cách |
+| **Border Soft / Hover** | `#C8BEA8` | `border-stone-300` | Viền interactive elements khi hover |
+| **Charcoal / Chữ chính** | `#2E2B24` | `text-stone-800`, `text-primary` | Tiêu đề chính (Heading H1-H3), chữ chính ấm |
+| **Charcoal-Olive / Nền tối** | `#2B2A24` | `bg-stone-900`, `bg-stone-950` | Nền hero slider, dark banners |
+| **Warm Gray / Chữ phụ** | `#6B6455` | `text-stone-500`, `text-stone-600` | Nội dung mô tả (Body text), phụ đề, caption |
+| **Moss / Xanh rêu (Accent)** | `#6B7A5E` | `bg-moss`, `text-moss`, `bg-forest` | Màu nhận diện rừng rêu Tây Nguyên, nút CTA |
+| **Moss Dark / Hover** | `#52604A` | `bg-moss-hover`, `bg-forest-hover` | Trạng thái hover của nút Accent chính |
+| **Ocher / Đất nung (Badge/Giá)** | `#B8875A` | `text-ocher`, `bg-ocher`, `text-terracotta` | Điểm nhấn đất nung, tag cảm nhận, badge, giá tour |
+| **Gold / Ochre Highlight** | `#B8862E` | `text-amber-700`, `bg-amber-600` | Badge sự kiện, mốc timeline, highlight |
 | **Teal** | `#3D6E7C` | `text-cyan-800`, `bg-cyan-800` | Tag điểm đến, tour thiên nhiên |
 
 ---
