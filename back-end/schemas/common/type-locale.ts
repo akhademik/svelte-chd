@@ -44,7 +44,18 @@ export const locale_slug = {
     name: locale.id,
     type: 'slug',
     options: {
-      source: `tourName.${locale.id}`,
+      source: (doc: any) => {
+        // Support both blog post (doc.title) and tour (doc.tourName)
+        const titleObj = doc?.title || doc?.tourName
+        if (typeof titleObj === 'string') return titleObj
+        return (
+          titleObj?.[locale.id] ||
+          titleObj?.vn ||
+          titleObj?.en ||
+          titleObj?.fr ||
+          ''
+        )
+      },
       maxLength: 96,
     },
     fieldset: locale.isDefault ? null : 'translations',
