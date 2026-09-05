@@ -173,6 +173,7 @@ dist
 
 # SvelteKit build / generate output
 .svelte-kit
+.wrangler
 
 ### Svelte ###
 # gitignore template for the SvelteKit, frontend web component framework

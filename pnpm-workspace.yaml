@@ -1,9 +1,9 @@
 packages:
   - 'front-end'
-  - 'front-end2'
   - 'back-end'
 
 allowBuilds:
   '@sveltejs/kit': true
   esbuild: true
   svelte-preprocess: true
+  workerd: true
