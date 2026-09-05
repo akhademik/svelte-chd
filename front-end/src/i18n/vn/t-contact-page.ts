@@ -26,6 +26,7 @@ export const contact_page = {
 		form_phone: 'Số điện thoại của bạn không hợp lệ',
 		form_langs: 'Ngôn ngữ không được để trống',
 		form_msg: 'Tin nhắn không được để trống',
+		err_submit: 'Gửi tin nhắn thất bại. Vui lòng thử lại!',
 	},
 	placeholder: {
 		name: 'TÊN CỦA BẠN *',

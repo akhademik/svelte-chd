@@ -1,35 +1,50 @@
 <script lang="ts">
-	import hero from '$assets/imgs/hero-elephant.jpg'
-	import { BaseTypewriter } from '$base'
-	import LL from '$i18n/i18n-svelte'
+	import { BaseLoading } from '$lib/base'
+	import type { Tour } from '$lib/types/tour.type'
+	import { get_sanity_data } from '$lib/utils/sanity'
+	import HomeDayTours from './components/home-day-tours.svelte'
+	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
+	import HomeHero from './components/home-hero.svelte'
+	import HomeHighlandTours from './components/home-highland-tours.svelte'
+
 	import { onMount } from 'svelte'
-	import { fly } from 'svelte/transition'
 
-	import HomeHeadline from './components/home-headline.svelte'
+	interface Props {
+		data?: any
+	}
 
-	let loaded = false
-	onMount(() => {
-		loaded = true
+	let { data: _data }: Props = $props()
+
+	let dayTours = $state<Tour[]>([])
+	let highlandTours = $state<Tour[]>([])
+	let loading = $state(true)
+
+	onMount(async () => {
+		loading = true
+		try {
+			const mockDayPage = { url: { pathname: '/vn/day-tours' } } as any
+			const mockHighlandPage = { url: { pathname: '/vn/highland-tours' } } as any
+
+			const [dData, hData] = await Promise.all([
+				get_sanity_data(mockDayPage),
+				get_sanity_data(mockHighlandPage),
+			])
+
+			dayTours = dData || []
+			highlandTours = hData || []
+		} finally {
+			loading = false
+		}
 	})
+
+	let allTours = $derived([...dayTours, ...highlandTours])
 </script>
 
-{#if loaded}
-	<div
-		class="grid min-h-[calc(100vh-70px)] items-center gap-6 md:grid-cols-2"
-		transition:fly={{ x: 200, duration: 800, delay: 300 }}>
-		<section class="flex flex-col justify-center gap-5 px-2 md:gap-10">
-			<HomeHeadline />
-			<p class="text-lg md:text-2xl">{$LL.home_page.intro()}</p>
-			<BaseTypewriter text={$LL.home_page.slogan()} />
-		</section>
-		<section class="flex items-center justify-center">
-			<div
-				class="flex max-h-[80vh] items-center justify-center overflow-hidden rounded-lg border-2 border-primary/50">
-				<img
-					src={hero}
-					alt="elephant"
-					class="h-full w-full object-cover" />
-			</div>
-		</section>
-	</div>
+{#if loading}
+	<BaseLoading />
+{:else}
+	<HomeHero />
+	<HomeFeaturedSlider tours={allTours} />
+	<HomeDayTours tours={dayTours} />
+	<HomeHighlandTours tours={highlandTours} />
 {/if}

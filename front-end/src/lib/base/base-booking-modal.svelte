@@ -28,11 +28,10 @@
 		e.preventDefault()
 		isSubmitting = true
 		try {
-			const res = await fetch('https://submit-form.com/FDkjl2H3', {
+			const res = await fetch('/api/booking', {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					type: 'Quick Booking',
 					tour: $booking_modal.tourName,
 					name,
 					contact,
@@ -48,10 +47,10 @@
 				date = ''
 				guests = 2
 			} else {
-				toast.error('Could not submit booking. Please try again or contact us directly.')
+				toast.error($LL.contact_page.err.err_submit())
 			}
 		} catch {
-			toast.error('Network error. Please try again.')
+			toast.error($LL.contact_page.err.err_submit())
 		} finally {
 			isSubmitting = false
 		}

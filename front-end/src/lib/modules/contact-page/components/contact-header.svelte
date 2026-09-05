@@ -2,12 +2,11 @@
 	import LL from '$i18n/i18n-svelte'
 </script>
 
-<section class="flex flex-col gap-8">
-	<h1
-		class="relative mx-auto w-max text-[6vmin] font-bold uppercase before:absolute before:bottom-0 before:h-1 before:w-full before:bg-secondary">
+<section class="mb-12 flex flex-col items-center gap-4 text-center">
+	<h1 class="font-serif text-3xl font-normal text-stone-900 sm:text-5xl">
 		{$LL.contact_page.page.contact_us()}
 	</h1>
-	<p class="w-[80%] pl-3">
+	<p class="max-w-xl text-sm font-light leading-relaxed text-stone-600">
 		{$LL.contact_page.page.have_question()}
 	</p>
 </section>

@@ -25,6 +25,7 @@ export const contact_page = {
 		form_phone: 'Your phone number is not valid',
 		form_langs: 'Languages must not be empty',
 		form_msg: 'Messages must not be empty',
+		err_submit: 'Failed to send message. Please try again!',
 	},
 	placeholder: {
 		name: 'YOUR NAME *',

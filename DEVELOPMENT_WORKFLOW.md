@@ -8,8 +8,7 @@
 
 - **BẮT BUỘC DÙNG `pnpm`** (Tuyệt đối không dùng `npm` hoặc `yarn`).
 - Dự án gồm các khu vực:
-  - `front-end/`: SvelteKit, TypeScript, TailwindCSS, Typesafe-i18n (Legacy)
-  - `front-end2/`: SvelteKit (Svelte 5 runes), TypeScript, TailwindCSS Minimalist UI, Mobile-first responsive
+  - `front-end/`: SvelteKit (Svelte 5 runes), TypeScript, TailwindCSS Minimalist UI, Typesafe-i18n, Mobile-first responsive
   - `back-end/`: Sanity Content Studio v3, React, TypeScript
 
 ```bash
@@ -17,17 +16,17 @@
 pnpm install
 
 # Hoặc cài riêng từng phần:
-cd front-end2 && pnpm install
+cd front-end && pnpm install
 cd back-end && pnpm install
 ```
 
 ### 🚀 Lệnh Nhanh Tại Thư Mục Gốc (Root Scripts):
-- **Dev Frontend (front-end2)**: `pnpm dev` (hoặc `pnpm dev:fe2`)
+- **Dev Frontend**: `pnpm dev` (hoặc `pnpm dev:fe`)
 - **Dev Backend (Sanity Studio)**: `pnpm dev:be`
 - **Build**: `pnpm build` (hoặc `pnpm build:all`)
 - **Kiểm tra toàn bộ (Check & Lint)**: `pnpm check:all` & `pnpm lint:all`
 - **Format toàn bộ**: `pnpm format:all`
-- **i18n Watch/Sync**: `pnpm i18n` (chạy typesafe-i18n cho front-end2)
+- **i18n Watch/Sync**: `pnpm i18n` (chạy typesafe-i18n cho front-end)
 
 
 ---

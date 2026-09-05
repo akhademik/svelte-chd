@@ -134,6 +134,10 @@ type RootTranslation = {
 			 * M​e​s​s​a​g​e​s​ ​m​u​s​t​ ​n​o​t​ ​b​e​ ​e​m​p​t​y
 			 */
 			form_msg: string
+			/**
+			 * F​a​i​l​e​d​ ​t​o​ ​s​e​n​d​ ​m​e​s​s​a​g​e​.​ ​P​l​e​a​s​e​ ​t​r​y​ ​a​g​a​i​n​!
+			 */
+			err_submit: string
 		}
 		placeholder: {
 			/**
@@ -359,6 +363,10 @@ export type TranslationFunctions = {
 			 * Messages must not be empty
 			 */
 			form_msg: () => LocalizedString
+			/**
+			 * Failed to send message. Please try again!
+			 */
+			err_submit: () => LocalizedString
 		}
 		placeholder: {
 			/**

@@ -1,10 +1,10 @@
-import { dev } from '$app/environment'
 import type { Tour } from '$lib/types/tour.type'
 import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
 import type { Page } from '@sveltejs/kit'
 
+import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 import { logger } from './logger'
 
 const config: ClientConfig = {
@@ -17,17 +17,29 @@ const config: ClientConfig = {
 const builder = imageUrlBuilder(config as SanityProjectDetails)
 
 const persist_data = {
-	set: (db_name: string, data: unknown) => {
+	set: (db_name: string, data: any) => {
+		if (data?.exchange_rate) {
+			exchange_rates_store.setRates(data.exchange_rate)
+		}
 		if (typeof localStorage !== 'undefined') {
 			localStorage.setItem(`chd-${db_name}`, JSON.stringify(data))
 		}
 	},
 	get: (db_name: string) => {
-		if (dev || typeof localStorage === 'undefined') {
+		if (typeof localStorage === 'undefined') {
 			return null
 		}
 		const data = localStorage.getItem(`chd-${db_name}`)
-		return data ? JSON.parse(data) : null
+		if (!data) return null
+		try {
+			const parsed = JSON.parse(data)
+			if (parsed?.exchange_rate) {
+				exchange_rates_store.setRates(parsed.exchange_rate)
+			}
+			return parsed
+		} catch {
+			return null
+		}
 	},
 }
 
@@ -81,8 +93,15 @@ export const tour_by_index = (tours: Tour[], index: number) => {
 }
 
 export const get_exchange_rate = (rate: string) => {
+	const storeRates = exchange_rates_store.getRates()
+	if (storeRates?.[rate]) {
+		return storeRates[rate]
+	}
 	const api_result = persist_data.get('day-tours') || persist_data.get('highland-tours')
-	return api_result?.exchange_rate?.[rate] || 1
+	return (
+		api_result?.exchange_rate?.[rate] ||
+		(rate === 'USD' ? 0.00003841 : rate === 'EUR' ? 0.00003317 : 1)
+	)
 }
 
 export const url_for = (source: SanityImageSource) => {

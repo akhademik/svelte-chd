@@ -12,7 +12,8 @@
 	let { tour }: Props = $props()
 </script>
 
-<div class="relative flex min-h-screen w-full flex-col lg:h-screen lg:flex-row lg:overflow-hidden">
+<div
+	class="relative flex min-h-screen w-full flex-col bg-stone-50 lg:h-screen lg:flex-row lg:overflow-hidden">
 	<DetailsNavigation />
 	<DetailsLeftPanel {tour} />
 	<DetailsRightPanel {tour} />

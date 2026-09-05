@@ -36,7 +36,7 @@
 <p
 	bind:this={headline}
 	style={`background-image: url(${text_bg})`}
-	class="flex flex-col bg-clip-text bg-center bg-no-repeat py-2 text-center font-figtree text-[10vmin] font-bold uppercase leading-none tracking-wide text-transparent [transition:font-size_700ms] sm:text-[12vmin] md:text-[7vmin]">
+	class="font-figtree flex flex-col bg-clip-text bg-center bg-no-repeat py-2 text-center text-[10vmin] font-bold uppercase leading-none tracking-wide text-transparent [transition:font-size_700ms] sm:text-[12vmin] md:text-[7vmin]">
 	<span>{$LL.home_page.h_land()}</span>
 	<span>{$LL.home_page.expert()}</span>
 </p>

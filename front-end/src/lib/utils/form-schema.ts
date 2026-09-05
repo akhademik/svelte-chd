@@ -9,3 +9,5 @@ export const form_schema = z.object({
 	langs: z.string().min(2, 'form_langs'),
 	msg: z.string().min(2, 'form_msg'),
 })
+
+export type FormSchema = z.infer<typeof form_schema>

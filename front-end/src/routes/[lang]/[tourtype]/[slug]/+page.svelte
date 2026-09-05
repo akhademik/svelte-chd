@@ -52,7 +52,7 @@
 	<div transition:fade={{ duration: 300 }}>
 		{#key tour}
 			<div
-				class="fixed inset-0 z-[999] flex h-screen w-screen flex-col overflow-y-auto bg-white font-roboto text-white sm:text-xl lg:flex-row lg:overflow-hidden"
+				class="font-roboto fixed inset-0 z-[999] flex h-screen w-screen flex-col overflow-y-auto bg-white text-white sm:text-xl lg:flex-row lg:overflow-hidden"
 				in:fly={{ x: -200, duration: 400, delay: 400 }}
 				out:fly={{ x: 200, duration: 400 }}>
 				<TourDetails {tour} />

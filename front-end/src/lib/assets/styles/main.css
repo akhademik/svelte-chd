@@ -1,25 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-/* DEBUG CSS */
-* {
-	--line-color: limegreen;
-	--bg-color: rgb(0 100 0 / 0.05);
-
-	/* outline: 1px dashed var(--line-color); */
-	/* background: var(--bg-color); */
+html {
+	scroll-behavior: smooth;
 }
 
-.o {
-	outline: 1px dashed var(--line-color);
+/* Minimalist Scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
 }
-
-.b {
-	background: var(--bg-color);
+::-webkit-scrollbar-track {
+	background: #faf9f6;
 }
-
-.ob {
-	outline: 1px dashed var(--line-color);
-	background: var(--bg-color);
+::-webkit-scrollbar-thumb {
+	background: #d5d2ca;
+	border-radius: 3px;
 }
-/* DEBUG CSS */

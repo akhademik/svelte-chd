@@ -4,9 +4,9 @@
 
 <a
 	href={`/${$locale}`}
-	class="font-bold">
+	class="group flex items-center gap-2">
+	<span class="font-serif text-2xl font-medium uppercase tracking-widest text-stone-900">CHD</span>
 	<span
-		class="relative text-xl text-secondary before:absolute before:-top-[2px] before:h-[3px] before:w-full before:bg-primary"
-		>CHD</span>
-	<span class="pl-1 text-base">Travel</span>
+		class="hidden border-l border-stone-300 pl-2 text-xs font-light uppercase tracking-widest text-stone-400 sm:inline"
+		>Travel</span>
 </a>

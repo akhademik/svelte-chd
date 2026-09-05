@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
-	import { invalidateAll } from '$app/navigation'
+	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
-	import { BaseIcon } from '$base'
 	import { persist_to_cookie, replace_locale_in_url } from '$i18n/i18n-helper'
 	import { locale, setLocale } from '$i18n/i18n-svelte'
 	import type { Locales } from '$i18n/i18n-types'
@@ -10,7 +9,7 @@
 	import { loadLocaleAsync } from '$i18n/i18n-util.async'
 	import { nav_mobile } from '$stores/nav-store'
 
-	const switch_locale = async (new_locale: Locales, update_history_state = true) => {
+	const switch_locale = async (new_locale: Locales) => {
 		if ($nav_mobile) nav_mobile.toggle()
 		if (!new_locale || $locale === new_locale) return
 
@@ -18,45 +17,40 @@
 		setLocale(new_locale)
 		persist_to_cookie(new_locale)
 
-		if (update_history_state) {
-			// update url to reflect locale changes
-			history.pushState({ locale: new_locale }, '', replace_locale_in_url(url, new_locale))
+		const targetUrl = replace_locale_in_url(url, new_locale)
+		await goto(targetUrl, { invalidateAll: true, keepFocus: true })
+	}
+
+	let url = $derived($page.url)
+	let lang = $derived($page.params.lang as Locales)
+
+	$effect(() => {
+		if (browser && lang && lang !== $locale) {
+			loadLocaleAsync(lang).then(() => {
+				setLocale(lang)
+				document.querySelector('html')?.setAttribute('lang', lang)
+			})
 		}
-
-		// run the `load` function again
-		invalidateAll()
-	}
-
-	// update `lang` attribute
-
-	// update locale when navigating via browser back/forward buttons
-	const handle_pop_state_event = async ({ state }: PopStateEvent) =>
-		switch_locale(state.locale, false)
-
-	const css = {
-		active: 'border-primary md:order-1 border-[1px]',
-		in_active: 'md:order-3',
-	}
-
-	$: url = $page.url
-	$: lang = $page.params.lang as Locales
-	$: if (browser) {
-		document.querySelector('html')!.setAttribute('lang', $locale)
-		switch_locale(lang, false)
-		history.replaceState({ ...history.state, locale: lang }, '', replace_locale_in_url(url, lang))
-	}
+	})
 </script>
 
-<svelte:window on:popstate={handle_pop_state_event} />
-<section
-	class="flex items-center gap-3 overflow-hidden px-2 transition-all duration-500 md:absolute md:h-[25px] md:flex-col hover:md:h-[100px]">
-	{#each locales as new_locale, index (index)}
+<div class="flex items-center gap-1 text-xs uppercase tracking-wider">
+	{#each locales as l, index (l)}
+		{#if index > 0}
+			<span class="text-stone-300">/</span>
+		{/if}
 		<a
-			class={new_locale === $locale ? css.active : css.in_active}
-			href={replace_locale_in_url(url, new_locale)}>
-			<BaseIcon
-				name={`flag_${new_locale}`}
-				class="w-5" />
+			href={replace_locale_in_url(url, l)}
+			onclick={e => {
+				e.preventDefault()
+				switch_locale(l)
+			}}
+			class={`px-2 py-1 transition-all ${
+				l === $locale
+					? 'border-b-[1.5px] border-stone-900 font-semibold text-stone-900'
+					: 'text-stone-400 hover:text-stone-800'
+			}`}>
+			{l.toUpperCase()}
 		</a>
 	{/each}
-</section>
+</div>

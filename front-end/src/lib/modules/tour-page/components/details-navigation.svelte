@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
-	import { BaseIcon } from '$base'
 	import { nav_animate_hidden } from '$lib/stores/nav-store'
+	import { tour_index_store } from '$lib/stores/tour-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { get_length_and_index, get_sanity_data, get_tour_slug } from '$lib/utils/sanity'
-	import { tour_index_store } from '$stores/tour-store'
-	import { get_base_url } from '$utils/navigation'
-
 	import { logger } from '$lib/utils/logger'
+	import { get_length_and_index, get_sanity_data, get_tour_slug } from '$lib/utils/sanity'
+	import { get_base_url } from '$utils/navigation'
 
 	let tours = $state<Tour[]>([])
 	let slug_info = $state<{ length: number; index: number }>({ length: 0, index: 0 })
@@ -52,28 +50,65 @@
 </script>
 
 <div
-	class="sticky top-0 z-30 flex w-full justify-between bg-white p-4 text-3xl lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-0.5 lg:bg-transparent">
+	class="sticky top-0 z-30 flex w-full justify-between border-b border-stone-200 bg-stone-50/90 p-4 backdrop-blur-md lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-1.5 lg:border-none lg:bg-transparent lg:p-0">
 	<button
-		class="animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:text-primary [&>*]:hover:text-white"
-		onclick={() => handle_close()}>
-		<BaseIcon
-			name="close"
-			class="w-6" />
+		class="flex h-9 w-9 items-center justify-center border border-stone-300 bg-white text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+		onclick={handle_close}
+		aria-label="Close details">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			class="h-4 w-4"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round">
+			<line
+				x1="18"
+				y1="6"
+				x2="6"
+				y2="18"></line>
+			<line
+				x1="6"
+				y1="6"
+				x2="18"
+				y2="18"></line>
+		</svg>
 	</button>
-	<div class="flex gap-0.5 lg:flex-col">
+
+	<div class="flex gap-1.5 lg:flex-col">
 		<button
-			class="animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:text-primary [&>*]:hover:text-white"
-			onclick={() => update_index('prev')}>
-			<BaseIcon
-				name="prev"
-				class="w-6" />
+			class="flex h-9 w-9 items-center justify-center border border-stone-300 bg-white text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+			onclick={() => update_index('prev')}
+			aria-label="Previous tour">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-4 w-4"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round">
+				<polyline points="15 18 9 12 15 6"></polyline>
+			</svg>
 		</button>
 		<button
-			class="animation-all linear bg-slate-200 p-1.5 duration-200 hover:bg-slate-500 [&>*]:text-primary [&>*]:hover:text-white"
-			onclick={() => update_index('next')}>
-			<BaseIcon
-				name="next"
-				class="w-6" />
+			class="flex h-9 w-9 items-center justify-center border border-stone-300 bg-white text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+			onclick={() => update_index('next')}
+			aria-label="Next tour">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-4 w-4"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round">
+				<polyline points="9 18 15 12 9 6"></polyline>
+			</svg>
 		</button>
 	</div>
 </div>

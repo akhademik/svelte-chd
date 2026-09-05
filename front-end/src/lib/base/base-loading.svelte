@@ -1,5 +1,5 @@
 <div
-	class="mx-auto flex min-h-[calc(100vh-100px)] max-w-6xl items-center justify-center px-5 py-5 font-roboto">
+	class="font-roboto mx-auto flex min-h-[calc(100vh-100px)] max-w-6xl items-center justify-center px-5 py-5">
 	<div class="text-primary">
 		<h1 class="mb-1 text-center text-3xl font-bold uppercase leading-relaxed">
 			PLEASE KINDLY WAIT FOR A MOMENT

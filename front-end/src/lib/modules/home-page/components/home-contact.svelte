@@ -14,7 +14,9 @@
 
 	type ErrKey = keyof Translation['contact_page']['err']
 	// svelte-ignore state_referenced_locally
-	const { form, errors, message, enhance, submitting } = superForm(data?.form || {})
+	const { form, errors, message, enhance, submitting } = superForm(data?.form || {}, {
+		id: 'home-contact-form',
+	})
 
 	let err_clone = $derived($errors as any)
 	let err_keys = $derived(err_clone ? err_clone[Object.keys(err_clone)[0]] || [] : [])
@@ -24,7 +26,7 @@
 		if ($message === 'success') {
 			toast.success($LL.contact_page.success())
 		} else if ($message === 'failed') {
-			toast.error('Gửi tin nhắn thất bại. Vui lòng thử lại!')
+			toast.error($LL.contact_page.err.err_submit())
 		}
 	})
 </script>

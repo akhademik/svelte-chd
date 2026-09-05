@@ -25,6 +25,7 @@ export const contact_page = {
 		form_phone: "Votre numéro de téléphone n'est pas valide",
 		form_langs: 'Les langues ne doivent pas être vides',
 		form_msg: 'Les messages ne doivent pas être vides',
+		err_submit: "Échec de l'envoi du message. Veuillez réessayer !",
 	},
 	placeholder: {
 		name: 'VOTRE NOM *',
