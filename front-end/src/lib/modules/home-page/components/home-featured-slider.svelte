@@ -13,7 +13,7 @@
 
 	let { tours }: Props = $props()
 
-	let hotTours = $derived(tours.filter(t => t.best_sell))
+	let hotTours = $derived(tours.filter(t => t.best_sell && Boolean(t.tour_name?.[$locale])))
 	let currentIndex = $state(0)
 	let timer = $state<any>(null)
 

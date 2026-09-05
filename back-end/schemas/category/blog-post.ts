@@ -1,6 +1,6 @@
 import {FaRegNewspaper} from 'react-icons/fa'
 import {generate_field} from '../helper-functions'
-import {img_cover} from '../common/type-img'
+import {img_cover, img_tour} from '../common/type-img'
 
 export default {
   name: 'blogPost',
@@ -31,6 +31,7 @@ export default {
     },
     generate_field('Mô tả ngắn (Excerpt)', 'excerpt', 'locale_string'),
     img_cover,
+    img_tour,
     generate_field('Nội dung chi tiết', 'content', 'locale_content'),
     {
       title: 'Bài viết nổi bật (Featured)',

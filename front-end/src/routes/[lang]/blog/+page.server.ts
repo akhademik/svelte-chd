@@ -30,6 +30,19 @@ const extract_blog_fields = `
 			"alt": coalesce(alt, asset->altText, asset->description, '')
 		}
 	),
+	"img_tour": coalesce(
+		imgTour[]{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		img_tour[]{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
+		[]
+	),
 	"isFeatured": coalesce(isFeatured, false),
 	"publishedAt": coalesce(publishedAt, _createdAt),
 	"author": coalesce(author, 'CHD Travel Team')

@@ -17,13 +17,13 @@ export const generate_field: GenerateField = (_title, _name, _type, _init_value)
   return field
 }
 
-// GENERATE FIELD FOR LOCALES
+// GENERATE FIELD FOR LOCALES (Only require default locale, other languages are optional)
 export const gen_locale_field = (_locales: Locale[], _type: string) => {
   return _locales.map((locale) => ({
     title: locale.title,
     name: locale.id,
     type: _type,
-    validation: (Rule: {required: () => any}) => Rule.required(),
+    ...(locale.isDefault ? {validation: (Rule: {required: () => any}) => Rule.required()} : {}),
     fieldset: locale.isDefault ? null : 'translations',
   }))
 }

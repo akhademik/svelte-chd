@@ -13,6 +13,8 @@
 	let { tours }: Props = $props()
 	let tourtype = $derived($page.params.tourtype)
 	let isDay = $derived(tourtype === 'day-tours')
+
+	let availableTours = $derived(tours.filter(t => Boolean(t.tour_name?.[$locale])))
 </script>
 
 <div class="mx-auto max-w-6xl px-6 py-12">
@@ -38,7 +40,7 @@
 	</div>
 
 	<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-		{#each tours as tour, index (tour.tour_id || index)}
+		{#each availableTours as tour, index (tour.tour_id || index)}
 			<div in:fly={{ y: 20, duration: 400, delay: 100 * index }}>
 				<TourCard {tour} />
 			</div>

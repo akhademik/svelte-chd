@@ -3,6 +3,8 @@
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
 
+	import { blog_modal } from '$lib/stores/modal-store'
+
 	interface Props {
 		posts?: BlogPost[]
 	}
@@ -54,26 +56,32 @@
 		},
 	]
 
-	// Use real Sanity posts directly if available, otherwise show fallback
-	let displayPosts = $derived(posts && posts.length > 0 ? posts : fallbackPosts)
+	// Strict language filter: Only show posts that actually have title and content/excerpt in the current language
+	let availablePosts = $derived.by(() => {
+		const rawPosts = posts && posts.length > 0 ? posts : fallbackPosts
+		return rawPosts.filter(p => {
+			const hasTitle = Boolean(p.title?.[$locale as 'vn' | 'en' | 'fr'])
+			return hasTitle
+		})
+	})
 
 	let filteredPosts = $derived(
 		activeFilter === 'all'
-			? displayPosts
-			: displayPosts.filter(post => post.category === activeFilter)
+			? availablePosts
+			: availablePosts.filter(post => post.category === activeFilter)
 	)
 
-	let featuredPost = $derived(displayPosts.find(p => p.isFeatured) || displayPosts[0])
+	let featuredPost = $derived(availablePosts.find(p => p.isFeatured) || availablePosts[0])
 	let nonFeaturedPosts = $derived(
-		activeFilter === 'all' ? displayPosts.filter(p => p._id !== featuredPost?._id) : filteredPosts
+		activeFilter === 'all' ? availablePosts.filter(p => p._id !== featuredPost?._id) : filteredPosts
 	)
 
 	const getPostTitle = (p: BlogPost) => {
-		return p.title?.[$locale as 'vn'] || p.title?.vn || p.title?.en || 'Bài viết'
+		return p.title?.[$locale as 'vn'] || ''
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return p.excerpt?.[$locale as 'vn'] || p.excerpt?.vn || p.excerpt?.en || ''
+		return p.excerpt?.[$locale as 'vn'] || ''
 	}
 
 	const getPostCover = (p: BlogPost) => {
@@ -81,6 +89,10 @@
 			return url_for(p.coverImg).width(800).height(450).auto('format').url()
 		}
 		return null
+	}
+
+	const openBlogDetail = (p: BlogPost) => {
+		blog_modal.open(p)
 	}
 
 	const getCategoryName = (cat: string) => {
@@ -187,7 +199,11 @@
 		{#if activeFilter === 'all' && featuredPost}
 			{@const coverImgUrl = getPostCover(featuredPost)}
 			<div
-				class="mb-12 grid grid-cols-1 overflow-hidden border border-stone-200 bg-white transition-all hover:border-stone-400 lg:grid-cols-12">
+				role="button"
+				tabindex="0"
+				onclick={() => openBlogDetail(featuredPost)}
+				onkeydown={e => (e.key === 'Enter' || e.key === ' ') && openBlogDetail(featuredPost)}
+				class="mb-12 grid cursor-pointer grid-cols-1 overflow-hidden border border-stone-200 bg-white text-left transition-all hover:border-stone-400 hover:shadow-md lg:grid-cols-12">
 				<div
 					class="relative flex min-h-[280px] flex-col justify-between bg-stone-900 p-8 text-white lg:col-span-6 lg:p-12">
 					{#if coverImgUrl}
@@ -229,12 +245,11 @@
 							? '"Những trải nghiệm thực tế từ các chuyến đi cùng người bản địa Đắk Lắk."'
 							: '"Authentic moments and insights gathered from local Highland journeys."'}
 					</p>
-					<div class="mt-8">
-						<a
-							href={`/${$locale}/contact`}
+					<div class="mt-8 flex items-center gap-3">
+						<span
 							class="inline-block bg-stone-900 px-6 py-3 text-xs uppercase tracking-widest text-white transition-colors hover:bg-stone-800">
-							{$locale === 'vn' ? 'Liên hệ tham gia' : 'Inquire with Us'}
-						</a>
+							{$locale === 'vn' ? 'Đọc toàn bộ bài viết →' : 'Read Full Post →'}
+						</span>
 					</div>
 				</div>
 			</div>
@@ -244,8 +259,12 @@
 		<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			{#each nonFeaturedPosts as post (post._id)}
 				{@const cardCover = getPostCover(post)}
-				<article
-					class="flex flex-col justify-between overflow-hidden border border-stone-200 bg-white transition-all hover:border-stone-400">
+				<div
+					role="button"
+					tabindex="0"
+					onclick={() => openBlogDetail(post)}
+					onkeydown={e => (e.key === 'Enter' || e.key === ' ') && openBlogDetail(post)}
+					class="flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200 bg-white text-left transition-all hover:border-stone-400 hover:shadow-md">
 					{#if cardCover}
 						<div class="h-48 w-full overflow-hidden bg-stone-100">
 							<img
@@ -276,9 +295,11 @@
 					<div
 						class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs text-stone-400">
 						<span>{post.author || 'CHD Travel'}</span>
-						<span class="font-medium text-terracotta">CHD Travel</span>
+						<span class="font-medium text-terracotta hover:underline">
+							{$locale === 'vn' ? 'Xem chi tiết →' : 'Read more →'}
+						</span>
 					</div>
-				</article>
+				</div>
 			{/each}
 		</div>
 	</div>

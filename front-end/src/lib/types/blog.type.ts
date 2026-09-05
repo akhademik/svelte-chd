@@ -18,6 +18,8 @@ export interface BlogPost {
 		fr?: string
 	}
 	coverImg?: any
+	imgTour?: any[]
+	img_tour?: any[]
 	content?: {
 		vn?: any[]
 		en?: any[]

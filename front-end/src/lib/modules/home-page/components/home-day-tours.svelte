@@ -13,8 +13,9 @@
 	let { tours }: Props = $props()
 
 	let displayTours = $derived.by(() => {
-		const hot = tours.filter(t => t.best_sell)
-		return hot.length > 0 ? hot : tours
+		const langTours = tours.filter(t => Boolean(t.tour_name?.[$locale]))
+		const hot = langTours.filter(t => t.best_sell)
+		return hot.length > 0 ? hot : langTours
 	})
 </script>
 
