@@ -1932,7 +1932,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_eslint",
-      "community": 20,
+      "community": 21,
       "community_name": "Dependencies & Config",
       "norm_label": "eslint"
     },
@@ -1943,7 +1943,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "front_end_package_json_eslint",
-      "community": 20,
+      "community": 21,
       "community_name": "Dependencies & Config",
       "norm_label": "eslint"
     },
@@ -1976,7 +1976,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_eslint_plugin_svelte",
-      "community": 16,
+      "community": 20,
       "community_name": "Dependencies & Config",
       "norm_label": "eslint-plugin-svelte"
     },
@@ -1987,7 +1987,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "eslint_plugin_svelte",
-      "community": 16,
+      "community": 20,
       "community_name": "Dependencies & Config",
       "norm_label": "eslint-plugin-svelte"
     },
@@ -1998,7 +1998,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_knip",
-      "community": 21,
+      "community": 22,
       "community_name": "Dependencies & Config",
       "norm_label": "knip"
     },
@@ -2009,7 +2009,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "knip",
-      "community": 21,
+      "community": 22,
       "community_name": "Dependencies & Config",
       "norm_label": "knip"
     },
@@ -2020,7 +2020,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_postcss",
-      "community": 22,
+      "community": 23,
       "community_name": "Dependencies & Config",
       "norm_label": "postcss"
     },
@@ -2031,7 +2031,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "postcss",
-      "community": 22,
+      "community": 23,
       "community_name": "Dependencies & Config",
       "norm_label": "postcss"
     },
@@ -2042,7 +2042,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_prettier",
-      "community": 23,
+      "community": 24,
       "community_name": "Dependencies & Config",
       "norm_label": "prettier"
     },
@@ -2053,7 +2053,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "front_end_package_json_prettier",
-      "community": 23,
+      "community": 24,
       "community_name": "Dependencies & Config",
       "norm_label": "prettier"
     },
@@ -2064,7 +2064,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_prettier_plugin_svelte",
-      "community": 24,
+      "community": 25,
       "community_name": "Dependencies & Config",
       "norm_label": "prettier-plugin-svelte"
     },
@@ -2075,7 +2075,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "prettier_plugin_svelte",
-      "community": 24,
+      "community": 25,
       "community_name": "Dependencies & Config",
       "norm_label": "prettier-plugin-svelte"
     },
@@ -2086,7 +2086,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_prettier_plugin_tailwindcss",
-      "community": 25,
+      "community": 26,
       "community_name": "Dependencies & Config",
       "norm_label": "prettier-plugin-tailwindcss"
     },
@@ -2097,7 +2097,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "prettier_plugin_tailwindcss",
-      "community": 25,
+      "community": 26,
       "community_name": "Dependencies & Config",
       "norm_label": "prettier-plugin-tailwindcss"
     },
@@ -2108,7 +2108,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_svelte",
-      "community": 26,
+      "community": 27,
       "community_name": "Dependencies & Config",
       "norm_label": "svelte"
     },
@@ -2119,7 +2119,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "front_end_package_json_svelte",
-      "community": 26,
+      "community": 27,
       "community_name": "Dependencies & Config",
       "norm_label": "svelte"
     },
@@ -2130,7 +2130,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "front_end_package_devdependencies_svelte_check",
-      "community": 27,
+      "community": 16,
       "community_name": "Dependencies & Config",
       "norm_label": "svelte-check"
     },
@@ -2141,7 +2141,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "svelte_check",
-      "community": 27,
+      "community": 16,
       "community_name": "Dependencies & Config",
       "norm_label": "svelte-check"
     },
@@ -14869,5 +14869,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "6f6783d0d17fe2e2d484874086139794edefa17d"
+  "built_at_commit": "60880603825f619548943a241b049d0039476427"
 }

@@ -14,12 +14,12 @@
 </script>
 
 {#if loaded}
-	<div class="pt-4 lg:px-11">
-		<div class="flex flex-col gap-5 py-4">
+	<div class="mx-auto max-w-6xl px-6 py-12">
+		<div class="flex flex-col gap-5">
 			<ContactHeader />
-			<div class="grid gap-11 lg:grid-cols-2">
+			<div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
 				<ContactForm {data} />
-				<div class="flex flex-col gap-16">
+				<div class="flex flex-col gap-8 lg:gap-12">
 					<ContactReview />
 					<ContactAddress />
 				</div>

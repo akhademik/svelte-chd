@@ -52,8 +52,11 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 
 ## 4. Kiến trúc Layout & Container (Grid & Spacing)
 
-- **Wrapper chuẩn**: `mx-auto max-w-6xl px-6` (hoặc `lg:px-11`).
-- **Section Padding**: `py-16 sm:py-24`.
+- **Wrapper chuẩn (Mobile-first Padding)**:
+  - Tất cả các trang (`day-tours`, `highland-tours`, `contact`, `about`, `blog`...): **BẮT BUỘC dùng `mx-auto max-w-6xl px-6 py-12`** (hoặc `py-16 sm:py-24`).
+  - Tuyệt đối không dùng padding chỉ riêng cho desktop (ví dụ `lg:px-11` mà thiếu `px-6` cho mobile) khiến nội dung, form input hoặc iframe bản đồ dính sát mép màn hình.
+  - Mọi chỉnh sửa UI đều phải xem xét và kiểm tra trước trên **Mobile View**.
+- **Section Padding**: `py-16 sm:py-24` (hoặc `py-12` đối với các trang route phụ).
 - **Phần xen kẽ (Alt Section)**: Xen kẽ giữa nền `bg-sand` và nền `bg-sand-alt` (`#C7BB98`) để phân tách trực quan.
 - **Card Styling**:
   - Viền mỏng: `border border-stone-200/90 bg-sand-card` (tránh dùng `bg-white` gắt chói).

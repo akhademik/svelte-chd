@@ -1,7 +1,7 @@
 # Graph Report - .  (2026-09-05)
 
 ## Corpus Check
-- 149 files · ~65,464 words
+- 149 files · ~65,573 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -150,7 +150,7 @@ Nodes (7): client, config, fetch_data(), fetch_exchange_rate(), GET(), get_lates
 
 ### Community 16 - "Dependencies & Config"
 Cohesion: 0.29
-Nodes (7): autoprefixer, eslint-plugin-svelte, devDependencies, autoprefixer, eslint-plugin-svelte, tailwindcss, tailwindcss
+Nodes (7): autoprefixer, devDependencies, autoprefixer, svelte-check, tailwindcss, svelte-check, tailwindcss
 
 ## Knowledge Gaps
 - **193 isolated node(s):** `name`, `private`, `version`, `main`, `type` (+188 more)
