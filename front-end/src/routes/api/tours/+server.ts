@@ -132,24 +132,36 @@ const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
 	}
 }
 
-const fallback_exchange_rate_from_sanity = async () => {
+const get_latest_exchange_rate_from_sanity = async () => {
 	try {
 		const doc = await client.fetch(
 			`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]`
 		)
 		if (doc?.rates?.rateUSD && doc?.rates?.rateEUR) {
 			return {
-				USD: 1 / doc.rates.rateUSD,
-				EUR: 1 / doc.rates.rateEUR,
+				date: doc.exchangeDate || null,
+				rates: {
+					USD: 1 / doc.rates.rateUSD,
+					EUR: 1 / doc.rates.rateEUR,
+				},
 			}
 		}
 	} catch (err) {
-		console.error('[Sanity Rate Fallback Error]:', err)
+		console.error('[Sanity Rate Fetch Error]:', err)
 	}
-	return { USD: 0.00003841, EUR: 0.00003317 }
+	return null
 }
 
 const fetch_exchange_rate = async () => {
+	const today = new Date().toISOString().split('T')[0]
+
+	// 1. Check if Sanity database already has a sealed rate for today
+	const latestFromSanity = await get_latest_exchange_rate_from_sanity()
+	if (latestFromSanity && latestFromSanity.date === today) {
+		return latestFromSanity.rates
+	}
+
+	// 2. If no rate for today, fetch new rate from external API
 	try {
 		const url = EXCHANGE_URL
 		const query = `${EXCHANGE_API_KEY}/latest/VND`
@@ -163,15 +175,18 @@ const fetch_exchange_rate = async () => {
 				EUR: data.conversion_rates.EUR,
 			}
 
-			// Background sync to Sanity database
+			// Background seal & sync to Sanity database for today
 			sync_rate_to_sanity(extracted_rates.USD, extracted_rates.EUR).catch(() => {})
 
 			return extracted_rates
 		}
 		throw new Error('Invalid rate format from API')
 	} catch (error) {
-		console.warn('[Exchange Rate API Failed, using Sanity fallback]:', error)
-		return await fallback_exchange_rate_from_sanity()
+		console.warn('[Exchange Rate API Failed, using last successful Sanity rate]:', error)
+		if (latestFromSanity?.rates) {
+			return latestFromSanity.rates
+		}
+		return { USD: 0.00003841, EUR: 0.00003317 }
 	}
 }
 

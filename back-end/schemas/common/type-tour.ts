@@ -86,5 +86,9 @@ export const exchange_rates_ref = {
       type: 'exchangeRates',
     },
   ],
+  initialValue: {
+    _type: 'reference',
+    _ref: 'exchange-rates-latest',
+  },
   readOnly: true,
 }
