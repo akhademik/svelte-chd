@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
+	import { url_for } from '$lib/utils/sanity'
 
 	interface Props {
 		posts?: BlogPost[]
@@ -10,18 +11,18 @@
 
 	let activeFilter = $state<'all' | 'event' | 'story' | 'tips' | 'destination'>('all')
 
-	// Mock sample fallback posts if Sanity has not created any blog post yet
+	// Fallback mock posts only if no post exists in Sanity
 	const fallbackPosts: BlogPost[] = [
 		{
 			_id: 'fb-1',
 			title: {
-				vn: 'Lễ hội Cà phê Buôn Ma Thuột 2026: Những điểm mới không thể bỏ qua',
-				en: 'Buon Ma Thuot Coffee Festival 2026: Highlights & New Experiences',
-				fr: 'Festival du Café de Buon Ma Thuot 2026: Les Nouveautés',
+				vn: 'Lễ hội Cà phê Buôn Ma Thuột: Điểm hẹn văn hoá Tây Nguyên',
+				en: 'Buon Ma Thuot Coffee Festival: The Central Highlands Cultural Gathering',
+				fr: 'Festival du Café de Buon Ma Thuot: Rendez-vous Culturel',
 			},
 			slug: {
-				vn: { current: 'le-hoi-ca-phe-buon-ma-thuot-2026' },
-				en: { current: 'buon-ma-thuot-coffee-festival-2026' },
+				vn: { current: 'le-hoi-ca-phe-buon-ma-thuot' },
+				en: { current: 'buon-ma-thuot-coffee-festival' },
 			},
 			category: 'event',
 			excerpt: {
@@ -45,52 +46,15 @@
 			},
 			category: 'story',
 			excerpt: {
-				vn: 'Ký sự chuyến đi 2 ngày 1 đêm cùng đoàn khách Hà Nội: Ăn cơm lam gà nướng, uống rượu cần và nghe già làng kể khan.',
-				en: 'Reflections from our 2-day journey with guests from Hanoi: Bamboo-cooked rice, grilled chicken, and ancient folk tales.',
+				vn: 'Ký sự chuyến đi 2 ngày 1 đêm cùng đoàn khách: Ăn cơm lam gà nướng, uống rượu cần và nghe già làng kể khan.',
+				en: 'Reflections from our 2-day journey: Bamboo-cooked rice, grilled chicken, and ancient folk tales.',
 			},
 			publishedAt: '2026-02-15',
 			author: 'Trần Hoài Nam',
 		},
-		{
-			_id: 'fb-3',
-			title: {
-				vn: 'Kinh nghiệm đi Đắk Lắk mùa hoa cà phê nở trắng trời (Tháng 2 - Tháng 4)',
-				en: 'Travel Guide: Blooming White Coffee Blossom Season in Dak Lak',
-				fr: 'Guide: La Saison des Fleurs de Café à Dak Lak',
-			},
-			slug: {
-				vn: { current: 'kinh-nghiem-di-dak-lak-mua-hoa-ca-phe' },
-				en: { current: 'dak-lak-coffee-blossom-season-guide' },
-			},
-			category: 'tips',
-			excerpt: {
-				vn: 'Thời điểm hoa nở rộ nhất, các cung đường chụp ảnh đẹp và lưu ý khi ghé thăm trang trại cà phê của người dân.',
-				en: 'Best blooming windows, photography routes, and respectful etiquette when visiting local coffee plantations.',
-			},
-			publishedAt: '2026-01-20',
-			author: 'H’Linh Niê',
-		},
-		{
-			_id: 'fb-4',
-			title: {
-				vn: 'Thác Dray Nur & Dray Sap: Cặp thác hùng vỹ trên dòng Sêrêpôk',
-				en: 'Dray Nur & Dray Sap: Majestic Twin Falls on the Serepok River',
-				fr: 'Dray Nur et Dray Sap: Les Cascades Jumelles de Serepok',
-			},
-			slug: {
-				vn: { current: 'thac-dray-nur-dray-sap-serepok' },
-				en: { current: 'dray-nur-dray-sap-waterfalls' },
-			},
-			category: 'destination',
-			excerpt: {
-				vn: 'Hướng dẫn đường đi, thời gian lý tưởng để chèo thuyền kayak và khám phá hang đá núi lửa cổ xưa.',
-				en: 'How to get there, best times for kayaking, and exploring the ancient volcanic caves.',
-			},
-			publishedAt: '2025-12-10',
-			author: 'Y Thịnh Ê Ban',
-		},
 	]
 
+	// Use real Sanity posts directly if available, otherwise show fallback
 	let displayPosts = $derived(posts && posts.length > 0 ? posts : fallbackPosts)
 
 	let filteredPosts = $derived(
@@ -110,6 +74,13 @@
 
 	const getPostExcerpt = (p: BlogPost) => {
 		return p.excerpt?.[$locale as 'vn'] || p.excerpt?.vn || p.excerpt?.en || ''
+	}
+
+	const getPostCover = (p: BlogPost) => {
+		if (p.coverImg?.asset) {
+			return url_for(p.coverImg).width(800).height(450).auto('format').url()
+		}
+		return null
 	}
 
 	const getCategoryName = (cat: string) => {
@@ -214,18 +185,30 @@
 	<div class="mx-auto max-w-6xl px-6">
 		<!-- Featured Post (when All is selected and featured exists) -->
 		{#if activeFilter === 'all' && featuredPost}
+			{@const coverImgUrl = getPostCover(featuredPost)}
 			<div
 				class="mb-12 grid grid-cols-1 overflow-hidden border border-stone-200 bg-white transition-all hover:border-stone-400 lg:grid-cols-12">
 				<div
-					class="relative flex min-h-[260px] flex-col justify-between bg-stone-900 p-8 text-white lg:col-span-6 lg:p-12">
-					<div class="flex items-center justify-between">
+					class="relative flex min-h-[280px] flex-col justify-between bg-stone-900 p-8 text-white lg:col-span-6 lg:p-12">
+					{#if coverImgUrl}
+						<div class="absolute inset-0 z-0">
+							<img
+								src={coverImgUrl}
+								alt={getPostTitle(featuredPost)}
+								class="h-full w-full object-cover opacity-35" />
+							<div
+								class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/80 to-stone-900/40">
+							</div>
+						</div>
+					{/if}
+					<div class="relative z-10 flex items-center justify-between">
 						<span
 							class={`rounded-full border px-3 py-1 text-[11px] font-medium ${getCategoryBadgeClass(featuredPost.category)}`}>
 							{getCategoryName(featuredPost.category)}
 						</span>
 						<span class="text-xs text-stone-400">Featured</span>
 					</div>
-					<div class="mt-8">
+					<div class="relative z-10 mt-8">
 						<h2 class="font-serif text-2xl font-normal leading-tight text-stone-100 sm:text-3xl">
 							{getPostTitle(featuredPost)}
 						</h2>
@@ -233,9 +216,9 @@
 							{getPostExcerpt(featuredPost)}
 						</p>
 					</div>
-					<div class="mt-6 flex items-center justify-between text-xs text-stone-400">
+					<div class="relative z-10 mt-6 flex items-center justify-between text-xs text-stone-400">
 						<span>{featuredPost.author || 'CHD Travel'}</span>
-						<span>{featuredPost.publishedAt || ''}</span>
+						<span>{featuredPost.publishedAt?.split('T')[0] || ''}</span>
 					</div>
 				</div>
 
@@ -260,15 +243,25 @@
 		<!-- Posts Grid -->
 		<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
 			{#each nonFeaturedPosts as post (post._id)}
+				{@const cardCover = getPostCover(post)}
 				<article
-					class="flex flex-col justify-between border border-stone-200 bg-white p-6 transition-all hover:border-stone-400">
-					<div>
+					class="flex flex-col justify-between overflow-hidden border border-stone-200 bg-white transition-all hover:border-stone-400">
+					{#if cardCover}
+						<div class="h-48 w-full overflow-hidden bg-stone-100">
+							<img
+								src={cardCover}
+								alt={getPostTitle(post)}
+								class="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
+						</div>
+					{/if}
+					<div class="p-6">
 						<div class="flex items-center justify-between">
 							<span
 								class={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${getCategoryBadgeClass(post.category)}`}>
 								{getCategoryName(post.category)}
 							</span>
-							<span class="text-[11px] text-stone-400">{post.publishedAt || ''}</span>
+							<span class="text-[11px] text-stone-400"
+								>{post.publishedAt?.split('T')[0] || ''}</span>
 						</div>
 
 						<h3 class="mt-4 font-serif text-lg font-medium leading-snug text-stone-900">
@@ -281,7 +274,7 @@
 					</div>
 
 					<div
-						class="mt-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs text-stone-400">
+						class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs text-stone-400">
 						<span>{post.author || 'CHD Travel'}</span>
 						<span class="font-medium text-terracotta">CHD Travel</span>
 					</div>
