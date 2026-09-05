@@ -37,10 +37,12 @@ front-end/
 ## 🛠️ Development
 
 ### Prerequisites
+
 - Node.js >= 18
 - pnpm >= 8
 
 ### Setup
+
 ```bash
 # Install dependencies from root or front-end directory
 pnpm install
@@ -50,6 +52,7 @@ cp .env.example .env
 ```
 
 ### Environment Variables
+
 ```env
 PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
 PUBLIC_SANITY_DATASET=production
@@ -60,6 +63,7 @@ PUBLIC_SITE_URL=https://chdtravel.com
 ```
 
 ### Commands
+
 ```bash
 pnpm dev          # Start local dev server
 pnpm build        # Build for Cloudflare Pages

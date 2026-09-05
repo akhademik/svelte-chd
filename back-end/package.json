@@ -1,5 +1,5 @@
 {
-  "name": "chd-backend-v1",
+  "name": "chd-backend",
   "private": true,
   "version": "1.0.0",
   "main": "package.json",

@@ -1,15 +1,16 @@
 # 📋 BẢNG THEO DÕI NHIỆM VỤ (TASKS TRACKER)
 
 > **Dự án**: `svelte-chd` (Frontend: SvelteKit + TailwindCSS; Backend: Sanity Studio v3)  
-> **Quy chuẩn chất lượng**: Tuân thủ [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md) & [TEST_WORKFLOW.md](TEST_WORKFLOW.md)  
+> **Quy chuẩn chất lượng**: Tuân thủ [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md)  
+> **Quy chuẩn thiết kế UI/UX**: Tuân thủ [LAYOUT_DESIGN_CONCEPT.md](LAYOUT_DESIGN_CONCEPT.md)  
 > **Kiến trúc & Đồ thị tri thức**: [GRAPH_REPORT.md](graphify-out/GRAPH_REPORT.md)
 
 ---
 
 ## 🎯 QUY TRÌNH THỰC THI CHUẨN CHO TỪNG TASK (QUALITY GATES)
 
-Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
-1. **Chỉnh sửa code tập trung**: Thực hiện dứt điểm, đúng ngữ cảnh TypeScript/Svelte 5 runes.
+Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình theo [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md):
+1. **Chỉnh sửa code tập trung**: Thực hiện dứt điểm, đúng ngữ cảnh TypeScript/Svelte 5 runes (`$props()`, `$state()`, `$derived()`).
 2. **Kiểm tra chất lượng (Quality Gates)**:
    - Frontend: `cd front-end && pnpm lint && pnpm check && pnpm format`
    - Backend: `cd back-end && pnpm eslint . && pnpm tsc --noEmit && pnpm prettier --write .`
@@ -20,81 +21,37 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 
 ---
 
-## 🔴 NHÓM 1: CẢI THIỆN KIẾN TRÚC & SEO (Ưu tiên cao nhất)
+## 🔴 NHÓM 1: CẢI THIỆN SEO & SSR (ƯU TIÊN KHẨN CẤP)
 
-### 1.1. Chuyển đổi Fetching Tour sang SSR & Khắc phục Client-only Render
-- [x] **1.1.1. SSR cho Trang chủ (`routes/[lang]/+page.server.ts`)**
-  - Chuyển logic query Sanity tour nổi bật / bài viết vào `load()` server.
-  - Loại bỏ wrapper `{#if loaded}` và `BaseLoading` full-page không cần thiết.
-- [x] **1.1.2. SSR cho Trang Danh Sách Tour (`routes/[lang]/[tourtype]/+page.server.ts`)**
-  - Chuyển fetch tour theo category sang `load()` server.
-  - Bỏ fetch trong `onMount`/`$effect` ở client.
-- [x] **1.1.3. SSR & Query tối ưu cho Trang Chi Tiết Tour (`routes/[lang]/[tourtype]/[slug]/+page.server.ts`)**
-  - Thay đổi GROQ query: Chỉ truy vấn đúng 1 tour theo `slug` hiện tại thay vì tải toàn bộ danh sách tour rồi lọc ở client.
-  - Xử lý trả về dữ liệu chuẩn qua `PageData`.
+### 1.1. Khắc phục `<title>` & `<meta description>` không hiển thị trong SSR
+- [x] **1.1.1. Sửa cơ chế SEO Tags cho Trang Chi Tiết Tour (`routes/[lang]/[tourtype]/[slug]/+page.svelte`)**
+  - Đã nâng cấp `BaseSeo` nhận props trực tiếp từ SSR `data` (title, ogImage).
+  - Loại bỏ `$effect` gọi `set_seo`, đảm bảo `<title>` & `<meta>` được render trực tiếp trong HTML gốc SSR.
+- [x] **1.1.2. Sửa cơ chế SEO Tags cho Trang Chi Tiết Blog (`routes/[lang]/blog/[slug]/+page.svelte`)**
+  - Đã tích hợp `BaseSeo` với props `title`, `description` (excerpt), `ogImage` (primaryCoverUrl), `ogType="article"`.
+  - Loại bỏ `$effect` gọi `set_seo`.
 
-### 1.2. Nâng cấp Hệ Thống SEO & Meta Tags
-- [x] **1.2.1. Đưa SEO Tags về Server-rendered**
-  - Thay vì chỉ cập nhật qua writable store `seo-store.ts` ở `$effect` (chỉ chạy client), đưa `title`, `description`, `og:image`, `og:title` vào `PageData` từ `load()`.
-  - Render thẻ `<svelte:head>` trực tiếp từ SSR để Googlebot / Facebook / Zalo crawler đọc được đầy đủ meta.
-- [x] **1.2.2. Sửa lỗi hard-code Year & Cấu hình SEO mặc định**
-  - Xoá chuỗi hard-code `" - 2023"` trong `seo-store.ts`, cập nhật năm động hoặc chuẩn hoá theo thương hiệu CHD Travel.
-- [x] **1.2.3. Tạo Dynamic `sitemap.xml` & `robots.txt`**
-  - Tạo route endpoint `routes/sitemap.xml/+server.ts` tự động query danh sách tour/blog từ Sanity để sinh XML sitemap.
-  - Thêm `routes/robots.txt/+server.ts` trỏ đúng sitemap URL.
-- [x] **1.2.4. Tích hợp Structured Data (JSON-LD)**
-  - Bổ sung schema `TouristTrip` / `Product` cho trang chi tiết tour giúp Google hiển thị rich snippet (giá, hành trình, rating).
+### 1.2. Sửa lỗi sinh URL Blog trong `sitemap.xml`
+- [x] **1.2.1. Cập nhật URL Blog Route trong `routes/sitemap.xml/+server.ts`**
+  - Đã sửa URL sinh ra cho blog từ `${siteUrl}/${lang}/blog#${slug}` thành `${siteUrl}/${lang}/blog/${slug}` khớp 100% với route SSR độc lập.
 
 ---
 
-## 🟡 NHÓM 2: CODE QUALITY, TYPE SAFETY & SECURITY
+## 🟡 NHÓM 2: CẤU HÌNH HỆ THỐNG & GỬI EMAIL PRODUCTION (GHI NHẬN THÊM)
 
-### 2.1. Đồng bộ Cú pháp Svelte 5 Runes & Loại bỏ Flash of Loading
-- [x] **2.1.1. Refactor Contact Page (`contact-page.svelte`)**
-  - Chuyển đổi từ cú pháp Svelte 4 (`export let data`) sang Svelte 5 runes (`let { data }: Props = $props()`).
-  - Gỡ bỏ `{#if loaded}` sau `onMount` gây chớp trắng (CLS) vì dữ liệu form đã có sẵn từ SSR `load()`.
-- [x] **2.1.2. Dọn dẹp Cache thủ công trong `sanity.ts`**
-  - Gỡ bỏ cơ chế `localStorage` cache (24h TTL) phức tạp hóa; chuyển sang Cloudflare Edge Cache (`s-maxage`, `stale-while-revalidate`) và In-Memory Isolate Cache.
-
-### 2.2. Type Safety & TypeScript Strictness
-- [x] **2.2.1. Định nghĩa Type chuẩn cho Props & PageData**
-  - Rà soát và thay thế toàn bộ `Props { data?: any }` / `data: any` bằng các interface/type TypeScript rõ ràng (sử dụng `./$types`).
-
-### 2.3. Bảo mật & Cấu hình Email (Resend & Environment)
-- [x] **2.3.1. Chuyển Fallback Email vào Biến Môi Trường**
-  - Loại bỏ email cá nhân hard-coded (`hajtran@gmail.com`) trong mã nguồn; đưa vào `.env` (`NOTIFY_EMAIL`).
-- [x] **2.3.2. Cấu hình Domain gửi Email Production**
-  - Chuyển quản lý gửi email qua module tập trung `front-end/src/lib/server/email.ts`.
+### 2.1. Cấu hình Domain gửi Email Resend
+- [ ] **2.1.1. Chuẩn bị & Cập nhật Sender Domain trong `front-end/src/lib/server/email.ts`**
+  - **Hiện trạng**: Đang dùng sender mặc định `from: 'onboarding@resend.dev'`.
+  - **Kế hoạch**: Cấu hình và xác thực domain chính thức (`chdtravel.com`) trước khi deploy production để tránh email rơi vào hòm thư spam.
 
 ---
 
-## 🔵 NHÓM 3: TÍNH NĂNG MỞ RỘNG & THIẾT KẾ ĐỒNG BỘ (FEATURES & UX)
+## 🟢 NHÓM 3: KIỂM THỬ, ĐỒ THỊ TRI THỨC & DỌN DẸP
 
-### 3.1. Trải nghiệm Tour & Thiết Kế Chuẩn Hệ Thống
-- [x] **3.1.1. Trang Chi Tiết Tour Độc Lập Theo Concept Thiết Kế ([LAYOUT_DESIGN_CONCEPT.md](LAYOUT_DESIGN_CONCEPT.md))**
-  - Chuyển từ fullscreen modal phủ màn hình sang cấu trúc trang chuẩn: Hero banner (`bg-sand-card`), Breadcrumb, Gallery ảnh tích hợp, Tổng quan hành trình, Điểm nhấn, Bảng giá & Lịch trình, Sticky Sidebar.
-  - Sử dụng toàn bộ token chuẩn: `text-moss` (H1/H2), `bg-sand`, `bg-sand-card`, `bg-terracotta`, padding `mx-auto max-w-6xl px-6`.
-  - Loại bỏ các số thứ tự thừa (`01 / Overview`, `02 / Highlights`, `03 / Schedule`) thay bằng tiêu đề chuẩn đa ngôn ngữ.
-  - Sửa lỗi component PortableText (`normal` list item).
-  - Tối ưu bảng giá: bỏ header cột thừa, định dạng rút gọn `4.123k/khách` tránh vỡ layout trên di động.
-- [x] **3.1.2. Giữ Danh Sách Tour Gọn Gàng & Chuyển Hướng Trực Tiếp Từ Trang Chủ**
-  - Giữ phong cách tối giản thanh lịch (bỏ thanh tìm kiếm/bộ lọc không cần thiết trên trang danh sách tour).
-  - Điều chỉnh các tour và bài viết ở Slider / Card trên trang chủ (`home-featured-slider.svelte`, `home-day-tours.svelte`, `home-highland-tours.svelte`) click mở thẳng trang chi tiết độc lập thay vì mở popup modal.
-  - Tự động hiển thị và quy đổi tiền tệ chuẩn xác theo ngôn ngữ (VNĐ / USD / EUR).
-
-### 3.2. Nâng Cấp Toàn Diện Trang Blog & Chi Tiết Bài Viết
-- [x] **3.2.1. Trang Chi Tiết Blog Độc Lập Chuẩn SEO & Thiết Kế**
-  - Xây dựng route SSR `routes/[lang]/blog/[slug]` với đầy đủ Meta Tags, OpenGraph và Schema JSON-LD.
-  - Gộp ảnh bìa và album ảnh (`imgTour`) thành 1 khối gallery duy nhất ở đầu bài viết (bỏ caption văn bản phía dưới ảnh, chỉ hiển thị ảnh).
-  - Loại bỏ CTA "Liên hệ trải nghiệm tour" ở cuối bài viết để đúng tính chất chia sẻ thông tin.
-- [x] **3.2.2. Tối Ưu Trang Danh Sách Blog**
-  - Tự động lọc và chỉ hiển thị các danh mục / tags đang thực sự có bài viết (`presentCategories`), ẩn các tag rỗng tránh người dùng click vào trang trống.
-
----
-
-## 🟢 NHÓM 4: DỌN DẸP & TÀI LIỆU DỰ ÁN
-
-- [x] **4.1. Cập nhật `README.md` Front-end**
-  - Viết lại `front-end/README.md` đúng thông tin dự án CHD Travel (Tech stack, cấu trúc thư mục, môi trường, lệnh chạy).
-- [ ] **4.2. Xoá/Lưu trữ `job-need-do.md`**
-  - Toàn bộ nhiệm vụ và yêu cầu đã được đồng bộ và quản lý tập trung trong bảng `tasks.md`.
+- [x] **3.1. Chạy toàn bộ Quality Gates sau khi hoàn thiện**
+  - Frontend: `pnpm lint`, `pnpm check`, `pnpm format`, `pnpm build` (đều pass 0 error/warning).
+  - Backend: `eslint`, `tsc --noEmit` pass.
+- [x] **3.2. Cập nhật Knowledge Graph**
+  - Đã chạy `/graphify` tái tạo [GRAPH_REPORT.md](graphify-out/GRAPH_REPORT.md) và `graph.json` (571 nodes, 867 edges).
+- [ ] **3.3. Dọn dẹp tệp `job-need-do.md`**
+  - Xóa hoặc lưu trữ `job-need-do.md` sau khi toàn bộ task đã hoàn thành và nghiệm thu.

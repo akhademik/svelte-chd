@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte'
 	import { locale } from '$i18n/i18n-svelte'
+	import { BaseSeo } from '$lib/base'
 	import BasePortableTextImage from '$lib/base/base-portable-text-image.svelte'
 	import BasePortableTextListItem from '$lib/base/base-portable-text-list-item.svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
-	import { set_seo } from '$stores/seo-store'
 	import { fade } from 'svelte/transition'
 	import type { PageData } from './$types'
 
@@ -52,18 +52,8 @@
 	let primaryCoverUrl = $derived(
 		allImages.length > 0
 			? url_for(allImages[0]).width(1200).height(650).auto('format').quality(85).url()
-			: null
+			: undefined
 	)
-
-	$effect(() => {
-		if (title) {
-			set_seo(title, excerpt || undefined, undefined, primaryCoverUrl || undefined)
-		}
-
-		return () => {
-			set_seo('default')
-		}
-	})
 
 	const getCategoryName = (cat: string) => {
 		switch (cat) {
@@ -80,6 +70,12 @@
 		}
 	}
 </script>
+
+<BaseSeo
+	{title}
+	description={excerpt || undefined}
+	ogImage={primaryCoverUrl}
+	ogType="article" />
 
 <div class="space-y-12 pb-24">
 	<!-- Hero Section -->

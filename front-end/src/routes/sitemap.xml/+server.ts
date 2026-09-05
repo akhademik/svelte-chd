@@ -71,7 +71,7 @@ export const GET: RequestHandler = async ({ url }) => {
 			for (const lang of languages) {
 				urls.push(`
 	<url>
-		<loc>${siteUrl}/${lang}/blog#${slug}</loc>
+		<loc>${siteUrl}/${lang}/blog/${slug}</loc>
 		<lastmod>${new Date(blog.publishedAt || Date.now()).toISOString().split('T')[0]}</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.7</priority>

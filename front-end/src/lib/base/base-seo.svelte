@@ -9,12 +9,31 @@
 		seo_title,
 	} from '$stores/seo-store'
 
-	let pageTitle = $derived($seo_title ? `${$seo_title} | CHD Travel` : DEFAULT_TITLE)
-	let pageDescription = $derived(
-		$seo_description ? `${$seo_description} | ${DEFAULT_DESC}` : DEFAULT_DESC
-	)
+	interface Props {
+		title?: string
+		description?: string
+		keywords?: string
+		ogImage?: string
+		ogType?: string
+	}
+
+	let {
+		title: propTitle,
+		description: propDescription,
+		keywords: propKeywords,
+		ogImage: propOgImage,
+		ogType = 'website',
+	}: Props = $props()
+
+	let rawTitle = $derived(propTitle ?? $seo_title)
+	let rawDesc = $derived(propDescription ?? $seo_description)
+	let rawKeywords = $derived(propKeywords ?? $seo_keywords)
+	let rawOgImage = $derived(propOgImage ?? $seo_og_image)
+
+	let pageTitle = $derived(rawTitle ? `${rawTitle} | CHD Travel` : DEFAULT_TITLE)
+	let pageDescription = $derived(rawDesc ? `${rawDesc} | ${DEFAULT_DESC}` : DEFAULT_DESC)
 	let pageKeywords = $derived(
-		$seo_keywords ? `${$seo_keywords}, ${DEFAULT_KEYWORDS}` : DEFAULT_KEYWORDS
+		rawKeywords ? `${rawKeywords}, ${DEFAULT_KEYWORDS}` : DEFAULT_KEYWORDS
 	)
 </script>
 
@@ -30,17 +49,17 @@
 	<!-- OpenGraph / Facebook / Zalo -->
 	<meta
 		property="og:type"
-		content="website" />
+		content={ogType} />
 	<meta
 		property="og:title"
 		content={pageTitle} />
 	<meta
 		property="og:description"
 		content={pageDescription} />
-	{#if $seo_og_image}
+	{#if rawOgImage}
 		<meta
 			property="og:image"
-			content={$seo_og_image} />
+			content={rawOgImage} />
 	{/if}
 
 	<!-- Twitter Card -->
@@ -53,9 +72,9 @@
 	<meta
 		name="twitter:description"
 		content={pageDescription} />
-	{#if $seo_og_image}
+	{#if rawOgImage}
 		<meta
 			name="twitter:image"
-			content={$seo_og_image} />
+			content={rawOgImage} />
 	{/if}
 </svelte:head>
