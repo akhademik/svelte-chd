@@ -58,7 +58,7 @@
 				{@const duration = tour.tour_duration?.[$locale] || 'Multi-day'}
 
 				<div
-					class="group grid grid-cols-1 overflow-hidden border border-stone-200/90 bg-white lg:grid-cols-12">
+					class="group grid grid-cols-1 overflow-hidden border border-stone-200/90 bg-sand-card lg:grid-cols-12">
 					<div
 						class={`relative aspect-[16/10] cursor-pointer overflow-hidden bg-stone-200 lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}
 						role="button"

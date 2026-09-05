@@ -5,7 +5,7 @@
 
 <div class="space-y-16 pb-20">
 	<!-- Hero Section -->
-	<section class="border-b border-stone-200/80 bg-white py-16 sm:py-24">
+	<section class="border-b border-stone-200/80 bg-sand-card py-16 sm:py-24">
 		<div class="mx-auto max-w-6xl px-6">
 			<div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
 				<div class="lg:col-span-7">
@@ -188,7 +188,7 @@
 
 			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 				<!-- Member 1 -->
-				<div class="border border-stone-200 bg-white p-6 transition-all hover:border-stone-400">
+				<div class="border border-stone-200 bg-sand-card p-6 transition-all hover:border-stone-400">
 					<div
 						class="flex h-12 w-12 items-center justify-center bg-stone-900 font-serif text-lg font-medium text-stone-100">
 						YT
@@ -205,7 +205,7 @@
 				</div>
 
 				<!-- Member 2 -->
-				<div class="border border-stone-200 bg-white p-6 transition-all hover:border-stone-400">
+				<div class="border border-stone-200 bg-sand-card p-6 transition-all hover:border-stone-400">
 					<div
 						class="flex h-12 w-12 items-center justify-center bg-stone-900 font-serif text-lg font-medium text-stone-100">
 						TN
@@ -222,7 +222,7 @@
 				</div>
 
 				<!-- Member 3 -->
-				<div class="border border-stone-200 bg-white p-6 transition-all hover:border-stone-400">
+				<div class="border border-stone-200 bg-sand-card p-6 transition-all hover:border-stone-400">
 					<div
 						class="flex h-12 w-12 items-center justify-center bg-stone-900 font-serif text-lg font-medium text-stone-100">
 						HL
@@ -239,7 +239,7 @@
 				</div>
 
 				<!-- Member 4 -->
-				<div class="border border-stone-200 bg-white p-6 transition-all hover:border-stone-400">
+				<div class="border border-stone-200 bg-sand-card p-6 transition-all hover:border-stone-400">
 					<div
 						class="flex h-12 w-12 items-center justify-center bg-stone-900 font-serif text-lg font-medium text-stone-100">
 						LD
@@ -324,7 +324,7 @@
 
 				<!-- Legal Info Card -->
 				<div class="lg:col-span-6">
-					<div class="border border-stone-200 bg-white p-8">
+					<div class="border border-stone-200 bg-sand-card p-8">
 						<h3 class="font-serif text-lg font-medium text-stone-900">
 							{$locale === 'vn' ? 'Thông tin đăng ký doanh nghiệp' : 'Company Registration'}
 						</h3>

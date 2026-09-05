@@ -16,7 +16,7 @@
 	const { enhance } = superFormData
 </script>
 
-<div class="border border-stone-200/90 bg-white p-8 sm:p-12">
+<div class="border border-stone-200/90 bg-sand-card p-8 sm:p-12">
 	<h3 class="mb-6 font-serif text-2xl text-stone-900">
 		{$LL.nav_bar.contact()}
 	</h3>

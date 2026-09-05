@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte'
-	import { fly } from 'svelte/transition'
 
 	import ContactAddress from './components/contact-address.svelte'
 	import ContactForm from './components/contact-form.svelte'
@@ -15,10 +14,7 @@
 </script>
 
 {#if loaded}
-	<div
-		class="font-roboto pt-4 lg:px-11"
-		in:fly|global={{ x: -200, duration: 600, delay: 300 }}
-		out:fly={{ x: 200, duration: 300 }}>
+	<div class="pt-4 lg:px-11">
 		<div class="flex flex-col gap-5 py-4">
 			<ContactHeader />
 			<div class="grid gap-11 lg:grid-cols-2">

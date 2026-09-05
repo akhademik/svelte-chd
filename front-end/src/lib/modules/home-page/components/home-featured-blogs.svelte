@@ -106,7 +106,7 @@
 						tabindex="0"
 						onclick={() => blog_modal.open(post)}
 						onkeydown={e => (e.key === 'Enter' || e.key === ' ') && blog_modal.open(post)}
-						class="group flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200/90 bg-white text-left transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+						class="group flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200/90 bg-sand-card text-left transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
 						<div>
 							{#if coverUrl}
 								<div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-100">

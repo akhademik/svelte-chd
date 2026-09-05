@@ -128,7 +128,7 @@
 
 <div class="space-y-12 pb-20">
 	<!-- Hero Section -->
-	<section class="border-b border-stone-200/80 bg-white py-12 sm:py-16">
+	<section class="border-b border-stone-200/80 bg-sand-card py-12 sm:py-16">
 		<div class="mx-auto max-w-6xl px-6">
 			<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-terracotta">
 				{$locale === 'vn' ? 'Góc chia sẻ' : 'Our Stories & Insights'}
@@ -203,7 +203,7 @@
 				tabindex="0"
 				onclick={() => openBlogDetail(featuredPost)}
 				onkeydown={e => (e.key === 'Enter' || e.key === ' ') && openBlogDetail(featuredPost)}
-				class="mb-12 grid cursor-pointer grid-cols-1 overflow-hidden border border-stone-200 bg-white text-left transition-all hover:border-stone-400 hover:shadow-md lg:grid-cols-12">
+				class="mb-12 grid cursor-pointer grid-cols-1 overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md lg:grid-cols-12">
 				<div
 					class="relative flex min-h-[280px] flex-col justify-between bg-stone-900 p-8 text-white lg:col-span-6 lg:p-12">
 					{#if coverImgUrl}
@@ -264,7 +264,7 @@
 					tabindex="0"
 					onclick={() => openBlogDetail(post)}
 					onkeydown={e => (e.key === 'Enter' || e.key === ' ') && openBlogDetail(post)}
-					class="flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200 bg-white text-left transition-all hover:border-stone-400 hover:shadow-md">
+					class="flex cursor-pointer flex-col justify-between overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md">
 					{#if cardCover}
 						<div class="h-48 w-full overflow-hidden bg-stone-100">
 							<img

@@ -58,7 +58,7 @@
 				{@const duration = tour.tour_duration?.[$locale] || '1 Day'}
 
 				<div
-					class="group flex flex-col border border-stone-200/80 bg-white p-5 transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+					class="group flex flex-col border border-stone-200/80 bg-sand-card p-5 transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
 					<div
 						class="relative mb-5 aspect-[4/3] cursor-pointer overflow-hidden bg-stone-100"
 						role="button"

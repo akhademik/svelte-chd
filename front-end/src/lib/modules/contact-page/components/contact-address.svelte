@@ -2,7 +2,7 @@
 	import { locale } from '$i18n/i18n-svelte'
 </script>
 
-<section class="overflow-hidden rounded-none border border-stone-200 bg-white shadow-sm">
+<section class="overflow-hidden rounded-none border border-stone-200 bg-sand-card shadow-sm">
 	<!-- Mini Google Map (Focused on CHD Travel) -->
 	<iframe
 		title="CHD Travel Location"

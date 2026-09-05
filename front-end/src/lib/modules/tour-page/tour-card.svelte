@@ -20,7 +20,7 @@
 </script>
 
 <article
-	class="group flex h-full w-full flex-col justify-between border border-stone-200/90 bg-white shadow-sm transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+	class="group flex h-full w-full flex-col justify-between border border-stone-200/90 bg-sand-card shadow-sm transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
 	<div>
 		<!-- Tour Cover Image (Click to open Modal) -->
 		<div

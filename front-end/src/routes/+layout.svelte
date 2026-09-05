@@ -9,10 +9,12 @@
 		BaseSeo,
 		BaseTourDetailModal,
 	} from '$base'
+	import { page } from '$app/state'
 	import { setLocale } from '$i18n/i18n-svelte'
 	import { MobileMenu } from '$modules/mobile-menu'
 	import { NavBar } from '$modules/nav-bar'
 	import { Toaster } from 'svelte-french-toast'
+	import { fade, fly } from 'svelte/transition'
 
 	import type { Snippet } from 'svelte'
 	import type { LayoutData } from './$types'
@@ -32,7 +34,13 @@
 
 <main class="min-h-screen bg-sand font-sans text-stone-800 antialiased selection:bg-sand-alt">
 	{#if children}
-		{@render children()}
+		{#key page.url.pathname}
+			<div
+				in:fly={{ y: 16, duration: 400, delay: 100 }}
+				out:fade={{ duration: 150 }}>
+				{@render children()}
+			</div>
+		{/key}
 	{/if}
 </main>
 

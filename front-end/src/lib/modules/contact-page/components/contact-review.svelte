@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section class="border border-stone-200 bg-white p-8">
+<section class="border border-stone-200 bg-sand-card p-8">
 	<div class="mb-4 flex items-center gap-1 text-amber-500">
 		{#each Array(5) as _}
 			<svg

@@ -334,10 +334,11 @@
 					<!-- Tour Overview / Intro -->
 					{#if intro && (Array.isArray(intro) ? intro.length > 0 : true)}
 						<div>
-							<h3 class="mb-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">
+							<h3
+								class="mb-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900 sm:text-sm">
 								{$LL.tours.detail.intro()}
 							</h3>
-							<div class="text-xs font-light leading-relaxed text-stone-600 sm:text-sm">
+							<div class="text-sm font-light leading-relaxed text-stone-700 sm:text-base">
 								<PortableText
 									value={intro}
 									components={portableTextComponents} />
@@ -348,16 +349,17 @@
 					<!-- Highlights -->
 					{#if highlights.length > 0}
 						<div>
-							<h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">
+							<h3
+								class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900 sm:text-sm">
 								{$LL.tours.detail.highlights()}
 							</h3>
-							<div class="space-y-2.5">
+							<div class="space-y-3">
 								{#each highlights as item}
 									{@const hlText = item?.highlights?.[activeLang] || item?.highlights?.en || ''}
 									{#if hlText}
 										<div
-											class="flex items-start gap-3 text-xs font-light text-stone-700 sm:text-sm">
-											<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
+											class="flex items-start gap-3 text-sm font-light text-stone-800 sm:text-base">
+											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
 											<span>{hlText}</span>
 										</div>
 									{/if}
@@ -369,10 +371,11 @@
 					<!-- Itinerary -->
 					{#if itinerary}
 						<div>
-							<h3 class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900">
+							<h3
+								class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900 sm:text-sm">
 								{$LL.tours.detail.itinerary()}
 							</h3>
-							<div class="text-xs font-light leading-relaxed text-stone-600 sm:text-sm">
+							<div class="text-sm font-light leading-relaxed text-stone-700 sm:text-base">
 								<PortableText
 									value={itinerary}
 									components={portableTextComponents} />
@@ -383,9 +386,9 @@
 					<!-- Price Table & Inclusions -->
 					<div class="grid grid-cols-1 gap-6 border-t border-stone-200 pt-4 md:grid-cols-2">
 						<!-- Inclusions -->
-						<div class="border border-stone-200/90 bg-white p-4 shadow-sm sm:p-5">
+						<div class="border border-stone-200/90 bg-white p-5 shadow-sm sm:p-6">
 							<h4
-								class="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800">
+								class="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 sm:text-sm">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									class="h-4 w-4 text-emerald-600"
@@ -404,7 +407,7 @@
 								<span>{$LL.tours.detail.inclusion()}</span>
 							</h4>
 							{#if includes.length > 0}
-								<ul class="space-y-2 text-xs font-light text-stone-600">
+								<ul class="space-y-2.5 text-xs font-light text-stone-700 sm:text-sm">
 									{#each includes as inc}
 										{@const incText = inc?.[activeLang] || inc?.en || ''}
 										{#if incText}
@@ -426,7 +429,7 @@
 									{/each}
 								</ul>
 							{:else}
-								<p class="text-xs font-light italic text-stone-500">
+								<p class="text-xs font-light italic text-stone-500 sm:text-sm">
 									{activeLang === 'vn'
 										? 'Xe đưa đón, hướng dẫn viên, nước uống & vé tham quan trọn gói.'
 										: 'Transportation, local guide, entrance tickets & bottled water included.'}
@@ -435,26 +438,27 @@
 						</div>
 
 						<!-- Price Table -->
-						<div class="border border-stone-200/90 bg-white p-4 shadow-sm sm:p-5">
+						<div class="border border-stone-200/90 bg-white p-5 shadow-sm sm:p-6">
 							{#if prices.length > 0}
 								<div class="overflow-x-auto">
-									<table class="w-full text-left text-xs">
-										<thead class="bg-stone-100 uppercase tracking-wider text-stone-600">
+									<table class="w-full text-left text-xs sm:text-sm">
+										<thead class="bg-stone-100 uppercase tracking-wider text-stone-700">
 											<tr>
-												<th class="px-3 py-2 font-medium">{$LL.tours.detail.pax_no()}</th>
-												<th class="px-3 py-2 text-right font-medium">{$LL.tours.detail.price()}</th>
+												<th class="px-3 py-2.5 font-medium">{$LL.tours.detail.pax_no()}</th>
+												<th class="px-3 py-2.5 text-right font-medium"
+													>{$LL.tours.detail.price()}</th>
 											</tr>
 										</thead>
 										<tbody class="divide-y divide-stone-100">
 											{#each prices as [pax, price]}
 												{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
 												<tr class="transition-colors hover:bg-stone-50">
-													<td class="px-3 py-2 text-stone-700">
+													<td class="px-3 py-2.5 text-stone-800">
 														{paxText}
 													</td>
-													<td class="px-3 py-2 text-right font-medium text-stone-900">
+													<td class="px-3 py-2.5 text-right font-medium text-stone-900">
 														{format_price(price, activeLang)}
-														<span class="text-[10px] font-normal text-stone-400"
+														<span class="text-[11px] font-normal text-stone-400 sm:text-xs"
 															>/{$LL.tours.detail.pax()}</span>
 													</td>
 												</tr>
@@ -463,7 +467,7 @@
 									</table>
 								</div>
 							{:else}
-								<p class="text-xs font-light text-stone-500">
+								<p class="text-xs font-light text-stone-500 sm:text-sm">
 									{format_price(minPrice, activeLang)} / {$LL.tours.detail.pax()}
 								</p>
 							{/if}

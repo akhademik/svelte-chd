@@ -19,10 +19,10 @@
 	<div class="mx-auto w-full max-w-2xl">
 		<!-- Introduction -->
 		<div class="my-4 flex flex-col gap-3">
-			<p class="border-b border-stone-200 pb-2 font-serif text-lg text-stone-900">
+			<p class="border-b border-stone-200 pb-2 font-serif text-lg font-semibold text-stone-900">
 				{$LL.tours.detail.intro()}
 			</p>
-			<article class="text-sm font-light leading-relaxed text-stone-600">
+			<article class="text-base font-light leading-relaxed text-stone-700">
 				<PortableText
 					value={tour.tour_intro?.[$locale] || []}
 					components={{}} />
@@ -32,14 +32,14 @@
 		<!-- Highlights -->
 		{#if tour.tour_highlights?.length}
 			<div class="my-6 flex flex-col gap-3">
-				<p class="border-b border-stone-200 pb-2 font-serif text-lg text-stone-900">
+				<p class="border-b border-stone-200 pb-2 font-serif text-lg font-semibold text-stone-900">
 					{$LL.tours.detail.highlights()}
 				</p>
-				<ul class="space-y-2.5 text-sm font-light text-stone-700">
+				<ul class="space-y-3 text-base font-light text-stone-800">
 					{#each tour.tour_highlights as { highlights }}
 						{#if highlights?.[$locale]}
 							<li class="flex items-start gap-3">
-								<span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
+								<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
 								<span>{highlights[$locale]}</span>
 							</li>
 						{/if}
@@ -51,10 +51,10 @@
 		<!-- Itinerary -->
 		{#if tour.tour_itinerary?.[$locale]}
 			<div class="my-6 flex flex-col gap-3">
-				<p class="border-b border-stone-200 pb-2 font-serif text-lg text-stone-900">
+				<p class="border-b border-stone-200 pb-2 font-serif text-lg font-semibold text-stone-900">
 					{$LL.tours.detail.itinerary()}
 				</p>
-				<article class="text-sm font-light leading-relaxed text-stone-600">
+				<article class="text-base font-light leading-relaxed text-stone-700">
 					<PortableText
 						value={tour.tour_itinerary[$locale]}
 						components={{}} />

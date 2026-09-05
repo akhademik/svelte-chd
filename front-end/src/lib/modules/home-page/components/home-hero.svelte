@@ -19,16 +19,16 @@
 		</div>
 
 		<h1
-			class="mb-8 font-serif text-4xl font-normal leading-[1.15] tracking-tight text-stone-900 sm:text-6xl md:text-7xl">
+			class="mb-8 font-serif text-4xl font-bold leading-[1.15] tracking-tight text-stone-900 sm:text-6xl md:text-7xl">
 			{#if $locale === 'vn'}
 				Chạm vào tâm hồn <br />
-				<span class="font-light italic">đại ngàn mộc mạc.</span>
+				<span class="font-normal text-moss">đại ngàn mộc mạc.</span>
 			{:else if $locale === 'fr'}
 				Ressentez l'âme pure des <br />
-				<span class="font-light italic">Hauts Plateaux sauvages.</span>
+				<span class="font-normal text-moss">Hauts Plateaux sauvages.</span>
 			{:else}
 				Embrace the Spirit of the <br />
-				<span class="font-light italic">Untamed Highlands.</span>
+				<span class="font-normal text-moss">Untamed Highlands.</span>
 			{/if}
 		</h1>
 
@@ -49,7 +49,7 @@
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 			<a
 				href="#day-tours"
-				class="inline-flex w-full items-center justify-center gap-2 bg-stone-900 px-8 py-4 text-xs uppercase tracking-widest text-stone-50 transition-all duration-300 hover:bg-stone-800 sm:w-auto">
+				class="inline-flex w-full items-center justify-center gap-2 bg-moss px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-moss-hover sm:w-auto">
 				<span>
 					{$locale === 'vn'
 						? 'Khám phá các tour'
@@ -76,7 +76,7 @@
 			</a>
 			<a
 				href={`/${$locale}/contact`}
-				class="inline-flex w-full items-center justify-center border border-stone-300 px-8 py-4 text-xs uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-100 sm:w-auto">
+				class="inline-flex w-full items-center justify-center border border-stone-800 px-8 py-4 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-800 hover:text-sand sm:w-auto">
 				{$locale === 'vn'
 					? 'Liên hệ / Tư vấn'
 					: $locale === 'fr'
