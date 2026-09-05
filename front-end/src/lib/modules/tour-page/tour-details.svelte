@@ -7,14 +7,15 @@
 
 	interface Props {
 		tour: Tour
+		allTours?: Tour[]
 	}
 
-	let { tour }: Props = $props()
+	let { tour, allTours = [] }: Props = $props()
 </script>
 
 <div
 	class="relative flex min-h-screen w-full flex-col bg-stone-50 lg:h-screen lg:flex-row lg:overflow-hidden">
-	<DetailsNavigation />
+	<DetailsNavigation {allTours} />
 	<DetailsLeftPanel {tour} />
 	<DetailsRightPanel {tour} />
 </div>

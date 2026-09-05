@@ -32,8 +32,6 @@ export const contact_page = {
 		email: 'EMAIL *',
 		phone: 'PHONE *',
 		langs: 'LANGUAGES *',
-		msg: `MESSAGES *
-
-Tell us more about your inquiry`,
+		msg: `MESSAGES *`,
 	},
 }

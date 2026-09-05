@@ -1,11 +1,8 @@
+import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 import type { Tour } from '$lib/types/tour.type'
 import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
-import type { Page } from '@sveltejs/kit'
-
-import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
-import { logger } from './logger'
 
 const config: ClientConfig = {
 	projectId: import.meta.env.VITE_SANITY_ID,
@@ -15,61 +12,6 @@ const config: ClientConfig = {
 }
 
 const builder = imageUrlBuilder(config as SanityProjectDetails)
-
-const persist_data = {
-	set: (db_name: string, data: any) => {
-		if (data?.exchange_rate) {
-			exchange_rates_store.setRates(data.exchange_rate)
-		}
-		if (typeof localStorage !== 'undefined') {
-			localStorage.setItem(`chd-${db_name}`, JSON.stringify(data))
-		}
-	},
-	get: (db_name: string) => {
-		if (typeof localStorage === 'undefined') {
-			return null
-		}
-		const data = localStorage.getItem(`chd-${db_name}`)
-		if (!data) return null
-		try {
-			const parsed = JSON.parse(data)
-			if (parsed?.exchange_rate) {
-				exchange_rates_store.setRates(parsed.exchange_rate)
-			}
-			return parsed
-		} catch {
-			return null
-		}
-	},
-}
-
-export const get_sanity_data = async (page: Page) => {
-	if (typeof window === 'undefined') {
-		return []
-	}
-	const db_name = page.url.pathname.split('/')[2]
-	const time_now = Date.now()
-	const one_day = 1000 * 60 * 60 * 24
-
-	let data = persist_data.get(db_name)
-	const less_than_24h = data && time_now - data?.stale_time < one_day
-
-	if (!data || !less_than_24h) {
-		logger.log(`Fetching fresh Sanity data for: ${db_name}`)
-		try {
-			const res = await fetch(`/api/tours?${db_name}`)
-			data = await res.json()
-			logger.log(`Received ${data?.tours?.length || 0} tours for: ${db_name}`, data)
-			persist_data.set(db_name, data)
-		} catch (e) {
-			logger.log(`Error fetching Sanity data for ${db_name}:`, e)
-			return []
-		}
-	} else {
-		logger.log(`Using cached data for: ${db_name}`)
-	}
-	return data?.tours || []
-}
 
 export const get_tour_slug = (tour: Tour, lang: string = 'en') => {
 	if (!tour?.tour_slug) return ''
@@ -97,11 +39,7 @@ export const get_exchange_rate = (rate: string) => {
 	if (storeRates?.[rate]) {
 		return storeRates[rate]
 	}
-	const api_result = persist_data.get('day-tours') || persist_data.get('highland-tours')
-	return (
-		api_result?.exchange_rate?.[rate] ||
-		(rate === 'USD' ? 0.00003841 : rate === 'EUR' ? 0.00003317 : 1)
-	)
+	return rate === 'USD' ? 0.00003841 : rate === 'EUR' ? 0.00003317 : 1
 }
 
 export const url_for = (source: SanityImageSource) => {

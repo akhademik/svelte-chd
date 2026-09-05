@@ -413,7 +413,7 @@ export type TranslationFunctions = {
 			 */
 			langs: () => LocalizedString
 			/**
-			 * MESSAGES *
+			 * MESSAGES  *
 	
 		Tell us more about your inquiry
 			 */

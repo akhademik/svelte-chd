@@ -1,26 +1,61 @@
 <script lang="ts">
-	import { seo_description, seo_keywords, seo_title } from '$stores/seo-store'
+	import {
+		DEFAULT_DESC,
+		DEFAULT_KEYWORDS,
+		DEFAULT_TITLE,
+		seo_description,
+		seo_keywords,
+		seo_og_image,
+		seo_title,
+	} from '$stores/seo-store'
 
-	const base = {
-		desc: 'Discover the vibrant culture and rich traditions of Vietnam’s highlands with our travel agency. Experience the lifestyle of the minority people, participate in their customs, and explore breathtaking landscapes. Join us for sustainable and responsible tourism',
-		keys: 'Vietnam Travel Agency, Highlands Tour, Minority People Lifestyle, Cultural Immersion, Traditional Ceremonies, Sustainable Tourism, Responsible Tourism, Scenic Hikes, Ethnic Minorities, Local Folklore, Breathtaking Landscapes, Vietnam Highlands, Rural Life Experience',
-	}
+	let pageTitle = $derived($seo_title ? `${$seo_title} | CHD Travel` : DEFAULT_TITLE)
+	let pageDescription = $derived(
+		$seo_description ? `${$seo_description} | ${DEFAULT_DESC}` : DEFAULT_DESC
+	)
+	let pageKeywords = $derived(
+		$seo_keywords ? `${$seo_keywords}, ${DEFAULT_KEYWORDS}` : DEFAULT_KEYWORDS
+	)
 </script>
 
 <svelte:head>
-	<title>CHD Travel {$seo_title}</title>
+	<title>{pageTitle}</title>
 	<meta
 		name="description"
-		content={base.desc + ' ' + $seo_description} />
-
+		content={pageDescription} />
 	<meta
 		name="keywords"
-		content={base.keys + ' ' + $seo_keywords} />
+		content={pageKeywords} />
 
+	<!-- OpenGraph / Facebook / Zalo -->
+	<meta
+		property="og:type"
+		content="website" />
 	<meta
 		property="og:title"
-		content={$seo_title} />
+		content={pageTitle} />
 	<meta
 		property="og:description"
-		content={base.desc + ' ' + $seo_description} />
+		content={pageDescription} />
+	{#if $seo_og_image}
+		<meta
+			property="og:image"
+			content={$seo_og_image} />
+	{/if}
+
+	<!-- Twitter Card -->
+	<meta
+		name="twitter:card"
+		content="summary_large_image" />
+	<meta
+		name="twitter:title"
+		content={pageTitle} />
+	<meta
+		name="twitter:description"
+		content={pageDescription} />
+	{#if $seo_og_image}
+		<meta
+			name="twitter:image"
+			content={$seo_og_image} />
+	{/if}
 </svelte:head>

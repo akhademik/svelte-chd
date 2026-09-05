@@ -33,8 +33,6 @@ export const contact_page = {
 		email: 'EMAIL *',
 		phone: 'SỐ ĐIỆN THOẠI *',
 		langs: 'NGÔN NGỮ *',
-		msg: `TIN NHẮN *
-
-Hãy cho chúng tôi biết thêm về yêu cầu của bạn`,
+		msg: `TIN NHẮN *`,
 	},
 }
