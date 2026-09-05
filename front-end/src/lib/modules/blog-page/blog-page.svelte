@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
-	import { url_for } from '$lib/utils/sanity'
 
 	interface Props {
 		posts?: BlogPost[]
