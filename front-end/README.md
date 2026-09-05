@@ -1,40 +1,69 @@
-# SvelteKit Boilerplate
+# CHD Travel - Frontend
 
-This is a SvelteKit boilerplate project that provides a solid foundation for building web applications with SvelteKit, TypeScript, Tailwind CSS, and Prettier. It includes configurations for linting, formatting, and building your SvelteKit project.
+Frontend application for CHD Travel built with **SvelteKit**, **Svelte 5 Runes**, **TypeScript**, and **Tailwind CSS**, connecting to a **Sanity.io v3 Headless CMS** backend.
 
-## Features
+## 🚀 Tech Stack
 
-- **SvelteKit**: Utilize the power of SvelteKit, the next-generation framework for building fast and efficient web applications.
+- **Framework**: [SvelteKit 2](https://kit.svelte.dev/) with **Svelte 5 Runes**
+- **Hosting / Adapter**: `@sveltejs/adapter-cloudflare` (Server-Side Rendering on Cloudflare Pages / Workers)
+- **CMS / Data Source**: [Sanity v3](https://www.sanity.io/) with `@sanity/client` and `@sanity/image-url`
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom earth-tone design tokens (`moss`, `sand`, `terracotta`)
+- **Forms & Validation**: `sveltekit-superforms` & `zod`
+- **Email Service**: Resend API integration via server endpoints
+- **SEO & Performance**: SSR Meta Tags, Dynamic Sitemap (`/sitemap.xml`), `robots.txt`, and JSON-LD Structured Data
 
-- **TypeScript**: Write type-safe code with TypeScript to catch errors early and enhance development productivity.
+## 📂 Project Structure
 
-- **Tailwind CSS**: Easily style your components using Tailwind CSS, a highly customizable CSS framework.
+```
+front-end/
+├── src/
+│   ├── lib/
+│   │   ├── modules/         # Feature modules (tour-page, blog-page, home-page, contact-page)
+│   │   ├── shared/          # Base UI components (Header, Footer, Lightbox, etc.)
+│   │   ├── server/          # Server-only utilities (email, sanity client)
+│   │   ├── services/        # Sanity client & queries
+│   │   ├── stores/          # Reactive stores (language, currency, SEO)
+│   │   └── utils/           # Formatters, helpers, currency conversion
+│   ├── routes/
+│   │   ├── [lang]/          # Multilingual routes (vi, en, fr, de, it, ja, etc.)
+│   │   │   ├── [tourtype]/  # Dynamic tour categories & [slug] tour details
+│   │   │   ├── blog/        # Blog list & [slug] blog details
+│   │   │   └── contact/     # Contact & tour inquiry form
+│   │   ├── sitemap.xml/     # Dynamic XML Sitemap endpoint
+│   │   └── robots.txt/      # Dynamic robots.txt endpoint
+│   └── app.html
+```
 
-- **Prettier**: Maintain consistent code formatting across your project with Prettier. It's configured to work seamlessly with Svelte and Tailwind CSS.
+## 🛠️ Development
 
-- **Linting**: Keep your code clean and error-free with ESLint. We use ESLint with TypeScript and the Prettier plugin for consistent code quality.
+### Prerequisites
+- Node.js >= 18
+- pnpm >= 8
 
-- **Vite**: Utilize Vite as the development server and build tool for blazing-fast development and production builds.
+### Setup
+```bash
+# Install dependencies from root or front-end directory
+pnpm install
 
-## Getting Started
+# Configure environment variables
+cp .env.example .env
+```
 
-1. **Clone this Repository**
+### Environment Variables
+```env
+PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
+PUBLIC_SANITY_DATASET=production
+PUBLIC_SANITY_API_VERSION=2023-05-03
+RESEND_API_KEY=your_resend_api_key
+NOTIFY_EMAIL=info@chdtravel.com
+PUBLIC_SITE_URL=https://chdtravel.com
+```
 
-   Clone this repository to your local machine:
-
-   ```bash
-   git clone https://github.com/akhademik/sveltekit-boilerplate.git
-   ```
-
-2. **Install Dependencies**
-
-   ```bash
-   cd sveltekit-boilerplate
-   pnpm install
-   ```
-
-3. **Development Mode**
-
-   ```bash
-   pnpm dev
-   ```
+### Commands
+```bash
+pnpm dev          # Start local dev server
+pnpm build        # Build for Cloudflare Pages
+pnpm check        # Run svelte-check type checking
+pnpm lint         # Run ESLint checks
+pnpm format       # Run Prettier formatting
+```

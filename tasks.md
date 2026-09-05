@@ -74,15 +74,27 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 - [x] **3.1.1. Trang Chi Tiết Tour Độc Lập Theo Concept Thiết Kế ([LAYOUT_DESIGN_CONCEPT.md](LAYOUT_DESIGN_CONCEPT.md))**
   - Chuyển từ fullscreen modal phủ màn hình sang cấu trúc trang chuẩn: Hero banner (`bg-sand-card`), Breadcrumb, Gallery ảnh tích hợp, Tổng quan hành trình, Điểm nhấn, Bảng giá & Lịch trình, Sticky Sidebar.
   - Sử dụng toàn bộ token chuẩn: `text-moss` (H1/H2), `bg-sand`, `bg-sand-card`, `bg-terracotta`, padding `mx-auto max-w-6xl px-6`.
-- [x] **3.1.2. Giữ Danh Sách Tour Gọn Gàng & Tự Động Tỷ Giá**
-  - Giữ phong cách tối giản thanh lịch (bỏ thanh tìm kiếm/bộ lọc không cần thiết).
+  - Loại bỏ các số thứ tự thừa (`01 / Overview`, `02 / Highlights`, `03 / Schedule`) thay bằng tiêu đề chuẩn đa ngôn ngữ.
+  - Sửa lỗi component PortableText (`normal` list item).
+  - Tối ưu bảng giá: bỏ header cột thừa, định dạng rút gọn `4.123k/khách` tránh vỡ layout trên di động.
+- [x] **3.1.2. Giữ Danh Sách Tour Gọn Gàng & Chuyển Hướng Trực Tiếp Từ Trang Chủ**
+  - Giữ phong cách tối giản thanh lịch (bỏ thanh tìm kiếm/bộ lọc không cần thiết trên trang danh sách tour).
+  - Điều chỉnh các tour và bài viết ở Slider / Card trên trang chủ (`home-featured-slider.svelte`, `home-day-tours.svelte`, `home-highland-tours.svelte`) click mở thẳng trang chi tiết độc lập thay vì mở popup modal.
   - Tự động hiển thị và quy đổi tiền tệ chuẩn xác theo ngôn ngữ (VNĐ / USD / EUR).
+
+### 3.2. Nâng Cấp Toàn Diện Trang Blog & Chi Tiết Bài Viết
+- [x] **3.2.1. Trang Chi Tiết Blog Độc Lập Chuẩn SEO & Thiết Kế**
+  - Xây dựng route SSR `routes/[lang]/blog/[slug]` với đầy đủ Meta Tags, OpenGraph và Schema JSON-LD.
+  - Gộp ảnh bìa và album ảnh (`imgTour`) thành 1 khối gallery duy nhất ở đầu bài viết (bỏ caption văn bản phía dưới ảnh, chỉ hiển thị ảnh).
+  - Loại bỏ CTA "Liên hệ trải nghiệm tour" ở cuối bài viết để đúng tính chất chia sẻ thông tin.
+- [x] **3.2.2. Tối Ưu Trang Danh Sách Blog**
+  - Tự động lọc và chỉ hiển thị các danh mục / tags đang thực sự có bài viết (`presentCategories`), ẩn các tag rỗng tránh người dùng click vào trang trống.
 
 ---
 
 ## 🟢 NHÓM 4: DỌN DẸP & TÀI LIỆU DỰ ÁN
 
-- [ ] **4.1. Cập nhật `README.md` Front-end**
-  - Viết lại `front-end/README.md` đúng thông tin dự án CHD Travel (thay thế boilerplate cũ).
+- [x] **4.1. Cập nhật `README.md` Front-end**
+  - Viết lại `front-end/README.md` đúng thông tin dự án CHD Travel (Tech stack, cấu trúc thư mục, môi trường, lệnh chạy).
 - [ ] **4.2. Xoá/Lưu trữ `job-need-do.md`**
-  - Nội dung padding mobile Contact đã được fix; toàn bộ nhiệm vụ đã được chuyển thành bảng `tasks.md` này để quản lý.
+  - Toàn bộ nhiệm vụ và yêu cầu đã được đồng bộ và quản lý tập trung trong bảng `tasks.md`.
