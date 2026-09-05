@@ -1,3 +1,4 @@
+import blogPost from './category/blog-post'
 import day_tours from './category/day-tours'
 import exchangeRates from './category/exchange-rates'
 import highland_tours from './category/highland-tours'
@@ -24,4 +25,5 @@ export const schemaTypes = [
   tour_includes,
   tour_tags,
   exchangeRates,
+  blogPost,
 ]

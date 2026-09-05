@@ -20,6 +20,16 @@ export const menu_items: MenuItem[] = [
 	},
 	{
 		id: 3,
+		text: 'about',
+		url: '/about',
+	},
+	{
+		id: 4,
+		text: 'blog',
+		url: '/blog',
+	},
+	{
+		id: 5,
 		text: 'contact',
 		url: '/contact',
 	},

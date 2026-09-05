@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CHD Travel — Mockup Giới thiệu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1EAD9; --paper-alt:#E7DEC8; --card:#FFFDF8;
+    --ink:#241C16; --ink-soft:#5B5045;
+    --forest:#2F4C3B; --forest-deep:#1E3129;
+    --clay:#7A3B2E; --gold:#B8862E;
+    --line: rgba(36,28,22,0.14); --radius:3px;
+  }
+  *{ box-sizing:border-box; }
+  body{ margin:0; background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; line-height:1.55; }
+  h1,h2,h3{ font-family:'Fraunces',serif; color:var(--ink); margin:0; font-weight:500; letter-spacing:-0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  header{ position:sticky; top:0; z-index:20; background:var(--paper); border-bottom:1px solid var(--line); }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; gap:24px; flex-wrap:wrap; }
+  .logo{ font-family:'Fraunces',serif; font-size:22px; font-weight:600; color:var(--forest-deep); white-space:nowrap; }
+  nav.links{ display:flex; align-items:center; gap:30px; flex-wrap:wrap; font-size:15px; }
+  nav.links a{ color:var(--ink); border-bottom:1px solid transparent; padding-bottom:4px; }
+  nav.links a:hover{ border-color:var(--forest); color:var(--forest); }
+  nav.links a.active{ color:var(--forest); border-color:var(--forest); font-weight:500; }
+  .nav-cta{ background:var(--forest); color:var(--paper); padding:11px 22px; border-radius:var(--radius); font-size:14px; font-weight:500; white-space:nowrap; }
+  .nav-cta:hover{ background:var(--forest-deep); }
+
+  .btn{ display:inline-block; padding:13px 26px; border-radius:var(--radius); font-size:14.5px; font-weight:500; }
+  .btn-primary{ background:var(--clay); color:var(--card); }
+  .btn-primary:hover{ background:#602c22; }
+  .btn-ghost{ border:1px solid var(--ink); color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+
+  section{ padding:76px 0; }
+  .alt{ background:var(--paper-alt); }
+  .section-head{ margin-bottom:38px; max-width:56ch; }
+  .section-head h2{ font-size:30px; }
+  .section-head p{ margin-top:12px; font-size:14.5px; color:var(--ink-soft); }
+
+  /* hero */
+  .hero{ padding:72px 0 56px; }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:56px; align-items:center; }
+  .hero h1{ font-size:42px; line-height:1.16; max-width:15ch; }
+  .hero p.lede{ margin:20px 0 0; font-size:16.5px; color:var(--ink-soft); max-width:46ch; }
+  .fact-row{ margin-top:32px; display:flex; gap:36px; flex-wrap:wrap; }
+  .fact-row div span{ display:block; font-size:12.5px; color:var(--ink-soft); margin-bottom:4px; }
+  .fact-row div b{ font-family:'Fraunces',serif; font-size:20px; font-weight:600; }
+  .hero-visual{ position:relative; height:380px; }
+  .stack-card{ position:absolute; border-radius:var(--radius); box-shadow:0 18px 34px rgba(36,28,22,0.18); overflow:hidden; }
+  .stack-card .cap{ position:absolute; left:14px; bottom:12px; font-size:12px; color:#fff; background:rgba(0,0,0,0.28); padding:4px 10px; border-radius:20px; }
+  .sc1{ width:75%; height:230px; top:0; left:0; background:linear-gradient(155deg,#3E5946,#24382C); }
+  .sc2{ width:58%; height:190px; bottom:0; right:0; background:linear-gradient(155deg,#8C5A2E,#5E3B1D); }
+
+  /* timeline */
+  .timeline{ position:relative; padding-left:28px; border-left:2px solid var(--line); display:flex; flex-direction:column; gap:44px; }
+  .t-item{ position:relative; }
+  .t-item::before{ content:''; position:absolute; left:-34px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--gold); }
+  .t-item .yr{ font-family:'Fraunces',serif; font-size:20px; color:var(--forest-deep); font-weight:600; }
+  .t-item h3{ font-size:16.5px; margin-top:6px; }
+  .t-item p{ font-size:14px; color:var(--ink-soft); margin:6px 0 0; max-width:52ch; }
+
+  /* team */
+  .team-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+  .team-card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  .team-photo{ height:170px; }
+  .p1{ background:linear-gradient(160deg,#4C6B4E,#233420); }
+  .p2{ background:linear-gradient(160deg,#8C5A2E,#4B2E14); }
+  .p3{ background:linear-gradient(160deg,#3D6E7C,#1D3238); }
+  .p4{ background:linear-gradient(160deg,#8E6E2E,#493A16); }
+  .team-body{ padding:16px 18px 20px; }
+  .team-body h3{ font-size:15.5px; }
+  .team-body .role{ font-size:12.5px; color:var(--forest); margin-top:3px; }
+  .team-body p{ font-size:13px; color:var(--ink-soft); margin-top:8px; }
+
+  /* license */
+  .license-grid{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .license-list{ display:flex; flex-direction:column; gap:18px; }
+  .license-item{ display:flex; gap:14px; }
+  .license-item .mark{ width:8px; height:8px; margin-top:8px; flex:none; background:var(--gold); border-radius:50%; }
+  .license-item h3{ font-size:15px; font-family:'IBM Plex Sans',sans-serif; font-weight:600; }
+  .license-item p{ margin:4px 0 0; font-size:13.5px; color:var(--ink-soft); }
+  .license-doc{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:26px; }
+  .license-doc h3{ font-size:15.5px; margin-bottom:10px; }
+  .license-doc .row{ display:flex; justify-content:space-between; font-size:13.5px; padding:10px 0; border-bottom:1px solid var(--line); }
+  .license-doc .row:last-child{ border-bottom:none; }
+  .license-doc .row span:first-child{ color:var(--ink-soft); }
+
+  .cta-band{ background:var(--forest-deep); color:var(--paper); padding:64px 0; }
+  .cta-band .wrap{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+  .cta-band h2{ color:var(--paper); font-size:28px; max-width:16ch; }
+  .cta-band .btn-primary{ background:var(--gold); color:var(--forest-deep); }
+
+  footer{ background:var(--paper-alt); padding:56px 0 28px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; }
+  .foot-col h4{ font-size:13px; color:var(--ink-soft); font-weight:600; margin:0 0 14px; }
+  .foot-col a, .foot-col p{ display:block; font-size:14px; margin-bottom:10px; }
+  .foot-brand{ font-family:'Fraunces',serif; font-size:19px; color:var(--forest-deep); margin-bottom:12px; }
+  .foot-bottom{ margin-top:44px; padding-top:22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink-soft); flex-wrap:wrap; gap:10px; }
+
+  @media (max-width:880px){
+    .hero-grid, .license-grid{ grid-template-columns:1fr; }
+    .team-grid{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:repeat(2,1fr); }
+    .hero h1{ font-size:32px; }
+  }
+  @media (max-width:560px){
+    .team-grid{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="nav-row">
+      <div class="logo">CHD Travel</div>
+      <nav class="links">
+        <a href="#">Trang chủ</a>
+        <a href="#">Tour ngày</a>
+        <a href="#">Tour cao nguyên</a>
+        <a href="#" class="active">Giới thiệu</a>
+        <a href="#">Blog</a>
+        <a href="#">Đánh giá</a>
+        <a href="#">Câu hỏi thường gặp</a>
+        <a href="#">Liên hệ</a>
+      </nav>
+      <a href="#" class="nav-cta">Đặt tour ngay</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Chúng tôi lớn lên cùng đất bazan này</h1>
+        <p class="lede">CHD Travel do một nhóm bạn sinh ra ở Buôn Ma Thuột lập nên, sau nhiều năm dẫn khách quen đi những chỗ mà bản đồ du lịch không ghi. Chúng tôi không bán lịch trình đóng gói — chúng tôi chia sẻ đúng vùng đất mình sống.</p>
+        <div class="fact-row">
+          <div><span>Hoạt động từ</span><b>2019</b></div>
+          <div><span>Đoàn khách đã đón</span><b>400+</b></div>
+          <div><span>Hướng dẫn viên bản địa</span><b>7 người</b></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="stack-card sc1"><span class="cap">Đoàn khách tại hồ Lắk</span></div>
+        <div class="stack-card sc2"><span class="cap">Đội ngũ CHD Travel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Câu chuyện của chúng tôi</h2>
+      <p>Từ một nhóm bạn dẫn khách quen đến một đội ngũ có giấy phép lữ hành chính thức.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="yr">2019</div>
+        <h3>Những chuyến đi đầu tiên</h3>
+        <p>Dẫn bạn bè và khách quen giới thiệu qua lời truyền miệng đi thác Dray Nur và rẫy cà phê Cư M'gar, chưa có website hay đặt tour online.</p>
+      </div>
+      <div class="t-item">
+        <div class="yr">2021</div>
+        <h3>Mở rộng lên tour cao nguyên dài ngày</h3>
+        <p>Hợp tác với các hộ dân ở buôn quanh hồ Lắk để tổ chức tour 2 ngày 1 đêm, ở nhà dài và nghe cồng chiêng.</p>
+      </div>
+      <div class="t-item">
+        <div class="yr">2023</div>
+        <h3>Đăng ký giấy phép lữ hành nội địa</h3>
+        <p>Chính thức hoá hoạt động, xây dựng quy trình an toàn và bảo hiểm cho khách theo từng tour.</p>
+      </div>
+      <div class="t-item">
+        <div class="yr">2026</div>
+        <h3>Hôm nay</h3>
+        <p>7 hướng dẫn viên bản địa, hơn 400 đoàn khách, và một trang web để bạn tự đặt tour mà không cần nhắn tin qua lại nhiều lần.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Đội ngũ dẫn tour</h2>
+      <p>Người sinh ra và lớn lên tại Đắk Lắk — không phải hướng dẫn viên thuê theo mùa.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo p1"></div>
+        <div class="team-body">
+          <h3>Y Thịnh Ê Ban</h3>
+          <div class="role">Hướng dẫn viên, tour buôn làng</div>
+          <p>Người M'nông, thông thạo tiếng Ê Đê và lịch sử cồng chiêng Tây Nguyên.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo p2"></div>
+        <div class="team-body">
+          <h3>Trần Hoài Nam</h3>
+          <div class="role">Đồng sáng lập, điều phối tour</div>
+          <p>10 năm làm rẫy cà phê trước khi chuyển sang dẫn tour toàn thời gian.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo p3"></div>
+        <div class="team-body">
+          <h3>H'Linh Niê</h3>
+          <div class="role">Hướng dẫn viên, tour thiên nhiên</div>
+          <p>Từng là kiểm lâm viên tại Yok Đôn, hiểu tập tính voi rừng.</p>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo p4"></div>
+        <div class="team-body">
+          <h3>Lê Anh Dũng</h3>
+          <div class="role">Phụ trách đặt tour &amp; hậu cần</div>
+          <p>Đầu mối trả lời tin nhắn nhanh nhất trong đội — thường trong vòng 1 giờ.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Giấy phép &amp; cam kết</h2>
+      <p>Thông tin pháp lý công khai đầy đủ để bạn yên tâm đặt tour.</p>
+    </div>
+    <div class="license-grid">
+      <div class="license-list">
+        <div class="license-item">
+          <div class="mark"></div>
+          <div><h3>Giấy phép kinh doanh lữ hành nội địa</h3><p>Cấp bởi Sở Du lịch tỉnh Đắk Lắk, còn hiệu lực đến 2028.</p></div>
+        </div>
+        <div class="license-item">
+          <div class="mark"></div>
+          <div><h3>Bảo hiểm du lịch cho mọi tour</h3><p>Áp dụng tự động, không phụ thu, cho toàn bộ khách trong đoàn.</p></div>
+        </div>
+        <div class="license-item">
+          <div class="mark"></div>
+          <div><h3>Chính sách hoàn/huỷ minh bạch</h3><p>Xem chi tiết tại trang Chính sách đặt &amp; huỷ tour.</p></div>
+        </div>
+      </div>
+      <div class="license-doc">
+        <h3>Thông tin đăng ký</h3>
+        <div class="row"><span>Tên doanh nghiệp</span><span>Công ty TNHH Du lịch CHD</span></div>
+        <div class="row"><span>Mã số giấy phép</span><span>ĐL-LHNĐ-xxxx</span></div>
+        <div class="row"><span>Nơi cấp</span><span>Sở Du lịch Đắk Lắk</span></div>
+        <div class="row"><span>Hiệu lực</span><span>2023 – 2028</span></div>
+        <a href="#" class="btn btn-ghost" style="margin-top:18px; display:inline-block;">Xem bản scan giấy phép (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Muốn đồng hành cùng đoàn của bạn?</h2>
+    <a href="#" class="btn btn-primary">Liên hệ tư vấn miễn phí</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">CHD Travel</div>
+        <p>171 Nguyễn Chí Thanh, TP. Buôn Ma Thuột, Đắk Lắk</p>
+        <p>hotline: 0905 xxx xxx</p>
+      </div>
+      <div class="foot-col">
+        <h4>Khám phá</h4>
+        <a href="#">Tour ngày</a>
+        <a href="#">Tour cao nguyên</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h4>Hỗ trợ</h4>
+        <a href="#">Giới thiệu</a>
+        <a href="#">Câu hỏi thường gặp</a>
+        <a href="#">Đánh giá</a>
+        <a href="#">Liên hệ</a>
+      </div>
+      <div class="foot-col">
+        <h4>Pháp lý</h4>
+        <a href="#">Chính sách đặt &amp; huỷ tour</a>
+        <a href="#">Điều khoản sử dụng</a>
+        <a href="#">Chính sách bảo mật</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 CHD Travel</span>
+      <span>Công ty TNHH Du lịch CHD — GP LHNĐ số ĐL-LHNĐ-xxxx</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

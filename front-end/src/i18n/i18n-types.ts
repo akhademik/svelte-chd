@@ -5,7 +5,10 @@ import type { BaseTranslation as BaseTranslationType, LocalizedString } from 'ty
 export type BaseTranslation = BaseTranslationType
 export type BaseLocale = 'en'
 
-export type Locales = 'en' | 'fr' | 'vn'
+export type Locales =
+	| 'en'
+	| 'fr'
+	| 'vn'
 
 export type Translation = RootTranslation
 
@@ -43,6 +46,14 @@ type RootTranslation = {
 		 * h​i​g​h​l​a​n​d​ ​t​o​u​r​s
 		 */
 		highland_tours: string
+		/**
+		 * a​b​o​u​t​ ​u​s
+		 */
+		about: string
+		/**
+		 * b​l​o​g
+		 */
+		blog: string
 		/**
 		 * c​o​n​t​a​c​t​ ​u​s
 		 */
@@ -234,6 +245,14 @@ type RootTranslation = {
 		 */
 		highland_tours: string
 		/**
+		 * A​b​o​u​t​ ​U​s
+		 */
+		about: string
+		/**
+		 * B​l​o​g
+		 */
+		blog: string
+		/**
 		 * C​o​n​t​a​c​t​ ​U​s
 		 */
 		contact: string
@@ -272,6 +291,14 @@ export type TranslationFunctions = {
 		 * highland tours
 		 */
 		highland_tours: () => LocalizedString
+		/**
+		 * about us
+		 */
+		about: () => LocalizedString
+		/**
+		 * blog
+		 */
+		blog: () => LocalizedString
 		/**
 		 * contact us
 		 */
@@ -462,6 +489,14 @@ export type TranslationFunctions = {
 		 * Highland Tours
 		 */
 		highland_tours: () => LocalizedString
+		/**
+		 * About Us
+		 */
+		about: () => LocalizedString
+		/**
+		 * Blog
+		 */
+		blog: () => LocalizedString
 		/**
 		 * Contact Us
 		 */
