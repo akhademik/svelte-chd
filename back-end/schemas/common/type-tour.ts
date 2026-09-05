@@ -68,7 +68,11 @@ export const tour_slug = {
   name: 'tourSlug',
   type: 'slug',
   options: {
-    source: `tourName.en`,
+    source: (doc: any) => {
+      const nameObj = doc?.tourName || doc?.title
+      if (typeof nameObj === 'string') return nameObj
+      return nameObj?.vn || nameObj?.en || nameObj?.fr || ''
+    },
     maxLength: 96,
   },
 }

@@ -2,7 +2,6 @@ export const content_block = {
   title: 'Content Block',
   name: 'content_block',
   type: 'array',
-  validation: (Rule: {required: () => any}) => Rule.required(),
   of: [
     {
       type: 'block',

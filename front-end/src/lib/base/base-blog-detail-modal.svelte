@@ -145,7 +145,7 @@
 				<div>
 					<h2
 						id="modal-blog-title"
-						class="font-serif text-2xl font-normal leading-tight text-stone-950 sm:text-3xl lg:text-4xl">
+						class="font-serif text-2xl font-normal leading-tight text-stone-900 sm:text-3xl lg:text-4xl">
 						{title}
 					</h2>
 					<div class="mt-3 flex items-center gap-4 text-xs text-stone-500">
@@ -153,12 +153,6 @@
 						<span>•</span>
 						<span>CHD Travel Blog</span>
 					</div>
-					{#if excerpt}
-						<p
-							class="mt-4 border-l-2 border-terracotta pl-4 text-sm font-light italic leading-relaxed text-stone-700">
-							{excerpt}
-						</p>
-					{/if}
 				</div>
 
 				<!-- Image Gallery / Cover -->
@@ -245,10 +239,6 @@
 						<PortableText
 							value={content}
 							components={{}} />
-					</div>
-				{:else if excerpt}
-					<div class="text-sm font-light leading-relaxed text-stone-700">
-						<p>{excerpt}</p>
 					</div>
 				{/if}
 			</div>

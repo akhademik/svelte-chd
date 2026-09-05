@@ -43,6 +43,7 @@ const extract_blog_fields = `
 		},
 		[]
 	),
+	"content": coalesce(content, {}),
 	"isFeatured": coalesce(isFeatured, false),
 	"publishedAt": coalesce(publishedAt, _createdAt),
 	"author": coalesce(author, 'CHD Travel Team')
