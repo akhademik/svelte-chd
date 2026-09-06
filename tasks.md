@@ -15,7 +15,7 @@
 | **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
 | **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ✅ Hoàn thành (Done) |
 | **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
-| **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ✅ Hoàn thành (Done) |
 
 ---
 
@@ -91,8 +91,8 @@
 ---
 
 ### 🟢 EPIC-8: Animation Freeze & Giản Lược Visual
-- [ ] **TASK-8.1**: Đóng băng (Freeze) animation: Tuyệt đối không bổ sung các hiệu ứng phức tạp (parallax, scroll reveal dồn dập, text splitting, cursor effects).
-- [ ] **TASK-8.2**: Giữ nguyên nhịp điệu tĩnh lặng, mộc mạc và nhẹ nhàng (*"quiet / slow / natural"*) phù hợp với nhận diện CHD Travel.
+- [x] **TASK-8.1**: Đóng băng (Freeze) animation: Tuyệt đối không bổ sung các hiệu ứng phức tạp (parallax, scroll reveal dồn dập, text splitting, cursor effects).
+- [x] **TASK-8.2**: Giữ nguyên nhịp điệu tĩnh lặng, mộc mạc và nhẹ nhàng (*"quiet / slow / natural"*) phù hợp với nhận diện CHD Travel.
 
 ---
 
