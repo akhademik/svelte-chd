@@ -30,11 +30,10 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Sync Exchange Rates to Sanity
+        working-directory: front-end
         env:
           VITE_SANITY_ID: ${{ secrets.VITE_SANITY_ID }}
           SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
           EXCHANGE_URL: ${{ secrets.EXCHANGE_URL || 'https://v6.exchangerate-api.com/v6/' }}
           EXCHANGE_API_KEY: ${{ secrets.EXCHANGE_API_KEY }}
-        run: |
-          cd front-end
-          node scripts/sync-rates.js
+        run: node scripts/sync-rates.js
