@@ -45,7 +45,7 @@
 				e.preventDefault()
 				switch_locale(l)
 			}}
-			class={`px-2 py-1 transition-all ${
+			class={`inline-flex min-h-[36px] min-w-[32px] items-center justify-center px-2 py-1.5 transition-all ${
 				l === $locale
 					? 'border-b-[1.5px] border-stone-900 font-bold text-moss'
 					: 'text-stone-400 hover:text-terracotta'

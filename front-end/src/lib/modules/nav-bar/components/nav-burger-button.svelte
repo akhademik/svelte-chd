@@ -8,7 +8,7 @@
 </script>
 
 <button
-	class="group flex h-8 w-8 items-center justify-center md:hidden"
+	class="group flex h-11 w-11 items-center justify-center rounded-sm transition-colors focus:outline-none focus:ring-2 focus:ring-moss md:hidden"
 	aria-label="Toggle navigation menu"
 	on:click={click}>
 	<p

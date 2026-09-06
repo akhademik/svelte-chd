@@ -223,10 +223,10 @@
 						<div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
 							{#each slide as item}
 								<article
-									class="flex h-[360px] flex-col justify-between border border-stone-200/90 bg-sand-card p-6 shadow-sm transition-shadow hover:shadow-md sm:p-8">
+									class="flex min-h-[220px] flex-col justify-between border border-stone-200/90 bg-sand-card p-5 shadow-sm transition-shadow hover:shadow-md sm:h-[360px] sm:p-8">
 									<div class="overflow-hidden">
 										<!-- Header: Rating (Always 5 stars with active/dimmed) & Date ({Month} {Year}) -->
-										<div class="mb-4 flex items-center justify-between">
+										<div class="mb-3 flex items-center justify-between sm:mb-4">
 											<div
 												class="flex items-center gap-1"
 												role="img"
@@ -269,7 +269,7 @@
 											</h3>
 										{/if}
 
-										<!-- Review Content with fixed clamp -->
+										<!-- Review Content with flexible line clamp -->
 										<p
 											class="line-clamp-4 font-serif text-sm font-light italic leading-relaxed text-stone-700 sm:line-clamp-5">
 											"{item.quote}"
@@ -278,7 +278,7 @@
 
 									<!-- Author Footer: [Avatar] [Username] -->
 									<div
-										class="mt-4 flex items-center justify-between border-t border-stone-200/60 pt-4 text-xs">
+										class="mt-3 flex items-center justify-between border-t border-stone-200/60 pt-3 text-xs sm:mt-4 sm:pt-4">
 										<div class="flex items-center gap-2.5 overflow-hidden">
 											{#if item.authorAvatar}
 												<img

@@ -70,7 +70,7 @@
 </script>
 
 <div
-	class="relative h-[360px] overflow-hidden border border-stone-200 bg-sand-card shadow-sm"
+	class="relative min-h-[220px] overflow-hidden border border-stone-200 bg-sand-card shadow-sm sm:h-[360px]"
 	onmouseenter={() => (isHovered = true)}
 	onmouseleave={() => (isHovered = false)}
 	role="region"
@@ -116,10 +116,10 @@
 		style="transform: translateX(-{currentTrackIndex * 100}%);"
 		ontransitionend={handleTransitionEnd}>
 		{#each displayList as currentReview}
-			<div class="flex h-full w-full shrink-0 flex-col justify-between p-6 sm:p-8">
+			<div class="flex h-full w-full shrink-0 flex-col justify-between p-5 sm:p-8">
 				<div class="overflow-hidden">
 					<!-- Top Bar: Stars (Always 5 stars with active/dimmed) + Date ({Month} {Year}) -->
-					<div class="mb-4 flex items-center gap-3 pr-20">
+					<div class="mb-3 flex items-center gap-3 pr-20 sm:mb-4">
 						<div class="flex items-center gap-1">
 							{#each [1, 2, 3, 4, 5] as starNum}
 								<svg
@@ -166,7 +166,7 @@
 
 				<!-- Review Author Footer: [Avatar] [Username] [Country] -->
 				<div
-					class="mt-4 flex items-center justify-between border-t border-stone-200/80 pt-4 text-xs">
+					class="mt-3 flex items-center justify-between border-t border-stone-200/80 pt-3 text-xs sm:mt-4 sm:pt-4">
 					<div class="flex items-center gap-2.5 overflow-hidden">
 						{#if currentReview.avatar}
 							<img

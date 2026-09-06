@@ -96,7 +96,21 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 - Best Sell / Highlight Badge: `bg-terracotta text-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider`
 - Duration Badge: `bg-stone-900/80 text-stone-100 text-[10px] uppercase tracking-wider`
 
-### 5.4. Floating Controls (Scroll to Top)
+### 5.4. Review & Testimonial Cards (Mobile & Desktop)
+- **Responsive Sizing**:
+  - Desktop View (`sm:` trở lên): Chiều cao cố định `h-[360px] p-8` để tạo sự đồng đều trên lưới 3 cột.
+  - Mobile View (`< sm`): Chiều cao linh hoạt `min-h-[220px] p-5` để ôm sát nội dung bài đánh giá, triệt tiêu khoảng trống thừa bên dưới đoạn trích review (`line-clamp-4`).
+  - Khoảng cách nội bộ: Header rating `mb-3 sm:mb-4`, Author footer `mt-3 sm:mt-4 pt-3 sm:pt-4`.
+- **A11y & Touch Controls**:
+  - Hỗ trợ swipe touch mượt mà (`ontouchstart`/`ontouchend` với ngưỡng lướt 40px).
+  - Tự động tạm dừng (pause auto-play) khi hover hoặc focus bàn phím.
+  - Hỗ trợ `prefers-reduced-motion: reduce`.
+
+### 5.5. Touch Targets (Mobile Usability)
+- **Chuẩn kích thước vùng chạm tối thiểu (Tap Target Size)**:
+  - Tất cả các nút tương tác (Burger menu button, Locale switcher links, Social buttons, Carousel next/prev) phải đạt kích thước tối thiểu `44x44px` (hoặc min-height 36px) để tránh bấm nhầm trên màn hình cảm ứng di động.
+
+### 5.6. Floating Controls (Scroll to Top)
 - **Floating Scroll-To-Top Button**:
   - Xuất hiện tự động khi cuộn qua màn hình đầu tiên (`scrollY > innerHeight * 0.75`).
   - Nút tròn/vuông mộc mạc viền mỏng: `fixed bottom-6 right-6 z-30 h-11 w-11 bg-sand-card/90 border border-stone-300 backdrop-blur-sm hover:bg-moss hover:text-white transition-all shadow-md hover:shadow-lg focus:ring-2 focus:ring-moss`.

@@ -14,7 +14,7 @@
 | **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
 | **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
 | **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ✅ Hoàn thành (Done) |
-| **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
 | **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ⏳ Sẵn sàng thực hiện (To Do) |
 
 ---
@@ -84,9 +84,9 @@
 ---
 
 ### 🟠 EPIC-7: Mobile UX & Responsive Polish
-- [ ] **TASK-7.1**: Kiểm tra Hero Section trên màn hình di động: Tránh để hình ảnh và typography quá lớn chiếm tràn màn hình gây cản trở scroll xem nội dung.
-- [ ] **TASK-7.2**: Kiểm tra và tối ưu touch/swipe gesture mượt mà cho Testimonials Carousel trên thiết bị di động.
-- [ ] **TASK-7.3**: Đảm bảo toàn bộ wrapper tuân thủ đúng quy chuẩn padding `mx-auto max-w-6xl px-6 py-12` (theo [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md)), không để phần tử dính sát mép trên mobile.
+- [x] **TASK-7.1**: Kiểm tra Hero Section trên màn hình di động: Tránh để hình ảnh và typography quá lớn chiếm tràn màn hình gây cản trở scroll xem nội dung.
+- [x] **TASK-7.2**: Kiểm tra và tối ưu touch/swipe gesture mượt mà cho Testimonials Carousel trên thiết bị di động.
+- [x] **TASK-7.3**: Đảm bảo toàn bộ wrapper tuân thủ đúng quy chuẩn padding `mx-auto max-w-6xl px-6 py-12` (theo [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md)), không để phần tử dính sát mép trên mobile.
 
 ---
 

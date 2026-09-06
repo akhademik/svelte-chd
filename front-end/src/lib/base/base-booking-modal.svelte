@@ -67,18 +67,20 @@
 {#if $booking_modal.isOpen}
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-50 flex items-center justify-center bg-stone-900/60 p-4 backdrop-blur-sm"
-		role="button"
-		tabindex="0"
-		onclick={close}
-		onkeydown={e => e.key === 'Escape' && close()}>
+		class="fixed inset-0 z-[60] flex items-center justify-center bg-stone-900/60 p-0 backdrop-blur-sm sm:p-4"
+		role="dialog"
+		aria-modal="true"
+		aria-labelledby="booking-modal-title">
+		<button
+			type="button"
+			class="fixed inset-0 h-full w-full cursor-default bg-transparent focus:outline-none"
+			aria-label="Close modal overlay"
+			onclick={close}
+			tabindex="-1"></button>
 		<!-- Modal box -->
 		<div
-			transition:scale={{ start: 0.95, duration: 200 }}
-			class="relative max-h-[90vh] w-full max-w-lg overflow-y-auto border border-stone-200 bg-white p-6 text-stone-900 shadow-2xl sm:p-8"
-			role="presentation"
-			onclick={e => e.stopPropagation()}
-			onkeydown={e => e.stopPropagation()}>
+			transition:scale={{ start: 0.96, duration: 200 }}
+			class="relative z-10 flex h-full max-h-screen w-full max-w-lg flex-col overflow-y-auto rounded-none border-0 bg-white p-6 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:rounded-none sm:border sm:border-stone-200 sm:p-8">
 			<button
 				onclick={close}
 				class="absolute right-4 top-4 rounded-full p-2 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-900 sm:right-6 sm:top-6"
@@ -105,7 +107,9 @@
 				</svg>
 			</button>
 
-			<h3 class="mb-6 font-serif text-2xl text-stone-900">
+			<h3
+				id="booking-modal-title"
+				class="mb-6 font-serif text-2xl text-stone-900">
 				{$LL.tours.detail.enquiry_title()}
 			</h3>
 
