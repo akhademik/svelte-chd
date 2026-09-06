@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { format_price, format_pax_no, format_price_object } from './format-data'
+import { format_price, format_pax_no, format_price_object, format_review_date } from './format-data'
 import type { Tour } from '$lib/types/tour.type'
 
 describe('format-data utilities', () => {
@@ -40,5 +40,15 @@ describe('format-data utilities', () => {
 		expect(sorted[0][0]).toBe('pax1')
 		expect(sorted[1][0]).toBe('pax2')
 		expect(sorted[2][0]).toBe('pax5_6')
+	})
+
+	it('should format review dates according to locale', () => {
+		expect(format_review_date('07-2026', 'vn')).toBe('Tháng 7, 2026')
+		expect(format_review_date('07-2026', 'en')).toBe('Jul 2026')
+		expect(format_review_date('07-2026', 'fr')).toBe('Juil 2026')
+		expect(format_review_date('2026-08', 'vn')).toBe('Tháng 8, 2026')
+		expect(format_review_date('2026-08', 'en')).toBe('Aug 2026')
+		expect(format_review_date('2026-08', 'fr')).toBe('Août 2026')
+		expect(format_review_date('', 'en')).toBe('')
 	})
 })

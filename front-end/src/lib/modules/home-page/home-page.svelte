@@ -3,7 +3,6 @@
 	import type { Tour } from '$lib/types/tour.type'
 	import HomeDayTours from './components/home-day-tours.svelte'
 	import HomeFeaturedBlogs from './components/home-featured-blogs.svelte'
-	import HomeFeaturedExperiences from './components/home-featured-experiences.svelte'
 	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
 	import HomeHighlandTours from './components/home-highland-tours.svelte'
@@ -31,9 +30,8 @@
 
 <HomeHero />
 <HomeWhyChd />
-<HomeFeaturedExperiences />
+<HomeTestimonials {testimonials} />
 <HomeFeaturedSlider tours={allTours} />
 <HomeDayTours tours={dayTours} />
 <HomeHighlandTours tours={highlandTours} />
-<HomeTestimonials {testimonials} />
 <HomeFeaturedBlogs posts={featuredPosts} />

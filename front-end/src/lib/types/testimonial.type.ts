@@ -1,5 +1,6 @@
 export interface Testimonial {
 	name: string
+	avatar?: string
 	country?: string
 	review_title: string
 	review_content: string
