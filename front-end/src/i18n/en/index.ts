@@ -1,4 +1,5 @@
 import type { BaseTranslation } from '../i18n-types'
+import { blog_page } from './t-blog-page'
 import { contact_page } from './t-contact-page'
 import { home_page } from './t-home-page'
 import { nav_bar } from './t-nav-bar'
@@ -10,6 +11,7 @@ const en = {
 	nav_bar,
 	contact_page,
 	tours,
+	blog_page,
 	seo,
 } satisfies BaseTranslation
 

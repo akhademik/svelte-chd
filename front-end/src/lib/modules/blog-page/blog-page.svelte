@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { locale } from '$i18n/i18n-svelte'
+	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
 
@@ -23,7 +23,16 @@
 
 	// Dynamic category list: Only show categories that have at least 1 post
 	let presentCategories = $derived.by(() => {
-		const categoryOrder = ['event', 'story', 'tips', 'destination']
+		const categoryOrder = [
+			'places',
+			'food',
+			'people',
+			'stories',
+			'tips',
+			'event',
+			'story',
+			'destination',
+		]
 		const found = new Set(availablePosts.map(p => p.category).filter(Boolean))
 		return categoryOrder.filter(c => found.has(c as any))
 	})
@@ -66,29 +75,42 @@
 
 	const getCategoryName = (cat: string) => {
 		switch (cat) {
-			case 'event':
-				return $locale === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Events'
-			case 'story':
-				return $locale === 'vn' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
+			case 'places':
+				return $LL.blog_page.categories.places()
+			case 'food':
+				return $LL.blog_page.categories.food()
+			case 'people':
+				return $LL.blog_page.categories.people()
+			case 'stories':
+				return $LL.blog_page.categories.stories()
 			case 'tips':
-				return $locale === 'vn' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
+				return $LL.blog_page.categories.tips()
+			case 'event':
+				return $LL.blog_page.categories.event()
 			case 'destination':
-				return $locale === 'vn' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
+				return $LL.blog_page.categories.destination()
+			case 'story':
+				return $LL.blog_page.categories.story()
 			default:
-				return 'Blog'
+				return 'Journal'
 		}
 	}
 
 	const getCategoryBadgeClass = (cat: string) => {
 		switch (cat) {
+			case 'food':
 			case 'event':
 				return 'bg-amber-100 text-amber-900 border-amber-300'
+			case 'stories':
 			case 'story':
 				return 'bg-orange-100 text-orange-900 border-orange-300'
 			case 'tips':
 				return 'bg-emerald-100 text-emerald-900 border-emerald-300'
+			case 'places':
 			case 'destination':
 				return 'bg-cyan-100 text-cyan-900 border-cyan-300'
+			case 'people':
+				return 'bg-rose-100 text-rose-900 border-rose-300'
 			default:
 				return 'bg-stone-100 text-stone-800 border-stone-300'
 		}
@@ -100,15 +122,13 @@
 	<section class="border-b border-stone-200/80 bg-sand-card py-12 sm:py-16">
 		<div class="mx-auto max-w-6xl px-6">
 			<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-terracotta">
-				{$locale === 'vn' ? 'Góc chia sẻ' : 'Our Stories & Insights'}
+				{$LL.blog_page.subtitle()}
 			</span>
 			<h1 class="font-serif text-3xl font-bold leading-tight text-moss sm:text-4xl lg:text-5xl">
-				Blog CHD Travel
+				{$LL.blog_page.title()}
 			</h1>
 			<p class="mt-4 max-w-2xl text-sm font-light leading-relaxed text-stone-600 sm:text-base">
-				{$locale === 'vn'
-					? 'Cảm nhận từ những đoàn khách đã đi, sự kiện lễ hội sắp diễn ra ở Đắk Lắk, và những điều chúng tôi muốn kể ngoài lịch trình tour thông thường.'
-					: 'Travel reflections, upcoming cultural festivals in Dak Lak, and local stories beyond standard itineraries.'}
+				{$LL.blog_page.intro()}
 			</p>
 
 			<!-- Filter Pills: Only show categories with available posts -->
@@ -121,7 +141,7 @@
 								? 'bg-stone-900 text-stone-50'
 								: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
 						}`}>
-						{$locale === 'vn' ? 'Tất cả bài viết' : 'All Posts'}
+						{$LL.blog_page.all_posts()}
 					</button>
 					{#each presentCategories as cat}
 						<button
@@ -187,17 +207,16 @@
 				</a>
 
 				<div class="flex flex-col justify-center bg-stone-50 p-8 lg:col-span-6 lg:p-12">
-					<span class="text-xs uppercase tracking-widest text-stone-400">Highlights</span>
+					<span class="text-xs uppercase tracking-widest text-stone-400"
+						>{$LL.blog_page.highlights()}</span>
 					<p class="mt-4 font-serif text-lg italic text-stone-800">
-						{$locale === 'vn'
-							? '"Những trải nghiệm thực tế từ các chuyến đi cùng người bản địa Đắk Lắk."'
-							: '"Authentic moments and insights gathered from local Highland journeys."'}
+						{$LL.blog_page.highlights_quote()}
 					</p>
 					<div class="mt-8 flex items-center gap-3">
 						<a
 							href={featuredLink}
 							class="inline-block bg-stone-900 px-6 py-3 text-xs uppercase tracking-widest text-white transition-colors hover:bg-stone-800">
-							{$locale === 'vn' ? 'Đọc toàn bộ bài viết →' : 'Read Full Post →'}
+							{$LL.blog_page.read_full()}
 						</a>
 					</div>
 				</div>
@@ -208,7 +227,7 @@
 		{#if nonFeaturedPosts.length === 0 && !featuredPost}
 			<div
 				class="border border-dashed border-stone-300 bg-sand-card p-12 text-center text-sm text-stone-500">
-				{$locale === 'vn' ? 'Chưa có bài viết nào.' : 'No blog posts available.'}
+				{$LL.blog_page.no_posts()}
 			</div>
 		{:else}
 			<div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -263,7 +282,7 @@
 							<a
 								href={postLink}
 								class="font-medium text-terracotta hover:underline">
-								{$locale === 'vn' ? 'Xem chi tiết →' : 'Read more →'}
+								{$LL.blog_page.read_more()}
 							</a>
 						</div>
 					</article>

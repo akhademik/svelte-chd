@@ -9,6 +9,22 @@ export const home_page = {
 		'Des itinéraires minimalistes et raffinés au cœur des forêts de pins, des plantations de caféiers et de la culture ancestrale des gongs.',
 	cta_explore: 'Découvrir nos circuits',
 	cta_contact: 'Échanger avec un guide local',
+	featured_experiences: {
+		subtitle: 'Instants Précieux',
+		title: 'Expériences Emblématiques des Hauts Plateaux',
+		desc: 'Bien plus qu’une simple visite touristique, plongez dans la vie douce et les traditions préservées de la région.',
+		items: {
+			exp1_title: 'Matinée dans les Plantations de Café',
+			exp1_desc:
+				'Saluez l’aube sur les collines de terre rouge, cueillez les cerises de café et savourez un café de terroir fraîchement torréfié.',
+			exp2_title: 'Villages Indigènes & Marchés Locaux',
+			exp2_desc:
+				'Marchez dans les villages traditionnels Édé et M’nong, écoutez les légendes contées par les anciens et découvrez les marchés locaux.',
+			exp3_title: 'Veillée au Feu & Écho des Gongs',
+			exp3_desc:
+				'Réunis autour du foyer communautaire, partagez l’alcool de jarre et laissez-vous porter par la musique sacrée des gongs.',
+		},
+	},
 	why_chd: {
 		subtitle: 'Notre Philosophie Locale',
 		title: 'Pourquoi Voyager avec CHD Travel ?',

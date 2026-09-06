@@ -1,0 +1,25 @@
+export const blog_page = {
+	title: 'chd journal',
+	subtitle: 'carnet de voyage & récits locaux',
+	intro:
+		'Instants précieux au cœur des Hauts Plateaux, coutumes des villages indigènes, cueillette du café d’origine et veillées au feu de bois.',
+	all_posts: 'tous les articles',
+	highlights: 'à la une',
+	highlights_quote: '"Moments authentiques partagés au fil de nos voyages avec les habitants."',
+	read_full: "lire l'article complet →",
+	read_more: 'en savoir plus →',
+	no_posts: "aucun article n'est disponible pour l'instant.",
+	author_prefix: 'auteur :',
+	all_articles_btn: '← tous les articles',
+	categories: {
+		all: 'tous',
+		places: 'lieux',
+		food: 'saveurs & café',
+		people: 'rencontres',
+		stories: 'récits',
+		tips: 'conseils de voyage',
+		event: 'événements',
+		destination: 'destinations',
+		story: 'témoignages',
+	},
+}

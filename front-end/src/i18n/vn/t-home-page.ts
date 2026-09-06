@@ -9,6 +9,22 @@ export const home_page = {
 		'Những hành trình tinh tế đưa bạn hòa mình vào văn hóa bản địa, buôn làng mộc mạc, cà phê thơm lừng và âm vang đại ngàn Tây Nguyên.',
 	cta_explore: 'Khám phá các tour',
 	cta_contact: 'Trò chuyện cùng người bản địa',
+	featured_experiences: {
+		subtitle: 'Lát cắt trải nghiệm',
+		title: 'Những khoảnh khắc chỉ có ở Tây Nguyên',
+		desc: 'Không đơn thuần là ngắm cảnh, bạn sẽ thực sự hòa vào nhịp sống chậm rãi và nếp văn hóa bình dị.',
+		items: {
+			exp1_title: 'Cà phê sớm mai tại nông trại',
+			exp1_desc:
+				'Đón bình minh trên đồi đất đỏ, tự tay hái những quả cà phê chín mọng và thưởng thức ly cà phê rang mộc thơm ngát.',
+			exp2_title: 'Chợ phiên & buôn làng bình dị',
+			exp2_desc:
+				'Dạo bước qua các buôn làng người Ê Đê, M’nông, lắng nghe già làng kể sử thi và khám phá chợ rau rừng địa phương.',
+			exp3_title: 'Đêm lửa & âm vang cồng chiêng',
+			exp3_desc:
+				'Quây quần bên ché rượu cần ấm nồng, hòa mình vào điệu múa Xoang và âm thanh cồng chiêng vang vọng giữa núi rừng.',
+		},
+	},
 	why_chd: {
 		subtitle: 'Triết lý du lịch bản địa',
 		title: 'Vì sao đồng hành cùng CHD Travel?',

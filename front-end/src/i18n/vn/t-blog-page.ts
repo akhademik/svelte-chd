@@ -1,0 +1,25 @@
+export const blog_page = {
+	title: 'chd journal',
+	subtitle: 'nhật ký hành trình & chuyện bản địa',
+	intro:
+		'Những lát cắt chân thực từ những chuyến đi cùng người bản địa Đắk Lắk, nét văn hóa buôn làng và những câu chuyện cà phê bên bếp lửa.',
+	all_posts: 'tất cả bài viết',
+	highlights: 'điểm nhấn nổi bật',
+	highlights_quote: '"Những trải nghiệm thực tế từ các chuyến đi cùng người bản địa Đắk Lắk."',
+	read_full: 'đọc bài viết →',
+	read_more: 'xem chi tiết →',
+	no_posts: 'chưa có bài viết nào.',
+	author_prefix: 'tác giả:',
+	all_articles_btn: '← xem các bài viết khác',
+	categories: {
+		all: 'tất cả',
+		places: 'điểm đến',
+		food: 'ẩm thực',
+		people: 'con người',
+		stories: 'câu chuyện',
+		tips: 'kinh nghiệm',
+		event: 'sự kiện',
+		destination: 'điểm đến tây nguyên',
+		story: 'cảm nhận du khách',
+	},
+}

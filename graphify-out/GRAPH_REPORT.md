@@ -1,33 +1,33 @@
 # Graph Report - svelte-chd  (2026-09-06)
 
 ## Corpus Check
-- 156 files · ~73,623 words
+- 160 files · ~75,407 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 633 nodes · 928 edges · 63 communities (21 shown, 28 thin omitted)
+- 641 nodes · 942 edges · 72 communities (25 shown, 33 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bc006ddc`
+- Built from commit: `ee3bbde0`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- sanity.ts
+- tour.type.ts
 - schemas/index.ts
-- i18n-svelte.ts
+- i18n-types.ts
 - sanity-client.ts
 - back-end/package.json
-- base/index.ts
+- nav-store.ts
 - scripts
 - scripts
 - compilerOptions
 - seo-store.ts
 - devDependencies
 - en/index.ts
-- i18n-helper.ts
+- [lang]/+page.server.ts
 - fr/index.ts
 - vn/index.ts
 - compilerOptions
@@ -64,6 +64,15 @@
 - 🛠️ Development
 - 🧪 HỆ THỐNG KIỂM THỬ VÀ KIỂM TRA CHẤT LƯỢNG (TESTING & QUALITY WORKFLOW)
 - back-end/README.md
+- base/index.ts
+- i18n-svelte.ts
+- sanity.ts
+- format-data.ts
+- tour-details.svelte
+- modal-store.ts
+- icons.ts
+- home-page/index.ts
+- tour-store.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `scripts` - 26 edges
@@ -92,31 +101,31 @@
 ## Import Cycles
 - None detected.
 
-## Communities (63 total, 28 thin omitted)
+## Communities (72 total, 33 thin omitted)
 
-### Community 0 - "sanity.ts"
-Cohesion: 0.05
-Nodes (30): close(), booking_modal, BookingModalState, defaultRates, exchange_rates_store, ExchangeRates, blog_modal, BlogModalState (+22 more)
+### Community 0 - "tour.type.ts"
+Cohesion: 0.15
+Nodes (8): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag, logger
 
 ### Community 1 - "schemas/index.ts"
 Cohesion: 0.08
 Nodes (33): add_thousand_separator(), CNumberInput(), parseNumber(), keywords, prepare(), prepare(), BASE_FIELDS, Field (+25 more)
 
-### Community 2 - "i18n-svelte.ts"
-Cohesion: 0.08
-Nodes (26): App, Locals, initFormatters(), { locale, LL, setLocale }, BaseLocale, Formatters, Locales, RootTranslation (+18 more)
+### Community 2 - "i18n-types.ts"
+Cohesion: 0.07
+Nodes (34): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+26 more)
 
 ### Community 3 - "sanity-client.ts"
-Cohesion: 0.08
-Nodes (28): getAdminNotifyEmail(), getFromEmail(), sendMail(), SendMailOptions, cachedFetch(), EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, fetchAllBlogs() (+20 more)
+Cohesion: 0.15
+Nodes (15): cachedFetch(), EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, fetchAllBlogs(), fetchFeaturedBlogs(), fetchSingleTourBySlug(), fetchToursByType(), memoryCache (+7 more)
 
 ### Community 4 - "back-end/package.json"
 Cohesion: 0.06
 Nodes (35): dependencies, react, react-dom, react-is, sanity, sanity-plugin-media, @sanity/vision, styled-components (+27 more)
 
-### Community 5 - "base/index.ts"
-Cohesion: 0.07
-Nodes (11): Translation, menu_items, MenuItem, MenuLink, nav_animate_hidden, nav_deg, nav_mobile, Icon (+3 more)
+### Community 5 - "nav-store.ts"
+Cohesion: 0.12
+Nodes (7): Translation, menu_items, MenuItem, MenuLink, nav_animate_hidden, nav_deg, nav_mobile
 
 ### Community 6 - "scripts"
 Cohesion: 0.06
@@ -139,20 +148,20 @@ Cohesion: 0.11
 Nodes (19): devDependencies, eslint, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui, @types/react (+11 more)
 
 ### Community 11 - "en/index.ts"
-Cohesion: 0.22
-Nodes (7): en, contact_page, home_page, nav_bar, seo, tours, BaseTranslation
+Cohesion: 0.19
+Nodes (8): en, blog_page, contact_page, home_page, nav_bar, seo, tours, BaseTranslation
 
-### Community 12 - "i18n-helper.ts"
-Cohesion: 0.32
-Nodes (9): handle(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale(), REGEX_START_WITH_BASE, replace_locale_in_url(), detectLocale() (+1 more)
+### Community 12 - "[lang]/+page.server.ts"
+Cohesion: 0.17
+Nodes (13): getAdminNotifyEmail(), getFromEmail(), sendMail(), SendMailOptions, form_schema, FormSchema, POST(), actions (+5 more)
 
 ### Community 13 - "fr/index.ts"
-Cohesion: 0.24
-Nodes (6): fr, contact_page, home_page, nav_bar, seo, tours
+Cohesion: 0.21
+Nodes (7): fr, blog_page, contact_page, home_page, nav_bar, seo, tours
 
 ### Community 14 - "vn/index.ts"
-Cohesion: 0.24
-Nodes (6): vn, contact_page, home_page, nav_bar, seo, tours
+Cohesion: 0.21
+Nodes (7): vn, blog_page, contact_page, home_page, nav_bar, seo, tours
 
 ### Community 15 - "compilerOptions"
 Cohesion: 0.17
@@ -178,10 +187,26 @@ Nodes (8): CHD Travel - Frontend, Commands, 🛠️ Development, Environment Var
 Cohesion: 0.50
 Nodes (3): 🎯 1. Danh Sách Kiểm Tra Bắt Buộc (Quality Checklist), 🔄 2. Quy Trình Phản Hồi & Commit, 🧪 HỆ THỐNG KIỂM THỬ VÀ KIỂM TRA CHẤT LƯỢNG (TESTING & QUALITY WORKFLOW)
 
+### Community 65 - "sanity.ts"
+Cohesion: 0.27
+Nodes (8): defaultRates, exchange_rates_store, ExchangeRates, builder, config, get_length_and_index(), get_tour_slug(), tour_by_index()
+
+### Community 66 - "format-data.ts"
+Cohesion: 0.25
+Nodes (4): booking_modal, BookingModalState, format_price(), get_exchange_rate()
+
+### Community 68 - "modal-store.ts"
+Cohesion: 0.40
+Nodes (5): blog_modal, BlogModalState, tour_modal, TourModalState, Tour
+
+### Community 69 - "icons.ts"
+Cohesion: 0.40
+Nodes (3): Icon, Icons, NOTE:
+
 ## Knowledge Gaps
 - **231 isolated node(s):** `name`, `private`, `version`, `main`, `type` (+226 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 297 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **28 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 298 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -192,11 +217,11 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
   _231 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `sanity.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.050078247261345854 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07619738751814223 - nodes in this community are weakly interconnected._
-- **Should `i18n-svelte.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07918552036199095 - nodes in this community are weakly interconnected._
-- **Should `sanity-client.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.08383838383838384 - nodes in this community are weakly interconnected._
+- **Should `i18n-types.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.07080200501253132 - nodes in this community are weakly interconnected._
+- **Should `back-end/package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
+- **Should `nav-store.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

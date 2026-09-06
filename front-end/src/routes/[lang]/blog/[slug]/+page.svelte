@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte'
-	import { locale } from '$i18n/i18n-svelte'
-	import { BaseSeo } from '$lib/base'
+	import LL, { locale } from '$i18n/i18n-svelte'
+	import { BaseJsonLd, BaseSeo } from '$lib/base'
 	import BasePortableTextImage from '$lib/base/base-portable-text-image.svelte'
 	import BasePortableTextListItem from '$lib/base/base-portable-text-list-item.svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
@@ -57,18 +57,32 @@
 
 	const getCategoryName = (cat: string) => {
 		switch (cat) {
-			case 'event':
-				return $locale === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
-			case 'story':
-				return $locale === 'vn' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
+			case 'places':
+				return $LL.blog_page.categories.places()
+			case 'food':
+				return $LL.blog_page.categories.food()
+			case 'people':
+				return $LL.blog_page.categories.people()
+			case 'stories':
+				return $LL.blog_page.categories.stories()
 			case 'tips':
-				return $locale === 'vn' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
+				return $LL.blog_page.categories.tips()
+			case 'event':
+				return $LL.blog_page.categories.event()
 			case 'destination':
-				return $locale === 'vn' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
+				return $LL.blog_page.categories.destination()
+			case 'story':
+				return $LL.blog_page.categories.story()
 			default:
-				return 'Blog'
+				return 'Journal'
 		}
 	}
+
+	let breadcrumbItems = $derived([
+		{ name: $locale === 'vn' ? 'Trang chủ' : 'Home', item: `https://chd.travel/${$locale}` },
+		{ name: 'CHD Journal', item: `https://chd.travel/${$locale}/blog` },
+		{ name: title, item: `https://chd.travel/${$locale}/blog/${post?.slug?.current || ''}` },
+	])
 </script>
 
 <BaseSeo
@@ -76,6 +90,11 @@
 	description={excerpt || undefined}
 	ogImage={primaryCoverUrl}
 	ogType="article" />
+
+<BaseJsonLd
+	{post}
+	breadcrumbs={breadcrumbItems}
+	url={`https://chd.travel/${$locale}/blog/${post?.slug?.current || ''}`} />
 
 <div class="space-y-12 pb-24">
 	<!-- Hero Section -->
@@ -93,7 +112,7 @@
 					<a
 						href={`/${$locale}/blog`}
 						class="transition-colors hover:text-stone-900">
-						Blog
+						CHD Journal
 					</a>
 					<span>/</span>
 					<span class="font-medium text-stone-900">{getCategoryName(post.category)}</span>
@@ -102,7 +121,7 @@
 				<a
 					href={`/${$locale}/blog`}
 					class="inline-flex items-center gap-2 border border-stone-300 bg-white px-4 py-2 text-xs uppercase tracking-wider text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:text-stone-900">
-					← {$locale === 'vn' ? 'Tất cả bài viết' : 'Back to blog'}
+					{$LL.blog_page.all_articles_btn()}
 				</a>
 			</div>
 
@@ -129,7 +148,7 @@
 
 				<div
 					class="flex items-center gap-2 border-t border-stone-200/80 pt-2 text-xs text-stone-500">
-					<span>{$locale === 'vn' ? 'Tác giả:' : 'Author:'}</span>
+					<span>{$LL.blog_page.author_prefix()}</span>
 					<span class="font-medium text-stone-800">{post.author || 'CHD Travel Team'}</span>
 				</div>
 			</div>
@@ -231,7 +250,7 @@
 				<a
 					href={`/${$locale}/blog`}
 					class="inline-flex items-center gap-2 border border-stone-800 px-6 py-3 text-xs uppercase tracking-widest text-stone-900 transition-colors hover:bg-stone-900 hover:text-white">
-					← {$locale === 'vn' ? 'Xem các bài viết khác' : 'All articles'}
+					{$LL.blog_page.all_articles_btn()}
 				</a>
 			</div>
 		</article>

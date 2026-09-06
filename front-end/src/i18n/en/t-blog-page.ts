@@ -1,0 +1,25 @@
+export const blog_page = {
+	title: 'chd journal',
+	subtitle: 'stories & highland insights',
+	intro:
+		'Reflections from indigenous Highland journeys, ethnic village traditions, organic coffee harvests, and moments around the longhouse hearth.',
+	all_posts: 'all posts',
+	highlights: 'highlights',
+	highlights_quote: '"Authentic moments and insights gathered from local Highland journeys."',
+	read_full: 'read full post →',
+	read_more: 'read more →',
+	no_posts: 'no articles available yet.',
+	author_prefix: 'author:',
+	all_articles_btn: '← all articles',
+	categories: {
+		all: 'all',
+		places: 'places',
+		food: 'food & coffee',
+		people: 'people',
+		stories: 'stories',
+		tips: 'travel tips',
+		event: 'events',
+		destination: 'destinations',
+		story: 'traveler stories',
+	},
+}

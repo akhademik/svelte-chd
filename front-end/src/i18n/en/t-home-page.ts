@@ -9,6 +9,22 @@ export const home_page = {
 		'Curated minimalist journeys immersing you into indigenous culture, misty pine plateaus, authentic coffee farms, and Gong heritage.',
 	cta_explore: 'Explore Tours',
 	cta_contact: 'Connect with a Local Host',
+	featured_experiences: {
+		subtitle: 'Curated Moments',
+		title: 'Signature Highland Encounters',
+		desc: 'More than ordinary sightseeing—immerse into the unhurried rhythm and genuine way of life in the Central Highlands.',
+		items: {
+			exp1_title: 'Sunrise Coffee Farm Walk',
+			exp1_desc:
+				'Greet the misty morning over red basalt hills, hand-pick ripe cherries, and brew freshly roasted single-origin robusta.',
+			exp2_title: 'Village & Indigenous Markets',
+			exp2_desc:
+				'Stroll through timeless Ede and M’nong longhouse villages, hear elders share ancient folklore, and discover wild jungle produce.',
+			exp3_title: 'Firelight & Sacred Gong Night',
+			exp3_desc:
+				'Gather around the communal fire, sip traditional straw wine, and feel the hypnotic rhythm of UNESCO Gong resonance.',
+		},
+	},
 	why_chd: {
 		subtitle: 'Our Local Philosophy',
 		title: 'Why Travel with CHD Travel?',

@@ -52,6 +52,46 @@ type RootTranslation = {
 		 * C​o​n​n​e​c​t​ ​w​i​t​h​ ​a​ ​L​o​c​a​l​ ​H​o​s​t
 		 */
 		cta_contact: string
+		featured_experiences: {
+			/**
+			 * C​u​r​a​t​e​d​ ​M​o​m​e​n​t​s
+			 */
+			subtitle: string
+			/**
+			 * S​i​g​n​a​t​u​r​e​ ​H​i​g​h​l​a​n​d​ ​E​n​c​o​u​n​t​e​r​s
+			 */
+			title: string
+			/**
+			 * M​o​r​e​ ​t​h​a​n​ ​o​r​d​i​n​a​r​y​ ​s​i​g​h​t​s​e​e​i​n​g​—​i​m​m​e​r​s​e​ ​i​n​t​o​ ​t​h​e​ ​u​n​h​u​r​r​i​e​d​ ​r​h​y​t​h​m​ ​a​n​d​ ​g​e​n​u​i​n​e​ ​w​a​y​ ​o​f​ ​l​i​f​e​ ​i​n​ ​t​h​e​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​.
+			 */
+			desc: string
+			items: {
+				/**
+				 * S​u​n​r​i​s​e​ ​C​o​f​f​e​e​ ​F​a​r​m​ ​W​a​l​k
+				 */
+				exp1_title: string
+				/**
+				 * G​r​e​e​t​ ​t​h​e​ ​m​i​s​t​y​ ​m​o​r​n​i​n​g​ ​o​v​e​r​ ​r​e​d​ ​b​a​s​a​l​t​ ​h​i​l​l​s​,​ ​h​a​n​d​-​p​i​c​k​ ​r​i​p​e​ ​c​h​e​r​r​i​e​s​,​ ​a​n​d​ ​b​r​e​w​ ​f​r​e​s​h​l​y​ ​r​o​a​s​t​e​d​ ​s​i​n​g​l​e​-​o​r​i​g​i​n​ ​r​o​b​u​s​t​a​.
+				 */
+				exp1_desc: string
+				/**
+				 * V​i​l​l​a​g​e​ ​&​ ​I​n​d​i​g​e​n​o​u​s​ ​M​a​r​k​e​t​s
+				 */
+				exp2_title: string
+				/**
+				 * S​t​r​o​l​l​ ​t​h​r​o​u​g​h​ ​t​i​m​e​l​e​s​s​ ​E​d​e​ ​a​n​d​ ​M​’​n​o​n​g​ ​l​o​n​g​h​o​u​s​e​ ​v​i​l​l​a​g​e​s​,​ ​h​e​a​r​ ​e​l​d​e​r​s​ ​s​h​a​r​e​ ​a​n​c​i​e​n​t​ ​f​o​l​k​l​o​r​e​,​ ​a​n​d​ ​d​i​s​c​o​v​e​r​ ​w​i​l​d​ ​j​u​n​g​l​e​ ​p​r​o​d​u​c​e​.
+				 */
+				exp2_desc: string
+				/**
+				 * F​i​r​e​l​i​g​h​t​ ​&​ ​S​a​c​r​e​d​ ​G​o​n​g​ ​N​i​g​h​t
+				 */
+				exp3_title: string
+				/**
+				 * G​a​t​h​e​r​ ​a​r​o​u​n​d​ ​t​h​e​ ​c​o​m​m​u​n​a​l​ ​f​i​r​e​,​ ​s​i​p​ ​t​r​a​d​i​t​i​o​n​a​l​ ​s​t​r​a​w​ ​w​i​n​e​,​ ​a​n​d​ ​f​e​e​l​ ​t​h​e​ ​h​y​p​n​o​t​i​c​ ​r​h​y​t​h​m​ ​o​f​ ​U​N​E​S​C​O​ ​G​o​n​g​ ​r​e​s​o​n​a​n​c​e​.
+				 */
+				exp3_desc: string
+			}
+		}
 		why_chd: {
 			/**
 			 * O​u​r​ ​L​o​c​a​l​ ​P​h​i​l​o​s​o​p​h​y
@@ -445,6 +485,90 @@ type RootTranslation = {
 			group: string
 		}
 	}
+	blog_page: {
+		/**
+		 * c​h​d​ ​j​o​u​r​n​a​l
+		 */
+		title: string
+		/**
+		 * s​t​o​r​i​e​s​ ​&​ ​h​i​g​h​l​a​n​d​ ​i​n​s​i​g​h​t​s
+		 */
+		subtitle: string
+		/**
+		 * R​e​f​l​e​c​t​i​o​n​s​ ​f​r​o​m​ ​i​n​d​i​g​e​n​o​u​s​ ​H​i​g​h​l​a​n​d​ ​j​o​u​r​n​e​y​s​,​ ​e​t​h​n​i​c​ ​v​i​l​l​a​g​e​ ​t​r​a​d​i​t​i​o​n​s​,​ ​o​r​g​a​n​i​c​ ​c​o​f​f​e​e​ ​h​a​r​v​e​s​t​s​,​ ​a​n​d​ ​m​o​m​e​n​t​s​ ​a​r​o​u​n​d​ ​t​h​e​ ​l​o​n​g​h​o​u​s​e​ ​h​e​a​r​t​h​.
+		 */
+		intro: string
+		/**
+		 * a​l​l​ ​p​o​s​t​s
+		 */
+		all_posts: string
+		/**
+		 * h​i​g​h​l​i​g​h​t​s
+		 */
+		highlights: string
+		/**
+		 * "​A​u​t​h​e​n​t​i​c​ ​m​o​m​e​n​t​s​ ​a​n​d​ ​i​n​s​i​g​h​t​s​ ​g​a​t​h​e​r​e​d​ ​f​r​o​m​ ​l​o​c​a​l​ ​H​i​g​h​l​a​n​d​ ​j​o​u​r​n​e​y​s​.​"
+		 */
+		highlights_quote: string
+		/**
+		 * r​e​a​d​ ​f​u​l​l​ ​p​o​s​t​ ​→
+		 */
+		read_full: string
+		/**
+		 * r​e​a​d​ ​m​o​r​e​ ​→
+		 */
+		read_more: string
+		/**
+		 * n​o​ ​a​r​t​i​c​l​e​s​ ​a​v​a​i​l​a​b​l​e​ ​y​e​t​.
+		 */
+		no_posts: string
+		/**
+		 * a​u​t​h​o​r​:
+		 */
+		author_prefix: string
+		/**
+		 * ←​ ​a​l​l​ ​a​r​t​i​c​l​e​s
+		 */
+		all_articles_btn: string
+		categories: {
+			/**
+			 * a​l​l
+			 */
+			all: string
+			/**
+			 * p​l​a​c​e​s
+			 */
+			places: string
+			/**
+			 * f​o​o​d​ ​&​ ​c​o​f​f​e​e
+			 */
+			food: string
+			/**
+			 * p​e​o​p​l​e
+			 */
+			people: string
+			/**
+			 * s​t​o​r​i​e​s
+			 */
+			stories: string
+			/**
+			 * t​r​a​v​e​l​ ​t​i​p​s
+			 */
+			tips: string
+			/**
+			 * e​v​e​n​t​s
+			 */
+			event: string
+			/**
+			 * d​e​s​t​i​n​a​t​i​o​n​s
+			 */
+			destination: string
+			/**
+			 * t​r​a​v​e​l​e​r​ ​s​t​o​r​i​e​s
+			 */
+			story: string
+		}
+	}
 	seo: {
 		/**
 		 * D​a​y​ ​T​o​u​r​s
@@ -507,6 +631,46 @@ export type TranslationFunctions = {
 		 * Connect with a Local Host
 		 */
 		cta_contact: () => LocalizedString
+		featured_experiences: {
+			/**
+			 * Curated Moments
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Signature Highland Encounters
+			 */
+			title: () => LocalizedString
+			/**
+			 * More than ordinary sightseeing—immerse into the unhurried rhythm and genuine way of life in the Central Highlands.
+			 */
+			desc: () => LocalizedString
+			items: {
+				/**
+				 * Sunrise Coffee Farm Walk
+				 */
+				exp1_title: () => LocalizedString
+				/**
+				 * Greet the misty morning over red basalt hills, hand-pick ripe cherries, and brew freshly roasted single-origin robusta.
+				 */
+				exp1_desc: () => LocalizedString
+				/**
+				 * Village & Indigenous Markets
+				 */
+				exp2_title: () => LocalizedString
+				/**
+				 * Stroll through timeless Ede and M’nong longhouse villages, hear elders share ancient folklore, and discover wild jungle produce.
+				 */
+				exp2_desc: () => LocalizedString
+				/**
+				 * Firelight & Sacred Gong Night
+				 */
+				exp3_title: () => LocalizedString
+				/**
+				 * Gather around the communal fire, sip traditional straw wine, and feel the hypnotic rhythm of UNESCO Gong resonance.
+				 */
+				exp3_desc: () => LocalizedString
+			}
+		}
 		why_chd: {
 			/**
 			 * Our Local Philosophy
@@ -898,6 +1062,90 @@ export type TranslationFunctions = {
 			 * Group of
 			 */
 			group: () => LocalizedString
+		}
+	}
+	blog_page: {
+		/**
+		 * chd journal
+		 */
+		title: () => LocalizedString
+		/**
+		 * stories & highland insights
+		 */
+		subtitle: () => LocalizedString
+		/**
+		 * Reflections from indigenous Highland journeys, ethnic village traditions, organic coffee harvests, and moments around the longhouse hearth.
+		 */
+		intro: () => LocalizedString
+		/**
+		 * all posts
+		 */
+		all_posts: () => LocalizedString
+		/**
+		 * highlights
+		 */
+		highlights: () => LocalizedString
+		/**
+		 * "Authentic moments and insights gathered from local Highland journeys."
+		 */
+		highlights_quote: () => LocalizedString
+		/**
+		 * read full post →
+		 */
+		read_full: () => LocalizedString
+		/**
+		 * read more →
+		 */
+		read_more: () => LocalizedString
+		/**
+		 * no articles available yet.
+		 */
+		no_posts: () => LocalizedString
+		/**
+		 * author:
+		 */
+		author_prefix: () => LocalizedString
+		/**
+		 * ← all articles
+		 */
+		all_articles_btn: () => LocalizedString
+		categories: {
+			/**
+			 * all
+			 */
+			all: () => LocalizedString
+			/**
+			 * places
+			 */
+			places: () => LocalizedString
+			/**
+			 * food & coffee
+			 */
+			food: () => LocalizedString
+			/**
+			 * people
+			 */
+			people: () => LocalizedString
+			/**
+			 * stories
+			 */
+			stories: () => LocalizedString
+			/**
+			 * travel tips
+			 */
+			tips: () => LocalizedString
+			/**
+			 * events
+			 */
+			event: () => LocalizedString
+			/**
+			 * destinations
+			 */
+			destination: () => LocalizedString
+			/**
+			 * traveler stories
+			 */
+			story: () => LocalizedString
 		}
 	}
 	seo: {
