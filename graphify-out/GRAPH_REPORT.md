@@ -1,21 +1,21 @@
 # Graph Report - svelte-chd  (2026-09-06)
 
 ## Corpus Check
-- 166 files · ~76,634 words
+- 168 files · ~77,121 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 663 nodes · 972 edges · 75 communities (23 shown, 34 thin omitted)
+- 665 nodes · 978 edges · 82 communities (26 shown, 35 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9190d504`
+- Built from commit: `186e9347`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- tour.type.ts
+- format-data.ts
 - schemas/index.ts
 - i18n-types.ts
 - sanity-client.ts
@@ -64,7 +64,6 @@
 - 🛠️ Development
 - 🧪 HỆ THỐNG KIỂM THỬ VÀ KIỂM TRA CHẤT LƯỢNG (TESTING & QUALITY WORKFLOW)
 - back-end/README.md
-- base/index.ts
 - i18n-svelte.ts
 - sanity.ts
 - @testing-library/svelte
@@ -72,6 +71,11 @@
 - vitest
 - icons.ts
 - home-page/index.ts
+- fr/index.ts
+- tour.type.ts
+- $app/state
+- blog-page.svelte
+- tour-store.ts
 
 ## God Nodes (most connected - your core abstractions)
 1. `scripts` - 29 edges
@@ -82,8 +86,8 @@
 6. `scripts` - 9 edges
 7. `compilerOptions` - 9 edges
 8. `fetchToursByType()` - 8 edges
-9. `loadLocaleAsync()` - 7 edges
-10. `sendClientConfirmation()` - 7 edges
+9. `Tour` - 8 edges
+10. `loadLocaleAsync()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `prepare()` --calls--> `add_thousand_separator()`  [EXTRACTED]
@@ -100,19 +104,19 @@
 ## Import Cycles
 - None detected.
 
-## Communities (75 total, 34 thin omitted)
+## Communities (82 total, 35 thin omitted)
 
-### Community 0 - "tour.type.ts"
-Cohesion: 0.14
-Nodes (16): blog_modal, BlogModalState, tour_modal, TourModalState, GeneralKeyString, Highlights, Img_Cover, Locale_Array (+8 more)
+### Community 0 - "format-data.ts"
+Cohesion: 0.26
+Nodes (9): blog_modal, BlogModalState, tour_modal, TourModalState, Tour, format_pax_no(), format_price(), format_price_object() (+1 more)
 
 ### Community 1 - "schemas/index.ts"
 Cohesion: 0.08
 Nodes (33): add_thousand_separator(), CNumberInput(), parseNumber(), keywords, prepare(), prepare(), BASE_FIELDS, Field (+25 more)
 
 ### Community 2 - "i18n-types.ts"
-Cohesion: 0.05
-Nodes (45): App, Locals, handle(), initFormatters(), fr, blog_page, contact_page, home_page (+37 more)
+Cohesion: 0.08
+Nodes (34): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+26 more)
 
 ### Community 3 - "sanity-client.ts"
 Cohesion: 0.16
@@ -123,8 +127,8 @@ Cohesion: 0.06
 Nodes (35): dependencies, react, react-dom, react-is, sanity, sanity-plugin-media, @sanity/vision, styled-components (+27 more)
 
 ### Community 5 - "nav-store.ts"
-Cohesion: 0.12
-Nodes (5): nav_animate_hidden, nav_deg, nav_mobile, tour_index_store, logger
+Cohesion: 0.20
+Nodes (3): nav_animate_hidden, nav_deg, nav_mobile
 
 ### Community 6 - "scripts"
 Cohesion: 0.06
@@ -140,7 +144,7 @@ Nodes (23): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFi
 
 ### Community 9 - "seo-store.ts"
 Cohesion: 0.11
-Nodes (8): seo_description, seo_keywords, seo_og_image, seo_title, SeoState, ./$types, ./$types, ./$types
+Nodes (7): seo_description, seo_keywords, seo_og_image, seo_title, SeoState, ./$types, ./$types
 
 ### Community 10 - "devDependencies"
 Cohesion: 0.11
@@ -183,21 +187,33 @@ Cohesion: 0.50
 Nodes (3): 🎯 1. Danh Sách Kiểm Tra Bắt Buộc (Quality Checklist), 🔄 2. Quy Trình Phản Hồi & Commit, 🧪 HỆ THỐNG KIỂM THỬ VÀ KIỂM TRA CHẤT LƯỢNG (TESTING & QUALITY WORKFLOW)
 
 ### Community 65 - "sanity.ts"
-Cohesion: 0.17
-Nodes (10): if(), defaultRates, exchange_rates_store, ExchangeRates, builder, config, get_length_and_index(), get_tour_slug() (+2 more)
+Cohesion: 0.29
+Nodes (8): defaultRates, exchange_rates_store, ExchangeRates, builder, config, get_length_and_index(), get_tour_slug(), tour_by_index()
 
 ### Community 67 - "base-tour-detail-modal.svelte"
-Cohesion: 0.15
-Nodes (4): close(), booking_modal, BookingModalState, ./$types
+Cohesion: 0.22
+Nodes (3): close(), booking_modal, BookingModalState
 
 ### Community 69 - "icons.ts"
 Cohesion: 0.40
 Nodes (3): Icon, Icons, NOTE:
 
+### Community 75 - "fr/index.ts"
+Cohesion: 0.14
+Nodes (11): fr, blog_page, contact_page, home_page, nav_bar, seo, tours, Translation (+3 more)
+
+### Community 76 - "tour.type.ts"
+Cohesion: 0.15
+Nodes (8): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag, logger
+
+### Community 78 - "blog-page.svelte"
+Cohesion: 0.25
+Nodes (3): if(), url_for(), ./$types
+
 ## Knowledge Gaps
 - **242 isolated node(s):** `name`, `private`, `version`, `main`, `type` (+237 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 311 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 312 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -208,11 +224,11 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
   _242 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `tour.type.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1380952380952381 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07619738751814223 - nodes in this community are weakly interconnected._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05359937402190924 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07764876632801161 - nodes in this community are weakly interconnected._
 - **Should `back-end/package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
+- **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

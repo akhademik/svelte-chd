@@ -1,0 +1,47 @@
+name: CI & Quality Gates
+
+on:
+  push:
+    branches: [main, svelte]
+  pull_request:
+    branches: [main, svelte]
+
+jobs:
+  quality-check:
+    name: Lint, Typecheck, and Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.22.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run Type Check
+        run: pnpm check:all
+
+      - name: Run Linters & Code Formatting Check
+        run: pnpm lint:all
+
+      - name: Run Unit Tests (Vitest)
+        run: pnpm test:unit
+
+      - name: Install Playwright Browsers
+        run: |
+          cd front-end
+          npx playwright install chromium --with-deps
+
+      - name: Run E2E Tests (Playwright)
+        run: pnpm test:e2e

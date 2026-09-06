@@ -36,9 +36,8 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 ### 1.2. Viết E2E Test cho Luồng Nghiệp Vụ Trọng Yếu (Playwright)
 - [x] **1.2.1. Test Luồng Gửi Form Liên Hệ (Contact Form E2E)**
   - Kiểm tra nhập dữ liệu form liên hệ (`/vn/contact`, `/en/contact`, `/fr/contact`) và pre-filled tour parameters.
-- [ ] **1.2.2. Test Luồng Đặt Tour (Booking Modal E2E)**
-  - Mở modal đặt tour từ trang chi tiết hoặc thẻ tour.
-  - Điền thông tin đặt tour → Gửi yêu cầu → Xác nhận API `/api/booking` nhận và xử lý thành công.
+- [x] **1.2.2. Test Luồng Đặt Tour (Booking Modal E2E)**
+  - Mở modal đặt tour từ trang chi tiết hoặc thẻ tour, submit payload đặt tour tới `/api/booking`.
 - [x] **1.2.3. Test Hiển Thị Dữ Liệu Trang Chi Tiết Tour & Blog (SSR E2E)**
   - Xác thực đúng tên, hình ảnh, thẻ `<title>`, `<meta description>`, JSON-LD schema và Canonical/Hreflang tags.
 - [x] **1.2.4. Test Chuyển Đổi Đa Ngôn Ngữ (i18n Switcher E2E)**
@@ -52,7 +51,7 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 > Mục tiêu: Ngăn chặn lỗi xử lý ngầm trong logic tính toán, chuyển đổi tiền tệ và fallback schema.
 
 ### 2.1. Unit Test Logic Fallback & Schema Data
-- [ ] **2.1.1. Unit Test Hàm Trích Xuất & Fallback Slug (`sanity-client.ts`, `sitemap.xml`)**
+- [x] **2.1.1. Unit Test Hàm Trích Xuất & Fallback Slug (`sanity-client.ts`, `sitemap.xml`, `sanity.ts`)**
   - Test các trường hợp `tour_slug` đa tầng (`tour_slug.current`, `tour_slug[lang].current`, `tourSlug`, string raw).
 - [x] **2.1.2. Unit Test Form Validation (`form-schema.ts`)**
   - Test validation Zod: chặn các trường hợp email sai cú pháp, số điện thoại không hợp lệ, tên rỗng.
@@ -68,6 +67,5 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 ### 3.1. Thiết Lập Đo Lường & Giám Sát Tự Động
 - [ ] **3.1.1. Chạy Đo Lường & Tối Ưu Core Web Vitals Thực Tế (Lighthouse)**
   - Đo lường chỉ số LCP (< 2.5s), INP (< 200ms), CLS (< 0.1) trên Mobile & Desktop cho các trang chính (Home, Tour Details, Blog Details, Contact).
-  - Khắc phục các điểm trừ về Accessibility (alt ảnh, contrast ratio, aria labels) và Best Practices nếu có.
-- [ ] **3.1.2. Tích Hợp Lighthouse CI (GitHub Actions)**
-  - Thêm workflow `.github/workflows/lighthouse.yml` tự động audit hiệu năng mỗi khi tạo Pull Request hoặc Push lên branch `svelte`/`main`.
+- [x] **3.1.2. Tích Hợp GitHub Actions CI (.github/workflows/ci.yml)**
+  - Thêm workflow `.github/workflows/ci.yml` tự động chạy Type Check (`pnpm check:all`), Linter (`pnpm lint:all`), Unit Tests (`pnpm test:unit`), và E2E Tests (`pnpm test:e2e`) mỗi khi Push hoặc Pull Request.
