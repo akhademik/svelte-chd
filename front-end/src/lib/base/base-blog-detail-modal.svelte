@@ -254,7 +254,7 @@
 										onclick={() => (activeImageIndex = idx)}
 										class={`relative aspect-[16/10] h-16 shrink-0 overflow-hidden border-2 transition-all ${
 											activeImageIndex === idx
-												? 'scale-105 border-terracotta opacity-100'
+												? 'scale-105 border-secondary opacity-100'
 												: 'border-transparent opacity-60 hover:opacity-100'
 										}`}>
 										<img

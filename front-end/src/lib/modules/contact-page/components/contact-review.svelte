@@ -70,18 +70,17 @@
 </script>
 
 <div
-	class="relative min-h-[220px] overflow-hidden border border-stone-200 bg-sand-card shadow-sm sm:h-[360px]"
+	class="relative min-h-[220px] overflow-hidden border border-border bg-surface shadow-sm sm:h-[360px]"
 	onmouseenter={() => (isHovered = true)}
 	onmouseleave={() => (isHovered = false)}
 	role="region"
 	aria-label="Customer reviews">
-	<!-- Prev / Next Navigation Floating on Top Right -->
 	{#if totalReal > 1}
 		<div class="absolute right-4 top-4 z-10 flex items-center gap-2">
 			<button
 				type="button"
 				onclick={prevSlide}
-				class="flex h-7 w-7 items-center justify-center border border-stone-300 bg-white/90 text-stone-600 shadow-sm transition-colors hover:border-moss hover:bg-moss hover:text-white"
+				class="flex h-7 w-7 items-center justify-center border border-border-strong bg-surface text-foreground-muted shadow-sm transition-colors hover:border-primary hover:bg-primary hover:text-white"
 				aria-label="Previous review">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +93,7 @@
 			<button
 				type="button"
 				onclick={nextSlide}
-				class="flex h-7 w-7 items-center justify-center border border-stone-300 bg-white/90 text-stone-600 shadow-sm transition-colors hover:border-moss hover:bg-moss hover:text-white"
+				class="flex h-7 w-7 items-center justify-center border border-border-strong bg-surface text-foreground-muted shadow-sm transition-colors hover:border-primary hover:bg-primary hover:text-white"
 				aria-label="Next review">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +133,7 @@
 						</div>
 
 						{#if currentReview.date}
-							<span class="font-mono text-xs text-stone-400">
+							<span class="font-mono text-xs text-foreground-subtle">
 								{format_review_date(currentReview.date, $locale)}
 							</span>
 						{/if}
@@ -142,13 +141,13 @@
 
 					<!-- Review Title (With link) -->
 					{#if currentReview.title}
-						<h4 class="mb-2 line-clamp-1 font-serif text-base font-bold text-stone-900">
+						<h4 class="mb-2 line-clamp-1 font-serif text-base font-bold text-foreground">
 							{#if currentReview.url}
 								<a
 									href={currentReview.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="transition-colors hover:text-terracotta hover:underline">
+									class="transition-colors hover:text-secondary hover:underline">
 									{currentReview.title}
 								</a>
 							{:else}
@@ -166,26 +165,26 @@
 
 				<!-- Review Author Footer: [Avatar] [Username] [Country] -->
 				<div
-					class="mt-3 flex items-center justify-between border-t border-stone-200/80 pt-3 text-xs sm:mt-4 sm:pt-4">
+					class="mt-3 flex items-center justify-between border-t border-border/80 pt-3 text-xs sm:mt-4 sm:pt-4">
 					<div class="flex items-center gap-2.5 overflow-hidden">
 						{#if currentReview.avatar}
 							<img
 								src={currentReview.avatar}
 								alt={currentReview.name}
-								class="h-7 w-7 shrink-0 rounded-full border border-stone-200 object-cover"
+								class="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
 								loading="lazy" />
 						{:else}
 							<div
-								class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-stone-200 font-serif text-xs font-bold text-stone-700">
+								class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
 								{currentReview.name.charAt(0).toUpperCase()}
 							</div>
 						{/if}
-						<span class="truncate font-serif font-bold text-stone-900">
+						<span class="truncate font-serif font-bold text-foreground">
 							{currentReview.name}
 						</span>
 					</div>
 					{#if currentReview.country}
-						<div class="shrink-0 text-stone-500">{currentReview.country}</div>
+						<div class="shrink-0 text-foreground-muted">{currentReview.country}</div>
 					{/if}
 				</div>
 			</div>

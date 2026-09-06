@@ -6,29 +6,29 @@
 	class="relative flex min-h-[85vh] items-center justify-center border-b border-stone-200 px-6">
 	<div class="mx-auto max-w-4xl py-20 text-center">
 		<div class="mb-6 flex flex-col items-center gap-2">
-			<span class="font-serif text-sm italic tracking-widest text-terracotta">
+			<span class="font-serif text-sm italic tracking-widest text-secondary">
 				"{$LL.home_page.slogan()}"
 			</span>
-			<p class="text-xs font-medium uppercase tracking-[0.3em] text-stone-500">
+			<p class="text-xs font-medium uppercase tracking-[0.3em] text-foreground-muted">
 				{$LL.home_page.tagline()}
 			</p>
 		</div>
 
 		<h1
-			class="mb-8 font-serif text-4xl font-bold leading-[1.15] tracking-tight text-stone-900 sm:text-6xl md:text-7xl">
+			class="mb-8 font-serif text-4xl font-bold leading-[1.15] tracking-tight text-foreground sm:text-6xl md:text-7xl">
 			{$LL.home_page.hero_title_line1()} <br />
-			<span class="font-normal text-moss">{$LL.home_page.hero_title_line2()}</span>
+			<span class="font-normal text-primary">{$LL.home_page.hero_title_line2()}</span>
 		</h1>
 
 		<p
-			class="mx-auto mb-10 max-w-xl text-base font-light leading-relaxed text-stone-600 sm:text-lg">
+			class="mx-auto mb-10 max-w-xl text-base font-light leading-relaxed text-foreground-muted sm:text-lg">
 			{$LL.home_page.intro()}
 		</p>
 
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 			<a
 				href="#day-tours"
-				class="inline-flex w-full items-center justify-center gap-2 bg-moss px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-moss-hover sm:w-auto">
+				class="inline-flex w-full items-center justify-center gap-2 bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-primary-hover sm:w-auto">
 				<span>
 					{$LL.home_page.cta_explore()}
 				</span>

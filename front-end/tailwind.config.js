@@ -4,11 +4,66 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				// === 1. SEMANTIC BRAND TOKENS ===
+				primary: {
+					DEFAULT: '#5F6E56',
+					hover: '#4A5642',
+					dark: '#353E2F',
+				},
+				secondary: {
+					DEFAULT: '#A3764A',
+					hover: '#8C633C',
+				},
+
+				// === 2. SEMANTIC SURFACE TOKENS ===
+				background: '#D6CBAE',
+				surface: {
+					DEFAULT: '#DFD5B9',
+					muted: '#C7BB98',
+				},
+
+				// === 3. SEMANTIC CONTENT TOKENS ===
+				foreground: {
+					DEFAULT: '#2A2720',
+					muted: '#5C5646',
+					subtle: '#8A7E64',
+				},
+
+				// === 4. SEMANTIC BORDER TOKENS ===
+				border: {
+					DEFAULT: '#C7BB98',
+					strong: '#B0A27E',
+				},
+
+				// === 5. SEMANTIC INVERSE TOKENS (Dark/Footer/Hero) ===
+				inverse: {
+					DEFAULT: '#2B2A24',
+					dark: '#1E1D19',
+					foreground: '#DFD5B9',
+				},
+
+				// === 6. BRAND PALETTE ALIASES (For clear visual naming & backward compatibility) ===
 				sand: {
 					DEFAULT: '#D6CBAE',
 					alt: '#C7BB98',
 					card: '#DFD5B9',
 				},
+				moss: {
+					DEFAULT: '#5F6E56',
+					hover: '#4A5642',
+					dark: '#353E2F',
+				},
+				terracotta: '#A3764A',
+				ochre: {
+					DEFAULT: '#A3764A',
+					hover: '#8C633C',
+				},
+				charcoal: {
+					DEFAULT: '#2B2A24',
+					dark: '#1E1D19',
+				},
+
+				// === 7. TONAL SCALE (Internal Stone Scale) ===
 				stone: {
 					50: '#DFD5B9',
 					100: '#D6CBAE',
@@ -22,31 +77,13 @@ export default {
 					900: '#2B2A24',
 					950: '#1E1D19',
 				},
-				charcoal: {
-					DEFAULT: '#2B2A24',
-					dark: '#1E1D19',
-				},
-				moss: {
+
+				// === 8. COMPATIBILITY ALIASES ===
+				accent: {
 					DEFAULT: '#5F6E56',
-					hover: '#4A5642',
-					dark: '#353E2F',
+					deep: '#4A5642',
+					warm: '#A3764A',
 				},
-				ochre: {
-					DEFAULT: '#A3764A',
-					hover: '#8C633C',
-				},
-				ocher: {
-					DEFAULT: '#A3764A',
-					hover: '#8C633C',
-				},
-				forest: {
-					DEFAULT: '#5F6E56',
-					hover: '#4A5642',
-				},
-				terracotta: '#A3764A',
-				primary: '#2A2720',
-				secondary: '#A3764A',
-				accent: '#5F6E56',
 				'accent-deep': '#4A5642',
 				'accent-warm': '#A3764A',
 			},

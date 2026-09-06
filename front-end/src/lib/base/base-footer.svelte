@@ -2,17 +2,19 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 </script>
 
-<footer class="border-t border-stone-800 bg-stone-900 px-6 py-8 text-xs text-stone-400 sm:py-10">
+<footer
+	class="border-t border-inverse-dark bg-inverse px-6 py-8 text-xs text-foreground-subtle sm:py-10">
 	<div class="mx-auto max-w-6xl space-y-6">
 		<div class="flex flex-col items-center justify-between gap-6 md:flex-row">
 			<!-- Brand & Slogan -->
 			<div class="flex flex-col items-center gap-1 md:items-start">
 				<div class="flex items-center gap-2">
-					<span class="font-serif text-lg uppercase tracking-widest text-stone-100">CHD</span>
+					<span class="font-serif text-lg uppercase tracking-widest text-inverse-foreground"
+						>CHD</span>
 					<span class="text-stone-700">|</span>
 					<span class="text-xs uppercase tracking-widest text-stone-300">Travel</span>
 				</div>
-				<span class="font-serif text-[11px] italic tracking-widest text-terracotta">
+				<span class="font-serif text-[11px] italic tracking-widest text-secondary">
 					"go local — see local — eat local"
 				</span>
 			</div>
@@ -54,7 +56,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Facebook"
-					class="flex h-11 w-11 items-center justify-center rounded-full border border-stone-700 bg-stone-800 text-stone-300 transition-all hover:border-white hover:bg-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-moss">
+					class="flex h-11 w-11 items-center justify-center rounded-full border border-stone-700 bg-stone-800 text-stone-300 transition-all hover:border-white hover:bg-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
 					<svg
 						class="h-4 w-4 fill-current"
 						viewBox="0 0 24 24">
@@ -70,7 +72,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="TripAdvisor"
-					class="flex h-11 w-11 items-center justify-center rounded-full border border-stone-700 bg-stone-800 text-stone-300 transition-all hover:border-white hover:bg-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-moss">
+					class="flex h-11 w-11 items-center justify-center rounded-full border border-stone-700 bg-stone-800 text-stone-300 transition-all hover:border-white hover:bg-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
 					<svg
 						class="h-4 w-4 fill-current"
 						viewBox="0 0 24 24">

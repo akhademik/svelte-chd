@@ -119,27 +119,28 @@
 
 <div class="space-y-12 pb-20">
 	<!-- Hero Section -->
-	<section class="border-b border-stone-200/80 bg-sand-card py-12 sm:py-16">
+	<section class="border-b border-border/80 bg-surface py-12 sm:py-16">
 		<div class="mx-auto max-w-6xl px-6">
-			<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-terracotta">
+			<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-secondary">
 				{$LL.blog_page.subtitle()}
 			</span>
-			<h1 class="font-serif text-3xl font-bold leading-tight text-moss sm:text-4xl lg:text-5xl">
+			<h1 class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
 				{$LL.blog_page.title()}
 			</h1>
-			<p class="mt-4 max-w-2xl text-sm font-light leading-relaxed text-stone-600 sm:text-base">
+			<p
+				class="mt-4 max-w-2xl text-sm font-light leading-relaxed text-foreground-muted sm:text-base">
 				{$LL.blog_page.intro()}
 			</p>
 
 			<!-- Filter Pills: Only show categories with available posts -->
 			{#if presentCategories.length > 1}
-				<div class="mt-8 flex flex-wrap gap-2.5 border-t border-stone-200/80 pt-6 text-xs">
+				<div class="mt-8 flex flex-wrap gap-2.5 border-t border-border/80 pt-6 text-xs">
 					<button
 						onclick={() => (activeFilter = 'all')}
 						class={`rounded-full px-5 py-2.5 font-medium transition-all ${
 							activeFilter === 'all'
-								? 'bg-stone-900 text-stone-50'
-								: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
+								? 'bg-inverse text-inverse-foreground'
+								: 'border border-border bg-surface text-foreground-muted hover:border-foreground hover:text-foreground'
 						}`}>
 						{$LL.blog_page.all_posts()}
 					</button>
@@ -148,8 +149,8 @@
 							onclick={() => (activeFilter = cat)}
 							class={`rounded-full px-5 py-2.5 font-medium transition-all ${
 								activeFilter === cat
-									? 'bg-stone-900 text-stone-50'
-									: 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'
+									? 'bg-inverse text-inverse-foreground'
+									: 'border border-border bg-surface text-foreground-muted hover:border-foreground hover:text-foreground'
 							}`}>
 							{getCategoryName(cat)}
 						</button>
@@ -238,12 +239,12 @@
 					{@const cardExcerpt = getPostExcerpt(post)}
 
 					<article
-						class="flex flex-col justify-between overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md">
+						class="flex flex-col justify-between overflow-hidden border border-border bg-surface text-left transition-all hover:border-border-strong hover:shadow-md">
 						<div>
 							{#if cardCover}
 								<a
 									href={postLink}
-									class="block h-48 w-full overflow-hidden bg-stone-100">
+									class="block h-48 w-full overflow-hidden bg-background">
 									<img
 										src={cardCover}
 										alt={getPostTitle(post)}
@@ -256,20 +257,21 @@
 										class={`rounded-full border px-2.5 py-0.5 text-[11px] font-medium ${getCategoryBadgeClass(post.category)}`}>
 										{getCategoryName(post.category)}
 									</span>
-									<span class="text-[11px] text-stone-400"
+									<span class="text-[11px] text-foreground-subtle"
 										>{post.publishedAt?.split('T')[0] || ''}</span>
 								</div>
 
-								<h3 class="mt-4 font-serif text-lg font-medium leading-snug text-stone-900">
+								<h3 class="mt-4 font-serif text-lg font-medium leading-snug text-foreground">
 									<a
 										href={postLink}
-										class="hover:text-terracotta">
+										class="hover:text-secondary">
 										{getPostTitle(post)}
 									</a>
 								</h3>
 
 								{#if cardExcerpt}
-									<p class="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-stone-600">
+									<p
+										class="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-foreground-muted">
 										{cardExcerpt}
 									</p>
 								{/if}
@@ -277,11 +279,11 @@
 						</div>
 
 						<div
-							class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs text-stone-400">
+							class="mx-6 mb-6 flex items-center justify-between border-t border-border/50 pt-4 text-xs text-foreground-subtle">
 							<span>{post.author || 'CHD Travel'}</span>
 							<a
 								href={postLink}
-								class="font-medium text-terracotta hover:underline">
+								class="font-medium text-secondary hover:underline">
 								{$LL.blog_page.read_more()}
 							</a>
 						</div>

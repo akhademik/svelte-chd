@@ -4,9 +4,9 @@
 
 <section
 	id="plan-your-trip"
-	class="border-b border-stone-200 bg-sand px-6 py-12 sm:py-16">
+	class="border-b border-border bg-background px-6 py-12 sm:py-16">
 	<div class="mx-auto max-w-3xl text-center">
-		<span class="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta">
+		<span class="text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
 			{$locale === 'vn'
 				? 'Thiết Kế Chuyến Đi Riêng'
 				: $locale === 'fr'
@@ -14,7 +14,7 @@
 					: 'Tailor-Made Journey'}
 		</span>
 
-		<h2 class="mt-2 font-serif text-2xl font-bold text-moss sm:text-3xl lg:text-4xl">
+		<h2 class="mt-2 font-serif text-2xl font-bold text-primary sm:text-3xl lg:text-4xl">
 			{$locale === 'vn'
 				? 'Chia sẻ điều bạn muốn trải nghiệm'
 				: $locale === 'fr'
@@ -22,7 +22,8 @@
 					: 'Tell us what you want to experience'}
 		</h2>
 
-		<p class="mx-auto mt-3 max-w-lg text-xs font-light leading-relaxed text-stone-600 sm:text-sm">
+		<p
+			class="mx-auto mt-3 max-w-lg text-xs font-light leading-relaxed text-foreground-muted sm:text-sm">
 			{$locale === 'vn'
 				? 'Dù là đi bộ qua nương rẫy cà phê, lắng nghe già làng kể khan, hay thong dong ngắm thác rừng đại ngàn — chúng tôi sẵn sàng cùng bạn tạo nên một hành trình mang đậm dấu ấn cá nhân.'
 				: $locale === 'fr'
@@ -33,7 +34,7 @@
 		<div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
 			<a
 				href={`/${$locale}/contact`}
-				class="inline-flex w-full items-center justify-center gap-2 bg-moss px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-all duration-300 hover:bg-moss-hover sm:w-auto">
+				class="inline-flex w-full items-center justify-center gap-2 bg-primary px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-all duration-300 hover:bg-primary-hover sm:w-auto">
 				<span>
 					{$locale === 'vn'
 						? 'Lên kế hoạch chuyến đi'
@@ -61,7 +62,7 @@
 
 			<a
 				href="#day-tours"
-				class="inline-flex w-full items-center justify-center border border-stone-800 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-800 hover:text-white sm:w-auto">
+				class="inline-flex w-full items-center justify-center border border-foreground px-6 py-3 text-xs font-semibold uppercase tracking-widest text-foreground transition-all duration-300 hover:bg-foreground hover:text-white sm:w-auto">
 				{$LL.home_page.cta_explore()}
 			</a>
 		</div>

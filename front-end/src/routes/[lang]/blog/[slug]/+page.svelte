@@ -136,12 +136,13 @@
 					</span>
 				</div>
 
-				<h1 class="font-serif text-3xl font-bold leading-tight text-moss sm:text-4xl lg:text-5xl">
+				<h1
+					class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
 					{title}
 				</h1>
 
 				{#if excerpt}
-					<p class="text-base font-light italic leading-relaxed text-stone-600 sm:text-lg">
+					<p class="text-base font-light italic leading-relaxed text-foreground-muted sm:text-lg">
 						"{excerpt}"
 					</p>
 				{/if}

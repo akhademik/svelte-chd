@@ -34,15 +34,15 @@
 
 <section
 	id="highland-tours"
-	class="sm:py-18 border-b border-stone-200 bg-stone-100/50 px-6 py-14">
+	class="sm:py-18 border-b border-border bg-surface-muted/30 px-6 py-14">
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 			<div>
-				<h2 class="font-serif text-3xl font-bold text-moss sm:text-4xl">
+				<h2 class="font-serif text-3xl font-bold text-primary sm:text-4xl">
 					{$LL.nav_bar.highland_tours()}
 				</h2>
 			</div>
-			<p class="max-w-md text-sm font-light text-stone-500">
+			<p class="max-w-md text-sm font-light text-foreground-muted">
 				{$locale === 'vn'
 					? 'Hành trình nhiều ngày sâu lắng qua những cung đường sương mù, rừng thông cổ thụ và âm vang đại ngàn.'
 					: $locale === 'fr'
@@ -59,10 +59,10 @@
 				{@const tourLink = `/${$locale}/highland-tours/${slug}`}
 
 				<div
-					class="group grid grid-cols-1 overflow-hidden border border-stone-200/90 bg-sand-card lg:grid-cols-12">
+					class="group grid grid-cols-1 overflow-hidden border border-border/90 bg-surface lg:grid-cols-12">
 					<a
 						href={tourLink}
-						class={`relative block aspect-[16/10] overflow-hidden bg-stone-200 lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+						class={`relative block aspect-[16/10] overflow-hidden bg-background lg:col-span-7 lg:aspect-auto ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
 						{#if tour.img_cover?.asset}
 							<img
 								src={url_for(tour.img_cover)
@@ -77,7 +77,7 @@
 						{/if}
 						{#if tour.best_sell}
 							<span
-								class="absolute left-4 top-4 bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-md">
+								class="absolute left-4 top-4 bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-white shadow-md">
 								★ Best Sell
 							</span>
 						{/if}
@@ -87,7 +87,7 @@
 						class={`flex flex-col justify-between p-6 sm:p-8 lg:col-span-5 lg:p-10 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
 						<div>
 							<div
-								class="mb-3 flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-stone-400">
+								class="mb-3 flex flex-wrap items-center gap-2 text-xs uppercase tracking-wider text-foreground-subtle">
 								<span>{duration}</span>
 								<span>•</span>
 								<span>Central Highlands</span>
@@ -100,7 +100,7 @@
 											tag?.tourTags?.en}
 										{#if tagName}
 											<span
-												class="rounded bg-stone-100 px-2 py-0.5 text-[9px] font-medium tracking-wide text-stone-700">
+												class="rounded bg-background px-2 py-0.5 text-[9px] font-medium tracking-wide text-foreground-muted">
 												#{tagName}
 											</span>
 										{/if}
@@ -109,10 +109,10 @@
 							</div>
 
 							<h3
-								class="mb-4 font-serif text-2xl leading-snug text-stone-900 transition-colors group-hover:text-terracotta sm:text-3xl">
+								class="mb-4 font-serif text-2xl leading-snug text-foreground transition-colors group-hover:text-secondary sm:text-3xl">
 								<a
 									href={tourLink}
-									class="block text-left font-serif text-2xl leading-snug text-stone-900 transition-colors hover:text-terracotta sm:text-3xl">
+									class="block text-left font-serif text-2xl leading-snug text-foreground transition-colors hover:text-secondary sm:text-3xl">
 									{title}
 								</a>
 							</h3>

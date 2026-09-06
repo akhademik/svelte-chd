@@ -22,7 +22,7 @@
 				<li>
 					<a
 						href={fixed_url}
-						class={`transition-colors ${active ? 'italic text-terracotta' : 'hover:text-terracotta'}`}
+						class={`transition-colors ${active ? 'italic text-secondary' : 'hover:text-secondary'}`}
 						onclick={nav_click}>
 						{$LL.nav_bar[text]()}
 					</a>

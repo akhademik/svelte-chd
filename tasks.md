@@ -1,107 +1,118 @@
-# 📋 BẢNG CÔNG VIỆC CẦN THỰC HIỆN (TASKS & ROADMAP)
+# 📋 Kế hoạch Thống nhất Hệ Thống Token Màu Sắc (Color Tokens Unification Plan)
 
-> **Tài liệu theo dõi tiến độ công việc** được tổng hợp từ [job-need-do.md](file:///home/hajtran/dev/svelte-chd/job-need-do.md), đối chiếu với [DEVELOPMENT_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/DEVELOPMENT_WORKFLOW.md), [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md), [TEST_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/TEST_WORKFLOW.md), và [GRAPH_REPORT.md](file:///home/hajtran/dev/svelte-chd/graphify-out/GRAPH_REPORT.md).
-
----
-
-## 🎯 Tổng quan các hạng mục (Summary of Epics)
-
-| Epic ID | Tên Hạng Mục | Mức Độ Ưu Tiên | Trạng Thái |
-| :--- | :--- | :--- | :--- |
-| **EPIC-1** | Plan Your Trip / Tour Enquiry Integration | 🔴 P0 (Cao nhất / High ROI) | ✅ Hoàn thành (Done) |
-| **EPIC-2** | Tái Cấu Trúc Thứ Tự Section Trang Chủ (Homepage Flow) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
-| **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
-| **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
-| **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
-| **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ✅ Hoàn thành (Done) |
-| **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
-| **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ✅ Hoàn thành (Done) |
+> **Mục tiêu**: Chuẩn hóa và tinh gọn hệ thống token màu sắc cho toàn bộ dự án `svelte-chd`. Chuyển từ việc phân mảnh nhiều alias / dùng trực tiếp bảng mã stone sang hệ thống **Semantic Token** mạch lạc, dễ hiểu.  
+> **Cam kết**: Giữ nguyên 100% phong cách thiết kế, tone màu, độ tương phản (anti-glare/matte), không làm thay đổi giao diện thực tế. Tương lai khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa token tại Design Concept / Config là toàn bộ giao diện tự động đồng bộ.
 
 ---
 
-## 📝 Chi tiết Danh sách Công việc (Detailed Task Breakdown)
+## 🔍 I. Phân Tích Thực Trạng Hiện Tại (Current State Analysis)
 
-### 🔴 EPIC-1: "Plan Your Trip" - Tour Enquiry Integration (Ưu tiên #1)
-- [x] **TASK-1.1**: Cập nhật modal/CTA tại trang chi tiết tour ([BaseTourDetailModal](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/components/common/base-tour-detail-modal.svelte)): Đổi từ nút chung chung `[ Book / Enquire ]` sang `[ PLAN THIS TRIP ]`.
-- [x] **TASK-1.2**: Tích hợp truyền `selectedTour` (slug / tên tour / id) vào form liên hệ / modal đặt tour.
-- [x] **TASK-1.3**: Tinh chỉnh UI form enquiry:
-  - Trường quan tâm: `I'm interested in: [ Tên Tour được chọn ]` (pre-filled).
-  - Thời gian dự kiến: `When are you travelling?`
-  - Số lượng người: `How many people?`
-  - Ghi chú: `Anything you'd like us to know?`
-  - Nút gửi: `[ Send enquiry ]`.
-- [x] **TASK-1.4**: Cập nhật typesafe-i18n cho các nhãn form mới trong `t-contact.ts` / `t-tour.ts` (VN, EN, FR) theo quy chuẩn [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md).
+Theo nội dung phân tích từ [job-need-do.md](file:///home/hajtran/dev/svelte-chd/job-need-do.md) và [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md):
 
----
+1. **Quá nhiều tên trùng lặp (Aliases Overload)**:
+   - `#5F6E56` (Xanh rêu): được đặt tên là `moss`, `forest`, `accent`. Hover `#4A5642` có `moss-hover`, `forest-hover`, `accent-deep`.
+   - `#A3764A` (Đất nung / Ochre): được đặt tên là `ochre`, `ocher`, `terracotta`, `secondary`, `accent-warm`.
+   - `#2B2A24` (Nền tối / Charcoal): được đặt tên là `stone-900`, `charcoal`.
+   - `#1E1D19` (Nền siêu tối): được đặt tên là `stone-950`, `charcoal-dark`.
+   - `#D6CBAE` (Nền chính): được đặt tên là `sand`, `stone-100`.
+   - `#DFD5B9` (Nền thẻ): được đặt tên là `sand-card`, `stone-50`.
+   - `#C7BB98` (Nền phụ): được đặt tên là `sand-alt`, `stone-200`.
 
-### 🟠 EPIC-2: Tái cấu trúc Luồng Trang Chủ (Homepage Flow Reordering)
-- [x] **TASK-2.1**: Tái cấu trúc thứ tự các section trong trang chủ ([+page.svelte](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/[lang]/+page.svelte)) theo conversion flow tự nhiên:
-  1. `HERO`: Slogan *"Go local. See local. Eat local."* + CTA `[ Explore tours ]`
-  2. `WHY CHD`: Điểm nhấn định vị thương hiệu *"Go local / See local / Eat local"*
-  3. `FEATURED EXPERIENCES`: Trải nghiệm nổi bật (Coffee / Food / People / Nature)
-  4. `DAY TOURS`: Danh sách 3–4 day tours tiêu biểu
-  5. `MULTI-DAY TOURS` (Highland Tours): Danh sách 2–3 highland tours
-  6. `TRAVELER STORIES` (Testimonials): Dời xuống sau danh sách tour (chứng thực sau khi khách đã thấy sản phẩm)
-  7. `CHD JOURNAL` (Blog / Stories): Bài viết chia sẻ văn hóa, ẩm thực, con người
-  8. `PLAN YOUR TRIP` (CTA Section): Mời gọi thiết kế tour riêng *"Tell us what you want to experience"*
-  9. `FOOTER`
+2. **Trộn lẫn 3 trường phái đặt tên (Semantic vs. Brand Palette vs. Raw Stone Scale)**:
+   - Một số component dùng `text-primary` (`#2A2720` - Ink), trong khi component khác dùng `text-moss` hoặc `text-stone-900`.
+   - Cột màu `stone-50` -> `stone-950` thực chất không phải grayscale chuẩn của Tailwind mà là dải màu riêng của CHD (cream → beige → brown → charcoal). Khi dùng `text-stone-500` lập trình viên không hiểu ý nghĩa chức năng (semantic reason).
 
 ---
 
-### 🟠 EPIC-3: Nâng cấp Content & Brand Positioning "Why CHD"
-- [x] **TASK-3.1**: Cập nhật lại nội dung section "Why CHD" theo triết lý thương hiệu, tránh cảm giác corporate values:
-  - **Tagline chính**: *"We don't take you to the Highlands. We take you into it."*
-  - **01 GO LOCAL**: *"Meet the people who call this place home."*
-  - **02 SEE LOCAL**: *"Go beyond the places listed in guidebooks."*
-  - **03 EAT LOCAL**: *"Taste what people here actually eat."*
-  - **04 TRAVEL SLOW**: *"Small groups. More time. Less rushing."*
-- [x] **TASK-3.2**: Bổ sung và đồng bộ các chuỗi dịch đa ngôn ngữ tương ứng trong i18n (`t-home.ts` cho `vn`, `en`, `fr`).
-- [x] **TASK-3.3**: Đảm bảo giữ vững phong cách Editorial Layout: Typography serif `font-serif`, màu `sand / moss / terracotta`, giữ cấu trúc đánh số `01 / 02 / 03 / 04`.
+## 🎨 II. Thiết Kế Hệ Thống Semantic Token Chuẩn (Target Semantic Color Tokens)
+
+Tổ chức lại hệ thống token theo 6 nhóm chức năng (Functional Token Groups):
+
+```mermaid
+graph TD
+    A[Color System] --> B[Brand Tokens]
+    A --> C[Surface Tokens]
+    A --> D[Content / Typography Tokens]
+    A --> E[Border Tokens]
+    A --> F[Inverse / Dark Tokens]
+    A --> G[Status / Utility Tokens]
+
+    B --> B1[primary: #5F6E56 - Moss]
+    B --> B2[primary-hover: #4A5642]
+    B --> B3[secondary: #A3764A - Terracotta / Warm Accent]
+    B --> B4[secondary-hover: #8C633C]
+
+    C --> C1[bg-background: #D6CBAE - Sand]
+    C --> C2[bg-surface: #DFD5B9 - Sand Card]
+    C --> C3[bg-surface-muted: #C7BB98 - Sand Alt]
+
+    D --> D1[text-foreground: #2A2720 - Ink / Heading]
+    D --> D2[text-foreground-muted: #5C5646 - Body text]
+    D --> D3[text-foreground-subtle: #8A7E64 - Overline / Caption]
+
+    E --> E1[border-border: #C7BB98]
+    E --> E2[border-border-strong: #B0A27E]
+
+    F --> F1[bg-inverse: #1E1D19 / #2B2A24 - Charcoal]
+    F --> F2[text-inverse-foreground: #DFD5B9]
+
+    G --> G1[overlay / black-alpha]
+```
+
+### Bảng Quy Đổi Chi Tiết (Mapping Matrix)
+
+| Nhóm Token | Token Mới (Semantic) | Giá trị HEX | Lớp Cũ Tương Đương | Mục Đích Sử Dụng |
+| :--- | :--- | :--- | :--- | :--- |
+| **Brand** | `primary` | `#5F6E56` | `moss`, `forest`, `accent` | Màu nhận diện rừng rêu Tây Nguyên, nút CTA chính, tiêu đề nổi bật |
+| | `primary-hover` | `#4A5642` | `moss-hover`, `forest-hover`, `accent-deep` | Hover cho nút primary |
+| | `primary-dark` | `#353E2F` | `moss-dark` | Điểm nhấn rêu đậm |
+| | `secondary` | `#A3764A` | `terracotta`, `ochre`, `ocher`, `accent-warm` | Màu đất nung bazan, badge Best Sell, giá tour, hover link |
+| | `secondary-hover` | `#8C633C` | `ochre-hover` | Hover cho secondary |
+| **Surface** | `background` (hoặc `bg-sand`) | `#D6CBAE` | `sand`, `stone-100` | Nền chính toàn trang (ấm, chống lóa) |
+| | `surface` (hoặc `bg-card`) | `#DFD5B9` | `sand-card`, `stone-50` | Nền thẻ tour, blog card, form container, modal |
+| | `surface-muted` (hoặc `bg-alt`) | `#C7BB98` | `sand-alt`, `stone-200` | Nền section xen kẽ phân tách khối |
+| **Content** | `foreground` | `#2A2720` | `stone-900`, `stone-800`, `primary` (cũ) | Tiêu đề Heading (H1-H3), văn bản chữ chính |
+| | `foreground-muted` | `#5C5646` | `stone-600`, `stone-500` | Nội dung mô tả (Body text), phụ đề |
+| | `foreground-subtle` | `#8A7E64` | `stone-400` | Overline, step marker, caption mờ |
+| **Border** | `border` | `#C7BB98` | `stone-200`, `border-sand-alt` | Viền thẻ, đường phân cách card |
+| | `border-strong` | `#B0A27E` | `stone-300` | Viền đậm, focus border |
+| **Inverse** | `inverse` | `#1E1D19` / `#2B2A24` | `charcoal`, `charcoal-dark`, `stone-900`, `stone-950` | Nền tối cho Hero banner, Footer |
+| | `inverse-foreground` | `#DFD5B9` | `stone-100`, `stone-50` (on dark) | Chữ hiển thị trên nền tối (Hero/Footer) |
 
 ---
 
-### 🟡 EPIC-4: Chuẩn hóa Kiến trúc Dữ liệu Testimonials
-- [x] **TASK-4.1**: Duy trì nạp dữ liệu Testimonials mặc định an toàn tại Server Load (`+page.server.ts`), tránh phụ thuộc cứng hoặc lỗi fetch khi không qua Sanity.
-- [x] **TASK-4.2**: Đảm bảo cấu trúc data schema cho Testimonial rõ ràng, hỗ trợ mở rộng thêm trường đa ngôn ngữ (VN/EN/FR).
+## 📝 III. Danh Sách Công Việc Cần Thực Hiện (Actionable Task List)
 
----
+### Phase 1: Cập Nhật Tài Liệu Thiết Kế (Design System Documentation)
+- [x] **Task 1.1**: Đồng bộ bảng màu trong [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md) theo chuẩn Semantic Tokens (Brand, Surface, Content, Border, Inverse).
+- [x] **Task 1.2**: Ghi chú rõ ràng quy tắc ánh xạ và nguyên tắc không đổi mã HEX/style visual.
 
-### 🟡 EPIC-5: Trợ Năng (Accessibility) & Reduced Motion cho Testimonials Carousel
-- [x] **TASK-5.1**: Bổ sung `aria-live="polite"` / `aria-roledescription="carousel"` phù hợp cho Testimonial Carousel.
-- [x] **TASK-5.2**: Bổ sung tương tác bàn phím (Keyboard navigation: ArrowLeft, ArrowRight).
-- [x] **TASK-5.3**: Tạm dừng (Pause) auto-rotation khi focus hoặc hover chuột vào slider container.
-- [x] **TASK-5.4**: Hỗ trợ CSS media query `@media (prefers-reduced-motion: reduce)`: Vô hiệu hóa auto-play và các transition trượt mạnh đối với người dùng chọn reduced-motion.
-- [x] **TASK-5.5**: Đảm bảo các dot navigation có nhãn accessible (`aria-label`, `aria-selected`, `role="tab"`).
+### Phase 2: Cấu Hình Tailwind Theme Config
+- [x] **Task 2.1**: Tinh chỉnh [front-end/tailwind.config.js](file:///home/hajtran/dev/svelte-chd/front-end/tailwind.config.js):
+  - Khai báo các semantic tokens mới (`primary`, `secondary`, `background`, `surface`, `foreground`, `border`, `inverse`).
+  - Giữ lại các alias cũ an toàn để không làm vỡ giao diện đang chạy.
+  - Loại bỏ các tên thừa/lỗi chính tả (`ocher` vs `ochre`, `forest`).
+  - Giữ nguyên dải `stone` (11 shades) cho các nhu cầu vi chỉnh tonal nếu cần thiết mà không phụ thuộc trực tiếp.
 
----
+### Phase 3: Rà Soát & Thay Thế Naming Trong Codebase Frontend (`front-end/src/`)
+- [x] **Task 3.1**: Thay thế các component Layout, Header, Navbar, Footer:
+  - `src/lib/modules/nav-bar/`
+  - `src/lib/modules/mobile-menu/`
+  - `src/lib/base/base-footer.svelte`
+  - `src/routes/+layout.svelte`
+- [x] **Task 3.2**: Thay thế các component Base UI:
+  - `src/lib/base/` (`base-logo`, `base-locale-switcher`, `base-scroll-to-top`, `base-booking-modal`, `base-tour-detail-modal`, `base-blog-detail-modal`...)
+- [x] **Task 3.3**: Thay thế các module trang:
+  - `src/lib/modules/home-page/` (Hero, Why CHD, Day Tours, Highland Tours, Experiences, Testimonials, Featured Slider, Contact, Plan Your Trip)
+  - `src/lib/modules/tour-page/` (Tour Card, Tour Details, Tour Gallery)
+  - `src/lib/modules/blog-page/` (Blog Page, Filter Pills, Post Cards)
+  - `src/lib/modules/about-page/` (About Hero, Timeline, Team Members, Legal, CTA)
+  - `src/lib/modules/contact-page/` (Header, Address / Map, Reviews)
+  - Các route trong `src/routes/[lang]/`
 
-### 🟢 EPIC-6: Tinh chỉnh Backend Server Actions (Email & Discord Delivery)
-- [x] **TASK-6.1**: Tinh chỉnh logic xử lý phản hồi trong `[lang]/+page.server.ts`:
-  - Phân định rõ **Primary Delivery** (Email gửi về CHD admin) vs **Secondary Delivery** (Email confirmation gửi khách + Discord webhook notification).
-  - Nếu Primary Email gửi thành công -> Xem form submission là `success`.
-  - Nếu Secondary (khách xác nhận / Discord) thất bại -> Ghi log lỗi riêng (console error / structured log) mà không chặn kết quả báo thành công cho người dùng.
-
----
-
-### 🟠 EPIC-7: Mobile UX & Responsive Polish
-- [x] **TASK-7.1**: Kiểm tra Hero Section trên màn hình di động: Tránh để hình ảnh và typography quá lớn chiếm tràn màn hình gây cản trở scroll xem nội dung.
-- [x] **TASK-7.2**: Kiểm tra và tối ưu touch/swipe gesture mượt mà cho Testimonials Carousel trên thiết bị di động.
-- [x] **TASK-7.3**: Đảm bảo toàn bộ wrapper tuân thủ đúng quy chuẩn padding `mx-auto max-w-6xl px-6 py-12` (theo [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md)), không để phần tử dính sát mép trên mobile.
-
----
-
-### 🟢 EPIC-8: Animation Freeze & Giản Lược Visual
-- [x] **TASK-8.1**: Đóng băng (Freeze) animation: Tuyệt đối không bổ sung các hiệu ứng phức tạp (parallax, scroll reveal dồn dập, text splitting, cursor effects).
-- [x] **TASK-8.2**: Giữ nguyên nhịp điệu tĩnh lặng, mộc mạc và nhẹ nhàng (*"quiet / slow / natural"*) phù hợp với nhận diện CHD Travel.
-
----
-
-## 🔒 Quy trình Kiểm tra Chất lượng Bắt Buộc (Quality Gate Checklist)
-
-Trước khi bàn giao hoặc hoàn tất mỗi task, tuân thủ đúng [DEVELOPMENT_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/DEVELOPMENT_WORKFLOW.md) & [TEST_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/TEST_WORKFLOW.md):
-1. **Linting**: `pnpm lint` (hoặc `pnpm prettier --check . && eslint .`)
-2. **Type Checking**: `pnpm check` (`svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`) & `tsc --noEmit`
-3. **Format**: `pnpm format`
-4. **Testing**: `pnpm test` / `pnpm test:unit` / `pnpm test:e2e`
-5. **Dead Code**: `pnpm knip`
-6. **Knowledge Graph**: Chạy cập nhật tri thức `graphify` khi có thay đổi cấu trúc code.
+### Phase 4: Kiểm Thử và Đảm Bảo Chất Lượng (Quality Gates & Verification)
+- [x] **Task 4.1**: Chạy `pnpm check` (Svelte-check & TypeScript) ở frontend (0 errors, 0 warnings).
+- [x] **Task 4.2**: Chạy `pnpm lint:all` và `pnpm format:all` để đảm bảo chuẩn code và formatting.
+- [x] **Task 4.3**: Chạy `pnpm test` (16/16 Unit test passed & 5/5 Playwright E2E passed).
+- [x] **Task 4.4**: Kiểm tra và đối soát 100% mã màu HEX (Color Parity Verification).
+- [x] **Task 4.5**: Cập nhật đồ thị tri thức với `/graphify`.

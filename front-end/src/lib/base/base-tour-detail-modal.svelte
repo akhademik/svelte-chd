@@ -193,7 +193,7 @@
 						<div class="mb-2 flex flex-wrap items-center gap-2">
 							{#if tour.best_sell}
 								<span
-									class="bg-terracotta px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
+									class="bg-secondary px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
 									★ Best Sell
 								</span>
 							{/if}
@@ -359,7 +359,7 @@
 									{#if hlText}
 										<div
 											class="flex items-start gap-3 text-sm font-light text-stone-800 sm:text-base">
-											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
+											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 											<span>{hlText}</span>
 										</div>
 									{/if}
@@ -486,7 +486,7 @@
 						</button>
 						<button
 							onclick={handleBook}
-							class="w-1/2 bg-moss px-6 py-2.5 text-xs uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-moss-hover sm:w-auto">
+							class="w-1/2 bg-primary px-6 py-2.5 text-xs uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-primary-hover sm:w-auto">
 							{$LL.tours.detail.plan_this_trip()}
 						</button>
 					</div>

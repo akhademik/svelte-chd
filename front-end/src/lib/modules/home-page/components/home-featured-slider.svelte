@@ -100,7 +100,7 @@
 					<!-- Badge & Header -->
 					<div class="mb-4 flex min-h-[1.75rem] flex-wrap items-center gap-2.5 sm:gap-3">
 						<span
-							class="inline-flex shrink-0 items-center gap-1.5 bg-terracotta px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
+							class="inline-flex shrink-0 items-center gap-1.5 bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-3.5 w-3.5"
@@ -147,7 +147,7 @@
 								{#if hlText}
 									<div
 										class="flex items-center gap-2.5 text-xs font-light text-stone-300 sm:text-sm">
-										<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
+										<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 										<span class="line-clamp-1">{hlText}</span>
 									</div>
 								{/if}
@@ -231,7 +231,7 @@
 										onclick={() => (currentIndex = idx)}
 										class={`h-1.5 rounded-full transition-all ${
 											currentIndex === idx
-												? 'w-6 bg-terracotta'
+												? 'w-6 bg-secondary'
 												: 'w-2 bg-stone-700 hover:bg-stone-500'
 										}`}
 										aria-label={`Go to slide ${idx + 1}`}></button>

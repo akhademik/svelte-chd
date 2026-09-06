@@ -205,7 +205,7 @@
 				<button
 					type="submit"
 					disabled={isSubmitting}
-					class="mt-4 w-full bg-moss py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-moss-hover disabled:opacity-50">
+					class="mt-4 w-full bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-primary-hover disabled:opacity-50">
 					{isSubmitting ? 'Sending...' : $LL.tours.detail.send_enquiry()}
 				</button>
 			</form>

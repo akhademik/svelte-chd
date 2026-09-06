@@ -12,7 +12,7 @@
 		<a
 			href={fixed_url}
 			class={`transition-colors duration-200 ${
-				active ? 'font-bold text-moss' : 'hover:text-terracotta'
+				active ? 'font-bold text-primary' : 'hover:text-secondary'
 			}`}>
 			{$LL.nav_bar[text]()}
 		</a>

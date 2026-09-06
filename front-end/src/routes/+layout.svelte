@@ -37,7 +37,8 @@
 <NavBar />
 <MobileMenu />
 
-<main class="min-h-screen bg-sand font-sans text-stone-800 antialiased selection:bg-sand-alt">
+<main
+	class="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-surface-muted">
 	{#if children}
 		{#key page.url.pathname}
 			<div

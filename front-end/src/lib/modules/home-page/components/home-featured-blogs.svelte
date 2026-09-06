@@ -75,14 +75,14 @@
 {#if displayPosts.length > 0}
 	<section
 		id="featured-blogs"
-		class="sm:py-18 border-b border-stone-200 bg-sand px-6 py-14">
+		class="sm:py-18 border-b border-border bg-background px-6 py-14">
 		<div class="mx-auto max-w-6xl">
 			<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 				<div>
-					<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-terracotta">
+					<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-secondary">
 						{$locale === 'vn' ? 'Góc Nhìn & Trải Nghiệm' : 'Stories & Insights'}
 					</span>
-					<h2 class="font-serif text-3xl font-normal text-stone-900 sm:text-4xl">
+					<h2 class="font-serif text-3xl font-normal text-foreground sm:text-4xl">
 						{$locale === 'vn'
 							? 'Bài Viết Nổi Bật'
 							: $locale === 'fr'
@@ -91,14 +91,14 @@
 					</h2>
 				</div>
 				<div class="flex items-center gap-4">
-					<p class="max-w-md text-sm font-light text-stone-600">
+					<p class="max-w-md text-sm font-light text-foreground-muted">
 						{$locale === 'vn'
 							? 'Những câu chuyện sống động, kinh nghiệm du lịch và khoảnh khắc văn hoá bản địa đặc sắc.'
 							: 'Authentic moments, local insights, and cultural highlights from our journeys across the Highlands.'}
 					</p>
 					<a
 						href={`/${$locale}/blog`}
-						class="hidden shrink-0 border border-stone-900 px-5 py-2.5 text-xs uppercase tracking-widest text-stone-900 transition-colors hover:bg-stone-900 hover:text-white md:inline-block">
+						class="hidden shrink-0 border border-foreground px-5 py-2.5 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-foreground hover:text-background md:inline-block">
 						{$locale === 'vn' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
 					</a>
 				</div>
@@ -112,12 +112,12 @@
 					{@const postLink = `/${$locale}/blog/${getPostSlug(post)}`}
 
 					<article
-						class="group flex flex-col justify-between overflow-hidden border border-stone-200/90 bg-sand-card text-left transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+						class="group flex flex-col justify-between overflow-hidden border border-border/90 bg-surface text-left transition-all duration-300 hover:border-border-strong hover:shadow-xl">
 						<div>
 							{#if coverUrl}
 								<a
 									href={postLink}
-									class="relative block aspect-[16/10] w-full overflow-hidden bg-stone-100">
+									class="relative block aspect-[16/10] w-full overflow-hidden bg-background">
 									<img
 										src={coverUrl}
 										alt={title}
@@ -132,22 +132,23 @@
 							{/if}
 
 							<div class="p-6">
-								<div class="mb-3 flex items-center justify-between text-xs text-stone-400">
+								<div class="mb-3 flex items-center justify-between text-xs text-foreground-subtle">
 									<span>{post.author || 'CHD Travel'}</span>
 									<span>{post.publishedAt?.split('T')[0] || ''}</span>
 								</div>
 
 								<h3
-									class="font-serif text-lg font-medium leading-snug text-stone-900 transition-colors group-hover:text-terracotta">
+									class="font-serif text-lg font-medium leading-snug text-foreground transition-colors group-hover:text-secondary">
 									<a
 										href={postLink}
-										class="hover:text-terracotta">
+										class="hover:text-secondary">
 										{title}
 									</a>
 								</h3>
 
 								{#if excerpt}
-									<p class="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-stone-600">
+									<p
+										class="mt-3 line-clamp-3 text-xs font-light leading-relaxed text-foreground-muted">
 										{excerpt}
 									</p>
 								{/if}
@@ -155,7 +156,7 @@
 						</div>
 
 						<div
-							class="mx-6 mb-6 flex items-center justify-between border-t border-stone-100 pt-4 text-xs font-medium text-terracotta">
+							class="mx-6 mb-6 flex items-center justify-between border-t border-border/50 pt-4 text-xs font-medium text-secondary">
 							<a
 								href={postLink}
 								class="flex items-center gap-1.5 hover:underline">
@@ -170,7 +171,7 @@
 			<div class="mt-10 text-center md:hidden">
 				<a
 					href={`/${$locale}/blog`}
-					class="inline-block border border-stone-900 bg-white px-6 py-3 text-xs uppercase tracking-widest text-stone-900 transition-colors hover:bg-stone-900 hover:text-white">
+					class="inline-block border border-foreground bg-surface px-6 py-3 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-foreground hover:text-background">
 					{$locale === 'vn' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
 				</a>
 			</div>

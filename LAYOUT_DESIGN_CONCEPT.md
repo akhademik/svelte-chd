@@ -14,36 +14,47 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 
 ---
 
-## 2. Bảng Màu Chuẩn (Color Palette & Tokens)
+## 2. Bảng Màu Chuẩn & Hệ Thống Semantic Tokens (Color System & Tokens)
 
-| Token Key | HEX Code | Tailwind Class | Mục đích sử dụng |
-| :--- | :--- | :--- | :--- |
-| **Sand / Nền chính** | `#D6CBAE` | `bg-sand`, `bg-stone-100` | Nền chính toàn trang (ấm, trầm, chống mỏi mắt) |
-| **Sand Alt / Nền phụ** | `#C7BB98` | `bg-sand-alt`, `bg-stone-200` | Nền section xen kẽ để tách khối trực quan |
-| **Card / Nền thẻ** | `#DFD5B9` | `bg-sand-card`, `bg-stone-50` | Thẻ tour, thẻ blog, form card, review container |
-| **Border / Divider** | `rgba(30,28,20,0.2)` / `#C7BB98` | `border-stone-200`, `border-stone-300` | Viền card, divider, đường line phân cách |
-| **Ink / Chữ chính** | `#2A2720` | `text-stone-900`, `text-stone-800`, `text-primary` | Tiêu đề chính (Heading H1-H3), chữ chính ấm |
-| **Ink Soft / Chữ phụ** | `#5C5646` | `text-stone-500`, `text-stone-600` | Nội dung mô tả (Body text), phụ đề, caption |
-| **Charcoal-Olive / Nền tối** | `#2B2A24` | `bg-stone-900`, `bg-stone-950`, `bg-charcoal` | Nền hero slider, dark banners |
-| **Moss / Xanh rêu (Accent)** | `#5F6E56` | `bg-moss`, `text-moss`, `bg-accent` | Màu nhận diện rừng rêu Tây Nguyên, nút CTA chính |
-| **Moss Dark / Hover** | `#4A5642` | `bg-moss-hover`, `bg-accent-deep` | Trạng thái hover của nút Accent chính |
-| **Ochre / Đất nung (Badge/Giá)** | `#A3764A` | `text-ochre`, `bg-ochre`, `text-terracotta`, `bg-terracotta` | Điểm nhấn đất nung, badge "Best Sell", giá tour |
-| **Gold / Ochre Highlight** | `#B8862E` | `text-amber-700`, `bg-amber-600` | Badge sự kiện, mốc timeline, highlight |
-| **Teal** | `#3D6E7C` | `text-cyan-800`, `bg-cyan-800` | Tag điểm đến, tour thiên nhiên |
+Hệ thống màu sắc được tổ chức theo chuẩn **Semantic Tokens** (Token chức năng). Tương lai khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa token bên dưới mà không cần sửa đổi hàng loạt component.
+
+### 2.1. Nhóm Token Chức Năng (Semantic Groups)
+
+| Nhóm Token | Token Key | HEX Code | Tailwind Class Đề Xuất | Mục đích sử dụng |
+| :--- | :--- | :--- | :--- | :--- |
+| **Brand** | **`primary`** | `#5F6E56` | `bg-primary`, `text-primary`, `border-primary` (tương đương `moss`) | Màu nhận diện rừng rêu Tây Nguyên, nút CTA chính, tiêu đề H1/H2 nổi bật |
+| | **`primary-hover`** | `#4A5642` | `hover:bg-primary-hover` (tương đương `moss-hover`) | Trạng thái hover cho nút primary |
+| | **`primary-dark`** | `#353E2F` | `bg-primary-dark` (tương đương `moss-dark`) | Điểm nhấn rêu đậm |
+| | **`secondary`** | `#A3764A` | `bg-secondary`, `text-secondary`, `border-secondary` (tương đương `terracotta`/`ochre`) | Màu đất nung bazan, badge "Best Sell", giá tour, link hover |
+| | **`secondary-hover`** | `#8C633C` | `hover:bg-secondary-hover` | Trạng thái hover cho secondary |
+| **Surface** | **`background`** | `#D6CBAE` | `bg-background` (tương đương `bg-sand`, `bg-stone-100`) | Nền chính toàn trang (ấm, trầm, chống mỏi mắt) |
+| | **`surface`** | `#DFD5B9` | `bg-surface` (tương đương `bg-sand-card`, `bg-stone-50`) | Nền thẻ tour, blog card, form card, review container, modal |
+| | **`surface-muted`** | `#C7BB98` | `bg-surface-muted` (tương đương `bg-sand-alt`, `bg-stone-200`) | Nền section xen kẽ để tách khối trực quan |
+| **Content** | **`foreground`** | `#2A2720` | `text-foreground` (tương đương `text-stone-900`, `text-stone-800`) | Tiêu đề chính (Heading H1-H3), văn bản chữ chính |
+| | **`foreground-muted`**| `#5C5646` | `text-foreground-muted` (tương đương `text-stone-600`, `text-stone-500`) | Nội dung mô tả (Body text), phụ đề, caption |
+| | **`foreground-subtle`**| `#8A7E64` | `text-foreground-subtle` (tương đương `text-stone-400`) | Overline, step marker, caption mờ |
+| **Border** | **`border`** | `#C7BB98` | `border-border` (tương đương `border-stone-200`) | Viền card, divider, đường line phân cách mỏng |
+| | **`border-strong`** | `#B0A27E` | `border-border-strong` (tương đương `border-stone-300`) | Viền nhấn mạnh, focus viền |
+| **Inverse** | **`inverse`** | `#1E1D19` / `#2B2A24` | `bg-inverse` (tương đương `bg-charcoal`, `bg-stone-900`, `bg-stone-950`) | Nền tối cho Hero slider, Dark banner, Footer |
+| | **`inverse-foreground`**| `#DFD5B9` | `text-inverse-foreground` (tương đương `text-stone-100`, `text-stone-50`) | Chữ hiển thị trên nền tối (Hero/Footer) |
+
+### 2.2. Điểm Nhấn Bổ Sung (Accent & Highlights)
+- **Gold / Highlight**: `#B8862E` (`text-amber-700`, `bg-amber-600`) — Badge sự kiện, timeline mốc.
+- **Teal**: `#3D6E7C` (`text-cyan-800`, `bg-cyan-800`) — Tag điểm đến, tour thiên nhiên.
 
 ---
 
 ## 3. Typography (Kiểu chữ & Font)
 
 - **Headings (Tiêu đề)**: `font-serif` / `font-heading` (`"Sora"`, `sans-serif`)
-  - `Page Header / Route Title (H1/H2 Section)`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-moss tracking-tight leading-tight` (Dùng màu **`text-moss`** (`#5F6E56`) và **`font-bold`** để tạo điểm nhấn nổi bật trên nền sand).
-  - `Content H1`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-moss tracking-tight leading-tight`
-  - `Content H2`: `font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-moss` hoặc `font-normal text-stone-900`
-  - `Content H3`: `font-serif text-xl sm:text-2xl font-normal text-stone-900`
-  - `Overline / Step marker`: `text-xs font-medium uppercase tracking-[0.25em] text-stone-400` hoặc `text-terracotta`
+  - `Page Header / Route Title (H1/H2 Section)`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight leading-tight` (Dùng màu **`text-primary`** (`#5F6E56` - Moss) và **`font-bold`** để tạo điểm nhấn nổi bật trên nền sand).
+  - `Content H1`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight leading-tight`
+  - `Content H2`: `font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-primary` hoặc `font-normal text-foreground`
+  - `Content H3`: `font-serif text-xl sm:text-2xl font-normal text-foreground`
+  - `Overline / Step marker`: `text-xs font-medium uppercase tracking-[0.25em] text-foreground-subtle` hoặc `text-secondary`
 - **Body & Controls**: `font-sans` (`"Plus Jakarta Sans"`, `sans-serif`)
-  - `Body Text`: `text-sm sm:text-base font-light leading-relaxed text-stone-600`
-  - `Tour Details Content`: `text-sm sm:text-base font-light leading-relaxed text-stone-700` (đảm bảo độ rõ nét, dễ đọc)
+  - `Body Text`: `text-sm sm:text-base font-light leading-relaxed text-foreground-muted`
+  - `Tour Details Content`: `text-sm sm:text-base font-light leading-relaxed text-foreground-muted` (đảm bảo độ rõ nét, dễ đọc)
   - `Button / CTA Label`: `text-xs uppercase tracking-widest font-semibold`
 - **Quy chuẩn Chữ Đa ngôn ngữ (Casing Convention)**:
   - **Toàn bộ Page Header Route / Navbar Labels** (`day tours`, `highland tours`, `about us`, `contact us`, `blog`...): **BẮT BUỘC dùng 100% lowercase** trên tất cả các ngôn ngữ (VN, EN, FR). Ví dụ FR dùng `excursion d'une journée`, `excursions en montagne` thay vì Title case.
@@ -57,9 +68,9 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
   - Tuyệt đối không dùng padding chỉ riêng cho desktop (ví dụ `lg:px-11` mà thiếu `px-6` cho mobile) khiến nội dung, form input hoặc iframe bản đồ dính sát mép màn hình.
   - Mọi chỉnh sửa UI đều phải xem xét và kiểm tra trước trên **Mobile View**.
 - **Section Padding**: `py-16 sm:py-24` (hoặc `py-12` đối với các trang route phụ).
-- **Phần xen kẽ (Alt Section)**: Xen kẽ giữa nền `bg-sand` và nền `bg-sand-alt` (`#C7BB98`) để phân tách trực quan.
+- **Phần xen kẽ (Alt Section)**: Xen kẽ giữa nền `bg-background` (hoặc `bg-sand`) và nền `bg-surface-muted` (hoặc `bg-sand-alt` `#C7BB98`) để phân tách trực quan.
 - **Card Styling**:
-  - Viền mỏng: `border border-stone-200/90 bg-sand-card` (tránh dùng `bg-white` gắt chói).
+  - Viền mỏng: `border border-border/90 bg-surface` (tránh dùng `bg-white` gắt chói).
   - Radius: Bo nhẹ góc tối thiểu (`rounded-none` hoặc `rounded-sm`) để giữ phong cách tạp chí cổ điển cao cấp.
 - **Modal Behavior (Tour Detail / Blog Detail / Booking Modal)**:
   - Mobile View (`< sm`): Fullscreen hoàn toàn (`h-full max-h-screen w-full rounded-none border-0`), lớp phủ đặt `z-[60]` để đè lên trên Navbar và Mobile menu (`z-40`).
@@ -72,29 +83,29 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 ## 5. Quy chuẩn Component Mẫu (UI Component Conventions)
 
 ### 5.1. Nút bấm (Buttons & CTAs)
-- **Primary CTA (Xanh rêu)**:
+- **Primary CTA (Xanh rêu - Brand Primary)**:
   ```html
-  <a href="#day-tours" class="inline-flex items-center gap-2 bg-moss text-white hover:bg-moss-hover px-8 py-4 text-xs font-semibold uppercase tracking-widest transition-all">
+  <a href="#day-tours" class="inline-flex items-center gap-2 bg-primary text-white hover:bg-primary-hover px-8 py-4 text-xs font-semibold uppercase tracking-widest transition-all">
     Khám phá các tour
   </a>
   ```
-- **Secondary CTA (Outline Ink)**:
+- **Secondary CTA (Outline Ink - Foreground Outline)**:
   ```html
-  <a href="/vn/contact" class="inline-flex items-center border border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-sand px-8 py-4 text-xs font-semibold uppercase tracking-widest transition-all">
+  <a href="/vn/contact" class="inline-flex items-center border border-foreground text-foreground hover:bg-foreground hover:text-background px-8 py-4 text-xs font-semibold uppercase tracking-widest transition-all">
     Liên hệ / Tư vấn
   </a>
   ```
 
 ### 5.2. Category Filter Pills (Ví dụ ở Blog, Danh sách Tour)
 ```html
-<button class="px-5 py-2.5 rounded-full text-xs font-medium transition-all {active ? 'bg-stone-900 text-stone-50' : 'border border-stone-200 bg-stone-50 text-stone-600 hover:border-stone-900 hover:text-stone-900'}">
+<button class="px-5 py-2.5 rounded-full text-xs font-medium transition-all {active ? 'bg-inverse text-inverse-foreground' : 'border border-border bg-surface text-foreground-muted hover:border-foreground hover:text-foreground'}">
   Tất cả bài viết
 </button>
 ```
 
 ### 5.3. Badges & Tags
-- Best Sell / Highlight Badge: `bg-terracotta text-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider`
-- Duration Badge: `bg-stone-900/80 text-stone-100 text-[10px] uppercase tracking-wider`
+- Best Sell / Highlight Badge: `bg-secondary text-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider`
+- Duration Badge: `bg-inverse/80 text-inverse-foreground text-[10px] uppercase tracking-wider`
 
 ### 5.4. Review & Testimonial Cards (Mobile & Desktop)
 - **Responsive Sizing**:
@@ -113,7 +124,7 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 ### 5.6. Floating Controls (Scroll to Top)
 - **Floating Scroll-To-Top Button**:
   - Xuất hiện tự động khi cuộn qua màn hình đầu tiên (`scrollY > innerHeight * 0.75`).
-  - Nút tròn/vuông mộc mạc viền mỏng: `fixed bottom-6 right-6 z-30 h-11 w-11 bg-sand-card/90 border border-stone-300 backdrop-blur-sm hover:bg-moss hover:text-white transition-all shadow-md hover:shadow-lg focus:ring-2 focus:ring-moss`.
+  - Nút tròn/vuông mộc mạc viền mỏng: `fixed bottom-6 right-6 z-30 h-11 w-11 bg-surface/90 border border-border-strong backdrop-blur-sm hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary`.
   - Hỗ trợ trợ năng `aria-label="Scroll to top of page"` và hiệu ứng nhẹ `fly={{ y: 16, duration: 250 }}`.
 
 ---

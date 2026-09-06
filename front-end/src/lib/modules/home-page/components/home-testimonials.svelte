@@ -140,18 +140,18 @@
 
 <svelte:window onkeydown={handleKeydown} />
 
-<section class="sm:py-18 border-b border-stone-200 px-6 py-14">
+<section class="sm:py-18 border-b border-border px-6 py-14">
 	<div class="mx-auto max-w-6xl">
 		<div
 			class="mb-10 flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
 			<div>
-				<span class="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta">
+				<span class="text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
 					{$LL.home_page.testimonials.subtitle()}
 				</span>
-				<h2 class="mt-2 font-serif text-3xl font-bold text-moss sm:text-4xl">
+				<h2 class="mt-2 font-serif text-3xl font-bold text-primary sm:text-4xl">
 					{$LL.home_page.testimonials.title()}
 				</h2>
-				<p class="mt-2 max-w-lg text-sm font-light text-stone-500">
+				<p class="mt-2 max-w-lg text-sm font-light text-foreground-muted">
 					{$LL.home_page.testimonials.desc()}
 				</p>
 			</div>
@@ -166,7 +166,7 @@
 						onmouseleave={() => (isPaused = false)}
 						onfocus={() => (isPaused = true)}
 						onblur={() => (isPaused = false)}
-						class="flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card text-stone-700 transition-all hover:border-moss hover:bg-moss hover:text-white focus:outline-none focus:ring-2 focus:ring-moss"
+						class="flex h-11 w-11 items-center justify-center border border-border-strong bg-surface text-foreground-muted transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
 						aria-label="Previous testimonials slide">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +184,7 @@
 						onmouseleave={() => (isPaused = false)}
 						onfocus={() => (isPaused = true)}
 						onblur={() => (isPaused = false)}
-						class="flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card text-stone-700 transition-all hover:border-moss hover:bg-moss hover:text-white focus:outline-none focus:ring-2 focus:ring-moss"
+						class="flex h-11 w-11 items-center justify-center border border-border-strong bg-surface text-foreground-muted transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
 						aria-label="Next testimonials slide">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -223,7 +223,7 @@
 						<div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
 							{#each slide as item}
 								<article
-									class="flex min-h-[220px] flex-col justify-between border border-stone-200/90 bg-sand-card p-5 shadow-sm transition-shadow hover:shadow-md sm:h-[360px] sm:p-8">
+									class="flex min-h-[220px] flex-col justify-between border border-border/90 bg-surface p-5 shadow-sm transition-shadow hover:shadow-md sm:h-[360px] sm:p-8">
 									<div class="overflow-hidden">
 										<!-- Header: Rating (Always 5 stars with active/dimmed) & Date ({Month} {Year}) -->
 										<div class="mb-3 flex items-center justify-between sm:mb-4">
@@ -246,7 +246,7 @@
 											</div>
 
 											{#if item.date}
-												<span class="font-mono text-xs text-stone-400">
+												<span class="font-mono text-xs text-foreground-subtle">
 													{format_review_date(item.date, $locale)}
 												</span>
 											{/if}
@@ -254,13 +254,13 @@
 
 										<!-- Review Title: Link to TripAdvisor -->
 										{#if item.title}
-											<h3 class="mb-2 line-clamp-2 font-serif text-base font-bold text-stone-900">
+											<h3 class="mb-2 line-clamp-2 font-serif text-base font-bold text-foreground">
 												{#if item.sourceUrl}
 													<a
 														href={item.sourceUrl}
 														target="_blank"
 														rel="noopener noreferrer"
-														class="transition-colors hover:text-terracotta hover:underline">
+														class="transition-colors hover:text-secondary hover:underline">
 														{item.title}
 													</a>
 												{:else}
@@ -278,26 +278,26 @@
 
 									<!-- Author Footer: [Avatar] [Username] -->
 									<div
-										class="mt-3 flex items-center justify-between border-t border-stone-200/60 pt-3 text-xs sm:mt-4 sm:pt-4">
+										class="mt-3 flex items-center justify-between border-t border-border/60 pt-3 text-xs sm:mt-4 sm:pt-4">
 										<div class="flex items-center gap-2.5 overflow-hidden">
 											{#if item.authorAvatar}
 												<img
 													src={item.authorAvatar}
 													alt={item.authorName}
-													class="h-7 w-7 shrink-0 rounded-full border border-stone-200 object-cover"
+													class="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
 													loading="lazy" />
 											{:else}
 												<div
-													class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-stone-200 font-serif text-xs font-bold text-stone-700">
+													class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
 													{item.authorName.charAt(0).toUpperCase()}
 												</div>
 											{/if}
-											<span class="truncate font-serif font-bold text-stone-900">
+											<span class="truncate font-serif font-bold text-foreground">
 												{item.authorName}
 											</span>
 										</div>
 										{#if item.authorLocation}
-											<div class="shrink-0 text-stone-500">{item.authorLocation}</div>
+											<div class="shrink-0 text-foreground-muted">{item.authorLocation}</div>
 										{/if}
 									</div>
 								</article>
@@ -321,8 +321,10 @@
 						aria-selected={activeDotIndex === idx}
 						aria-label={`Go to review group ${idx + 1}`}
 						onclick={() => goToSlide(idx)}
-						class={`h-1.5 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-moss ${
-							activeDotIndex === idx ? 'w-6 bg-terracotta' : 'w-2 bg-stone-300 hover:bg-stone-400'
+						class={`h-1.5 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary ${
+							activeDotIndex === idx
+								? 'w-6 bg-secondary'
+								: 'w-2 bg-border-strong hover:bg-stone-400'
 						}`}></button>
 				{/each}
 			</div>

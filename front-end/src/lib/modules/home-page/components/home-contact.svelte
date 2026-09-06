@@ -156,7 +156,7 @@
 								href="https://maps.app.goo.gl/mr8NYztsShiNjfKQ9"
 								target="_blank"
 								rel="noopener noreferrer"
-								class="font-medium text-terracotta hover:underline">
+								class="font-medium text-secondary hover:underline">
 								{$locale === 'vn' ? 'Xem trên Google Maps ↗' : 'View on Google Maps ↗'}
 							</a>
 						</div>

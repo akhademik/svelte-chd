@@ -37,7 +37,7 @@
 <div class="flex items-center gap-1 text-xs uppercase tracking-wider">
 	{#each locales as l, index (l)}
 		{#if index > 0}
-			<span class="text-stone-300">/</span>
+			<span class="text-border-strong">/</span>
 		{/if}
 		<a
 			href={replace_locale_in_url(url, l)}
@@ -47,8 +47,8 @@
 			}}
 			class={`inline-flex min-h-[36px] min-w-[32px] items-center justify-center px-2 py-1.5 transition-all ${
 				l === $locale
-					? 'border-b-[1.5px] border-stone-900 font-bold text-moss'
-					: 'text-stone-400 hover:text-terracotta'
+					? 'border-b-[1.5px] border-foreground font-bold text-primary'
+					: 'text-foreground-subtle hover:text-secondary'
 			}`}>
 			{l.toUpperCase()}
 		</a>

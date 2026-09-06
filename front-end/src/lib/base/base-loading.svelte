@@ -1,5 +1,5 @@
 <div class="mx-auto flex min-h-[calc(100vh-100px)] max-w-6xl items-center justify-center px-5 py-5">
-	<div class="text-primary">
+	<div class="text-foreground">
 		<h1 class="mb-1 text-center text-3xl font-bold uppercase leading-relaxed">
 			PLEASE KINDLY WAIT FOR A MOMENT
 		</h1>
@@ -7,11 +7,11 @@
 		<div class="mt-10 flex w-full items-center justify-center text-center text-lg font-bold">
 			<button
 				type="button"
-				class="flex w-[14rem] items-center justify-between rounded-lg bg-primary/30 px-7 py-3"
+				class="flex w-[14rem] items-center justify-between rounded-lg bg-foreground/10 px-7 py-3 text-foreground"
 				disabled>
 				<svg
 					aria-hidden="true"
-					class="h-8 w-8 animate-spin fill-secondary text-primary"
+					class="h-8 w-8 animate-spin fill-secondary text-foreground-subtle"
 					viewBox="0 0 100 101"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg">

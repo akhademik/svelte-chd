@@ -19,16 +19,17 @@
 
 <div class="mx-auto max-w-6xl px-6 py-12">
 	<div
-		class="mb-16 flex flex-col justify-between gap-6 border-b border-stone-200 pb-8 md:flex-row md:items-end">
+		class="mb-16 flex flex-col justify-between gap-6 border-b border-border pb-8 md:flex-row md:items-end">
 		<div>
-			<span class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
+			<span
+				class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-foreground-subtle">
 				{isDay ? '01 / Excursions' : '02 / Grand Expeditions'}
 			</span>
-			<h1 class="font-serif text-3xl font-bold text-moss sm:text-4xl">
+			<h1 class="font-serif text-3xl font-bold text-primary sm:text-4xl">
 				{isDay ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()}
 			</h1>
 		</div>
-		<p class="max-w-md text-sm font-light text-stone-500">
+		<p class="max-w-md text-sm font-light text-foreground-muted">
 			{isDay
 				? $locale === 'vn'
 					? 'Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.'

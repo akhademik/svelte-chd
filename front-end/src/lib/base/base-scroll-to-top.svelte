@@ -25,7 +25,7 @@
 		type="button"
 		onclick={scrollToTop}
 		transition:fly={{ y: 16, duration: 250 }}
-		class="fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card/90 text-stone-700 shadow-md backdrop-blur-sm transition-all hover:border-moss hover:bg-moss hover:text-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-moss"
+		class="fixed bottom-6 right-6 z-30 flex h-11 w-11 items-center justify-center border border-border-strong bg-surface/90 text-foreground-muted shadow-md backdrop-blur-sm transition-all hover:border-primary hover:bg-primary hover:text-white hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
 		aria-label="Scroll to top of page">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

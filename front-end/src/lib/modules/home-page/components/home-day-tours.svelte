@@ -34,15 +34,15 @@
 
 <section
 	id="day-tours"
-	class="sm:py-18 border-b border-stone-200 px-6 py-14">
+	class="sm:py-18 border-b border-border px-6 py-14">
 	<div class="mx-auto max-w-6xl">
 		<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 			<div>
-				<h2 class="font-serif text-3xl font-bold text-moss sm:text-4xl">
+				<h2 class="font-serif text-3xl font-bold text-primary sm:text-4xl">
 					{$LL.nav_bar.day_tours()}
 				</h2>
 			</div>
-			<p class="max-w-md text-sm font-light text-stone-500">
+			<p class="max-w-md text-sm font-light text-foreground-muted">
 				{$locale === 'vn'
 					? 'Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.'
 					: $locale === 'fr'
@@ -59,10 +59,10 @@
 				{@const tourLink = `/${$locale}/day-tours/${slug}`}
 
 				<div
-					class="group flex flex-col border border-stone-200/80 bg-sand-card p-5 transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+					class="group flex flex-col border border-border/80 bg-surface p-5 transition-all duration-300 hover:border-border-strong hover:shadow-xl">
 					<a
 						href={tourLink}
-						class="relative mb-5 block aspect-[4/3] overflow-hidden bg-stone-100">
+						class="relative mb-5 block aspect-[4/3] overflow-hidden bg-background">
 						{#if tour.img_cover?.asset}
 							<img
 								src={url_for(tour.img_cover)
@@ -77,12 +77,12 @@
 						{/if}
 						{#if tour.best_sell}
 							<span
-								class="absolute right-3 top-3 bg-terracotta px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-md">
+								class="absolute right-3 top-3 bg-secondary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-md">
 								★ Best Sell
 							</span>
 						{/if}
 						<span
-							class="absolute left-3 top-3 bg-stone-900/80 px-2.5 py-1 text-[10px] uppercase tracking-wider text-stone-100 backdrop-blur-sm">
+							class="absolute left-3 top-3 bg-inverse/80 px-2.5 py-1 text-[10px] uppercase tracking-wider text-inverse-foreground backdrop-blur-sm">
 							{duration}
 						</span>
 					</a>
@@ -97,7 +97,7 @@
 									tag?.tourTags?.en}
 								{#if tagName}
 									<span
-										class="border border-stone-200 bg-stone-50 px-2 py-0.5 text-[9px] font-medium tracking-wide text-stone-600">
+										class="border border-border bg-surface px-2 py-0.5 text-[9px] font-medium tracking-wide text-foreground-muted">
 										#{tagName}
 									</span>
 								{/if}
@@ -108,10 +108,10 @@
 					<div class="flex flex-1 flex-col justify-between">
 						<div>
 							<h3
-								class="mb-2 font-serif text-xl text-stone-900 transition-colors group-hover:text-terracotta">
+								class="mb-2 font-serif text-xl text-foreground transition-colors group-hover:text-secondary">
 								<a
 									href={tourLink}
-									class="line-clamp-2 block h-14 text-left font-serif text-xl font-normal text-stone-900 transition-colors hover:text-terracotta">
+									class="line-clamp-2 block h-14 text-left font-serif text-xl font-normal text-foreground transition-colors hover:text-secondary">
 									{title}
 								</a>
 							</h3>

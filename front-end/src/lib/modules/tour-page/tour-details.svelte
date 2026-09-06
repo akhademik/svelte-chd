@@ -91,25 +91,26 @@
 					<div class="mb-3 flex flex-wrap items-center gap-2">
 						{#if tour.best_sell}
 							<span
-								class="bg-terracotta px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
+								class="bg-secondary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
 								★ Best Sell
 							</span>
 						{/if}
 						{#if tour.tour_id}
 							<span
-								class="bg-stone-900 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-stone-100">
+								class="bg-inverse px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-inverse-foreground">
 								{tour.tour_id}
 							</span>
 						{/if}
 						{#if duration}
 							<span
-								class="border border-stone-200 bg-stone-100 px-2.5 py-1 text-[10px] font-medium tracking-wide text-stone-700">
+								class="border border-border bg-surface px-2.5 py-1 text-[10px] font-medium tracking-wide text-foreground-muted">
 								⏱ {duration}
 							</span>
 						{/if}
 					</div>
 
-					<h1 class="font-serif text-3xl font-bold leading-tight text-moss sm:text-4xl lg:text-5xl">
+					<h1
+						class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
 						{title}
 					</h1>
 
@@ -124,7 +125,7 @@
 									tag?.tourTags?.en}
 								{#if tagName}
 									<span
-										class="border border-stone-200 bg-stone-100/80 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-stone-600">
+										class="border border-border bg-surface px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-foreground-muted">
 										#{tagName}
 									</span>
 								{/if}
@@ -134,21 +135,21 @@
 				</div>
 
 				<!-- Quick Action Box -->
-				<div class="border border-stone-200/90 bg-white p-6 shadow-sm lg:col-span-4">
-					<span class="block text-xs uppercase tracking-wider text-stone-400">
+				<div class="border border-border/90 bg-surface p-6 shadow-sm lg:col-span-4">
+					<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
 						{$LL.tours.price_from()}
 					</span>
 					<div class="mt-1 flex items-baseline gap-1.5">
-						<b class="font-serif text-2xl text-stone-900 sm:text-3xl">
+						<b class="font-serif text-2xl text-foreground sm:text-3xl">
 							{format_price(minPrice, $locale)}
 						</b>
-						<span class="text-xs font-light text-stone-400">/{$LL.tours.detail.pax()}</span>
+						<span class="text-xs font-light text-foreground-subtle">/{$LL.tours.detail.pax()}</span>
 					</div>
 
 					<div class="mt-6 flex flex-col gap-2.5">
 						<button
 							onclick={() => booking_modal.open(title)}
-							class="flex w-full items-center justify-center gap-2 bg-moss py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-moss-hover">
+							class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-primary-hover">
 							<span>{$LL.tours.book_now()}</span>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -411,8 +412,8 @@
 
 				<!-- Inclusions -->
 				{#if tour.tour_includes?.length}
-					<div class="border border-stone-200/90 bg-sand-card p-6">
-						<h3 class="mb-4 flex items-center gap-2 font-serif text-lg font-bold text-moss">
+					<div class="border border-border/90 bg-surface p-6">
+						<h3 class="mb-4 flex items-center gap-2 font-serif text-lg font-bold text-primary">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-4 w-4 text-emerald-600"
@@ -447,7 +448,7 @@
 				{/if}
 
 				<!-- CTA Card -->
-				<div class="border border-stone-200 bg-stone-900 p-6 text-white shadow-lg">
+				<div class="border border-border bg-inverse p-6 text-white shadow-lg">
 					<h4 class="font-serif text-lg font-medium">
 						{$LL.tours.customize_trip()}
 					</h4>
@@ -458,7 +459,7 @@
 					</p>
 					<a
 						href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
-						class="mt-5 flex w-full items-center justify-center gap-2 bg-terracotta py-3.5 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-[#8e4c38]">
+						class="mt-5 flex w-full items-center justify-center gap-2 bg-secondary py-3.5 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-secondary-hover">
 						{$LL.tours.plan_trip()}
 					</a>
 				</div>

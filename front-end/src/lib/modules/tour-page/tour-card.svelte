@@ -84,10 +84,10 @@
 			</div>
 
 			<h3
-				class="mb-3 font-serif text-xl font-normal leading-snug text-stone-950 transition-colors group-hover:text-terracotta sm:text-2xl">
+				class="mb-3 font-serif text-xl font-normal leading-snug text-foreground transition-colors group-hover:text-secondary sm:text-2xl">
 				<a
 					href={tourLink}
-					class="line-clamp-2 h-14 font-serif text-xl font-normal leading-snug text-stone-950 transition-colors hover:text-terracotta sm:text-2xl">
+					class="line-clamp-2 h-14 font-serif text-xl font-normal leading-snug text-foreground transition-colors hover:text-secondary sm:text-2xl">
 					{title}
 				</a>
 			</h3>
