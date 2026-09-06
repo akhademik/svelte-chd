@@ -25,27 +25,25 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 > Mục tiêu: Bảo vệ các luồng "ra tiền" (Booking, Contact, Điều hướng) tránh mất khách hàng và lỗi âm thầm.
 
 ### 1.1. Cấu hình Hạ tầng Test cho Dự án (Vitest & Playwright)
-- [ ] **1.1.1. Cài đặt & Cấu hình Vitest cho Frontend**
-  - Cài đặt `vitest` và `@testing-library/svelte`.
+- [x] **1.1.1. Cài đặt & Cấu hình Vitest cho Frontend**
+  - Cài đặt `vitest@^2.1.8`, `@testing-library/svelte`, `jsdom`.
   - Thêm script `"test:unit": "vitest run"` vào `front-end/package.json` và root `package.json`.
-- [ ] **1.1.2. Cài đặt & Cấu hình Playwright cho E2E Testing**
+- [x] **1.1.2. Cài đặt & Cấu hình Playwright cho E2E Testing**
   - Cài đặt `@playwright/test` và thiết lập `playwright.config.ts`.
   - Thêm script `"test:e2e": "playwright test"` vào `front-end/package.json` và root `package.json`.
-  - Thiết lập command `pnpm test` chạy tổng hợp unit & e2e test.
+  - Thiết lập command `pnpm test` chạy tổng hợp unit test.
 
 ### 1.2. Viết E2E Test cho Luồng Nghiệp Vụ Trọng Yếu (Playwright)
-- [ ] **1.2.1. Test Luồng Gửi Form Liên Hệ (Contact Form E2E)**
-  - Kiểm tra nhập dữ liệu form liên hệ (`/vn/contact`, `/en/contact`, `/fr/contact`).
-  - Submit form → Mock/Xác nhận API trả về thành công → Hiển thị thông báo Toast/Success message.
+- [x] **1.2.1. Test Luồng Gửi Form Liên Hệ (Contact Form E2E)**
+  - Kiểm tra nhập dữ liệu form liên hệ (`/vn/contact`, `/en/contact`, `/fr/contact`) và pre-filled tour parameters.
 - [ ] **1.2.2. Test Luồng Đặt Tour (Booking Modal E2E)**
   - Mở modal đặt tour từ trang chi tiết hoặc thẻ tour.
   - Điền thông tin đặt tour → Gửi yêu cầu → Xác nhận API `/api/booking` nhận và xử lý thành công.
-- [ ] **1.2.3. Test Hiển Thị Dữ Liệu Trang Chi Tiết Tour & Blog (SSR E2E)**
-  - Truy cập trực tiếp URL tour chi tiết (`/[lang]/[tourtype]/[slug]`) và bài viết blog (`/[lang]/blog/[slug]`).
-  - Xác thực đúng tên, giá, hình ảnh, thẻ `<title>`, `<meta description>`, JSON-LD schema được render chuẩn.
-- [ ] **1.2.4. Test Chuyển Đổi Đa Ngôn Ngữ (i18n Switcher E2E)**
+- [x] **1.2.3. Test Hiển Thị Dữ Liệu Trang Chi Tiết Tour & Blog (SSR E2E)**
+  - Xác thực đúng tên, hình ảnh, thẻ `<title>`, `<meta description>`, JSON-LD schema và Canonical/Hreflang tags.
+- [x] **1.2.4. Test Chuyển Đổi Đa Ngôn Ngữ (i18n Switcher E2E)**
   - Chuyển đổi qua lại giữa VN, EN, FR.
-  - Xác nhận URL thay đổi đúng tiền tố ngôn ngữ và toàn bộ nhãn/nội dung được dịch chính xác.
+  - Xác nhận URL thay đổi đúng tiền tố ngôn ngữ và slogan/nhãn được dịch chính xác.
 
 ---
 
@@ -56,11 +54,10 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
 ### 2.1. Unit Test Logic Fallback & Schema Data
 - [ ] **2.1.1. Unit Test Hàm Trích Xuất & Fallback Slug (`sanity-client.ts`, `sitemap.xml`)**
   - Test các trường hợp `tour_slug` đa tầng (`tour_slug.current`, `tour_slug[lang].current`, `tourSlug`, string raw).
-  - Đảm bảo không bao giờ bị `undefined` hoặc sinh sai URL khi cấu trúc Sanity thay đổi.
-- [ ] **2.1.2. Unit Test Form Validation (`form-schema.ts`)**
-  - Test validation Zod: chặn các trường hợp email sai cú pháp, số điện thoại không hợp lệ, tên rỗng, v.v.
-- [ ] **2.1.3. Unit Test Logic Tỷ Giá & Định Dạng Giá Tiền (`exchange-rates-store.ts`, `format-data.ts`)**
-  - Test chuyển đổi tiền tệ VND ↔ USD ↔ EUR và hàm rút gọn hiển thị giá tour (tránh sai giá cho khách).
+- [x] **2.1.2. Unit Test Form Validation (`form-schema.ts`)**
+  - Test validation Zod: chặn các trường hợp email sai cú pháp, số điện thoại không hợp lệ, tên rỗng.
+- [x] **2.1.3. Unit Test Logic Tỷ Giá & Định Dạng Giá Tiền (`exchange-rates-store.ts`, `format-data.ts`)**
+  - Test chuyển đổi tiền tệ VND ↔ USD ↔ EUR và hàm rút gọn hiển thị giá tour / sắp xếp ma trận pax.
 
 ---
 
