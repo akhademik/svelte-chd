@@ -1,4 +1,4 @@
-export { default as BaseButton } from './base-button.svelte'
+export { default as BaseScrollToTop } from './base-scroll-to-top.svelte'
 export { default as BaseIcon } from './base-icon.svelte'
 export { default as BaseLoading } from './base-loading.svelte'
 export { default as BaseLocaleSwitcher } from './base-locale-switcher.svelte'

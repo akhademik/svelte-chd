@@ -96,6 +96,12 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 - Best Sell / Highlight Badge: `bg-terracotta text-white px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider`
 - Duration Badge: `bg-stone-900/80 text-stone-100 text-[10px] uppercase tracking-wider`
 
+### 5.4. Floating Controls (Scroll to Top)
+- **Floating Scroll-To-Top Button**:
+  - Xuất hiện tự động khi cuộn qua màn hình đầu tiên (`scrollY > innerHeight * 0.75`).
+  - Nút tròn/vuông mộc mạc viền mỏng: `fixed bottom-6 right-6 z-30 h-11 w-11 bg-sand-card/90 border border-stone-300 backdrop-blur-sm hover:bg-moss hover:text-white transition-all shadow-md hover:shadow-lg focus:ring-2 focus:ring-moss`.
+  - Hỗ trợ trợ năng `aria-label="Scroll to top of page"` và hiệu ứng nhẹ `fly={{ y: 16, duration: 250 }}`.
+
 ---
 
 ## 6. Cấu trúc Thư mục & Tiêu chuẩn Đa ngôn ngữ (i18n & Svelte 5)
@@ -111,3 +117,6 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 4. **Svelte 5 Runes**:
    - Dùng `$props()`, `$state()`, `$derived()`, `$effect()`.
    - Đối với biến form từ superForm, đặt `// svelte-ignore state_referenced_locally` khi cần thiết.
+5. **Section Spacing & Proportions**:
+   - Trang chủ (`home-page`): Giữ padding section đồng bộ `py-14 sm:py-18` (Why CHD, Day Tours, Highland Tours, Testimonials, Featured Blogs).
+   - Component CTA Plan Your Trip: Thu gọn `py-12 sm:py-16`, tiêu đề `text-2xl sm:text-4xl`, nội dung `max-w-3xl` tạo điểm kết trang nhã, không choán hết tầm nhìn.

@@ -11,8 +11,8 @@
 | **EPIC-1** | Plan Your Trip / Tour Enquiry Integration | 🔴 P0 (Cao nhất / High ROI) | ✅ Hoàn thành (Done) |
 | **EPIC-2** | Tái Cấu Trúc Thứ Tự Section Trang Chủ (Homepage Flow) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
 | **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
-| **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
-| **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
+| **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
 | **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ⏳ Sẵn sàng thực hiện (To Do) |
@@ -61,17 +61,17 @@
 ---
 
 ### 🟡 EPIC-4: Chuẩn hóa Kiến trúc Dữ liệu Testimonials
-- [ ] **TASK-4.1**: Duy trì nạp dữ liệu Testimonials mặc định an toàn tại Server Load (`+page.server.ts`), tránh phụ thuộc cứng hoặc lỗi fetch khi không qua Sanity.
-- [ ] **TASK-4.2**: Đảm bảo cấu trúc data schema cho Testimonial rõ ràng, hỗ trợ mở rộng thêm trường đa ngôn ngữ (VN/EN/FR).
+- [x] **TASK-4.1**: Duy trì nạp dữ liệu Testimonials mặc định an toàn tại Server Load (`+page.server.ts`), tránh phụ thuộc cứng hoặc lỗi fetch khi không qua Sanity.
+- [x] **TASK-4.2**: Đảm bảo cấu trúc data schema cho Testimonial rõ ràng, hỗ trợ mở rộng thêm trường đa ngôn ngữ (VN/EN/FR).
 
 ---
 
 ### 🟡 EPIC-5: Trợ Năng (Accessibility) & Reduced Motion cho Testimonials Carousel
-- [ ] **TASK-5.1**: Bổ sung `aria-live="polite"` / `aria-roledescription="carousel"` phù hợp cho Testimonial Carousel.
-- [ ] **TASK-5.2**: Bổ sung tương tác bàn phím (Keyboard navigation: ArrowLeft, ArrowRight).
-- [ ] **TASK-5.3**: Tạm dừng (Pause) auto-rotation khi focus hoặc hover chuột vào slider container.
-- [ ] **TASK-5.4**: Hỗ trợ CSS media query `@media (prefers-reduced-motion: reduce)`: Vô hiệu hóa auto-play và các transition trượt mạnh đối với người dùng chọn reduced-motion.
-- [ ] **TASK-5.5**: Đảm bảo các dot navigation có nhãn accessible (`aria-label`, `aria-current`).
+- [x] **TASK-5.1**: Bổ sung `aria-live="polite"` / `aria-roledescription="carousel"` phù hợp cho Testimonial Carousel.
+- [x] **TASK-5.2**: Bổ sung tương tác bàn phím (Keyboard navigation: ArrowLeft, ArrowRight).
+- [x] **TASK-5.3**: Tạm dừng (Pause) auto-rotation khi focus hoặc hover chuột vào slider container.
+- [x] **TASK-5.4**: Hỗ trợ CSS media query `@media (prefers-reduced-motion: reduce)`: Vô hiệu hóa auto-play và các transition trượt mạnh đối với người dùng chọn reduced-motion.
+- [x] **TASK-5.5**: Đảm bảo các dot navigation có nhãn accessible (`aria-label`, `aria-selected`, `role="tab"`).
 
 ---
 

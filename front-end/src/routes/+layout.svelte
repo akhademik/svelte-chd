@@ -6,6 +6,7 @@
 		BaseBlogDetailModal,
 		BaseBookingModal,
 		BaseFooter,
+		BaseScrollToTop,
 		BaseSeo,
 		BaseTourDetailModal,
 	} from '$base'
@@ -49,6 +50,7 @@
 </main>
 
 <BaseFooter />
+<BaseScrollToTop />
 <BaseBookingModal />
 <BaseTourDetailModal />
 <BaseBlogDetailModal />

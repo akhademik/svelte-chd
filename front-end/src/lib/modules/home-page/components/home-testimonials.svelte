@@ -43,7 +43,11 @@
 
 	let currentTrackIndex = $state(1)
 	let isTransitioning = $state(false)
-	let isHovered = $state(false)
+	let isPaused = $state(false)
+
+	// Touch swipe state
+	let touchStartX = $state(0)
+	let touchEndX = $state(0)
 
 	let activeDotIndex = $derived.by(() => {
 		const count = totalRealSlides
@@ -86,16 +90,56 @@
 		}
 	}
 
+	const handleKeydown = (e: KeyboardEvent) => {
+		if (e.key === 'ArrowLeft') {
+			e.preventDefault()
+			prevSlide()
+		} else if (e.key === 'ArrowRight') {
+			e.preventDefault()
+			nextSlide()
+		}
+	}
+
+	const handleTouchStart = (e: TouchEvent) => {
+		touchStartX = e.touches[0].clientX
+	}
+
+	const handleTouchEnd = (e: TouchEvent) => {
+		touchEndX = e.changedTouches[0].clientX
+		const diff = touchStartX - touchEndX
+		if (Math.abs(diff) > 40) {
+			if (diff > 0) {
+				nextSlide()
+			} else {
+				prevSlide()
+			}
+		}
+	}
+
 	onMount(() => {
+		// Check for prefers-reduced-motion
+		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+		let prefersReducedMotion = mediaQuery.matches
+
+		const handleMotionChange = (e: MediaQueryListEvent) => {
+			prefersReducedMotion = e.matches
+		}
+		mediaQuery.addEventListener('change', handleMotionChange)
+
 		const interval = setInterval(() => {
-			if (!isHovered && untrack(() => totalRealSlides) > 1) {
+			if (!isPaused && !prefersReducedMotion && untrack(() => totalRealSlides) > 1) {
 				nextSlide()
 			}
 		}, 7000)
 
-		return () => clearInterval(interval)
+		return () => {
+			clearInterval(interval)
+			mediaQuery.removeEventListener('change', handleMotionChange)
+		}
 	})
 </script>
+
+<svelte:window onkeydown={handleKeydown} />
 
 <section class="sm:py-18 border-b border-stone-200 px-6 py-14">
 	<div class="mx-auto max-w-6xl">
@@ -114,15 +158,17 @@
 			</div>
 
 			{#if totalRealSlides > 1}
-				<!-- Carousel Controls (Hovering stops auto-advance) -->
+				<!-- Carousel Controls (Hovering/Focusing stops auto-advance) -->
 				<div class="flex items-center gap-3">
 					<button
 						type="button"
 						onclick={prevSlide}
-						onmouseenter={() => (isHovered = true)}
-						onmouseleave={() => (isHovered = false)}
-						class="flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card text-stone-700 transition-all hover:border-moss hover:bg-moss hover:text-white"
-						aria-label="Previous testimonials">
+						onmouseenter={() => (isPaused = true)}
+						onmouseleave={() => (isPaused = false)}
+						onfocus={() => (isPaused = true)}
+						onblur={() => (isPaused = false)}
+						class="flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card text-stone-700 transition-all hover:border-moss hover:bg-moss hover:text-white focus:outline-none focus:ring-2 focus:ring-moss"
+						aria-label="Previous testimonials slide">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-4 w-4"
@@ -135,10 +181,12 @@
 					<button
 						type="button"
 						onclick={nextSlide}
-						onmouseenter={() => (isHovered = true)}
-						onmouseleave={() => (isHovered = false)}
-						class="flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card text-stone-700 transition-all hover:border-moss hover:bg-moss hover:text-white"
-						aria-label="Next testimonials">
+						onmouseenter={() => (isPaused = true)}
+						onmouseleave={() => (isPaused = false)}
+						onfocus={() => (isPaused = true)}
+						onblur={() => (isPaused = false)}
+						class="flex h-11 w-11 items-center justify-center border border-stone-300 bg-sand-card text-stone-700 transition-all hover:border-moss hover:bg-moss hover:text-white focus:outline-none focus:ring-2 focus:ring-moss"
+						aria-label="Next testimonials slide">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-4 w-4"
@@ -151,22 +199,28 @@
 			{/if}
 		</div>
 
-		<!-- 3-Item Row Infinite Carousel with Fixed Card Height -->
+		<!-- 3-Item Row Infinite Carousel with Fixed Card Height and Full A11y & Touch Support -->
 		<div
 			class="relative overflow-hidden"
-			onmouseenter={() => (isHovered = true)}
-			onmouseleave={() => (isHovered = false)}
+			ontouchstart={handleTouchStart}
+			ontouchend={handleTouchEnd}
 			role="region"
-			aria-label="Testimonials carousel">
+			aria-roledescription="carousel"
+			aria-label="Traveler reviews and stories"
+			aria-live="polite">
 			<div
-				class="flex"
+				class="flex motion-reduce:transition-none"
 				class:transition-transform={isTransitioning}
 				class:duration-500={isTransitioning}
 				class:ease-out={isTransitioning}
 				style="transform: translateX(-{currentTrackIndex * 100}%);"
 				ontransitionend={handleTransitionEnd}>
-				{#each displaySlides as slide}
-					<div class="w-full shrink-0">
+				{#each displaySlides as slide, sIdx}
+					<div
+						class="w-full shrink-0"
+						role="group"
+						aria-roledescription="slide"
+						aria-label={`Slide ${sIdx + 1} of ${displaySlides.length}`}>
 						<div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
 							{#each slide as item}
 								<article
@@ -174,7 +228,10 @@
 									<div class="overflow-hidden">
 										<!-- Header: Rating (Always 5 stars with active/dimmed) & Date ({Month} {Year}) -->
 										<div class="mb-4 flex items-center justify-between">
-											<div class="flex items-center gap-1">
+											<div
+												class="flex items-center gap-1"
+												role="img"
+												aria-label={`${item.rating || 5} out of 5 stars`}>
 												{#each [1, 2, 3, 4, 5] as starNum}
 													<svg
 														xmlns="http://www.w3.org/2000/svg"
@@ -254,15 +311,20 @@
 
 		<!-- Dots indicator -->
 		{#if totalRealSlides > 1}
-			<div class="mt-8 flex justify-center gap-1.5">
+			<div
+				class="mt-8 flex justify-center gap-1.5"
+				role="tablist"
+				aria-label="Testimonial slides">
 				{#each baseSlides.slice(0, Math.min(totalRealSlides, 12)) as _, idx}
 					<button
 						type="button"
+						role="tab"
+						aria-selected={activeDotIndex === idx}
+						aria-label={`Go to review group ${idx + 1}`}
 						onclick={() => goToSlide(idx)}
-						class={`h-1.5 rounded-full transition-all ${
+						class={`h-1.5 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-moss ${
 							activeDotIndex === idx ? 'w-6 bg-terracotta' : 'w-2 bg-stone-300 hover:bg-stone-400'
-						}`}
-						aria-label={`Go to slide ${idx + 1}`}></button>
+						}`}></button>
 				{/each}
 			</div>
 		{/if}
