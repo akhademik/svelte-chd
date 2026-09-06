@@ -18,7 +18,9 @@ graphify-out/*
 !graphify-out/graph.json
 !graphify-out/graph.html
 
-# Logs & OS
+# Logs, Tests & OS
 *.log
+test-results/
+playwright-report/
 .DS_Store
 Thumbs.db

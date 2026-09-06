@@ -12,10 +12,12 @@
 		"typesafe-i18n": "^5.26.2"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.63.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-cloudflare": "^7.2.9",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/vite-plugin-svelte": "^4.0.0",
+		"@testing-library/svelte": "^5.4.2",
 		"@types/node": "^26.4.0",
 		"@typescript-eslint/eslint-plugin": "^8.69.0",
 		"@typescript-eslint/parser": "^8.69.0",
@@ -23,6 +25,7 @@
 		"eslint": "^8.57.1",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.46.0",
+		"jsdom": "^30.0.1",
 		"knip": "^5.88.1",
 		"postcss": "^8.4.31",
 		"prettier": "^3.9.6",
@@ -37,6 +40,7 @@
 		"tslib": "^2.6.2",
 		"typescript": "^5.3.3",
 		"vite": "^5.0.0",
+		"vitest": "^2.1.9",
 		"zod": "^3.24.2"
 	},
 	"name": "chd-travel",
@@ -51,6 +55,9 @@
 		"lint": "prettier --check . && eslint .",
 		"prepare": "svelte-kit sync",
 		"preview": "vite preview",
+		"test": "vitest run",
+		"test:e2e": "playwright test",
+		"test:unit": "vitest run",
 		"typesafe-i18n": "typesafe-i18n"
 	},
 	"type": "module",

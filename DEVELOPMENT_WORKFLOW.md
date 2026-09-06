@@ -25,6 +25,7 @@ cd back-end && pnpm install
 - **Dev Backend (Sanity Studio)**: `pnpm dev:be`
 - **Build**: `pnpm build` (hoặc `pnpm build:all`)
 - **Kiểm tra toàn bộ (Check & Lint)**: `pnpm check:all` & `pnpm lint:all`
+- **Chạy Test (Unit & E2E)**: `pnpm test`, `pnpm test:unit`, `pnpm test:e2e`
 - **Format toàn bộ**: `pnpm format:all`
 - **i18n Watch/Sync**: `pnpm i18n` (chạy typesafe-i18n cho front-end)
 

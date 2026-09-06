@@ -9,28 +9,29 @@ Frontend application for CHD Travel built with **SvelteKit**, **Svelte 5 Runes**
 - **CMS / Data Source**: [Sanity v3](https://www.sanity.io/) with `@sanity/client` and `@sanity/image-url`
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) with custom earth-tone design tokens (`moss`, `sand`, `terracotta`)
 - **Forms & Validation**: `sveltekit-superforms` & `zod`
-- **Email Service**: Resend API integration via server endpoints
-- **SEO & Performance**: SSR Meta Tags, Dynamic Sitemap (`/sitemap.xml`), `robots.txt`, and JSON-LD Structured Data
+- **Testing Framework**: [Vitest](https://vitest.dev/) (Unit tests for Zod validation, pricing math & utils) & [Playwright](https://playwright.dev/) (E2E tests for i18n navigation & SEO metadata)
+- **Email Service**: Resend API integration with verified domain (`noreply@chdtravel.com`) and automated client confirmation emails
+- **SEO & Performance**: SSR Meta Tags, Dynamic Sitemap (`/sitemap.xml`), `robots.txt`, JSON-LD Structured Data (Tours, Breadcrumbs, Article schema), and `hreflang` tags
 
 ## 📂 Project Structure
 
 ```
 front-end/
+├── e2e/                 # Playwright E2E test suites (navigation, i18n, SEO)
 ├── src/
 │   ├── lib/
-│   │   ├── modules/         # Feature modules (tour-page, blog-page, home-page, contact-page)
-│   │   ├── shared/          # Base UI components (Header, Footer, Lightbox, etc.)
-│   │   ├── server/          # Server-only utilities (email, sanity client)
-│   │   ├── services/        # Sanity client & queries
-│   │   ├── stores/          # Reactive stores (language, currency, SEO)
-│   │   └── utils/           # Formatters, helpers, currency conversion
+│   │   ├── modules/     # Feature modules (home-page, tour-page, blog-page, contact-page, nav-bar)
+│   │   ├── base/        # Base UI components (Button, SEO, JSON-LD, Footer, Modal, etc.)
+│   │   ├── server/      # Server-only utilities (email, sanity client)
+│   │   ├── stores/      # Reactive state stores (exchange rates, modals, nav, SEO)
+│   │   └── utils/       # Formatters, helpers, form-schema, unit tests (*.test.ts)
 │   ├── routes/
-│   │   ├── [lang]/          # Multilingual routes (vi, en, fr, de, it, ja, etc.)
+│   │   ├── [lang]/      # Multilingual routes (vn, en, fr)
 │   │   │   ├── [tourtype]/  # Dynamic tour categories & [slug] tour details
-│   │   │   ├── blog/        # Blog list & [slug] blog details
+│   │   │   ├── blog/        # CHD Journal & [slug] article details
 │   │   │   └── contact/     # Contact & tour inquiry form
-│   │   ├── sitemap.xml/     # Dynamic XML Sitemap endpoint
-│   │   └── robots.txt/      # Dynamic robots.txt endpoint
+│   │   ├── sitemap.xml/ # Dynamic XML Sitemap endpoint
+│   │   └── robots.txt/  # Dynamic robots.txt endpoint
 │   └── app.html
 ```
 
@@ -54,12 +55,13 @@ cp .env.example .env
 ### Environment Variables
 
 ```env
-PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
-PUBLIC_SANITY_DATASET=production
-PUBLIC_SANITY_API_VERSION=2023-05-03
+VITE_SANITY_ID=uzyjbxdd
+EXCHANGE_URL=https://v6.exchangerate-api.com/v6/
+EXCHANGE_API_KEY=your_exchange_api_key
+SANITY_WRITE_TOKEN=""
 RESEND_API_KEY=your_resend_api_key
 NOTIFY_EMAIL=info@chdtravel.com
-PUBLIC_SITE_URL=https://chdtravel.com
+DISCORD_WEBHOOK_URL=your_discord_webhook_url
 ```
 
 ### Commands
@@ -68,6 +70,9 @@ PUBLIC_SITE_URL=https://chdtravel.com
 pnpm dev          # Start local dev server
 pnpm build        # Build for Cloudflare Pages
 pnpm check        # Run svelte-check type checking
-pnpm lint         # Run ESLint checks
-pnpm format       # Run Prettier formatting
+pnpm lint         # Run ESLint and Prettier checks
+pnpm format       # Run Prettier auto-formatting
+pnpm test         # Run unit test suite (Vitest)
+pnpm test:unit    # Run unit tests
+pnpm test:e2e     # Run end-to-end tests (Playwright)
 ```

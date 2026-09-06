@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-06)
 
 ## Corpus Check
-- 160 files · ~75,407 words
+- 166 files · ~76,634 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 641 nodes · 942 edges · 72 communities (25 shown, 33 thin omitted)
+- 663 nodes · 972 edges · 75 communities (23 shown, 34 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ee3bbde0`
+- Built from commit: `9190d504`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -27,8 +27,8 @@
 - seo-store.ts
 - devDependencies
 - en/index.ts
+- eslint
 - [lang]/+page.server.ts
-- fr/index.ts
 - vn/index.ts
 - compilerOptions
 - tours/+server.ts
@@ -46,12 +46,12 @@
 - svelte
 - svelte-check
 - svelte-eslint-parser
-- svelte-typewriter
+- jsdom
 - @sveltejs/adapter-auto
 - @sveltejs/adapter-cloudflare
 - @sveltejs/kit
 - @sveltejs/vite-plugin-svelte
-- tailwindcss
+- @playwright/test
 - tslib
 - @types/node
 - typescript
@@ -67,24 +67,23 @@
 - base/index.ts
 - i18n-svelte.ts
 - sanity.ts
-- format-data.ts
-- tour-details.svelte
-- modal-store.ts
+- @testing-library/svelte
+- base-tour-detail-modal.svelte
+- vitest
 - icons.ts
 - home-page/index.ts
-- tour-store.ts
 
 ## God Nodes (most connected - your core abstractions)
-1. `scripts` - 26 edges
+1. `scripts` - 29 edges
 2. `compilerOptions` - 15 edges
-3. `Locales` - 12 edges
-4. `scripts` - 11 edges
-5. `scripts` - 9 edges
-6. `sendMail()` - 9 edges
+3. `scripts` - 14 edges
+4. `Locales` - 12 edges
+5. `sendMail()` - 10 edges
+6. `scripts` - 9 edges
 7. `compilerOptions` - 9 edges
 8. `fetchToursByType()` - 8 edges
 9. `loadLocaleAsync()` - 7 edges
-10. `CHD Travel — Design System & Layout Architecture Concept` - 7 edges
+10. `sendClientConfirmation()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `prepare()` --calls--> `add_thousand_separator()`  [EXTRACTED]
@@ -101,22 +100,22 @@
 ## Import Cycles
 - None detected.
 
-## Communities (72 total, 33 thin omitted)
+## Communities (75 total, 34 thin omitted)
 
 ### Community 0 - "tour.type.ts"
-Cohesion: 0.15
-Nodes (8): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag, logger
+Cohesion: 0.14
+Nodes (16): blog_modal, BlogModalState, tour_modal, TourModalState, GeneralKeyString, Highlights, Img_Cover, Locale_Array (+8 more)
 
 ### Community 1 - "schemas/index.ts"
 Cohesion: 0.08
 Nodes (33): add_thousand_separator(), CNumberInput(), parseNumber(), keywords, prepare(), prepare(), BASE_FIELDS, Field (+25 more)
 
 ### Community 2 - "i18n-types.ts"
-Cohesion: 0.07
-Nodes (34): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+26 more)
+Cohesion: 0.05
+Nodes (45): App, Locals, handle(), initFormatters(), fr, blog_page, contact_page, home_page (+37 more)
 
 ### Community 3 - "sanity-client.ts"
-Cohesion: 0.15
+Cohesion: 0.16
 Nodes (15): cachedFetch(), EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, fetchAllBlogs(), fetchFeaturedBlogs(), fetchSingleTourBySlug(), fetchToursByType(), memoryCache (+7 more)
 
 ### Community 4 - "back-end/package.json"
@@ -125,23 +124,23 @@ Nodes (35): dependencies, react, react-dom, react-is, sanity, sanity-plugin-medi
 
 ### Community 5 - "nav-store.ts"
 Cohesion: 0.12
-Nodes (7): Translation, menu_items, MenuItem, MenuLink, nav_animate_hidden, nav_deg, nav_mobile
+Nodes (5): nav_animate_hidden, nav_deg, nav_mobile, tour_index_store, logger
 
 ### Community 6 - "scripts"
 Cohesion: 0.06
-Nodes (32): concurrently, author, name, dependencies, concurrently, @portabletext/svelte, resend, @sanity/client (+24 more)
+Nodes (35): concurrently, author, name, dependencies, concurrently, @portabletext/svelte, resend, @sanity/client (+27 more)
 
 ### Community 7 - "scripts"
 Cohesion: 0.06
-Nodes (30): description, name, private, scripts, build, build:all, build:be, build:fe (+22 more)
+Nodes (33): description, name, private, scripts, build, build:all, build:be, build:fe (+25 more)
 
 ### Community 8 - "compilerOptions"
 Cohesion: 0.08
 Nodes (23): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, incremental, isolatedModules, jsx, lib (+15 more)
 
 ### Community 9 - "seo-store.ts"
-Cohesion: 0.08
-Nodes (10): if(), seo_description, seo_keywords, seo_og_image, seo_title, SeoState, url_for(), ./$types (+2 more)
+Cohesion: 0.11
+Nodes (8): seo_description, seo_keywords, seo_og_image, seo_title, SeoState, ./$types, ./$types, ./$types
 
 ### Community 10 - "devDependencies"
 Cohesion: 0.11
@@ -151,13 +150,9 @@ Nodes (19): devDependencies, eslint, prettier, react-icons, @sanity/eslint-confi
 Cohesion: 0.19
 Nodes (8): en, blog_page, contact_page, home_page, nav_bar, seo, tours, BaseTranslation
 
-### Community 12 - "[lang]/+page.server.ts"
-Cohesion: 0.17
-Nodes (13): getAdminNotifyEmail(), getFromEmail(), sendMail(), SendMailOptions, form_schema, FormSchema, POST(), actions (+5 more)
-
-### Community 13 - "fr/index.ts"
-Cohesion: 0.21
-Nodes (7): fr, blog_page, contact_page, home_page, nav_bar, seo, tours
+### Community 13 - "[lang]/+page.server.ts"
+Cohesion: 0.16
+Nodes (15): ClientConfirmationData, getAdminNotifyEmail(), getFromEmail(), sendClientConfirmation(), sendMail(), SendMailOptions, form_schema, FormSchema (+7 more)
 
 ### Community 14 - "vn/index.ts"
 Cohesion: 0.21
@@ -172,8 +167,8 @@ Cohesion: 0.39
 Nodes (7): client, config, fetch_data(), fetch_exchange_rate(), GET(), get_latest_exchange_rate_from_sanity(), sync_rate_to_sanity()
 
 ### Community 17 - "devDependencies"
-Cohesion: 0.29
-Nodes (7): autoprefixer, devDependencies, autoprefixer, eslint, sveltekit-superforms, eslint, sveltekit-superforms
+Cohesion: 0.22
+Nodes (9): autoprefixer, devDependencies, autoprefixer, svelte-typewriter, sveltekit-superforms, tailwindcss, svelte-typewriter, tailwindcss (+1 more)
 
 ### Community 58 - "CHD Travel — Design System & Layout Architecture Concept"
 Cohesion: 0.05
@@ -188,40 +183,36 @@ Cohesion: 0.50
 Nodes (3): 🎯 1. Danh Sách Kiểm Tra Bắt Buộc (Quality Checklist), 🔄 2. Quy Trình Phản Hồi & Commit, 🧪 HỆ THỐNG KIỂM THỬ VÀ KIỂM TRA CHẤT LƯỢNG (TESTING & QUALITY WORKFLOW)
 
 ### Community 65 - "sanity.ts"
-Cohesion: 0.27
-Nodes (8): defaultRates, exchange_rates_store, ExchangeRates, builder, config, get_length_and_index(), get_tour_slug(), tour_by_index()
+Cohesion: 0.17
+Nodes (10): if(), defaultRates, exchange_rates_store, ExchangeRates, builder, config, get_length_and_index(), get_tour_slug() (+2 more)
 
-### Community 66 - "format-data.ts"
-Cohesion: 0.25
-Nodes (4): booking_modal, BookingModalState, format_price(), get_exchange_rate()
-
-### Community 68 - "modal-store.ts"
-Cohesion: 0.40
-Nodes (5): blog_modal, BlogModalState, tour_modal, TourModalState, Tour
+### Community 67 - "base-tour-detail-modal.svelte"
+Cohesion: 0.15
+Nodes (4): close(), booking_modal, BookingModalState, ./$types
 
 ### Community 69 - "icons.ts"
 Cohesion: 0.40
 Nodes (3): Icon, Icons, NOTE:
 
 ## Knowledge Gaps
-- **231 isolated node(s):** `name`, `private`, `version`, `main`, `type` (+226 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 298 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **242 isolated node(s):** `name`, `private`, `version`, `main`, `type` (+237 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 311 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `devDependencies` connect `devDependencies` to `scripts`, `eslint-config-prettier`, `eslint-plugin-svelte`, `knip`, `postcss`, `prettier`, `prettier-plugin-svelte`, `prettier-plugin-tailwindcss`, `svelte`, `svelte-check`, `svelte-eslint-parser`, `svelte-typewriter`, `@sveltejs/adapter-auto`, `@sveltejs/adapter-cloudflare`, `@sveltejs/kit`, `@sveltejs/vite-plugin-svelte`, `tailwindcss`, `tslib`, `@types/node`, `typescript`, `@typescript-eslint/eslint-plugin`, `@typescript-eslint/parser`, `vite`, `zod`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `devDependencies` connect `devDependencies` to `scripts`, `eslint`, `eslint-config-prettier`, `eslint-plugin-svelte`, `knip`, `postcss`, `prettier`, `prettier-plugin-svelte`, `prettier-plugin-tailwindcss`, `svelte`, `svelte-check`, `svelte-eslint-parser`, `jsdom`, `@sveltejs/adapter-auto`, `@sveltejs/adapter-cloudflare`, `@sveltejs/kit`, `@sveltejs/vite-plugin-svelte`, `@playwright/test`, `tslib`, `@types/node`, `typescript`, `@typescript-eslint/eslint-plugin`, `@typescript-eslint/parser`, `vite`, `zod`, `@testing-library/svelte`, `vitest`?**
+  _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `keywords` connect `schemas/index.ts` to `back-end/package.json`?**
-  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+  _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
-  _231 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _242 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `tour.type.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.1380952380952381 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07619738751814223 - nodes in this community are weakly interconnected._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07080200501253132 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05359937402190924 - nodes in this community are weakly interconnected._
 - **Should `back-end/package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
-- **Should `nav-store.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

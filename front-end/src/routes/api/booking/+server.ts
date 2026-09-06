@@ -1,5 +1,5 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
-import { sendMail } from '$lib/server/email'
+import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { json } from '@sveltejs/kit'
 
 export const POST = async ({ request }) => {
@@ -37,6 +37,19 @@ ${note || 'Không có ghi chú thêm.'}
 			})
 		}
 
+		const send_confirmation = async () => {
+			if (!email) return null
+			return sendClientConfirmation({
+				name,
+				email,
+				langs,
+				tour,
+				date,
+				guests,
+				message: note,
+			})
+		}
+
 		const send_to_discord = async () => {
 			if (!DISCORD_WEBHOOK_URL) return
 			return fetch(DISCORD_WEBHOOK_URL, {
@@ -48,7 +61,7 @@ ${note || 'Không có ghi chú thêm.'}
 			})
 		}
 
-		await Promise.allSettled([send_email(), send_to_discord()])
+		await Promise.allSettled([send_email(), send_confirmation(), send_to_discord()])
 
 		return json({ success: true }, { status: 200 })
 	} catch (err) {

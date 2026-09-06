@@ -1,5 +1,5 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
-import { sendMail } from '$lib/server/email'
+import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { form_schema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
 import { zod } from 'sveltekit-superforms/adapters'
@@ -73,6 +73,12 @@ export const actions = {
 		try {
 			const [email_res] = await Promise.allSettled([
 				send_email(last_val),
+				sendClientConfirmation({
+					name: last_val.name,
+					email: last_val.email,
+					langs: last_val.langs,
+					message: last_val.msg,
+				}),
 				send_to_discord(last_val),
 			])
 

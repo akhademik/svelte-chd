@@ -18,7 +18,9 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau:
    - Frontend: `cd front-end && pnpm format`
    - Backend: `cd back-end && pnpm prettier --write .`
 4. **Testing (`pnpm test`)**:
-   - Chạy các bài test đơn vị hoặc tích hợp khi có test suite.
+   - Unit Tests (Vitest): `pnpm test:unit` (hoặc `cd front-end && pnpm test:unit`)
+   - E2E Tests (Playwright): `pnpm test:e2e` (hoặc `cd front-end && pnpm test:e2e`)
+   - Test tổng hợp: `pnpm test`
 5. **Dead Code & Dependency Analysis (`knip`)**:
    - Frontend: `cd front-end && pnpm knip`
    - Backend: `cd back-end && pnpm knip`
