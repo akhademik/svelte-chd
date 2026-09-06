@@ -112,19 +112,20 @@
 			case 'people':
 				return 'bg-rose-100 text-rose-900 border-rose-300'
 			default:
-				return 'bg-stone-100 text-stone-800 border-stone-300'
+				return 'bg-surface text-foreground border-border-strong'
 		}
 	}
 </script>
 
 <div class="space-y-12 pb-20">
 	<!-- Hero Section -->
-	<section class="border-b border-border/80 bg-surface py-12 sm:py-16">
+	<section class="border-b border-border bg-surface py-12 sm:py-16">
 		<div class="mx-auto max-w-6xl px-6">
 			<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-secondary">
 				{$LL.blog_page.subtitle()}
 			</span>
-			<h1 class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
+			<h1
+				class="font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
 				{$LL.blog_page.title()}
 			</h1>
 			<p
@@ -134,7 +135,7 @@
 
 			<!-- Filter Pills: Only show categories with available posts -->
 			{#if presentCategories.length > 1}
-				<div class="mt-8 flex flex-wrap gap-2.5 border-t border-border/80 pt-6 text-xs">
+				<div class="mt-8 flex flex-wrap gap-2.5 border-t border-border pt-6 text-xs">
 					<button
 						onclick={() => (activeFilter = 'all')}
 						class={`rounded-full px-5 py-2.5 font-medium transition-all ${
@@ -169,10 +170,10 @@
 			{@const featuredExcerpt = getPostExcerpt(featuredPost)}
 
 			<div
-				class="mb-12 grid grid-cols-1 overflow-hidden border border-stone-200 bg-sand-card text-left transition-all hover:border-stone-400 hover:shadow-md lg:grid-cols-12">
+				class="mb-12 grid grid-cols-1 overflow-hidden border border-border bg-surface text-left transition-all hover:border-border-strong hover:shadow-md lg:grid-cols-12">
 				<a
 					href={featuredLink}
-					class="relative flex min-h-[280px] flex-col justify-between bg-stone-900 p-8 text-white lg:col-span-6 lg:p-12">
+					class="relative flex min-h-[280px] flex-col justify-between bg-inverse p-8 text-white lg:col-span-6 lg:p-12">
 					{#if coverImgUrl}
 						<div class="absolute inset-0 z-0">
 							<img
@@ -180,7 +181,7 @@
 								alt={getPostTitle(featuredPost)}
 								class="h-full w-full object-cover opacity-35" />
 							<div
-								class="absolute inset-0 bg-gradient-to-t from-stone-950 via-stone-900/80 to-stone-900/40">
+								class="absolute inset-0 bg-gradient-to-t from-inverse-dark via-inverse/80 to-inverse/40">
 							</div>
 						</div>
 					{/if}
@@ -189,34 +190,37 @@
 							class={`rounded-full border px-3 py-1 text-[11px] font-medium ${getCategoryBadgeClass(featuredPost.category)}`}>
 							{getCategoryName(featuredPost.category)}
 						</span>
-						<span class="text-xs text-stone-400">Featured</span>
+						<span class="text-xs text-foreground-subtle">Featured</span>
 					</div>
 					<div class="relative z-10 mt-8">
-						<h2 class="font-serif text-2xl font-normal leading-tight text-stone-100 sm:text-3xl">
+						<h2
+							class="font-serif text-2xl font-normal leading-tight text-inverse-foreground sm:text-3xl">
 							{getPostTitle(featuredPost)}
 						</h2>
 						{#if featuredExcerpt}
-							<p class="mt-4 text-xs font-light leading-relaxed text-stone-300 sm:text-sm">
+							<p
+								class="mt-4 text-xs font-light leading-relaxed text-inverse-foreground/80 sm:text-sm">
 								{featuredExcerpt}
 							</p>
 						{/if}
 					</div>
-					<div class="relative z-10 mt-6 flex items-center justify-between text-xs text-stone-400">
+					<div
+						class="relative z-10 mt-6 flex items-center justify-between text-xs text-foreground-subtle">
 						<span>{featuredPost.author || 'CHD Travel'}</span>
 						<span>{featuredPost.publishedAt?.split('T')[0] || ''}</span>
 					</div>
 				</a>
 
-				<div class="flex flex-col justify-center bg-stone-50 p-8 lg:col-span-6 lg:p-12">
-					<span class="text-xs uppercase tracking-widest text-stone-400"
+				<div class="flex flex-col justify-center bg-surface p-8 lg:col-span-6 lg:p-12">
+					<span class="text-xs uppercase tracking-widest text-foreground-subtle"
 						>{$LL.blog_page.highlights()}</span>
-					<p class="mt-4 font-serif text-lg italic text-stone-800">
+					<p class="mt-4 font-serif text-lg italic text-foreground">
 						{$LL.blog_page.highlights_quote()}
 					</p>
 					<div class="mt-8 flex items-center gap-3">
 						<a
 							href={featuredLink}
-							class="inline-block bg-stone-900 px-6 py-3 text-xs uppercase tracking-widest text-white transition-colors hover:bg-stone-800">
+							class="inline-block bg-inverse px-6 py-3 text-xs uppercase tracking-widest text-inverse-foreground transition-colors hover:bg-inverse-dark">
 							{$LL.blog_page.read_full()}
 						</a>
 					</div>
@@ -227,7 +231,7 @@
 		<!-- Posts Grid -->
 		{#if nonFeaturedPosts.length === 0 && !featuredPost}
 			<div
-				class="border border-dashed border-stone-300 bg-sand-card p-12 text-center text-sm text-stone-500">
+				class="border border-dashed border-border-strong bg-surface p-12 text-center text-sm text-foreground-muted">
 				{$LL.blog_page.no_posts()}
 			</div>
 		{:else}

@@ -72,9 +72,10 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if hotTours.length > 0 && currentTour}
-	<section class="relative overflow-hidden border-b border-stone-200 bg-stone-950 text-stone-100">
+	<section
+		class="relative overflow-hidden border-b border-border bg-inverse-dark text-inverse-foreground">
 		<!-- Background image with subtle overlay -->
-		<div class="absolute inset-0 z-0 overflow-hidden bg-stone-950">
+		<div class="absolute inset-0 z-0 overflow-hidden bg-inverse-dark">
 			{#key currentIndex}
 				{#if currentTour.img_cover?.asset}
 					<img
@@ -90,7 +91,7 @@
 				{/if}
 			{/key}
 			<div
-				class="absolute inset-0 bg-gradient-to-r from-stone-950 via-stone-950/80 to-stone-950/40">
+				class="absolute inset-0 bg-gradient-to-r from-inverse-dark via-inverse-dark/80 to-inverse-dark/40">
 			</div>
 		</div>
 
@@ -117,11 +118,11 @@
 						</span>
 						{#if currentTour.tour_id}
 							<span
-								class="shrink-0 border border-stone-700 bg-stone-900/80 px-2.5 py-0.5 font-mono text-xs text-stone-300">
+								class="shrink-0 border border-inverse-dark bg-inverse/80 px-2.5 py-0.5 font-mono text-xs text-inverse-foreground">
 								{currentTour.tour_id}
 							</span>
 						{/if}
-						<span class="text-xs uppercase tracking-wider text-stone-400">
+						<span class="text-xs uppercase tracking-wider text-foreground-subtle">
 							{duration}
 						</span>
 					</div>
@@ -133,7 +134,7 @@
 							{title}>
 							<a
 								href={tourLink}
-								class="line-clamp-2 text-left font-serif text-white transition-colors hover:text-stone-300">
+								class="line-clamp-2 text-left font-serif text-white transition-colors hover:text-inverse-foreground">
 								{title}
 							</a>
 						</h2>
@@ -146,7 +147,7 @@
 								{@const hlText = item?.highlights?.[$locale] || item?.highlights?.en || ''}
 								{#if hlText}
 									<div
-										class="flex items-center gap-2.5 text-xs font-light text-stone-300 sm:text-sm">
+										class="flex items-center gap-2.5 text-xs font-light text-inverse-foreground/90 sm:text-sm">
 										<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 										<span class="line-clamp-1">{hlText}</span>
 									</div>
@@ -166,7 +167,7 @@
 									tag?.tourTags?.en}
 								{#if tagName}
 									<span
-										class="border border-stone-700/60 bg-stone-900/60 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-stone-300 backdrop-blur-sm">
+										class="border border-inverse-dark/60 bg-inverse/60 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-inverse-foreground backdrop-blur-sm">
 										#{tagName}
 									</span>
 								{/if}
@@ -178,7 +179,7 @@
 					<div class="flex flex-wrap items-center gap-4">
 						<a
 							href={tourLink}
-							class="bg-white px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-stone-950 transition-colors hover:bg-stone-200">
+							class="bg-surface px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-colors hover:bg-surface-muted">
 							{$locale === 'vn'
 								? 'Xem Chi Tiết Tour'
 								: $locale === 'fr'
@@ -187,7 +188,7 @@
 						</a>
 						<button
 							onclick={() => booking_modal.open(title)}
-							class="border border-stone-600 px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white/10">
+							class="border border-border-strong px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white/10">
 							{$locale === 'vn' ? 'Đặt Ngay' : $locale === 'fr' ? 'Réserver' : 'Book Now'}
 						</button>
 					</div>
@@ -195,16 +196,16 @@
 
 				<!-- Price & Slide Navigation -->
 				<div
-					class="flex flex-col justify-between self-stretch border-t border-stone-800 pt-6 lg:items-end lg:border-t-0 lg:pt-0">
+					class="flex flex-col justify-between self-stretch border-t border-inverse pt-6 lg:items-end lg:border-t-0 lg:pt-0">
 					<div class="lg:text-right">
-						<span class="block text-xs uppercase tracking-widest text-stone-400">
+						<span class="block text-xs uppercase tracking-widest text-foreground-subtle">
 							{$locale === 'vn' ? 'Giá chỉ từ' : $locale === 'fr' ? 'À partir de' : 'Starting From'}
 						</span>
 						<div class="mt-1 flex items-baseline gap-1 lg:justify-end">
 							<span class="font-serif text-3xl font-normal text-white sm:text-4xl">
 								{format_price(price, $locale)}
 							</span>
-							<span class="text-xs font-light text-stone-400">/ pax</span>
+							<span class="text-xs font-light text-foreground-subtle">/ pax</span>
 						</div>
 					</div>
 
@@ -213,7 +214,7 @@
 							<button
 								type="button"
 								onclick={prevSlide}
-								class="flex h-11 w-11 items-center justify-center border border-stone-700 bg-stone-900/80 text-stone-300 transition-colors hover:border-white hover:text-white"
+								class="flex h-11 w-11 items-center justify-center border border-inverse-dark bg-inverse/80 text-inverse-foreground transition-colors hover:border-white hover:text-white"
 								aria-label="Previous featured tour">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +233,7 @@
 										class={`h-1.5 rounded-full transition-all ${
 											currentIndex === idx
 												? 'w-6 bg-secondary'
-												: 'w-2 bg-stone-700 hover:bg-stone-500'
+												: 'w-2 bg-inverse-dark hover:bg-foreground-subtle'
 										}`}
 										aria-label={`Go to slide ${idx + 1}`}></button>
 								{/each}
@@ -241,7 +242,7 @@
 							<button
 								type="button"
 								onclick={nextSlide}
-								class="flex h-11 w-11 items-center justify-center border border-stone-700 bg-stone-900/80 text-stone-300 transition-colors hover:border-white hover:text-white"
+								class="flex h-11 w-11 items-center justify-center border border-inverse-dark bg-inverse/80 text-inverse-foreground transition-colors hover:border-white hover:text-white"
 								aria-label="Next featured tour">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

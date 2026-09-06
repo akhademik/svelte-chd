@@ -1,118 +1,94 @@
-# 📋 Kế hoạch Thống nhất Hệ Thống Token Màu Sắc (Color Tokens Unification Plan)
+# 📋 Kế Hoạch Hoàn Thiện Hệ Thống Token Màu Sắc (Color Tokens Architectural Cleanup)
 
-> **Mục tiêu**: Chuẩn hóa và tinh gọn hệ thống token màu sắc cho toàn bộ dự án `svelte-chd`. Chuyển từ việc phân mảnh nhiều alias / dùng trực tiếp bảng mã stone sang hệ thống **Semantic Token** mạch lạc, dễ hiểu.  
-> **Cam kết**: Giữ nguyên 100% phong cách thiết kế, tone màu, độ tương phản (anti-glare/matte), không làm thay đổi giao diện thực tế. Tương lai khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa token tại Design Concept / Config là toàn bộ giao diện tự động đồng bộ.
-
----
-
-## 🔍 I. Phân Tích Thực Trạng Hiện Tại (Current State Analysis)
-
-Theo nội dung phân tích từ [job-need-do.md](file:///home/hajtran/dev/svelte-chd/job-need-do.md) và [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md):
-
-1. **Quá nhiều tên trùng lặp (Aliases Overload)**:
-   - `#5F6E56` (Xanh rêu): được đặt tên là `moss`, `forest`, `accent`. Hover `#4A5642` có `moss-hover`, `forest-hover`, `accent-deep`.
-   - `#A3764A` (Đất nung / Ochre): được đặt tên là `ochre`, `ocher`, `terracotta`, `secondary`, `accent-warm`.
-   - `#2B2A24` (Nền tối / Charcoal): được đặt tên là `stone-900`, `charcoal`.
-   - `#1E1D19` (Nền siêu tối): được đặt tên là `stone-950`, `charcoal-dark`.
-   - `#D6CBAE` (Nền chính): được đặt tên là `sand`, `stone-100`.
-   - `#DFD5B9` (Nền thẻ): được đặt tên là `sand-card`, `stone-50`.
-   - `#C7BB98` (Nền phụ): được đặt tên là `sand-alt`, `stone-200`.
-
-2. **Trộn lẫn 3 trường phái đặt tên (Semantic vs. Brand Palette vs. Raw Stone Scale)**:
-   - Một số component dùng `text-primary` (`#2A2720` - Ink), trong khi component khác dùng `text-moss` hoặc `text-stone-900`.
-   - Cột màu `stone-50` -> `stone-950` thực chất không phải grayscale chuẩn của Tailwind mà là dải màu riêng của CHD (cream → beige → brown → charcoal). Khi dùng `text-stone-500` lập trình viên không hiểu ý nghĩa chức năng (semantic reason).
+> **Mục tiêu**: Thực hiện đầy đủ các khuyến nghị từ [job-need-do.md](file:///home/hajtran/dev/svelte-chd/job-need-do.md):
+> 1. Xóa bỏ hoàn toàn tình trạng "1 màu → nhiều tên" (loại bỏ aliases thừa: `moss`, `terracotta`, `ochre`, `accent`, `sand`, `charcoal` sau khi hoàn tất migration).
+> 2. Quy chuẩn hóa dải `stone-*` thành Internal Primitive Palette (chỉ phục vụ định nghĩa nội bộ, không dùng trực tiếp trong component).
+> 3. Chuẩn hóa ngữ nghĩa Typography: `foreground` là màu chữ/heading mặc định, `primary` dành riêng cho CTA/Interactive/Brand accent.
+> 4. Phân định rõ ràng giữa `inverse` (#2B2A24 - Footer) và `inverse-dark` (#1E1D19 - Hero/Contrast cao).
+> 5. Rà soát & dọn dẹp các màu chưa chuẩn hóa như Gold (`#B8862E`) và Teal (`#3D6E7C`).
 
 ---
 
-## 🎨 II. Thiết Kế Hệ Thống Semantic Token Chuẩn (Target Semantic Color Tokens)
-
-Tổ chức lại hệ thống token theo 6 nhóm chức năng (Functional Token Groups):
+## 🏗️ I. Kiến Trúc Hệ Thống Màu 3 Tầng (3-Tier Design System Architecture)
 
 ```mermaid
 graph TD
-    A[Color System] --> B[Brand Tokens]
-    A --> C[Surface Tokens]
-    A --> D[Content / Typography Tokens]
-    A --> E[Border Tokens]
-    A --> F[Inverse / Dark Tokens]
-    A --> G[Status / Utility Tokens]
+    subgraph Tier 1: Primitive Palette (Internal Only)
+        P1[Stone Scale: stone-50 -> stone-950]
+        P2[Brand Primitives: Moss #5F6E56, Terracotta #A3764A, Charcoal #2B2A24/#1E1D19]
+    end
 
-    B --> B1[primary: #5F6E56 - Moss]
-    B --> B2[primary-hover: #4A5642]
-    B --> B3[secondary: #A3764A - Terracotta / Warm Accent]
-    B --> B4[secondary-hover: #8C633C]
+    subgraph Tier 2: Semantic Tokens (Used in Components)
+        S1[Brand: primary, primary-hover, primary-dark, secondary, secondary-hover]
+        S2[Surface: background, surface, surface-muted]
+        S3[Content: foreground, foreground-muted, foreground-subtle]
+        S4[Border: border, border-strong]
+        S5[Inverse: inverse, inverse-dark, inverse-foreground]
+    end
 
-    C --> C1[bg-background: #D6CBAE - Sand]
-    C --> C2[bg-surface: #DFD5B9 - Sand Card]
-    C --> C3[bg-surface-muted: #C7BB98 - Sand Alt]
+    subgraph Tier 3: Component Layer
+        C1[Buttons, Links, CTAs: bg-primary, text-secondary]
+        C2[Cards, Panels, Modals: bg-surface, border-border]
+        C3[Headings, Body: text-foreground, text-foreground-muted]
+        C4[Footers, Dark Bars: bg-inverse, bg-inverse-dark]
+    end
 
-    D --> D1[text-foreground: #2A2720 - Ink / Heading]
-    D --> D2[text-foreground-muted: #5C5646 - Body text]
-    D --> D3[text-foreground-subtle: #8A7E64 - Overline / Caption]
-
-    E --> E1[border-border: #C7BB98]
-    E --> E2[border-border-strong: #B0A27E]
-
-    F --> F1[bg-inverse: #1E1D19 / #2B2A24 - Charcoal]
-    F --> F2[text-inverse-foreground: #DFD5B9]
-
-    G --> G1[overlay / black-alpha]
+    Tier 1 --> Tier 2
+    Tier 2 --> Tier 3
 ```
-
-### Bảng Quy Đổi Chi Tiết (Mapping Matrix)
-
-| Nhóm Token | Token Mới (Semantic) | Giá trị HEX | Lớp Cũ Tương Đương | Mục Đích Sử Dụng |
-| :--- | :--- | :--- | :--- | :--- |
-| **Brand** | `primary` | `#5F6E56` | `moss`, `forest`, `accent` | Màu nhận diện rừng rêu Tây Nguyên, nút CTA chính, tiêu đề nổi bật |
-| | `primary-hover` | `#4A5642` | `moss-hover`, `forest-hover`, `accent-deep` | Hover cho nút primary |
-| | `primary-dark` | `#353E2F` | `moss-dark` | Điểm nhấn rêu đậm |
-| | `secondary` | `#A3764A` | `terracotta`, `ochre`, `ocher`, `accent-warm` | Màu đất nung bazan, badge Best Sell, giá tour, hover link |
-| | `secondary-hover` | `#8C633C` | `ochre-hover` | Hover cho secondary |
-| **Surface** | `background` (hoặc `bg-sand`) | `#D6CBAE` | `sand`, `stone-100` | Nền chính toàn trang (ấm, chống lóa) |
-| | `surface` (hoặc `bg-card`) | `#DFD5B9` | `sand-card`, `stone-50` | Nền thẻ tour, blog card, form container, modal |
-| | `surface-muted` (hoặc `bg-alt`) | `#C7BB98` | `sand-alt`, `stone-200` | Nền section xen kẽ phân tách khối |
-| **Content** | `foreground` | `#2A2720` | `stone-900`, `stone-800`, `primary` (cũ) | Tiêu đề Heading (H1-H3), văn bản chữ chính |
-| | `foreground-muted` | `#5C5646` | `stone-600`, `stone-500` | Nội dung mô tả (Body text), phụ đề |
-| | `foreground-subtle` | `#8A7E64` | `stone-400` | Overline, step marker, caption mờ |
-| **Border** | `border` | `#C7BB98` | `stone-200`, `border-sand-alt` | Viền thẻ, đường phân cách card |
-| | `border-strong` | `#B0A27E` | `stone-300` | Viền đậm, focus border |
-| **Inverse** | `inverse` | `#1E1D19` / `#2B2A24` | `charcoal`, `charcoal-dark`, `stone-900`, `stone-950` | Nền tối cho Hero banner, Footer |
-| | `inverse-foreground` | `#DFD5B9` | `stone-100`, `stone-50` (on dark) | Chữ hiển thị trên nền tối (Hero/Footer) |
 
 ---
 
-## 📝 III. Danh Sách Công Việc Cần Thực Hiện (Actionable Task List)
+## 📋 II. Bảng Quy Đổi & Nguyên Tắc Semantic Chuẩn (Semantic Guidelines)
 
-### Phase 1: Cập Nhật Tài Liệu Thiết Kế (Design System Documentation)
-- [x] **Task 1.1**: Đồng bộ bảng màu trong [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md) theo chuẩn Semantic Tokens (Brand, Surface, Content, Border, Inverse).
-- [x] **Task 1.2**: Ghi chú rõ ràng quy tắc ánh xạ và nguyên tắc không đổi mã HEX/style visual.
+### 1. Typography & Interactive Rule
+- ❌ **Không dùng**: `<h1 class="text-primary">` cho heading thông thường (gây hiểu nhầm primary là màu heading).
+- ✅ **Chuẩn semantic**: `<h1 class="text-foreground">` (hoặc font-serif mặc định). Chỉ dùng `text-primary` khi có chủ ý nhấn mạnh thương hiệu đặc biệt (editorial emphasis) hoặc link/CTA.
 
-### Phase 2: Cấu Hình Tailwind Theme Config
-- [x] **Task 2.1**: Tinh chỉnh [front-end/tailwind.config.js](file:///home/hajtran/dev/svelte-chd/front-end/tailwind.config.js):
-  - Khai báo các semantic tokens mới (`primary`, `secondary`, `background`, `surface`, `foreground`, `border`, `inverse`).
-  - Giữ lại các alias cũ an toàn để không làm vỡ giao diện đang chạy.
-  - Loại bỏ các tên thừa/lỗi chính tả (`ocher` vs `ochre`, `forest`).
-  - Giữ nguyên dải `stone` (11 shades) cho các nhu cầu vi chỉnh tonal nếu cần thiết mà không phụ thuộc trực tiếp.
+### 2. Surface & Background Rule
+- ❌ **Không dùng**: `bg-stone-50`, `bg-sand-card`, `bg-sand`, `bg-sand-alt`.
+- ✅ **Chuẩn semantic**: `bg-background` (nền trang), `bg-surface` (nền thẻ/modal), `bg-surface-muted` (khối xen kẽ).
 
-### Phase 3: Rà Soát & Thay Thế Naming Trong Codebase Frontend (`front-end/src/`)
-- [x] **Task 3.1**: Thay thế các component Layout, Header, Navbar, Footer:
-  - `src/lib/modules/nav-bar/`
-  - `src/lib/modules/mobile-menu/`
-  - `src/lib/base/base-footer.svelte`
-  - `src/routes/+layout.svelte`
-- [x] **Task 3.2**: Thay thế các component Base UI:
-  - `src/lib/base/` (`base-logo`, `base-locale-switcher`, `base-scroll-to-top`, `base-booking-modal`, `base-tour-detail-modal`, `base-blog-detail-modal`...)
-- [x] **Task 3.3**: Thay thế các module trang:
-  - `src/lib/modules/home-page/` (Hero, Why CHD, Day Tours, Highland Tours, Experiences, Testimonials, Featured Slider, Contact, Plan Your Trip)
-  - `src/lib/modules/tour-page/` (Tour Card, Tour Details, Tour Gallery)
-  - `src/lib/modules/blog-page/` (Blog Page, Filter Pills, Post Cards)
-  - `src/lib/modules/about-page/` (About Hero, Timeline, Team Members, Legal, CTA)
-  - `src/lib/modules/contact-page/` (Header, Address / Map, Reviews)
-  - Các route trong `src/routes/[lang]/`
+### 3. Inverse Rule
+- `bg-inverse` (`#2B2A24`): Dành cho Footer, thanh điều hướng phụ, card tối.
+- `bg-inverse-dark` (`#1E1D19`): Dành cho Hero banner tối, media viewer container, overlay độ tương phản cao.
+- `text-inverse-foreground` (`#DFD5B9`): Chữ sáng hiển thị trên nền `bg-inverse` hoặc `bg-inverse-dark`.
 
-### Phase 4: Kiểm Thử và Đảm Bảo Chất Lượng (Quality Gates & Verification)
-- [x] **Task 4.1**: Chạy `pnpm check` (Svelte-check & TypeScript) ở frontend (0 errors, 0 warnings).
-- [x] **Task 4.2**: Chạy `pnpm lint:all` và `pnpm format:all` để đảm bảo chuẩn code và formatting.
-- [x] **Task 4.3**: Chạy `pnpm test` (16/16 Unit test passed & 5/5 Playwright E2E passed).
-- [x] **Task 4.4**: Kiểm tra và đối soát 100% mã màu HEX (Color Parity Verification).
-- [x] **Task 4.5**: Cập nhật đồ thị tri thức với `/graphify`.
+### 4. Gold & Teal Palette Audit
+- Kiểm tra thực tế: Cả `#B8862E` (Gold) và `#3D6E7C` (Teal) **không được sử dụng trong bất kỳ file code Svelte nào**, chỉ xuất hiện trong tài liệu nháp.
+- **Quyết định**: Không đưa vào `tailwind.config.js` để tránh làm phình global palette không cần thiết.
+
+---
+
+## 📝 III. Danh Sách Công Việc (Actionable Tasks)
+
+### Phase 1: Migrate Toàn Bộ Codebase Còn Lại Sang Semantic Tokens
+- [x] **Task 1.1**: Rà soát và chuyển đổi các component Base còn dùng `stone-*` / `sand-*` / `charcoal-*`:
+  - `src/lib/base/base-blog-detail-modal.svelte` (bg-stone-50, text-stone-900, bg-stone-900...)
+  - `src/lib/base/base-booking-modal.svelte` (bg-white/bg-stone-50, border-stone-200...)
+  - `src/lib/base/base-tour-detail-modal.svelte`
+  - `src/lib/base/base-footer.svelte` (chuyển các class text-stone-300/700/800 còn lại sang semantic token)
+  - `src/lib/base/base-portable-text-list-item.svelte`
+- [x] **Task 1.2**: Rà soát và chuyển đổi các module trang còn lại:
+  - `src/routes/[lang]/blog/[slug]/+page.svelte` (chuyển đổi toàn bộ stone-900, stone-200, sand-card, terracotta...)
+  - `src/lib/modules/tour-page/components/details-left-panel.svelte`
+  - `src/lib/modules/contact-page/components/contact-form.svelte`
+- [x] **Task 1.3**: Rà soát lại việc dùng `text-primary` trên các heading H1/H2, đưa về `text-foreground` trừ các điểm nhấn editorial CTA đặc thù.
+
+### Phase 2: Dọn Dẹp Aliases Trong `tailwind.config.js`
+- [x] **Task 2.1**: Sau khi Phase 1 hoàn tất và không còn file `.svelte` nào phụ thuộc vào alias cũ:
+  - Loại bỏ các alias: `sand`, `moss`, `terracotta`, `ochre`, `charcoal`, `accent`, `accent-deep`, `accent-warm`.
+  - Giữ lại `primary`, `secondary`, `background`, `surface`, `foreground`, `border`, `inverse` làm public tokens.
+  - Chú thích rõ ràng `stone: { ... }` là **Internal Primitive Scale** chỉ dành cho nội bộ config.
+
+### Phase 3: Cập Nhật Tài Liệu [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md)
+- [x] **Task 3.1**: Cập nhật mục Typography quy định rõ `foreground` là màu chữ mặc định.
+- [x] **Task 3.2**: Phân định rõ mục đích `inverse` vs `inverse-dark`.
+- [x] **Task 3.3**: Gỡ bỏ các màu không dùng (Gold, Teal) khỏi danh sách bảng màu cốt lõi.
+
+### Phase 4: Kiểm Thử & Quality Gates
+- [x] **Task 4.1**: Chạy `pnpm check` (Svelte-check & TypeScript) đảm bảo 0 lỗi.
+- [x] **Task 4.2**: Chạy `pnpm lint:all` và `pnpm format:all`.
+- [x] **Task 4.3**: Chạy `pnpm test` (Unit & Playwright E2E) đảm bảo toàn bộ test case pass.
+- [x] **Task 4.4**: Chạy `pnpm build` xác nhận bundle CSS được tối ưu sạch sẽ.
+- [x] **Task 4.5**: Chạy `/graphify` cập nhật knowledge graph.

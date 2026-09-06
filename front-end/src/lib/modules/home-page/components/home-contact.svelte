@@ -39,19 +39,20 @@
 			<!-- Info left -->
 			<div class="flex flex-col justify-between lg:col-span-5">
 				<div>
-					<span class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
+					<span
+						class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-foreground-subtle">
 						03 / Connect
 					</span>
-					<h2 class="mb-6 font-serif text-3xl font-normal text-stone-900 sm:text-4xl">
+					<h2 class="mb-6 font-serif text-3xl font-normal text-foreground sm:text-4xl">
 						{$LL.contact_page.page.contact_us()}
 					</h2>
-					<p class="mb-10 text-sm font-light leading-relaxed text-stone-600">
+					<p class="mb-10 text-sm font-light leading-relaxed text-foreground-muted">
 						{$LL.contact_page.page.have_question()}
 					</p>
 
-					<div class="space-y-6 text-sm text-stone-700">
+					<div class="space-y-6 text-sm text-foreground-muted">
 						<div class="flex items-start gap-4">
-							<div class="bg-stone-100 p-2.5 text-stone-800">
+							<div class="bg-surface p-2.5 text-foreground">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									class="h-4 w-4"
@@ -69,15 +70,15 @@
 								</svg>
 							</div>
 							<div>
-								<span class="block text-xs uppercase tracking-wider text-stone-400">
+								<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
 									{$locale === 'vn' ? 'Địa chỉ' : $locale === 'fr' ? 'Adresse' : 'Address'}
 								</span>
-								<span class="font-medium text-stone-900">09 Nguyen Binh, Daklak, Vietnam</span>
+								<span class="font-medium text-foreground">09 Nguyen Binh, Daklak, Vietnam</span>
 							</div>
 						</div>
 
 						<div class="flex items-start gap-4">
-							<div class="bg-stone-100 p-2.5 text-stone-800">
+							<div class="bg-surface p-2.5 text-foreground">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									class="h-4 w-4"
@@ -93,15 +94,15 @@
 								</svg>
 							</div>
 							<div>
-								<span class="block text-xs uppercase tracking-wider text-stone-400">
+								<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
 									{$locale === 'vn' ? 'Điện thoại / Hotline' : 'Phone'}
 								</span>
-								<span class="font-medium text-stone-900">0262 396 68 68</span>
+								<span class="font-medium text-foreground">0262 396 68 68</span>
 							</div>
 						</div>
 
 						<div class="flex items-start gap-4">
-							<div class="bg-stone-100 p-2.5 text-stone-800">
+							<div class="bg-surface p-2.5 text-foreground">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
 									class="h-4 w-4"
@@ -121,23 +122,24 @@
 								</svg>
 							</div>
 							<div>
-								<span class="block text-xs uppercase tracking-wider text-stone-400">Email</span>
-								<span class="font-medium text-stone-900">info@chdtravel.com</span>
+								<span class="block text-xs uppercase tracking-wider text-foreground-subtle"
+									>Email</span>
+								<span class="font-medium text-foreground">info@chdtravel.com</span>
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="mt-8 space-y-4 border-t border-stone-200 pt-6">
+				<div class="mt-8 space-y-4 border-t border-border pt-6">
 					<div>
-						<span class="mb-1 block text-xs uppercase tracking-wider text-stone-400">
+						<span class="mb-1 block text-xs uppercase tracking-wider text-foreground-subtle">
 							{$locale === 'vn' ? 'Thời gian làm việc' : 'Operating Hours'}
 						</span>
-						<p class="text-xs font-light text-stone-600">08:00 – 18:00 (Mon – Sun)</p>
+						<p class="text-xs font-light text-foreground-muted">08:00 – 18:00 (Mon – Sun)</p>
 					</div>
 
 					<!-- Google Maps Mini-Map Preview -->
-					<div class="overflow-hidden border border-stone-200 bg-stone-100">
+					<div class="overflow-hidden border border-border bg-surface">
 						<iframe
 							title="CHD Travel Location"
 							src="https://maps.google.com/maps?q=09+Nguyen+Binh,+Tan+Loi,+Buon+Ma+Thuot,+Dak+Lak,+Vietnam&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -150,8 +152,8 @@
 							class="w-full">
 						</iframe>
 						<div
-							class="flex items-center justify-between bg-stone-50 px-3 py-2 text-[11px] text-stone-600">
-							<span class="font-medium text-stone-800">CHD Travel • Buôn Ma Thuột</span>
+							class="flex items-center justify-between bg-surface px-3 py-2 text-[11px] text-foreground-muted">
+							<span class="font-medium text-foreground">CHD Travel • Buôn Ma Thuột</span>
 							<a
 								href="https://maps.app.goo.gl/mr8NYztsShiNjfKQ9"
 								target="_blank"
@@ -165,8 +167,8 @@
 			</div>
 
 			<!-- Contact Form right -->
-			<div class="border border-stone-200/90 bg-sand-card p-8 sm:p-12 lg:col-span-7">
-				<h3 class="mb-6 font-serif text-2xl text-stone-900">
+			<div class="border border-border/90 bg-surface p-8 sm:p-12 lg:col-span-7">
+				<h3 class="mb-6 font-serif text-2xl text-foreground">
 					{$LL.nav_bar.contact()}
 				</h3>
 
@@ -183,7 +185,7 @@
 					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 						<div>
 							<label
-								class="mb-2 block text-xs uppercase tracking-wider text-stone-500"
+								class="mb-2 block text-xs uppercase tracking-wider text-foreground-muted"
 								for="cf-name">
 								{$LL.contact_page.placeholder.name()}
 							</label>
@@ -193,12 +195,12 @@
 								type="text"
 								required
 								bind:value={$form.name}
-								class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none"
+								class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none"
 								placeholder="Nguyễn Văn A" />
 						</div>
 						<div>
 							<label
-								class="mb-2 block text-xs uppercase tracking-wider text-stone-500"
+								class="mb-2 block text-xs uppercase tracking-wider text-foreground-muted"
 								for="cf-phone">
 								{$LL.contact_page.placeholder.phone()} / Email
 							</label>
@@ -208,7 +210,7 @@
 								type="text"
 								required
 								bind:value={$form.phone}
-								class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none"
+								class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none"
 								placeholder="0901234567" />
 						</div>
 					</div>
@@ -216,7 +218,7 @@
 					<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
 						<div>
 							<label
-								class="mb-2 block text-xs uppercase tracking-wider text-stone-500"
+								class="mb-2 block text-xs uppercase tracking-wider text-foreground-muted"
 								for="cf-email">
 								{$LL.contact_page.placeholder.email()}
 							</label>
@@ -226,12 +228,12 @@
 								type="email"
 								required
 								bind:value={$form.email}
-								class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none"
+								class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none"
 								placeholder="email@example.com" />
 						</div>
 						<div>
 							<label
-								class="mb-2 block text-xs uppercase tracking-wider text-stone-500"
+								class="mb-2 block text-xs uppercase tracking-wider text-foreground-muted"
 								for="cf-langs">
 								{$LL.contact_page.placeholder.langs()}
 							</label>
@@ -240,7 +242,7 @@
 								name="langs"
 								type="text"
 								bind:value={$form.langs}
-								class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none"
+								class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none"
 								placeholder="Vietnamese / English / French" />
 						</div>
 					</div>
@@ -248,14 +250,14 @@
 					{#if allTours.length > 0}
 						<div>
 							<label
-								class="mb-2 block text-xs uppercase tracking-wider text-stone-500"
+								class="mb-2 block text-xs uppercase tracking-wider text-foreground-muted"
 								for="cf-tour">
 								{$locale === 'vn' ? 'Chuyến đi bạn quan tâm' : 'Selected Tour / Inquiry'}
 							</label>
 							<select
 								id="cf-tour"
 								name="selected_tag"
-								class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm text-stone-700 transition-colors focus:border-stone-900 focus:bg-white focus:outline-none">
+								class="w-full border border-border bg-background/50 px-4 py-3 text-sm text-foreground transition-colors focus:border-foreground focus:bg-surface focus:outline-none">
 								<option value="General">
 									{$locale === 'vn'
 										? '-- Tư vấn chung / Tour thiết kế riêng --'
@@ -272,7 +274,7 @@
 
 					<div>
 						<label
-							class="mb-2 block text-xs uppercase tracking-wider text-stone-500"
+							class="mb-2 block text-xs uppercase tracking-wider text-foreground-muted"
 							for="cf-msg">
 							{$LL.contact_page.placeholder.msg()}
 						</label>
@@ -281,14 +283,14 @@
 							name="msg"
 							rows="4"
 							bind:value={$form.msg}
-							class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none"
+							class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none"
 							placeholder={$LL.contact_page.placeholder.msg()}></textarea>
 					</div>
 
 					<button
 						type="submit"
 						disabled={$submitting}
-						class="flex w-full items-center justify-center gap-2 bg-stone-900 py-4 text-xs uppercase tracking-widest text-stone-50 transition-colors hover:bg-stone-800 disabled:opacity-50">
+						class="flex w-full items-center justify-center gap-2 bg-inverse py-4 text-xs uppercase tracking-widest text-inverse-foreground transition-colors hover:bg-inverse-dark disabled:opacity-50">
 						<span>{$submitting ? 'Sending...' : $LL.contact_page.page.submit()}</span>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"

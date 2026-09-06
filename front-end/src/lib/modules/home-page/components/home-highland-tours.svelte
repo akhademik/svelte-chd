@@ -117,18 +117,19 @@
 								</a>
 							</h3>
 
-							<div class="mb-6 line-clamp-3 text-sm font-light leading-relaxed text-stone-600">
+							<div
+								class="mb-6 line-clamp-3 text-sm font-light leading-relaxed text-foreground-muted">
 								<PortableText
 									value={tour.tour_intro?.[$locale] || []}
 									components={portableTextComponents} />
 							</div>
 
 							{#if tour.tour_highlights?.length}
-								<ul class="mb-8 space-y-2 text-xs text-stone-600">
+								<ul class="mb-8 space-y-2 text-xs text-foreground-muted">
 									{#each tour.tour_highlights.slice(0, 3) as { highlights }}
 										{#if highlights?.[$locale]}
 											<li class="flex items-center gap-2">
-												<span class="h-1.5 w-1.5 rounded-full bg-stone-900"></span>
+												<span class="h-1.5 w-1.5 rounded-full bg-secondary"></span>
 												<span>{highlights[$locale]}</span>
 											</li>
 										{/if}
@@ -138,10 +139,10 @@
 						</div>
 
 						<div
-							class="-mx-6 -mb-6 mt-6 flex items-center justify-between border-t border-stone-100 bg-stone-50/50 px-6 py-4 sm:-mx-8 sm:-mb-8 sm:px-8 lg:-mx-10 lg:-mb-10 lg:px-10">
+							class="-mx-6 -mb-6 mt-6 flex items-center justify-between border-t border-border bg-surface/50 px-6 py-4 sm:-mx-8 sm:-mb-8 sm:px-8 lg:-mx-10 lg:-mb-10 lg:px-10">
 							<a
 								href={tourLink}
-								class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-colors hover:text-stone-950">
+								class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-foreground-muted transition-colors hover:text-foreground">
 								<span>{$LL.tours.click_detail()}</span>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +163,7 @@
 							</a>
 							<button
 								onclick={() => booking_modal.open(title)}
-								class="bg-stone-900 px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">
+								class="bg-inverse px-5 py-2.5 text-xs font-medium uppercase tracking-wider text-inverse-foreground transition-colors hover:bg-inverse-dark">
 								{$locale === 'vn' ? 'Đặt Tour' : 'Book Tour'}
 							</button>
 						</div>

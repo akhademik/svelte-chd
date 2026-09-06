@@ -24,12 +24,12 @@
 </script>
 
 <div
-	class="relative flex w-full flex-col items-center justify-center bg-stone-900 p-6 text-stone-100 lg:h-full lg:w-1/2 lg:p-12">
+	class="relative flex w-full flex-col items-center justify-center bg-inverse p-6 text-inverse-foreground lg:h-full lg:w-1/2 lg:p-12">
 	<div class="relative flex w-full flex-1 flex-col items-center justify-center gap-4">
 		{#if allImages.length > 0}
 			<!-- Main Display Image -->
 			<div
-				class="relative aspect-[4/3] w-full max-w-[500px] overflow-hidden border border-stone-800 bg-stone-950 shadow-2xl sm:aspect-[16/11]">
+				class="relative aspect-[4/3] w-full max-w-[500px] overflow-hidden border border-inverse-dark bg-inverse-dark shadow-2xl sm:aspect-[16/11]">
 				<img
 					alt={allImages[activeIndex]?.caption || tour.tour_name?.[$locale] || 'Tour Image'}
 					src={url_for(allImages[activeIndex])
@@ -68,7 +68,7 @@
 							stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
 					</button>
 					<div
-						class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-light text-stone-200 backdrop-blur-sm">
+						class="absolute bottom-3 right-3 rounded-full bg-black/60 px-2.5 py-0.5 text-[10px] font-light text-inverse-foreground backdrop-blur-sm">
 						{activeIndex + 1} / {allImages.length}
 					</div>
 				{/if}
@@ -83,8 +83,8 @@
 							onclick={() => (activeIndex = idx)}
 							class={`relative aspect-[4/3] h-14 shrink-0 overflow-hidden border transition-all ${
 								activeIndex === idx
-									? 'scale-105 border-terracotta opacity-100 ring-1 ring-terracotta'
-									: 'border-stone-800 opacity-60 hover:opacity-100'
+									? 'scale-105 border-secondary opacity-100 ring-1 ring-secondary'
+									: 'border-inverse-dark opacity-60 hover:opacity-100'
 							}`}>
 							<img
 								src={url_for(imgItem).width(120).height(90).auto('format').quality(65).url()}
@@ -99,10 +99,10 @@
 
 	<div class="mt-4 flex w-full max-w-[500px] flex-col items-center gap-1.5 text-center">
 		<h1
-			class="font-serif text-2xl font-normal leading-snug tracking-tight text-stone-50 sm:text-3xl">
+			class="font-serif text-2xl font-normal leading-snug tracking-tight text-inverse-foreground sm:text-3xl">
 			{tour.tour_name?.[$locale] || ''}
 		</h1>
-		<p class="text-xs uppercase tracking-widest text-stone-400">
+		<p class="text-xs uppercase tracking-widest text-foreground-subtle">
 			{tour.tour_duration?.[$locale] || ''}
 		</p>
 	</div>

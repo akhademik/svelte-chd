@@ -67,7 +67,7 @@
 			case 'destination':
 				return 'bg-cyan-100 text-cyan-900 border-cyan-300'
 			default:
-				return 'bg-stone-100 text-stone-800 border-stone-300'
+				return 'bg-surface text-foreground border-border-strong'
 		}
 	}
 </script>

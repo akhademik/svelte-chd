@@ -123,7 +123,7 @@
 							{#each [1, 2, 3, 4, 5] as starNum}
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									class={`h-4 w-4 fill-current ${starNum <= (currentReview.stars || 5) ? 'text-amber-600' : 'text-stone-300'}`}
+									class={`h-4 w-4 fill-current ${starNum <= (currentReview.stars || 5) ? 'text-amber-600' : 'text-border-strong'}`}
 									viewBox="0 0 24 24">
 									<polygon
 										points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
@@ -158,7 +158,7 @@
 
 					<!-- Review Content -->
 					<p
-						class="line-clamp-4 font-serif text-sm font-light italic leading-relaxed text-stone-700 sm:line-clamp-5 sm:text-base">
+						class="line-clamp-4 font-serif text-sm font-light italic leading-relaxed text-foreground-muted sm:line-clamp-5 sm:text-base">
 						"{currentReview.content}"
 					</p>
 				</div>

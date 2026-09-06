@@ -12,10 +12,10 @@
 </script>
 
 <section
-	class="fixed inset-0 z-40 flex flex-col justify-between bg-stone-50 p-8 transition-all duration-500 md:hidden"
+	class="fixed inset-0 z-40 flex flex-col justify-between bg-surface p-8 transition-all duration-500 md:hidden"
 	class:-translate-x-full={!$nav_mobile}>
 	<div class="mt-20">
-		<ul class="flex flex-col gap-6 font-serif text-2xl tracking-wide text-stone-900">
+		<ul class="flex flex-col gap-6 font-serif text-2xl tracking-wide text-foreground">
 			{#each menu_items as { id, text, url } (id)}
 				{@const fixed_url = `/${$locale}${url}`}
 				{@const active = $page.url.pathname === fixed_url}
@@ -30,7 +30,7 @@
 			{/each}
 		</ul>
 	</div>
-	<div class="flex items-center justify-between border-t border-stone-200 pt-6">
+	<div class="flex items-center justify-between border-t border-border pt-6">
 		<BaseLocaleSwitcher />
 	</div>
 </section>

@@ -98,29 +98,30 @@
 
 <div class="space-y-12 pb-24">
 	<!-- Hero Section -->
-	<section class="border-b border-stone-200/80 bg-sand-card py-12 sm:py-16">
+	<!-- Hero Section -->
+	<section class="border-b border-border bg-surface py-12 sm:py-16">
 		<div class="mx-auto max-w-4xl px-6">
 			<!-- Breadcrumb & Back -->
 			<div class="mb-6 flex flex-wrap items-center justify-between gap-4">
-				<nav class="flex items-center gap-2 text-xs uppercase tracking-wider text-stone-500">
+				<nav class="flex items-center gap-2 text-xs uppercase tracking-wider text-foreground-muted">
 					<a
 						href={`/${$locale}`}
-						class="transition-colors hover:text-stone-900">
+						class="transition-colors hover:text-foreground">
 						{$locale === 'vn' ? 'Trang chủ' : 'Home'}
 					</a>
 					<span>/</span>
 					<a
 						href={`/${$locale}/blog`}
-						class="transition-colors hover:text-stone-900">
+						class="transition-colors hover:text-foreground">
 						CHD Journal
 					</a>
 					<span>/</span>
-					<span class="font-medium text-stone-900">{getCategoryName(post.category)}</span>
+					<span class="font-medium text-foreground">{getCategoryName(post.category)}</span>
 				</nav>
 
 				<a
 					href={`/${$locale}/blog`}
-					class="inline-flex items-center gap-2 border border-stone-300 bg-white px-4 py-2 text-xs uppercase tracking-wider text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:text-stone-900">
+					class="inline-flex items-center gap-2 border border-border-strong bg-surface px-4 py-2 text-xs uppercase tracking-wider text-foreground shadow-sm transition-all hover:border-foreground hover:text-foreground">
 					{$LL.blog_page.all_articles_btn()}
 				</a>
 			</div>
@@ -128,16 +129,16 @@
 			<div class="space-y-4">
 				<div class="flex items-center gap-3">
 					<span
-						class="bg-stone-900 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
+						class="bg-inverse px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-inverse-foreground">
 						{getCategoryName(post.category)}
 					</span>
-					<span class="text-xs text-stone-500">
+					<span class="text-xs text-foreground-subtle">
 						{post.publishedAt?.split('T')[0] || ''}
 					</span>
 				</div>
 
 				<h1
-					class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
+					class="font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
 					{title}
 				</h1>
 
@@ -148,9 +149,9 @@
 				{/if}
 
 				<div
-					class="flex items-center gap-2 border-t border-stone-200/80 pt-2 text-xs text-stone-500">
+					class="flex items-center gap-2 border-t border-border pt-2 text-xs text-foreground-muted">
 					<span>{$LL.blog_page.author_prefix()}</span>
-					<span class="font-medium text-stone-800">{post.author || 'CHD Travel Team'}</span>
+					<span class="font-medium text-foreground">{post.author || 'CHD Travel Team'}</span>
 				</div>
 			</div>
 		</div>
@@ -161,8 +162,9 @@
 		<article class="space-y-10">
 			<!-- Unified Image Gallery (Cover + Album merged) -->
 			{#if allImages.length > 0}
-				<div class="space-y-3 overflow-hidden border border-stone-200 bg-stone-900 p-2 shadow-md">
-					<div class="relative aspect-[16/10] w-full overflow-hidden bg-stone-950 sm:aspect-[16/9]">
+				<div class="space-y-3 overflow-hidden border border-border bg-inverse p-2 shadow-md">
+					<div
+						class="relative aspect-[16/10] w-full overflow-hidden bg-inverse-dark sm:aspect-[16/9]">
 						{#key activeImageIndex}
 							<img
 								transition:fade={{ duration: 250 }}
@@ -207,7 +209,7 @@
 									stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
 							</button>
 							<div
-								class="absolute bottom-3 right-3 rounded-full bg-black/60 px-3 py-1 text-xs font-light text-stone-200 backdrop-blur-sm">
+								class="absolute bottom-3 right-3 rounded-full bg-black/60 px-3 py-1 text-xs font-light text-inverse-foreground backdrop-blur-sm">
 								{activeImageIndex + 1} / {allImages.length}
 							</div>
 						{/if}
@@ -222,7 +224,7 @@
 									onclick={() => (activeImageIndex = idx)}
 									class={`relative aspect-[16/10] h-16 shrink-0 overflow-hidden border-2 transition-all ${
 										activeImageIndex === idx
-											? 'scale-105 border-terracotta opacity-100'
+											? 'scale-105 border-secondary opacity-100'
 											: 'border-transparent opacity-60 hover:opacity-100'
 									}`}>
 									<img
@@ -239,7 +241,7 @@
 			<!-- Blog Content -->
 			{#if content && (Array.isArray(content) ? content.length > 0 : true)}
 				<div
-					class="space-y-6 border border-stone-200/90 bg-sand-card p-6 text-sm font-light leading-relaxed text-stone-800 sm:p-10 sm:text-base">
+					class="space-y-6 border border-border/90 bg-surface p-6 text-sm font-light leading-relaxed text-foreground sm:p-10 sm:text-base">
 					<PortableText
 						value={content}
 						components={portableTextComponents} />
@@ -247,10 +249,10 @@
 			{/if}
 
 			<!-- Bottom Back Navigation -->
-			<div class="flex items-center justify-between border-t border-stone-200 pt-8">
+			<div class="flex items-center justify-between border-t border-border pt-8">
 				<a
 					href={`/${$locale}/blog`}
-					class="inline-flex items-center gap-2 border border-stone-800 px-6 py-3 text-xs uppercase tracking-widest text-stone-900 transition-colors hover:bg-stone-900 hover:text-white">
+					class="inline-flex items-center gap-2 border border-foreground px-6 py-3 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-inverse hover:text-white">
 					{$LL.blog_page.all_articles_btn()}
 				</a>
 			</div>

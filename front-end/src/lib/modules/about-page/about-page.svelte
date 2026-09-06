@@ -17,14 +17,14 @@
 								: 'About CHD Travel'}
 					</span>
 					<h1
-						class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">
+						class="font-serif text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
 						{$locale === 'vn'
 							? 'Chúng tôi lớn lên cùng đất bazan này'
 							: $locale === 'fr'
 								? 'Nous avons grandi avec cette terre de basalte'
 								: 'Born and raised in the heart of the Central Highlands'}
 					</h1>
-					<p class="mt-6 text-base font-light leading-relaxed text-stone-600 sm:text-lg">
+					<p class="mt-6 text-base font-light leading-relaxed text-foreground-muted sm:text-lg">
 						{$locale === 'vn'
 							? 'CHD Travel do một nhóm bạn sinh ra ở Buôn Ma Thuột lập nên, sau nhiều năm dẫn khách quen đi những nơi mà bản đồ du lịch thông thường không ghi. Chúng tôi không bán lịch trình đóng gói công nghiệp — chúng tôi chia sẻ đúng vùng đất và văn hoá mình đang sống.'
 							: $locale === 'fr'
@@ -33,24 +33,24 @@
 					</p>
 
 					<!-- Key Stats -->
-					<div class="mt-10 flex flex-wrap gap-8 border-t border-stone-200 pt-8 sm:gap-12">
+					<div class="mt-10 flex flex-wrap gap-8 border-t border-border pt-8 sm:gap-12">
 						<div>
-							<span class="block text-xs uppercase tracking-wider text-stone-400">
+							<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
 								{$locale === 'vn' ? 'Hoạt động từ' : 'Active Since'}
 							</span>
-							<b class="font-serif text-2xl font-normal text-stone-900 sm:text-3xl">2019</b>
+							<b class="font-serif text-2xl font-normal text-foreground sm:text-3xl">2019</b>
 						</div>
 						<div>
-							<span class="block text-xs uppercase tracking-wider text-stone-400">
+							<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
 								{$locale === 'vn' ? 'Đoàn khách đón' : 'Groups Hosted'}
 							</span>
-							<b class="font-serif text-2xl font-normal text-stone-900 sm:text-3xl">400+</b>
+							<b class="font-serif text-2xl font-normal text-foreground sm:text-3xl">400+</b>
 						</div>
 						<div>
-							<span class="block text-xs uppercase tracking-wider text-stone-400">
+							<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
 								{$locale === 'vn' ? 'HDV Bản địa' : 'Local Guides'}
 							</span>
-							<b class="font-serif text-2xl font-normal text-stone-900 sm:text-3xl">7+</b>
+							<b class="font-serif text-2xl font-normal text-foreground sm:text-3xl">7+</b>
 						</div>
 					</div>
 				</div>
@@ -58,14 +58,14 @@
 				<!-- Hero Visual Card -->
 				<div class="relative lg:col-span-5">
 					<div
-						class="overflow-hidden border border-border bg-inverse p-8 text-stone-100 shadow-xl sm:p-10">
+						class="overflow-hidden border border-border bg-inverse p-8 text-inverse-foreground shadow-xl sm:p-10">
 						<span class="text-xs uppercase tracking-widest text-secondary"
 							>CHD Travel Philosophy</span>
 						<blockquote
-							class="mt-4 font-serif text-xl font-normal italic leading-relaxed text-stone-100">
+							class="mt-4 font-serif text-xl font-normal italic leading-relaxed text-inverse-foreground">
 							"Go local — See local — Eat local"
 						</blockquote>
-						<p class="mt-4 text-xs font-light leading-relaxed text-stone-300">
+						<p class="mt-4 text-xs font-light leading-relaxed text-inverse-foreground/80">
 							{$locale === 'vn'
 								? 'Tôn trọng bản sắc buôn làng, gìn giữ môi trường rừng tự nhiên và đồng hành bảo tồn văn hoá cồng chiêng Tây Nguyên.'
 								: 'Respecting indigenous villages, preserving natural forests, and fostering the authentic gong culture of the Highlands.'}
@@ -155,7 +155,7 @@
 							? 'Đồng hành cùng mọi hành trình'
 							: 'Your Trusted Companion in the Highlands'}
 					</h3>
-					<p class="mt-2 text-sm font-light leading-relaxed text-stone-600 sm:max-w-3xl">
+					<p class="mt-2 text-sm font-light leading-relaxed text-foreground-muted sm:max-w-3xl">
 						{$locale === 'vn'
 							? 'Đội ngũ hơn 7 hướng dẫn viên bản địa am hiểu từng ngóc ngách, phục vụ hàng trăm đoàn khách quốc tế và trong nước với chất lượng cao nhất.'
 							: 'A dedicated team of local guides bringing you unforgettable, tailor-made adventures across Dak Lak.'}
@@ -166,16 +166,17 @@
 	</section>
 
 	<!-- Team Section -->
-	<section class="border-t border-stone-200/80 bg-stone-100/60 py-16 sm:py-24">
+	<section class="border-t border-border bg-surface/60 py-16 sm:py-24">
 		<div class="mx-auto max-w-6xl px-6">
 			<div class="mb-12 max-w-2xl">
-				<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-stone-400">
+				<span
+					class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-foreground-subtle">
 					02 / People
 				</span>
-				<h2 class="font-serif text-2xl font-normal text-stone-900 sm:text-3xl">
+				<h2 class="font-serif text-2xl font-normal text-foreground sm:text-3xl">
 					{$locale === 'vn' ? 'Đội ngũ hướng dẫn viên & điều hành' : 'Our Team & Local Guides'}
 				</h2>
-				<p class="mt-3 text-sm font-light leading-relaxed text-stone-600">
+				<p class="mt-3 text-sm font-light leading-relaxed text-foreground-muted">
 					{$locale === 'vn'
 						? 'Những người con sinh ra và gắn bó với Tây Nguyên — am hiểu sâu sắc văn hoá và con người nơi đây.'
 						: 'Native guides who grew up with the land, passionate about sharing their culture.'}
@@ -325,7 +326,7 @@
 						<h3 class="font-serif text-lg font-medium text-foreground">
 							{$locale === 'vn' ? 'Thông tin đăng ký doanh nghiệp' : 'Company Registration'}
 						</h3>
-						<div class="mt-6 divide-y divide-border text-xs text-stone-700">
+						<div class="mt-6 divide-y divide-border text-xs text-foreground">
 							<div class="flex justify-between py-3">
 								<span class="text-foreground-subtle"
 									>{$locale === 'vn' ? 'Tên doanh nghiệp' : 'Company Name'}</span>

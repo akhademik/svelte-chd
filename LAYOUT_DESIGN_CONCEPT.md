@@ -16,41 +16,43 @@ CHD Travel mang tinh thần du lịch bản địa Tây Nguyên: **mộc mạc, 
 
 ## 2. Bảng Màu Chuẩn & Hệ Thống Semantic Tokens (Color System & Tokens)
 
-Hệ thống màu sắc được tổ chức theo chuẩn **Semantic Tokens** (Token chức năng). Tương lai khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa token bên dưới mà không cần sửa đổi hàng loạt component.
+Hệ thống màu sắc được tổ chức theo mô hình **3 Tầng (3-Tier Design System Architecture)**:
+1. **Tier 1 (Internal Primitive Palette)**: Tonal scale `stone-50` -> `stone-950` và các mã màu gốc (chỉ dùng nội bộ trong cấu hình, không viết trực tiếp trong component UI).
+2. **Tier 2 (Semantic Tokens)**: Hệ thống token chức năng đại diện cho ý nghĩa sử dụng (`primary`, `secondary`, `background`, `surface`, `foreground`, `border`, `inverse`).
+3. **Tier 3 (Component Usage)**: Áp dụng trực tiếp semantic token vào các component (Button, Card, Heading, Modal, Footer...).
 
-### 2.1. Nhóm Token Chức Năng (Semantic Groups)
+Khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa token tại `tailwind.config.js` mà không cần sửa đổi bất kỳ component UI nào.
 
-| Nhóm Token | Token Key | HEX Code | Tailwind Class Đề Xuất | Mục đích sử dụng |
+### 2.1. Bảng Quy Chuẩn Semantic Tokens (Semantic Design Tokens)
+
+| Nhóm Token | Token Key | HEX Code | Tailwind Class Chuẩn | Mục đích & Ngữ cảnh sử dụng |
 | :--- | :--- | :--- | :--- | :--- |
-| **Brand** | **`primary`** | `#5F6E56` | `bg-primary`, `text-primary`, `border-primary` (tương đương `moss`) | Màu nhận diện rừng rêu Tây Nguyên, nút CTA chính, tiêu đề H1/H2 nổi bật |
-| | **`primary-hover`** | `#4A5642` | `hover:bg-primary-hover` (tương đương `moss-hover`) | Trạng thái hover cho nút primary |
-| | **`primary-dark`** | `#353E2F` | `bg-primary-dark` (tương đương `moss-dark`) | Điểm nhấn rêu đậm |
-| | **`secondary`** | `#A3764A` | `bg-secondary`, `text-secondary`, `border-secondary` (tương đương `terracotta`/`ochre`) | Màu đất nung bazan, badge "Best Sell", giá tour, link hover |
+| **Brand** | **`primary`** | `#5F6E56` | `bg-primary`, `text-primary`, `border-primary` | Màu nhận diện rừng rêu Tây Nguyên: Nút CTA chính, link/badge nhấn mạnh thương hiệu |
+| | **`primary-hover`** | `#4A5642` | `hover:bg-primary-hover` | Trạng thái hover cho nút primary |
+| | **`primary-dark`** | `#353E2F` | `bg-primary-dark` | Điểm nhấn rêu đậm |
+| | **`secondary`** | `#A3764A` | `bg-secondary`, `text-secondary`, `border-secondary` | Màu đất nung bazan: Badge "Best Sell", giá tour, icon highlight, secondary CTA |
 | | **`secondary-hover`** | `#8C633C` | `hover:bg-secondary-hover` | Trạng thái hover cho secondary |
-| **Surface** | **`background`** | `#D6CBAE` | `bg-background` (tương đương `bg-sand`, `bg-stone-100`) | Nền chính toàn trang (ấm, trầm, chống mỏi mắt) |
-| | **`surface`** | `#DFD5B9` | `bg-surface` (tương đương `bg-sand-card`, `bg-stone-50`) | Nền thẻ tour, blog card, form card, review container, modal |
-| | **`surface-muted`** | `#C7BB98` | `bg-surface-muted` (tương đương `bg-sand-alt`, `bg-stone-200`) | Nền section xen kẽ để tách khối trực quan |
-| **Content** | **`foreground`** | `#2A2720` | `text-foreground` (tương đương `text-stone-900`, `text-stone-800`) | Tiêu đề chính (Heading H1-H3), văn bản chữ chính |
-| | **`foreground-muted`**| `#5C5646` | `text-foreground-muted` (tương đương `text-stone-600`, `text-stone-500`) | Nội dung mô tả (Body text), phụ đề, caption |
-| | **`foreground-subtle`**| `#8A7E64` | `text-foreground-subtle` (tương đương `text-stone-400`) | Overline, step marker, caption mờ |
-| **Border** | **`border`** | `#C7BB98` | `border-border` (tương đương `border-stone-200`) | Viền card, divider, đường line phân cách mỏng |
-| | **`border-strong`** | `#B0A27E` | `border-border-strong` (tương đương `border-stone-300`) | Viền nhấn mạnh, focus viền |
-| **Inverse** | **`inverse`** | `#1E1D19` / `#2B2A24` | `bg-inverse` (tương đương `bg-charcoal`, `bg-stone-900`, `bg-stone-950`) | Nền tối cho Hero slider, Dark banner, Footer |
-| | **`inverse-foreground`**| `#DFD5B9` | `text-inverse-foreground` (tương đương `text-stone-100`, `text-stone-50`) | Chữ hiển thị trên nền tối (Hero/Footer) |
-
-### 2.2. Điểm Nhấn Bổ Sung (Accent & Highlights)
-- **Gold / Highlight**: `#B8862E` (`text-amber-700`, `bg-amber-600`) — Badge sự kiện, timeline mốc.
-- **Teal**: `#3D6E7C` (`text-cyan-800`, `bg-cyan-800`) — Tag điểm đến, tour thiên nhiên.
+| **Surface** | **`background`** | `#D6CBAE` | `bg-background` | Nền chính toàn trang (ấm, trầm, chống mỏi mắt) |
+| | **`surface`** | `#DFD5B9` | `bg-surface` | Nền thẻ tour, blog card, form card, review container, popup modal |
+| | **`surface-muted`** | `#C7BB98` | `bg-surface-muted` | Nền section xen kẽ để tách khối trực quan |
+| **Content** | **`foreground`** | `#2A2720` | `text-foreground` | Màu chữ mặc định cho tiêu đề chính (Heading H1-H4), nhãn nổi bật, icon |
+| | **`foreground-muted`**| `#5C5646` | `text-foreground-muted` | Nội dung văn bản thân (Body text), mô tả tour, phụ đề, caption |
+| | **`foreground-subtle`**| `#8A7E64` | `text-foreground-subtle` | Overline, step marker, nhãn phụ mờ |
+| **Border** | **`border`** | `#C7BB98` | `border-border` | Viền card, divider, đường line phân cách mỏng |
+| | **`border-strong`** | `#B0A27E` | `border-border-strong` | Viền nhấn mạnh, focus ring |
+| **Inverse** | **`inverse`** | `#2B2A24` | `bg-inverse` | Nền tối cho Footer, CTA Banner, thanh điều hướng nổi bật |
+| | **`inverse-dark`** | `#1E1D19` | `bg-inverse-dark` | Nền tối tương phản cao cho Hero slider container, media container |
+| | **`inverse-foreground`**| `#DFD5B9` | `text-inverse-foreground` | Màu chữ sáng hiển thị trên nền tối (`inverse` / `inverse-dark`) |
 
 ---
 
 ## 3. Typography (Kiểu chữ & Font)
 
 - **Headings (Tiêu đề)**: `font-serif` / `font-heading` (`"Sora"`, `sans-serif`)
-  - `Page Header / Route Title (H1/H2 Section)`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight leading-tight` (Dùng màu **`text-primary`** (`#5F6E56` - Moss) và **`font-bold`** để tạo điểm nhấn nổi bật trên nền sand).
-  - `Content H1`: `font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-primary tracking-tight leading-tight`
-  - `Content H2`: `font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-primary` hoặc `font-normal text-foreground`
-  - `Content H3`: `font-serif text-xl sm:text-2xl font-normal text-foreground`
+  - `Tiêu chuẩn Heading`: Mặc định sử dụng **`text-foreground`** (`#2A2720`) kết hợp `font-serif font-bold` để đảm bảo độ tương phản tự nhiên, chuẩn tính tiếp cận (A11y) và dễ đọc.
+  - `Brand Accent Heading`: Chỉ sử dụng **`text-primary`** (`#5F6E56`) hoặc **`text-secondary`** khi có chủ ý nhấn mạnh thương hiệu đặc biệt (editorial emphasis) hoặc trên các banner/hero.
+  - `Content H1/H2`: `font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground`
+  - `Content H3/H4`: `font-serif text-lg sm:text-xl font-medium text-foreground`
   - `Overline / Step marker`: `text-xs font-medium uppercase tracking-[0.25em] text-foreground-subtle` hoặc `text-secondary`
 - **Body & Controls**: `font-sans` (`"Plus Jakarta Sans"`, `sans-serif`)
   - `Body Text`: `text-sm sm:text-base font-light leading-relaxed text-foreground-muted`

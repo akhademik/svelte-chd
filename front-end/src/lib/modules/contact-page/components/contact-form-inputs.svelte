@@ -52,7 +52,7 @@
 <div class="flex flex-col gap-4">
 	<div>
 		<label
-			class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
+			class="mb-1 block text-xs font-bold uppercase tracking-wider text-foreground-muted"
 			for="cfi-name">
 			{$LL.contact_page.placeholder.name()}
 		</label>
@@ -63,13 +63,13 @@
 			name="name"
 			required
 			placeholder="Nguyễn Văn A"
-			class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none" />
+			class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none" />
 	</div>
 
 	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 		<div>
 			<label
-				class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
+				class="mb-1 block text-xs font-bold uppercase tracking-wider text-foreground-muted"
 				for="cfi-email">
 				{$LL.contact_page.placeholder.email()}
 			</label>
@@ -80,11 +80,11 @@
 				name="email"
 				required
 				placeholder="email@example.com"
-				class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none" />
+				class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none" />
 		</div>
 		<div>
 			<label
-				class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
+				class="mb-1 block text-xs font-bold uppercase tracking-wider text-foreground-muted"
 				for="cfi-phone">
 				{$LL.contact_page.placeholder.phone()}
 			</label>
@@ -95,13 +95,13 @@
 				name="phone"
 				required
 				placeholder="0901234567"
-				class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none" />
+				class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none" />
 		</div>
 	</div>
 
 	<div>
 		<label
-			class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
+			class="mb-1 block text-xs font-bold uppercase tracking-wider text-foreground-muted"
 			for="cfi-langs">
 			{$LL.contact_page.placeholder.langs()}
 		</label>
@@ -111,12 +111,12 @@
 			type="text"
 			name="langs"
 			placeholder="Vietnamese / English / French"
-			class="w-full border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none" />
+			class="w-full border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none" />
 	</div>
 
 	<div>
 		<label
-			class="mb-1 block text-xs font-bold uppercase tracking-wider text-stone-500"
+			class="mb-1 block text-xs font-bold uppercase tracking-wider text-foreground-muted"
 			for="cfi-msg">
 			{$LL.contact_page.placeholder.msg()}
 		</label>
@@ -126,14 +126,14 @@
 			name="msg"
 			rows="5"
 			placeholder={$LL.contact_page.placeholder.msg()}
-			class="w-full resize-none border border-stone-200 bg-stone-50 px-4 py-3 text-sm transition-colors focus:border-stone-900 focus:bg-white focus:outline-none"
+			class="w-full resize-none border border-border bg-background/50 px-4 py-3 text-sm transition-colors focus:border-foreground focus:bg-surface focus:outline-none"
 		></textarea>
 	</div>
 
 	<button
 		type="submit"
 		disabled={$submitting}
-		class="mt-2 flex w-full items-center justify-center gap-2 bg-stone-900 py-4 text-xs uppercase tracking-widest text-stone-50 transition-colors hover:bg-stone-800 disabled:opacity-50">
+		class="mt-2 flex w-full items-center justify-center gap-2 bg-inverse py-4 text-xs uppercase tracking-widest text-inverse-foreground transition-colors hover:bg-inverse-dark disabled:opacity-50">
 		<span>{$submitting ? 'Sending...' : $LL.contact_page.page.submit()}</span>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"

@@ -114,7 +114,7 @@
 {#if isOpen && tour}
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 p-0 backdrop-blur-sm sm:p-4 md:p-6"
+		class="fixed inset-0 z-[60] flex items-center justify-center bg-inverse-dark/60 p-0 backdrop-blur-sm sm:p-4 md:p-6"
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="modal-tour-title">
@@ -126,23 +126,23 @@
 			tabindex="-1"></button>
 		<div
 			transition:scale={{ start: 0.96, duration: 200 }}
-			class="relative z-10 flex h-full max-h-screen w-full max-w-4xl flex-col overflow-hidden rounded-none border-0 bg-stone-50 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-stone-200">
+			class="relative z-10 flex h-full max-h-screen w-full max-w-4xl flex-col overflow-hidden rounded-none border-0 bg-surface text-foreground shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-border">
 			{#key activeLang}
 				<!-- Modal Header (Sticky top) -->
 				<div
-					class="sticky top-0 z-20 flex items-center justify-between border-b border-stone-200 bg-white/95 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
-					<div class="flex items-center gap-2 text-stone-500">
+					class="sticky top-0 z-20 flex items-center justify-between border-b border-border bg-surface/95 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
+					<div class="flex items-center gap-2 text-foreground-muted">
 						{#if tour.tour_id}
 							<span
-								class="bg-stone-900 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-stone-100">
+								class="bg-inverse px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-inverse-foreground">
 								{tour.tour_id}
 							</span>
 						{/if}
 						{#if duration}
-							<span class="flex items-center gap-1.5 text-xs font-light text-stone-600">
+							<span class="flex items-center gap-1.5 text-xs font-light text-foreground-muted">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
-									class="h-3.5 w-3.5 text-stone-400"
+									class="h-3.5 w-3.5 text-foreground-subtle"
 									viewBox="0 0 24 24"
 									fill="none"
 									stroke="currentColor"
@@ -161,7 +161,7 @@
 					</div>
 					<button
 						onclick={close}
-						class="flex h-8 w-8 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-900"
+						class="flex h-8 w-8 items-center justify-center rounded-full text-foreground-subtle transition-colors hover:bg-surface-muted hover:text-foreground"
 						aria-label="Close">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -206,7 +206,7 @@
 										tag?.tourTags?.en}
 									{#if tagName}
 										<span
-											class="border border-stone-200 bg-stone-100 px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-stone-700">
+											class="border border-border bg-surface px-2.5 py-0.5 text-[10px] font-medium tracking-wide text-foreground-muted">
 											#{tagName}
 										</span>
 									{/if}
@@ -216,7 +216,7 @@
 
 						<h2
 							id="modal-tour-title"
-							class="font-serif text-2xl font-normal leading-tight text-stone-950 sm:text-3xl lg:text-4xl">
+							class="font-serif text-2xl font-normal leading-tight text-foreground sm:text-3xl lg:text-4xl">
 							{title}
 						</h2>
 					</div>
@@ -226,7 +226,7 @@
 						<div class="space-y-3">
 							<!-- Main Featured Image -->
 							<div
-								class="relative aspect-[16/10] w-full overflow-hidden bg-stone-900 shadow-sm sm:aspect-[16/9]">
+								class="relative aspect-[16/10] w-full overflow-hidden bg-inverse shadow-sm sm:aspect-[16/9]">
 								{#key activeImageIndex}
 									<img
 										transition:fade={{ duration: 200 }}
@@ -285,7 +285,7 @@
 											onclick={() => (activeImageIndex = idx)}
 											class={`relative aspect-[16/10] h-16 shrink-0 overflow-hidden border-2 transition-all ${
 												activeImageIndex === idx
-													? 'scale-105 border-terracotta opacity-100'
+													? 'scale-105 border-secondary opacity-100'
 													: 'border-transparent opacity-60 hover:opacity-100'
 											}`}>
 											<img
@@ -306,28 +306,31 @@
 
 					<!-- Quick Highlights Bar -->
 					<div
-						class="grid grid-cols-3 gap-3 border border-stone-200/90 bg-white p-4 text-xs shadow-sm sm:gap-4">
+						class="grid grid-cols-3 gap-3 border border-border/90 bg-surface p-4 text-xs shadow-sm sm:gap-4">
 						<div>
-							<span class="mb-0.5 block text-[10px] uppercase tracking-wider text-stone-400">
+							<span
+								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
 								{activeLang === 'vn' ? 'Khởi hành' : activeLang === 'fr' ? 'Départ' : 'Departure'}
 							</span>
-							<span class="font-medium text-stone-800">Buôn Ma Thuột</span>
+							<span class="font-medium text-foreground">Buôn Ma Thuột</span>
 						</div>
 						<div>
-							<span class="mb-0.5 block text-[10px] uppercase tracking-wider text-stone-400">
+							<span
+								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
 								{activeLang === 'vn' ? 'Thời lượng' : activeLang === 'fr' ? 'Durée' : 'Duration'}
 							</span>
-							<span class="font-medium text-stone-800">{duration || '1 Day'}</span>
+							<span class="font-medium text-foreground">{duration || '1 Day'}</span>
 						</div>
 						<div>
-							<span class="mb-0.5 block text-[10px] uppercase tracking-wider text-stone-400">
+							<span
+								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
 								{activeLang === 'vn'
 									? 'Quy mô nhóm'
 									: activeLang === 'fr'
 										? 'Groupe'
 										: 'Group Size'}
 							</span>
-							<span class="font-medium text-stone-800">1 - 10+ {$LL.tours.detail.pax()}</span>
+							<span class="font-medium text-foreground">1 - 10+ {$LL.tours.detail.pax()}</span>
 						</div>
 					</div>
 
@@ -335,10 +338,10 @@
 					{#if intro && (Array.isArray(intro) ? intro.length > 0 : true)}
 						<div>
 							<h3
-								class="mb-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900 sm:text-sm">
+								class="mb-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-foreground sm:text-sm">
 								{$LL.tours.detail.intro()}
 							</h3>
-							<div class="text-sm font-light leading-relaxed text-stone-700 sm:text-base">
+							<div class="text-sm font-light leading-relaxed text-foreground-muted sm:text-base">
 								<PortableText
 									value={intro}
 									components={portableTextComponents} />
@@ -350,7 +353,7 @@
 					{#if highlights.length > 0}
 						<div>
 							<h3
-								class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900 sm:text-sm">
+								class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-foreground sm:text-sm">
 								{$LL.tours.detail.highlights()}
 							</h3>
 							<div class="space-y-3">
@@ -358,7 +361,7 @@
 									{@const hlText = item?.highlights?.[activeLang] || item?.highlights?.en || ''}
 									{#if hlText}
 										<div
-											class="flex items-start gap-3 text-sm font-light text-stone-800 sm:text-base">
+											class="flex items-start gap-3 text-sm font-light text-foreground-muted sm:text-base">
 											<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 											<span>{hlText}</span>
 										</div>
@@ -372,10 +375,10 @@
 					{#if itinerary}
 						<div>
 							<h3
-								class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-stone-900 sm:text-sm">
+								class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-foreground sm:text-sm">
 								{$LL.tours.detail.itinerary()}
 							</h3>
-							<div class="text-sm font-light leading-relaxed text-stone-700 sm:text-base">
+							<div class="text-sm font-light leading-relaxed text-foreground-muted sm:text-base">
 								<PortableText
 									value={itinerary}
 									components={portableTextComponents} />
@@ -384,9 +387,9 @@
 					{/if}
 
 					<!-- Price Table & Inclusions -->
-					<div class="grid grid-cols-1 gap-6 border-t border-stone-200 pt-4 md:grid-cols-2">
+					<div class="grid grid-cols-1 gap-6 border-t border-border pt-4 md:grid-cols-2">
 						<!-- Inclusions -->
-						<div class="border border-stone-200/90 bg-white p-5 shadow-sm sm:p-6">
+						<div class="border border-border/90 bg-surface p-5 shadow-sm sm:p-6">
 							<h4
 								class="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 sm:text-sm">
 								<svg
@@ -407,7 +410,7 @@
 								<span>{$LL.tours.detail.inclusion()}</span>
 							</h4>
 							{#if includes.length > 0}
-								<ul class="space-y-2.5 text-xs font-light text-stone-700 sm:text-sm">
+								<ul class="space-y-2.5 text-xs font-light text-foreground-muted sm:text-sm">
 									{#each includes as inc}
 										{@const incText = inc?.[activeLang] || inc?.en || ''}
 										{#if incText}
@@ -429,7 +432,7 @@
 									{/each}
 								</ul>
 							{:else}
-								<p class="text-xs font-light italic text-stone-500 sm:text-sm">
+								<p class="text-xs font-light italic text-foreground-subtle sm:text-sm">
 									{activeLang === 'vn'
 										? 'Xe đưa đón, hướng dẫn viên, nước uống & vé tham quan trọn gói.'
 										: 'Transportation, local guide, entrance tickets & bottled water included.'}
@@ -438,27 +441,27 @@
 						</div>
 
 						<!-- Price Table -->
-						<div class="border border-stone-200/90 bg-white p-5 shadow-sm sm:p-6">
+						<div class="border border-border/90 bg-surface p-5 shadow-sm sm:p-6">
 							{#if prices.length > 0}
 								<div class="overflow-x-auto">
 									<table class="w-full text-left text-xs sm:text-sm">
-										<thead class="bg-stone-100 uppercase tracking-wider text-stone-700">
+										<thead class="bg-surface-muted uppercase tracking-wider text-foreground">
 											<tr>
 												<th class="px-3 py-2.5 font-medium">{$LL.tours.detail.pax_no()}</th>
 												<th class="px-3 py-2.5 text-right font-medium"
 													>{$LL.tours.detail.price()}</th>
 											</tr>
 										</thead>
-										<tbody class="divide-y divide-stone-100">
+										<tbody class="divide-y divide-border">
 											{#each prices as [pax, price]}
 												{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
-												<tr class="transition-colors hover:bg-stone-50">
-													<td class="px-3 py-2.5 text-stone-800">
+												<tr class="transition-colors hover:bg-surface-muted/50">
+													<td class="px-3 py-2.5 text-foreground">
 														{paxText}
 													</td>
-													<td class="px-3 py-2.5 text-right font-medium text-stone-900">
+													<td class="px-3 py-2.5 text-right font-medium text-foreground">
 														{format_price(price, activeLang)}
-														<span class="text-[11px] font-normal text-stone-400 sm:text-xs"
+														<span class="text-[11px] font-normal text-foreground-subtle sm:text-xs"
 															>/{$LL.tours.detail.pax()}</span>
 													</td>
 												</tr>
@@ -467,7 +470,7 @@
 									</table>
 								</div>
 							{:else}
-								<p class="text-xs font-light text-stone-500 sm:text-sm">
+								<p class="text-xs font-light text-foreground-subtle sm:text-sm">
 									{format_price(minPrice, activeLang)} / {$LL.tours.detail.pax()}
 								</p>
 							{/if}
@@ -477,11 +480,11 @@
 
 				<!-- Modal Footer (Sticky bottom) -->
 				<div
-					class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-stone-200 bg-white px-4 py-3.5 sm:px-6 sm:py-4">
+					class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-border bg-surface px-4 py-3.5 sm:px-6 sm:py-4">
 					<div class="flex w-full items-center justify-end gap-3 sm:w-auto">
 						<button
 							onclick={close}
-							class="w-1/2 border border-stone-300 px-5 py-2.5 text-xs uppercase tracking-wider text-stone-700 transition-colors hover:border-stone-900 hover:text-stone-900 sm:w-auto">
+							class="w-1/2 border border-border-strong px-5 py-2.5 text-xs uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-auto">
 							{activeLang === 'vn' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
 						</button>
 						<button

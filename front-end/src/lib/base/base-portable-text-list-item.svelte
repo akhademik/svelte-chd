@@ -8,7 +8,7 @@
 	let { children }: Props = $props()
 </script>
 
-<li class="my-1 leading-relaxed text-stone-700">
+<li class="my-1 leading-relaxed text-foreground">
 	{#if children}
 		{@render children()}
 	{/if}

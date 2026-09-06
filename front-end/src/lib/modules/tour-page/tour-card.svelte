@@ -32,12 +32,12 @@
 </script>
 
 <article
-	class="group flex h-full w-full flex-col justify-between border border-stone-200/90 bg-sand-card shadow-sm transition-all duration-300 hover:border-stone-400 hover:shadow-xl">
+	class="group flex h-full w-full flex-col justify-between border border-border/90 bg-surface shadow-sm transition-all duration-300 hover:border-border-strong hover:shadow-xl">
 	<div>
 		<!-- Tour Cover Image (Link to dedicated Tour page) -->
 		<a
 			href={tourLink}
-			class="relative block aspect-[16/11] overflow-hidden bg-stone-100">
+			class="relative block aspect-[16/11] overflow-hidden bg-surface">
 			{#if img_cover?.asset}
 				<img
 					src={url_for(img_cover).width(600).height(412).auto('format').quality(75).url()}
@@ -47,7 +47,7 @@
 			{/if}
 			{#if tour.tour_id}
 				<span
-					class="absolute left-3 top-3 bg-stone-900/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-stone-100 backdrop-blur-sm">
+					class="absolute left-3 top-3 bg-inverse/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-inverse-foreground backdrop-blur-sm">
 					{tour.tour_id}
 				</span>
 			{/if}
@@ -56,12 +56,12 @@
 		<!-- Tour Content -->
 		<div class="p-5 sm:p-6">
 			<div
-				class="mb-2.5 flex items-center gap-2.5 text-xs font-light tracking-wider text-stone-400">
+				class="mb-2.5 flex items-center gap-2.5 text-xs font-light tracking-wider text-foreground-subtle">
 				{#if tour_duration?.[$locale]}
-					<span class="flex items-center gap-1.5 text-stone-600">
+					<span class="flex items-center gap-1.5 text-foreground-muted">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
-							class="h-3.5 w-3.5 text-stone-400"
+							class="h-3.5 w-3.5 text-foreground-subtle"
 							viewBox="0 0 24 24"
 							fill="none"
 							stroke="currentColor"
@@ -78,7 +78,7 @@
 					</span>
 					<span>•</span>
 				{/if}
-				<span class="text-stone-500">
+				<span class="text-foreground-muted">
 					{$locale === 'vn' ? 'Thư thái' : $locale === 'fr' ? 'Détendu' : 'Relaxed'}
 				</span>
 			</div>
@@ -93,7 +93,7 @@
 			</h3>
 
 			<div
-				class="mb-2 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-stone-600">
+				class="mb-2 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-foreground-muted">
 				<PortableText
 					value={tour_intro?.[$locale] || []}
 					components={{}} />
@@ -103,10 +103,10 @@
 
 	<!-- Card Footer -->
 	<div
-		class="flex items-center justify-between border-t border-stone-100 bg-stone-50/50 px-5 py-3.5 sm:px-6">
+		class="flex items-center justify-between border-t border-border bg-surface/50 px-5 py-3.5 sm:px-6">
 		<a
 			href={tourLink}
-			class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-stone-700 transition-colors hover:text-stone-950">
+			class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-foreground-muted transition-colors hover:text-foreground">
 			<span>{$LL.tours.click_detail()}</span>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -127,7 +127,7 @@
 		</a>
 		<button
 			onclick={() => booking_modal.open(title)}
-			class="bg-stone-900 px-4 py-2 text-xs font-medium uppercase tracking-wider text-stone-50 transition-colors hover:bg-stone-800">
+			class="bg-inverse px-4 py-2 text-xs font-medium uppercase tracking-wider text-inverse-foreground transition-colors hover:bg-inverse-dark">
 			{$locale === 'vn' ? 'Đặt Tour' : 'Book Tour'}
 		</button>
 	</div>

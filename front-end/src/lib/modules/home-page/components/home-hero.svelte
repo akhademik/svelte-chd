@@ -2,8 +2,7 @@
 	import LL from '$i18n/i18n-svelte'
 </script>
 
-<section
-	class="relative flex min-h-[85vh] items-center justify-center border-b border-stone-200 px-6">
+<section class="relative flex min-h-[85vh] items-center justify-center border-b border-border px-6">
 	<div class="mx-auto max-w-4xl py-20 text-center">
 		<div class="mb-6 flex flex-col items-center gap-2">
 			<span class="font-serif text-sm italic tracking-widest text-secondary">

@@ -15,14 +15,14 @@
 </script>
 
 <div
-	class="flex w-full flex-1 flex-col justify-start gap-6 bg-stone-50 p-6 text-stone-900 lg:h-full lg:overflow-y-auto lg:p-12 lg:pt-16">
+	class="flex w-full flex-1 flex-col justify-start gap-6 bg-surface p-6 text-foreground lg:h-full lg:overflow-y-auto lg:p-12 lg:pt-16">
 	<div class="mx-auto w-full max-w-2xl">
 		<!-- Introduction -->
 		<div class="my-4 flex flex-col gap-3">
-			<p class="border-b border-stone-200 pb-2 font-serif text-lg font-semibold text-stone-900">
+			<p class="border-b border-border pb-2 font-serif text-lg font-semibold text-foreground">
 				{$LL.tours.detail.intro()}
 			</p>
-			<article class="text-base font-light leading-relaxed text-stone-700">
+			<article class="text-base font-light leading-relaxed text-foreground-muted">
 				<PortableText
 					value={tour.tour_intro?.[$locale] || []}
 					components={{}} />
@@ -32,14 +32,14 @@
 		<!-- Highlights -->
 		{#if tour.tour_highlights?.length}
 			<div class="my-6 flex flex-col gap-3">
-				<p class="border-b border-stone-200 pb-2 font-serif text-lg font-semibold text-stone-900">
+				<p class="border-b border-border pb-2 font-serif text-lg font-semibold text-foreground">
 					{$LL.tours.detail.highlights()}
 				</p>
-				<ul class="space-y-3 text-base font-light text-stone-800">
+				<ul class="space-y-3 text-base font-light text-foreground-muted">
 					{#each tour.tour_highlights as { highlights }}
 						{#if highlights?.[$locale]}
 							<li class="flex items-start gap-3">
-								<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-terracotta"></span>
+								<span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 								<span>{highlights[$locale]}</span>
 							</li>
 						{/if}
@@ -51,10 +51,10 @@
 		<!-- Itinerary -->
 		{#if tour.tour_itinerary?.[$locale]}
 			<div class="my-6 flex flex-col gap-3">
-				<p class="border-b border-stone-200 pb-2 font-serif text-lg font-semibold text-stone-900">
+				<p class="border-b border-border pb-2 font-serif text-lg font-semibold text-foreground">
 					{$LL.tours.detail.itinerary()}
 				</p>
-				<article class="text-base font-light leading-relaxed text-stone-700">
+				<article class="text-base font-light leading-relaxed text-foreground-muted">
 					<PortableText
 						value={tour.tour_itinerary[$locale]}
 						components={{}} />
@@ -65,34 +65,34 @@
 		<!-- Price Table -->
 		{#if prices.length > 0}
 			<div class="my-6 flex flex-col gap-3">
-				<div class="flex items-center justify-between border-b border-stone-200 pb-2">
-					<p class="font-serif text-lg text-stone-900">
+				<div class="flex items-center justify-between border-b border-border pb-2">
+					<p class="font-serif text-lg text-foreground">
 						{$LL.tours.detail.price()}
 					</p>
 					<button
 						onclick={() => booking_modal.open(title)}
-						class="bg-moss px-4 py-2 text-xs uppercase tracking-widest text-white transition-colors hover:bg-moss-hover">
+						class="bg-primary px-4 py-2 text-xs uppercase tracking-widest text-white transition-colors hover:bg-primary-hover">
 						{$LL.tours.detail.plan_this_trip()}
 					</button>
 				</div>
 				<div class="overflow-x-auto">
-					<table class="my-3 w-full border border-stone-200 text-left text-sm">
-						<thead class="bg-stone-100 text-xs uppercase tracking-wider text-stone-700">
+					<table class="my-3 w-full border border-border text-left text-sm">
+						<thead class="bg-surface-muted text-xs uppercase tracking-wider text-foreground">
 							<tr>
 								<th class="px-4 py-3 font-semibold">{$LL.tours.detail.pax_no()}</th>
 								<th class="px-4 py-3 text-right font-semibold">{$LL.tours.detail.price()}</th>
 							</tr>
 						</thead>
-						<tbody class="divide-y divide-stone-100 bg-white">
+						<tbody class="divide-y divide-border bg-surface">
 							{#each prices as [pax, price] (pax)}
 								{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
-								<tr class="transition-colors hover:bg-stone-50">
-									<td class="px-4 py-3 text-stone-800">
+								<tr class="transition-colors hover:bg-surface-muted/50">
+									<td class="px-4 py-3 text-foreground">
 										{paxText}
 									</td>
-									<td class="px-4 py-3 text-right font-medium text-stone-900">
+									<td class="px-4 py-3 text-right font-medium text-foreground">
 										{format_price(price, $locale)}
-										<span class="text-xs font-normal text-stone-400"
+										<span class="text-xs font-normal text-foreground-subtle"
 											>/{$LL.tours.detail.pax()}</span>
 									</td>
 								</tr>
@@ -106,10 +106,10 @@
 		<!-- Includes -->
 		{#if tour.tour_includes?.length}
 			<div class="my-6 flex flex-col gap-3 pb-8">
-				<p class="border-b border-stone-200 pb-2 font-serif text-lg text-stone-900">
+				<p class="border-b border-border pb-2 font-serif text-lg text-foreground">
 					{$LL.tours.detail.inclusion()}
 				</p>
-				<ul class="space-y-2 text-sm font-light text-stone-700">
+				<ul class="space-y-2 text-sm font-light text-foreground-muted">
 					{#each tour.tour_includes as item}
 						{#if item?.[$locale]}
 							<li class="flex items-start gap-3">

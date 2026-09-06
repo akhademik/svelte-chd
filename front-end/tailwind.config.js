@@ -42,28 +42,7 @@ export default {
 					foreground: '#DFD5B9',
 				},
 
-				// === 6. BRAND PALETTE ALIASES (For clear visual naming & backward compatibility) ===
-				sand: {
-					DEFAULT: '#D6CBAE',
-					alt: '#C7BB98',
-					card: '#DFD5B9',
-				},
-				moss: {
-					DEFAULT: '#5F6E56',
-					hover: '#4A5642',
-					dark: '#353E2F',
-				},
-				terracotta: '#A3764A',
-				ochre: {
-					DEFAULT: '#A3764A',
-					hover: '#8C633C',
-				},
-				charcoal: {
-					DEFAULT: '#2B2A24',
-					dark: '#1E1D19',
-				},
-
-				// === 7. TONAL SCALE (Internal Stone Scale) ===
+				// === 6. INTERNAL PRIMITIVE SCALE (Reference only, do not use in UI) ===
 				stone: {
 					50: '#DFD5B9',
 					100: '#D6CBAE',
@@ -77,15 +56,6 @@ export default {
 					900: '#2B2A24',
 					950: '#1E1D19',
 				},
-
-				// === 8. COMPATIBILITY ALIASES ===
-				accent: {
-					DEFAULT: '#5F6E56',
-					deep: '#4A5642',
-					warm: '#A3764A',
-				},
-				'accent-deep': '#4A5642',
-				'accent-warm': '#A3764A',
 			},
 			fontFamily: {
 				heading: ['"Sora"', 'sans-serif'],

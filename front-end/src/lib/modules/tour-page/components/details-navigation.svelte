@@ -51,9 +51,9 @@
 </script>
 
 <div
-	class="sticky top-0 z-30 flex w-full justify-between border-b border-stone-200 bg-stone-50/90 p-4 backdrop-blur-md lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-1.5 lg:border-none lg:bg-transparent lg:p-0">
+	class="sticky top-0 z-30 flex w-full justify-between border-b border-border bg-surface/90 p-4 backdrop-blur-md lg:fixed lg:right-5 lg:top-5 lg:w-min lg:flex-col lg:gap-1.5 lg:border-none lg:bg-transparent lg:p-0">
 	<button
-		class="flex h-9 w-9 items-center justify-center border border-stone-300 bg-white text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+		class="flex h-9 w-9 items-center justify-center border border-border-strong bg-surface text-foreground shadow-sm transition-all hover:border-foreground hover:bg-inverse hover:text-white"
 		onclick={handle_close}
 		aria-label="Close details">
 		<svg
@@ -80,7 +80,7 @@
 
 	<div class="flex gap-1.5 lg:flex-col">
 		<button
-			class="flex h-9 w-9 items-center justify-center border border-stone-300 bg-white text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+			class="flex h-9 w-9 items-center justify-center border border-border-strong bg-surface text-foreground shadow-sm transition-all hover:border-foreground hover:bg-inverse hover:text-white"
 			onclick={() => update_index('prev')}
 			aria-label="Previous tour">
 			<svg
@@ -96,7 +96,7 @@
 			</svg>
 		</button>
 		<button
-			class="flex h-9 w-9 items-center justify-center border border-stone-300 bg-white text-stone-700 shadow-sm transition-all hover:border-stone-900 hover:bg-stone-900 hover:text-white"
+			class="flex h-9 w-9 items-center justify-center border border-border-strong bg-surface text-foreground shadow-sm transition-all hover:border-foreground hover:bg-inverse hover:text-white"
 			onclick={() => update_index('next')}
 			aria-label="Next tour">
 			<svg

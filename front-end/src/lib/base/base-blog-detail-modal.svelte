@@ -131,22 +131,22 @@
 			tabindex="-1"></button>
 		<div
 			transition:scale={{ start: 0.96, duration: 200 }}
-			class="relative z-10 flex h-full max-h-screen w-full max-w-4xl flex-col overflow-hidden rounded-none border-0 bg-stone-50 text-stone-900 shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-stone-200">
+			class="relative z-10 flex h-full max-h-screen w-full max-w-4xl flex-col overflow-hidden rounded-none border-0 bg-surface text-foreground shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-border">
 			<!-- Modal Header (Sticky top) -->
 			<div
-				class="sticky top-0 z-20 flex items-center justify-between border-b border-stone-200 bg-white/95 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
+				class="sticky top-0 z-20 flex items-center justify-between border-b border-border bg-surface/95 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
 				<div class="flex items-center gap-3">
 					<span
-						class="bg-stone-900 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-stone-100">
+						class="bg-inverse px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-inverse-foreground">
 						{getCategoryName(post.category)}
 					</span>
-					<span class="text-xs text-stone-400">
+					<span class="text-xs text-foreground-subtle">
 						{post.publishedAt?.split('T')[0] || ''}
 					</span>
 				</div>
 				<button
 					onclick={close}
-					class="flex h-8 w-8 items-center justify-center rounded-full text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-900"
+					class="flex h-8 w-8 items-center justify-center rounded-full text-foreground-subtle transition-colors hover:bg-surface-muted hover:text-foreground"
 					aria-label="Close">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -176,15 +176,16 @@
 				<div>
 					<h2
 						id="modal-blog-title"
-						class="font-serif text-2xl font-normal leading-tight text-stone-900 sm:text-3xl lg:text-4xl">
+						class="font-serif text-2xl font-normal leading-tight text-foreground sm:text-3xl lg:text-4xl">
 						{title}
 					</h2>
 					{#if excerpt}
-						<p class="mt-3 text-sm font-light italic leading-relaxed text-stone-600 sm:text-base">
+						<p
+							class="mt-3 text-sm font-light italic leading-relaxed text-foreground-muted sm:text-base">
 							{excerpt}
 						</p>
 					{/if}
-					<div class="mt-3 flex items-center gap-4 text-xs text-stone-500">
+					<div class="mt-3 flex items-center gap-4 text-xs text-foreground-muted">
 						<span>{post.author || 'CHD Travel Team'}</span>
 						<span>•</span>
 						<span>CHD Travel Blog</span>
@@ -195,7 +196,7 @@
 				{#if allImages.length > 0}
 					<div class="space-y-3">
 						<div
-							class="relative aspect-[16/10] w-full overflow-hidden bg-stone-900 shadow-sm sm:aspect-[16/9]">
+							class="relative aspect-[16/10] w-full overflow-hidden bg-inverse shadow-sm sm:aspect-[16/9]">
 							{#key activeImageIndex}
 								<img
 									transition:fade={{ duration: 200 }}
@@ -270,8 +271,7 @@
 
 				<!-- Rich Text Content (PortableText) -->
 				{#if content && (Array.isArray(content) ? content.length > 0 : true)}
-					<div
-						class="prose prose-stone max-w-none text-sm font-light leading-relaxed text-stone-800">
+					<div class="prose max-w-none text-sm font-light leading-relaxed text-foreground">
 						<PortableText
 							value={content}
 							components={{
@@ -290,10 +290,10 @@
 
 			<!-- Modal Footer -->
 			<div
-				class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-stone-200 bg-white px-4 py-3.5 sm:px-6 sm:py-4">
+				class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-border bg-surface px-4 py-3.5 sm:px-6 sm:py-4">
 				<button
 					onclick={close}
-					class="bg-stone-900 px-6 py-2.5 text-xs uppercase tracking-widest text-stone-50 shadow-sm transition-colors hover:bg-stone-800">
+					class="bg-inverse px-6 py-2.5 text-xs uppercase tracking-widest text-inverse-foreground shadow-sm transition-colors hover:bg-inverse-dark">
 					{activeLang === 'vn' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
 				</button>
 			</div>

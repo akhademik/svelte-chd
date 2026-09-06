@@ -11,8 +11,8 @@
 				<div class="flex items-center gap-2">
 					<span class="font-serif text-lg uppercase tracking-widest text-inverse-foreground"
 						>CHD</span>
-					<span class="text-stone-700">|</span>
-					<span class="text-xs uppercase tracking-widest text-stone-300">Travel</span>
+					<span class="text-inverse-dark">|</span>
+					<span class="text-xs uppercase tracking-widest text-inverse-foreground/70">Travel</span>
 				</div>
 				<span class="font-serif text-[11px] italic tracking-widest text-secondary">
 					"go local — see local — eat local"
@@ -20,7 +20,8 @@
 			</div>
 
 			<!-- Navigation Links -->
-			<div class="flex flex-wrap items-center justify-center gap-6 font-light text-stone-300">
+			<div
+				class="flex flex-wrap items-center justify-center gap-6 font-light text-inverse-foreground/80">
 				<a
 					href={`/${$locale}/day-tours`}
 					class="transition-colors hover:text-white">
@@ -56,7 +57,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Facebook"
-					class="flex h-11 w-11 items-center justify-center rounded-full border border-stone-700 bg-stone-800 text-stone-300 transition-all hover:border-white hover:bg-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+					class="flex h-11 w-11 items-center justify-center rounded-full border border-inverse-dark bg-inverse-dark/60 text-inverse-foreground/80 transition-all hover:border-white hover:bg-inverse-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
 					<svg
 						class="h-4 w-4 fill-current"
 						viewBox="0 0 24 24">
@@ -72,7 +73,7 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="TripAdvisor"
-					class="flex h-11 w-11 items-center justify-center rounded-full border border-stone-700 bg-stone-800 text-stone-300 transition-all hover:border-white hover:bg-stone-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+					class="flex h-11 w-11 items-center justify-center rounded-full border border-inverse-dark bg-inverse-dark/60 text-inverse-foreground/80 transition-all hover:border-white hover:bg-inverse-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
 					<svg
 						class="h-4 w-4 fill-current"
 						viewBox="0 0 24 24">
@@ -86,7 +87,7 @@
 
 		<!-- Bottom Copyright -->
 		<div
-			class="border-t border-stone-800/80 pt-4 text-center text-[11px] font-light text-stone-500">
+			class="border-t border-inverse-dark/80 pt-4 text-center text-[11px] font-light text-foreground-subtle">
 			© {new Date().getFullYear()} CHD Travel. All rights reserved.
 		</div>
 	</div>

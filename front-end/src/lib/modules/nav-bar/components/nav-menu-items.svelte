@@ -5,7 +5,7 @@
 	import { menu_items } from '../nav-bar-logic'
 </script>
 
-<nav class="hidden items-center space-x-10 text-sm tracking-wide text-stone-600 md:flex">
+<nav class="hidden items-center space-x-10 text-sm tracking-wide text-foreground-muted md:flex">
 	{#each menu_items as { url, id, text } (id)}
 		{@const fixed_url = `/${$locale}${url}`}
 		{@const active = $page.url.pathname === fixed_url}
