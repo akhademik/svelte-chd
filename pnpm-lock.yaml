@@ -10,6 +10,15 @@ importers:
 
   back-end:
     dependencies:
+      '@sanity/color-input':
+        specifier: ^6.1.4
+        version: 6.1.4(721a6a37f7554a9b39c3e423a5dc4972)
+      '@sanity/image-url':
+        specifier: ^1.2.0
+        version: 1.2.0
+      '@sanity/table':
+        specifier: ^3.1.16
+        version: 3.1.16(721a6a37f7554a9b39c3e423a5dc4972)
       '@sanity/vision':
         specifier: ^6.12.0
         version: 6.12.0(49419a36b6b4f91a5bacb6c5f7e2a1ad)
@@ -2867,6 +2876,13 @@ packages:
       oxfmt:
         optional: true
 
+  '@sanity/color-input@6.1.4':
+    resolution: {integrity: sha512-kqyK1Pa8kFi9xIYSLlTdxeF04cQ1kr7PSBKXoFIbCfyDKEtcQuNu9GH3QZmwuRBvZ9Sp8UI5YPJ1RZPmkrlyFA==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+    peerDependencies:
+      react: ^19.2
+      sanity: ^5 || ^6.0.0-0
+
   '@sanity/color@3.0.8':
     resolution: {integrity: sha512-MBQ082q7GRvzSH7Xzx4ul1Kxm/AEKDgwTz5cd13oXIlenl3VAM0Un0QpeTjkC5IZTC7SHbnhwkgoVHTZDz9WKQ==}
     engines: {node: '>=18.0.0'}
@@ -3018,6 +3034,14 @@ packages:
 
   '@sanity/signed-urls@2.0.5':
     resolution: {integrity: sha512-kg+LrXyk8tYNuCZnXrSRpTKR6dkbjkfBimGhqUs93VlfhSr56NkbS9N6zXqYRTg2mwbPYd/CAQHNX3SsXJgPcg==}
+
+  '@sanity/table@3.1.16':
+    resolution: {integrity: sha512-hFbuOOvIf5evleWvS/sEo2CVHxo6iJ5F4Qo/a3uc4zZhzT5FcVtgJmwaNFf5K1eZw2z/IfvVOroJZRj7Z1TwvQ==}
+    engines: {node: '>=20.19 <22 || >=22.12'}
+    peerDependencies:
+      react: ^19.2
+      react-dom: ^19.2
+      sanity: ^5 || ^6.0.0-0
 
   '@sanity/telemetry@1.1.0':
     resolution: {integrity: sha512-ch8fLXjQi1p49rIj7yrvx6tDb0320hnzwQJBOk4Ik7MkWCE7hUjtZrhtjQaSOXJd5n/piUjK+krKxy6wFkm5TA==}
@@ -6556,6 +6580,9 @@ packages:
     resolution: {integrity: sha512-9APumHG7r4yOk4X4WlkmE71aZcv1gvin1czO3OQ1U9iJcFA5Ja/ygyb0vPOVHTthFozUYs8CLoLUlM8grb2lTQ==}
     engines: {node: '>=20.0.0'}
 
+  tinycolor2@1.6.0:
+    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
+
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
 
@@ -10046,6 +10073,19 @@ snapshots:
       - react
       - supports-color
 
+  '@sanity/color-input@6.1.4(721a6a37f7554a9b39c3e423a5dc4972)':
+    dependencies:
+      '@sanity/icons': 5.2.1(react@19.2.8)
+      '@sanity/ui': 4.0.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+      '@vanilla-extract/dynamic': 2.1.5
+      lodash-es: 4.18.1
+      react: 19.2.8
+      sanity: 6.12.0(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(@noble/hashes@2.4.0)(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(rolldown@1.2.6)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.0)))(@sanity/sdk@3.0.0(@types/react@19.2.18)(immer@11.1.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8))(vitest@5.0.0(@types/node@26.4.0)(jsdom@30.0.1(@noble/hashes@2.4.0))(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.0)))(xstate@5.32.6))(@types/node@26.4.0)(@types/react@19.2.18)(esbuild@0.28.2)(immer@11.1.18)(jiti@2.7.0)(prismjs@1.27.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.6)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@8.1.1)(typescript@5.9.3)(vitest@5.0.0(@types/node@26.4.0)(jsdom@30.0.1(@noble/hashes@2.4.0))(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.0)))
+      tinycolor2: 1.6.0
+    transitivePeerDependencies:
+      - react-dom
+      - styled-components
+
   '@sanity/color@3.0.8': {}
 
   '@sanity/comlink@4.0.3':
@@ -10359,6 +10399,17 @@ snapshots:
     dependencies:
       '@noble/ed25519': 3.2.0
       '@noble/hashes': 2.4.0
+
+  '@sanity/table@3.1.16(721a6a37f7554a9b39c3e423a5dc4972)':
+    dependencies:
+      '@sanity/icons': 5.2.1(react@19.2.8)
+      '@sanity/ui': 4.0.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))
+      '@sanity/uuid': 3.0.3
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      sanity: 6.12.0(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(@noble/hashes@2.4.0)(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(rolldown@1.2.6)(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.0)))(@sanity/sdk@3.0.0(@types/react@19.2.18)(immer@11.1.18)(react@19.2.8)(use-sync-external-store@1.6.0(react@19.2.8))(vitest@5.0.0(@types/node@26.4.0)(jsdom@30.0.1(@noble/hashes@2.4.0))(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.0)))(xstate@5.32.6))(@types/node@26.4.0)(@types/react@19.2.18)(esbuild@0.28.2)(immer@11.1.18)(jiti@2.7.0)(prismjs@1.27.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(rolldown@1.2.6)(styled-components@6.5.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@8.1.1)(typescript@5.9.3)(vitest@5.0.0(@types/node@26.4.0)(jsdom@30.0.1(@noble/hashes@2.4.0))(vite@8.2.2(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.13)(yaml@2.9.0)))
+    transitivePeerDependencies:
+      - styled-components
 
   '@sanity/telemetry@1.1.0(react@19.2.8)':
     dependencies:
@@ -14470,6 +14521,8 @@ snapshots:
 
   tinybench@6.1.4:
     optional: true
+
+  tinycolor2@1.6.0: {}
 
   tinyexec@0.3.2: {}
 

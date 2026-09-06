@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import BasePortableTextImage from '$lib/base/base-portable-text-image.svelte'
-	import BasePortableTextListItem from '$lib/base/base-portable-text-list-item.svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
+	import { portableTextComponents } from '$lib/utils/portable-text-components'
 
 	interface Props {
 		tour: Tour
@@ -15,17 +14,6 @@
 	}
 
 	let { tour }: Props = $props()
-
-	const portableTextComponents = {
-		types: {
-			image: BasePortableTextImage,
-		},
-		listItem: {
-			normal: BasePortableTextListItem,
-			bullet: BasePortableTextListItem,
-			number: BasePortableTextListItem,
-		},
-	}
 
 	let title = $derived(tour.tour_name?.[$locale] || tour.tour_name?.en || 'Tour')
 	let duration = $derived(tour.tour_duration?.[$locale] || tour.tour_duration?.en || '')

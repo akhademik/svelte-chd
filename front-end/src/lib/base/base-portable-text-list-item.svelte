@@ -1,7 +1,9 @@
 <script lang="ts">
+	import type { ListItemComponentProps } from '@portabletext/svelte'
 	import type { Snippet } from 'svelte'
 
 	interface Props {
+		portableText?: ListItemComponentProps
 		children?: Snippet
 	}
 

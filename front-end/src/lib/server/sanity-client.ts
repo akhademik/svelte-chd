@@ -1,3 +1,4 @@
+import { dev } from '$app/environment'
 import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
 import { VITE_SANITY_ID } from '$env/static/private'
 import type { BlogPost } from '$lib/types/blog.type'
@@ -7,7 +8,7 @@ import { type ClientConfig, createClient } from '@sanity/client'
 const sanityConfig: ClientConfig = {
 	projectId: VITE_SANITY_ID,
 	dataset: 'production',
-	useCdn: true,
+	useCdn: !dev,
 	apiVersion: '2023-11-03',
 }
 
@@ -21,6 +22,9 @@ export async function cachedFetch<T>(
 	ttlMs: number,
 	fetcher: () => Promise<T>
 ): Promise<T> {
+	if (dev) {
+		return fetcher()
+	}
 	const now = Date.now()
 	const hit = memoryCache.get(key)
 	if (hit && hit.expires > now) {

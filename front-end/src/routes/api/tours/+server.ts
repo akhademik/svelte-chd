@@ -1,3 +1,4 @@
+import { dev } from '$app/environment'
 import {
 	EXCHANGE_API_KEY,
 	EXCHANGE_URL,
@@ -9,7 +10,7 @@ import { type ClientConfig, createClient } from '@sanity/client'
 const config: ClientConfig = {
 	projectId: VITE_SANITY_ID,
 	dataset: 'production',
-	useCdn: true,
+	useCdn: !dev,
 	apiVersion: '2023-11-03',
 }
 

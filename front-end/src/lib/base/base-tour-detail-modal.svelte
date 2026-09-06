@@ -9,19 +9,7 @@
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
-	import BasePortableTextImage from './base-portable-text-image.svelte'
-	import BasePortableTextListItem from './base-portable-text-list-item.svelte'
-
-	const portableTextComponents = {
-		types: {
-			image: BasePortableTextImage,
-		},
-		listItem: {
-			normal: BasePortableTextListItem,
-			bullet: BasePortableTextListItem,
-			number: BasePortableTextListItem,
-		},
-	}
+	import { portableTextComponents } from '$lib/utils/portable-text-components'
 
 	let isOpen = $derived($tour_modal.isOpen)
 	let tour = $derived($tour_modal.tour)

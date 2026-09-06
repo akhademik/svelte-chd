@@ -2,25 +2,13 @@
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { BaseJsonLd, BaseSeo } from '$lib/base'
-	import BasePortableTextImage from '$lib/base/base-portable-text-image.svelte'
-	import BasePortableTextListItem from '$lib/base/base-portable-text-list-item.svelte'
+	import { portableTextComponents } from '$lib/utils/portable-text-components'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
 	import type { PageData } from './$types'
 
 	let { data }: { data: PageData } = $props()
-
-	const portableTextComponents = {
-		types: {
-			image: BasePortableTextImage,
-		},
-		listItem: {
-			normal: BasePortableTextListItem,
-			bullet: BasePortableTextListItem,
-			number: BasePortableTextListItem,
-		},
-	}
 
 	let post: BlogPost = $derived(data.post)
 	let title = $derived(

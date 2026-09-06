@@ -1,3 +1,4 @@
+import { dev } from '$app/environment'
 import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
 import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 import type { Tour } from '$lib/types/tour.type'
@@ -8,7 +9,7 @@ import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/
 const config: ClientConfig = {
 	projectId: import.meta.env.VITE_SANITY_ID,
 	dataset: 'production',
-	useCdn: true,
+	useCdn: !dev,
 	apiVersion: '2023-11-03',
 }
 

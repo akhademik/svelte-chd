@@ -9,8 +9,7 @@
 	import { url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
-	import BasePortableTextImage from './base-portable-text-image.svelte'
-	import BasePortableTextListItem from './base-portable-text-list-item.svelte'
+	import { portableTextComponents } from '$lib/utils/portable-text-components'
 
 	let isOpen = $derived($blog_modal.isOpen)
 	let post = $derived($blog_modal.post as BlogPost | null)
@@ -274,16 +273,7 @@
 					<div class="prose max-w-none text-sm font-light leading-relaxed text-foreground">
 						<PortableText
 							value={content}
-							components={{
-								types: {
-									image: BasePortableTextImage,
-								},
-								listItem: {
-									normal: BasePortableTextListItem,
-									bullet: BasePortableTextListItem,
-									number: BasePortableTextListItem,
-								},
-							}} />
+							components={portableTextComponents} />
 					</div>
 				{/if}
 			</div>
