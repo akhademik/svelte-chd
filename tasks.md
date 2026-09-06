@@ -9,7 +9,7 @@
 | Epic ID | Tên Hạng Mục | Mức Độ Ưu Tiên | Trạng Thái |
 | :--- | :--- | :--- | :--- |
 | **EPIC-1** | Plan Your Trip / Tour Enquiry Integration | 🔴 P0 (Cao nhất / High ROI) | ✅ Hoàn thành (Done) |
-| **EPIC-2** | Tái Cấu Trúc Thứ Tự Section Trang Chủ (Homepage Flow) | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-2** | Tái Cấu Trúc Thứ Tự Section Trang Chủ (Homepage Flow) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
 | **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
@@ -35,7 +35,7 @@
 ---
 
 ### 🟠 EPIC-2: Tái cấu trúc Luồng Trang Chủ (Homepage Flow Reordering)
-- [ ] **TASK-2.1**: Tái cấu trúc thứ tự các section trong trang chủ ([+page.svelte](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/[lang]/+page.svelte)) theo conversion flow tự nhiên:
+- [x] **TASK-2.1**: Tái cấu trúc thứ tự các section trong trang chủ ([+page.svelte](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/[lang]/+page.svelte)) theo conversion flow tự nhiên:
   1. `HERO`: Slogan *"Go local. See local. Eat local."* + CTA `[ Explore tours ]`
   2. `WHY CHD`: Điểm nhấn định vị thương hiệu *"Go local / See local / Eat local"*
   3. `FEATURED EXPERIENCES`: Trải nghiệm nổi bật (Coffee / Food / People / Nature)

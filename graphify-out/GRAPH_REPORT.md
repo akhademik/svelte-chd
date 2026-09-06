@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-06)
 
 ## Corpus Check
-- 171 files · ~84,105 words
+- 172 files · ~84,412 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 630 nodes · 945 edges · 87 communities (23 shown, 32 thin omitted)
+- 631 nodes · 947 edges · 86 communities (21 shown, 34 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0c767b5b`
+- Built from commit: `07a9aab6`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,7 +30,7 @@
 - base-tour-detail-modal.svelte
 - en/index.ts
 - eslint
-- vn/index.ts
+- $app/state
 - i18n-svelte.ts
 - @playwright/test
 - compilerOptions
@@ -98,15 +98,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (87 total, 32 thin omitted)
+## Communities (86 total, 34 thin omitted)
 
 ### Community 0 - "schemas/index.ts"
 Cohesion: 0.08
 Nodes (33): add_thousand_separator(), CNumberInput(), parseNumber(), keywords, prepare(), prepare(), BASE_FIELDS, Field (+25 more)
 
 ### Community 1 - "i18n-types.ts"
-Cohesion: 0.08
-Nodes (34): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+26 more)
+Cohesion: 0.05
+Nodes (45): App, Locals, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale() (+37 more)
 
 ### Community 2 - "scripts"
 Cohesion: 0.06
@@ -121,7 +121,7 @@ Cohesion: 0.06
 Nodes (34): description, name, private, scripts, build, build:all, build:be, build:fe (+26 more)
 
 ### Community 5 - "sanity-client.ts"
-Cohesion: 0.11
+Cohesion: 0.10
 Nodes (22): DEFAULT_EXCHANGE_RATES, cachedFetch(), ExchangeRatesData, EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, fetchAllBlogs(), fetchFeaturedBlogs(), fetchLatestExchangeRates() (+14 more)
 
 ### Community 6 - "compilerOptions"
@@ -141,24 +141,16 @@ Cohesion: 0.12
 Nodes (5): nav_animate_hidden, nav_deg, nav_mobile, tour_index_store, logger
 
 ### Community 10 - "fr/index.ts"
-Cohesion: 0.14
-Nodes (11): fr, blog_page, contact_page, home_page, nav_bar, seo, tours, Translation (+3 more)
+Cohesion: 0.21
+Nodes (7): fr, blog_page, contact_page, home_page, nav_bar, seo, tours
 
 ### Community 12 - "base-tour-detail-modal.svelte"
-Cohesion: 0.15
-Nodes (5): close(), booking_modal, BookingModalState, ./$types, ./$types
+Cohesion: 0.22
+Nodes (3): close(), booking_modal, BookingModalState
 
 ### Community 13 - "en/index.ts"
 Cohesion: 0.19
 Nodes (8): en, blog_page, contact_page, home_page, nav_bar, seo, tours, BaseTranslation
-
-### Community 15 - "vn/index.ts"
-Cohesion: 0.21
-Nodes (7): vn, blog_page, contact_page, home_page, nav_bar, seo, tours
-
-### Community 16 - "i18n-svelte.ts"
-Cohesion: 0.13
-Nodes (3): { locale, LL, setLocale }, ./$types, ./$types
 
 ### Community 18 - "compilerOptions"
 Cohesion: 0.17
@@ -177,16 +169,16 @@ Cohesion: 0.39
 Nodes (7): client, config, fetch_data(), fetch_exchange_rate(), GET(), get_latest_exchange_rate_from_sanity(), sync_rate_to_sanity()
 
 ### Community 24 - "format-data.ts"
-Cohesion: 0.23
-Nodes (8): Testimonial, EN_MONTHS, format_pax_no(), format_price(), format_price_object(), format_review_date(), FR_MONTHS, get_exchange_rate()
+Cohesion: 0.36
+Nodes (7): EN_MONTHS, format_pax_no(), format_price(), format_price_object(), format_review_date(), FR_MONTHS, get_exchange_rate()
 
 ### Community 25 - "sanity.ts"
-Cohesion: 0.26
-Nodes (7): if(), builder, config, get_length_and_index(), get_tour_slug(), tour_by_index(), url_for()
+Cohesion: 0.23
+Nodes (7): builder, config, get_length_and_index(), get_tour_slug(), tour_by_index(), ./$types, ./$types
 
 ### Community 27 - "seo-store.ts"
-Cohesion: 0.18
-Nodes (6): seo_description, seo_keywords, seo_og_image, seo_title, SeoState, ./$types
+Cohesion: 0.11
+Nodes (9): if(), seo_description, seo_keywords, seo_og_image, seo_title, SeoState, url_for(), ./$types (+1 more)
 
 ### Community 41 - "icons.ts"
 Cohesion: 0.40
@@ -195,7 +187,7 @@ Nodes (3): Icon, Icons, NOTE:
 ## Knowledge Gaps
 - **210 isolated node(s):** `name`, `private`, `version`, `main`, `type` (+205 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 289 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -209,7 +201,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07619738751814223 - nodes in this community are weakly interconnected._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07619738751814223 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0528169014084507 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
   _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._
 - **Should `back-end/package.json` be split into smaller, more focused modules?**

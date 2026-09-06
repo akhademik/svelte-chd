@@ -6,6 +6,7 @@
 	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
 	import HomeHighlandTours from './components/home-highland-tours.svelte'
+	import HomePlanYourTrip from './components/home-plan-your-trip.svelte'
 	import HomeTestimonials from './components/home-testimonials.svelte'
 	import HomeWhyChd from './components/home-why-chd.svelte'
 
@@ -30,8 +31,9 @@
 
 <HomeHero />
 <HomeWhyChd />
-<HomeTestimonials {testimonials} />
 <HomeFeaturedSlider tours={allTours} />
 <HomeDayTours tours={dayTours} />
 <HomeHighlandTours tours={highlandTours} />
+<HomeTestimonials {testimonials} />
 <HomeFeaturedBlogs posts={featuredPosts} />
+<HomePlanYourTrip />
