@@ -52,45 +52,50 @@
 
 	// Active real dot index (0 .. totalRealSlides - 1)
 	const activeDotIndex = $derived.by(() => {
-		if (totalRealSlides <= 1) return 0
-		if (currentTrackIndex === 0) return totalRealSlides - 1
-		if (currentTrackIndex === totalRealSlides + 1) return 0
+		const count = totalRealSlides
+		if (count <= 1) return 0
+		if (currentTrackIndex === 0) return count - 1
+		if (currentTrackIndex === count + 1) return 0
 		return currentTrackIndex - 1
 	})
 
 	const nextSlide = () => {
-		if (totalRealSlides <= 1 || isTransitioning) return
+		const count = baseSlides.length
+		if (count <= 1 || isTransitioning) return
 		isTransitioning = true
 		currentTrackIndex += 1
 	}
 
 	const prevSlide = () => {
-		if (totalRealSlides <= 1 || isTransitioning) return
+		const count = baseSlides.length
+		if (count <= 1 || isTransitioning) return
 		isTransitioning = true
 		currentTrackIndex -= 1
 	}
 
 	const goToSlide = (idx: number) => {
-		if (totalRealSlides <= 1 || isTransitioning) return
+		const count = baseSlides.length
+		if (count <= 1 || isTransitioning) return
 		isTransitioning = true
 		currentTrackIndex = idx + 1
 	}
 
 	const handleTransitionEnd = () => {
 		isTransitioning = false
-		if (totalRealSlides <= 1) return
+		const count = baseSlides.length
+		if (count <= 1) return
 
 		// Jump smoothly without transition when reaching clones
-		if (currentTrackIndex === totalRealSlides + 1) {
+		if (currentTrackIndex === count + 1) {
 			currentTrackIndex = 1
 		} else if (currentTrackIndex === 0) {
-			currentTrackIndex = totalRealSlides
+			currentTrackIndex = count
 		}
 	}
 
 	onMount(() => {
 		const interval = setInterval(() => {
-			if (!isHovered && totalRealSlides > 1) {
+			if (!isHovered && baseSlides.length > 1) {
 				nextSlide()
 			}
 		}, 7000)

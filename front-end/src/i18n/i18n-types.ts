@@ -491,6 +491,34 @@ type RootTranslation = {
 			 * G​r​o​u​p​ ​o​f
 			 */
 			group: string
+			/**
+			 * B​o​o​k​ ​T​h​i​s​ ​T​o​u​r
+			 */
+			plan_this_trip: string
+			/**
+			 * I​'​m​ ​i​n​t​e​r​e​s​t​e​d​ ​i​n
+			 */
+			interested_in: string
+			/**
+			 * W​h​e​n​ ​a​r​e​ ​y​o​u​ ​t​r​a​v​e​l​l​i​n​g​?
+			 */
+			travelling_date: string
+			/**
+			 * H​o​w​ ​m​a​n​y​ ​p​e​o​p​l​e​?
+			 */
+			how_many_people: string
+			/**
+			 * A​n​y​t​h​i​n​g​ ​y​o​u​'​d​ ​l​i​k​e​ ​u​s​ ​t​o​ ​k​n​o​w​?
+			 */
+			notes_question: string
+			/**
+			 * B​o​o​k​ ​N​o​w
+			 */
+			send_enquiry: string
+			/**
+			 * I​'​d​ ​l​i​k​e​ ​t​o​ ​b​o​o​k​ ​t​h​i​s​ ​t​o​u​r
+			 */
+			enquiry_title: string
 		}
 	}
 	blog_page: {
@@ -1078,6 +1106,34 @@ export type TranslationFunctions = {
 			 * Group of
 			 */
 			group: () => LocalizedString
+			/**
+			 * Book This Tour
+			 */
+			plan_this_trip: () => LocalizedString
+			/**
+			 * I'm interested in
+			 */
+			interested_in: () => LocalizedString
+			/**
+			 * When are you travelling?
+			 */
+			travelling_date: () => LocalizedString
+			/**
+			 * How many people?
+			 */
+			how_many_people: () => LocalizedString
+			/**
+			 * Anything you'd like us to know?
+			 */
+			notes_question: () => LocalizedString
+			/**
+			 * Book Now
+			 */
+			send_enquiry: () => LocalizedString
+			/**
+			 * I'd like to book this tour
+			 */
+			enquiry_title: () => LocalizedString
 		}
 	}
 	blog_page: {

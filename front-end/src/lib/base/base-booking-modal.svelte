@@ -105,22 +105,30 @@
 				</svg>
 			</button>
 
-			<span class="mb-1 block text-[10px] uppercase tracking-widest text-stone-400">
-				Quick Booking
-			</span>
-			<h3 class="mb-2 font-serif text-2xl text-stone-900">
-				{$booking_modal.tourName}
+			<h3 class="mb-6 font-serif text-2xl text-stone-900">
+				{$LL.tours.detail.enquiry_title()}
 			</h3>
-			<p class="mb-6 text-xs font-light text-stone-500">
-				{$LL.contact_page.page.have_question()}
-			</p>
 
 			<form
 				onsubmit={handleSubmit}
 				class="space-y-4">
 				<div>
 					<label
-						class="mb-1 block text-[11px] uppercase tracking-wider text-stone-500"
+						class="mb-1 block text-[11px] font-medium uppercase tracking-wider text-stone-600"
+						for="booking-tour">
+						{$LL.tours.detail.interested_in()}
+					</label>
+					<input
+						id="booking-tour"
+						type="text"
+						readonly
+						value={$booking_modal.tourName}
+						class="w-full border border-stone-300 bg-sand-card/70 px-3.5 py-2.5 text-sm font-medium text-stone-800 focus:outline-none" />
+				</div>
+
+				<div>
+					<label
+						class="mb-1 block text-[11px] font-medium uppercase tracking-wider text-stone-600"
 						for="booking-name">
 						{$LL.contact_page.placeholder.name()}
 					</label>
@@ -129,12 +137,12 @@
 						type="text"
 						required
 						bind:value={name}
-						class="w-full border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm focus:border-stone-900 focus:outline-none"
+						class="w-full border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm focus:border-stone-900 focus:bg-white focus:outline-none"
 						placeholder="Nguyễn Văn A" />
 				</div>
 				<div>
 					<label
-						class="mb-1 block text-[11px] uppercase tracking-wider text-stone-500"
+						class="mb-1 block text-[11px] font-medium uppercase tracking-wider text-stone-600"
 						for="booking-contact">
 						{$LL.contact_page.placeholder.phone()} / {$LL.contact_page.placeholder.email()}
 					</label>
@@ -143,58 +151,58 @@
 						type="text"
 						required
 						bind:value={contact}
-						class="w-full border border-stone-200 bg-stone-50 px-3 py-2.5 text-sm focus:border-stone-900 focus:outline-none"
+						class="w-full border border-stone-200 bg-stone-50 px-3.5 py-2.5 text-sm focus:border-stone-900 focus:bg-white focus:outline-none"
 						placeholder="+84 ... / email@..." />
 				</div>
-				<div class="grid grid-cols-2 gap-4">
+				<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 					<div>
 						<label
-							class="mb-1 block text-[11px] uppercase tracking-wider text-stone-500"
+							class="mb-1 block text-[11px] font-medium uppercase tracking-wider text-stone-600"
 							for="booking-date">
-							Date
+							{$LL.tours.detail.travelling_date()}
 						</label>
 						<input
 							id="booking-date"
 							type="date"
 							bind:value={date}
-							class="w-full border border-stone-200 bg-stone-50 px-3 py-2 text-sm text-stone-700 focus:border-stone-900 focus:outline-none" />
+							class="w-full border border-stone-200 bg-stone-50 px-3.5 py-2 text-sm text-stone-700 focus:border-stone-900 focus:bg-white focus:outline-none" />
 					</div>
 					<div>
 						<label
-							class="mb-1 block text-[11px] uppercase tracking-wider text-stone-500"
+							class="mb-1 block text-[11px] font-medium uppercase tracking-wider text-stone-600"
 							for="booking-guests">
-							Guests
+							{$LL.tours.detail.how_many_people()}
 						</label>
 						<input
 							id="booking-guests"
 							type="number"
 							min="1"
 							bind:value={guests}
-							class="w-full border border-stone-200 bg-stone-50 px-3 py-2 text-sm focus:border-stone-900 focus:outline-none" />
+							class="w-full border border-stone-200 bg-stone-50 px-3.5 py-2 text-sm focus:border-stone-900 focus:bg-white focus:outline-none" />
 					</div>
 				</div>
 
 				<div>
 					<label
-						class="mb-1 block text-[11px] uppercase tracking-wider text-stone-500"
+						class="mb-1 block text-[11px] font-medium uppercase tracking-wider text-stone-600"
 						for="booking-note">
-						{$LL.contact_page.placeholder.msg()}
+						{$LL.tours.detail.notes_question()}
 					</label>
 					<textarea
 						id="booking-note"
 						rows="3"
 						bind:value={note}
-						class="w-full border border-stone-200 bg-stone-50 px-3 py-2 text-sm focus:border-stone-900 focus:outline-none"
+						class="w-full border border-stone-200 bg-stone-50 px-3.5 py-2 text-sm focus:border-stone-900 focus:bg-white focus:outline-none"
 						placeholder={$locale === 'vn'
-							? 'Yêu cầu đặc biệt hoặc ghi chú thêm (tuỳ chọn)...'
-							: 'Special requests or additional notes (optional)...'}></textarea>
+							? 'Yêu cầu đặc biệt về ẩm thực, đón trả hoặc ghi chú thêm...'
+							: 'Dietary preferences, pickup points, or any special requests...'}></textarea>
 				</div>
 
 				<button
 					type="submit"
 					disabled={isSubmitting}
-					class="mt-4 w-full bg-stone-900 py-3 text-xs uppercase tracking-widest text-stone-50 transition-colors hover:bg-stone-800 disabled:opacity-50">
-					{isSubmitting ? 'Processing...' : $LL.contact_page.page.submit()}
+					class="mt-4 w-full bg-moss py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-moss-hover disabled:opacity-50">
+					{isSubmitting ? 'Sending...' : $LL.tours.detail.send_enquiry()}
 				</button>
 			</form>
 		</div>

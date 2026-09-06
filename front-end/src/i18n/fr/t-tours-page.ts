@@ -44,5 +44,12 @@ export const tours = {
 		pax: 'pax',
 		solo: 'Client seul',
 		group: 'Groupe de',
+		plan_this_trip: 'Réserver Ce Circuit',
+		interested_in: 'Ce circuit vous intéresse',
+		travelling_date: 'Quand souhaitez-vous voyager ?',
+		how_many_people: 'Combien de personnes ?',
+		notes_question: 'Avez-vous des demandes particulières ?',
+		send_enquiry: 'Réserver',
+		enquiry_title: 'Je souhaite réserver ce circuit',
 	},
 }

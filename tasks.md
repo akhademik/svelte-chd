@@ -1,199 +1,107 @@
-# Hướng dẫn 1 — Rà soát & sửa logic Exchange Rate
+# 📋 BẢNG CÔNG VIỆC CẦN THỰC HIỆN (TASKS & ROADMAP)
 
-## 1. Luồng hiện tại (đã kiểm tra, chạy đúng nhưng còn thô)
-
-```
-Sanity (admin nhập tay rates.rateUSD / rates.rateEUR, dạng VND-trên-1-ngoại-tệ, vd 26035)
-  -> fetchLatestExchangeRates() invert: USD = 1/rateUSD, EUR = 1/rateEUR
-  -> cache 1h (in-memory Map)
-  -> +layout.server.ts -> +layout.ts -> +layout.svelte ($effect setRates)
-  -> exchange_rates_store
-  -> get_exchange_rate('USD'|'EUR') trong utils/sanity.ts
-  -> format_price(): final = price_VND * rate
-```
-
-Phép toán đúng, nhưng có 4 điểm rủi ro cần sửa trước khi để lâu dài trong production.
-
-## 2. Gộp default-rate về một nguồn duy nhất
-
-Hiện đang hard-code `{ USD: 0.00003841, EUR: 0.00003317 }` ở 3 nơi khác nhau
-(`exchange-rates-store.ts`, `sanity-client.ts`, `utils/sanity.ts`). Nếu sau này đổi mặc định,
-rất dễ quên sửa hết cả 3 chỗ.
-
-Tạo file dùng chung:
-
-```ts
-// front-end/src/lib/constants/exchange-rates.ts
-export const DEFAULT_EXCHANGE_RATES = {
-  USD: 0.00003841, // ~ 1 / 26,035 VND
-  EUR: 0.00003317, // ~ 1 / 30,148 VND
-} as const;
-```
-
-Rồi import lại ở cả 3 nơi thay vì khai báo riêng:
-
-```ts
-// exchange-rates-store.ts
-import { DEFAULT_EXCHANGE_RATES } from "$lib/constants/exchange-rates";
-const defaultRates: ExchangeRates = { ...DEFAULT_EXCHANGE_RATES };
-```
-
-```ts
-// server/sanity-client.ts
-import { DEFAULT_EXCHANGE_RATES } from "$lib/constants/exchange-rates";
-const defaultRates: ExchangeRatesData = { ...DEFAULT_EXCHANGE_RATES };
-```
-
-```ts
-// utils/sanity.ts
-import { DEFAULT_EXCHANGE_RATES } from "$lib/constants/exchange-rates";
-export const get_exchange_rate = (rate: string) => {
-  const storeRates = exchange_rates_store.getRates();
-  if (storeRates?.[rate]) return storeRates[rate];
-  return DEFAULT_EXCHANGE_RATES[rate as "USD" | "EUR"] ?? 1;
-};
-```
-
-## 3. Ghi rõ quy ước nhập liệu ngay trong Sanity Schema
-
-Người nhập liệu (không phải dev) rất dễ hiểu nhầm nên nhập `26035` hay `0.0000384`.
-Thêm `description` cho field để tránh nhập sai âm thầm:
-
-```ts
-// back-end/schemas/category/exchange-rates.ts
-{
-  title: 'USD',
-  name: 'rateUSD',
-  type: 'number',
-  description: 'Nhập theo dạng thông thường: 1 USD = bao nhiêu VND (vd: 26035). Hệ thống sẽ tự quy đổi ngược khi hiển thị giá.',
-  validation: (Rule: any) => Rule.required().min(15000).max(40000),
-},
-{
-  title: 'EUR',
-  name: 'rateEUR',
-  type: 'number',
-  description: 'Nhập theo dạng thông thường: 1 EUR = bao nhiêu VND (vd: 28500).',
-  validation: (Rule: any) => Rule.required().min(20000).max(40000),
-},
-```
-
-> Khoảng `min/max` chỉ là chặn lỗi gõ nhầm rõ ràng (vd gõ `2.6` hay `260350`), chỉnh lại theo biên độ tỷ giá thực tế bạn muốn cho phép.
-
-## 4. Validate lại phía frontend cho chắc (phòng khi Studio bị bypass qua API)
-
-```ts
-// server/sanity-client.ts
-export const fetchLatestExchangeRates =
-  async (): Promise<ExchangeRatesData> => {
-    return cachedFetch("latest-exchange-rates", 60 * 60 * 1000, async () => {
-      try {
-        const doc = await sanityClient.fetch(
-          `*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]{exchangeDate, rates}`,
-        );
-        const usd = doc?.rates?.rateUSD;
-        const eur = doc?.rates?.rateEUR;
-        const isValid = (n: number) =>
-          typeof n === "number" && n > 1000 && n < 100000;
-
-        if (isValid(usd) && isValid(eur)) {
-          return {
-            USD: 1 / usd,
-            EUR: 1 / eur,
-            date: doc.exchangeDate || undefined,
-          };
-        }
-        console.warn(
-          "[fetchLatestExchangeRates] rate ngoài khoảng hợp lệ, dùng default:",
-          { usd, eur },
-        );
-        return { ...DEFAULT_EXCHANGE_RATES };
-      } catch (err) {
-        console.warn("[Sanity Server fetchLatestExchangeRates error]:", err);
-        return { ...DEFAULT_EXCHANGE_RATES };
-      }
-    });
-  };
-```
-
-## 5. Tự động hóa lấy tỷ giá & Sửa lỗi GitHub Actions Cron Workflow
-
-### 5.1. Kiểm tra ngày (Check date) trước khi gọi API để tiết kiệm Quota
-Tránh lãng phí request khi chạy `workflow_dispatch` nhiều lần trong ngày:
-
-```js
-const existing = await client.fetch(`*[_id == "exchange-rates-latest"][0]{exchangeDate}`);
-const today = new Date().toISOString().split('T')[0];
-if (existing?.exchangeDate === today) {
-  console.log(`[Sync]: Đã có rate ngày ${today} rồi, bỏ qua, không gọi API ngoài.`);
-  return;
-}
-```
-
-### 5.2. Sửa lỗi `MODULE_NOT_FOUND` của `@sanity/client` trong GitHub Actions
-Vì dự án dùng pnpm monorepo (không bật shamefully-hoist lên root), file `.github/workflows/sync-rates.yml` chạy script `node -e` ở thư mục gốc sẽ không tìm thấy `@sanity/client`.
-
-**Cách sửa**:
-1. Chạy script từ trong thư mục `front-end` (nơi đã cài `@sanity/client`), hoặc:
-2. Thêm script node helper `front-end/scripts/sync-rates.js` và gọi `pnpm --filter ./front-end exec node scripts/sync-rates.js` trong GitHub Action step.
-
-## 6. Checklist test nhanh sau khi sửa
-
-- [x] Nhập `rateUSD = 26035` trong Studio → giá tour hiển thị đúng USD tương ứng.
-- [x] Nhập thử `rateUSD = 2.6` (lỗi gõ) → bị validation Sanity chặn, không lưu được.
-- [x] Xoá hết document `exchangeRates` → site vẫn chạy, dùng `DEFAULT_EXCHANGE_RATES`, không crash.
-- [x] Đổi locale vn/en/fr → giá hiển thị đúng theo từng currency tương ứng.
-- [x] Workflow `.github/workflows/sync-rates.yml` chạy thành công không bị lỗi `MODULE_NOT_FOUND` và tự ngắt nếu đã có rate hôm nay.
+> **Tài liệu theo dõi tiến độ công việc** được tổng hợp từ [job-need-do.md](file:///home/hajtran/dev/svelte-chd/job-need-do.md), đối chiếu với [DEVELOPMENT_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/DEVELOPMENT_WORKFLOW.md), [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md), [TEST_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/TEST_WORKFLOW.md), và [GRAPH_REPORT.md](file:///home/hajtran/dev/svelte-chd/graphify-out/GRAPH_REPORT.md).
 
 ---
 
-# Hướng dẫn 2 — Tạo Testimonial Document trong Sanity + Fetch ở Frontend
+## 🎯 Tổng quan các hạng mục (Summary of Epics)
 
-## 0. Nguyên tắc dữ liệu (đọc trước khi làm)
-
-Vì TripAdvisor **không cho crawl tự động** (vi phạm Terms of Use + có anti-bot), document này
-được thiết kế để bạn **copy tay** nội dung review tốt vào Sanity Studio (giống cách bạn viết bài
-blog), có field `source` để đánh dấu review đến từ đâu, và field `sourceUrl` để dẫn về đúng
-review gốc trên TripAdvisor cho minh bạch. Sau này nếu muốn tự động hoàn toàn, đường chính thức
-là TripAdvisor Content API (đăng ký ở tripadvisor.com/developers) — lúc đó chỉ cần viết thêm 1
-hàm fetch riêng, schema JSON bên dưới không cần đổi.
-
-## 1. Thiết kế field & hỗ trợ schema định dạng mới
-
-| Field            | Kiểu                                        | Ghi chú                                             |
-| ---------------- | ------------------------------------------- | --------------------------------------------------- |
-| `name`           | string                                      | Tên / username của reviewer                         |
-| `country`        | string                                      | Quốc gia/thành phố khách (optional)                 |
-| `review_title`   | string                                      | Tiêu đề review                                      |
-| `review_content` | text                                        | Nội dung review                                     |
-| `date_review`    | date                                        | Ngày viết review                                    |
-| `stars`          | number (1-5)                                | Số sao đánh giá                                     |
-| `url`            | url                                         | Link xem chi tiết review                            |
-| `avatar`         | image                                       | Ảnh đại diện khách (optional)                       |
-| `tripType`       | string                                      | Loại hình tour (vd "Coffee Tour", "2 ngày Đắk Lắk") |
-| `source`         | string enum                                 | `tripadvisor` \| `google` \| `facebook` \| `manual` |
-| `isFeatured`     | boolean                                     | Có hiển thị ở trang chủ / contact không             |
-| `order`          | number                                      | Thứ tự hiển thị thủ công                            |
+| Epic ID | Tên Hạng Mục | Mức Độ Ưu Tiên | Trạng Thái |
+| :--- | :--- | :--- | :--- |
+| **EPIC-1** | Plan Your Trip / Tour Enquiry Integration | 🔴 P0 (Cao nhất / High ROI) | ✅ Hoàn thành (Done) |
+| **EPIC-2** | Tái Cấu Trúc Thứ Tự Section Trang Chủ (Homepage Flow) | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ⏳ Sẵn sàng thực hiện (To Do) |
 
 ---
 
-# Hướng dẫn 3 — Danh mục công việc từ `job-need-do.md`
+## 📝 Chi tiết Danh sách Công việc (Detailed Task Breakdown)
 
-## 1. Danh sách hạng mục & Trạng thái hoàn thành
+### 🔴 EPIC-1: "Plan Your Trip" - Tour Enquiry Integration (Ưu tiên #1)
+- [x] **TASK-1.1**: Cập nhật modal/CTA tại trang chi tiết tour ([BaseTourDetailModal](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/components/common/base-tour-detail-modal.svelte)): Đổi từ nút chung chung `[ Book / Enquire ]` sang `[ PLAN THIS TRIP ]`.
+- [x] **TASK-1.2**: Tích hợp truyền `selectedTour` (slug / tên tour / id) vào form liên hệ / modal đặt tour.
+- [x] **TASK-1.3**: Tinh chỉnh UI form enquiry:
+  - Trường quan tâm: `I'm interested in: [ Tên Tour được chọn ]` (pre-filled).
+  - Thời gian dự kiến: `When are you travelling?`
+  - Số lượng người: `How many people?`
+  - Ghi chú: `Anything you'd like us to know?`
+  - Nút gửi: `[ Send enquiry ]`.
+- [x] **TASK-1.4**: Cập nhật typesafe-i18n cho các nhãn form mới trong `t-contact.ts` / `t-tour.ts` (VN, EN, FR) theo quy chuẩn [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md).
 
-- [x] **Homepage Hero Section**: Đã bỏ nút phụ `'Trò chuyện cùng người bản địa'` / `'Connect with a Local Host'` dẫn link sang `/contact`.
-- [x] **Tour Detail Page - Free Consultation**: Đã bỏ `'Tư vấn miễn phí • Trao đổi trực tiếp cùng hướng dẫn viên bản địa'` dưới khối hành động nhanh.
-- [x] **Tour Detail Page - Departure**: Đã xoá toàn bộ thông tin `'Điểm khởi hành Buôn Ma Thuột'` (ở cả Trip Facts và Quick Info Box).
-- [x] **Tour Detail Page - Language**: Đã bỏ dòng `'Ngôn ngữ VN / EN / FR'` trong chi tiết tour.
-- [x] **Mobile Booking Modal**: Đã căn giữa màn hình theo chiều dọc (`items-center justify-center p-4`) trên mobile view thay vì dính đáy.
-- [x] **Tour Detail CTA - Plan Trip Modal**: Bấm `'Lên kế hoạch chuyến đi này'` (`plan_trip`) ở cả trên và dưới trang chi tiết tour sẽ mở Popup / Modal đặt tour (`booking_modal.open(title)`) thay vì chuyển hướng sang `/contact`.
-- [x] **Centralized Testimonials**: Đã bỏ review hardcode trong `contact-review.svelte`, nạp dữ liệu Testimonials tập trung từ Sanity (kèm fallback 3 review mặc định) cho cả trang chủ và trang liên hệ.
-- [x] **Sanity Backend Testimonials**: Cập nhật schema `testimonials.ts` hỗ trợ các trường `name`, `country`, `review_title`, `review_content`, `date_review`, `stars`, `url`.
+---
 
-## 2. Kiểm tra chất lượng (Quality Gates)
-- [x] `pnpm format:all` — Toàn bộ định dạng code sạch.
-- [x] `pnpm check:all` — TypeScript check: 0 errors, 0 warnings (cả front-end & back-end).
-- [x] `pnpm lint:all` — ESLint: 0 errors, 0 warnings.
-- [x] `pnpm test:unit` — 15/15 unit tests passed.
-- [x] `pnpm test:e2e` — 5/5 Playwright E2E tests passed (không kích hoạt submit form thực tế).
-- [x] `graphify update .` — Kiến trúc Knowledge Graph đã được cập nhật đồng bộ.
+### 🟠 EPIC-2: Tái cấu trúc Luồng Trang Chủ (Homepage Flow Reordering)
+- [ ] **TASK-2.1**: Tái cấu trúc thứ tự các section trong trang chủ ([+page.svelte](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/[lang]/+page.svelte)) theo conversion flow tự nhiên:
+  1. `HERO`: Slogan *"Go local. See local. Eat local."* + CTA `[ Explore tours ]`
+  2. `WHY CHD`: Điểm nhấn định vị thương hiệu *"Go local / See local / Eat local"*
+  3. `FEATURED EXPERIENCES`: Trải nghiệm nổi bật (Coffee / Food / People / Nature)
+  4. `DAY TOURS`: Danh sách 3–4 day tours tiêu biểu
+  5. `MULTI-DAY TOURS` (Highland Tours): Danh sách 2–3 highland tours
+  6. `TRAVELER STORIES` (Testimonials): Dời xuống sau danh sách tour (chứng thực sau khi khách đã thấy sản phẩm)
+  7. `CHD JOURNAL` (Blog / Stories): Bài viết chia sẻ văn hóa, ẩm thực, con người
+  8. `PLAN YOUR TRIP` (CTA Section): Mời gọi thiết kế tour riêng *"Tell us what you want to experience"*
+  9. `FOOTER`
 
+---
+
+### 🟠 EPIC-3: Nâng cấp Content & Brand Positioning "Why CHD"
+- [ ] **TASK-3.1**: Cập nhật lại nội dung section "Why CHD" theo triết lý thương hiệu, tránh cảm giác corporate values:
+  - **Tagline chính**: *"We don't take you to the Highlands. We take you into it."*
+  - **01 GO LOCAL**: *"Meet the people who call this place home."*
+  - **02 SEE LOCAL**: *"Go beyond the places listed in guidebooks."*
+  - **03 EAT LOCAL**: *"Taste what people here actually eat."*
+  - **04 TRAVEL SLOW**: *"Small groups. More time. Less rushing."*
+- [ ] **TASK-3.2**: Bổ sung và đồng bộ các chuỗi dịch đa ngôn ngữ tương ứng trong i18n (`t-home.ts` cho `vn`, `en`, `fr`).
+- [ ] **TASK-3.3**: Đảm bảo giữ vững phong cách Editorial Layout: Typography serif `font-serif`, màu `sand / moss / terracotta`, giữ cấu trúc đánh số `01 / 02 / 03 / 04`.
+
+---
+
+### 🟡 EPIC-4: Chuẩn hóa Kiến trúc Dữ liệu Testimonials
+- [ ] **TASK-4.1**: Duy trì nạp dữ liệu Testimonials mặc định an toàn tại Server Load (`+page.server.ts`), tránh phụ thuộc cứng hoặc lỗi fetch khi không qua Sanity.
+- [ ] **TASK-4.2**: Đảm bảo cấu trúc data schema cho Testimonial rõ ràng, hỗ trợ mở rộng thêm trường đa ngôn ngữ (VN/EN/FR).
+
+---
+
+### 🟡 EPIC-5: Trợ Năng (Accessibility) & Reduced Motion cho Testimonials Carousel
+- [ ] **TASK-5.1**: Bổ sung `aria-live="polite"` / `aria-roledescription="carousel"` phù hợp cho Testimonial Carousel.
+- [ ] **TASK-5.2**: Bổ sung tương tác bàn phím (Keyboard navigation: ArrowLeft, ArrowRight).
+- [ ] **TASK-5.3**: Tạm dừng (Pause) auto-rotation khi focus hoặc hover chuột vào slider container.
+- [ ] **TASK-5.4**: Hỗ trợ CSS media query `@media (prefers-reduced-motion: reduce)`: Vô hiệu hóa auto-play và các transition trượt mạnh đối với người dùng chọn reduced-motion.
+- [ ] **TASK-5.5**: Đảm bảo các dot navigation có nhãn accessible (`aria-label`, `aria-current`).
+
+---
+
+### 🟢 EPIC-6: Tinh chỉnh Backend Server Actions (Email & Discord Delivery)
+- [ ] **TASK-6.1**: Tinh chỉnh logic xử lý phản hồi trong `[lang]/+page.server.ts`:
+  - Phân định rõ **Primary Delivery** (Email gửi về CHD admin) vs **Secondary Delivery** (Email confirmation gửi khách + Discord webhook notification).
+  - Nếu Primary Email gửi thành công -> Xem form submission là `success`.
+  - Nếu Secondary (khách xác nhận / Discord) thất bại -> Ghi log lỗi riêng (console error / structured log) mà không chặn kết quả báo thành công cho người dùng.
+
+---
+
+### 🟠 EPIC-7: Mobile UX & Responsive Polish
+- [ ] **TASK-7.1**: Kiểm tra Hero Section trên màn hình di động: Tránh để hình ảnh và typography quá lớn chiếm tràn màn hình gây cản trở scroll xem nội dung.
+- [ ] **TASK-7.2**: Kiểm tra và tối ưu touch/swipe gesture mượt mà cho Testimonials Carousel trên thiết bị di động.
+- [ ] **TASK-7.3**: Đảm bảo toàn bộ wrapper tuân thủ đúng quy chuẩn padding `mx-auto max-w-6xl px-6 py-12` (theo [LAYOUT_DESIGN_CONCEPT.md](file:///home/hajtran/dev/svelte-chd/LAYOUT_DESIGN_CONCEPT.md)), không để phần tử dính sát mép trên mobile.
+
+---
+
+### 🟢 EPIC-8: Animation Freeze & Giản Lược Visual
+- [ ] **TASK-8.1**: Đóng băng (Freeze) animation: Tuyệt đối không bổ sung các hiệu ứng phức tạp (parallax, scroll reveal dồn dập, text splitting, cursor effects).
+- [ ] **TASK-8.2**: Giữ nguyên nhịp điệu tĩnh lặng, mộc mạc và nhẹ nhàng (*"quiet / slow / natural"*) phù hợp với nhận diện CHD Travel.
+
+---
+
+## 🔒 Quy trình Kiểm tra Chất lượng Bắt Buộc (Quality Gate Checklist)
+
+Trước khi bàn giao hoặc hoàn tất mỗi task, tuân thủ đúng [DEVELOPMENT_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/DEVELOPMENT_WORKFLOW.md) & [TEST_WORKFLOW.md](file:///home/hajtran/dev/svelte-chd/TEST_WORKFLOW.md):
+1. **Linting**: `pnpm lint` (hoặc `pnpm prettier --check . && eslint .`)
+2. **Type Checking**: `pnpm check` (`svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`) & `tsc --noEmit`
+3. **Format**: `pnpm format`
+4. **Testing**: `pnpm test` / `pnpm test:unit` / `pnpm test:e2e`
+5. **Dead Code**: `pnpm knip`
+6. **Knowledge Graph**: Chạy cập nhật tri thức `graphify` khi có thay đổi cấu trúc code.

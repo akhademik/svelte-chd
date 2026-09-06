@@ -71,8 +71,8 @@
 					</p>
 					<button
 						onclick={() => booking_modal.open(title)}
-						class="bg-stone-900 px-4 py-2 text-xs uppercase tracking-widest text-stone-50 transition-colors hover:bg-stone-800">
-						Book This Tour
+						class="bg-moss px-4 py-2 text-xs uppercase tracking-widest text-white transition-colors hover:bg-moss-hover">
+						{$LL.tours.detail.plan_this_trip()}
 					</button>
 				</div>
 				<div class="overflow-x-auto">

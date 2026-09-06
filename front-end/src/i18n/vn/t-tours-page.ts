@@ -44,5 +44,12 @@ export const tours = {
 		pax: 'khách',
 		solo: 'Khách cá nhân',
 		group: 'Nhóm',
+		plan_this_trip: 'Đặt Tour Này',
+		interested_in: 'Tour bạn đang quan tâm',
+		travelling_date: 'Khi nào bạn dự định đi?',
+		how_many_people: 'Có bao nhiêu người tham gia?',
+		notes_question: 'Bạn có yêu cầu đặc biệt nào không?',
+		send_enquiry: 'Đặt Ngay',
+		enquiry_title: 'Tôi muốn đặt tour này',
 	},
 }

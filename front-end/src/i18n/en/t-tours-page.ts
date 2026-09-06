@@ -44,5 +44,12 @@ export const tours = {
 		pax: 'pax',
 		solo: 'Solo guest',
 		group: 'Group of',
+		plan_this_trip: 'Book This Tour',
+		interested_in: "I'm interested in",
+		travelling_date: 'When are you travelling?',
+		how_many_people: 'How many people?',
+		notes_question: "Anything you'd like us to know?",
+		send_enquiry: 'Book Now',
+		enquiry_title: "I'd like to book this tour",
 	},
 }

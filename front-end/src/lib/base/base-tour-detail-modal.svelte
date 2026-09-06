@@ -486,12 +486,8 @@
 						</button>
 						<button
 							onclick={handleBook}
-							class="w-1/2 bg-stone-900 px-6 py-2.5 text-xs uppercase tracking-widest text-stone-50 shadow-sm transition-colors hover:bg-stone-800 sm:w-auto">
-							{activeLang === 'vn'
-								? 'Đặt Tour Này'
-								: activeLang === 'fr'
-									? 'Réserver ce circuit'
-									: 'Book This Tour'}
+							class="w-1/2 bg-moss px-6 py-2.5 text-xs uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-moss-hover sm:w-auto">
+							{$LL.tours.detail.plan_this_trip()}
 						</button>
 					</div>
 				</div>
