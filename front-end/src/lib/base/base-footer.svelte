@@ -3,17 +3,46 @@
 </script>
 
 <footer class="border-t border-stone-800 bg-stone-900 px-6 py-16 text-xs text-stone-400">
-	<div class="mx-auto max-w-6xl space-y-10">
+	<div class="mx-auto max-w-6xl space-y-12">
+		<!-- High-Conversion Call To Action in Footer -->
+		<div
+			class="flex flex-col items-center justify-between gap-6 border-b border-stone-800 pb-12 text-center md:flex-row md:text-left">
+			<div>
+				<span class="font-serif text-xs italic tracking-widest text-terracotta">
+					"go local — see local — eat local"
+				</span>
+				<h3 class="mt-2 font-serif text-2xl font-bold text-stone-100 sm:text-3xl">
+					{$locale === 'vn'
+						? 'Lên kế hoạch cho chuyến đi Tây Nguyên của bạn'
+						: $locale === 'fr'
+							? 'Préparez votre voyage dans les Hauts Plateaux'
+							: 'Plan your Central Highlands Journey'}
+				</h3>
+				<p class="mt-2 max-w-xl text-xs font-light leading-relaxed text-stone-400">
+					{$locale === 'vn'
+						? 'Trao đổi trực tiếp cùng hướng dẫn viên bản địa để nhận lịch trình gợi ý và báo giá cá nhân hóa miễn phí.'
+						: 'Connect directly with local guides to craft your custom itinerary with free consultation.'}
+				</p>
+			</div>
+			<a
+				href={`/${$locale}/contact`}
+				class="inline-flex shrink-0 items-center justify-center bg-moss px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-moss-hover">
+				{$LL.nav_bar.contact()}
+			</a>
+		</div>
+
 		<div class="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
-			<!-- Brand & Slogan -->
+			<!-- Brand & Description -->
 			<div class="flex flex-col items-center gap-2 md:items-start">
 				<div class="flex items-center gap-3">
 					<span class="font-serif text-2xl uppercase tracking-widest text-stone-100">CHD</span>
 					<span class="text-stone-700">|</span>
 					<span class="text-xs uppercase tracking-widest text-stone-300">Travel</span>
 				</div>
-				<p class="font-serif text-sm italic tracking-wider text-terracotta">
-					"go local — see local — eat local"
+				<p class="mt-1 text-xs font-light text-stone-400">
+					{$locale === 'vn'
+						? 'Du lịch trải nghiệm bản địa & Du lịch sinh thái Đắk Lắk'
+						: 'Authentic Local & Eco Travel Experiences in Dak Lak'}
 				</p>
 			</div>
 

@@ -25,13 +25,145 @@ type RootTranslation = {
 		 */
 		expert: string
 		/**
-		 * g​o​ ​l​o​c​a​l​,​ ​s​e​e​ ​l​o​c​a​l​,​ ​e​a​t​ ​l​o​c​a​l
+		 * g​o​ ​l​o​c​a​l​ ​—​ ​s​e​e​ ​l​o​c​a​l​ ​—​ ​e​a​t​ ​l​o​c​a​l
 		 */
 		slogan: string
 		/**
-		 * E​x​p​e​r​i​e​n​c​e​ ​t​h​e​ ​a​u​t​h​e​n​t​i​c​i​t​y​ ​o​f​ ​l​o​c​a​l​ ​l​i​f​e​.​ ​D​i​s​c​o​v​e​r​ ​h​i​d​d​e​n​ ​g​e​m​s​,​ ​s​a​v​o​r​ ​t​r​a​d​i​t​i​o​n​a​l​ ​c​u​i​s​i​n​e​,​ ​a​n​d​ ​c​r​e​a​t​e​ ​u​n​f​o​r​g​e​t​t​a​b​l​e​ ​m​e​m​o​r​i​e​s​.
+		 * S​l​o​w​ ​T​r​a​v​e​l​ ​&​ ​A​u​t​h​e​n​t​i​c​ ​E​n​c​o​u​n​t​e​r​s
+		 */
+		tagline: string
+		/**
+		 * E​m​b​r​a​c​e​ ​t​h​e​ ​S​p​i​r​i​t​ ​o​f​ ​t​h​e
+		 */
+		hero_title_line1: string
+		/**
+		 * U​n​t​a​m​e​d​ ​H​i​g​h​l​a​n​d​s​.
+		 */
+		hero_title_line2: string
+		/**
+		 * C​u​r​a​t​e​d​ ​m​i​n​i​m​a​l​i​s​t​ ​j​o​u​r​n​e​y​s​ ​i​m​m​e​r​s​i​n​g​ ​y​o​u​ ​i​n​t​o​ ​i​n​d​i​g​e​n​o​u​s​ ​c​u​l​t​u​r​e​,​ ​m​i​s​t​y​ ​p​i​n​e​ ​p​l​a​t​e​a​u​s​,​ ​a​u​t​h​e​n​t​i​c​ ​c​o​f​f​e​e​ ​f​a​r​m​s​,​ ​a​n​d​ ​G​o​n​g​ ​h​e​r​i​t​a​g​e​.
 		 */
 		intro: string
+		/**
+		 * E​x​p​l​o​r​e​ ​T​o​u​r​s
+		 */
+		cta_explore: string
+		/**
+		 * C​o​n​n​e​c​t​ ​w​i​t​h​ ​a​ ​L​o​c​a​l​ ​H​o​s​t
+		 */
+		cta_contact: string
+		why_chd: {
+			/**
+			 * O​u​r​ ​L​o​c​a​l​ ​P​h​i​l​o​s​o​p​h​y
+			 */
+			subtitle: string
+			/**
+			 * W​h​y​ ​T​r​a​v​e​l​ ​w​i​t​h​ ​C​H​D​ ​T​r​a​v​e​l​?
+			 */
+			title: string
+			/**
+			 * W​e​ ​d​o​ ​n​o​t​ ​s​e​l​l​ ​r​u​s​h​e​d​ ​s​i​g​h​t​s​e​e​i​n​g​ ​c​h​e​c​k​l​i​s​t​s​.​ ​W​e​ ​g​u​i​d​e​ ​y​o​u​ ​i​n​s​i​d​e​ ​t​h​e​ ​l​i​v​i​n​g​ ​r​h​y​t​h​m​ ​o​f​ ​t​h​e​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​a​n​d​ ​i​t​s​ ​i​n​d​i​g​e​n​o​u​s​ ​c​o​m​m​u​n​i​t​i​e​s​.
+			 */
+			desc: string
+			values: {
+				/**
+				 * 0​1​ ​—​ ​L​o​c​a​l​ ​P​e​o​p​l​e
+				 */
+				v1_title: string
+				/**
+				 * G​u​i​d​e​d​ ​b​y​ ​b​o​r​n​-​a​n​d​-​r​a​i​s​e​d​ ​l​o​c​a​l​ ​s​t​o​r​y​t​e​l​l​e​r​s​ ​w​h​o​ ​s​h​a​r​e​ ​m​e​m​o​r​i​e​s​ ​a​n​d​ ​t​r​a​d​i​t​i​o​n​s​ ​n​e​v​e​r​ ​f​o​u​n​d​ ​i​n​ ​g​u​i​d​e​b​o​o​k​s​.
+				 */
+				v1_desc: string
+				/**
+				 * 0​2​ ​—​ ​R​e​a​l​ ​P​l​a​c​e​s
+				 */
+				v2_title: string
+				/**
+				 * T​r​e​k​ ​t​h​r​o​u​g​h​ ​u​n​c​o​m​m​e​r​c​i​a​l​i​z​e​d​ ​e​t​h​n​i​c​ ​v​i​l​l​a​g​e​s​,​ ​s​e​c​l​u​d​e​d​ ​j​u​n​g​l​e​ ​w​a​t​e​r​f​a​l​l​s​,​ ​a​n​d​ ​c​e​n​t​u​r​i​e​s​-​o​l​d​ ​r​a​i​n​f​o​r​e​s​t​s​.
+				 */
+				v2_desc: string
+				/**
+				 * 0​3​ ​—​ ​L​o​c​a​l​ ​F​o​o​d
+				 */
+				v3_title: string
+				/**
+				 * S​a​v​o​r​ ​f​a​r​m​-​t​o​-​c​u​p​ ​r​o​b​u​s​t​a​ ​a​n​d​ ​a​r​a​b​i​c​a​ ​c​o​f​f​e​e​,​ ​b​a​m​b​o​o​-​t​u​b​e​ ​r​i​c​e​,​ ​a​n​d​ ​h​e​a​r​t​h​-​c​o​o​k​e​d​ ​e​t​h​n​i​c​ ​d​e​l​i​c​a​c​i​e​s​.
+				 */
+				v3_desc: string
+				/**
+				 * 0​4​ ​—​ ​S​m​a​l​l​ ​G​r​o​u​p​s
+				 */
+				v4_title: string
+				/**
+				 * U​n​h​u​r​r​i​e​d​,​ ​m​i​n​d​f​u​l​ ​p​a​c​i​n​g​ ​w​i​t​h​ ​p​r​i​v​a​t​e​ ​o​r​ ​s​m​a​l​l​-​g​r​o​u​p​ ​d​e​p​a​r​t​u​r​e​s​ ​d​e​s​i​g​n​e​d​ ​f​o​r​ ​m​e​a​n​i​n​g​f​u​l​ ​c​o​n​n​e​c​t​i​o​n​s​.
+				 */
+				v4_desc: string
+			}
+		}
+		testimonials: {
+			/**
+			 * T​r​a​v​e​l​e​r​ ​S​t​o​r​i​e​s
+			 */
+			subtitle: string
+			/**
+			 * W​o​r​d​s​ ​f​r​o​m​ ​M​i​n​d​f​u​l​ ​T​r​a​v​e​l​e​r​s
+			 */
+			title: string
+			/**
+			 * H​e​a​r​t​w​a​r​m​i​n​g​ ​m​e​m​o​r​i​e​s​ ​a​n​d​ ​h​o​n​e​s​t​ ​e​x​p​e​r​i​e​n​c​e​s​ ​s​h​a​r​e​d​ ​b​y​ ​f​r​i​e​n​d​s​ ​f​r​o​m​ ​a​r​o​u​n​d​ ​t​h​e​ ​w​o​r​l​d​.
+			 */
+			desc: string
+			items: {
+				/**
+				 * O​u​r​ ​3​-​d​a​y​ ​j​o​u​r​n​e​y​ ​w​i​t​h​ ​C​H​D​ ​T​r​a​v​e​l​ ​c​o​m​p​l​e​t​e​l​y​ ​t​r​a​n​s​f​o​r​m​e​d​ ​o​u​r​ ​p​e​r​s​p​e​c​t​i​v​e​ ​o​n​ ​V​i​e​t​n​a​m​.​ ​S​h​a​r​i​n​g​ ​c​o​f​f​e​e​ ​i​n​s​i​d​e​ ​a​ ​t​r​a​d​i​t​i​o​n​a​l​ ​E​d​e​ ​l​o​n​g​h​o​u​s​e​ ​w​a​s​ ​m​a​g​i​c​a​l​.
+				 */
+				t1_quote: string
+				/**
+				 * M​a​r​c​ ​&​ ​S​o​p​h​i​e
+				 */
+				t1_author: string
+				/**
+				 * F​r​a​n​c​e
+				 */
+				t1_country: string
+				/**
+				 * 3​-​D​a​y​ ​H​i​g​h​l​a​n​d​ ​H​e​r​i​t​a​g​e​ ​J​o​u​r​n​e​y
+				 */
+				t1_trip: string
+				/**
+				 * Z​e​r​o​ ​c​o​m​m​e​r​c​i​a​l​ ​r​u​s​h​ ​o​r​ ​f​o​r​c​e​d​ ​s​h​o​p​p​i​n​g​ ​s​t​o​p​s​.​ ​O​u​r​ ​l​o​c​a​l​ ​g​u​i​d​e​ ​w​a​s​ ​e​x​c​e​p​t​i​o​n​a​l​l​y​ ​c​a​r​i​n​g​,​ ​k​n​o​w​l​e​d​g​e​a​b​l​e​,​ ​a​n​d​ ​r​e​s​p​e​c​t​f​u​l​ ​o​f​ ​v​i​l​l​a​g​e​ ​c​u​s​t​o​m​s​.
+				 */
+				t2_quote: string
+				/**
+				 * T​h​a​n​h​ ​H​a​ ​&​ ​F​r​i​e​n​d​s
+				 */
+				t2_author: string
+				/**
+				 * H​a​n​o​i​,​ ​V​i​e​t​n​a​m
+				 */
+				t2_country: string
+				/**
+				 * W​a​t​e​r​f​a​l​l​s​ ​&​ ​V​i​l​l​a​g​e​ ​I​m​m​e​r​s​i​o​n
+				 */
+				t2_trip: string
+				/**
+				 * A​u​t​h​e​n​t​i​c​,​ ​r​e​s​p​e​c​t​f​u​l​,​ ​a​n​d​ ​t​r​u​l​y​ ​e​y​e​-​o​p​e​n​i​n​g​.​ ​C​H​D​ ​T​r​a​v​e​l​ ​h​e​l​p​e​d​ ​u​s​ ​c​o​n​n​e​c​t​ ​d​e​e​p​l​y​ ​w​i​t​h​ ​l​o​c​a​l​ ​c​u​l​t​u​r​e​ ​w​i​t​h​o​u​t​ ​d​i​s​t​u​r​b​i​n​g​ ​t​h​e​ ​p​e​a​c​e​f​u​l​ ​v​i​l​l​a​g​e​s​.
+				 */
+				t3_quote: string
+				/**
+				 * D​a​v​i​d​ ​E​v​a​n​s
+				 */
+				t3_author: string
+				/**
+				 * A​u​s​t​r​a​l​i​a
+				 */
+				t3_country: string
+				/**
+				 * P​r​i​v​a​t​e​ ​C​o​f​f​e​e​ ​&​ ​F​o​r​e​s​t​ ​T​r​e​k
+				 */
+				t3_trip: string
+			}
+		}
 	}
 	nav_bar: {
 		/**
@@ -168,9 +300,7 @@ type RootTranslation = {
 			 */
 			langs: string
 			/**
-			 * M​E​S​S​A​G​E​S​ ​*​
-		​
-		​T​e​l​l​ ​u​s​ ​m​o​r​e​ ​a​b​o​u​t​ ​y​o​u​r​ ​i​n​q​u​i​r​y
+			 * M​E​S​S​A​G​E​S​ ​*
 			 */
 			msg: string
 		}
@@ -181,11 +311,11 @@ type RootTranslation = {
 		 */
 		intro_day: string
 		/**
-		 * H​i​g​h​l​a​n​d​s​ ​T​o​u​r​s​:​ ​A​ ​M​e​m​o​r​a​b​l​e​ ​J​o​u​r​n​e​y
+		 * M​u​l​t​i​-​D​a​y​ ​H​i​g​h​l​a​n​d​s​ ​T​o​u​r​s​:​ ​S​t​a​y​ ​l​o​n​g​e​r​.​ ​G​o​ ​d​e​e​p​e​r
 		 */
 		intro_central: string
 		/**
-		 * D​i​v​e​ ​i​n​t​o​ ​a​ ​w​o​r​l​d​ ​o​f​ ​d​a​y​ ​t​o​u​r​ ​p​o​s​s​i​b​i​l​i​t​i​e​s​!​ ​W​h​e​t​h​e​r​ ​y​o​u​ ​c​r​a​v​e​ ​n​a​t​u​r​a​l​ ​w​o​n​d​e​r​s​,​ ​c​u​l​t​u​r​a​l​ ​i​m​m​e​r​s​i​o​n​,​ ​o​r​ ​t​h​r​i​l​l​i​n​g​ ​a​d​v​e​n​t​u​r​e​s​,​ ​o​u​r​ ​d​a​y​ ​t​o​u​r​s​ ​c​a​t​e​r​ ​t​o​ ​e​v​e​r​y​ ​w​a​n​d​e​r​l​u​s​t​.​ ​E​x​p​l​o​r​e​ ​o​u​r​ ​d​i​v​e​r​s​e​ ​c​o​l​l​e​c​t​i​o​n​ ​o​f​ ​h​a​n​d​p​i​c​k​e​d​ ​e​x​p​e​r​i​e​n​c​e​s​ ​a​n​d​ ​s​e​i​z​e​ ​t​h​e​ ​d​a​y​ ​w​i​t​h​ ​u​n​f​o​r​g​e​t​t​a​b​l​e​ ​a​d​v​e​n​t​u​r​e​s​.
+		 * D​i​v​e​ ​i​n​t​o​ ​a​u​t​h​e​n​t​i​c​ ​l​o​c​a​l​ ​j​o​u​r​n​e​y​s​!​ ​W​h​e​t​h​e​r​ ​y​o​u​ ​c​r​a​v​e​ ​m​i​s​t​y​ ​h​i​g​h​l​a​n​d​s​,​ ​u​n​h​u​r​r​i​e​d​ ​v​i​l​l​a​g​e​ ​i​m​m​e​r​s​i​o​n​,​ ​o​r​ ​o​r​g​a​n​i​c​ ​c​o​f​f​e​e​ ​f​a​r​m​ ​w​a​l​k​s​,​ ​C​H​D​ ​T​r​a​v​e​l​ ​c​u​r​a​t​e​s​ ​m​e​m​o​r​a​b​l​e​ ​e​n​c​o​u​n​t​e​r​s​ ​f​o​r​ ​e​v​e​r​y​ ​w​a​n​d​e​r​l​u​s​t​.
 		 */
 		description: string
 		/**
@@ -196,6 +326,86 @@ type RootTranslation = {
 		 * D​e​t​a​i​l​s
 		 */
 		click_detail: string
+		/**
+		 * P​l​a​n​ ​t​h​i​s​ ​t​r​i​p
+		 */
+		plan_trip: string
+		trip_facts: {
+			/**
+			 * T​r​i​p​ ​F​a​c​t​s
+			 */
+			title: string
+			/**
+			 * R​o​u​t​e
+			 */
+			route: string
+			/**
+			 * D​u​r​a​t​i​o​n
+			 */
+			duration: string
+			/**
+			 * S​t​y​l​e
+			 */
+			style: string
+			/**
+			 * P​r​i​v​a​t​e​ ​/​ ​S​m​a​l​l​ ​G​r​o​u​p
+			 */
+			style_val: string
+			/**
+			 * P​a​c​i​n​g
+			 */
+			difficulty: string
+			/**
+			 * E​a​s​y​ ​/​ ​M​i​n​d​f​u​l​ ​W​a​l​k
+			 */
+			difficulty_val: string
+			/**
+			 * D​e​p​a​r​t​u​r​e
+			 */
+			departure: string
+			/**
+			 * B​u​o​n​ ​M​a​ ​T​h​u​o​t
+			 */
+			departure_val: string
+		}
+		good_to_know: {
+			/**
+			 * G​o​o​d​ ​t​o​ ​K​n​o​w
+			 */
+			title: string
+			/**
+			 * B​e​s​t​ ​S​e​a​s​o​n
+			 */
+			season_title: string
+			/**
+			 * D​r​y​ ​s​e​a​s​o​n​ ​(​N​o​v​–​A​p​r​)​ ​b​r​i​n​g​s​ ​s​u​n​n​y​ ​d​a​y​s​ ​a​n​d​ ​w​h​i​t​e​ ​c​o​f​f​e​e​ ​b​l​o​s​s​o​m​s​ ​(​F​e​b​–​A​p​r​)​.​ ​G​r​e​e​n​ ​s​e​a​s​o​n​ ​(​M​a​y​–​O​c​t​)​ ​s​h​o​w​c​a​s​e​s​ ​m​a​j​e​s​t​i​c​ ​c​a​s​c​a​d​i​n​g​ ​w​a​t​e​r​f​a​l​l​s​.
+			 */
+			season_desc: string
+			/**
+			 * W​h​a​t​ ​t​o​ ​P​a​c​k
+			 */
+			packing_title: string
+			/**
+			 * C​o​m​f​o​r​t​a​b​l​e​ ​w​a​l​k​i​n​g​ ​s​h​o​e​s​,​ ​l​i​g​h​t​ ​j​a​c​k​e​t​ ​f​o​r​ ​c​o​o​l​ ​h​i​g​h​l​a​n​d​ ​e​v​e​n​i​n​g​s​,​ ​s​u​n​s​c​r​e​e​n​,​ ​e​c​o​ ​i​n​s​e​c​t​ ​r​e​p​e​l​l​e​n​t​,​ ​a​n​d​ ​c​a​m​e​r​a​.
+			 */
+			packing_desc: string
+			/**
+			 * H​o​t​e​l​ ​P​i​c​k​u​p
+			 */
+			pickup_title: string
+			/**
+			 * C​o​m​p​l​i​m​e​n​t​a​r​y​ ​r​o​u​n​d​-​t​r​i​p​ ​p​i​c​k​u​p​ ​f​r​o​m​ ​c​e​n​t​r​a​l​ ​B​u​o​n​ ​M​a​ ​T​h​u​o​t​ ​h​o​t​e​l​s​ ​o​r​ ​B​M​T​ ​a​i​r​p​o​r​t​ ​u​p​o​n​ ​r​e​q​u​e​s​t​.
+			 */
+			pickup_desc: string
+			/**
+			 * D​i​e​t​a​r​y​ ​O​p​t​i​o​n​s
+			 */
+			diet_title: string
+			/**
+			 * S​p​e​c​i​a​l​ ​d​i​e​t​a​r​y​ ​r​e​q​u​i​r​e​m​e​n​t​s​,​ ​v​e​g​e​t​a​r​i​a​n​,​ ​a​n​d​ ​v​e​g​a​n​ ​o​p​t​i​o​n​s​ ​a​r​e​ ​w​a​r​m​l​y​ ​a​c​c​o​m​m​o​d​a​t​e​d​ ​o​n​ ​a​l​l​ ​m​e​a​l​s​.
+			 */
+			diet_desc: string
+		}
 		detail: {
 			/**
 			 * T​o​u​r​ ​I​n​t​r​o
@@ -206,11 +416,11 @@ type RootTranslation = {
 			 */
 			highlights: string
 			/**
-			 * B​r​i​e​f​ ​I​t​i​n​e​r​a​r​y
+			 * D​e​t​a​i​l​e​d​ ​I​t​i​n​e​r​a​r​y
 			 */
 			itinerary: string
 			/**
-			 * P​r​i​c​e
+			 * P​r​i​c​i​n​g​ ​T​a​b​l​e
 			 */
 			price: string
 			/**
@@ -270,13 +480,145 @@ export type TranslationFunctions = {
 		 */
 		expert: () => LocalizedString
 		/**
-		 * go local, see local, eat local
+		 * go local — see local — eat local
 		 */
 		slogan: () => LocalizedString
 		/**
-		 * Experience the authenticity of local life. Discover hidden gems, savor traditional cuisine, and create unforgettable memories.
+		 * Slow Travel & Authentic Encounters
+		 */
+		tagline: () => LocalizedString
+		/**
+		 * Embrace the Spirit of the
+		 */
+		hero_title_line1: () => LocalizedString
+		/**
+		 * Untamed Highlands.
+		 */
+		hero_title_line2: () => LocalizedString
+		/**
+		 * Curated minimalist journeys immersing you into indigenous culture, misty pine plateaus, authentic coffee farms, and Gong heritage.
 		 */
 		intro: () => LocalizedString
+		/**
+		 * Explore Tours
+		 */
+		cta_explore: () => LocalizedString
+		/**
+		 * Connect with a Local Host
+		 */
+		cta_contact: () => LocalizedString
+		why_chd: {
+			/**
+			 * Our Local Philosophy
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Why Travel with CHD Travel?
+			 */
+			title: () => LocalizedString
+			/**
+			 * We do not sell rushed sightseeing checklists. We guide you inside the living rhythm of the Central Highlands and its indigenous communities.
+			 */
+			desc: () => LocalizedString
+			values: {
+				/**
+				 * 01 — Local People
+				 */
+				v1_title: () => LocalizedString
+				/**
+				 * Guided by born-and-raised local storytellers who share memories and traditions never found in guidebooks.
+				 */
+				v1_desc: () => LocalizedString
+				/**
+				 * 02 — Real Places
+				 */
+				v2_title: () => LocalizedString
+				/**
+				 * Trek through uncommercialized ethnic villages, secluded jungle waterfalls, and centuries-old rainforests.
+				 */
+				v2_desc: () => LocalizedString
+				/**
+				 * 03 — Local Food
+				 */
+				v3_title: () => LocalizedString
+				/**
+				 * Savor farm-to-cup robusta and arabica coffee, bamboo-tube rice, and hearth-cooked ethnic delicacies.
+				 */
+				v3_desc: () => LocalizedString
+				/**
+				 * 04 — Small Groups
+				 */
+				v4_title: () => LocalizedString
+				/**
+				 * Unhurried, mindful pacing with private or small-group departures designed for meaningful connections.
+				 */
+				v4_desc: () => LocalizedString
+			}
+		}
+		testimonials: {
+			/**
+			 * Traveler Stories
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Words from Mindful Travelers
+			 */
+			title: () => LocalizedString
+			/**
+			 * Heartwarming memories and honest experiences shared by friends from around the world.
+			 */
+			desc: () => LocalizedString
+			items: {
+				/**
+				 * Our 3-day journey with CHD Travel completely transformed our perspective on Vietnam. Sharing coffee inside a traditional Ede longhouse was magical.
+				 */
+				t1_quote: () => LocalizedString
+				/**
+				 * Marc & Sophie
+				 */
+				t1_author: () => LocalizedString
+				/**
+				 * France
+				 */
+				t1_country: () => LocalizedString
+				/**
+				 * 3-Day Highland Heritage Journey
+				 */
+				t1_trip: () => LocalizedString
+				/**
+				 * Zero commercial rush or forced shopping stops. Our local guide was exceptionally caring, knowledgeable, and respectful of village customs.
+				 */
+				t2_quote: () => LocalizedString
+				/**
+				 * Thanh Ha & Friends
+				 */
+				t2_author: () => LocalizedString
+				/**
+				 * Hanoi, Vietnam
+				 */
+				t2_country: () => LocalizedString
+				/**
+				 * Waterfalls & Village Immersion
+				 */
+				t2_trip: () => LocalizedString
+				/**
+				 * Authentic, respectful, and truly eye-opening. CHD Travel helped us connect deeply with local culture without disturbing the peaceful villages.
+				 */
+				t3_quote: () => LocalizedString
+				/**
+				 * David Evans
+				 */
+				t3_author: () => LocalizedString
+				/**
+				 * Australia
+				 */
+				t3_country: () => LocalizedString
+				/**
+				 * Private Coffee & Forest Trek
+				 */
+				t3_trip: () => LocalizedString
+			}
+		}
 	}
 	nav_bar: {
 		/**
@@ -413,9 +755,7 @@ export type TranslationFunctions = {
 			 */
 			langs: () => LocalizedString
 			/**
-			 * MESSAGES  *
-	
-		Tell us more about your inquiry
+			 * MESSAGES *
 			 */
 			msg: () => LocalizedString
 		}
@@ -426,11 +766,11 @@ export type TranslationFunctions = {
 		 */
 		intro_day: () => LocalizedString
 		/**
-		 * Highlands Tours: A Memorable Journey
+		 * Multi-Day Highlands Tours: Stay longer. Go deeper
 		 */
 		intro_central: () => LocalizedString
 		/**
-		 * Dive into a world of day tour possibilities! Whether you crave natural wonders, cultural immersion, or thrilling adventures, our day tours cater to every wanderlust. Explore our diverse collection of handpicked experiences and seize the day with unforgettable adventures.
+		 * Dive into authentic local journeys! Whether you crave misty highlands, unhurried village immersion, or organic coffee farm walks, CHD Travel curates memorable encounters for every wanderlust.
 		 */
 		description: () => LocalizedString
 		/**
@@ -441,6 +781,86 @@ export type TranslationFunctions = {
 		 * Details
 		 */
 		click_detail: () => LocalizedString
+		/**
+		 * Plan this trip
+		 */
+		plan_trip: () => LocalizedString
+		trip_facts: {
+			/**
+			 * Trip Facts
+			 */
+			title: () => LocalizedString
+			/**
+			 * Route
+			 */
+			route: () => LocalizedString
+			/**
+			 * Duration
+			 */
+			duration: () => LocalizedString
+			/**
+			 * Style
+			 */
+			style: () => LocalizedString
+			/**
+			 * Private / Small Group
+			 */
+			style_val: () => LocalizedString
+			/**
+			 * Pacing
+			 */
+			difficulty: () => LocalizedString
+			/**
+			 * Easy / Mindful Walk
+			 */
+			difficulty_val: () => LocalizedString
+			/**
+			 * Departure
+			 */
+			departure: () => LocalizedString
+			/**
+			 * Buon Ma Thuot
+			 */
+			departure_val: () => LocalizedString
+		}
+		good_to_know: {
+			/**
+			 * Good to Know
+			 */
+			title: () => LocalizedString
+			/**
+			 * Best Season
+			 */
+			season_title: () => LocalizedString
+			/**
+			 * Dry season (Nov–Apr) brings sunny days and white coffee blossoms (Feb–Apr). Green season (May–Oct) showcases majestic cascading waterfalls.
+			 */
+			season_desc: () => LocalizedString
+			/**
+			 * What to Pack
+			 */
+			packing_title: () => LocalizedString
+			/**
+			 * Comfortable walking shoes, light jacket for cool highland evenings, sunscreen, eco insect repellent, and camera.
+			 */
+			packing_desc: () => LocalizedString
+			/**
+			 * Hotel Pickup
+			 */
+			pickup_title: () => LocalizedString
+			/**
+			 * Complimentary round-trip pickup from central Buon Ma Thuot hotels or BMT airport upon request.
+			 */
+			pickup_desc: () => LocalizedString
+			/**
+			 * Dietary Options
+			 */
+			diet_title: () => LocalizedString
+			/**
+			 * Special dietary requirements, vegetarian, and vegan options are warmly accommodated on all meals.
+			 */
+			diet_desc: () => LocalizedString
+		}
 		detail: {
 			/**
 			 * Tour Intro
@@ -451,11 +871,11 @@ export type TranslationFunctions = {
 			 */
 			highlights: () => LocalizedString
 			/**
-			 * Brief Itinerary
+			 * Detailed Itinerary
 			 */
 			itinerary: () => LocalizedString
 			/**
-			 * Price
+			 * Pricing Table
 			 */
 			price: () => LocalizedString
 			/**

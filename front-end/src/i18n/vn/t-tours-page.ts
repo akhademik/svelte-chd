@@ -1,16 +1,43 @@
 export const tours = {
 	intro_day: 'Hành trình vui vẻ: Một ngày để nhớ',
-	intro_central: 'Tour Tây Nguyên: Hành trình đáng nhớ',
+	intro_central: 'Tour Tây Nguyên Nhiều Ngày: Trải nghiệm sâu lắng',
 	description:
-		'Nhảy vào thế giới của các cơ hội tour trong ngày! Cho dù bạn đang tìm kiếm những kỳ quan thiên nhiên, sự đắm chìm trong văn hóa hoặc những cuộc phiêu lưu thú vị, các tour trong ngày của chúng tôi phục vụ mọi người đam mê. Khám phá bộ sưu tập đa dạng của chúng tôi và tận hưởng một ngày với những kỷ niệm khó quên.',
+		'Khám phá thế giới của những hành trình bản địa chân thực. Cho dù bạn đang tìm kiếm những kỳ quan thiên nhiên, sự đắm chìm trong buôn làng hay những đồi cà phê bạt ngàn, CHD Travel luôn đồng hành cùng bạn.',
 	price_from: 'chỉ từ',
 	click_detail: 'Chi tiết',
+	plan_trip: 'Lên kế hoạch chuyến đi này',
+	trip_facts: {
+		title: 'Thông số hành trình',
+		route: 'Tuyến điểm',
+		duration: 'Thời lượng',
+		style: 'Hình thức',
+		style_val: 'Tour riêng / Nhóm nhỏ',
+		difficulty: 'Độ khó',
+		difficulty_val: 'Dễ tiếp cận / Nhẹ nhàng',
+		departure: 'Điểm khởi hành',
+		departure_val: 'Buôn Ma Thuột',
+	},
+	good_to_know: {
+		title: 'Thông tin cần biết',
+		season_title: 'Thời điểm lý tưởng',
+		season_desc:
+			'Mùa khô từ tháng 11 đến tháng 4 mát mẻ, mùa hoa cà phê nở rộ (T2–T4). Mùa mưa thác nước hùng vĩ và cây cối xanh tươi (T5–T10).',
+		packing_title: 'Hành trang chuẩn bị',
+		packing_desc:
+			'Giày đi bộ thoải mái, áo khoác mỏng (buổi tối Tây Nguyên se lạnh), kem chống nắng, thuốc chống côn trùng và máy ảnh.',
+		pickup_title: 'Đón & Trả khách',
+		pickup_desc:
+			'Đón và trả tận nơi tại mọi khách sạn trung tâm TP. Buôn Ma Thuột hoặc sân bay theo yêu cầu.',
+		diet_title: 'Tùy chọn ăn uống',
+		diet_desc:
+			'CHD Travel luôn sẵn sàng phục vụ thực đơn chay (Vegan/Vegetarian) hoặc kiêng theo yêu cầu của du khách.',
+	},
 	detail: {
 		intro: 'Giới Thiệu',
 		highlights: 'Các Điểm Chính',
-		itinerary: 'Lịch Trình',
-		price: 'Giá',
-		inclusion: 'Bao Gồm',
+		itinerary: 'Lịch Trình Chi Tiết',
+		price: 'Bảng Giá Tour',
+		inclusion: 'Dịch Vụ Bao Gồm',
 		pax_no: 'Số lượng khách',
 		pax: 'khách',
 		solo: 'Khách cá nhân',

@@ -6,6 +6,8 @@
 	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
 	import HomeHighlandTours from './components/home-highland-tours.svelte'
+	import HomeTestimonials from './components/home-testimonials.svelte'
+	import HomeWhyChd from './components/home-why-chd.svelte'
 
 	interface Props {
 		data?: {
@@ -26,7 +28,9 @@
 </script>
 
 <HomeHero />
+<HomeWhyChd />
 <HomeFeaturedSlider tours={allTours} />
 <HomeDayTours tours={dayTours} />
 <HomeHighlandTours tours={highlandTours} />
+<HomeTestimonials />
 <HomeFeaturedBlogs posts={featuredPosts} />

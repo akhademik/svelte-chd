@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { locale } from '$i18n/i18n-svelte'
+	import LL, { locale } from '$i18n/i18n-svelte'
 </script>
 
 <section
@@ -7,43 +7,22 @@
 	<div class="mx-auto max-w-4xl py-20 text-center">
 		<div class="mb-6 flex flex-col items-center gap-2">
 			<span class="font-serif text-sm italic tracking-widest text-terracotta">
-				"go local — see local — eat local"
+				"{$LL.home_page.slogan()}"
 			</span>
 			<p class="text-xs font-medium uppercase tracking-[0.3em] text-stone-500">
-				{$locale === 'vn'
-					? 'Du lịch chậm & Trải nghiệm nguyên bản'
-					: $locale === 'fr'
-						? 'Voyage Lent & Rencontres Authentiques'
-						: 'Slow Travel & Authentic Encounters'}
+				{$LL.home_page.tagline()}
 			</p>
 		</div>
 
 		<h1
 			class="mb-8 font-serif text-4xl font-bold leading-[1.15] tracking-tight text-stone-900 sm:text-6xl md:text-7xl">
-			{#if $locale === 'vn'}
-				Chạm vào tâm hồn <br />
-				<span class="font-normal text-moss">đại ngàn mộc mạc.</span>
-			{:else if $locale === 'fr'}
-				Ressentez l'âme pure des <br />
-				<span class="font-normal text-moss">Hauts Plateaux sauvages.</span>
-			{:else}
-				Embrace the Spirit of the <br />
-				<span class="font-normal text-moss">Untamed Highlands.</span>
-			{/if}
+			{$LL.home_page.hero_title_line1()} <br />
+			<span class="font-normal text-moss">{$LL.home_page.hero_title_line2()}</span>
 		</h1>
 
 		<p
 			class="mx-auto mb-10 max-w-xl text-base font-light leading-relaxed text-stone-600 sm:text-lg">
-			{#if $locale === 'vn'}
-				Những hành trình tinh tế đưa bạn hòa mình vào văn hóa bản địa, rừng thông hoang sơ và âm
-				vang cồng chiêng Tây Nguyên.
-			{:else if $locale === 'fr'}
-				Des itinéraires minimalistes et raffinés au cœur des forêts de pins, des cascades sacrées et
-				de la culture des gongs.
-			{:else}
-				Curated minimalist journeys immersing you into indigenous culture, misty pine plateaus, and
-				authentic Gong heritage.
-			{/if}
+			{$LL.home_page.intro()}
 		</p>
 
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -51,11 +30,7 @@
 				href="#day-tours"
 				class="inline-flex w-full items-center justify-center gap-2 bg-moss px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-moss-hover sm:w-auto">
 				<span>
-					{$locale === 'vn'
-						? 'Khám phá các tour'
-						: $locale === 'fr'
-							? 'Découvrir nos circuits'
-							: 'Explore Tours'}
+					{$LL.home_page.cta_explore()}
 				</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
@@ -77,11 +52,7 @@
 			<a
 				href={`/${$locale}/contact`}
 				class="inline-flex w-full items-center justify-center border border-stone-800 px-8 py-4 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-800 hover:text-sand sm:w-auto">
-				{$locale === 'vn'
-					? 'Liên hệ / Tư vấn'
-					: $locale === 'fr'
-						? 'Contact / Sur mesure'
-						: 'Contact Us'}
+				{$LL.home_page.cta_contact()}
 			</a>
 		</div>
 	</div>

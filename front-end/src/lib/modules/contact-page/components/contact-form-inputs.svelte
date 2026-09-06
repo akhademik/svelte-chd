@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/state'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
 	import { redirect_to_home } from '$utils/navigation'
@@ -17,6 +18,30 @@
 	let err_clone = $derived($errors as any)
 	let err_keys = $derived(err_clone ? err_clone[Object.keys(err_clone)[0]] || [] : [])
 	let err_msg = $derived(err_keys.length > 1 ? (err_keys[1] as ErrKey) : (err_keys[0] as ErrKey))
+
+	$effect(() => {
+		// Read URL search params to auto-fill tour inquiry if redirected from Tour Details
+		const tourParam = page.url.searchParams.get('tour')
+		const durationParam = page.url.searchParams.get('duration')
+		const codeParam = page.url.searchParams.get('code')
+
+		if (tourParam && !$form.msg) {
+			const tourDetails = [
+				`Tour: ${tourParam}`,
+				codeParam ? `Code: ${codeParam}` : null,
+				durationParam ? `Duration: ${durationParam}` : null,
+			]
+				.filter(Boolean)
+				.join(' | ')
+
+			$form.msg =
+				$locale === 'vn'
+					? `Tôi quan tâm đến ${tourDetails}. Xin vui lòng tư vấn lịch trình chi tiết và báo giá cho đoàn chúng tôi.`
+					: $locale === 'fr'
+						? `Je suis intéressé par ${tourDetails}. Merci de me communiquer les détails et le tarif pour notre groupe.`
+						: `I am interested in ${tourDetails}. Please share the detailed itinerary and quote for our group.`
+		}
+	})
 
 	$effect(() => {
 		if ($message === 'success') {
