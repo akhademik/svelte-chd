@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
-	import defaultTestimonials from '$lib/constants/testimonials.json'
 	import type { Testimonial } from '$lib/types/testimonial.type'
 	import { format_review_date } from '$lib/utils/format-data'
 	import { onMount } from 'svelte'
@@ -9,10 +8,10 @@
 		testimonials?: Testimonial[]
 	}
 
-	let { testimonials = defaultTestimonials }: Props = $props()
+	let { testimonials = [] }: Props = $props()
 
 	const list = $derived(
-		(testimonials && testimonials.length > 0 ? testimonials : defaultTestimonials).map(t => ({
+		(testimonials && testimonials.length > 0 ? testimonials : []).map(t => ({
 			name: t.name,
 			avatar: t.avatar || '',
 			country: t.country || 'Verified Traveler',

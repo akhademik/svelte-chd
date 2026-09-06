@@ -2,9 +2,9 @@ name: CI & Quality Gates
 
 on:
   push:
-    branches: [main, svelte]
+    branches: [main, develop]
   pull_request:
-    branches: [main, svelte]
+    branches: [main, develop]
 
 jobs:
   quality-check:
@@ -30,23 +30,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Setup environment files
-        env:
-          VITE_SANITY_ID: ${{ secrets.VITE_SANITY_ID }}
-          EXCHANGE_URL: ${{ secrets.EXCHANGE_URL }}
-          EXCHANGE_API_KEY: ${{ secrets.EXCHANGE_API_KEY }}
-          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
-          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           cat <<EOF > front-end/.env
-          VITE_SANITY_ID="${VITE_SANITY_ID:-uzyjbxdd}"
-          EXCHANGE_URL="${EXCHANGE_URL:-https://v6.exchangerate-api.com/v6/}"
-          EXCHANGE_API_KEY="${EXCHANGE_API_KEY:-}"
-          SANITY_WRITE_TOKEN="${SANITY_WRITE_TOKEN:-}"
-          RESEND_API_KEY="${RESEND_API_KEY:-}"
-          NOTIFY_EMAIL="${NOTIFY_EMAIL:-info@chdtravel.com}"
-          DISCORD_WEBHOOK_URL="${DISCORD_WEBHOOK_URL:-}"
+          VITE_SANITY_ID="uzyjbxdd"
+          EXCHANGE_URL="https://v6.exchangerate-api.com/v6/"
+          EXCHANGE_API_KEY=""
+          SANITY_WRITE_TOKEN="dummy-for-typecheck"
+          RESEND_API_KEY="dummy-for-typecheck"
+          NOTIFY_EMAIL="info@chdtravel.com"
+          DISCORD_WEBHOOK_URL=""
           EOF
 
       - name: Run Type Check

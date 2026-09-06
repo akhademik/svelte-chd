@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
 	import LL from '$i18n/i18n-svelte'
-	import defaultTestimonials from '$lib/constants/testimonials.json'
 	import type { Testimonial } from '$lib/types/testimonial.type'
 	import { format_review_date } from '$lib/utils/format-data'
 	import { onMount, untrack } from 'svelte'
@@ -10,12 +9,12 @@
 		testimonials?: Testimonial[]
 	}
 
-	let { testimonials = defaultTestimonials }: Props = $props()
+	let { testimonials = [] }: Props = $props()
 
 	const PAGE_SIZE = 3
 
 	function getSlides(rawList: Testimonial[]) {
-		const list = rawList && rawList.length > 0 ? rawList : defaultTestimonials
+		const list = rawList && rawList.length > 0 ? rawList : []
 		const items = list.map(t => ({
 			quote: t.review_content,
 			title: t.review_title,
