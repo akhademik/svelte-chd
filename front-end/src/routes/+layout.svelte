@@ -11,6 +11,7 @@
 	} from '$base'
 	import { page } from '$app/state'
 	import { setLocale } from '$i18n/i18n-svelte'
+	import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 	import { MobileMenu } from '$modules/mobile-menu'
 	import { NavBar } from '$modules/nav-bar'
 	import { Toaster } from 'svelte-french-toast'
@@ -23,6 +24,9 @@
 	$effect(() => {
 		if (data?.locale) {
 			setLocale(data.locale)
+		}
+		if (data?.exchangeRates) {
+			exchange_rates_store.setRates(data.exchangeRates)
 		}
 	})
 </script>

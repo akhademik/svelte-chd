@@ -209,3 +209,31 @@ export const fetchAllBlogs = async (): Promise<BlogPost[]> => {
 		}
 	})
 }
+
+export interface ExchangeRatesData {
+	USD: number
+	EUR: number
+	date?: string
+}
+
+export const fetchLatestExchangeRates = async (): Promise<ExchangeRatesData> => {
+	const defaultRates: ExchangeRatesData = { USD: 0.00003841, EUR: 0.00003317 }
+	return cachedFetch('latest-exchange-rates', 60 * 60 * 1000, async () => {
+		try {
+			const doc = await sanityClient.fetch(
+				`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]{exchangeDate, rates}`
+			)
+			if (doc?.rates?.rateUSD && doc?.rates?.rateEUR) {
+				return {
+					USD: doc.rates.rateUSD > 0 ? 1 / doc.rates.rateUSD : defaultRates.USD,
+					EUR: doc.rates.rateEUR > 0 ? 1 / doc.rates.rateEUR : defaultRates.EUR,
+					date: doc.exchangeDate || undefined,
+				}
+			}
+			return defaultRates
+		} catch (err) {
+			console.warn('[Sanity Server fetchLatestExchangeRates error]:', err)
+			return defaultRates
+		}
+	})
+}

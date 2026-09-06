@@ -3,7 +3,8 @@ import { writable } from 'svelte/store'
 export interface ExchangeRates {
 	USD: number
 	EUR: number
-	[key: string]: number
+	date?: string
+	[key: string]: any
 }
 
 const defaultRates: ExchangeRates = {
@@ -16,7 +17,7 @@ export const exchange_rates_store = (() => {
 
 	return {
 		subscribe,
-		setRates: (rates: ExchangeRates) => {
+		setRates: (rates?: Partial<ExchangeRates> | null) => {
 			if (rates && Object.keys(rates).length > 0) {
 				set({ ...defaultRates, ...rates })
 			}

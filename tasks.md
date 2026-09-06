@@ -69,3 +69,23 @@ Mỗi khi triển khai một task, cần thực hiện trọn vẹn chu trình:
   - Đo lường chỉ số LCP (< 2.5s), INP (< 200ms), CLS (< 0.1) trên Mobile & Desktop cho các trang chính (Home, Tour Details, Blog Details, Contact).
 - [x] **3.1.2. Tích Hợp GitHub Actions CI (.github/workflows/ci.yml)**
   - Thêm workflow `.github/workflows/ci.yml` tự động chạy Type Check (`pnpm check:all`), Linter (`pnpm lint:all`), Unit Tests (`pnpm test:unit`), và E2E Tests (`pnpm test:e2e`) mỗi khi Push hoặc Pull Request.
+
+---
+
+## 🔵 NHÓM 4: KHẮC PHỤC KIẾN TRÚC TỶ GIÁ & ĐỒNG BỘ SSR (EXCHANGE RATE & PRICING)
+
+> Mục tiêu: Sửa lỗi orphaned route `/api/tours`, lấy tỷ giá thực tế từ Sanity cache nạp vào SSR thay vì giá hard-code cũ, và tự động hóa cập nhật tỷ giá hàng ngày.
+
+### 4.1. Server-Side Exchange Rates Loading & Store Sync
+- [x] **4.1.1. Thêm hàm `fetchLatestExchangeRates()` vào `sanity-client.ts`**
+  - Đọc tài liệu tỷ giá mới nhất `exchange-rates-latest` từ Sanity kèm memory cache 1 giờ.
+- [x] **4.1.2. Nạp `exchangeRates` vào `+layout.server.ts`**
+  - Trả về `exchangeRates` cho toàn bộ ứng dụng qua SSR layout data.
+- [x] **4.1.3. Đồng bộ hóa store trong `+layout.svelte`**
+  - Tự động gọi `exchange_rates_store.setRates(data.exchangeRates)` để đảm bảo format tiền tệ chính xác ở cả SSR và Client.
+
+### 4.2. Tự Động Hóa Đồng Bộ Tỷ Giá Hàng Ngày (Cron Job)
+- [x] **4.2.1. Thêm GitHub Action Scheduled Cron Workflow `.github/workflows/sync-rates.yml`**
+  - Chạy định kỳ lúc 00:00 UTC hàng ngày, gọi đồng bộ tỷ giá ngoại hối từ API vào Sanity.
+- [x] **4.2.2. Unit Test kiểm tra tỷ giá & Chạy toàn bộ Quality Gates**
+  - Đảm bảo toàn bộ 15/15 unit tests và 5/5 e2e tests pass 100%.
