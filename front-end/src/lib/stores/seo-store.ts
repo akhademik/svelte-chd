@@ -25,14 +25,20 @@ export const set_seo = (
 	keywords?: string,
 	ogImage?: string
 ) => {
-	if (!title || title === 'default') {
-		seo_title.set('')
-	} else {
+	if (title && title !== 'default') {
 		seo_title.set(title)
+	} else if (title === 'default') {
+		seo_title.set('')
 	}
-	seo_description.set(description || '')
-	seo_keywords.set(keywords || '')
-	seo_og_image.set(ogImage || '')
+	if (description !== undefined) {
+		seo_description.set(description || '')
+	}
+	if (keywords !== undefined) {
+		seo_keywords.set(keywords || '')
+	}
+	if (ogImage !== undefined) {
+		seo_og_image.set(ogImage || '')
+	}
 }
 
 export { DEFAULT_DESC, DEFAULT_KEYWORDS, DEFAULT_TITLE }

@@ -34,9 +34,9 @@
 
 <section
 	id="day-tours"
-	class="border-b border-stone-200 px-6 py-24">
+	class="sm:py-18 border-b border-stone-200 px-6 py-14">
 	<div class="mx-auto max-w-6xl">
-		<div class="mb-16 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+		<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 			<div>
 				<h2 class="font-serif text-3xl font-bold text-moss sm:text-4xl">
 					{$LL.nav_bar.day_tours()}

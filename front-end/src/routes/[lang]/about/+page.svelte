@@ -7,10 +7,6 @@
 	$effect(() => {
 		const _ = page.url.pathname
 		set_seo($LL.seo.about())
-
-		return () => {
-			set_seo('default')
-		}
 	})
 </script>
 

@@ -12,10 +12,6 @@
 		} else {
 			set_seo($LL.seo.highland_tours())
 		}
-
-		return () => {
-			set_seo('default')
-		}
 	})
 </script>
 

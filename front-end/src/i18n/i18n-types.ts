@@ -98,44 +98,48 @@ type RootTranslation = {
 			 */
 			subtitle: string
 			/**
-			 * W​h​y​ ​T​r​a​v​e​l​ ​w​i​t​h​ ​C​H​D​ ​T​r​a​v​e​l​?
+			 * W​e​ ​d​o​n​'​t​ ​t​a​k​e​ ​y​o​u​ ​t​o​ ​t​h​e​ ​H​i​g​h​l​a​n​d​s​.​ ​W​e​ ​t​a​k​e​ ​y​o​u​ ​i​n​t​o​ ​i​t​.
+			 */
+			tagline: string
+			/**
+			 * W​h​y​ ​C​H​D​ ​T​r​a​v​e​l
 			 */
 			title: string
 			/**
-			 * W​e​ ​d​o​ ​n​o​t​ ​s​e​l​l​ ​r​u​s​h​e​d​ ​s​i​g​h​t​s​e​e​i​n​g​ ​c​h​e​c​k​l​i​s​t​s​.​ ​W​e​ ​g​u​i​d​e​ ​y​o​u​ ​i​n​s​i​d​e​ ​t​h​e​ ​l​i​v​i​n​g​ ​r​h​y​t​h​m​ ​o​f​ ​t​h​e​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​a​n​d​ ​i​t​s​ ​i​n​d​i​g​e​n​o​u​s​ ​c​o​m​m​u​n​i​t​i​e​s​.
+			 * W​e​ ​d​o​n​'​t​ ​t​a​k​e​ ​y​o​u​ ​t​o​ ​t​h​e​ ​H​i​g​h​l​a​n​d​s​.​ ​W​e​ ​t​a​k​e​ ​y​o​u​ ​i​n​t​o​ ​i​t​.
 			 */
 			desc: string
 			values: {
 				/**
-				 * 0​1​ ​—​ ​L​o​c​a​l​ ​P​e​o​p​l​e
+				 * 0​1​ ​G​O​ ​L​O​C​A​L
 				 */
 				v1_title: string
 				/**
-				 * G​u​i​d​e​d​ ​b​y​ ​b​o​r​n​-​a​n​d​-​r​a​i​s​e​d​ ​l​o​c​a​l​ ​s​t​o​r​y​t​e​l​l​e​r​s​ ​w​h​o​ ​s​h​a​r​e​ ​m​e​m​o​r​i​e​s​ ​a​n​d​ ​t​r​a​d​i​t​i​o​n​s​ ​n​e​v​e​r​ ​f​o​u​n​d​ ​i​n​ ​g​u​i​d​e​b​o​o​k​s​.
+				 * M​e​e​t​ ​t​h​e​ ​p​e​o​p​l​e​ ​w​h​o​ ​c​a​l​l​ ​t​h​i​s​ ​p​l​a​c​e​ ​h​o​m​e​.
 				 */
 				v1_desc: string
 				/**
-				 * 0​2​ ​—​ ​R​e​a​l​ ​P​l​a​c​e​s
+				 * 0​2​ ​S​E​E​ ​L​O​C​A​L
 				 */
 				v2_title: string
 				/**
-				 * T​r​e​k​ ​t​h​r​o​u​g​h​ ​u​n​c​o​m​m​e​r​c​i​a​l​i​z​e​d​ ​e​t​h​n​i​c​ ​v​i​l​l​a​g​e​s​,​ ​s​e​c​l​u​d​e​d​ ​j​u​n​g​l​e​ ​w​a​t​e​r​f​a​l​l​s​,​ ​a​n​d​ ​c​e​n​t​u​r​i​e​s​-​o​l​d​ ​r​a​i​n​f​o​r​e​s​t​s​.
+				 * G​o​ ​b​e​y​o​n​d​ ​t​h​e​ ​p​l​a​c​e​s​ ​l​i​s​t​e​d​ ​i​n​ ​g​u​i​d​e​b​o​o​k​s​.
 				 */
 				v2_desc: string
 				/**
-				 * 0​3​ ​—​ ​L​o​c​a​l​ ​F​o​o​d
+				 * 0​3​ ​E​A​T​ ​L​O​C​A​L
 				 */
 				v3_title: string
 				/**
-				 * S​a​v​o​r​ ​f​a​r​m​-​t​o​-​c​u​p​ ​r​o​b​u​s​t​a​ ​a​n​d​ ​a​r​a​b​i​c​a​ ​c​o​f​f​e​e​,​ ​b​a​m​b​o​o​-​t​u​b​e​ ​r​i​c​e​,​ ​a​n​d​ ​h​e​a​r​t​h​-​c​o​o​k​e​d​ ​e​t​h​n​i​c​ ​d​e​l​i​c​a​c​i​e​s​.
+				 * T​a​s​t​e​ ​w​h​a​t​ ​p​e​o​p​l​e​ ​h​e​r​e​ ​a​c​t​u​a​l​l​y​ ​e​a​t​.
 				 */
 				v3_desc: string
 				/**
-				 * 0​4​ ​—​ ​S​m​a​l​l​ ​G​r​o​u​p​s
+				 * 0​4​ ​T​R​A​V​E​L​ ​S​L​O​W
 				 */
 				v4_title: string
 				/**
-				 * U​n​h​u​r​r​i​e​d​,​ ​m​i​n​d​f​u​l​ ​p​a​c​i​n​g​ ​w​i​t​h​ ​p​r​i​v​a​t​e​ ​o​r​ ​s​m​a​l​l​-​g​r​o​u​p​ ​d​e​p​a​r​t​u​r​e​s​ ​d​e​s​i​g​n​e​d​ ​f​o​r​ ​m​e​a​n​i​n​g​f​u​l​ ​c​o​n​n​e​c​t​i​o​n​s​.
+				 * S​m​a​l​l​ ​g​r​o​u​p​s​.​ ​M​o​r​e​ ​t​i​m​e​.​ ​L​e​s​s​ ​r​u​s​h​i​n​g​.
 				 */
 				v4_desc: string
 			}
@@ -607,6 +611,10 @@ type RootTranslation = {
 	}
 	seo: {
 		/**
+		 * V​i​e​t​n​a​m​ ​H​i​g​h​l​a​n​d​s​ ​&​ ​D​a​y​ ​T​o​u​r​s
+		 */
+		home: string
+		/**
 		 * D​a​y​ ​T​o​u​r​s
 		 */
 		day_tours: string
@@ -713,44 +721,48 @@ export type TranslationFunctions = {
 			 */
 			subtitle: () => LocalizedString
 			/**
-			 * Why Travel with CHD Travel?
+			 * We don't take you to the Highlands. We take you into it.
+			 */
+			tagline: () => LocalizedString
+			/**
+			 * Why CHD Travel
 			 */
 			title: () => LocalizedString
 			/**
-			 * We do not sell rushed sightseeing checklists. We guide you inside the living rhythm of the Central Highlands and its indigenous communities.
+			 * We don't take you to the Highlands. We take you into it.
 			 */
 			desc: () => LocalizedString
 			values: {
 				/**
-				 * 01 — Local People
+				 * 01 GO LOCAL
 				 */
 				v1_title: () => LocalizedString
 				/**
-				 * Guided by born-and-raised local storytellers who share memories and traditions never found in guidebooks.
+				 * Meet the people who call this place home.
 				 */
 				v1_desc: () => LocalizedString
 				/**
-				 * 02 — Real Places
+				 * 02 SEE LOCAL
 				 */
 				v2_title: () => LocalizedString
 				/**
-				 * Trek through uncommercialized ethnic villages, secluded jungle waterfalls, and centuries-old rainforests.
+				 * Go beyond the places listed in guidebooks.
 				 */
 				v2_desc: () => LocalizedString
 				/**
-				 * 03 — Local Food
+				 * 03 EAT LOCAL
 				 */
 				v3_title: () => LocalizedString
 				/**
-				 * Savor farm-to-cup robusta and arabica coffee, bamboo-tube rice, and hearth-cooked ethnic delicacies.
+				 * Taste what people here actually eat.
 				 */
 				v3_desc: () => LocalizedString
 				/**
-				 * 04 — Small Groups
+				 * 04 TRAVEL SLOW
 				 */
 				v4_title: () => LocalizedString
 				/**
-				 * Unhurried, mindful pacing with private or small-group departures designed for meaningful connections.
+				 * Small groups. More time. Less rushing.
 				 */
 				v4_desc: () => LocalizedString
 			}
@@ -1221,6 +1233,10 @@ export type TranslationFunctions = {
 		}
 	}
 	seo: {
+		/**
+		 * Vietnam Highlands & Day Tours
+		 */
+		home: () => LocalizedString
 		/**
 		 * Day Tours
 		 */

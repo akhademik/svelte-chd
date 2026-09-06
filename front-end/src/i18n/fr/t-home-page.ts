@@ -27,21 +27,18 @@ export const home_page = {
 	},
 	why_chd: {
 		subtitle: 'Notre Philosophie Locale',
-		title: 'Pourquoi Voyager avec CHD Travel ?',
-		desc: 'Nous refusons le tourisme de masse standardisé. Nous vous invitons à vivre le rythme authentique des Hauts Plateaux et de leurs habitants.',
+		tagline: 'Nous ne vous emmenons pas seulement dans les Hauts Plateaux. Nous vous y immergeons.',
+		title: 'Pourquoi Choisir CHD Travel',
+		desc: 'Nous ne vous emmenons pas seulement dans les Hauts Plateaux. Nous vous y immergeons.',
 		values: {
-			v1_title: '01 — Des Gens du Pays',
-			v1_desc:
-				'Accompagnés par des enfants de la terre qui partagent mémoires et traditions avec respect et fierté.',
-			v2_title: '02 — Des Lieux Préservés',
-			v2_desc:
-				'Villages épargnés par le tourisme de masse, cascades secrètes et forêts primaires des Hauts Plateaux.',
-			v3_title: '03 — Saveurs Locales',
-			v3_desc:
-				'Dégustez un café d’origine pure fraîchement récolté, le riz en bambou et les plats traditionnels au feu de bois.',
-			v4_title: '04 — Petits Groupes',
-			v4_desc:
-				'Une allure douce et respectueuse en petits groupes ou circuits privés pour des échanges chaleureux et sincères.',
+			v1_title: '01 GO LOCAL',
+			v1_desc: 'Rencontrez ceux qui habitent ces terres ancestrales.',
+			v2_title: '02 SEE LOCAL',
+			v2_desc: 'Explorez au-delà des sentiers battus des guides.',
+			v3_title: '03 EAT LOCAL',
+			v3_desc: 'Savourez la véritable cuisine locale authentique.',
+			v4_title: '04 TRAVEL SLOW',
+			v4_desc: 'Petits groupes. Plus de temps. Sans aucune hâte.',
 		},
 	},
 	testimonials: {

@@ -10,7 +10,7 @@
 | :--- | :--- | :--- | :--- |
 | **EPIC-1** | Plan Your Trip / Tour Enquiry Integration | 🔴 P0 (Cao nhất / High ROI) | ✅ Hoàn thành (Done) |
 | **EPIC-2** | Tái Cấu Trúc Thứ Tự Section Trang Chủ (Homepage Flow) | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
-| **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
 | **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ⏳ Sẵn sàng thực hiện (To Do) |
@@ -49,14 +49,14 @@
 ---
 
 ### 🟠 EPIC-3: Nâng cấp Content & Brand Positioning "Why CHD"
-- [ ] **TASK-3.1**: Cập nhật lại nội dung section "Why CHD" theo triết lý thương hiệu, tránh cảm giác corporate values:
+- [x] **TASK-3.1**: Cập nhật lại nội dung section "Why CHD" theo triết lý thương hiệu, tránh cảm giác corporate values:
   - **Tagline chính**: *"We don't take you to the Highlands. We take you into it."*
   - **01 GO LOCAL**: *"Meet the people who call this place home."*
   - **02 SEE LOCAL**: *"Go beyond the places listed in guidebooks."*
   - **03 EAT LOCAL**: *"Taste what people here actually eat."*
   - **04 TRAVEL SLOW**: *"Small groups. More time. Less rushing."*
-- [ ] **TASK-3.2**: Bổ sung và đồng bộ các chuỗi dịch đa ngôn ngữ tương ứng trong i18n (`t-home.ts` cho `vn`, `en`, `fr`).
-- [ ] **TASK-3.3**: Đảm bảo giữ vững phong cách Editorial Layout: Typography serif `font-serif`, màu `sand / moss / terracotta`, giữ cấu trúc đánh số `01 / 02 / 03 / 04`.
+- [x] **TASK-3.2**: Bổ sung và đồng bộ các chuỗi dịch đa ngôn ngữ tương ứng trong i18n (`t-home.ts` cho `vn`, `en`, `fr`).
+- [x] **TASK-3.3**: Đảm bảo giữ vững phong cách Editorial Layout: Typography serif `font-serif`, màu `sand / moss / terracotta`, giữ cấu trúc đánh số `01 / 02 / 03 / 04`.
 
 ---
 

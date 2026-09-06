@@ -92,7 +92,7 @@
       "file_type": "code",
       "norm_label": "formatters",
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L1247"
+      "source_location": "L1263"
     },
     {
       "id": "front_end_src_i18n_i18n_types_locales",
@@ -144,7 +144,7 @@
       "file_type": "code",
       "norm_label": "translationfunctions",
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L632"
+      "source_location": "L640"
     },
     {
       "id": "front_end_src_i18n_i18n_types_translations",
@@ -210,19 +210,6 @@
       "norm_label": "basetranslation",
       "source_file": "front-end/src/i18n/i18n-types.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "front_end_src_lib_types_testimonial_type_testimonial",
-      "label": "Testimonial",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "testimonial",
-      "source_file": "front-end/src/lib/types/testimonial.type.ts",
-      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_stores_modal_store_blogmodalstate",
@@ -353,6 +340,19 @@
       "norm_label": "tour",
       "source_file": "front-end/src/lib/types/tour.type.ts",
       "source_location": "L41"
+    },
+    {
+      "id": "front_end_src_lib_types_testimonial_type_testimonial",
+      "label": "Testimonial",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "testimonial",
+      "source_file": "front-end/src/lib/types/testimonial.type.ts",
+      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_stores_seo_store_seostate",
@@ -978,28 +978,16 @@
       "source_location": "L78"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
-      "label": "#each()",
+      "id": "front_end_src_lib_stores_tour_store_set_tour_index",
+      "label": "set_tour_index()",
       "_callable": true,
       "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
+      "community": 15,
+      "community_name": "details-navigation.svelte",
       "file_type": "code",
-      "norm_label": "#each()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L108"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_switch",
-      "label": "switch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "switch()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L60"
+      "norm_label": "set_tour_index()",
+      "source_file": "front-end/src/lib/stores/tour-store.ts",
+      "source_location": "L3"
     },
     {
       "id": "front_end_src_routes_api_tours_server_fetch_data",
@@ -1228,6 +1216,30 @@
       "norm_label": "url_for()",
       "source_file": "front-end/src/lib/utils/sanity.ts",
       "source_location": "L46"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
+      "label": "#each()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "#each()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L108"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_switch",
+      "label": "switch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "switch()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L60"
     },
     {
       "id": "front_end_src_lib_server_sanity_client_cachedfetch",
@@ -1564,18 +1576,6 @@
       "norm_label": "set_mobile_store()",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
       "source_location": "L10"
-    },
-    {
-      "id": "front_end_src_lib_stores_tour_store_set_tour_index",
-      "label": "set_tour_index()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "file_type": "code",
-      "norm_label": "set_tour_index()",
-      "source_file": "front-end/src/lib/stores/tour-store.ts",
-      "source_location": "L3"
     },
     {
       "id": "back_end_components_c_number_input",
@@ -2579,17 +2579,6 @@
       "source_file": "$app/stores"
     },
     {
-      "id": "front_end_src_lib_base_base_blog_detail_modal",
-      "label": "base-blog-detail-modal.svelte",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "base/index.ts",
-      "file_type": "code",
-      "norm_label": "base-blog-detail-modal.svelte",
-      "source_file": "front-end/src/lib/base/base-blog-detail-modal.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_base_base_button",
       "label": "base-button.svelte",
       "_origin": "ast",
@@ -2709,17 +2698,6 @@
       "norm_label": "+layout.svelte",
       "source_file": "front-end/src/routes/+layout.svelte",
       "source_location": "L1"
-    },
-    {
-      "id": "transition",
-      "label": "svelte/transition",
-      "_origin": "ast",
-      "community": 12,
-      "community_name": "base-tour-detail-modal.svelte",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "svelte/transition",
-      "source_file": "svelte/transition"
     },
     {
       "id": "front_end_src_lib_base_base_booking_modal",
@@ -2953,103 +2931,70 @@
       "source_location": "L25"
     },
     {
-      "id": "front_end_src_routes_lang_contact_types",
-      "label": "./$types",
+      "id": "navigation",
+      "label": "$app/navigation",
       "_origin": "ast",
       "community": 15,
-      "community_name": "$app/state",
+      "community_name": "details-navigation.svelte",
       "confidence": "EXTRACTED",
       "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/contact/$types"
+      "norm_label": "$app/navigation",
+      "source_file": "$app/navigation"
     },
     {
-      "id": "state",
-      "label": "$app/state",
+      "id": "front_end_src_lib_modules_tour_page_components_details_navigation",
+      "label": "details-navigation.svelte",
       "_origin": "ast",
       "community": 15,
-      "community_name": "$app/state",
-      "confidence": "EXTRACTED",
+      "community_name": "details-navigation.svelte",
       "file_type": "code",
-      "norm_label": "$app/state",
-      "source_file": "$app/state"
-    },
-    {
-      "id": "front_end_src_lib_modules_about_page_about_page",
-      "label": "about-page.svelte",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "$app/state",
-      "file_type": "code",
-      "norm_label": "about-page.svelte",
-      "source_file": "front-end/src/lib/modules/about-page/about-page.svelte",
+      "norm_label": "details-navigation.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/components/details-navigation.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_about_page_index",
-      "label": "about-page/index.ts",
+      "id": "front_end_src_lib_stores_tour_store",
+      "label": "tour-store.ts",
       "_origin": "ast",
       "community": 15,
-      "community_name": "$app/state",
+      "community_name": "details-navigation.svelte",
       "file_type": "code",
-      "norm_label": "about-page/index.ts",
-      "source_file": "front-end/src/lib/modules/about-page/index.ts",
+      "norm_label": "tour-store.ts",
+      "source_file": "front-end/src/lib/stores/tour-store.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_contact_page_index",
-      "label": "contact-page/index.ts",
+      "id": "front_end_src_lib_stores_tour_store_tour_index_store",
+      "label": "tour_index_store",
       "_origin": "ast",
       "community": 15,
-      "community_name": "$app/state",
+      "community_name": "details-navigation.svelte",
       "file_type": "code",
-      "norm_label": "contact-page/index.ts",
-      "source_file": "front-end/src/lib/modules/contact-page/index.ts",
+      "norm_label": "tour_index_store",
+      "source_file": "front-end/src/lib/stores/tour-store.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_end_src_lib_utils_logger",
+      "label": "logger.ts",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "details-navigation.svelte",
+      "file_type": "code",
+      "norm_label": "logger.ts",
+      "source_file": "front-end/src/lib/utils/logger.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_tour_page_tour_card",
-      "label": "tour-card.svelte",
+      "id": "front_end_src_lib_utils_logger_logger",
+      "label": "logger",
       "_origin": "ast",
       "community": 15,
-      "community_name": "$app/state",
+      "community_name": "details-navigation.svelte",
       "file_type": "code",
-      "norm_label": "tour-card.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_tour_page_tour_gallery",
-      "label": "tour-gallery.svelte",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "$app/state",
-      "file_type": "code",
-      "norm_label": "tour-gallery.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-gallery.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_about_page",
-      "label": "about/+page.svelte",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "$app/state",
-      "file_type": "code",
-      "norm_label": "about/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/about/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_contact_page",
-      "label": "contact/+page.svelte",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "$app/state",
-      "file_type": "code",
-      "norm_label": "contact/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/contact/+page.svelte",
-      "source_location": "L1"
+      "norm_label": "logger",
+      "source_file": "front-end/src/lib/utils/logger.ts",
+      "source_location": "L3"
     },
     {
       "id": "client",
@@ -3061,6 +3006,28 @@
       "file_type": "code",
       "norm_label": "sveltekit-superforms/client",
       "source_file": "sveltekit-superforms/client"
+    },
+    {
+      "id": "front_end_src_routes_lang_contact_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "i18n-svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/contact/$types"
+    },
+    {
+      "id": "state",
+      "label": "$app/state",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "i18n-svelte.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/state",
+      "source_file": "$app/state"
     },
     {
       "id": "front_end_src_i18n_i18n_svelte",
@@ -3083,6 +3050,28 @@
       "norm_label": "{ locale, ll, setlocale }",
       "source_file": "front-end/src/i18n/i18n-svelte.ts",
       "source_location": "L8"
+    },
+    {
+      "id": "front_end_src_lib_modules_about_page_about_page",
+      "label": "about-page.svelte",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "i18n-svelte.ts",
+      "file_type": "code",
+      "norm_label": "about-page.svelte",
+      "source_file": "front-end/src/lib/modules/about-page/about-page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_about_page_index",
+      "label": "about-page/index.ts",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "i18n-svelte.ts",
+      "file_type": "code",
+      "norm_label": "about-page/index.ts",
+      "source_file": "front-end/src/lib/modules/about-page/index.ts",
+      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_modules_contact_page_components_contact_address",
@@ -3129,17 +3118,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_review",
-      "label": "contact-review.svelte",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-review.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-review.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_modules_contact_page_contact_page",
       "label": "contact-page.svelte",
       "_origin": "ast",
@@ -3148,6 +3126,17 @@
       "file_type": "code",
       "norm_label": "contact-page.svelte",
       "source_file": "front-end/src/lib/modules/contact-page/contact-page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_index",
+      "label": "contact-page/index.ts",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "i18n-svelte.ts",
+      "file_type": "code",
+      "norm_label": "contact-page/index.ts",
+      "source_file": "front-end/src/lib/modules/contact-page/index.ts",
       "source_location": "L1"
     },
     {
@@ -3162,17 +3151,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
-      "label": "home-featured-blogs.svelte",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-featured-blogs.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_modules_home_page_components_home_featured_experiences",
       "label": "home-featured-experiences.svelte",
       "_origin": "ast",
@@ -3181,17 +3159,6 @@
       "file_type": "code",
       "norm_label": "home-featured-experiences.svelte",
       "source_file": "front-end/src/lib/modules/home-page/components/home-featured-experiences.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_slider",
-      "label": "home-featured-slider.svelte",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-featured-slider.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-slider.svelte",
       "source_location": "L1"
     },
     {
@@ -3206,69 +3173,47 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_hero",
-      "label": "home-hero.svelte",
+      "id": "front_end_src_lib_modules_tour_page_tour_card",
+      "label": "tour-card.svelte",
       "_origin": "ast",
       "community": 16,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "home-hero.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
+      "norm_label": "tour-card.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_plan_your_trip",
-      "label": "home-plan-your-trip.svelte",
+      "id": "front_end_src_lib_modules_tour_page_tour_gallery",
+      "label": "tour-gallery.svelte",
       "_origin": "ast",
       "community": 16,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "home-plan-your-trip.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-plan-your-trip.svelte",
+      "norm_label": "tour-gallery.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-gallery.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_testimonials",
-      "label": "home-testimonials.svelte",
+      "id": "front_end_src_routes_lang_about_page",
+      "label": "about/+page.svelte",
       "_origin": "ast",
       "community": 16,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "home-testimonials.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
+      "norm_label": "about/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/about/+page.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_why_chd",
-      "label": "home-why-chd.svelte",
+      "id": "front_end_src_routes_lang_contact_page",
+      "label": "contact/+page.svelte",
       "_origin": "ast",
       "community": 16,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "home-why-chd.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-why-chd.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_home_page",
-      "label": "home-page.svelte",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-page.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/home-page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_types_testimonial_type",
-      "label": "testimonial.type.ts",
-      "_origin": "ast",
-      "community": 16,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "testimonial.type.ts",
-      "source_file": "front-end/src/lib/types/testimonial.type.ts",
+      "norm_label": "contact/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/contact/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -4053,6 +3998,39 @@
       "source_location": "L9"
     },
     {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_review",
+      "label": "contact-review.svelte",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "contact-review.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-review.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_testimonials",
+      "label": "home-testimonials.svelte",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "home-testimonials.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_types_testimonial_type",
+      "label": "testimonial.type.ts",
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "testimonial.type.ts",
+      "source_file": "front-end/src/lib/types/testimonial.type.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_utils_format_data",
       "label": "format-data.ts",
       "_origin": "ast",
@@ -4117,6 +4095,28 @@
       "file_type": "code",
       "norm_label": "./$types",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/$types"
+    },
+    {
+      "id": "transition",
+      "label": "svelte/transition",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "sanity.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte/transition",
+      "source_file": "svelte/transition"
+    },
+    {
+      "id": "front_end_src_lib_base_base_blog_detail_modal",
+      "label": "base-blog-detail-modal.svelte",
+      "_origin": "ast",
+      "community": 25,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "base-blog-detail-modal.svelte",
+      "source_file": "front-end/src/lib/base/base-blog-detail-modal.svelte",
+      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_base_base_portable_text_image",
@@ -5608,18 +5608,84 @@
       "label": "./$types",
       "_origin": "ast",
       "community": 46,
-      "community_name": "home-page/index.ts",
+      "community_name": "home-page.svelte",
       "confidence": "EXTRACTED",
       "file_type": "code",
       "norm_label": "./$types",
       "source_file": "front-end/src/routes/[lang]/$types"
     },
     {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
+      "label": "home-featured-blogs.svelte",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-featured-blogs.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_slider",
+      "label": "home-featured-slider.svelte",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-featured-slider.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-slider.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_hero",
+      "label": "home-hero.svelte",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-hero.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_plan_your_trip",
+      "label": "home-plan-your-trip.svelte",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-plan-your-trip.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-plan-your-trip.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_why_chd",
+      "label": "home-why-chd.svelte",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-why-chd.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-why-chd.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_home_page",
+      "label": "home-page.svelte",
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-page.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/home-page.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_modules_home_page_index",
       "label": "home-page/index.ts",
       "_origin": "ast",
       "community": 46,
-      "community_name": "home-page/index.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
       "norm_label": "home-page/index.ts",
       "source_file": "front-end/src/lib/modules/home-page/index.ts",
@@ -5630,7 +5696,7 @@
       "label": "[lang]/+page.svelte",
       "_origin": "ast",
       "community": 46,
-      "community_name": "home-page/index.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
       "norm_label": "[lang]/+page.svelte",
       "source_file": "front-end/src/routes/[lang]/+page.svelte",
@@ -6814,17 +6880,6 @@
       "source_file": "tailwindcss"
     },
     {
-      "id": "navigation",
-      "label": "$app/navigation",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "$app/navigation",
-      "source_file": "$app/navigation"
-    },
-    {
       "id": "front_end_src_lib_modules_nav_bar_components_nav_burger_button",
       "label": "nav-burger-button.svelte",
       "_origin": "ast",
@@ -6866,17 +6921,6 @@
       "file_type": "code",
       "norm_label": "nav-bar.svelte",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_tour_page_components_details_navigation",
-      "label": "details-navigation.svelte",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "file_type": "code",
-      "norm_label": "details-navigation.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/components/details-navigation.svelte",
       "source_location": "L1"
     },
     {
@@ -6922,50 +6966,6 @@
       "norm_label": "nav_mobile",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
       "source_location": "L27"
-    },
-    {
-      "id": "front_end_src_lib_stores_tour_store",
-      "label": "tour-store.ts",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "file_type": "code",
-      "norm_label": "tour-store.ts",
-      "source_file": "front-end/src/lib/stores/tour-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_tour_store_tour_index_store",
-      "label": "tour_index_store",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "file_type": "code",
-      "norm_label": "tour_index_store",
-      "source_file": "front-end/src/lib/stores/tour-store.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "front_end_src_lib_utils_logger",
-      "label": "logger.ts",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "file_type": "code",
-      "norm_label": "logger.ts",
-      "source_file": "front-end/src/lib/utils/logger.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_utils_logger_logger",
-      "label": "logger",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "nav-store.ts",
-      "file_type": "code",
-      "norm_label": "logger",
-      "source_file": "front-end/src/lib/utils/logger.ts",
-      "source_location": "L3"
     },
     {
       "id": ".github/workflows/ci.yml",
@@ -13519,7 +13519,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L1247",
+      "source_location": "L1263",
       "weight": 1.0
     },
     {
@@ -13585,7 +13585,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L632",
+      "source_location": "L640",
       "weight": 1.0
     },
     {
@@ -17300,6 +17300,15 @@
     },
     {
       "source": "front_end_src_routes_lang_page",
+      "target": "front_end_src_i18n_i18n_svelte",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/routes/[lang]/+page.svelte"
+    },
+    {
+      "source": "front_end_src_routes_lang_page",
       "target": "front_end_src_lib_modules_home_page_index",
       "relation": "imports_from",
       "_origin": "ast",
@@ -17309,7 +17318,25 @@
     },
     {
       "source": "front_end_src_routes_lang_page",
+      "target": "front_end_src_lib_stores_seo_store",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/routes/[lang]/+page.svelte"
+    },
+    {
+      "source": "front_end_src_routes_lang_page",
       "target": "front_end_src_routes_lang_types",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/routes/[lang]/+page.svelte"
+    },
+    {
+      "source": "front_end_src_routes_lang_page",
+      "target": "state",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -17539,5 +17566,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "07a9aab6b098731877efbdd8abae9c3d1c976f58"
+  "built_at_commit": "9415a3c7025062f543f2473b67a0b88b62368175"
 }

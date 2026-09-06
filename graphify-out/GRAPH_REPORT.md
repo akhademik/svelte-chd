@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-06)
 
 ## Corpus Check
-- 172 files · ~84,412 words
+- 172 files · ~84,123 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 631 nodes · 947 edges · 86 communities (21 shown, 34 thin omitted)
+- 631 nodes · 950 edges · 86 communities (21 shown, 34 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 4 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `07a9aab6`
+- Built from commit: `9415a3c7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,7 +30,7 @@
 - base-tour-detail-modal.svelte
 - en/index.ts
 - eslint
-- $app/state
+- details-navigation.svelte
 - i18n-svelte.ts
 - @playwright/test
 - compilerOptions
@@ -60,7 +60,7 @@
 - @sveltejs/adapter-cloudflare
 - @sveltejs/kit
 - @sveltejs/vite-plugin-svelte
-- home-page/index.ts
+- home-page.svelte
 - @testing-library/svelte
 - tslib
 - @types/node
@@ -137,8 +137,8 @@ Cohesion: 0.11
 Nodes (19): devDependencies, eslint, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui, @types/react (+11 more)
 
 ### Community 9 - "nav-store.ts"
-Cohesion: 0.12
-Nodes (5): nav_animate_hidden, nav_deg, nav_mobile, tour_index_store, logger
+Cohesion: 0.20
+Nodes (3): nav_animate_hidden, nav_deg, nav_mobile
 
 ### Community 10 - "fr/index.ts"
 Cohesion: 0.21
@@ -169,11 +169,11 @@ Cohesion: 0.39
 Nodes (7): client, config, fetch_data(), fetch_exchange_rate(), GET(), get_latest_exchange_rate_from_sanity(), sync_rate_to_sanity()
 
 ### Community 24 - "format-data.ts"
-Cohesion: 0.36
-Nodes (7): EN_MONTHS, format_pax_no(), format_price(), format_price_object(), format_review_date(), FR_MONTHS, get_exchange_rate()
+Cohesion: 0.23
+Nodes (8): Testimonial, EN_MONTHS, format_pax_no(), format_price(), format_price_object(), format_review_date(), FR_MONTHS, get_exchange_rate()
 
 ### Community 25 - "sanity.ts"
-Cohesion: 0.23
+Cohesion: 0.22
 Nodes (7): builder, config, get_length_and_index(), get_tour_slug(), tour_by_index(), ./$types, ./$types
 
 ### Community 27 - "seo-store.ts"

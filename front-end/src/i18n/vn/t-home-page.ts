@@ -26,22 +26,19 @@ export const home_page = {
 		},
 	},
 	why_chd: {
-		subtitle: 'Triết lý du lịch bản địa',
-		title: 'Vì sao đồng hành cùng CHD Travel?',
-		desc: 'Chúng tôi không tạo ra những chuyến đi đại trà lướt qua các điểm check-in. Chúng tôi cùng bạn bước vào nhịp sống thực thụ của đất và người Tây Nguyên.',
+		subtitle: 'Triết lý bản địa',
+		tagline: 'Chúng tôi không chỉ đưa bạn đến Tây Nguyên. Chúng tôi đưa bạn hòa vào Tây Nguyên.',
+		title: 'Vì sao chọn CHD Travel',
+		desc: 'Chúng tôi không chỉ đưa bạn đến Tây Nguyên. Chúng tôi đưa bạn hòa vào Tây Nguyên.',
 		values: {
-			v1_title: 'Người bản địa dẫn dắt',
-			v1_desc:
-				'Được sinh ra và lớn lên tại buôn làng Tây Nguyên, hướng dẫn viên của chúng tôi kể cho bạn nghe những câu chuyện chưa từng có trên sách báo.',
-			v2_title: 'Điểm đến nguyên sơ',
-			v2_desc:
-				'Khám phá những buôn làng chưa bị thương mại hóa, những thác nước ẩn mình giữa đại ngàn và rừng nguyên sinh hoang sơ.',
-			v3_title: 'Ẩm thực chuẩn vị',
-			v3_desc:
-				'Thưởng thức cà phê rang mộc tự tay nông dân hái, nếm trọn vị cơm lam, gà nướng lá é và rau rừng đậm đà hương đất đỏ bazan.',
-			v4_title: 'Nhóm nhỏ & Nhịp sống chậm',
-			v4_desc:
-				'Không vội vã, không áp lực lịch trình. Mỗi hành trình ưu tiên nhóm nhỏ hoặc tour riêng để cảm xúc luôn trọn vẹn nhất.',
+			v1_title: '01 GO LOCAL',
+			v1_desc: 'Gặp gỡ và trò chuyện cùng những người con buôn làng.',
+			v2_title: '02 SEE LOCAL',
+			v2_desc: 'Khám phá những vùng đất vượt ngoài sách hướng dẫn.',
+			v3_title: '03 EAT LOCAL',
+			v3_desc: 'Thưởng thức trọn vẹn hương vị ẩm thực bản xứ.',
+			v4_title: '04 TRAVEL SLOW',
+			v4_desc: 'Nhóm nhỏ. Nhiều thời gian hơn. Không vội vã.',
 		},
 	},
 	testimonials: {

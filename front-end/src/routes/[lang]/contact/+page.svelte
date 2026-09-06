@@ -16,10 +16,6 @@
 		// Read page.url to track navigation
 		const _ = page.url.pathname
 		set_seo($LL.seo.contact())
-
-		return () => {
-			set_seo('default')
-		}
 	})
 </script>
 

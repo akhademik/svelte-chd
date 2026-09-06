@@ -4,7 +4,7 @@
 	import defaultTestimonials from '$lib/constants/testimonials.json'
 	import type { Testimonial } from '$lib/types/testimonial.type'
 	import { format_review_date } from '$lib/utils/format-data'
-	import { onMount } from 'svelte'
+	import { onMount, untrack } from 'svelte'
 
 	interface Props {
 		testimonials?: Testimonial[]
@@ -12,8 +12,11 @@
 
 	let { testimonials = defaultTestimonials }: Props = $props()
 
-	const displayItems = $derived(
-		(testimonials && testimonials.length > 0 ? testimonials : defaultTestimonials).map(t => ({
+	const PAGE_SIZE = 3
+
+	function getSlides(rawList: Testimonial[]) {
+		const list = rawList && rawList.length > 0 ? rawList : defaultTestimonials
+		const items = list.map(t => ({
 			quote: t.review_content,
 			title: t.review_title,
 			authorName: t.name,
@@ -23,35 +26,26 @@
 			sourceUrl: t.url,
 			date: t.date_review || '',
 		}))
-	)
-
-	const PAGE_SIZE = 3
-
-	// Group testimonials into chunks of 3
-	const baseSlides = $derived.by(() => {
-		const result: (typeof displayItems)[] = []
-		for (let i = 0; i < displayItems.length; i += PAGE_SIZE) {
-			result.push(displayItems.slice(i, i + PAGE_SIZE))
+		const slides: (typeof items)[] = []
+		for (let i = 0; i < items.length; i += PAGE_SIZE) {
+			slides.push(items.slice(i, i + PAGE_SIZE))
 		}
-		return result
-	})
+		return slides
+	}
 
-	const totalRealSlides = $derived(baseSlides.length)
-
-	// Infinite loop: prepend last slide and append first slide as clones
-	// Index mapping: 1 .. totalRealSlides are real slides.
-	// 0 is clone of last slide. totalRealSlides + 1 is clone of first slide.
-	const displaySlides = $derived.by(() => {
-		if (totalRealSlides <= 1) return baseSlides
-		return [baseSlides[totalRealSlides - 1], ...baseSlides, baseSlides[0]]
-	})
+	let baseSlides = $derived(getSlides(testimonials))
+	let totalRealSlides = $derived(baseSlides.length)
+	let displaySlides = $derived(
+		totalRealSlides <= 1
+			? baseSlides
+			: [baseSlides[totalRealSlides - 1], ...baseSlides, baseSlides[0]]
+	)
 
 	let currentTrackIndex = $state(1)
 	let isTransitioning = $state(false)
 	let isHovered = $state(false)
 
-	// Active real dot index (0 .. totalRealSlides - 1)
-	const activeDotIndex = $derived.by(() => {
+	let activeDotIndex = $derived.by(() => {
 		const count = totalRealSlides
 		if (count <= 1) return 0
 		if (currentTrackIndex === 0) return count - 1
@@ -60,21 +54,21 @@
 	})
 
 	const nextSlide = () => {
-		const count = baseSlides.length
+		const count = untrack(() => totalRealSlides)
 		if (count <= 1 || isTransitioning) return
 		isTransitioning = true
 		currentTrackIndex += 1
 	}
 
 	const prevSlide = () => {
-		const count = baseSlides.length
+		const count = untrack(() => totalRealSlides)
 		if (count <= 1 || isTransitioning) return
 		isTransitioning = true
 		currentTrackIndex -= 1
 	}
 
 	const goToSlide = (idx: number) => {
-		const count = baseSlides.length
+		const count = untrack(() => totalRealSlides)
 		if (count <= 1 || isTransitioning) return
 		isTransitioning = true
 		currentTrackIndex = idx + 1
@@ -82,10 +76,9 @@
 
 	const handleTransitionEnd = () => {
 		isTransitioning = false
-		const count = baseSlides.length
+		const count = untrack(() => totalRealSlides)
 		if (count <= 1) return
 
-		// Jump smoothly without transition when reaching clones
 		if (currentTrackIndex === count + 1) {
 			currentTrackIndex = 1
 		} else if (currentTrackIndex === 0) {
@@ -95,7 +88,7 @@
 
 	onMount(() => {
 		const interval = setInterval(() => {
-			if (!isHovered && baseSlides.length > 1) {
+			if (!isHovered && untrack(() => totalRealSlides) > 1) {
 				nextSlide()
 			}
 		}, 7000)
@@ -104,10 +97,10 @@
 	})
 </script>
 
-<section class="border-b border-stone-200 px-6 py-20 sm:py-28">
+<section class="sm:py-18 border-b border-stone-200 px-6 py-14">
 	<div class="mx-auto max-w-6xl">
 		<div
-			class="mb-12 flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
+			class="mb-10 flex flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
 			<div>
 				<span class="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta">
 					{$LL.home_page.testimonials.subtitle()}

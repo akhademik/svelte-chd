@@ -27,21 +27,18 @@ export const home_page = {
 	},
 	why_chd: {
 		subtitle: 'Our Local Philosophy',
-		title: 'Why Travel with CHD Travel?',
-		desc: 'We do not sell rushed sightseeing checklists. We guide you inside the living rhythm of the Central Highlands and its indigenous communities.',
+		tagline: "We don't take you to the Highlands. We take you into it.",
+		title: 'Why CHD Travel',
+		desc: "We don't take you to the Highlands. We take you into it.",
 		values: {
-			v1_title: '01 — Local People',
-			v1_desc:
-				'Guided by born-and-raised local storytellers who share memories and traditions never found in guidebooks.',
-			v2_title: '02 — Real Places',
-			v2_desc:
-				'Trek through uncommercialized ethnic villages, secluded jungle waterfalls, and centuries-old rainforests.',
-			v3_title: '03 — Local Food',
-			v3_desc:
-				'Savor farm-to-cup robusta and arabica coffee, bamboo-tube rice, and hearth-cooked ethnic delicacies.',
-			v4_title: '04 — Small Groups',
-			v4_desc:
-				'Unhurried, mindful pacing with private or small-group departures designed for meaningful connections.',
+			v1_title: '01 GO LOCAL',
+			v1_desc: 'Meet the people who call this place home.',
+			v2_title: '02 SEE LOCAL',
+			v2_desc: 'Go beyond the places listed in guidebooks.',
+			v3_title: '03 EAT LOCAL',
+			v3_desc: 'Taste what people here actually eat.',
+			v4_title: '04 TRAVEL SLOW',
+			v4_desc: 'Small groups. More time. Less rushing.',
 		},
 	},
 	testimonials: {

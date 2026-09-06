@@ -75,9 +75,9 @@
 {#if displayPosts.length > 0}
 	<section
 		id="featured-blogs"
-		class="border-b border-stone-200 bg-sand px-6 py-24">
+		class="sm:py-18 border-b border-stone-200 bg-sand px-6 py-14">
 		<div class="mx-auto max-w-6xl">
-			<div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+			<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 				<div>
 					<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-terracotta">
 						{$locale === 'vn' ? 'Góc Nhìn & Trải Nghiệm' : 'Stories & Insights'}

@@ -14,10 +14,6 @@
 	$effect(() => {
 		const _ = page.url.pathname
 		set_seo($LL.seo.blog())
-
-		return () => {
-			set_seo('default')
-		}
 	})
 </script>
 

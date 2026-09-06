@@ -4,8 +4,8 @@
 
 <section
 	id="plan-your-trip"
-	class="border-b border-stone-200 bg-sand px-6 py-20 sm:py-28">
-	<div class="mx-auto max-w-4xl text-center">
+	class="border-b border-stone-200 bg-sand px-6 py-12 sm:py-16">
+	<div class="mx-auto max-w-3xl text-center">
 		<span class="text-xs font-semibold uppercase tracking-[0.25em] text-terracotta">
 			{$locale === 'vn'
 				? 'Thiết Kế Chuyến Đi Riêng'
@@ -14,7 +14,7 @@
 					: 'Tailor-Made Journey'}
 		</span>
 
-		<h2 class="mt-3 font-serif text-3xl font-bold text-moss sm:text-4xl lg:text-5xl">
+		<h2 class="mt-2 font-serif text-2xl font-bold text-moss sm:text-3xl lg:text-4xl">
 			{$locale === 'vn'
 				? 'Chia sẻ điều bạn muốn trải nghiệm'
 				: $locale === 'fr'
@@ -22,7 +22,7 @@
 					: 'Tell us what you want to experience'}
 		</h2>
 
-		<p class="mx-auto mt-4 max-w-xl text-sm font-light leading-relaxed text-stone-600 sm:text-base">
+		<p class="mx-auto mt-3 max-w-lg text-xs font-light leading-relaxed text-stone-600 sm:text-sm">
 			{$locale === 'vn'
 				? 'Dù là đi bộ qua nương rẫy cà phê, lắng nghe già làng kể khan, hay thong dong ngắm thác rừng đại ngàn — chúng tôi sẵn sàng cùng bạn tạo nên một hành trình mang đậm dấu ấn cá nhân.'
 				: $locale === 'fr'
@@ -30,10 +30,10 @@
 					: 'Whether walking through organic coffee farms, listening to village elders share ancient folklore, or wandering by wild waterfalls — we curate your private, unhurried journey.'}
 		</p>
 
-		<div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+		<div class="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
 			<a
 				href={`/${$locale}/contact`}
-				class="inline-flex w-full items-center justify-center gap-2 bg-moss px-9 py-4 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-all duration-300 hover:bg-moss-hover sm:w-auto">
+				class="inline-flex w-full items-center justify-center gap-2 bg-moss px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-all duration-300 hover:bg-moss-hover sm:w-auto">
 				<span>
 					{$locale === 'vn'
 						? 'Lên kế hoạch chuyến đi'
@@ -43,7 +43,7 @@
 				</span>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
-					class="h-4 w-4"
+					class="h-3.5 w-3.5"
 					viewBox="0 0 24 24"
 					fill="none"
 					stroke="currentColor"
@@ -61,7 +61,7 @@
 
 			<a
 				href="#day-tours"
-				class="inline-flex w-full items-center justify-center border border-stone-800 px-8 py-4 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-800 hover:text-white sm:w-auto">
+				class="inline-flex w-full items-center justify-center border border-stone-800 px-6 py-3 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-800 hover:text-white sm:w-auto">
 				{$LL.home_page.cta_explore()}
 			</a>
 		</div>

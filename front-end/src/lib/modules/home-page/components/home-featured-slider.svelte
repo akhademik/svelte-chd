@@ -4,6 +4,7 @@
 	import type { Tour } from '$lib/types/tour.type'
 	import { format_price } from '$lib/utils/format-data'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
+	import { untrack } from 'svelte'
 	import { fade } from 'svelte/transition'
 
 	interface Props {
@@ -14,17 +15,18 @@
 
 	let hotTours = $derived(tours.filter(t => t.best_sell && Boolean(t.tour_name?.[$locale])))
 	let currentIndex = $state(0)
-	let timer = $state<any>(null)
 
 	const nextSlide = () => {
-		if (hotTours.length > 0) {
-			currentIndex = (currentIndex + 1) % hotTours.length
+		const len = untrack(() => hotTours.length)
+		if (len > 0) {
+			currentIndex = (currentIndex + 1) % len
 		}
 	}
 
 	const prevSlide = () => {
-		if (hotTours.length > 0) {
-			currentIndex = (currentIndex - 1 + hotTours.length) % hotTours.length
+		const len = untrack(() => hotTours.length)
+		if (len > 0) {
+			currentIndex = (currentIndex - 1 + len) % len
 		}
 	}
 
@@ -38,8 +40,8 @@
 
 	$effect(() => {
 		if (hotTours.length > 1) {
-			timer = setInterval(nextSlide, 7000)
-			return () => clearInterval(timer)
+			const interval = setInterval(nextSlide, 7000)
+			return () => clearInterval(interval)
 		}
 	})
 
