@@ -1,3 +1,4 @@
+import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
 import { writable } from 'svelte/store'
 
 export interface ExchangeRates {
@@ -7,10 +8,7 @@ export interface ExchangeRates {
 	[key: string]: any
 }
 
-const defaultRates: ExchangeRates = {
-	USD: 0.00003841,
-	EUR: 0.00003317,
-}
+const defaultRates: ExchangeRates = { ...DEFAULT_EXCHANGE_RATES }
 
 export const exchange_rates_store = (() => {
 	const { subscribe, set, update } = writable<ExchangeRates>(defaultRates)

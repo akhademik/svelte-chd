@@ -5,7 +5,7 @@
 	import ContactReview from './components/contact-review.svelte'
 
 	interface Props {
-		data: { form: any; [key: string]: any }
+		data: { form: any; testimonials?: any[]; [key: string]: any }
 	}
 
 	let { data }: Props = $props()
@@ -17,7 +17,7 @@
 		<div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12">
 			<ContactForm {data} />
 			<div class="flex flex-col gap-8 lg:gap-12">
-				<ContactReview />
+				<ContactReview testimonials={data.testimonials} />
 				<ContactAddress />
 			</div>
 		</div>

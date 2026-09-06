@@ -370,6 +370,14 @@ type RootTranslation = {
 		 * P​l​a​n​ ​t​h​i​s​ ​t​r​i​p
 		 */
 		plan_trip: string
+		/**
+		 * B​o​o​k​ ​N​o​w
+		 */
+		book_now: string
+		/**
+		 * P​l​a​n​ ​y​o​u​r​ ​j​o​u​r​n​e​y
+		 */
+		customize_trip: string
 		trip_facts: {
 			/**
 			 * T​r​i​p​ ​F​a​c​t​s
@@ -949,6 +957,14 @@ export type TranslationFunctions = {
 		 * Plan this trip
 		 */
 		plan_trip: () => LocalizedString
+		/**
+		 * Book Now
+		 */
+		book_now: () => LocalizedString
+		/**
+		 * Plan your journey
+		 */
+		customize_trip: () => LocalizedString
 		trip_facts: {
 			/**
 			 * Trip Facts

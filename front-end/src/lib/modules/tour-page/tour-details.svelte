@@ -54,10 +54,6 @@
 			? 'day-tours'
 			: 'highland-tours'
 	)
-
-	let planTripUrl = $derived(
-		`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`
-	)
 </script>
 
 <div class="space-y-12 pb-24">
@@ -140,7 +136,7 @@
 				<!-- Quick Action Box -->
 				<div class="border border-stone-200/90 bg-white p-6 shadow-sm lg:col-span-4">
 					<span class="block text-xs uppercase tracking-wider text-stone-400">
-						{$LL.tours.detail.price()}
+						{$LL.tours.price_from()}
 					</span>
 					<div class="mt-1 flex items-baseline gap-1.5">
 						<b class="font-serif text-2xl text-stone-900 sm:text-3xl">
@@ -150,10 +146,10 @@
 					</div>
 
 					<div class="mt-6 flex flex-col gap-2.5">
-						<a
-							href={planTripUrl}
+						<button
+							onclick={() => booking_modal.open(title)}
 							class="flex w-full items-center justify-center gap-2 bg-moss py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-moss-hover">
-							<span>{$LL.tours.plan_trip()}</span>
+							<span>{$LL.tours.book_now()}</span>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-3.5 w-3.5"
@@ -170,20 +166,8 @@
 									y2="12"></line>
 								<polyline points="12 5 19 12 12 19"></polyline>
 							</svg>
-						</a>
-
-						<button
-							onclick={() => booking_modal.open(title)}
-							class="w-full border border-stone-800 py-3 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-colors hover:bg-stone-800 hover:text-white">
-							{$locale === 'vn' ? 'Đặt Nhanh Qua Cửa Sổ' : 'Quick Booking Modal'}
 						</button>
 					</div>
-
-					<p class="mt-3 text-center text-[11px] font-light text-stone-400">
-						{$locale === 'vn'
-							? 'Tư vấn miễn phí • Trao đổi trực tiếp cùng hướng dẫn viên bản địa'
-							: 'Free consultation • Connect directly with local hosts'}
-					</p>
 				</div>
 			</div>
 		</div>
@@ -199,15 +183,7 @@
 					<h2 class="mb-4 font-serif text-xl font-bold text-moss">
 						{$LL.tours.trip_facts.title()}
 					</h2>
-					<div class="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
-						<div class="border-l-2 border-terracotta pl-3">
-							<span class="block text-[11px] uppercase tracking-wider text-stone-400">
-								{$LL.tours.trip_facts.departure()}
-							</span>
-							<span class="mt-1 block font-medium text-stone-900">
-								{$LL.tours.trip_facts.departure_val()}
-							</span>
-						</div>
+					<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
 						<div class="border-l-2 border-moss pl-3">
 							<span class="block text-[11px] uppercase tracking-wider text-stone-400">
 								{$LL.tours.trip_facts.duration()}
@@ -411,31 +387,6 @@
 
 			<!-- Right Column: Sticky Sidebar Info & Pricing -->
 			<div class="space-y-8 lg:col-span-4">
-				<!-- Quick Info Box -->
-				<div class="border border-stone-200/90 bg-sand-card p-6">
-					<h3 class="mb-4 font-serif text-lg font-bold text-moss">
-						{$locale === 'vn' ? 'Thông tin hành trình' : 'Trip Details'}
-					</h3>
-					<div class="space-y-4 divide-y divide-stone-200/80 text-xs">
-						<div class="flex items-center justify-between pt-3">
-							<span class="text-stone-400">{$locale === 'vn' ? 'Khởi hành' : 'Departure'}</span>
-							<span class="font-medium text-stone-800">Buôn Ma Thuột</span>
-						</div>
-						<div class="flex items-center justify-between pt-3">
-							<span class="text-stone-400">{$locale === 'vn' ? 'Thời lượng' : 'Duration'}</span>
-							<span class="font-medium text-stone-800">{duration || '1 Day'}</span>
-						</div>
-						<div class="flex items-center justify-between pt-3">
-							<span class="text-stone-400">{$locale === 'vn' ? 'Quy mô nhóm' : 'Group size'}</span>
-							<span class="font-medium text-stone-800">1 - 10+ {$LL.tours.detail.pax()}</span>
-						</div>
-						<div class="flex items-center justify-between pt-3">
-							<span class="text-stone-400">{$locale === 'vn' ? 'Ngôn ngữ' : 'Language'}</span>
-							<span class="font-medium text-stone-800">VN / EN / FR</span>
-						</div>
-					</div>
-				</div>
-
 				<!-- Pricing Table (Without table header, compact format) -->
 				{#if prices.length > 0}
 					<div class="border border-stone-200/90 bg-sand-card p-6">
@@ -498,7 +449,7 @@
 				<!-- CTA Card -->
 				<div class="border border-stone-200 bg-stone-900 p-6 text-white shadow-lg">
 					<h4 class="font-serif text-lg font-medium">
-						{$locale === 'vn' ? 'Lên kế hoạch chuyến đi' : 'Plan your journey'}
+						{$LL.tours.customize_trip()}
 					</h4>
 					<p class="mt-2 text-xs font-light leading-relaxed text-stone-300">
 						{$locale === 'vn'
@@ -506,7 +457,7 @@
 							: 'We curate private and personalized itineraries for you and your travel companions.'}
 					</p>
 					<a
-						href={planTripUrl}
+						href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
 						class="mt-5 flex w-full items-center justify-center gap-2 bg-terracotta py-3.5 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-[#8e4c38]">
 						{$LL.tours.plan_trip()}
 					</a>

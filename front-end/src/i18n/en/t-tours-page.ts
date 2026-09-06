@@ -6,6 +6,8 @@ export const tours = {
 	price_from: 'from',
 	click_detail: 'Details',
 	plan_trip: 'Plan this trip',
+	book_now: 'Book Now',
+	customize_trip: 'Plan your journey',
 	trip_facts: {
 		title: 'Trip Facts',
 		route: 'Route',

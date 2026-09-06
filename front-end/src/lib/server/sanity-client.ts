@@ -1,3 +1,4 @@
+import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
 import { VITE_SANITY_ID } from '$env/static/private'
 import type { BlogPost } from '$lib/types/blog.type'
 import type { Tour } from '$lib/types/tour.type'
@@ -217,19 +218,27 @@ export interface ExchangeRatesData {
 }
 
 export const fetchLatestExchangeRates = async (): Promise<ExchangeRatesData> => {
-	const defaultRates: ExchangeRatesData = { USD: 0.00003841, EUR: 0.00003317 }
+	const defaultRates: ExchangeRatesData = { ...DEFAULT_EXCHANGE_RATES }
 	return cachedFetch('latest-exchange-rates', 60 * 60 * 1000, async () => {
 		try {
 			const doc = await sanityClient.fetch(
 				`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]{exchangeDate, rates}`
 			)
-			if (doc?.rates?.rateUSD && doc?.rates?.rateEUR) {
+			const usd = doc?.rates?.rateUSD
+			const eur = doc?.rates?.rateEUR
+			const isValid = (n: number) => typeof n === 'number' && n > 1000 && n < 100000
+
+			if (isValid(usd) && isValid(eur)) {
 				return {
-					USD: doc.rates.rateUSD > 0 ? 1 / doc.rates.rateUSD : defaultRates.USD,
-					EUR: doc.rates.rateEUR > 0 ? 1 / doc.rates.rateEUR : defaultRates.EUR,
+					USD: 1 / usd,
+					EUR: 1 / eur,
 					date: doc.exchangeDate || undefined,
 				}
 			}
+			console.warn('[fetchLatestExchangeRates] rate ngoài khoảng hợp lệ, dùng default:', {
+				usd,
+				eur,
+			})
 			return defaultRates
 		} catch (err) {
 			console.warn('[Sanity Server fetchLatestExchangeRates error]:', err)

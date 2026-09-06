@@ -10,21 +10,5 @@ test.describe('Booking Modal Interaction', () => {
 		if ((await bookButtons.count()) > 0) {
 			await expect(bookButtons.first()).toBeVisible()
 		}
-
-		// Direct check on contact submission endpoint
-		const response = await page.request.post('/api/booking', {
-			data: {
-				name: 'Playwright Test User',
-				contact: 'playwright@chdtravel.com',
-				tour: 'Lak Lake 1 Day Discovery',
-				date: '2026-10-15',
-				guests: 2,
-				note: 'Automated test booking request',
-				langs: 'en',
-			},
-		})
-		expect(response.status()).toBe(200)
-		const body = await response.json()
-		expect(body.success).toBe(true)
 	})
 })

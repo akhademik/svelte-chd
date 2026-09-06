@@ -1,3 +1,4 @@
+import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
 import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 import type { Tour } from '$lib/types/tour.type'
 import type { ClientConfig } from '@sanity/client'
@@ -39,7 +40,7 @@ export const get_exchange_rate = (rate: string) => {
 	if (storeRates?.[rate]) {
 		return storeRates[rate]
 	}
-	return rate === 'USD' ? 0.00003841 : rate === 'EUR' ? 0.00003317 : 1
+	return DEFAULT_EXCHANGE_RATES[rate as 'USD' | 'EUR'] ?? 1
 }
 
 export const url_for = (source: SanityImageSource) => {

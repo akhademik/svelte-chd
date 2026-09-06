@@ -17,14 +17,20 @@ export default {
       type: 'object',
       fields: [
         {
-          title: 'EUR',
-          name: 'rateEUR',
-          type: 'number',
-        },
-        {
           title: 'USD',
           name: 'rateUSD',
           type: 'number',
+          description:
+            'Nhập theo dạng thông thường: 1 USD = bao nhiêu VND (vd: 26035). Hệ thống sẽ tự quy đổi ngược khi hiển thị giá.',
+          validation: (Rule: any) => Rule.required().min(15000).max(40000),
+        },
+        {
+          title: 'EUR',
+          name: 'rateEUR',
+          type: 'number',
+          description:
+            'Nhập theo dạng thông thường: 1 EUR = bao nhiêu VND (vd: 28500). Hệ thống sẽ tự quy đổi ngược khi hiển thị giá.',
+          validation: (Rule: any) => Rule.required().min(20000).max(40000),
         },
       ],
     },

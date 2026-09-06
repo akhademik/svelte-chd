@@ -6,6 +6,8 @@ export const tours = {
 	price_from: 'chỉ từ',
 	click_detail: 'Chi tiết',
 	plan_trip: 'Lên kế hoạch chuyến đi này',
+	book_now: 'Đặt Tour',
+	customize_trip: 'Lên kế hoạch chuyến đi',
 	trip_facts: {
 		title: 'Thông số hành trình',
 		route: 'Tuyến điểm',

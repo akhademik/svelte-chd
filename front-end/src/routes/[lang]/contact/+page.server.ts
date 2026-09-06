@@ -1,4 +1,5 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
+import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { form_schema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
@@ -48,7 +49,7 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=7200',
 	})
 	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
-	return { form }
+	return { form, testimonials: defaultTestimonials }
 }
 
 export const actions = {

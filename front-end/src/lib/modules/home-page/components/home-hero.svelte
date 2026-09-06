@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LL, { locale } from '$i18n/i18n-svelte'
+	import LL from '$i18n/i18n-svelte'
 </script>
 
 <section
@@ -48,11 +48,6 @@
 						y2="12"></line>
 					<polyline points="12 5 19 12 12 19"></polyline>
 				</svg>
-			</a>
-			<a
-				href={`/${$locale}/contact`}
-				class="inline-flex w-full items-center justify-center border border-stone-800 px-8 py-4 text-xs font-semibold uppercase tracking-widest text-stone-800 transition-all duration-300 hover:bg-stone-800 hover:text-sand sm:w-auto">
-				{$LL.home_page.cta_contact()}
 			</a>
 		</div>
 	</div>

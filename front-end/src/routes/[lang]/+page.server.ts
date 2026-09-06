@@ -1,4 +1,5 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
+import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { fetchFeaturedBlogs, fetchToursByType } from '$lib/server/sanity-client'
 import { form_schema, type FormSchema } from '$utils/form-schema'
@@ -62,6 +63,7 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 		dayTours,
 		highlandTours,
 		featuredPosts,
+		testimonials: defaultTestimonials,
 	}
 }
 
