@@ -13,7 +13,7 @@
 | **EPIC-3** | Nâng Cấp Content & Brand Positioning "Why CHD" | 🟠 P1 (Quan trọng) | ✅ Hoàn thành (Done) |
 | **EPIC-4** | Chuẩn Hóa Kiến Trúc Dữ Liệu Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
 | **EPIC-5** | Cải Thiện Trợ Năng (Accessibility) & Reduced Motion cho Testimonials | 🟡 P2 (Trung bình) | ✅ Hoàn thành (Done) |
-| **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ⏳ Sẵn sàng thực hiện (To Do) |
+| **EPIC-6** | Tinh Chỉnh Xử Lý Email & Discord Notifications (Backend Server) | 🟢 P3 (Dọn dẹp mã) | ✅ Hoàn thành (Done) |
 | **EPIC-7** | Kiểm Thử Trải Nghiệm Thực Tế Trên Mobile (Mobile View & UX) | 🟠 P1 (Quan trọng) | ⏳ Sẵn sàng thực hiện (To Do) |
 | **EPIC-8** | Đóng Băng & Giản Lược Hiệu Ứng (Animation Freeze) | 🟢 P3 (Bảo trì) | ⏳ Sẵn sàng thực hiện (To Do) |
 
@@ -76,7 +76,7 @@
 ---
 
 ### 🟢 EPIC-6: Tinh chỉnh Backend Server Actions (Email & Discord Delivery)
-- [ ] **TASK-6.1**: Tinh chỉnh logic xử lý phản hồi trong `[lang]/+page.server.ts`:
+- [x] **TASK-6.1**: Tinh chỉnh logic xử lý phản hồi trong `[lang]/+page.server.ts`:
   - Phân định rõ **Primary Delivery** (Email gửi về CHD admin) vs **Secondary Delivery** (Email confirmation gửi khách + Discord webhook notification).
   - Nếu Primary Email gửi thành công -> Xem form submission là `success`.
   - Nếu Secondary (khách xác nhận / Discord) thất bại -> Ghi log lỗi riêng (console error / structured log) mà không chặn kết quả báo thành công cho người dùng.

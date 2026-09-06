@@ -87,8 +87,14 @@ export const actions = {
 		}
 
 		try {
-			const [email_res] = await Promise.allSettled([
-				send_email(last_val),
+			// Primary notification (Admin email)
+			const email_res = await send_email(last_val)
+			if (!email_res) {
+				console.warn('[Admin email]: Skipped or returned empty response')
+			}
+
+			// Secondary notifications (Client confirmation + Discord notification) - Fire and handle settled
+			Promise.allSettled([
 				sendClientConfirmation({
 					name: last_val.name,
 					email: last_val.email,
@@ -96,16 +102,19 @@ export const actions = {
 					message: last_val.msg,
 				}),
 				send_to_discord(last_val),
-			])
-
-			if (email_res.status === 'rejected') {
-				console.error('[Resend failed]:', email_res.reason)
-				return message(form, 'failed')
-			}
+			]).then(results => {
+				const [clientConf, discordRes] = results
+				if (clientConf.status === 'rejected') {
+					console.error('[Secondary: Client Confirmation failed]:', clientConf.reason)
+				}
+				if (discordRes.status === 'rejected') {
+					console.error('[Secondary: Discord Webhook failed]:', discordRes.reason)
+				}
+			})
 
 			return message(form, 'success')
 		} catch (err) {
-			console.error('[Contact submission error]:', err)
+			console.error('[Primary Contact submission error]:', err)
 			return message(form, 'failed')
 		}
 	},

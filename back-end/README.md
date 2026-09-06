@@ -22,12 +22,14 @@ Hệ thống quản trị nội dung (CMS) theo thời gian thực (real-time Co
 ## 🚀 Hướng Dẫn Cài Đặt & Phát Triển
 
 ### 1. Cài đặt Dependencies
+
 ```bash
 # Chạy từ thư mục gốc dự án
 pnpm install
 ```
 
 ### 2. Chạy Content Studio ở môi trường Local
+
 ```bash
 # Chạy trực tiếp từ root
 pnpm dev:back-end
@@ -35,11 +37,12 @@ pnpm dev:back-end
 # Hoặc chạy trong thư mục back-end
 cd back-end && pnpm dev
 ```
+
 Studio sẽ khởi chạy tại: `http://localhost:3333`
 
 ### 3. Kiểm tra mã nguồn (Quality Gate)
+
 ```bash
 pnpm check:all
 pnpm lint:all
 ```
-
