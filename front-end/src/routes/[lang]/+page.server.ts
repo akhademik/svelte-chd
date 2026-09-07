@@ -95,8 +95,8 @@ export const actions = {
 				console.warn('[Admin email]: Skipped or returned empty response')
 			}
 
-			// Secondary notifications (Client confirmation + Discord notification) - Fire and handle settled
-			Promise.allSettled([
+			// Secondary notifications (Client confirmation + Discord notification) - Wait to settle before returning
+			const secondaryResults = await Promise.allSettled([
 				sendClientConfirmation({
 					name: last_val.name,
 					email: last_val.email,
@@ -104,15 +104,15 @@ export const actions = {
 					message: last_val.msg,
 				}),
 				send_to_discord(last_val),
-			]).then(results => {
-				const [clientConf, discordRes] = results
-				if (clientConf.status === 'rejected') {
-					console.error('[Secondary: Client Confirmation failed]:', clientConf.reason)
-				}
-				if (discordRes.status === 'rejected') {
-					console.error('[Secondary: Discord Webhook failed]:', discordRes.reason)
-				}
-			})
+			])
+
+			const [clientConf, discordRes] = secondaryResults
+			if (clientConf.status === 'rejected') {
+				console.error('[Secondary: Client Confirmation failed]:', clientConf.reason)
+			}
+			if (discordRes.status === 'rejected') {
+				console.error('[Secondary: Discord Webhook failed]:', discordRes.reason)
+			}
 
 			return message(form, 'success')
 		} catch (err) {

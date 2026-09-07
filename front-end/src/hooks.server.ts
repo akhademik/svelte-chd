@@ -22,12 +22,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 		throw redirect(307, new_path)
 	}
 
-	// if slug is not a locale, use user_locale
-	const locale = isLocale(url_lang) ? url_lang : user_locale
-
-	// bind locale to current request
-	event.locals.locale = locale
+	// url_lang is now guaranteed to be a valid Locale
+	event.locals.locale = url_lang
 
 	// replace html lang attribute with correct language
-	return resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) })
+	return resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', url_lang) })
 }

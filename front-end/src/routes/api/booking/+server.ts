@@ -67,16 +67,15 @@ ${note || 'Không có ghi chú thêm.'}
 			console.warn('[Admin booking email]: Skipped or returned empty response')
 		}
 
-		// Secondary notifications (Client confirmation + Discord notification) - Fire in background
-		Promise.allSettled([send_confirmation(), send_to_discord()]).then(results => {
-			const [clientConf, discordRes] = results
-			if (clientConf.status === 'rejected') {
-				console.error('[Secondary Booking: Client Confirmation failed]:', clientConf.reason)
-			}
-			if (discordRes.status === 'rejected') {
-				console.error('[Secondary Booking: Discord Webhook failed]:', discordRes.reason)
-			}
-		})
+		// Secondary notifications (Client confirmation + Discord notification) - Wait to settle before returning
+		const secondaryResults = await Promise.allSettled([send_confirmation(), send_to_discord()])
+		const [clientConf, discordRes] = secondaryResults
+		if (clientConf.status === 'rejected') {
+			console.error('[Secondary Booking: Client Confirmation failed]:', clientConf.reason)
+		}
+		if (discordRes.status === 'rejected') {
+			console.error('[Secondary Booking: Discord Webhook failed]:', discordRes.reason)
+		}
 
 		return json({ success: true }, { status: 200 })
 	} catch (err) {
