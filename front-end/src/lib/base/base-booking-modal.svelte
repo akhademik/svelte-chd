@@ -197,9 +197,7 @@
 						rows="3"
 						bind:value={note}
 						class="w-full border border-border bg-background/50 px-3.5 py-2 text-sm focus:border-foreground focus:bg-surface focus:outline-none"
-						placeholder={$locale === 'vn'
-							? 'Yêu cầu đặc biệt về ẩm thực, đón trả hoặc ghi chú thêm...'
-							: 'Dietary preferences, pickup points, or any special requests...'}></textarea>
+						placeholder={$LL.tours.detail.notes_placeholder()}></textarea>
 				</div>
 
 				<button

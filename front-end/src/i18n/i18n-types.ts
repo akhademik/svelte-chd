@@ -583,6 +583,10 @@ type RootTranslation = {
 		 */
 		click_detail: string
 		/**
+		 * B​a​c​k​ ​t​o​ ​t​o​u​r​s
+		 */
+		back_to_tours: string
+		/**
 		 * P​l​a​n​ ​t​h​i​s​ ​t​r​i​p
 		 */
 		plan_trip: string
@@ -727,6 +731,10 @@ type RootTranslation = {
 			 * A​n​y​t​h​i​n​g​ ​y​o​u​'​d​ ​l​i​k​e​ ​u​s​ ​t​o​ ​k​n​o​w​?
 			 */
 			notes_question: string
+			/**
+			 * D​i​e​t​a​r​y​ ​p​r​e​f​e​r​e​n​c​e​s​,​ ​p​i​c​k​u​p​ ​p​o​i​n​t​s​,​ ​o​r​ ​a​n​y​ ​s​p​e​c​i​a​l​ ​r​e​q​u​e​s​t​s​.​.​.
+			 */
+			notes_placeholder: string
 			/**
 			 * B​o​o​k​ ​N​o​w
 			 */
@@ -1418,6 +1426,10 @@ export type TranslationFunctions = {
 		 */
 		click_detail: () => LocalizedString
 		/**
+		 * Back to tours
+		 */
+		back_to_tours: () => LocalizedString
+		/**
 		 * Plan this trip
 		 */
 		plan_trip: () => LocalizedString
@@ -1562,6 +1574,10 @@ export type TranslationFunctions = {
 			 * Anything you'd like us to know?
 			 */
 			notes_question: () => LocalizedString
+			/**
+			 * Dietary preferences, pickup points, or any special requests...
+			 */
+			notes_placeholder: () => LocalizedString
 			/**
 			 * Book Now
 			 */

@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-07)
 
 ## Corpus Check
-- 198 files · ~91,280 words
+- 198 files · ~91,338 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 706 nodes · 1036 edges · 87 communities (22 shown, 35 thin omitted)
+- 706 nodes · 1036 edges · 88 communities (25 shown, 33 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `99b0707c`
+- Built from commit: `bb51196a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,11 +30,11 @@
 - en/index.ts
 - fr/index.ts
 - vn/index.ts
-- seo-store.ts
+- i18n-svelte.ts
 - compilerOptions
 - devDependencies
 - tours/+server.ts
-- i18n-svelte.ts
+- base-tour-detail-modal.svelte
 - blog/+server.ts
 - .typesafe-i18n.json
 - eslint-config-prettier
@@ -47,12 +47,12 @@
 - svelte
 - svelte-check
 - svelte-eslint-parser
-- contact-page.svelte
+- tour.type.ts
 - @sveltejs/adapter-auto
 - @sveltejs/adapter-cloudflare
 - @sveltejs/kit
 - @sveltejs/vite-plugin-svelte
-- home-page.svelte
+- format-data.ts
 - @testing-library/svelte
 - tslib
 - @types/node
@@ -65,6 +65,7 @@
 - svelte.config.js
 - 🌲 CHD Travel Monorepo
 - booking-store.ts
+- details-navigation.svelte
 - type-others.ts
 - eslint
 - @playwright/test
@@ -100,11 +101,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (87 total, 35 thin omitted)
+## Communities (88 total, 33 thin omitted)
 
 ### Community 0 - "sanity.ts"
-Cohesion: 0.06
-Nodes (32): DEFAULT_EXCHANGE_RATES, if(), defaultRates, exchange_rates_store, ExchangeRates, blog_modal, BlogModalState, tour_modal (+24 more)
+Cohesion: 0.27
+Nodes (9): DEFAULT_EXCHANGE_RATES, defaultRates, exchange_rates_store, ExchangeRates, builder, config, get_length_and_index(), get_tour_slug() (+1 more)
 
 ### Community 1 - "i18n-types.ts"
 Cohesion: 0.08
@@ -152,19 +153,19 @@ Nodes (21): dependencies, react, react-dom, react-is, sanity, @sanity/color-inpu
 
 ### Community 12 - "en/index.ts"
 Cohesion: 0.17
-Nodes (9): en, about_page, blog_page, contact_page, home_page, nav_bar, seo, tours (+1 more)
+Nodes (9): about_page, blog_page, contact_page, home_page, en, nav_bar, seo, tours (+1 more)
 
 ### Community 13 - "fr/index.ts"
 Cohesion: 0.18
-Nodes (8): fr, about_page, blog_page, contact_page, home_page, nav_bar, seo, tours
+Nodes (8): about_page, blog_page, contact_page, home_page, fr, nav_bar, seo, tours
 
 ### Community 14 - "vn/index.ts"
 Cohesion: 0.18
-Nodes (8): vn, about_page, blog_page, contact_page, home_page, nav_bar, seo, tours
+Nodes (8): about_page, blog_page, contact_page, home_page, vn, nav_bar, seo, tours
 
-### Community 15 - "seo-store.ts"
-Cohesion: 0.14
-Nodes (7): seo_description, seo_keywords, seo_og_image, seo_title, SeoState, ./$types, ./$types
+### Community 15 - "i18n-svelte.ts"
+Cohesion: 0.05
+Nodes (13): { locale, LL, setLocale }, if(), seo_description, seo_keywords, seo_og_image, seo_title, SeoState, Testimonial (+5 more)
 
 ### Community 16 - "compilerOptions"
 Cohesion: 0.17
@@ -177,6 +178,18 @@ Nodes (9): autoprefixer, devDependencies, autoprefixer, svelte-typewriter, svelt
 ### Community 18 - "tours/+server.ts"
 Cohesion: 0.39
 Nodes (7): client, config, fetch_data(), fetch_exchange_rate(), GET(), get_latest_exchange_rate_from_sanity(), sync_rate_to_sanity()
+
+### Community 19 - "base-tour-detail-modal.svelte"
+Cohesion: 0.20
+Nodes (5): blog_modal, BlogModalState, tour_modal, TourModalState, Tour
+
+### Community 32 - "tour.type.ts"
+Cohesion: 0.22
+Nodes (7): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag
+
+### Community 37 - "format-data.ts"
+Cohesion: 0.36
+Nodes (7): EN_MONTHS, format_pax_no(), format_price(), format_price_object(), format_review_date(), FR_MONTHS, get_exchange_rate()
 
 ### Community 71 - "🌲 CHD Travel Monorepo"
 Cohesion: 0.18
@@ -193,7 +206,7 @@ Nodes (9): AlignCenterRender(), AlignJustifyRender(), AlignRightRender(), COLOR_
 ## Knowledge Gaps
 - **235 isolated node(s):** `COLOR_PALETTE`, `BlockRenderProps`, `name`, `private`, `version` (+230 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 328 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **35 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -206,9 +219,9 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.016) - this node is a cross-community bridge._
 - **What connects `COLOR_PALETTE`, `BlockRenderProps`, `name` to the rest of the system?**
   _235 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `sanity.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.059506531204644414 - nodes in this community are weakly interconnected._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.08081632653061224 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07619738751814223 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07337526205450734 - nodes in this community are weakly interconnected._
+- **Should `scripts` be split into smaller, more focused modules?**
+  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

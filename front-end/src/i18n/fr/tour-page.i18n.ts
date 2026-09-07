@@ -5,6 +5,7 @@ export const tours = {
 		'Plongez dans des aventures locales authentiques ! Que vous recherchiez les brumes des plateaux, la culture des villages ou la saveur des plantations de café, CHD Travel façonne des moments inoubliables.',
 	price_from: 'à partir de',
 	click_detail: 'Détails',
+	back_to_tours: 'Tous les circuits',
 	plan_trip: 'Organiser ce voyage',
 	book_now: 'Réserver ce tour',
 	customize_trip: 'Organiser votre voyage',
@@ -49,6 +50,8 @@ export const tours = {
 		travelling_date: 'Quand souhaitez-vous voyager ?',
 		how_many_people: 'Combien de personnes ?',
 		notes_question: 'Avez-vous des demandes particulières ?',
+		notes_placeholder:
+			'Préférences alimentaires, points de prise en charge ou demandes spéciales...',
 		send_enquiry: 'Réserver',
 		enquiry_title: 'Je souhaite réserver ce circuit',
 	},

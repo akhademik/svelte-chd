@@ -67,7 +67,7 @@
 	}
 
 	let breadcrumbItems = $derived([
-		{ name: $locale === 'vn' ? 'Trang chủ' : 'Home', item: `https://chd.travel/${$locale}` },
+		{ name: $LL.nav_bar.home(), item: `https://chd.travel/${$locale}` },
 		{ name: 'CHD Journal', item: `https://chd.travel/${$locale}/blog` },
 		{ name: title, item: `https://chd.travel/${$locale}/blog/${post?.slug?.current || ''}` },
 	])
@@ -95,7 +95,7 @@
 					<a
 						href={`/${$locale}`}
 						class="transition-colors hover:text-foreground">
-						{$locale === 'vn' ? 'Trang chủ' : 'Home'}
+						{$LL.nav_bar.home()}
 					</a>
 					<span>/</span>
 					<a

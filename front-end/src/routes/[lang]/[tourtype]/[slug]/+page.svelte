@@ -19,7 +19,7 @@
 	)
 
 	let breadcrumbItems = $derived([
-		{ name: $locale === 'vn' ? 'Trang chủ' : 'Home', item: `https://chd.travel/${$locale}` },
+		{ name: $LL.nav_bar.home(), item: `https://chd.travel/${$locale}` },
 		{ name: tourType, item: `https://chd.travel/${$locale}/${page.params.tourtype}` },
 		{ name: title, item: page.url.href },
 	])

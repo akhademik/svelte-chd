@@ -1,11 +1,11 @@
 import type { BaseTranslation } from '../i18n-types'
-import { about_page } from './t-about-page'
-import { blog_page } from './t-blog-page'
-import { contact_page } from './t-contact-page'
-import { home_page } from './t-home-page'
-import { nav_bar } from './t-nav-bar'
-import { seo } from './t-seo'
-import { tours } from './t-tours-page'
+import { about_page } from './about-page.i18n'
+import { blog_page } from './blog-page.i18n'
+import { contact_page } from './contact-page.i18n'
+import { home_page } from './home-page.i18n'
+import { nav_bar } from './nav-bar.i18n'
+import { seo } from './seo.i18n'
+import { tours } from './tour-page.i18n'
 
 const en = {
 	home_page,

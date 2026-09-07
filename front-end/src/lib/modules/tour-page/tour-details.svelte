@@ -54,7 +54,7 @@
 					<a
 						href={`/${$locale}`}
 						class="transition-colors hover:text-foreground">
-						{$locale === 'vn' ? 'Trang chủ' : 'Home'}
+						{$LL.nav_bar.home()}
 					</a>
 					<span>/</span>
 					<a
@@ -63,13 +63,13 @@
 						{tourType === 'day-tours' ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()}
 					</a>
 					<span>/</span>
-					<span class="font-medium text-foreground">{tour.tour_id || 'Detail'}</span>
+					<span class="font-medium text-foreground">{title}</span>
 				</nav>
 
 				<a
 					href={`/${$locale}/${tourType}`}
 					class="inline-flex items-center gap-2 border border-border-strong bg-surface px-4 py-2 text-xs uppercase tracking-wider text-foreground shadow-sm transition-all hover:border-foreground hover:text-foreground">
-					← {$locale === 'vn' ? 'Tất cả tour' : 'Back to tours'}
+					← {$LL.tours.back_to_tours()}
 				</a>
 			</div>
 
