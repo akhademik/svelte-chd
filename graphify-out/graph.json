@@ -121,13 +121,39 @@
       "source_location": "L5"
     },
     {
+      "id": "front_end_src_lib_server_services_tour_service_tourtype",
+      "label": "TourType",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tourtype",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_exchangerates",
+      "label": "ExchangeRates",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "exchangerates",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "front_end_src_lib_stores_modal_store_blogmodalstate",
       "label": "BlogModalState",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "blogmodalstate",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -140,7 +166,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "tourmodalstate",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -153,7 +179,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "generalkeystring",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -166,7 +192,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "highlights",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -179,7 +205,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "img_cover",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -192,7 +218,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "locale_array",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -205,7 +231,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "locale_string",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -218,7 +244,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "price",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -231,7 +257,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "tag",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -244,63 +270,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "tour",
       "source_file": "front-end/src/lib/types/tour.type.ts",
       "source_location": "L43"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_types_translation",
-      "label": "Translation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "translation",
-      "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menuitem",
-      "label": "MenuItem",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "menuitem",
-      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L4"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menulink",
-      "label": "MenuLink",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "menulink",
-      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L3"
-    },
-    {
-      "id": "front_end_src_lib_types_testimonial_type_testimonial",
-      "label": "Testimonial",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "testimonial",
-      "source_file": "front-end/src/lib/types/testimonial.type.ts",
-      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_stores_seo_store_seostate",
@@ -368,17 +342,43 @@
       "source_location": "L8"
     },
     {
-      "id": "front_end_src_lib_stores_exchange_rates_store_exchangerates",
-      "label": "ExchangeRates",
+      "id": "front_end_src_i18n_i18n_types_translation",
+      "label": "Translation",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
+      "community": 32,
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "exchangerates",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "norm_label": "translation",
+      "source_file": "front-end/src/i18n/i18n-types.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menuitem",
+      "label": "MenuItem",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-store.ts",
+      "file_type": "code",
+      "norm_label": "menuitem",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
       "source_location": "L4"
+    },
+    {
+      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menulink",
+      "label": "MenuLink",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-store.ts",
+      "file_type": "code",
+      "norm_label": "menulink",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L3"
     },
     {
       "id": "front_end_src_lib_stores_booking_store_bookingmodalstate",
@@ -386,8 +386,8 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 41,
-      "community_name": "tour-details.svelte",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
       "file_type": "code",
       "norm_label": "bookingmodalstate",
       "source_file": "front-end/src/lib/stores/booking-store.ts",
@@ -407,19 +407,6 @@
       "source_location": "L8"
     },
     {
-      "id": "front_end_src_lib_server_services_tour_service_tourtype",
-      "label": "TourType",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tourtype",
-      "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L12"
-    },
-    {
       "id": "front_end_src_lib_types_blog_type_blogpost",
       "label": "BlogPost",
       "_callable": true,
@@ -430,6 +417,19 @@
       "file_type": "code",
       "norm_label": "blogpost",
       "source_file": "front-end/src/lib/types/blog.type.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_types_testimonial_type_testimonial",
+      "label": "Testimonial",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "i18n-svelte.ts",
+      "file_type": "code",
+      "norm_label": "testimonial",
+      "source_file": "front-end/src/lib/types/testimonial.type.ts",
       "source_location": "L1"
     },
     {
@@ -576,18 +576,6 @@
       "source_location": "L3"
     },
     {
-      "id": "front_end_src_hooks_server_handle",
-      "label": "handle()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "handle()",
-      "source_file": "front-end/src/hooks.server.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "front_end_src_i18n_formatters_initformatters",
       "label": "initFormatters()",
       "_callable": true,
@@ -598,78 +586,6 @@
       "norm_label": "initformatters()",
       "source_file": "front-end/src/i18n/formatters.ts",
       "source_location": "L5"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_extract_url",
-      "label": "extract_url()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "extract_url()",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L53"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_get_lang_cookie",
-      "label": "get_lang_cookie()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "get_lang_cookie()",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L47"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_get_path_name_without_base",
-      "label": "get_path_name_without_base()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "get_path_name_without_base()",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_get_preferred_locale",
-      "label": "get_preferred_locale()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "get_preferred_locale()",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L22"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_persist_to_cookie",
-      "label": "persist_to_cookie()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "persist_to_cookie()",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L30"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_replace_locale_in_url",
-      "label": "replace_locale_in_url()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "replace_locale_in_url()",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L13"
     },
     {
       "id": "front_end_src_i18n_i18n_util_async_importlocaleasync",
@@ -732,18 +648,6 @@
       "source_location": "L14"
     },
     {
-      "id": "front_end_src_i18n_i18n_util_detectlocale",
-      "label": "detectLocale()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "detectlocale()",
-      "source_file": "front-end/src/i18n/i18n-util.ts",
-      "source_location": "L39"
-    },
-    {
       "id": "front_end_src_i18n_i18n_util_i18n",
       "label": "i18n()",
       "_callable": true,
@@ -778,18 +682,6 @@
       "norm_label": "i18nstring()",
       "source_file": "front-end/src/i18n/i18n-util.ts",
       "source_location": "L27"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_util_islocale",
-      "label": "isLocale()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "islocale()",
-      "source_file": "front-end/src/i18n/i18n-util.ts",
-      "source_location": "L19"
     },
     {
       "id": "front_end_src_i18n_i18n_util_sync_loadalllocales",
@@ -828,18 +720,6 @@
       "source_location": "L18"
     },
     {
-      "id": "front_end_src_lib_base_base_locale_switcher_index",
-      "label": "index()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "index()",
-      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
-      "source_location": "L38"
-    },
-    {
       "id": "front_end_src_lib_utils_navigation_redirect_to_home",
       "label": "redirect_to_home()",
       "_callable": true,
@@ -864,60 +744,72 @@
       "source_location": "L4"
     },
     {
-      "id": "front_end_src_lib_stores_nav_store_set_animate_hidden_store",
-      "label": "set_animate_hidden_store()",
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
+      "label": "#each()",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
-      "norm_label": "set_animate_hidden_store()",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L18"
+      "norm_label": "#each()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L125"
     },
     {
-      "id": "front_end_src_lib_stores_nav_store_set_deg_store",
-      "label": "set_deg_store()",
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_switch",
+      "label": "switch()",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
-      "norm_label": "set_deg_store()",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L3"
+      "norm_label": "switch()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L77"
     },
     {
-      "id": "front_end_src_lib_stores_nav_store_set_mobile_store",
-      "label": "set_mobile_store()",
+      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotour",
+      "label": "mapSanityToTour()",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
-      "norm_label": "set_mobile_store()",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L10"
+      "norm_label": "mapsanitytotour()",
+      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
+      "source_location": "L7"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_testimonials_if",
-      "label": "if()",
+      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotours",
+      "label": "mapSanityToTours()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
-      "norm_label": "if()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
-      "source_location": "L93"
+      "norm_label": "mapsanitytotours()",
+      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_getsingletourquery",
+      "label": "getSingleTourQuery()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "getsingletourquery()",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L40"
     },
     {
       "id": "front_end_src_lib_utils_format_data_format_pax_no",
       "label": "format_pax_no()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "format_pax_no()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
@@ -928,8 +820,8 @@
       "label": "format_price()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "format_price()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
@@ -940,8 +832,8 @@
       "label": "format_price_object()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "format_price_object()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
@@ -952,8 +844,8 @@
       "label": "format_review_date()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "format_review_date()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
@@ -964,12 +856,84 @@
       "label": "get_exchange_rate()",
       "_callable": true,
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 12,
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "get_exchange_rate()",
       "source_file": "front-end/src/lib/utils/sanity.ts",
       "source_location": "L40"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_get_length_and_index",
+      "label": "get_length_and_index()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "get_length_and_index()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_get_tour_slug",
+      "label": "get_tour_slug()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "get_tour_slug()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L18"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_tour_by_index",
+      "label": "tour_by_index()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tour_by_index()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_url_for",
+      "label": "url_for()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "url_for()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L48"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_page_server_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_slug_page_server_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
+      "source_location": "L7"
     },
     {
       "id": "front_end_src_lib_modules_blog_page_blog_page_each",
@@ -1164,76 +1128,208 @@
       "source_location": "L52"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
-      "label": "#each()",
+      "id": "front_end_src_lib_stores_nav_store_set_animate_hidden_store",
+      "label": "set_animate_hidden_store()",
       "_callable": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "#each()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L125"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_switch",
-      "label": "switch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "home-page.svelte",
-      "file_type": "code",
-      "norm_label": "switch()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L77"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_get_length_and_index",
-      "label": "get_length_and_index()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "get_length_and_index()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L52"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_get_tour_slug",
-      "label": "get_tour_slug()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "get_tour_slug()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "norm_label": "set_animate_hidden_store()",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
       "source_location": "L18"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_tour_by_index",
-      "label": "tour_by_index()",
+      "id": "front_end_src_lib_stores_nav_store_set_deg_store",
+      "label": "set_deg_store()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-store.ts",
+      "file_type": "code",
+      "norm_label": "set_deg_store()",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "front_end_src_lib_stores_nav_store_set_mobile_store",
+      "label": "set_mobile_store()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-store.ts",
+      "file_type": "code",
+      "norm_label": "set_mobile_store()",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "front_end_src_hooks_server_handle",
+      "label": "handle()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "i18n-helper.ts",
       "file_type": "code",
-      "norm_label": "tour_by_index()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "norm_label": "handle()",
+      "source_file": "front-end/src/hooks.server.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_helper_extract_url",
+      "label": "extract_url()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "extract_url()",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L53"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_helper_get_lang_cookie",
+      "label": "get_lang_cookie()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "get_lang_cookie()",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_helper_get_path_name_without_base",
+      "label": "get_path_name_without_base()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "get_path_name_without_base()",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_helper_get_preferred_locale",
+      "label": "get_preferred_locale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "get_preferred_locale()",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_helper_persist_to_cookie",
+      "label": "persist_to_cookie()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "persist_to_cookie()",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
       "source_location": "L30"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_url_for",
-      "label": "url_for()",
+      "id": "front_end_src_i18n_i18n_helper_replace_locale_in_url",
+      "label": "replace_locale_in_url()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "i18n-helper.ts",
       "file_type": "code",
-      "norm_label": "url_for()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L48"
+      "norm_label": "replace_locale_in_url()",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L13"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_util_detectlocale",
+      "label": "detectLocale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "detectlocale()",
+      "source_file": "front-end/src/i18n/i18n-util.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_util_islocale",
+      "label": "isLocale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "i18n-helper.ts",
+      "file_type": "code",
+      "norm_label": "islocale()",
+      "source_file": "front-end/src/i18n/i18n-util.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "front_end_src_routes_api_tours_server_fetchdata",
+      "label": "fetchData()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "tours/+server.ts",
+      "file_type": "code",
+      "norm_label": "fetchdata()",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L148"
+    },
+    {
+      "id": "front_end_src_routes_api_tours_server_fetchexchangerate",
+      "label": "fetchExchangeRate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "tours/+server.ts",
+      "file_type": "code",
+      "norm_label": "fetchexchangerate()",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L106"
+    },
+    {
+      "id": "front_end_src_routes_api_tours_server_get",
+      "label": "GET()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "tours/+server.ts",
+      "file_type": "code",
+      "norm_label": "get()",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L172"
+    },
+    {
+      "id": "front_end_src_routes_api_tours_server_getlatestexchangeratefromsanity",
+      "label": "getLatestExchangeRateFromSanity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "tours/+server.ts",
+      "file_type": "code",
+      "norm_label": "getlatestexchangeratefromsanity()",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L86"
+    },
+    {
+      "id": "front_end_src_routes_api_tours_server_syncratetosanity",
+      "label": "syncRateToSanity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "tours/+server.ts",
+      "file_type": "code",
+      "norm_label": "syncratetosanity()",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L29"
     },
     {
       "id": "front_end_scripts_sync_rates_run",
@@ -1270,6 +1366,18 @@
       "norm_label": "if()",
       "source_file": "front-end/src/lib/base/base-booking-modal.svelte",
       "source_location": "L16"
+    },
+    {
+      "id": "front_end_src_lib_base_base_locale_switcher_index",
+      "label": "index()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "index()",
+      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
+      "source_location": "L38"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_close",
@@ -1356,102 +1464,6 @@
       "source_location": "L27"
     },
     {
-      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotour",
-      "label": "mapSanityToTour()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "mapsanitytotour()",
-      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotours",
-      "label": "mapSanityToTours()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "mapsanitytotours()",
-      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_getsingletourquery",
-      "label": "getSingleTourQuery()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "getsingletourquery()",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L40"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_fetchdata",
-      "label": "fetchData()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "fetchdata()",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L148"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_fetchexchangerate",
-      "label": "fetchExchangeRate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "fetchexchangerate()",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L106"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L172"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_getlatestexchangeratefromsanity",
-      "label": "getLatestExchangeRateFromSanity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "getlatestexchangeratefromsanity()",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L86"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_syncratetosanity",
-      "label": "syncRateToSanity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "syncratetosanity()",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L29"
-    },
-    {
       "id": "front_end_src_routes_lang_blog_page_server_load",
       "label": "load()",
       "_callable": true,
@@ -1473,30 +1485,6 @@
       "file_type": "code",
       "norm_label": "load()",
       "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.server.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_page_server_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_slug_page_server_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
       "source_location": "L7"
     },
     {
@@ -1522,6 +1510,18 @@
       "norm_label": "get()",
       "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L5"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_testimonials_if",
+      "label": "if()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "i18n-svelte.ts",
+      "file_type": "code",
+      "norm_label": "if()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
+      "source_location": "L93"
     },
     {
       "id": "back_end_components_portable_text_align_render_aligncenterrender",
@@ -2036,28 +2036,6 @@
       "source_location": "L1"
     },
     {
-      "id": "environment",
-      "label": "$app/environment",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "$app/environment",
-      "source_file": "$app/environment"
-    },
-    {
-      "id": "navigation",
-      "label": "$app/navigation",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "$app/navigation",
-      "source_file": "$app/navigation"
-    },
-    {
       "id": "front_end_src_app_d",
       "label": "app.d.ts",
       "_origin": "ast",
@@ -2080,17 +2058,6 @@
       "source_location": "L6"
     },
     {
-      "id": "front_end_src_hooks_server",
-      "label": "hooks.server.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "hooks.server.ts",
-      "source_file": "front-end/src/hooks.server.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_i18n_formatters",
       "label": "formatters.ts",
       "_origin": "ast",
@@ -2100,28 +2067,6 @@
       "norm_label": "formatters.ts",
       "source_file": "front-end/src/i18n/formatters.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper",
-      "label": "i18n-helper.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "i18n-helper.ts",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_i18n_helper_regex_start_with_base",
-      "label": "REGEX_START_WITH_BASE",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "regex_start_with_base",
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L8"
     },
     {
       "id": "front_end_src_i18n_i18n_types",
@@ -2243,17 +2188,6 @@
       "norm_label": "localetranslations",
       "source_file": "front-end/src/i18n/i18n-util.sync.ts",
       "source_location": "L12"
-    },
-    {
-      "id": "front_end_src_lib_base_base_locale_switcher",
-      "label": "base-locale-switcher.svelte",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "base-locale-switcher.svelte",
-      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
-      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_utils_navigation",
@@ -2454,242 +2388,396 @@
       "source_location": "L1"
     },
     {
-      "id": "back_end_package_dependencies",
-      "label": "dependencies",
+      "id": "front_end_knip",
+      "label": "front-end/knip.json",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "dependencies",
-      "source_file": "back-end/package.json",
-      "source_location": "L21"
+      "norm_label": "front-end/knip.json",
+      "source_file": "front-end/knip.json",
+      "source_location": "L1"
     },
     {
-      "id": "back_end_package_dependencies_react",
-      "label": "react",
+      "id": "front_end_knip_entry",
+      "label": "entry",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "react",
-      "source_file": "back-end/package.json",
-      "source_location": "L26"
+      "norm_label": "entry",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10"
     },
     {
-      "id": "back_end_package_dependencies_react_dom",
-      "label": "react-dom",
+      "id": "front_end_knip_ignore",
+      "label": "ignore",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "react-dom",
-      "source_file": "back-end/package.json",
-      "source_location": "L27"
+      "norm_label": "ignore",
+      "source_file": "front-end/knip.json",
+      "source_location": "L18"
     },
     {
-      "id": "back_end_package_dependencies_react_is",
-      "label": "react-is",
+      "id": "front_end_knip_ignoredependencies",
+      "label": "ignoreDependencies",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "react-is",
-      "source_file": "back-end/package.json",
-      "source_location": "L28"
+      "norm_label": "ignoredependencies",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19"
     },
     {
-      "id": "back_end_package_dependencies_sanity",
-      "label": "sanity",
+      "id": "front_end_knip_ignoreexportsusedinfile",
+      "label": "ignoreExportsUsedInFile",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "sanity",
-      "source_file": "back-end/package.json",
-      "source_location": "L29"
+      "norm_label": "ignoreexportsusedinfile",
+      "source_file": "front-end/knip.json",
+      "source_location": "L20"
     },
     {
-      "id": "back_end_package_dependencies_sanity_color_input",
-      "label": "@sanity/color-input",
+      "id": "front_end_knip_project",
+      "label": "project",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "@sanity/color-input",
-      "source_file": "back-end/package.json",
-      "source_location": "L22"
+      "norm_label": "project",
+      "source_file": "front-end/knip.json",
+      "source_location": "L17"
     },
     {
-      "id": "back_end_package_dependencies_sanity_image_url",
-      "label": "@sanity/image-url",
+      "id": "front_end_knip_schema",
+      "label": "$schema",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "@sanity/image-url",
-      "source_file": "back-end/package.json",
-      "source_location": "L23"
+      "norm_label": "$schema",
+      "source_file": "front-end/knip.json",
+      "source_location": "L2"
     },
     {
-      "id": "back_end_package_dependencies_sanity_plugin_media",
-      "label": "sanity-plugin-media",
+      "id": "front_end_knip_svelte",
+      "label": "svelte",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "sanity-plugin-media",
-      "source_file": "back-end/package.json",
-      "source_location": "L30"
+      "norm_label": "svelte",
+      "source_file": "front-end/knip.json",
+      "source_location": "L3"
     },
     {
-      "id": "back_end_package_dependencies_sanity_table",
-      "label": "@sanity/table",
+      "id": "front_end_knip_svelte_entry",
+      "label": "entry",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "code",
-      "norm_label": "@sanity/table",
-      "source_file": "back-end/package.json",
-      "source_location": "L24"
+      "norm_label": "entry",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4"
     },
     {
-      "id": "back_end_package_dependencies_sanity_vision",
-      "label": "@sanity/vision",
+      "id": "ref_scripts_js",
+      "label": "scripts/**/*.js",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "@sanity/vision",
-      "source_file": "back-end/package.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "back_end_package_dependencies_styled_components",
-      "label": "styled-components",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "dependencies",
-      "file_type": "code",
-      "norm_label": "styled-components",
-      "source_file": "back-end/package.json",
-      "source_location": "L31"
-    },
-    {
-      "id": "back_end_package_json_sanity_image_url",
-      "label": "@sanity/image-url",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "@sanity/image-url",
-      "source_file": "back-end/package.json",
-      "source_location": "L23"
+      "norm_label": "scripts/**/*.js",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10"
     },
     {
-      "id": "react",
-      "label": "react",
+      "id": "ref_src_app_d_ts",
+      "label": "src/app.d.ts",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "back-end/package.json",
-      "source_location": "L26"
+      "norm_label": "src/app.d.ts",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4"
     },
     {
-      "id": "react_dom",
-      "label": "react-dom",
+      "id": "ref_src_hooks_server_client_js_ts",
+      "label": "src/hooks.{server,client}.{js,ts}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "react-dom",
-      "source_file": "back-end/package.json",
-      "source_location": "L27"
+      "norm_label": "src/hooks.{server,client}.{js,ts}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4"
     },
     {
-      "id": "react_is",
-      "label": "react-is",
+      "id": "ref_src_i18n",
+      "label": "src/i18n/**",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "react-is",
-      "source_file": "back-end/package.json",
-      "source_location": "L28"
+      "norm_label": "src/i18n/**",
+      "source_file": "front-end/knip.json",
+      "source_location": "L18"
     },
     {
-      "id": "sanity",
-      "label": "sanity",
+      "id": "ref_src_js_ts_svelte",
+      "label": "src/**/*.{js,ts,svelte}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "sanity",
-      "source_file": "back-end/package.json",
-      "source_location": "L29"
+      "norm_label": "src/**/*.{js,ts,svelte}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L17"
     },
     {
-      "id": "sanity_color_input",
-      "label": "@sanity/color-input",
+      "id": "ref_src_lib_server_js_ts",
+      "label": "src/lib/server/**/*.{js,ts}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "@sanity/color-input",
-      "source_file": "back-end/package.json",
-      "source_location": "L22"
+      "norm_label": "src/lib/server/**/*.{js,ts}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10"
     },
     {
-      "id": "sanity_plugin_media",
-      "label": "sanity-plugin-media",
+      "id": "ref_src_lib_stores_js_ts",
+      "label": "src/lib/stores/**/*.{js,ts}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "sanity-plugin-media",
-      "source_file": "back-end/package.json",
-      "source_location": "L30"
+      "norm_label": "src/lib/stores/**/*.{js,ts}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10"
     },
     {
-      "id": "sanity_table",
-      "label": "@sanity/table",
+      "id": "ref_src_lib_types_js_ts",
+      "label": "src/lib/types/**/*.{js,ts}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "@sanity/table",
-      "source_file": "back-end/package.json",
-      "source_location": "L24"
+      "norm_label": "src/lib/types/**/*.{js,ts}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10"
     },
     {
-      "id": "sanity_vision",
-      "label": "@sanity/vision",
+      "id": "ref_src_lib_utils_js_ts",
+      "label": "src/lib/utils/**/*.{js,ts}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "@sanity/vision",
-      "source_file": "back-end/package.json",
-      "source_location": "L25"
+      "norm_label": "src/lib/utils/**/*.{js,ts}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10"
     },
     {
-      "id": "styled_components",
-      "label": "styled-components",
+      "id": "ref_src_routes_page_layout_server_error_js_ts_svelte",
+      "label": "src/routes/**/+{page,layout,server,error}.{js,ts,svelte}",
       "_origin": "ast",
       "community": 11,
-      "community_name": "dependencies",
+      "community_name": "front-end/knip.json",
       "file_type": "concept",
-      "norm_label": "styled-components",
-      "source_file": "back-end/package.json",
-      "source_location": "L31"
+      "norm_label": "src/routes/**/+{page,layout,server,error}.{js,ts,svelte}",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "ref_sveltejs_adapter_auto",
+      "label": "@sveltejs/adapter-auto",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "front-end/knip.json",
+      "file_type": "concept",
+      "norm_label": "@sveltejs/adapter-auto",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "ref_testing_library_svelte",
+      "label": "@testing-library/svelte",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "front-end/knip.json",
+      "file_type": "concept",
+      "norm_label": "@testing-library/svelte",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "ref_tslib",
+      "label": "tslib",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "front-end/knip.json",
+      "file_type": "concept",
+      "norm_label": "tslib",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "front_end_src_lib_constants_exchange_rates",
+      "label": "constants/exchange-rates.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "constants/exchange-rates.ts",
+      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_constants_exchange_rates_default_exchange_rates",
+      "label": "DEFAULT_EXCHANGE_RATES",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "default_exchange_rates",
+      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
+      "label": "home-featured-blogs.svelte",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "home-featured-blogs.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper",
+      "label": "tour.mapper.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tour.mapper.ts",
+      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours",
+      "label": "tours.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tours.ts",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_all_tours_query",
+      "label": "ALL_TOURS_QUERY",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "all_tours_query",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_day_query",
+      "label": "TOURS_BY_DAY_QUERY",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tours_by_day_query",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_highland_query",
+      "label": "TOURS_BY_HIGHLAND_QUERY",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tours_by_highland_query",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "front_end_src_lib_server_services_tour_service",
+      "label": "tour.service.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tour.service.ts",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_services_tour_service_tourservice",
+      "label": "TourService",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "tourservice",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store",
+      "label": "exchange-rates-store.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "exchange-rates-store.ts",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_defaultrates",
+      "label": "defaultRates",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "defaultrates",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_exchange_rates_store",
+      "label": "exchange_rates_store",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "exchange_rates_store",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L13"
     },
     {
       "id": "front_end_src_lib_stores_modal_store",
       "label": "modal-store.ts",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "modal-store.ts",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -2700,7 +2788,7 @@
       "label": "blog_modal",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "blog_modal",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -2711,7 +2799,7 @@
       "label": "tour_modal",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "tour_modal",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -2722,10 +2810,120 @@
       "label": "tour.type.ts",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "tour.type.ts",
       "source_file": "front-end/src/lib/types/tour.type.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data",
+      "label": "format-data.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "format-data.ts",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_en_months",
+      "label": "EN_MONTHS",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "en_months",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_fr_months",
+      "label": "FR_MONTHS",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "fr_months",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_test",
+      "label": "format-data.test.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "format-data.test.ts",
+      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity",
+      "label": "sanity.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "sanity.ts",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_builder",
+      "label": "builder",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_test",
+      "label": "sanity.test.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "sanity.test.ts",
+      "source_file": "front-end/src/lib/utils/sanity.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_page_server",
+      "label": "[tourtype]/+page.server.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "[tourtype]/+page.server.ts",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_slug_page_server",
+      "label": "[tourtype]/[slug]/+page.server.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "[tourtype]/[slug]/+page.server.ts",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
       "source_location": "L1"
     },
     {
@@ -2905,114 +3103,15 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_nav_bar_components_nav_burger_button",
-      "label": "nav-burger-button.svelte",
+      "id": "front_end_src_routes_lang_blog_slug_types",
+      "label": "./$types",
       "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
+      "community": 14,
+      "community_name": "portable-text-components.ts",
+      "confidence": "EXTRACTED",
       "file_type": "code",
-      "norm_label": "nav-burger-button.svelte",
-      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-burger-button.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_components_nav_menu_items",
-      "label": "nav-menu-items.svelte",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav-menu-items.svelte",
-      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_index",
-      "label": "nav-bar/index.ts",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav-bar/index.ts",
-      "source_file": "front-end/src/lib/modules/nav-bar/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_nav_bar",
-      "label": "nav-bar.svelte",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav-bar.svelte",
-      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
-      "label": "nav-bar-logic.ts",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav-bar-logic.ts",
-      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menu_items",
-      "label": "menu_items",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "menu_items",
-      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "front_end_src_lib_stores_nav_store",
-      "label": "nav-store.ts",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav-store.ts",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_nav_store_nav_animate_hidden",
-      "label": "nav_animate_hidden",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav_animate_hidden",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "front_end_src_lib_stores_nav_store_nav_deg",
-      "label": "nav_deg",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav_deg",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L26"
-    },
-    {
-      "id": "front_end_src_lib_stores_nav_store_nav_mobile",
-      "label": "nav_mobile",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "fr/index.ts",
-      "file_type": "code",
-      "norm_label": "nav_mobile",
-      "source_file": "front-end/src/lib/stores/nav-store.ts",
-      "source_location": "L27"
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/blog/[slug]/$types"
     },
     {
       "id": "front_end_src_lib_base_base_portable_text_align",
@@ -3158,81 +3257,246 @@
       "source_location": "L14"
     },
     {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_review",
-      "label": "contact-review.svelte",
+      "id": "front_end_src_routes_lang_blog_slug_page",
+      "label": "blog/[slug]/+page.svelte",
       "_origin": "ast",
-      "community": 15,
-      "community_name": "format-data.ts",
+      "community": 14,
+      "community_name": "portable-text-components.ts",
       "file_type": "code",
-      "norm_label": "contact-review.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-review.svelte",
+      "norm_label": "blog/[slug]/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_testimonials",
-      "label": "home-testimonials.svelte",
+      "id": "back_end_package_devdependencies",
+      "label": "devDependencies",
       "_origin": "ast",
       "community": 15,
-      "community_name": "format-data.ts",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "home-testimonials.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
-      "source_location": "L1"
+      "norm_label": "devdependencies",
+      "source_file": "back-end/package.json",
+      "source_location": "L33"
     },
     {
-      "id": "front_end_src_lib_types_testimonial_type",
-      "label": "testimonial.type.ts",
+      "id": "back_end_package_devdependencies_eslint",
+      "label": "eslint",
       "_origin": "ast",
       "community": 15,
-      "community_name": "format-data.ts",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "testimonial.type.ts",
-      "source_file": "front-end/src/lib/types/testimonial.type.ts",
-      "source_location": "L1"
+      "norm_label": "eslint",
+      "source_file": "back-end/package.json",
+      "source_location": "L38"
     },
     {
-      "id": "front_end_src_lib_utils_format_data",
-      "label": "format-data.ts",
+      "id": "back_end_package_devdependencies_knip",
+      "label": "knip",
       "_origin": "ast",
       "community": 15,
-      "community_name": "format-data.ts",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "format-data.ts",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L1"
+      "norm_label": "knip",
+      "source_file": "back-end/package.json",
+      "source_location": "L39"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_en_months",
-      "label": "EN_MONTHS",
+      "id": "back_end_package_devdependencies_prettier",
+      "label": "prettier",
       "_origin": "ast",
       "community": 15,
-      "community_name": "format-data.ts",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "en_months",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L51"
+      "norm_label": "prettier",
+      "source_file": "back-end/package.json",
+      "source_location": "L40"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_fr_months",
-      "label": "FR_MONTHS",
+      "id": "back_end_package_devdependencies_react_icons",
+      "label": "react-icons",
       "_origin": "ast",
       "community": 15,
-      "community_name": "format-data.ts",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "fr_months",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L66"
+      "norm_label": "react-icons",
+      "source_file": "back-end/package.json",
+      "source_location": "L41"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_test",
-      "label": "format-data.test.ts",
+      "id": "back_end_package_devdependencies_sanity_eslint_config_studio",
+      "label": "@sanity/eslint-config-studio",
       "_origin": "ast",
       "community": 15,
-      "community_name": "format-data.ts",
+      "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "format-data.test.ts",
-      "source_file": "front-end/src/lib/utils/format-data.test.ts",
-      "source_location": "L1"
+      "norm_label": "@sanity/eslint-config-studio",
+      "source_file": "back-end/package.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "back_end_package_devdependencies_sanity_plugin_asset_source_unsplash",
+      "label": "sanity-plugin-asset-source-unsplash",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "sanity-plugin-asset-source-unsplash",
+      "source_file": "back-end/package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "back_end_package_devdependencies_sanity_ui",
+      "label": "@sanity/ui",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@sanity/ui",
+      "source_file": "back-end/package.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "back_end_package_devdependencies_types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/react",
+      "source_file": "back-end/package.json",
+      "source_location": "L36"
+    },
+    {
+      "id": "back_end_package_devdependencies_types_styled_components",
+      "label": "@types/styled-components",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "@types/styled-components",
+      "source_file": "back-end/package.json",
+      "source_location": "L37"
+    },
+    {
+      "id": "back_end_package_devdependencies_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "code",
+      "norm_label": "typescript",
+      "source_file": "back-end/package.json",
+      "source_location": "L43"
+    },
+    {
+      "id": "back_end_package_json_eslint",
+      "label": "eslint",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "eslint",
+      "source_file": "back-end/package.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "back_end_package_json_knip",
+      "label": "knip",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "knip",
+      "source_file": "back-end/package.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "back_end_package_json_prettier",
+      "label": "prettier",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "prettier",
+      "source_file": "back-end/package.json",
+      "source_location": "L40"
+    },
+    {
+      "id": "back_end_package_json_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "typescript",
+      "source_file": "back-end/package.json",
+      "source_location": "L43"
+    },
+    {
+      "id": "react_icons",
+      "label": "react-icons",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "react-icons",
+      "source_file": "back-end/package.json",
+      "source_location": "L41"
+    },
+    {
+      "id": "sanity_eslint_config_studio",
+      "label": "@sanity/eslint-config-studio",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@sanity/eslint-config-studio",
+      "source_file": "back-end/package.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "sanity_plugin_asset_source_unsplash",
+      "label": "sanity-plugin-asset-source-unsplash",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "sanity-plugin-asset-source-unsplash",
+      "source_file": "back-end/package.json",
+      "source_location": "L42"
+    },
+    {
+      "id": "sanity_ui",
+      "label": "@sanity/ui",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@sanity/ui",
+      "source_file": "back-end/package.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "types_react",
+      "label": "@types/react",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@types/react",
+      "source_file": "back-end/package.json",
+      "source_location": "L36"
+    },
+    {
+      "id": "types_styled_components",
+      "label": "@types/styled-components",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@types/styled-components",
+      "source_file": "back-end/package.json",
+      "source_location": "L37"
     },
     {
       "id": "front_end_tsconfig",
@@ -3422,15 +3686,15 @@
       "source_location": "L18"
     },
     {
-      "id": "front_end_package_devdependencies_typescript",
-      "label": "typescript",
+      "id": "front_end_package_devdependencies_types_node",
+      "label": "@types/node",
       "_origin": "ast",
       "community": 17,
       "community_name": "devDependencies",
       "file_type": "code",
-      "norm_label": "typescript",
+      "norm_label": "@types/node",
       "source_file": "front-end/package.json",
-      "source_location": "L41"
+      "source_location": "L22"
     },
     {
       "id": "front_end_package_devdependencies_typescript_eslint_eslint_plugin",
@@ -3455,17 +3719,6 @@
       "source_location": "L25"
     },
     {
-      "id": "front_end_package_json_typescript",
-      "label": "typescript",
-      "_origin": "ast",
-      "community": 17,
-      "community_name": "devDependencies",
-      "file_type": "concept",
-      "norm_label": "typescript",
-      "source_file": "front-end/package.json",
-      "source_location": "L41"
-    },
-    {
       "id": "sveltejs_adapter_cloudflare",
       "label": "@sveltejs/adapter-cloudflare",
       "_origin": "ast",
@@ -3475,6 +3728,17 @@
       "norm_label": "@sveltejs/adapter-cloudflare",
       "source_file": "front-end/package.json",
       "source_location": "L18"
+    },
+    {
+      "id": "types_node",
+      "label": "@types/node",
+      "_origin": "ast",
+      "community": 17,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@types/node",
+      "source_file": "front-end/package.json",
+      "source_location": "L22"
     },
     {
       "id": "typescript_eslint_eslint_plugin",
@@ -3499,6 +3763,17 @@
       "source_file": "front-end/src/routes/[lang]/blog/$types"
     },
     {
+      "id": "front_end_src_routes_lang_contact_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/contact/$types"
+    },
+    {
       "id": "front_end_src_routes_lang_tourtype_types",
       "label": "./$types",
       "_origin": "ast",
@@ -3508,6 +3783,50 @@
       "file_type": "code",
       "norm_label": "./$types",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/$types"
+    },
+    {
+      "id": "front_end_src_routes_lang_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/$types"
+    },
+    {
+      "id": "state",
+      "label": "$app/state",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/state",
+      "source_file": "$app/state"
+    },
+    {
+      "id": "front_end_src_lib_base_base_seo",
+      "label": "base-seo.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "base-seo.svelte",
+      "source_file": "front-end/src/lib/base/base-seo.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_about_page_index",
+      "label": "about-page/index.ts",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "about-page/index.ts",
+      "source_file": "front-end/src/lib/modules/about-page/index.ts",
+      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_modules_blog_page_blog_page",
@@ -3532,6 +3851,28 @@
       "source_location": "L1"
     },
     {
+      "id": "front_end_src_lib_modules_contact_page_index",
+      "label": "contact-page/index.ts",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "contact-page/index.ts",
+      "source_file": "front-end/src/lib/modules/contact-page/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_index",
+      "label": "home-page/index.ts",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "home-page/index.ts",
+      "source_file": "front-end/src/lib/modules/home-page/index.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_modules_tour_page_index",
       "label": "tour-page/index.ts",
       "_origin": "ast",
@@ -3540,6 +3881,28 @@
       "file_type": "code",
       "norm_label": "tour-page/index.ts",
       "source_file": "front-end/src/lib/modules/tour-page/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_tour_page_tour_card",
+      "label": "tour-card.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "tour-card.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_tour_page_tour_gallery",
+      "label": "tour-gallery.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "tour-gallery.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-gallery.svelte",
       "source_location": "L1"
     },
     {
@@ -3598,6 +3961,28 @@
       "source_location": "L17"
     },
     {
+      "id": "front_end_src_routes_error",
+      "label": "+error.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "+error.svelte",
+      "source_file": "front-end/src/routes/+error.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_about_page",
+      "label": "about/+page.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "about/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/about/+page.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_routes_lang_blog_page",
       "label": "blog/+page.svelte",
       "_origin": "ast",
@@ -3606,6 +3991,28 @@
       "file_type": "code",
       "norm_label": "blog/+page.svelte",
       "source_file": "front-end/src/routes/[lang]/blog/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_contact_page",
+      "label": "contact/+page.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "contact/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/contact/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_page",
+      "label": "[lang]/+page.svelte",
+      "_origin": "ast",
+      "community": 18,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "[lang]/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -3630,78 +4037,6 @@
       "norm_label": "jobs.md",
       "source_file": "jobs.md",
       "source_location": "L1"
-    },
-    {
-      "id": "jobs_fetchtoursbytype_foo",
-      "label": "fetchToursByType('foo')",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "fetchtoursbytype('foo')",
-      "source_file": "jobs.md",
-      "source_location": "L83"
-    },
-    {
-      "id": "jobs_frontend_kh\u00f4ng_c\u1ea7n_bi\u1ebft_sanity_t\u1ed3n_t\u1ea1i",
-      "label": "Frontend kh\u00f4ng c\u1ea7n bi\u1ebft Sanity t\u1ed3n t\u1ea1i.",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "frontend khong can biet sanity ton tai.",
-      "source_file": "jobs.md",
-      "source_location": "L261"
-    },
-    {
-      "id": "jobs_hi\u1ec7n_frontend_\u0111ang_l\u00e0m_vi\u1ec7c_n\u00e0y_v\u1eady_h\u00e3y_ch\u1ec9nh_l\u1ea1i_backend_b\u1ecf_lu\u00f4n_field_generate_slug_\u0111i_ko_c\u1ea7n_thi\u1ebft_n\u1eefa",
-      "label": "-> hi\u1ec7n frontend \u0111ang l\u00e0m vi\u1ec7c n\u00e0y, v\u1eady h\u00e3y ch\u1ec9nh l\u1ea1i backend b\u1ecf lu\u00f4n field generate slug \u0111i, ko c\u1ea7n thi\u1ebft n\u1eefa",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "-> hien frontend \u0111ang lam viec nay, vay hay chinh lai backend bo luon field generate slug \u0111i, ko can thiet nua",
-      "source_file": "jobs.md",
-      "source_location": "L21"
-    },
-    {
-      "id": "jobs_m\u1ecdi_capability_\u0111\u1ec1u_c\u00f3_consumer_th\u1ef1c_s\u1ef1",
-      "label": "m\u1ecdi capability \u0111\u1ec1u c\u00f3 consumer th\u1ef1c s\u1ef1.",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "moi capability \u0111eu co consumer thuc su.",
-      "source_file": "jobs.md",
-      "source_location": "L404"
-    },
-    {
-      "id": "jobs_\u0111\u00e2y_l\u00e0_thay_\u0111\u1ed5i_t\u00f4i_\u0111\u00e1nh_gi\u00e1_p0_p1",
-      "label": "\u0110\u00e2y l\u00e0 thay \u0111\u1ed5i t\u00f4i \u0111\u00e1nh gi\u00e1 P0/P1.",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\u0111ay la thay \u0111oi toi \u0111anh gia p0/p1.",
-      "source_file": "jobs.md",
-      "source_location": "L170"
-    },
-    {
-      "id": "jobs_\u0111\u00e2y_l\u00e0_th\u1ee9_t\u00f4i_s\u1ebd_\u01b0u_ti\u00ean_tr\u01b0\u1edbc_khi_public_m\u1ea1nh",
-      "label": "\u0110\u00e2y l\u00e0 th\u1ee9 t\u00f4i s\u1ebd \u01b0u ti\u00ean tr\u01b0\u1edbc khi public m\u1ea1nh.",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\u0111ay la thu toi se uu tien truoc khi public manh.",
-      "source_file": "jobs.md",
-      "source_location": "L379"
     },
     {
       "id": "back_end_components_c_number_input",
@@ -4265,7 +4600,7 @@
       "source_location": "L30"
     },
     {
-      "id": "knip",
+      "id": "front_end_package_json_knip",
       "label": "knip",
       "_origin": "ast",
       "community": 25,
@@ -4804,92 +5139,103 @@
       "source_location": "L37"
     },
     {
-      "id": "front_end_src_routes_lang_types",
-      "label": "./$types",
+      "id": "front_end_src_lib_modules_nav_bar_components_nav_burger_button",
+      "label": "nav-burger-button.svelte",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
-      "confidence": "EXTRACTED",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/$types"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
-      "label": "home-featured-blogs.svelte",
-      "_origin": "ast",
-      "community": 32,
-      "community_name": "home-page.svelte",
-      "file_type": "code",
-      "norm_label": "home-featured-blogs.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "norm_label": "nav-burger-button.svelte",
+      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-burger-button.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_hero",
-      "label": "home-hero.svelte",
+      "id": "front_end_src_lib_modules_nav_bar_components_nav_menu_items",
+      "label": "nav-menu-items.svelte",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "home-hero.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
+      "norm_label": "nav-menu-items.svelte",
+      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_plan_your_trip",
-      "label": "home-plan-your-trip.svelte",
+      "id": "front_end_src_lib_modules_nav_bar_nav_bar",
+      "label": "nav-bar.svelte",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "home-plan-your-trip.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-plan-your-trip.svelte",
+      "norm_label": "nav-bar.svelte",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_why_chd",
-      "label": "home-why-chd.svelte",
+      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
+      "label": "nav-bar-logic.ts",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "home-why-chd.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-why-chd.svelte",
+      "norm_label": "nav-bar-logic.ts",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_home_page",
-      "label": "home-page.svelte",
+      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menu_items",
+      "label": "menu_items",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "home-page.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/home-page.svelte",
+      "norm_label": "menu_items",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "front_end_src_lib_stores_nav_store",
+      "label": "nav-store.ts",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-store.ts",
+      "file_type": "code",
+      "norm_label": "nav-store.ts",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_index",
-      "label": "home-page/index.ts",
+      "id": "front_end_src_lib_stores_nav_store_nav_animate_hidden",
+      "label": "nav_animate_hidden",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "home-page/index.ts",
-      "source_file": "front-end/src/lib/modules/home-page/index.ts",
-      "source_location": "L1"
+      "norm_label": "nav_animate_hidden",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
+      "source_location": "L28"
     },
     {
-      "id": "front_end_src_routes_lang_page",
-      "label": "[lang]/+page.svelte",
+      "id": "front_end_src_lib_stores_nav_store_nav_deg",
+      "label": "nav_deg",
       "_origin": "ast",
       "community": 32,
-      "community_name": "home-page.svelte",
+      "community_name": "nav-store.ts",
       "file_type": "code",
-      "norm_label": "[lang]/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/+page.svelte",
-      "source_location": "L1"
+      "norm_label": "nav_deg",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
+      "source_location": "L26"
+    },
+    {
+      "id": "front_end_src_lib_stores_nav_store_nav_mobile",
+      "label": "nav_mobile",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-store.ts",
+      "file_type": "code",
+      "norm_label": "nav_mobile",
+      "source_file": "front-end/src/lib/stores/nav-store.ts",
+      "source_location": "L27"
     },
     {
       "id": "front_end_package_devdependencies_sveltejs_adapter_auto",
@@ -4980,103 +5326,37 @@
       "source_location": "L20"
     },
     {
-      "id": "front_end_src_lib_constants_exchange_rates",
-      "label": "constants/exchange-rates.ts",
+      "id": "front_end_src_hooks_server",
+      "label": "hooks.server.ts",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "i18n-helper.ts",
       "file_type": "code",
-      "norm_label": "constants/exchange-rates.ts",
-      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "norm_label": "hooks.server.ts",
+      "source_file": "front-end/src/hooks.server.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_constants_exchange_rates_default_exchange_rates",
-      "label": "DEFAULT_EXCHANGE_RATES",
+      "id": "front_end_src_i18n_i18n_helper",
+      "label": "i18n-helper.ts",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "i18n-helper.ts",
       "file_type": "code",
-      "norm_label": "default_exchange_rates",
-      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "norm_label": "i18n-helper.ts",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_stores_exchange_rates_store",
-      "label": "exchange-rates-store.ts",
+      "id": "front_end_src_i18n_i18n_helper_regex_start_with_base",
+      "label": "REGEX_START_WITH_BASE",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "i18n-helper.ts",
       "file_type": "code",
-      "norm_label": "exchange-rates-store.ts",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_defaultrates",
-      "label": "defaultRates",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "defaultrates",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_exchange_rates_store",
-      "label": "exchange_rates_store",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "exchange_rates_store",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L13"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity",
-      "label": "sanity.ts",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "sanity.ts",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_builder",
-      "label": "builder",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L16"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_test",
-      "label": "sanity.test.ts",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "sanity.test.ts",
-      "source_file": "front-end/src/lib/utils/sanity.test.ts",
-      "source_location": "L1"
+      "norm_label": "regex_start_with_base",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L8"
     },
     {
       "id": "front_end_package_devdependencies_testing_library_svelte",
@@ -5508,92 +5788,158 @@
       "source_location": "L3"
     },
     {
-      "id": "front_end_package_devdependencies_types_node",
-      "label": "@types/node",
+      "id": "back_end_knip",
+      "label": "back-end/knip.json",
       "_origin": "ast",
       "community": 40,
-      "community_name": "@types/node",
+      "community_name": "entry",
       "file_type": "code",
-      "norm_label": "@types/node",
-      "source_file": "front-end/package.json",
-      "source_location": "L22"
+      "norm_label": "back-end/knip.json",
+      "source_file": "back-end/knip.json",
+      "source_location": "L1"
     },
     {
-      "id": "types_node",
-      "label": "@types/node",
+      "id": "back_end_knip_entry",
+      "label": "entry",
       "_origin": "ast",
       "community": 40,
-      "community_name": "@types/node",
+      "community_name": "entry",
+      "file_type": "code",
+      "norm_label": "entry",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "back_end_knip_ignoredependencies",
+      "label": "ignoreDependencies",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "code",
+      "norm_label": "ignoredependencies",
+      "source_file": "back-end/knip.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "back_end_knip_project",
+      "label": "project",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "code",
+      "norm_label": "project",
+      "source_file": "back-end/knip.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "back_end_knip_schema",
+      "label": "$schema",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "code",
+      "norm_label": "$schema",
+      "source_file": "back-end/knip.json",
+      "source_location": "L2"
+    },
+    {
+      "id": "ref_components_ts_tsx",
+      "label": "components/**/*.{ts,tsx}",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
       "file_type": "concept",
-      "norm_label": "@types/node",
-      "source_file": "front-end/package.json",
-      "source_location": "L22"
+      "norm_label": "components/**/*.{ts,tsx}",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3"
     },
     {
-      "id": "front_end_src_routes_lang_tourtype_slug_types",
-      "label": "./$types",
+      "id": "ref_react_is",
+      "label": "react-is",
       "_origin": "ast",
-      "community": 41,
-      "community_name": "tour-details.svelte",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/$types"
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "concept",
+      "norm_label": "react-is",
+      "source_file": "back-end/knip.json",
+      "source_location": "L15"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_slider",
-      "label": "home-featured-slider.svelte",
+      "id": "ref_sanity_cli_ts",
+      "label": "sanity.cli.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "concept",
+      "norm_label": "sanity.cli.ts",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_sanity_config_ts",
+      "label": "sanity.config.ts",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "concept",
+      "norm_label": "sanity.config.ts",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_schemas_ts_tsx",
+      "label": "schemas/**/*.{ts,tsx}",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "concept",
+      "norm_label": "schemas/**/*.{ts,tsx}",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "ref_types_styled_components",
+      "label": "@types/styled-components",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "entry",
+      "file_type": "concept",
+      "norm_label": "@types/styled-components",
+      "source_file": "back-end/knip.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "front_end_src_routes_api_tours_server",
+      "label": "tours/+server.ts",
       "_origin": "ast",
       "community": 41,
-      "community_name": "tour-details.svelte",
+      "community_name": "tours/+server.ts",
       "file_type": "code",
-      "norm_label": "home-featured-slider.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-slider.svelte",
+      "norm_label": "tours/+server.ts",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_tour_page_tour_details",
-      "label": "tour-details.svelte",
+      "id": "front_end_src_routes_api_tours_server_client",
+      "label": "client",
       "_origin": "ast",
       "community": 41,
-      "community_name": "tour-details.svelte",
+      "community_name": "tours/+server.ts",
       "file_type": "code",
-      "norm_label": "tour-details.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-details.svelte",
-      "source_location": "L1"
+      "norm_label": "client",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L19"
     },
     {
-      "id": "front_end_src_lib_stores_booking_store",
-      "label": "booking-store.ts",
+      "id": "front_end_src_routes_api_tours_server_config",
+      "label": "config",
       "_origin": "ast",
       "community": 41,
-      "community_name": "tour-details.svelte",
+      "community_name": "tours/+server.ts",
       "file_type": "code",
-      "norm_label": "booking-store.ts",
-      "source_file": "front-end/src/lib/stores/booking-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_booking_store_booking_modal",
-      "label": "booking_modal",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "tour-details.svelte",
-      "file_type": "code",
-      "norm_label": "booking_modal",
-      "source_file": "front-end/src/lib/stores/booking-store.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_slug_page",
-      "label": "[tourtype]/[slug]/+page.svelte",
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "tour-details.svelte",
-      "file_type": "code",
-      "norm_label": "[tourtype]/[slug]/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.svelte",
-      "source_location": "L1"
+      "norm_label": "config",
+      "source_file": "front-end/src/routes/api/tours/+server.ts",
+      "source_location": "L12"
     },
     {
       "id": "front_end_package_devdependencies_typescript_eslint_parser",
@@ -5772,114 +6118,125 @@
       "source_location": "L1"
     },
     {
-      "id": "back_end_package_devdependencies",
-      "label": "devDependencies",
+      "id": "back_end_package_dependencies",
+      "label": "dependencies",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "devdependencies",
+      "norm_label": "dependencies",
       "source_file": "back-end/package.json",
-      "source_location": "L33"
+      "source_location": "L21"
     },
     {
-      "id": "back_end_package_devdependencies_eslint",
-      "label": "eslint",
+      "id": "back_end_package_dependencies_react",
+      "label": "react",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "eslint",
+      "norm_label": "react",
       "source_file": "back-end/package.json",
-      "source_location": "L38"
+      "source_location": "L26"
     },
     {
-      "id": "back_end_package_devdependencies_prettier",
-      "label": "prettier",
+      "id": "back_end_package_dependencies_react_dom",
+      "label": "react-dom",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "prettier",
+      "norm_label": "react-dom",
       "source_file": "back-end/package.json",
-      "source_location": "L39"
+      "source_location": "L27"
     },
     {
-      "id": "back_end_package_devdependencies_react_icons",
-      "label": "react-icons",
+      "id": "back_end_package_dependencies_react_is",
+      "label": "react-is",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "react-icons",
+      "norm_label": "react-is",
       "source_file": "back-end/package.json",
-      "source_location": "L40"
+      "source_location": "L28"
     },
     {
-      "id": "back_end_package_devdependencies_sanity_eslint_config_studio",
-      "label": "@sanity/eslint-config-studio",
+      "id": "back_end_package_dependencies_sanity",
+      "label": "sanity",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@sanity/eslint-config-studio",
+      "norm_label": "sanity",
       "source_file": "back-end/package.json",
-      "source_location": "L34"
+      "source_location": "L29"
     },
     {
-      "id": "back_end_package_devdependencies_sanity_plugin_asset_source_unsplash",
-      "label": "sanity-plugin-asset-source-unsplash",
+      "id": "back_end_package_dependencies_sanity_color_input",
+      "label": "@sanity/color-input",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "sanity-plugin-asset-source-unsplash",
+      "norm_label": "@sanity/color-input",
       "source_file": "back-end/package.json",
-      "source_location": "L41"
+      "source_location": "L22"
     },
     {
-      "id": "back_end_package_devdependencies_sanity_ui",
-      "label": "@sanity/ui",
+      "id": "back_end_package_dependencies_sanity_image_url",
+      "label": "@sanity/image-url",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@sanity/ui",
+      "norm_label": "@sanity/image-url",
       "source_file": "back-end/package.json",
-      "source_location": "L35"
+      "source_location": "L23"
     },
     {
-      "id": "back_end_package_devdependencies_types_react",
-      "label": "@types/react",
+      "id": "back_end_package_dependencies_sanity_plugin_media",
+      "label": "sanity-plugin-media",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@types/react",
+      "norm_label": "sanity-plugin-media",
       "source_file": "back-end/package.json",
-      "source_location": "L36"
+      "source_location": "L30"
     },
     {
-      "id": "back_end_package_devdependencies_types_styled_components",
-      "label": "@types/styled-components",
+      "id": "back_end_package_dependencies_sanity_table",
+      "label": "@sanity/table",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@types/styled-components",
+      "norm_label": "@sanity/table",
       "source_file": "back-end/package.json",
-      "source_location": "L37"
+      "source_location": "L24"
     },
     {
-      "id": "back_end_package_devdependencies_typescript",
-      "label": "typescript",
+      "id": "back_end_package_dependencies_sanity_vision",
+      "label": "@sanity/vision",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "typescript",
+      "norm_label": "@sanity/vision",
       "source_file": "back-end/package.json",
-      "source_location": "L42"
+      "source_location": "L25"
+    },
+    {
+      "id": "back_end_package_dependencies_styled_components",
+      "label": "styled-components",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "back-end/package.json",
+      "file_type": "code",
+      "norm_label": "styled-components",
+      "source_file": "back-end/package.json",
+      "source_location": "L31"
     },
     {
       "id": "back_end_package_license",
@@ -5923,7 +6280,7 @@
       "file_type": "code",
       "norm_label": "prettier",
       "source_file": "back-end/package.json",
-      "source_location": "L44"
+      "source_location": "L45"
     },
     {
       "id": "back_end_package_prettier_bracketspacing",
@@ -5934,7 +6291,7 @@
       "file_type": "code",
       "norm_label": "bracketspacing",
       "source_file": "back-end/package.json",
-      "source_location": "L47"
+      "source_location": "L48"
     },
     {
       "id": "back_end_package_prettier_printwidth",
@@ -5945,7 +6302,7 @@
       "file_type": "code",
       "norm_label": "printwidth",
       "source_file": "back-end/package.json",
-      "source_location": "L46"
+      "source_location": "L47"
     },
     {
       "id": "back_end_package_prettier_semi",
@@ -5956,7 +6313,7 @@
       "file_type": "code",
       "norm_label": "semi",
       "source_file": "back-end/package.json",
-      "source_location": "L45"
+      "source_location": "L46"
     },
     {
       "id": "back_end_package_prettier_singlequote",
@@ -5967,7 +6324,7 @@
       "file_type": "code",
       "norm_label": "singlequote",
       "source_file": "back-end/package.json",
-      "source_location": "L48"
+      "source_location": "L49"
     },
     {
       "id": "back_end_package_private",
@@ -6102,103 +6459,114 @@
       "source_location": "L4"
     },
     {
-      "id": "back_end_package_json_eslint",
-      "label": "eslint",
+      "id": "back_end_package_json_sanity_image_url",
+      "label": "@sanity/image-url",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "eslint",
+      "norm_label": "@sanity/image-url",
       "source_file": "back-end/package.json",
-      "source_location": "L38"
+      "source_location": "L23"
     },
     {
-      "id": "back_end_package_json_prettier",
-      "label": "prettier",
+      "id": "react",
+      "label": "react",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "prettier",
+      "norm_label": "react",
       "source_file": "back-end/package.json",
-      "source_location": "L39"
+      "source_location": "L26"
     },
     {
-      "id": "back_end_package_json_typescript",
-      "label": "typescript",
+      "id": "react_dom",
+      "label": "react-dom",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "typescript",
+      "norm_label": "react-dom",
       "source_file": "back-end/package.json",
-      "source_location": "L42"
+      "source_location": "L27"
     },
     {
-      "id": "react_icons",
-      "label": "react-icons",
+      "id": "react_is",
+      "label": "react-is",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "react-icons",
+      "norm_label": "react-is",
       "source_file": "back-end/package.json",
-      "source_location": "L40"
+      "source_location": "L28"
     },
     {
-      "id": "sanity_eslint_config_studio",
-      "label": "@sanity/eslint-config-studio",
+      "id": "sanity",
+      "label": "sanity",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@sanity/eslint-config-studio",
+      "norm_label": "sanity",
       "source_file": "back-end/package.json",
-      "source_location": "L34"
+      "source_location": "L29"
     },
     {
-      "id": "sanity_plugin_asset_source_unsplash",
-      "label": "sanity-plugin-asset-source-unsplash",
+      "id": "sanity_color_input",
+      "label": "@sanity/color-input",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "sanity-plugin-asset-source-unsplash",
+      "norm_label": "@sanity/color-input",
       "source_file": "back-end/package.json",
-      "source_location": "L41"
+      "source_location": "L22"
     },
     {
-      "id": "sanity_ui",
-      "label": "@sanity/ui",
+      "id": "sanity_plugin_media",
+      "label": "sanity-plugin-media",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@sanity/ui",
+      "norm_label": "sanity-plugin-media",
       "source_file": "back-end/package.json",
-      "source_location": "L35"
+      "source_location": "L30"
     },
     {
-      "id": "types_react",
-      "label": "@types/react",
+      "id": "sanity_table",
+      "label": "@sanity/table",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@types/react",
+      "norm_label": "@sanity/table",
       "source_file": "back-end/package.json",
-      "source_location": "L36"
+      "source_location": "L24"
     },
     {
-      "id": "types_styled_components",
-      "label": "@types/styled-components",
+      "id": "sanity_vision",
+      "label": "@sanity/vision",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@types/styled-components",
+      "norm_label": "@sanity/vision",
       "source_file": "back-end/package.json",
-      "source_location": "L37"
+      "source_location": "L25"
+    },
+    {
+      "id": "styled_components",
+      "label": "styled-components",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "back-end/package.json",
+      "file_type": "concept",
+      "norm_label": "styled-components",
+      "source_file": "back-end/package.json",
+      "source_location": "L31"
     },
     {
       "id": "back_end_eslint_config",
@@ -6223,7 +6591,18 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_lang_blog_slug_types",
+      "id": "environment",
+      "label": "$app/environment",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/environment",
+      "source_file": "$app/environment"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_slug_types",
       "label": "./$types",
       "_origin": "ast",
       "community": 6,
@@ -6231,7 +6610,7 @@
       "confidence": "EXTRACTED",
       "file_type": "code",
       "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/blog/[slug]/$types"
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/$types"
     },
     {
       "id": "front_end_src_routes_types",
@@ -6243,6 +6622,17 @@
       "file_type": "code",
       "norm_label": "./$types",
       "source_file": "front-end/src/routes/$types"
+    },
+    {
+      "id": "navigation",
+      "label": "$app/navigation",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/navigation",
+      "source_file": "$app/navigation"
     },
     {
       "id": "stores",
@@ -6311,6 +6701,17 @@
       "source_location": "L1"
     },
     {
+      "id": "front_end_src_lib_base_base_locale_switcher",
+      "label": "base-locale-switcher.svelte",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "base-locale-switcher.svelte",
+      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_base_base_logo",
       "label": "base-logo.svelte",
       "_origin": "ast",
@@ -6355,6 +6756,17 @@
       "source_location": "L1"
     },
     {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_slider",
+      "label": "home-featured-slider.svelte",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "home-featured-slider.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-slider.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_modules_mobile_menu_index",
       "label": "mobile-menu/index.ts",
       "_origin": "ast",
@@ -6377,14 +6789,58 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_lang_blog_slug_page",
-      "label": "blog/[slug]/+page.svelte",
+      "id": "front_end_src_lib_modules_nav_bar_index",
+      "label": "nav-bar/index.ts",
       "_origin": "ast",
       "community": 6,
       "community_name": "base-tour-detail-modal.svelte",
       "file_type": "code",
-      "norm_label": "blog/[slug]/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.svelte",
+      "norm_label": "nav-bar/index.ts",
+      "source_file": "front-end/src/lib/modules/nav-bar/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_tour_page_tour_details",
+      "label": "tour-details.svelte",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "tour-details.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-details.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_booking_store",
+      "label": "booking-store.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "booking-store.ts",
+      "source_file": "front-end/src/lib/stores/booking-store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_booking_store_booking_modal",
+      "label": "booking_modal",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "booking_modal",
+      "source_file": "front-end/src/lib/stores/booking-store.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_slug_page",
+      "label": "[tourtype]/[slug]/+page.svelte",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "[tourtype]/[slug]/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -6630,17 +7086,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper",
-      "label": "tour.mapper.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tour.mapper.ts",
-      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_server_sanity_queries_blogs",
       "label": "blogs.ts",
       "_origin": "ast",
@@ -6707,28 +7152,6 @@
       "source_location": "L26"
     },
     {
-      "id": "front_end_src_lib_server_sanity_queries_tours",
-      "label": "tours.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tours.ts",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_all_tours_query",
-      "label": "ALL_TOURS_QUERY",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "all_tours_query",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L38"
-    },
-    {
       "id": "front_end_src_lib_server_sanity_queries_tours_extract_tour_fields",
       "label": "EXTRACT_TOUR_FIELDS",
       "_origin": "ast",
@@ -6738,28 +7161,6 @@
       "norm_label": "extract_tour_fields",
       "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_day_query",
-      "label": "TOURS_BY_DAY_QUERY",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tours_by_day_query",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_highland_query",
-      "label": "TOURS_BY_HIGHLAND_QUERY",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tours_by_highland_query",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L36"
     },
     {
       "id": "front_end_src_lib_server_services_blog_service",
@@ -6806,28 +7207,6 @@
       "source_location": "L14"
     },
     {
-      "id": "front_end_src_lib_server_services_tour_service",
-      "label": "tour.service.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tour.service.ts",
-      "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_server_services_tour_service_tourservice",
-      "label": "TourService",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tourservice",
-      "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "front_end_src_lib_types_blog_type",
       "label": "blog.type.ts",
       "_origin": "ast",
@@ -6837,39 +7216,6 @@
       "norm_label": "blog.type.ts",
       "source_file": "front-end/src/lib/types/blog.type.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server",
-      "label": "tours/+server.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "tours/+server.ts",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_client",
-      "label": "client",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "client",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "front_end_src_routes_api_tours_server_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "front-end/src/routes/api/tours/+server.ts",
-      "source_location": "L12"
     },
     {
       "id": "front_end_src_routes_lang_blog_page_server",
@@ -6891,28 +7237,6 @@
       "file_type": "code",
       "norm_label": "blog/[slug]/+page.server.ts",
       "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_page_server",
-      "label": "[tourtype]/+page.server.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "[tourtype]/+page.server.ts",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_slug_page_server",
-      "label": "[tourtype]/[slug]/+page.server.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "sanity-client.ts",
-      "file_type": "code",
-      "norm_label": "[tourtype]/[slug]/+page.server.ts",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
       "source_location": "L1"
     },
     {
@@ -6961,40 +7285,52 @@
       "source_location": "L1"
     },
     {
-      "id": "readme_1_c\u00e0i_\u0111\u1eb7t_to\u00e0n_b\u1ed9_dependencies",
-      "label": "1. C\u00e0i \u0111\u1eb7t to\u00e0n b\u1ed9 dependencies",
+      "id": "readme_1_clean_layered_architecture_backend_frontend_server",
+      "label": "1. **Clean Layered Architecture (Backend & Frontend Server)**",
       "_origin": "ast",
       "community": 71,
       "community_name": "\ud83c\udf32 CHD Travel Monorepo",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "1. cai \u0111at toan bo dependencies",
+      "norm_label": "1. **clean layered architecture (backend & frontend server)**",
+      "source_file": "README.md",
+      "source_location": "L41"
+    },
+    {
+      "id": "readme_2_b\u1ea3o_m\u1eadt_ch\u1ed1ng_spam_to\u00e0n_di\u1ec7n_security_anti_spam",
+      "label": "2. **B\u1ea3o M\u1eadt & Ch\u1ed1ng Spam To\u00e0n Di\u1ec7n (Security & Anti-Spam)**",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. **bao mat & chong spam toan dien (security & anti-spam)**",
+      "source_file": "README.md",
+      "source_location": "L48"
+    },
+    {
+      "id": "readme_3_h\u1ec7_th\u1ed1ng_seo_rich_snippets_structured_data",
+      "label": "3. **H\u1ec7 Th\u1ed1ng SEO & Rich Snippets (Structured Data)**",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. **he thong seo & rich snippets (structured data)**",
       "source_file": "README.md",
       "source_location": "L53"
     },
     {
-      "id": "readme_2_c\u1ea5u_h\u00ecnh_bi\u1ebfn_m\u00f4i_tr\u01b0\u1eddng",
-      "label": "2. C\u1ea5u h\u00ecnh bi\u1ebfn m\u00f4i tr\u01b0\u1eddng",
+      "id": "readme_4_centralized_logging_system",
+      "label": "4. **Centralized Logging System**",
       "_origin": "ast",
       "community": 71,
       "community_name": "\ud83c\udf32 CHD Travel Monorepo",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. cau hinh bien moi truong",
+      "norm_label": "4. **centralized logging system**",
       "source_file": "README.md",
-      "source_location": "L58"
-    },
-    {
-      "id": "readme_backend_back_end",
-      "label": "**Backend (`back-end/`)**",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "**backend (`back-end/`)**",
-      "source_file": "README.md",
-      "source_location": "L43"
+      "source_location": "L57"
     },
     {
       "id": "readme_chd_travel_monorepo",
@@ -7007,30 +7343,6 @@
       "norm_label": "\ud83c\udf32 chd travel monorepo",
       "source_file": "README.md",
       "source_location": "L1"
-    },
-    {
-      "id": "readme_c\u00e0i_\u0111\u1eb7t_kh\u1edfi_ch\u1ea1y_getting_started",
-      "label": "\u2699\ufe0f C\u00e0i \u0110\u1eb7t & Kh\u1edfi Ch\u1ea1y (Getting Started)",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\u2699\ufe0f cai \u0111at & khoi chay (getting started)",
-      "source_file": "README.md",
-      "source_location": "L49"
-    },
-    {
-      "id": "readme_c\u00f4ng_ngh\u1ec7_stack_tech_stack",
-      "label": "\ud83d\ude80 C\u00f4ng Ngh\u1ec7 & Stack (Tech Stack)",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\ud83d\ude80 cong nghe & stack (tech stack)",
-      "source_file": "README.md",
-      "source_location": "L31"
     },
     {
       "id": "readme_c\u1ea5u_tr\u00fac_d\u1ef1_\u00e1n_project_architecture",
@@ -7054,19 +7366,7 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udcbb danh sach lenh quan tri (root scripts)",
       "source_file": "README.md",
-      "source_location": "L70"
-    },
-    {
-      "id": "readme_frontend_front_end",
-      "label": "**Frontend (`front-end/`)**",
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "**frontend (`front-end/`)**",
-      "source_file": "README.md",
-      "source_location": "L33"
+      "source_location": "L62"
     },
     {
       "id": "readme_quy_chu\u1ea9n_ch\u1ea5t_l\u01b0\u1ee3ng_quality_gates",
@@ -7078,7 +7378,19 @@
       "node_kind": "heading",
       "norm_label": "\ud83d\udccb quy chuan chat luong (quality gates)",
       "source_file": "README.md",
-      "source_location": "L89"
+      "source_location": "L82"
+    },
+    {
+      "id": "readme_t\u00ednh_n\u0103ng_n\u1ed5i_b\u1eadt_ki\u1ebfn_tr\u00fac_k\u1ef9_thu\u1eadt",
+      "label": "\ud83d\ude80 T\u00ednh N\u0103ng N\u1ed5i B\u1eadt & Ki\u1ebfn Tr\u00fac K\u1ef9 Thu\u1eadt",
+      "_origin": "ast",
+      "community": 71,
+      "community_name": "\ud83c\udf32 CHD Travel Monorepo",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "\ud83d\ude80 tinh nang noi bat & kien truc ky thuat",
+      "source_file": "README.md",
+      "source_location": "L39"
     },
     {
       "id": "portabletext_svelte_svelte",
@@ -7136,28 +7448,6 @@
       "source_file": "sveltekit-superforms/client"
     },
     {
-      "id": "front_end_src_routes_lang_contact_types",
-      "label": "./$types",
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/contact/$types"
-    },
-    {
-      "id": "state",
-      "label": "$app/state",
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "$app/state",
-      "source_file": "$app/state"
-    },
-    {
       "id": "front_end_src_i18n_i18n_svelte",
       "label": "i18n-svelte.ts",
       "_origin": "ast",
@@ -7178,17 +7468,6 @@
       "norm_label": "{ locale, ll, setlocale }",
       "source_file": "front-end/src/i18n/i18n-svelte.ts",
       "source_location": "L8"
-    },
-    {
-      "id": "front_end_src_lib_base_base_seo",
-      "label": "base-seo.svelte",
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "base-seo.svelte",
-      "source_file": "front-end/src/lib/base/base-seo.svelte",
-      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_modules_about_page_about_page",
@@ -7257,17 +7536,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_about_page_index",
-      "label": "about-page/index.ts",
-      "_origin": "ast",
-      "community": 78,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "about-page/index.ts",
-      "source_file": "front-end/src/lib/modules/about-page/index.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_modules_contact_page_components_contact_address",
       "label": "contact-address.svelte",
       "_origin": "ast",
@@ -7312,6 +7580,17 @@
       "source_location": "L1"
     },
     {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_review",
+      "label": "contact-review.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "i18n-svelte.ts",
+      "file_type": "code",
+      "norm_label": "contact-review.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-review.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_modules_contact_page_contact_page",
       "label": "contact-page.svelte",
       "_origin": "ast",
@@ -7323,70 +7602,92 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_contact_page_index",
-      "label": "contact-page/index.ts",
+      "id": "front_end_src_lib_modules_home_page_components_home_hero",
+      "label": "home-hero.svelte",
       "_origin": "ast",
       "community": 78,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "contact-page/index.ts",
-      "source_file": "front-end/src/lib/modules/contact-page/index.ts",
+      "norm_label": "home-hero.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_tour_page_tour_card",
-      "label": "tour-card.svelte",
+      "id": "front_end_src_lib_modules_home_page_components_home_plan_your_trip",
+      "label": "home-plan-your-trip.svelte",
       "_origin": "ast",
       "community": 78,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "tour-card.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte",
+      "norm_label": "home-plan-your-trip.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-plan-your-trip.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_tour_page_tour_gallery",
-      "label": "tour-gallery.svelte",
+      "id": "front_end_src_lib_modules_home_page_components_home_testimonials",
+      "label": "home-testimonials.svelte",
       "_origin": "ast",
       "community": 78,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "tour-gallery.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-gallery.svelte",
+      "norm_label": "home-testimonials.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_error",
-      "label": "+error.svelte",
+      "id": "front_end_src_lib_modules_home_page_components_home_why_chd",
+      "label": "home-why-chd.svelte",
       "_origin": "ast",
       "community": 78,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "+error.svelte",
-      "source_file": "front-end/src/routes/+error.svelte",
+      "norm_label": "home-why-chd.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-why-chd.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_lang_about_page",
-      "label": "about/+page.svelte",
+      "id": "front_end_src_lib_modules_home_page_home_page",
+      "label": "home-page.svelte",
       "_origin": "ast",
       "community": 78,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "about/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/about/+page.svelte",
+      "norm_label": "home-page.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/home-page.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_lang_contact_page",
-      "label": "contact/+page.svelte",
+      "id": "front_end_src_lib_types_testimonial_type",
+      "label": "testimonial.type.ts",
       "_origin": "ast",
       "community": 78,
       "community_name": "i18n-svelte.ts",
       "file_type": "code",
-      "norm_label": "contact/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/contact/+page.svelte",
+      "norm_label": "testimonial.type.ts",
+      "source_file": "front-end/src/lib/types/testimonial.type.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "front_end_package_devdependencies_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "typescript",
+      "file_type": "code",
+      "norm_label": "typescript",
+      "source_file": "front-end/package.json",
+      "source_location": "L41"
+    },
+    {
+      "id": "front_end_package_json_typescript",
+      "label": "typescript",
+      "_origin": "ast",
+      "community": 79,
+      "community_name": "typescript",
+      "file_type": "concept",
+      "norm_label": "typescript",
+      "source_file": "front-end/package.json",
+      "source_location": "L41"
     },
     {
       "id": "back_end_tsconfig",
@@ -7838,6 +8139,17 @@
       "norm_label": "tailwindcss",
       "source_file": "front-end/package.json",
       "source_location": "L39"
+    },
+    {
+      "id": "front_end_src_lib_server_security_index",
+      "label": "security/index.ts",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "security/index.ts",
+      "file_type": "code",
+      "norm_label": "security/index.ts",
+      "source_file": "front-end/src/lib/server/security/index.ts",
+      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_server_email",
@@ -8986,6 +9298,126 @@
       "weight": 1.0
     },
     {
+      "source": "back_end_knip_entry",
+      "target": "ref_components_ts_tsx",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_entry",
+      "target": "ref_sanity_cli_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_entry",
+      "target": "ref_sanity_config_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_entry",
+      "target": "ref_schemas_ts_tsx",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_ignoredependencies",
+      "target": "ref_react_is",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_ignoredependencies",
+      "target": "ref_types_styled_components",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_project",
+      "target": "ref_components_ts_tsx",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_project",
+      "target": "ref_sanity_cli_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_project",
+      "target": "ref_sanity_config_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip_project",
+      "target": "ref_schemas_ts_tsx",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/knip.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "back_end_package_keywords",
       "target": "ref_sanity",
       "relation": "extends",
@@ -9067,6 +9499,174 @@
       "context": "import",
       "source_file": "back-end/tsconfig.json",
       "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_entry",
+      "target": "ref_scripts_js",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_entry",
+      "target": "ref_src_lib_server_js_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_entry",
+      "target": "ref_src_lib_stores_js_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_entry",
+      "target": "ref_src_lib_types_js_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_entry",
+      "target": "ref_src_lib_utils_js_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_ignore",
+      "target": "ref_src_i18n",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_ignoredependencies",
+      "target": "ref_sveltejs_adapter_auto",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_ignoredependencies",
+      "target": "ref_testing_library_svelte",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_ignoredependencies",
+      "target": "ref_tslib",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_project",
+      "target": "ref_scripts_js",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_project",
+      "target": "ref_src_js_ts_svelte",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_svelte_entry",
+      "target": "ref_src_app_d_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_svelte_entry",
+      "target": "ref_src_hooks_server_client_js_ts",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_svelte_entry",
+      "target": "ref_src_routes_page_layout_server_error_js_ts_svelte",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/knip.json",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -9226,6 +9826,18 @@
       "weight": 1.0
     },
     {
+      "source": "back_end_package_devdependencies_knip",
+      "target": "back_end_package_json_knip",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "back-end/package.json",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
       "source": "back_end_package_devdependencies_prettier",
       "target": "back_end_package_json_prettier",
       "relation": "imports",
@@ -9234,7 +9846,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "back-end/package.json",
-      "source_location": "L39",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -9246,7 +9858,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "back-end/package.json",
-      "source_location": "L40",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -9270,7 +9882,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "back-end/package.json",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -9318,7 +9930,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "back-end/package.json",
-      "source_location": "L42",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -9923,7 +10535,7 @@
     },
     {
       "source": "front_end_package_devdependencies_knip",
-      "target": "knip",
+      "target": "front_end_package_json_knip",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14324,6 +14936,50 @@
       "weight": 1.0
     },
     {
+      "source": "back_end_knip",
+      "target": "back_end_knip_ignoredependencies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "back-end/knip.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip",
+      "target": "back_end_knip_schema",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "back-end/knip.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip",
+      "target": "back_end_knip_entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "back-end/knip.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_knip",
+      "target": "back_end_knip_project",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "back-end/knip.json",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "back_end_package",
       "target": "back_end_package_keywords",
       "relation": "contains",
@@ -14397,7 +15053,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/package.json",
-      "source_location": "L44",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -14611,7 +15267,7 @@
     },
     {
       "source": "back_end_package_devdependencies",
-      "target": "back_end_package_devdependencies_prettier",
+      "target": "back_end_package_devdependencies_knip",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14622,7 +15278,7 @@
     },
     {
       "source": "back_end_package_devdependencies",
-      "target": "back_end_package_devdependencies_react_icons",
+      "target": "back_end_package_devdependencies_prettier",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14633,7 +15289,7 @@
     },
     {
       "source": "back_end_package_devdependencies",
-      "target": "back_end_package_devdependencies_sanity_plugin_asset_source_unsplash",
+      "target": "back_end_package_devdependencies_react_icons",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14644,13 +15300,24 @@
     },
     {
       "source": "back_end_package_devdependencies",
-      "target": "back_end_package_devdependencies_typescript",
+      "target": "back_end_package_devdependencies_sanity_plugin_asset_source_unsplash",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/package.json",
       "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "back_end_package_devdependencies",
+      "target": "back_end_package_devdependencies_typescript",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "back-end/package.json",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -14661,7 +15328,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/package.json",
-      "source_location": "L45",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -14672,7 +15339,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/package.json",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -14683,7 +15350,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/package.json",
-      "source_location": "L47",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -14694,7 +15361,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/package.json",
-      "source_location": "L48",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -15311,6 +15978,94 @@
       "confidence_score": 1.0,
       "source_file": "back-end/tsconfig.json",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_project",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_ignore",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_ignoredependencies",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_schema",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_ignoreexportsusedinfile",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip",
+      "target": "front_end_knip_svelte",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_knip_svelte",
+      "target": "front_end_knip_svelte_entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/knip.json",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -18438,72 +19193,6 @@
       "weight": 1.0
     },
     {
-      "source": "jobs",
-      "target": "jobs_\u0111\u00e2y_l\u00e0_thay_\u0111\u1ed5i_t\u00f4i_\u0111\u00e1nh_gi\u00e1_p0_p1",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L170",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_hi\u1ec7n_frontend_\u0111ang_l\u00e0m_vi\u1ec7c_n\u00e0y_v\u1eady_h\u00e3y_ch\u1ec9nh_l\u1ea1i_backend_b\u1ecf_lu\u00f4n_field_generate_slug_\u0111i_ko_c\u1ea7n_thi\u1ebft_n\u1eefa",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L21",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_frontend_kh\u00f4ng_c\u1ea7n_bi\u1ebft_sanity_t\u1ed3n_t\u1ea1i",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L261",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_\u0111\u00e2y_l\u00e0_th\u1ee9_t\u00f4i_s\u1ebd_\u01b0u_ti\u00ean_tr\u01b0\u1edbc_khi_public_m\u1ea1nh",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L379",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_m\u1ecdi_capability_\u0111\u1ec1u_c\u00f3_consumer_th\u1ef1c_s\u1ef1",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L404",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_fetchtoursbytype_foo",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L83",
-      "weight": 1.0
-    },
-    {
       "source": "package",
       "target": "package_name",
       "relation": "contains",
@@ -18890,24 +19579,13 @@
     },
     {
       "source": "readme_chd_travel_monorepo",
-      "target": "readme_c\u00f4ng_ngh\u1ec7_stack_tech_stack",
+      "target": "readme_t\u00ednh_n\u0103ng_n\u1ed5i_b\u1eadt_ki\u1ebfn_tr\u00fac_k\u1ef9_thu\u1eadt",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L31",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_chd_travel_monorepo",
-      "target": "readme_c\u00e0i_\u0111\u1eb7t_kh\u1edfi_ch\u1ea1y_getting_started",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L49",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -18918,7 +19596,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L70",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -18929,7 +19607,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L89",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -18944,8 +19622,30 @@
       "weight": 1.0
     },
     {
-      "source": "readme_c\u00e0i_\u0111\u1eb7t_kh\u1edfi_ch\u1ea1y_getting_started",
-      "target": "readme_1_c\u00e0i_\u0111\u1eb7t_to\u00e0n_b\u1ed9_dependencies",
+      "source": "readme_t\u00ednh_n\u0103ng_n\u1ed5i_b\u1eadt_ki\u1ebfn_tr\u00fac_k\u1ef9_thu\u1eadt",
+      "target": "readme_1_clean_layered_architecture_backend_frontend_server",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_t\u00ednh_n\u0103ng_n\u1ed5i_b\u1eadt_ki\u1ebfn_tr\u00fac_k\u1ef9_thu\u1eadt",
+      "target": "readme_2_b\u1ea3o_m\u1eadt_ch\u1ed1ng_spam_to\u00e0n_di\u1ec7n_security_anti_spam",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_t\u00ednh_n\u0103ng_n\u1ed5i_b\u1eadt_ki\u1ebfn_tr\u00fac_k\u1ef9_thu\u1eadt",
+      "target": "readme_3_h\u1ec7_th\u1ed1ng_seo_rich_snippets_structured_data",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -18955,36 +19655,14 @@
       "weight": 1.0
     },
     {
-      "source": "readme_c\u00e0i_\u0111\u1eb7t_kh\u1edfi_ch\u1ea1y_getting_started",
-      "target": "readme_2_c\u1ea5u_h\u00ecnh_bi\u1ebfn_m\u00f4i_tr\u01b0\u1eddng",
+      "source": "readme_t\u00ednh_n\u0103ng_n\u1ed5i_b\u1eadt_ki\u1ebfn_tr\u00fac_k\u1ef9_thu\u1eadt",
+      "target": "readme_4_centralized_logging_system",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "README.md",
-      "source_location": "L58",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_c\u00f4ng_ngh\u1ec7_stack_tech_stack",
-      "target": "readme_frontend_front_end",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L33",
-      "weight": 1.0
-    },
-    {
-      "source": "readme_c\u00f4ng_ngh\u1ec7_stack_tech_stack",
-      "target": "readme_backend_back_end",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "README.md",
-      "source_location": "L43",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -20657,5 +21335,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "ffe0d69b7fa2c4aec4addd413a4d1ea96d599f45"
+  "built_at_commit": "fb7918aaf66b558b12cefccc7bb733570f8f5a80"
 }

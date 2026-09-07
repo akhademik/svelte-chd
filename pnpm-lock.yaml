@@ -56,6 +56,9 @@ importers:
       eslint:
         specifier: ^10.9.1
         version: 10.9.1(jiti@2.7.0)(supports-color@8.1.1)
+      knip:
+        specifier: ^5.88.1
+        version: 5.88.1(@types/node@26.4.0)(typescript@5.9.3)
       prettier:
         specifier: ^3.9.6
         version: 3.9.6

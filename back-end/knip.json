@@ -1,0 +1,16 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": [
+    "sanity.config.ts",
+    "sanity.cli.ts",
+    "schemas/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}"
+  ],
+  "project": [
+    "sanity.config.ts",
+    "sanity.cli.ts",
+    "schemas/**/*.{ts,tsx}",
+    "components/**/*.{ts,tsx}"
+  ],
+  "ignoreDependencies": ["react-is", "@types/styled-components"]
+}

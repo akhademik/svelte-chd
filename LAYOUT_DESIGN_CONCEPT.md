@@ -147,3 +147,22 @@ Khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa tok
 5. **Section Spacing & Proportions**:
    - Trang chủ (`home-page`): Giữ padding section đồng bộ `py-14 sm:py-18` (Why CHD, Day Tours, Highland Tours, Testimonials, Featured Blogs).
    - Component CTA Plan Your Trip: Thu gọn `py-12 sm:py-16`, tiêu đề `text-2xl sm:text-4xl`, nội dung `max-w-3xl` tạo điểm kết trang nhã, không choán hết tầm nhìn.
+
+---
+
+## 7. Quy chuẩn SEO, Schema.org Structured Data & Security Form UI
+
+### 7.1. SEO & Rich Snippets (JSON-LD)
+- **Cơ chế**: Mọi trang chính đều tích hợp component `<BaseJsonLd type="..." data={...} />`.
+- **Hỗ trợ Schema.org**:
+  - `LocalBusiness` & `TravelAgency`: Trang chủ và tổng thể toàn website.
+  - `TouristTrip` & `Product`: Tự động trích xuất thông tin tour, giá tiền VND/USD, lịch trình cho trang chi tiết Tour và Modal chi tiết.
+  - `BreadcrumbList`: Định tuyến danh mục và cấp độ trang rõ ràng cho Google Search bots.
+- **Hreflang tags**: Tự động sinh thẻ `<link rel="alternate" hreflang="..." />` cho toàn bộ 3 ngôn ngữ (`/vi/`, `/en/`, `/fr/`).
+
+### 7.2. Form Chống Spam & Trải Nghiệm Người Dùng (Anti-Spam & Rate Limiting UI)
+- **Invisible Honeypot Fields**: Mọi form nhập liệu (Contact, Modal Booking) phải chứa input ẩn với thuộc tính `tabindex="-1" autocomplete="off"` và `display:none !important; position:absolute; left:-9999px;`.
+- **Phản hồi lỗi Rate Limit**: Khi gặp mã lỗi `429 Too Many Requests`, hiển thị toast cảnh báo thân thiện: *"Quá nhiều yêu cầu gửi liên hệ. Vui lòng thử lại sau ít phút."*.
+- **Async Action Submission**: Luôn kích hoạt trạng thái disabled và hiển thị loader/text `Sending...` trên nút bấm để ngăn người dùng click liên tục nhiều lần.
+
+

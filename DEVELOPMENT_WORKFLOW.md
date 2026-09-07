@@ -7,55 +7,54 @@
 ## 🔒 1. Quy tắc Quản lý Gói (Package Manager Rule)
 
 - **BẮT BUỘC DÙNG `pnpm`** (Tuyệt đối không dùng `npm` hoặc `yarn`).
-- Dự án gồm các khu vực:
-  - `front-end/`: SvelteKit (Svelte 5 runes), TypeScript, TailwindCSS Minimalist UI, Typesafe-i18n, Mobile-first responsive
-  - `back-end/`: Sanity Content Studio v3, React, TypeScript
+- Dự án gồm 2 workspace chính:
+  - `front-end/`: SvelteKit (Svelte 5 Runes), TypeScript, TailwindCSS Minimalist UI, Typesafe-i18n, Multi-layer Cache & Disaster Recovery, Security (Rate Limiting & Honeypot).
+  - `back-end/`: Sanity Content Studio v3, React 18, TypeScript schemas (`tourDaily`, `tourCentral`, `blogPost`, `exchangeRates`).
 
 ```bash
 # Cài đặt toàn bộ dự án từ thư mục gốc
 pnpm install
-
-# Hoặc cài riêng từng phần:
-cd front-end && pnpm install
-cd back-end && pnpm install
 ```
 
 ### 🚀 Lệnh Nhanh Tại Thư Mục Gốc (Root Scripts):
 - **Dev Frontend**: `pnpm dev` (hoặc `pnpm dev:fe`)
 - **Dev Backend (Sanity Studio)**: `pnpm dev:be`
-- **Build**: `pnpm build` (hoặc `pnpm build:all`)
-- **Kiểm tra toàn bộ (Check & Lint)**: `pnpm check:all` & `pnpm lint:all`
-- **Chạy Test (Unit & E2E)**: `pnpm test`, `pnpm test:unit`, `pnpm test:e2e`
-- **Format toàn bộ**: `pnpm format:all`
-- **i18n Watch/Sync**: `pnpm i18n` (chạy typesafe-i18n cho front-end)
-
+- **Dev Cả 2 Cùng Lúc**: `pnpm dev:all`
+- **Build Production**: `pnpm build:all`
+- **Kiểm tra Type & Diagnostics**: `pnpm check:all` (`svelte-check` + `tsc --noEmit`)
+- **Kiểm tra Linting & Format**: `pnpm lint:all`
+- **Tự động Format Code**: `pnpm format:all`
+- **Chạy Test Suites**: `pnpm test` (Unit tests) & `pnpm test:e2e` (Playwright)
+- **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
+- **Cập nhật Knowledge Graph**: `graphify update .`
 
 ---
 
 ## 🧱 2. Chu trình Chỉnh Sửa Code Chuẩn (Quality Gate Loop)
 
-Mỗi khi chỉnh sửa mã nguồn, tuân thủ đúng trình tự sau:
+Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước sau:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│ 1. Chỉnh sửa code dứt điểm trong 1 lần (không node -e nhỏ)  │
+│ 1. Chỉnh sửa code dứt điểm trong 1 lần (Single-pass edit)   │
+│    - Sử dụng native tool, không dùng shell patch vặt        │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 2. Chạy toàn bộ bộ kiểm tra chất lượng (Quality Gates)      │
-│    - Lint (ESLint)                                          │
-│    - Type Check (TypeScript / Svelte-check)                 │
-│    - Format (Prettier)                                      │
-│    - Test (Unit / Test Suites)                              │
-│    - Knip (Dead Code / Unused dependencies)                 │
+│    - pnpm format:all                                        │
+│    - pnpm lint:all                                          │
+│    - pnpm check:all (Svelte & TypeScript diagnostics)       │
+│    - pnpm test (Vitest 22/22 unit test suites)              │
+│    - pnpm knip:all (Dead Code & Unused Dependencies)        │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 3. Chạy `/graphify` để cập nhật Knowledge Graph             │
+│ 3. Chạy `graphify update .` để cập nhật Knowledge Graph     │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 4. Thông báo và trình bày kết quả cho User                  │
+│ 4. Báo cáo và trình bày kết quả rõ ràng cho User            │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
@@ -65,26 +64,24 @@ Mỗi khi chỉnh sửa mã nguồn, tuân thủ đúng trình tự sau:
 
 ---
 
-## ⚡ 3. Bảng Lệnh Kiểm Tra Theo Module
+## ⚡ 3. Kiến Trúc Phân Tầng & Quy Định Kỹ Thuật (Architecture Standards)
 
-### Frontend (`front-end/`)
-- **Lint**: `pnpm lint` (hoặc `pnpm prettier --check . && eslint .`)
-- **Type Check**: `pnpm check` (`svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`)
-- **Format**: `pnpm format` / `pnpm prettier --write .`
-- **Test**: `pnpm test` (khi có test suite)
-- **Knip**: `pnpm knip` (hoặc `npx knip`)
+1. **Clean Service Layer (`front-end/src/lib/server/services/`)**:
+   - Mọi thao tác truy xuất dữ liệu CMS phải qua `TourService`, `BlogService`, hoặc `ExchangeService`.
+   - Route load (`+page.server.ts`, `+layout.server.ts`) không được gọi trực tiếp Sanity query cấp thấp.
 
-### Backend (`back-end/`)
-- **Lint**: `pnpm eslint .`
-- **Type Check**: `pnpm tsc --noEmit`
-- **Format**: `pnpm prettier --write .` / `pnpm prettier --check .`
-- **Knip**: `pnpm knip` (hoặc `npx knip`)
+2. **Decoupled Sanity Adapters (`front-end/src/lib/server/sanity/`)**:
+   - `queries/`: Chỉ chứa GROQ queries chuẩn khớp với schema backend (`tourDaily`, `tourCentral`, `blogPost`).
+   - `mappers/`: Chuyển đổi dữ liệu thô từ Sanity thành Domain Model (`Tour`, `BlogPost`).
 
----
+3. **Multi-layer Cache & Disaster Recovery (`front-end/src/lib/server/cache/`)**:
+   - `memory-cache.ts`: Cache in-memory theo TTL cho Worker isolates (bỏ qua trong chế độ Dev).
+   - `kv-snapshot.ts`: Lưu snapshot dự phòng 14 ngày trên Cloudflare KV. Khi Sanity gặp sự cố, hệ thống tự động fallback snapshot để web vẫn phục vụ bình thường.
 
-## 🗺️ 4. Quy định Sau Khi Edit Code
+4. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
+   - Mọi form submission (Contact, Booking) phải qua `checkRateLimit` (5 requests / 10 phút / IP) và `isSpamSubmission` (Honeypot trap).
+   - Toàn bộ email/Discord notification phải được xử lý qua `Promise.allSettled` trước khi return response.
 
-1. **Chỉnh sửa gọn gàng**: Thay đổi chính xác, trọn vẹn theo ngữ cảnh, tránh gọi các lệnh thử nghiệm vặt lặp đi lặp lại (`node -e`).
-2. **Quality Gates**: Đảm bảo vượt qua toàn bộ lint, type, format, test, knip.
-3. **Graphify Sync**: Thực thi cập nhật đồ thị kiến trúc tri thức `/graphify`.
-4. **Báo cáo & Commit**: Báo cáo rõ ràng các tệp đã sửa, nếu user đồng ý mới tiến hành commit.
+5. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
+   - Tuyệt đối không dùng `console.log` / `console.error` rải rác. Luôn sử dụng `Logger.info`, `Logger.warn`, `Logger.error`, `Logger.debug`.
+
