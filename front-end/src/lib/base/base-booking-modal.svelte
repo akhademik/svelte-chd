@@ -200,6 +200,20 @@
 						placeholder={$LL.tours.detail.notes_placeholder()}></textarea>
 				</div>
 
+				<!-- Invisible Honeypot field for anti-spam -->
+				<div
+					class="hidden"
+					aria-hidden="true"
+					style="display:none !important; position:absolute; left:-9999px;">
+					<label for="booking-fax">Company Fax</label>
+					<input
+						id="booking-fax"
+						type="text"
+						name="fax"
+						tabindex="-1"
+						autocomplete="off" />
+				</div>
+
 				<button
 					type="submit"
 					disabled={isSubmitting}

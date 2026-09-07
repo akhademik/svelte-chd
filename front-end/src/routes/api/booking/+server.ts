@@ -1,5 +1,7 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
+import { isSpamSubmission } from '$lib/server/security/anti-spam'
+import { checkRateLimit } from '$lib/server/security/rate-limiter'
 import { Logger } from '$lib/utils/logger'
 import { json } from '@sveltejs/kit'
 
@@ -7,6 +9,26 @@ export const POST = async ({ request }) => {
 	try {
 		const data = (await request.json()) as Record<string, any>
 		const { name, contact, date, guests, tour, note, langs } = data
+
+		// Anti-Spam: Honeypot trap check
+		if (isSpamSubmission(data)) {
+			Logger.warn('BookingAction', 'Bot booking spam trapped by honeypot')
+			return json({ success: true }, { status: 200 })
+		}
+
+		// Rate Limiting: 5 requests per 10 minutes per IP
+		const rateLimit = checkRateLimit(request, {
+			maxRequests: 5,
+			windowMs: 10 * 60 * 1000,
+			keyPrefix: 'booking-api',
+		})
+
+		if (!rateLimit.allowed) {
+			return json(
+				{ message: 'Quá nhiều yêu cầu đặt tour. Vui lòng thử lại sau ít phút.' },
+				{ status: 429 }
+			)
+		}
 
 		if (!name || !contact) {
 			return json({ message: 'Missing required fields' }, { status: 400 })

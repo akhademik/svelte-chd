@@ -66,9 +66,10 @@
   - [x] Tuân thủ Mobile-first container padding (`mx-auto max-w-6xl px-6 py-12`).
   - [x] Tuân thủ quy chuẩn lowercase chữ đa ngôn ngữ trên Header/Navbar theo `LAYOUT_DESIGN_CONCEPT.md`.
   - [x] Chạy trọn vẹn Quality Gate sau khi sửa đổi: `Lint` ➔ `Type Check` ➔ `Format` ➔ `Test` ➔ `Knip` ➔ `/graphify`.
-- [ ] **13. Thêm Rate Limiting & Anti-Spam Cơ Bản Cho Contact / Booking Action**
-  - [ ] Xây dựng bộ đệm rate limiting đơn giản (in-memory hoặc KV/header IP-based) cho form liên hệ & đặt tour (ví dụ tối đa 3-5 submissions / 10 phút / IP).
-  - [ ] Ngăn ngừa bot spam email và làm quá tải Discord webhook.
+- [x] **13. Thêm Rate Limiting & Anti-Spam Cơ Bản Cho Contact / Booking Action**
+  - [x] Xây dựng module Rate Limiter (`front-end/src/lib/server/security/rate-limiter.ts`) giới hạn 5 submissions / 10 phút / IP.
+  - [x] Xây dựng Honeypot Anti-Spam (`front-end/src/lib/server/security/anti-spam.ts`) và tích hợp input ẩn trên UI Contact & Booking Modal.
+  - [x] Ngăn ngừa bot spam email và bảo vệ Discord webhook chống flood.
 
 
 

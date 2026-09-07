@@ -130,6 +130,20 @@
 		></textarea>
 	</div>
 
+	<!-- Invisible Honeypot field to trap spam bots -->
+	<div
+		class="hidden"
+		aria-hidden="true"
+		style="display:none !important; position:absolute; left:-9999px;">
+		<label for="cfi-website">Website</label>
+		<input
+			id="cfi-website"
+			type="text"
+			name="website"
+			tabindex="-1"
+			autocomplete="off" />
+	</div>
+
 	<button
 		type="submit"
 		disabled={$submitting}

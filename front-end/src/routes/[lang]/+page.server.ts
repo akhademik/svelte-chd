@@ -1,6 +1,8 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
+import { isSpamSubmission } from '$lib/server/security/anti-spam'
+import { checkRateLimit } from '$lib/server/security/rate-limiter'
 import { BlogService } from '$lib/server/services/blog.service'
 import { TourService } from '$lib/server/services/tour.service'
 import { Logger } from '$lib/utils/logger'
@@ -88,6 +90,26 @@ export const actions = {
 
 		if (!form.valid) {
 			return fail(400, { form })
+		}
+
+		// Anti-Spam: Honeypot check (transparently silently succeed if bot filled honeypot)
+		if (isSpamSubmission(tagsFormData)) {
+			Logger.warn('ContactAction', 'Bot spam submission trapped by honeypot')
+			return message(form, 'success')
+		}
+
+		// Rate Limiting: 5 submissions per 10 minutes per IP
+		const rateLimit = checkRateLimit(request, {
+			maxRequests: 5,
+			windowMs: 10 * 60 * 1000,
+			keyPrefix: 'contact-form',
+		})
+
+		if (!rateLimit.allowed) {
+			return fail(429, {
+				form,
+				error: 'Quá nhiều yêu cầu gửi liên hệ. Vui lòng thử lại sau ít phút.',
+			})
 		}
 
 		try {
