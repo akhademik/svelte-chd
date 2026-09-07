@@ -18,12 +18,26 @@ const builder = imageUrlBuilder(config as SanityProjectDetails)
 export const get_tour_slug = (tour: Tour, lang: string = 'en') => {
 	if (!tour?.tour_slug) return ''
 	if (typeof tour.tour_slug === 'string') return tour.tour_slug
-	if (tour.tour_slug.current) return tour.tour_slug.current
+
+	// 1. Direct language lookup if tour_slug is localized: { vi: { current }, en: { current }, fr: { current } }
 	if (tour.tour_slug[lang]?.current) return tour.tour_slug[lang].current
+	if (lang === 'vi' && tour.tour_slug.vn?.current) return tour.tour_slug.vn.current
+	if (lang === 'vn' && tour.tour_slug.vi?.current) return tour.tour_slug.vi.current
+
+	// 2. Direct string value in localized slug: { vi: 'slug-vi', en: 'slug-en' }
+	if (typeof tour.tour_slug[lang] === 'string') return tour.tour_slug[lang]
+	if (lang === 'vi' && typeof tour.tour_slug.vn === 'string') return tour.tour_slug.vn
+	if (lang === 'vn' && typeof tour.tour_slug.vi === 'string') return tour.tour_slug.vi
+
+	// 3. Fallback to standard Sanity single slug: { current: 'slug' }
+	if (tour.tour_slug.current) return tour.tour_slug.current
+
+	// 4. Fallbacks across languages
 	if (tour.tour_slug.en?.current) return tour.tour_slug.en.current
 	if (tour.tour_slug.vi?.current) return tour.tour_slug.vi.current
 	if (tour.tour_slug.vn?.current) return tour.tour_slug.vn.current
 	if (tour.tour_slug.fr?.current) return tour.tour_slug.fr.current
+
 	return ''
 }
 

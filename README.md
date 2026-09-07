@@ -12,6 +12,7 @@ Monorepo chứa toàn bộ mã nguồn của dự án **CHD Travel**, bao gồm 
 svelte-chd/
 ├── front-end/               # Ứng dụng Web chính (SvelteKit + Svelte 5 Runes + TailwindCSS)
 │   ├── e2e/                 # Test end-to-end (Playwright)
+│   ├── scripts/             # Batch scripts & Cron Workers (sync-rates.js)
 │   ├── src/
 │   │   ├── i18n/            # Hệ thống đa ngôn ngữ typesafe-i18n (vn, en, fr)
 │   │   ├── lib/             # Modules, Base UI components, Stores
@@ -24,7 +25,7 @@ svelte-chd/
 │   │   └── routes/          # SvelteKit SSR Routes theo ngôn ngữ /[lang]/ & API endpoints
 │   └── static/              # Favicon, static assets, schema icons
 ├── back-end/                # Sanity Content Studio v3 (React + TypeScript)
-│   ├── schemas/             # Sanity Document & Object Schemas (Tours, Blog, Rates)
+├── schemas/             # Sanity Document & Object Schemas (Tours, Blog, Rates)
 │   ├── components/          # Custom Sanity Studio UI Components
 │   └── sanity.config.ts     # Cấu hình Sanity Studio workspace
 ├── graphify-out/            # Persistent Knowledge Graph & Codebase Reports
@@ -41,6 +42,7 @@ svelte-chd/
 ### 1. **Clean Layered Architecture (Backend & Frontend Server)**
 - **Decoupled CMS Adapter**: Phân tách hoàn toàn Sanity schema khỏi tầng domain thông qua **Canonical Mappers** ([`tour.mapper.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/tour.mapper.ts), [`blog.mapper.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/blog.mapper.ts)).
 - **Domain Services**: [`TourService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/tour.service.ts), [`BlogService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/blog.service.ts), [`ExchangeService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/exchange.service.ts) đóng gói toàn bộ nghiệp vụ truy xuất dữ liệu.
+- **Tách Biệt Luồng Batch Sync (Cron)**: Toàn bộ quá trình fetch tỷ giá ngoại tệ từ bên thứ ba và seal vào Sanity CMS được chuyển giao cho [`scripts/sync-rates.js`](file:///home/hajtran/dev/svelte-chd/front-end/scripts/sync-rates.js) (chạy qua GitHub Action cron), loại bỏ hoàn toàn quyền write/delete Sanity khỏi public HTTP routes của frontend.
 - **Multi-layer Caching & Disaster Recovery**:
   - Tầng 1: In-memory cache với TTL cho Worker isolates ([`memory-cache.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/cache/memory-cache.ts)).
   - Tầng 2: Cloudflare KV Snapshot 14-ngày đảm bảo website vẫn hoạt động 100% khi Sanity bảo trì hoặc gặp sự cố ([`kv-snapshot.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/cache/kv-snapshot.ts)).
@@ -74,6 +76,8 @@ Tại thư mục gốc dự án, bạn có thể thực hiện mọi tác vụ q
 | `pnpm format:all` | Tự động định dạng code chuẩn Prettier cho toàn bộ files |
 | `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: form schema, formatters, rate-limiter, anti-spam, sanity) |
 | `pnpm test:e2e` | Chạy Playwright End-to-End tests |
+| `pnpm knip:all` | Quét Dead Code, Unused Files & Unused Exports |
+| `pnpm sync:rates` | Đồng bộ tỷ giá ngoại tệ từ Exchange API vào Sanity CMS (dùng cho GitHub Action Cron) |
 | `pnpm i18n` | Đồng bộ và sinh types tự động cho `typesafe-i18n` |
 | `graphify update .` | Cập nhật Knowledge Graph & báo cáo phân tích kiến trúc |
 

@@ -44,7 +44,7 @@ Tour: ${tour || 'Chưa chọn'}
 Tên khách hàng: ${name}
 Email: ${email || contact}
 SĐT: ${phone || contact}
-Ngôn ngữ: ${langs || 'vn'}
+Ngôn ngữ: ${langs || 'vi'}
 Ngày dự kiến: ${date || 'Chưa xác định'}
 Số lượng khách: ${guests || 1}
 

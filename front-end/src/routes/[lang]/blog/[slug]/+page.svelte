@@ -12,13 +12,13 @@
 
 	let post: BlogPost = $derived(data.post)
 	let title = $derived(
-		post?.title?.[$locale as 'vn' | 'en' | 'fr'] || post?.title?.vn || post?.title?.en || ''
+		post?.title?.[$locale as 'vi' | 'en' | 'fr'] || post?.title?.vi || post?.title?.en || ''
 	)
 	let excerpt = $derived(
-		post?.excerpt?.[$locale as 'vn' | 'en' | 'fr'] || post?.excerpt?.vn || post?.excerpt?.en || ''
+		post?.excerpt?.[$locale as 'vi' | 'en' | 'fr'] || post?.excerpt?.vi || post?.excerpt?.en || ''
 	)
 	let content = $derived(
-		post?.content?.[$locale as 'vn' | 'en' | 'fr'] || post?.content?.vn || post?.content?.en || []
+		post?.content?.[$locale as 'vi' | 'en' | 'fr'] || post?.content?.vi || post?.content?.en || []
 	)
 
 	let allImages = $derived.by(() => {

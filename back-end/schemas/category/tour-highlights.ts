@@ -14,7 +14,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'tourHighlights.vn',
+      title: 'tourHighlights.vi',
     },
   },
 }

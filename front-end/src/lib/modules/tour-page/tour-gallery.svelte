@@ -14,7 +14,15 @@
 	let tourtype = $derived(page.params.tourtype)
 	let isDay = $derived(tourtype === 'day-tours')
 
-	let availableTours = $derived(tours.filter(t => Boolean(t.tour_name?.[$locale])))
+	let availableTours = $derived(
+		tours.filter(
+			t =>
+				Boolean(t.tour_name?.[$locale]) ||
+				($locale === 'vi' && Boolean(t.tour_name?.vn)) ||
+				Boolean(t.tour_name?.en) ||
+				Boolean(t.tour_name?.vi)
+		)
+	)
 </script>
 
 <div class="mx-auto max-w-6xl px-6 py-12">

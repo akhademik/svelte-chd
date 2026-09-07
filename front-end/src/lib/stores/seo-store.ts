@@ -1,13 +1,5 @@
 import { writable } from 'svelte/store'
 
-export interface SeoState {
-	title: string
-	description: string
-	keywords: string
-	ogImage?: string
-	ogType?: string
-}
-
 const DEFAULT_TITLE = 'CHD Travel - Vietnam Highlands & Day Tours'
 const DEFAULT_DESC =
 	'Discover the vibrant culture and rich traditions of Vietnam’s highlands with our travel agency. Experience the lifestyle of the minority people, participate in their customs, and explore breathtaking landscapes.'

@@ -55,7 +55,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title.vn',
+      title: 'title.vi',
       subtitle: 'category',
       media: 'coverImg',
     },

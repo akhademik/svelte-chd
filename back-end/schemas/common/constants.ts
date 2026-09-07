@@ -28,7 +28,7 @@ export type GenerateField = (
 
 // HAJ 28/09/2023 BEGIN - LOCALES
 export const LOCALES: Locale[] = [
-  {id: 'vn', title: 'Việt', isDefault: true},
+  {id: 'vi', title: 'Việt', isDefault: true},
   {id: 'en', title: 'Anh'},
   {id: 'fr', title: 'Pháp'},
 ]

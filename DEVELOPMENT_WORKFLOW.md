@@ -25,6 +25,8 @@ pnpm install
 - **Kiểm tra Linting & Format**: `pnpm lint:all`
 - **Tự động Format Code**: `pnpm format:all`
 - **Chạy Test Suites**: `pnpm test` (Unit tests) & `pnpm test:e2e` (Playwright)
+- **Kiểm tra Dead Code & Unused**: `pnpm knip:all`
+- **Đồng bộ Tỷ Giá Ngoại Tệ (Cron / Script)**: `pnpm sync:rates`
 - **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
 - **Cập nhật Knowledge Graph**: `graphify update .`
 
@@ -84,4 +86,8 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 
 5. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
    - Tuyệt đối không dùng `console.log` / `console.error` rải rác. Luôn sử dụng `Logger.info`, `Logger.warn`, `Logger.error`, `Logger.debug`.
+
+6. **Batch Jobs & Cron Synchronization (`front-end/scripts/sync-rates.js`)**:
+   - Mọi tác vụ mutate/sync dữ liệu định kỳ (ví dụ: lấy tỷ giá ngoại tệ từ bên thứ ba và ghi vào Sanity) **bắt buộc chạy dưới dạng script độc lập** (`pnpm sync:rates`), không nhúng logic write token vào HTTP routes công khai.
+   - Khi cấu hình GitHub Action Cron hoặc Cloudflare Cron, trigger trực tiếp script này cùng các biến môi trường `SANITY_WRITE_TOKEN`, `VITE_SANITY_ID`, `EXCHANGE_API_KEY`, `EXCHANGE_URL`.
 

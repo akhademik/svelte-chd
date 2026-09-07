@@ -71,11 +71,3 @@ export const Logger = {
 	perf: (ctx: string, msg: string, ms: number) =>
 		formatAndLog('DEBUG', '⏱️', ctx, `${msg} (${ms}ms)`, undefined, console.log, true),
 }
-
-export function setDebug(value: boolean): void {
-	Logger.setDebug(value)
-}
-
-export function isDebug(): boolean {
-	return Logger.isDebug()
-}

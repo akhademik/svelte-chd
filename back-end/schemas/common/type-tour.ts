@@ -71,7 +71,7 @@ export const tour_slug = {
     source: (doc: any) => {
       const nameObj = doc?.tourName || doc?.title
       if (typeof nameObj === 'string') return nameObj
-      return nameObj?.vn || nameObj?.en || nameObj?.fr || ''
+      return nameObj?.vi || nameObj?.vn || nameObj?.en || nameObj?.fr || ''
     },
     maxLength: 96,
   },

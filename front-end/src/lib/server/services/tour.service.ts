@@ -33,7 +33,7 @@ export const TourService = {
 	/**
 	 * Fetches single tour by localized slug with multi-layer cache.
 	 */
-	async getTourBySlug(slug: string, tourType?: string, kv?: KVNamespace): Promise<Tour | null> {
+	async getTourBySlug(slug: string, tourType?: TourType, kv?: KVNamespace): Promise<Tour | null> {
 		return cachedFetch(`tour-${tourType || 'all'}-${slug}`, 5 * 60 * 1000, async () => {
 			return withKvSnapshot(
 				kv,

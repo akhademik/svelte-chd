@@ -10,7 +10,7 @@ export default {
   fields: [generate_field('Tour Tags', 'tourTags', 'locale_string')],
   preview: {
     select: {
-      title: 'tourTags.vn',
+      title: 'tourTags.vi',
     },
   },
 }

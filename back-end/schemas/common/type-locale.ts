@@ -48,7 +48,14 @@ export const locale_slug = {
         // Support both blog post (doc.title) and tour (doc.tourName)
         const titleObj = doc?.title || doc?.tourName
         if (typeof titleObj === 'string') return titleObj
-        return titleObj?.[locale.id] || titleObj?.vn || titleObj?.en || titleObj?.fr || ''
+        return (
+          titleObj?.[locale.id] ||
+          titleObj?.vi ||
+          titleObj?.vn ||
+          titleObj?.en ||
+          titleObj?.fr ||
+          ''
+        )
       },
       maxLength: 96,
     },

@@ -7,13 +7,7 @@
 			"src/app.d.ts"
 		]
 	},
-	"entry": [
-		"scripts/**/*.js",
-		"src/lib/server/**/*.{js,ts}",
-		"src/lib/utils/**/*.{js,ts}",
-		"src/lib/types/**/*.{js,ts}",
-		"src/lib/stores/**/*.{js,ts}"
-	],
+	"entry": ["scripts/**/*.js"],
 	"project": ["src/**/*.{js,ts,svelte}", "scripts/**/*.js"],
 	"ignore": ["src/i18n/**"],
 	"ignoreDependencies": ["@sveltejs/adapter-auto", "@testing-library/svelte", "tslib"],

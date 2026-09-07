@@ -35,10 +35,9 @@ export const TOURS_BY_DAY_QUERY = `*[_type == 'tourDaily']{${EXTRACT_TOUR_FIELDS
 
 export const TOURS_BY_HIGHLAND_QUERY = `*[_type == 'tourCentral']{${EXTRACT_TOUR_FIELDS}}`
 
-export const ALL_TOURS_QUERY = `*[_type in ['tourDaily', 'tourCentral']]{${EXTRACT_TOUR_FIELDS}}`
-
 export const getSingleTourQuery = (typeFilter: string) => `*[(${typeFilter}) && (
 	tourSlug.current == $slug ||
+	tourSlug.vi.current == $slug ||
 	tourSlug.vn.current == $slug ||
 	tourSlug.en.current == $slug ||
 	tourSlug.fr.current == $slug

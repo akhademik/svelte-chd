@@ -28,9 +28,22 @@ describe('sanity utils & fallback slug parsing', () => {
 		} as unknown as Tour
 
 		expect(get_tour_slug(tour, 'vn')).toBe('kham-pha-ho-lak')
+		expect(get_tour_slug(tour, 'vi')).toBe('kham-pha-ho-lak')
 		expect(get_tour_slug(tour, 'fr')).toBe('decouverte-du-lac-lak')
 		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-discovery')
 		expect(get_tour_slug(tour, 'de')).toBe('lak-lake-discovery') // falls back to en
+	})
+
+	it('should support direct string slugs per language', () => {
+		const tour = {
+			tour_slug: {
+				vn: 'kham-pha-ho-lak',
+				en: 'lak-lake-discovery',
+			},
+		} as unknown as Tour
+
+		expect(get_tour_slug(tour, 'vi')).toBe('kham-pha-ho-lak')
+		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-discovery')
 	})
 
 	it('should get tour by index correctly', () => {

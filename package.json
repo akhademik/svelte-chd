@@ -31,6 +31,7 @@
     "knip:all": "pnpm --filter ./front-end exec knip && pnpm --filter ./back-end exec knip",
     "knip:fe": "pnpm --filter ./front-end exec knip",
     "knip:be": "pnpm --filter ./back-end exec knip",
+    "sync:rates": "pnpm --filter ./front-end exec node scripts/sync-rates.js",
     "i18n": "pnpm --filter ./front-end typesafe-i18n",
     "i18n:fe": "pnpm --filter ./front-end typesafe-i18n"
   }

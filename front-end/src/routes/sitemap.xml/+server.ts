@@ -1,10 +1,12 @@
-import { EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, sanityClient } from '$lib/server/sanity-client'
+import { sanityClient } from '$lib/server/sanity/client'
+import { EXTRACT_BLOG_FIELDS } from '$lib/server/sanity/queries/blogs'
+import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
 import { Logger } from '$lib/utils/logger'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({ url }) => {
 	const siteUrl = url.origin
-	const languages = ['en', 'vn', 'fr']
+	const languages = ['en', 'vi', 'fr']
 	const staticRoutes = ['', 'about', 'contact', 'blog', 'day-tours', 'highland-tours']
 
 	let tours: any[] = []

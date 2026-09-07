@@ -14,7 +14,7 @@ export default {
     select: {
       id: 'tourID',
       img: 'coverImg',
-      title: `tourName.vn`,
+      title: 'tourName.vi',
       isHot: 'bestSellerTour',
       price: 'tourPrice.pax2',
     },
