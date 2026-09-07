@@ -43,19 +43,6 @@
       "source_location": "L6"
     },
     {
-      "id": "front_end_src_i18n_i18n_types_basetranslation",
-      "label": "BaseTranslation",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "basetranslation",
-      "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L5"
-    },
-    {
       "id": "front_end_src_i18n_i18n_types_formatters",
       "label": "Formatters",
       "_callable": true,
@@ -127,11 +114,37 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "file_type": "code",
       "norm_label": "bookingmodalstate",
       "source_file": "front-end/src/lib/stores/booking-store.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "front_end_src_lib_server_services_tour_service_tourtype",
+      "label": "TourType",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tourtype",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_exchangerates",
+      "label": "ExchangeRates",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "exchangerates",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L4"
     },
     {
       "id": "front_end_src_lib_stores_modal_store_blogmodalstate",
@@ -140,7 +153,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "blogmodalstate",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -153,7 +166,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "tourmodalstate",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -166,7 +179,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "generalkeystring",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -179,7 +192,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "highlights",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -192,7 +205,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "img_cover",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -205,7 +218,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "locale_array",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -218,7 +231,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "locale_string",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -231,7 +244,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "price",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -244,7 +257,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "tag",
       "source_file": "front-end/src/lib/types/tour.type.ts",
@@ -257,24 +270,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "tour",
       "source_file": "front-end/src/lib/types/tour.type.ts",
       "source_location": "L43"
     },
     {
-      "id": "front_end_src_lib_types_testimonial_type_testimonial",
-      "label": "Testimonial",
+      "id": "front_end_src_lib_utils_format_data_canonicaltourcategory",
+      "label": "CanonicalTourCategory",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "testimonial",
-      "source_file": "front-end/src/lib/types/testimonial.type.ts",
-      "source_location": "L1"
+      "norm_label": "canonicaltourcategory",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L145"
     },
     {
       "id": "back_end_schemas_common_constants_field",
@@ -335,7 +348,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "translation",
       "source_file": "front-end/src/i18n/i18n-types.ts",
@@ -348,11 +361,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "menuitem",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L4"
+      "source_location": "L5"
     },
     {
       "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menulink",
@@ -361,11 +374,24 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "menulink",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L3"
+      "source_location": "L4"
+    },
+    {
+      "id": "front_end_src_i18n_i18n_types_basetranslation",
+      "label": "BaseTranslation",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "basetranslation",
+      "source_file": "front-end/src/i18n/i18n-types.ts",
+      "source_location": "L5"
     },
     {
       "id": "front_end_src_lib_server_services_exchange_service_exchangeratesdata",
@@ -381,32 +407,6 @@
       "source_location": "L8"
     },
     {
-      "id": "front_end_src_lib_server_services_tour_service_tourtype",
-      "label": "TourType",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tourtype",
-      "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_exchangerates",
-      "label": "ExchangeRates",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "exchangerates",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "front_end_src_lib_types_blog_type_blogpost",
       "label": "BlogPost",
       "_callable": true,
@@ -417,6 +417,19 @@
       "file_type": "code",
       "norm_label": "blogpost",
       "source_file": "front-end/src/lib/types/blog.type.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_types_testimonial_type_testimonial",
+      "label": "Testimonial",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "home-testimonials.svelte",
+      "file_type": "code",
+      "norm_label": "testimonial",
+      "source_file": "front-end/src/lib/types/testimonial.type.ts",
       "source_location": "L1"
     },
     {
@@ -815,6 +828,18 @@
       "source_location": "L18"
     },
     {
+      "id": "front_end_src_lib_base_base_locale_switcher_index",
+      "label": "index()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "i18n-types.ts",
+      "file_type": "code",
+      "norm_label": "index()",
+      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
+      "source_location": "L38"
+    },
+    {
       "id": "front_end_src_lib_utils_navigation_redirect_to_home",
       "label": "redirect_to_home()",
       "_callable": true,
@@ -839,88 +864,220 @@
       "source_location": "L4"
     },
     {
-      "id": "front_end_src_lib_base_base_booking_modal_if",
-      "label": "if()",
+      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotour",
+      "label": "mapSanityToTour()",
       "_callable": true,
       "_origin": "ast",
-      "community": 10,
-      "community_name": "svelte/transition",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "if()",
-      "source_file": "front-end/src/lib/base/base-booking-modal.svelte",
-      "source_location": "L16"
+      "norm_label": "mapsanitytotour()",
+      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
+      "source_location": "L7"
     },
     {
-      "id": "front_end_src_lib_modules_blog_page_blog_page_each",
-      "label": "#each()",
+      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotours",
+      "label": "mapSanityToTours()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "#each()",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L242"
+      "norm_label": "mapsanitytotours()",
+      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
+      "source_location": "L28"
     },
     {
-      "id": "front_end_src_lib_modules_blog_page_blog_page_switch",
-      "label": "switch()",
+      "id": "front_end_src_lib_server_sanity_queries_tours_getsingletourquery",
+      "label": "getSingleTourQuery()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "switch()",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L103"
+      "norm_label": "getsingletourquery()",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L38"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
-      "label": "#each()",
+      "id": "front_end_src_lib_utils_format_data_format_pax_no",
+      "label": "format_pax_no()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "#each()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L125"
+      "norm_label": "format_pax_no()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L25"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_switch",
-      "label": "switch()",
+      "id": "front_end_src_lib_utils_format_data_format_price",
+      "label": "format_price()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "switch()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "norm_label": "format_price()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_format_price_object",
+      "label": "format_price_object()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "format_price_object()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L38"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_format_review_date",
+      "label": "format_review_date()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "format_review_date()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L81"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_get_category_slug",
+      "label": "get_category_slug()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "get_category_slug()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L165"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_resolve_canonical_category",
+      "label": "resolve_canonical_category()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "resolve_canonical_category()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L176"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_slugify",
+      "label": "slugify()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "slugify()",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L118"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_get_exchange_rate",
+      "label": "get_exchange_rate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "get_exchange_rate()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_get_length_and_index",
+      "label": "get_length_and_index()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "get_length_and_index()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
       "source_location": "L77"
     },
     {
-      "id": "front_end_src_lib_modules_home_page_components_home_testimonials_if",
-      "label": "if()",
+      "id": "front_end_src_lib_utils_sanity_get_tour_slug",
+      "label": "get_tour_slug()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "if()",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
-      "source_location": "L93"
+      "norm_label": "get_tour_slug()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L20"
     },
     {
-      "id": "front_end_src_lib_stores_seo_store_set_seo",
-      "label": "set_seo()",
+      "id": "front_end_src_lib_utils_sanity_tour_by_index",
+      "label": "tour_by_index()",
       "_callable": true,
       "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
+      "community": 12,
+      "community_name": "format-data.ts",
       "file_type": "code",
-      "norm_label": "set_seo()",
-      "source_file": "front-end/src/lib/stores/seo-store.ts",
-      "source_location": "L14"
+      "norm_label": "tour_by_index()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L55"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_url_for",
+      "label": "url_for()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "url_for()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L73"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_page_server_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_slug_page_server_load",
+      "label": "load()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "load()",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_end_src_routes_sitemap_xml_server_get",
+      "label": "GET()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "get()",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L9"
     },
     {
       "id": "back_end_components_c_number_input_add_thousand_separator",
@@ -1079,12 +1236,36 @@
       "source_location": "L52"
     },
     {
+      "id": "front_end_src_lib_modules_nav_bar_components_nav_menu_items_each",
+      "label": "#each()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-bar-logic.ts",
+      "file_type": "code",
+      "norm_label": "#each()",
+      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte",
+      "source_location": "L9"
+    },
+    {
+      "id": "front_end_src_lib_modules_nav_bar_nav_bar_logic_get_menu_url",
+      "label": "get_menu_url()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-bar-logic.ts",
+      "file_type": "code",
+      "norm_label": "get_menu_url()",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L39"
+    },
+    {
       "id": "front_end_src_lib_stores_nav_store_set_animate_hidden_store",
       "label": "set_animate_hidden_store()",
       "_callable": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "set_animate_hidden_store()",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
@@ -1096,7 +1277,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "set_deg_store()",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
@@ -1108,119 +1289,35 @@
       "_callable": true,
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "set_mobile_store()",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
       "source_location": "L10"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_get_length_and_index",
-      "label": "get_length_and_index()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "get_length_and_index()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L66"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_get_tour_slug",
-      "label": "get_tour_slug()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "get_tour_slug()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L18"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_tour_by_index",
-      "label": "tour_by_index()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "tour_by_index()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L44"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_url_for",
-      "label": "url_for()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "sanity.ts",
-      "file_type": "code",
-      "norm_label": "url_for()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L62"
-    },
-    {
-      "id": "front_end_src_lib_utils_format_data_format_pax_no",
-      "label": "format_pax_no()",
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
+      "label": "#each()",
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "format-data.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
-      "norm_label": "format_pax_no()",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L25"
+      "norm_label": "#each()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L125"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_format_price",
-      "label": "format_price()",
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_switch",
+      "label": "switch()",
       "_callable": true,
       "_origin": "ast",
       "community": 41,
-      "community_name": "format-data.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
-      "norm_label": "format_price()",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L6"
-    },
-    {
-      "id": "front_end_src_lib_utils_format_data_format_price_object",
-      "label": "format_price_object()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "format_price_object()",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L38"
-    },
-    {
-      "id": "front_end_src_lib_utils_format_data_format_review_date",
-      "label": "format_review_date()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "format_review_date()",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L81"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_get_exchange_rate",
-      "label": "get_exchange_rate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 41,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "get_exchange_rate()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L54"
+      "norm_label": "switch()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
+      "source_location": "L77"
     },
     {
       "id": "front_end_scripts_sync_rates_run",
@@ -1247,16 +1344,16 @@
       "source_location": "L3"
     },
     {
-      "id": "front_end_src_lib_base_base_locale_switcher_index",
-      "label": "index()",
+      "id": "front_end_src_lib_base_base_booking_modal_if",
+      "label": "if()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
       "community_name": "base-tour-detail-modal.svelte",
       "file_type": "code",
-      "norm_label": "index()",
-      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
-      "source_location": "L38"
+      "norm_label": "if()",
+      "source_file": "front-end/src/lib/base/base-booking-modal.svelte",
+      "source_location": "L16"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_close",
@@ -1268,7 +1365,7 @@
       "file_type": "code",
       "norm_label": "close()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L92"
+      "source_location": "L106"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_format_price",
@@ -1280,7 +1377,7 @@
       "file_type": "code",
       "norm_label": "format_price()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L486"
+      "source_location": "L499"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_if",
@@ -1292,7 +1389,7 @@
       "file_type": "code",
       "norm_label": "if()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L67"
+      "source_location": "L81"
     },
     {
       "id": "front_end_src_lib_server_cache_kv_snapshot_withkvsnapshot",
@@ -1343,42 +1440,6 @@
       "source_location": "L27"
     },
     {
-      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotour",
-      "label": "mapSanityToTour()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "mapsanitytotour()",
-      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotours",
-      "label": "mapSanityToTours()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "mapsanitytotours()",
-      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L28"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_getsingletourquery",
-      "label": "getSingleTourQuery()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "getsingletourquery()",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L38"
-    },
-    {
       "id": "front_end_src_routes_lang_blog_page_server_load",
       "label": "load()",
       "_callable": true,
@@ -1403,30 +1464,6 @@
       "source_location": "L7"
     },
     {
-      "id": "front_end_src_routes_lang_tourtype_page_server_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_slug_page_server_load",
-      "label": "load()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "load()",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "front_end_src_routes_layout_server_load",
       "label": "load()",
       "_callable": true,
@@ -1437,18 +1474,6 @@
       "norm_label": "load()",
       "source_file": "front-end/src/routes/+layout.server.ts",
       "source_location": "L4"
-    },
-    {
-      "id": "front_end_src_routes_sitemap_xml_server_get",
-      "label": "GET()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "get()",
-      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
-      "source_location": "L7"
     },
     {
       "id": "back_end_components_portable_text_align_render_aligncenterrender",
@@ -1533,6 +1558,54 @@
       "norm_label": "portabletextimagepreview()",
       "source_file": "back-end/components/portable-text-image-preview.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "front_end_src_lib_stores_seo_store_set_seo",
+      "label": "set_seo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "set_seo()",
+      "source_file": "front-end/src/lib/stores/seo-store.ts",
+      "source_location": "L14"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page_each",
+      "label": "#each()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "blog-page.svelte",
+      "file_type": "code",
+      "norm_label": "#each()",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L242"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page_switch",
+      "label": "switch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "blog-page.svelte",
+      "file_type": "code",
+      "norm_label": "switch()",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L103"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_testimonials_if",
+      "label": "if()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "home-testimonials.svelte",
+      "file_type": "code",
+      "norm_label": "if()",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
+      "source_location": "L93"
     },
     {
       "id": "front_end_src_lib_server_email_getadminnotifyemail",
@@ -1939,6 +2012,28 @@
       "source_location": "L1"
     },
     {
+      "id": "environment",
+      "label": "$app/environment",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "i18n-types.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/environment",
+      "source_file": "$app/environment"
+    },
+    {
+      "id": "navigation",
+      "label": "$app/navigation",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "i18n-types.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/navigation",
+      "source_file": "$app/navigation"
+    },
+    {
       "id": "front_end_src_app_d",
       "label": "app.d.ts",
       "_origin": "ast",
@@ -1969,182 +2064,6 @@
       "file_type": "code",
       "norm_label": "hooks.server.ts",
       "source_file": "front-end/src/hooks.server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_about_page_i18n",
-      "label": "en/about-page.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/about-page.i18n.ts",
-      "source_file": "front-end/src/i18n/en/about-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_about_page_i18n_about_page",
-      "label": "about_page",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "about_page",
-      "source_file": "front-end/src/i18n/en/about-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_blog_page_i18n",
-      "label": "en/blog-page.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/blog-page.i18n.ts",
-      "source_file": "front-end/src/i18n/en/blog-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_blog_page_i18n_blog_page",
-      "label": "blog_page",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "blog_page",
-      "source_file": "front-end/src/i18n/en/blog-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_contact_page_i18n",
-      "label": "en/contact-page.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/contact-page.i18n.ts",
-      "source_file": "front-end/src/i18n/en/contact-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_contact_page_i18n_contact_page",
-      "label": "contact_page",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "contact_page",
-      "source_file": "front-end/src/i18n/en/contact-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_home_page_i18n",
-      "label": "en/home-page.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/home-page.i18n.ts",
-      "source_file": "front-end/src/i18n/en/home-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_home_page_i18n_home_page",
-      "label": "home_page",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "home_page",
-      "source_file": "front-end/src/i18n/en/home-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_index",
-      "label": "en/index.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/index.ts",
-      "source_file": "front-end/src/i18n/en/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_index_en",
-      "label": "en",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en",
-      "source_file": "front-end/src/i18n/en/index.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "front_end_src_i18n_en_nav_bar_i18n",
-      "label": "en/nav-bar.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/nav-bar.i18n.ts",
-      "source_file": "front-end/src/i18n/en/nav-bar.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_nav_bar_i18n_nav_bar",
-      "label": "nav_bar",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "nav_bar",
-      "source_file": "front-end/src/i18n/en/nav-bar.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_seo_i18n",
-      "label": "en/seo.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/seo.i18n.ts",
-      "source_file": "front-end/src/i18n/en/seo.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_seo_i18n_seo",
-      "label": "seo",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "seo",
-      "source_file": "front-end/src/i18n/en/seo.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_tour_page_i18n",
-      "label": "en/tour-page.i18n.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "en/tour-page.i18n.ts",
-      "source_file": "front-end/src/i18n/en/tour-page.i18n.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_i18n_en_tour_page_i18n_tours",
-      "label": "tours",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "i18n-types.ts",
-      "file_type": "code",
-      "norm_label": "tours",
-      "source_file": "front-end/src/i18n/en/tour-page.i18n.ts",
       "source_location": "L1"
     },
     {
@@ -2302,6 +2221,17 @@
       "source_location": "L12"
     },
     {
+      "id": "front_end_src_lib_base_base_locale_switcher",
+      "label": "base-locale-switcher.svelte",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "i18n-types.ts",
+      "file_type": "code",
+      "norm_label": "base-locale-switcher.svelte",
+      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_lib_utils_navigation",
       "label": "navigation.ts",
       "_origin": "ast",
@@ -2328,65 +2258,21 @@
       "label": "./$types",
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "confidence": "EXTRACTED",
       "file_type": "code",
       "norm_label": "./$types",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/$types"
     },
     {
-      "id": "transition",
-      "label": "svelte/transition",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "svelte/transition",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "svelte/transition",
-      "source_file": "svelte/transition"
-    },
-    {
-      "id": "front_end_src_lib_base_base_booking_modal",
-      "label": "base-booking-modal.svelte",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "svelte/transition",
-      "file_type": "code",
-      "norm_label": "base-booking-modal.svelte",
-      "source_file": "front-end/src/lib/base/base-booking-modal.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_base_base_scroll_to_top",
-      "label": "base-scroll-to-top.svelte",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "svelte/transition",
-      "file_type": "code",
-      "norm_label": "base-scroll-to-top.svelte",
-      "source_file": "front-end/src/lib/base/base-scroll-to-top.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_modules_home_page_components_home_featured_slider",
       "label": "home-featured-slider.svelte",
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "file_type": "code",
       "norm_label": "home-featured-slider.svelte",
       "source_file": "front-end/src/lib/modules/home-page/components/home-featured-slider.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_tour_page_tour_card",
-      "label": "tour-card.svelte",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "svelte/transition",
-      "file_type": "code",
-      "norm_label": "tour-card.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte",
       "source_location": "L1"
     },
     {
@@ -2394,7 +2280,7 @@
       "label": "tour-details.svelte",
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "file_type": "code",
       "norm_label": "tour-details.svelte",
       "source_file": "front-end/src/lib/modules/tour-page/tour-details.svelte",
@@ -2405,7 +2291,7 @@
       "label": "booking-store.ts",
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "file_type": "code",
       "norm_label": "booking-store.ts",
       "source_file": "front-end/src/lib/stores/booking-store.ts",
@@ -2416,7 +2302,7 @@
       "label": "booking_modal",
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "file_type": "code",
       "norm_label": "booking_modal",
       "source_file": "front-end/src/lib/stores/booking-store.ts",
@@ -2427,7 +2313,7 @@
       "label": "[tourtype]/[slug]/+page.svelte",
       "_origin": "ast",
       "community": 10,
-      "community_name": "svelte/transition",
+      "community_name": "tour-details.svelte",
       "file_type": "code",
       "norm_label": "[tourtype]/[slug]/+page.svelte",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.svelte",
@@ -2632,11 +2518,143 @@
       "source_location": "L13"
     },
     {
+      "id": "front_end_src_lib_constants_exchange_rates",
+      "label": "constants/exchange-rates.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "constants/exchange-rates.ts",
+      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_constants_exchange_rates_default_exchange_rates",
+      "label": "DEFAULT_EXCHANGE_RATES",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "default_exchange_rates",
+      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper",
+      "label": "tour.mapper.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tour.mapper.ts",
+      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours",
+      "label": "tours.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tours.ts",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_extract_tour_fields",
+      "label": "EXTRACT_TOUR_FIELDS",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "extract_tour_fields",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_day_query",
+      "label": "TOURS_BY_DAY_QUERY",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tours_by_day_query",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L34"
+    },
+    {
+      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_highland_query",
+      "label": "TOURS_BY_HIGHLAND_QUERY",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tours_by_highland_query",
+      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "front_end_src_lib_server_services_tour_service",
+      "label": "tour.service.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tour.service.ts",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_server_services_tour_service_tourservice",
+      "label": "TourService",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tourservice",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store",
+      "label": "exchange-rates-store.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "exchange-rates-store.ts",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_defaultrates",
+      "label": "defaultRates",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "defaultrates",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_exchange_rates_store",
+      "label": "exchange_rates_store",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "exchange_rates_store",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L13"
+    },
+    {
       "id": "front_end_src_lib_stores_modal_store",
       "label": "modal-store.ts",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "modal-store.ts",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -2647,7 +2665,7 @@
       "label": "blog_modal",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "blog_modal",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -2658,7 +2676,7 @@
       "label": "tour_modal",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "tour_modal",
       "source_file": "front-end/src/lib/stores/modal-store.ts",
@@ -2669,10 +2687,142 @@
       "label": "tour.type.ts",
       "_origin": "ast",
       "community": 12,
-      "community_name": "tour.type.ts",
+      "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "tour.type.ts",
       "source_file": "front-end/src/lib/types/tour.type.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data",
+      "label": "format-data.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "format-data.ts",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_en_months",
+      "label": "EN_MONTHS",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "en_months",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_fr_months",
+      "label": "FR_MONTHS",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "fr_months",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L66"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_test",
+      "label": "format-data.test.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "format-data.test.ts",
+      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_format_data_tour_category_slug_map",
+      "label": "TOUR_CATEGORY_SLUG_MAP",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "tour_category_slug_map",
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L147"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity",
+      "label": "sanity.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "sanity.ts",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_builder",
+      "label": "builder",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_test",
+      "label": "sanity.test.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "sanity.test.ts",
+      "source_file": "front-end/src/lib/utils/sanity.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_page_server",
+      "label": "[tourtype]/+page.server.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "[tourtype]/+page.server.ts",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_slug_page_server",
+      "label": "[tourtype]/[slug]/+page.server.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "[tourtype]/[slug]/+page.server.ts",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_sitemap_xml_server",
+      "label": "sitemap.xml/+server.ts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "format-data.ts",
+      "file_type": "code",
+      "norm_label": "sitemap.xml/+server.ts",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L1"
     },
     {
@@ -2852,17 +3002,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_lang_blog_slug_types",
-      "label": "./$types",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "portable-text-components.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/blog/[slug]/$types"
-    },
-    {
       "id": "front_end_src_lib_base_base_portable_text_align",
       "label": "base-portable-text-align.svelte",
       "_origin": "ast",
@@ -2904,6 +3043,17 @@
       "file_type": "code",
       "norm_label": "base-portable-text-highlight.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-highlight.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_base_base_portable_text_image",
+      "label": "base-portable-text-image.svelte",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "portable-text-components.ts",
+      "file_type": "code",
+      "norm_label": "base-portable-text-image.svelte",
+      "source_file": "front-end/src/lib/base/base-portable-text-image.svelte",
       "source_location": "L1"
     },
     {
@@ -2995,246 +3145,235 @@
       "source_location": "L14"
     },
     {
-      "id": "front_end_src_routes_lang_blog_slug_page",
-      "label": "blog/[slug]/+page.svelte",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "portable-text-components.ts",
-      "file_type": "code",
-      "norm_label": "blog/[slug]/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "back_end_package_devdependencies",
-      "label": "devDependencies",
+      "id": "back_end_package_dependencies",
+      "label": "dependencies",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "devdependencies",
+      "norm_label": "dependencies",
       "source_file": "back-end/package.json",
-      "source_location": "L33"
+      "source_location": "L21"
     },
     {
-      "id": "back_end_package_devdependencies_eslint",
-      "label": "eslint",
+      "id": "back_end_package_dependencies_react",
+      "label": "react",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "eslint",
+      "norm_label": "react",
       "source_file": "back-end/package.json",
-      "source_location": "L38"
+      "source_location": "L26"
     },
     {
-      "id": "back_end_package_devdependencies_knip",
-      "label": "knip",
+      "id": "back_end_package_dependencies_react_dom",
+      "label": "react-dom",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "knip",
+      "norm_label": "react-dom",
       "source_file": "back-end/package.json",
-      "source_location": "L39"
+      "source_location": "L27"
     },
     {
-      "id": "back_end_package_devdependencies_prettier",
-      "label": "prettier",
+      "id": "back_end_package_dependencies_react_is",
+      "label": "react-is",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "prettier",
+      "norm_label": "react-is",
       "source_file": "back-end/package.json",
-      "source_location": "L40"
+      "source_location": "L28"
     },
     {
-      "id": "back_end_package_devdependencies_react_icons",
-      "label": "react-icons",
+      "id": "back_end_package_dependencies_sanity",
+      "label": "sanity",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "react-icons",
+      "norm_label": "sanity",
       "source_file": "back-end/package.json",
-      "source_location": "L41"
+      "source_location": "L29"
     },
     {
-      "id": "back_end_package_devdependencies_sanity_eslint_config_studio",
-      "label": "@sanity/eslint-config-studio",
+      "id": "back_end_package_dependencies_sanity_color_input",
+      "label": "@sanity/color-input",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "@sanity/eslint-config-studio",
+      "norm_label": "@sanity/color-input",
       "source_file": "back-end/package.json",
-      "source_location": "L34"
+      "source_location": "L22"
     },
     {
-      "id": "back_end_package_devdependencies_sanity_plugin_asset_source_unsplash",
-      "label": "sanity-plugin-asset-source-unsplash",
+      "id": "back_end_package_dependencies_sanity_image_url",
+      "label": "@sanity/image-url",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "sanity-plugin-asset-source-unsplash",
+      "norm_label": "@sanity/image-url",
       "source_file": "back-end/package.json",
-      "source_location": "L42"
+      "source_location": "L23"
     },
     {
-      "id": "back_end_package_devdependencies_sanity_ui",
-      "label": "@sanity/ui",
+      "id": "back_end_package_dependencies_sanity_plugin_media",
+      "label": "sanity-plugin-media",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "@sanity/ui",
+      "norm_label": "sanity-plugin-media",
       "source_file": "back-end/package.json",
-      "source_location": "L35"
+      "source_location": "L30"
     },
     {
-      "id": "back_end_package_devdependencies_types_react",
-      "label": "@types/react",
+      "id": "back_end_package_dependencies_sanity_table",
+      "label": "@sanity/table",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "@types/react",
+      "norm_label": "@sanity/table",
       "source_file": "back-end/package.json",
-      "source_location": "L36"
+      "source_location": "L24"
     },
     {
-      "id": "back_end_package_devdependencies_types_styled_components",
-      "label": "@types/styled-components",
+      "id": "back_end_package_dependencies_sanity_vision",
+      "label": "@sanity/vision",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "@types/styled-components",
+      "norm_label": "@sanity/vision",
       "source_file": "back-end/package.json",
-      "source_location": "L37"
+      "source_location": "L25"
     },
     {
-      "id": "back_end_package_devdependencies_typescript",
-      "label": "typescript",
+      "id": "back_end_package_dependencies_styled_components",
+      "label": "styled-components",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "code",
-      "norm_label": "typescript",
+      "norm_label": "styled-components",
       "source_file": "back-end/package.json",
-      "source_location": "L43"
+      "source_location": "L31"
     },
     {
-      "id": "back_end_package_json_eslint",
-      "label": "eslint",
+      "id": "back_end_package_json_sanity_image_url",
+      "label": "@sanity/image-url",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "eslint",
+      "norm_label": "@sanity/image-url",
       "source_file": "back-end/package.json",
-      "source_location": "L38"
+      "source_location": "L23"
     },
     {
-      "id": "back_end_package_json_knip",
-      "label": "knip",
+      "id": "react",
+      "label": "react",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "knip",
+      "norm_label": "react",
       "source_file": "back-end/package.json",
-      "source_location": "L39"
+      "source_location": "L26"
     },
     {
-      "id": "back_end_package_json_prettier",
-      "label": "prettier",
+      "id": "react_dom",
+      "label": "react-dom",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "prettier",
+      "norm_label": "react-dom",
       "source_file": "back-end/package.json",
-      "source_location": "L40"
+      "source_location": "L27"
     },
     {
-      "id": "back_end_package_json_typescript",
-      "label": "typescript",
+      "id": "react_is",
+      "label": "react-is",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "typescript",
+      "norm_label": "react-is",
       "source_file": "back-end/package.json",
-      "source_location": "L43"
+      "source_location": "L28"
     },
     {
-      "id": "react_icons",
-      "label": "react-icons",
+      "id": "sanity",
+      "label": "sanity",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "react-icons",
+      "norm_label": "sanity",
       "source_file": "back-end/package.json",
-      "source_location": "L41"
+      "source_location": "L29"
     },
     {
-      "id": "sanity_eslint_config_studio",
-      "label": "@sanity/eslint-config-studio",
+      "id": "sanity_color_input",
+      "label": "@sanity/color-input",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "@sanity/eslint-config-studio",
+      "norm_label": "@sanity/color-input",
       "source_file": "back-end/package.json",
-      "source_location": "L34"
+      "source_location": "L22"
     },
     {
-      "id": "sanity_plugin_asset_source_unsplash",
-      "label": "sanity-plugin-asset-source-unsplash",
+      "id": "sanity_plugin_media",
+      "label": "sanity-plugin-media",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "sanity-plugin-asset-source-unsplash",
+      "norm_label": "sanity-plugin-media",
       "source_file": "back-end/package.json",
-      "source_location": "L42"
+      "source_location": "L30"
     },
     {
-      "id": "sanity_ui",
-      "label": "@sanity/ui",
+      "id": "sanity_table",
+      "label": "@sanity/table",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "@sanity/ui",
+      "norm_label": "@sanity/table",
       "source_file": "back-end/package.json",
-      "source_location": "L35"
+      "source_location": "L24"
     },
     {
-      "id": "types_react",
-      "label": "@types/react",
+      "id": "sanity_vision",
+      "label": "@sanity/vision",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "@types/react",
+      "norm_label": "@sanity/vision",
       "source_file": "back-end/package.json",
-      "source_location": "L36"
+      "source_location": "L25"
     },
     {
-      "id": "types_styled_components",
-      "label": "@types/styled-components",
+      "id": "styled_components",
+      "label": "styled-components",
       "_origin": "ast",
       "community": 15,
-      "community_name": "devDependencies",
+      "community_name": "dependencies",
       "file_type": "concept",
-      "norm_label": "@types/styled-components",
+      "norm_label": "styled-components",
       "source_file": "back-end/package.json",
-      "source_location": "L37"
+      "source_location": "L31"
     },
     {
       "id": "front_end_tsconfig",
@@ -3490,72 +3629,6 @@
       "source_location": "L23"
     },
     {
-      "id": "client",
-      "label": "sveltekit-superforms/client",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "sveltekit-superforms/client",
-      "source_file": "sveltekit-superforms/client"
-    },
-    {
-      "id": "front_end_src_routes_lang_blog_types",
-      "label": "./$types",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/blog/$types"
-    },
-    {
-      "id": "front_end_src_routes_lang_contact_types",
-      "label": "./$types",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/contact/$types"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_types",
-      "label": "./$types",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/$types"
-    },
-    {
-      "id": "front_end_src_routes_lang_types",
-      "label": "./$types",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "./$types",
-      "source_file": "front-end/src/routes/[lang]/$types"
-    },
-    {
-      "id": "state",
-      "label": "$app/state",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "$app/state",
-      "source_file": "$app/state"
-    },
-    {
       "id": "front_end_src_i18n_i18n_svelte",
       "label": "i18n-svelte.ts",
       "_origin": "ast",
@@ -3576,17 +3649,6 @@
       "norm_label": "{ locale, ll, setlocale }",
       "source_file": "front-end/src/i18n/i18n-svelte.ts",
       "source_location": "L8"
-    },
-    {
-      "id": "front_end_src_lib_base_base_seo",
-      "label": "base-seo.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "base-seo.svelte",
-      "source_file": "front-end/src/lib/base/base-seo.svelte",
-      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_modules_about_page_about_page",
@@ -3666,281 +3728,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_blog_page_blog_page",
-      "label": "blog-page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "blog-page.svelte",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_blog_page_index",
-      "label": "blog-page/index.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "blog-page/index.ts",
-      "source_file": "front-end/src/lib/modules/blog-page/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_address",
-      "label": "contact-address.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-address.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-address.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_form",
-      "label": "contact-form.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-form.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-form.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_form_inputs",
-      "label": "contact-form-inputs.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-form-inputs.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-form-inputs.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_header",
-      "label": "contact-header.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-header.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-header.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_components_contact_review",
-      "label": "contact-review.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-review.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/components/contact-review.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_contact_page",
-      "label": "contact-page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-page.svelte",
-      "source_file": "front-end/src/lib/modules/contact-page/contact-page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_contact_page_index",
-      "label": "contact-page/index.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact-page/index.ts",
-      "source_file": "front-end/src/lib/modules/contact-page/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
-      "label": "home-featured-blogs.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-featured-blogs.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_hero",
-      "label": "home-hero.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-hero.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_plan_your_trip",
-      "label": "home-plan-your-trip.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-plan-your-trip.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-plan-your-trip.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_testimonials",
-      "label": "home-testimonials.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-testimonials.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_why_chd",
-      "label": "home-why-chd.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-why-chd.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-why-chd.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_home_page",
-      "label": "home-page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-page.svelte",
-      "source_file": "front-end/src/lib/modules/home-page/home-page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_index",
-      "label": "home-page/index.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "home-page/index.ts",
-      "source_file": "front-end/src/lib/modules/home-page/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_tour_page_index",
-      "label": "tour-page/index.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "tour-page/index.ts",
-      "source_file": "front-end/src/lib/modules/tour-page/index.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_tour_page_tour_gallery",
-      "label": "tour-gallery.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "tour-gallery.svelte",
-      "source_file": "front-end/src/lib/modules/tour-page/tour-gallery.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_seo_store",
-      "label": "seo-store.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "seo-store.ts",
-      "source_file": "front-end/src/lib/stores/seo-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_seo_store_seo_description",
-      "label": "seo_description",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "seo_description",
-      "source_file": "front-end/src/lib/stores/seo-store.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "front_end_src_lib_stores_seo_store_seo_keywords",
-      "label": "seo_keywords",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "seo_keywords",
-      "source_file": "front-end/src/lib/stores/seo-store.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "front_end_src_lib_stores_seo_store_seo_og_image",
-      "label": "seo_og_image",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "seo_og_image",
-      "source_file": "front-end/src/lib/stores/seo-store.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "front_end_src_lib_stores_seo_store_seo_title",
-      "label": "seo_title",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "seo_title",
-      "source_file": "front-end/src/lib/stores/seo-store.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "front_end_src_lib_types_testimonial_type",
-      "label": "testimonial.type.ts",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "testimonial.type.ts",
-      "source_file": "front-end/src/lib/types/testimonial.type.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_error",
-      "label": "+error.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "+error.svelte",
-      "source_file": "front-end/src/routes/+error.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_routes_lang_about_page",
       "label": "about/+page.svelte",
       "_origin": "ast",
@@ -3949,50 +3736,6 @@
       "file_type": "code",
       "norm_label": "about/+page.svelte",
       "source_file": "front-end/src/routes/[lang]/about/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_blog_page",
-      "label": "blog/+page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "blog/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/blog/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_contact_page",
-      "label": "contact/+page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "contact/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/contact/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_page",
-      "label": "[lang]/+page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "[lang]/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/+page.svelte",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_page",
-      "label": "[tourtype]/+page.svelte",
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "i18n-svelte.ts",
-      "file_type": "code",
-      "norm_label": "[tourtype]/+page.svelte",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -4006,30 +3749,6 @@
       "norm_label": "jobs.md",
       "source_file": "jobs.md",
       "source_location": "L1"
-    },
-    {
-      "id": "jobs_priority_p0",
-      "label": "Priority: P0.",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "priority: p0.",
-      "source_file": "jobs.md",
-      "source_location": "L71"
-    },
-    {
-      "id": "jobs_\u0111\u00e2y_l\u00e0_m\u1ed9t_\u0111i\u1ec3m_kh\u00e1_quan_tr\u1ecdng_n\u1ebfu_m\u1ee5c_ti\u00eau_c\u1ee7a_b\u1ea1n_l\u00e0_d\u00f9ng_knip_l\u00e0m_dead_code_quality_gate",
-      "label": "\u0110\u00e2y l\u00e0 m\u1ed9t \u0111i\u1ec3m kh\u00e1 quan tr\u1ecdng n\u1ebfu m\u1ee5c ti\u00eau c\u1ee7a b\u1ea1n l\u00e0 d\u00f9ng Knip l\u00e0m dead-code quality gate.",
-      "_origin": "ast",
-      "community": 19,
-      "community_name": "jobs.md",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "\u0111ay la mot \u0111iem kha quan trong neu muc tieu cua ban la dung knip lam dead-code quality gate.",
-      "source_file": "jobs.md",
-      "source_location": "L114"
     },
     {
       "id": "back_end_components_c_number_input",
@@ -4183,7 +3902,7 @@
       "file_type": "code",
       "norm_label": "base_fields",
       "source_file": "back-end/schemas/common/base-fields.ts",
-      "source_location": "L11"
+      "source_location": "L10"
     },
     {
       "id": "back_end_schemas_common_constants",
@@ -4348,7 +4067,7 @@
       "file_type": "code",
       "norm_label": "exchange_rates_ref",
       "source_file": "back-end/schemas/common/type-tour.ts",
-      "source_location": "L80"
+      "source_location": "L66"
     },
     {
       "id": "back_end_schemas_common_type_tour_tour_highlights_ref",
@@ -4382,17 +4101,6 @@
       "norm_label": "tour_price",
       "source_file": "back-end/schemas/common/type-tour.ts",
       "source_location": "L49"
-    },
-    {
-      "id": "back_end_schemas_common_type_tour_tour_slug",
-      "label": "tour_slug",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "schemas/index.ts",
-      "file_type": "code",
-      "norm_label": "tour_slug",
-      "source_file": "back-end/schemas/common/type-tour.ts",
-      "source_location": "L66"
     },
     {
       "id": "back_end_schemas_common_type_tour_tour_tags_ref",
@@ -5136,7 +4844,7 @@
       "label": "nav-burger-button.svelte",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav-burger-button.svelte",
       "source_file": "front-end/src/lib/modules/nav-bar/components/nav-burger-button.svelte",
@@ -5147,10 +4855,21 @@
       "label": "nav-menu-items.svelte",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav-menu-items.svelte",
       "source_file": "front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_nav_bar_index",
+      "label": "nav-bar/index.ts",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "nav-bar-logic.ts",
+      "file_type": "code",
+      "norm_label": "nav-bar/index.ts",
+      "source_file": "front-end/src/lib/modules/nav-bar/index.ts",
       "source_location": "L1"
     },
     {
@@ -5158,7 +4877,7 @@
       "label": "nav-bar.svelte",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav-bar.svelte",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar.svelte",
@@ -5169,7 +4888,7 @@
       "label": "nav-bar-logic.ts",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav-bar-logic.ts",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
@@ -5180,18 +4899,18 @@
       "label": "menu_items",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "menu_items",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L10"
+      "source_location": "L11"
     },
     {
       "id": "front_end_src_lib_stores_nav_store",
       "label": "nav-store.ts",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav-store.ts",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
@@ -5202,7 +4921,7 @@
       "label": "nav_animate_hidden",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav_animate_hidden",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
@@ -5213,7 +4932,7 @@
       "label": "nav_deg",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav_deg",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
@@ -5224,7 +4943,7 @@
       "label": "nav_mobile",
       "_origin": "ast",
       "community": 32,
-      "community_name": "nav-store.ts",
+      "community_name": "nav-bar-logic.ts",
       "file_type": "code",
       "norm_label": "nav_mobile",
       "source_file": "front-end/src/lib/stores/nav-store.ts",
@@ -5319,58 +5038,179 @@
       "source_location": "L20"
     },
     {
-      "id": "front_end_src_lib_base_base_portable_text_image",
-      "label": "base-portable-text-image.svelte",
+      "id": "front_end_src_i18n_en_about_page_i18n",
+      "label": "en/about-page.i18n.ts",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "en/index.ts",
       "file_type": "code",
-      "norm_label": "base-portable-text-image.svelte",
-      "source_file": "front-end/src/lib/base/base-portable-text-image.svelte",
+      "norm_label": "en/about-page.i18n.ts",
+      "source_file": "front-end/src/i18n/en/about-page.i18n.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_sanity",
-      "label": "sanity.ts",
+      "id": "front_end_src_i18n_en_about_page_i18n_about_page",
+      "label": "about_page",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "en/index.ts",
       "file_type": "code",
-      "norm_label": "sanity.ts",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "norm_label": "about_page",
+      "source_file": "front-end/src/i18n/en/about-page.i18n.ts",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_builder",
-      "label": "builder",
+      "id": "front_end_src_i18n_en_blog_page_i18n",
+      "label": "en/blog-page.i18n.ts",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "en/index.ts",
       "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L16"
+      "norm_label": "en/blog-page.i18n.ts",
+      "source_file": "front-end/src/i18n/en/blog-page.i18n.ts",
+      "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_config",
-      "label": "config",
+      "id": "front_end_src_i18n_en_blog_page_i18n_blog_page",
+      "label": "blog_page",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "en/index.ts",
       "file_type": "code",
-      "norm_label": "config",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L9"
+      "norm_label": "blog_page",
+      "source_file": "front-end/src/i18n/en/blog-page.i18n.ts",
+      "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_test",
-      "label": "sanity.test.ts",
+      "id": "front_end_src_i18n_en_contact_page_i18n",
+      "label": "en/contact-page.i18n.ts",
       "_origin": "ast",
       "community": 37,
-      "community_name": "sanity.ts",
+      "community_name": "en/index.ts",
       "file_type": "code",
-      "norm_label": "sanity.test.ts",
-      "source_file": "front-end/src/lib/utils/sanity.test.ts",
+      "norm_label": "en/contact-page.i18n.ts",
+      "source_file": "front-end/src/i18n/en/contact-page.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_contact_page_i18n_contact_page",
+      "label": "contact_page",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "contact_page",
+      "source_file": "front-end/src/i18n/en/contact-page.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_home_page_i18n",
+      "label": "en/home-page.i18n.ts",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "en/home-page.i18n.ts",
+      "source_file": "front-end/src/i18n/en/home-page.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_home_page_i18n_home_page",
+      "label": "home_page",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "home_page",
+      "source_file": "front-end/src/i18n/en/home-page.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_index",
+      "label": "en/index.ts",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "en/index.ts",
+      "source_file": "front-end/src/i18n/en/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_index_en",
+      "label": "en",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "en",
+      "source_file": "front-end/src/i18n/en/index.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "front_end_src_i18n_en_nav_bar_i18n",
+      "label": "en/nav-bar.i18n.ts",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "en/nav-bar.i18n.ts",
+      "source_file": "front-end/src/i18n/en/nav-bar.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_nav_bar_i18n_nav_bar",
+      "label": "nav_bar",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "nav_bar",
+      "source_file": "front-end/src/i18n/en/nav-bar.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_seo_i18n",
+      "label": "en/seo.i18n.ts",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "en/seo.i18n.ts",
+      "source_file": "front-end/src/i18n/en/seo.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_seo_i18n_seo",
+      "label": "seo",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "seo",
+      "source_file": "front-end/src/i18n/en/seo.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_tour_page_i18n",
+      "label": "en/tour-page.i18n.ts",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "en/tour-page.i18n.ts",
+      "source_file": "front-end/src/i18n/en/tour-page.i18n.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_i18n_en_tour_page_i18n_tours",
+      "label": "tours",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "en/index.ts",
+      "file_type": "code",
+      "norm_label": "tours",
+      "source_file": "front-end/src/i18n/en/tour-page.i18n.ts",
       "source_location": "L1"
     },
     {
@@ -5935,47 +5775,91 @@
       "source_location": "L15"
     },
     {
-      "id": "front_end_src_lib_utils_format_data",
-      "label": "format-data.ts",
+      "id": "front_end_src_routes_lang_types",
+      "label": "./$types",
       "_origin": "ast",
       "community": 41,
-      "community_name": "format-data.ts",
+      "community_name": "home-page.svelte",
+      "confidence": "EXTRACTED",
       "file_type": "code",
-      "norm_label": "format-data.ts",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/$types"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
+      "label": "home-featured-blogs.svelte",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-featured-blogs.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_en_months",
-      "label": "EN_MONTHS",
+      "id": "front_end_src_lib_modules_home_page_components_home_hero",
+      "label": "home-hero.svelte",
       "_origin": "ast",
       "community": 41,
-      "community_name": "format-data.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
-      "norm_label": "en_months",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L51"
+      "norm_label": "home-hero.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_fr_months",
-      "label": "FR_MONTHS",
+      "id": "front_end_src_lib_modules_home_page_components_home_plan_your_trip",
+      "label": "home-plan-your-trip.svelte",
       "_origin": "ast",
       "community": 41,
-      "community_name": "format-data.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
-      "norm_label": "fr_months",
-      "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L66"
+      "norm_label": "home-plan-your-trip.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-plan-your-trip.svelte",
+      "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_utils_format_data_test",
-      "label": "format-data.test.ts",
+      "id": "front_end_src_lib_modules_home_page_components_home_why_chd",
+      "label": "home-why-chd.svelte",
       "_origin": "ast",
       "community": 41,
-      "community_name": "format-data.ts",
+      "community_name": "home-page.svelte",
       "file_type": "code",
-      "norm_label": "format-data.test.ts",
-      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "norm_label": "home-why-chd.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-why-chd.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_home_page",
+      "label": "home-page.svelte",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-page.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/home-page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_index",
+      "label": "home-page/index.ts",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "home-page/index.ts",
+      "source_file": "front-end/src/lib/modules/home-page/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_page",
+      "label": "[lang]/+page.svelte",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "home-page.svelte",
+      "file_type": "code",
+      "norm_label": "[lang]/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -6155,125 +6039,125 @@
       "source_location": "L1"
     },
     {
-      "id": "back_end_package_dependencies",
-      "label": "dependencies",
+      "id": "back_end_package_devdependencies",
+      "label": "devDependencies",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "dependencies",
+      "norm_label": "devdependencies",
       "source_file": "back-end/package.json",
-      "source_location": "L21"
+      "source_location": "L33"
     },
     {
-      "id": "back_end_package_dependencies_react",
-      "label": "react",
+      "id": "back_end_package_devdependencies_eslint",
+      "label": "eslint",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "react",
+      "norm_label": "eslint",
       "source_file": "back-end/package.json",
-      "source_location": "L26"
+      "source_location": "L38"
     },
     {
-      "id": "back_end_package_dependencies_react_dom",
-      "label": "react-dom",
+      "id": "back_end_package_devdependencies_knip",
+      "label": "knip",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "react-dom",
+      "norm_label": "knip",
       "source_file": "back-end/package.json",
-      "source_location": "L27"
+      "source_location": "L39"
     },
     {
-      "id": "back_end_package_dependencies_react_is",
-      "label": "react-is",
+      "id": "back_end_package_devdependencies_prettier",
+      "label": "prettier",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "react-is",
+      "norm_label": "prettier",
       "source_file": "back-end/package.json",
-      "source_location": "L28"
+      "source_location": "L40"
     },
     {
-      "id": "back_end_package_dependencies_sanity",
-      "label": "sanity",
+      "id": "back_end_package_devdependencies_react_icons",
+      "label": "react-icons",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "sanity",
+      "norm_label": "react-icons",
       "source_file": "back-end/package.json",
-      "source_location": "L29"
+      "source_location": "L41"
     },
     {
-      "id": "back_end_package_dependencies_sanity_color_input",
-      "label": "@sanity/color-input",
+      "id": "back_end_package_devdependencies_sanity_eslint_config_studio",
+      "label": "@sanity/eslint-config-studio",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@sanity/color-input",
+      "norm_label": "@sanity/eslint-config-studio",
       "source_file": "back-end/package.json",
-      "source_location": "L22"
+      "source_location": "L34"
     },
     {
-      "id": "back_end_package_dependencies_sanity_image_url",
-      "label": "@sanity/image-url",
+      "id": "back_end_package_devdependencies_sanity_plugin_asset_source_unsplash",
+      "label": "sanity-plugin-asset-source-unsplash",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@sanity/image-url",
+      "norm_label": "sanity-plugin-asset-source-unsplash",
       "source_file": "back-end/package.json",
-      "source_location": "L23"
+      "source_location": "L42"
     },
     {
-      "id": "back_end_package_dependencies_sanity_plugin_media",
-      "label": "sanity-plugin-media",
+      "id": "back_end_package_devdependencies_sanity_ui",
+      "label": "@sanity/ui",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "sanity-plugin-media",
+      "norm_label": "@sanity/ui",
       "source_file": "back-end/package.json",
-      "source_location": "L30"
+      "source_location": "L35"
     },
     {
-      "id": "back_end_package_dependencies_sanity_table",
-      "label": "@sanity/table",
+      "id": "back_end_package_devdependencies_types_react",
+      "label": "@types/react",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@sanity/table",
+      "norm_label": "@types/react",
       "source_file": "back-end/package.json",
-      "source_location": "L24"
+      "source_location": "L36"
     },
     {
-      "id": "back_end_package_dependencies_sanity_vision",
-      "label": "@sanity/vision",
+      "id": "back_end_package_devdependencies_types_styled_components",
+      "label": "@types/styled-components",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "@sanity/vision",
+      "norm_label": "@types/styled-components",
       "source_file": "back-end/package.json",
-      "source_location": "L25"
+      "source_location": "L37"
     },
     {
-      "id": "back_end_package_dependencies_styled_components",
-      "label": "styled-components",
+      "id": "back_end_package_devdependencies_typescript",
+      "label": "typescript",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "code",
-      "norm_label": "styled-components",
+      "norm_label": "typescript",
       "source_file": "back-end/package.json",
-      "source_location": "L31"
+      "source_location": "L43"
     },
     {
       "id": "back_end_package_license",
@@ -6496,114 +6380,114 @@
       "source_location": "L4"
     },
     {
-      "id": "back_end_package_json_sanity_image_url",
-      "label": "@sanity/image-url",
+      "id": "back_end_package_json_eslint",
+      "label": "eslint",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@sanity/image-url",
+      "norm_label": "eslint",
       "source_file": "back-end/package.json",
-      "source_location": "L23"
+      "source_location": "L38"
     },
     {
-      "id": "react",
-      "label": "react",
+      "id": "back_end_package_json_knip",
+      "label": "knip",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "react",
+      "norm_label": "knip",
       "source_file": "back-end/package.json",
-      "source_location": "L26"
+      "source_location": "L39"
     },
     {
-      "id": "react_dom",
-      "label": "react-dom",
+      "id": "back_end_package_json_prettier",
+      "label": "prettier",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "react-dom",
+      "norm_label": "prettier",
       "source_file": "back-end/package.json",
-      "source_location": "L27"
+      "source_location": "L40"
     },
     {
-      "id": "react_is",
-      "label": "react-is",
+      "id": "back_end_package_json_typescript",
+      "label": "typescript",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "react-is",
+      "norm_label": "typescript",
       "source_file": "back-end/package.json",
-      "source_location": "L28"
+      "source_location": "L43"
     },
     {
-      "id": "sanity",
-      "label": "sanity",
+      "id": "react_icons",
+      "label": "react-icons",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "sanity",
+      "norm_label": "react-icons",
       "source_file": "back-end/package.json",
-      "source_location": "L29"
+      "source_location": "L41"
     },
     {
-      "id": "sanity_color_input",
-      "label": "@sanity/color-input",
+      "id": "sanity_eslint_config_studio",
+      "label": "@sanity/eslint-config-studio",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@sanity/color-input",
+      "norm_label": "@sanity/eslint-config-studio",
       "source_file": "back-end/package.json",
-      "source_location": "L22"
+      "source_location": "L34"
     },
     {
-      "id": "sanity_plugin_media",
-      "label": "sanity-plugin-media",
+      "id": "sanity_plugin_asset_source_unsplash",
+      "label": "sanity-plugin-asset-source-unsplash",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "sanity-plugin-media",
+      "norm_label": "sanity-plugin-asset-source-unsplash",
       "source_file": "back-end/package.json",
-      "source_location": "L30"
+      "source_location": "L42"
     },
     {
-      "id": "sanity_table",
-      "label": "@sanity/table",
+      "id": "sanity_ui",
+      "label": "@sanity/ui",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@sanity/table",
+      "norm_label": "@sanity/ui",
       "source_file": "back-end/package.json",
-      "source_location": "L24"
+      "source_location": "L35"
     },
     {
-      "id": "sanity_vision",
-      "label": "@sanity/vision",
+      "id": "types_react",
+      "label": "@types/react",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "@sanity/vision",
+      "norm_label": "@types/react",
       "source_file": "back-end/package.json",
-      "source_location": "L25"
+      "source_location": "L36"
     },
     {
-      "id": "styled_components",
-      "label": "styled-components",
+      "id": "types_styled_components",
+      "label": "@types/styled-components",
       "_origin": "ast",
       "community": 5,
       "community_name": "back-end/package.json",
       "file_type": "concept",
-      "norm_label": "styled-components",
+      "norm_label": "@types/styled-components",
       "source_file": "back-end/package.json",
-      "source_location": "L31"
+      "source_location": "L37"
     },
     {
       "id": "back_end_eslint_config",
@@ -6628,15 +6512,15 @@
       "source_location": "L1"
     },
     {
-      "id": "environment",
-      "label": "$app/environment",
+      "id": "front_end_src_routes_lang_blog_slug_types",
+      "label": "./$types",
       "_origin": "ast",
       "community": 6,
       "community_name": "base-tour-detail-modal.svelte",
       "confidence": "EXTRACTED",
       "file_type": "code",
-      "norm_label": "$app/environment",
-      "source_file": "$app/environment"
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/blog/[slug]/$types"
     },
     {
       "id": "front_end_src_routes_types",
@@ -6650,17 +6534,6 @@
       "source_file": "front-end/src/routes/$types"
     },
     {
-      "id": "navigation",
-      "label": "$app/navigation",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "base-tour-detail-modal.svelte",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "$app/navigation",
-      "source_file": "$app/navigation"
-    },
-    {
       "id": "stores",
       "label": "$app/stores",
       "_origin": "ast",
@@ -6672,6 +6545,17 @@
       "source_file": "$app/stores"
     },
     {
+      "id": "transition",
+      "label": "svelte/transition",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "svelte/transition",
+      "source_file": "svelte/transition"
+    },
+    {
       "id": "front_end_src_lib_base_base_blog_detail_modal",
       "label": "base-blog-detail-modal.svelte",
       "_origin": "ast",
@@ -6680,6 +6564,17 @@
       "file_type": "code",
       "norm_label": "base-blog-detail-modal.svelte",
       "source_file": "front-end/src/lib/base/base-blog-detail-modal.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_base_base_booking_modal",
+      "label": "base-booking-modal.svelte",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "base-booking-modal.svelte",
+      "source_file": "front-end/src/lib/base/base-booking-modal.svelte",
       "source_location": "L1"
     },
     {
@@ -6705,17 +6600,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_base_base_locale_switcher",
-      "label": "base-locale-switcher.svelte",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "base-tour-detail-modal.svelte",
-      "file_type": "code",
-      "norm_label": "base-locale-switcher.svelte",
-      "source_file": "front-end/src/lib/base/base-locale-switcher.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_base_base_logo",
       "label": "base-logo.svelte",
       "_origin": "ast",
@@ -6724,6 +6608,17 @@
       "file_type": "code",
       "norm_label": "base-logo.svelte",
       "source_file": "front-end/src/lib/base/base-logo.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_base_base_scroll_to_top",
+      "label": "base-scroll-to-top.svelte",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "base-tour-detail-modal.svelte",
+      "file_type": "code",
+      "norm_label": "base-scroll-to-top.svelte",
+      "source_file": "front-end/src/lib/base/base-scroll-to-top.svelte",
       "source_location": "L1"
     },
     {
@@ -6771,14 +6666,14 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_modules_nav_bar_index",
-      "label": "nav-bar/index.ts",
+      "id": "front_end_src_routes_lang_blog_slug_page",
+      "label": "blog/[slug]/+page.svelte",
       "_origin": "ast",
       "community": 6,
       "community_name": "base-tour-detail-modal.svelte",
       "file_type": "code",
-      "norm_label": "nav-bar/index.ts",
-      "source_file": "front-end/src/lib/modules/nav-bar/index.ts",
+      "norm_label": "blog/[slug]/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.svelte",
       "source_location": "L1"
     },
     {
@@ -6881,28 +6776,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_constants_exchange_rates",
-      "label": "constants/exchange-rates.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "constants/exchange-rates.ts",
-      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_constants_exchange_rates_default_exchange_rates",
-      "label": "DEFAULT_EXCHANGE_RATES",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "default_exchange_rates",
-      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_server_cache_kv_snapshot",
       "label": "kv-snapshot.ts",
       "_origin": "ast",
@@ -6980,17 +6853,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_lib_server_sanity_mappers_tour_mapper",
-      "label": "tour.mapper.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tour.mapper.ts",
-      "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_server_sanity_queries_blogs",
       "label": "blogs.ts",
       "_origin": "ast",
@@ -7057,50 +6919,6 @@
       "source_location": "L26"
     },
     {
-      "id": "front_end_src_lib_server_sanity_queries_tours",
-      "label": "tours.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tours.ts",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_extract_tour_fields",
-      "label": "EXTRACT_TOUR_FIELDS",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "extract_tour_fields",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_day_query",
-      "label": "TOURS_BY_DAY_QUERY",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tours_by_day_query",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L34"
-    },
-    {
-      "id": "front_end_src_lib_server_sanity_queries_tours_tours_by_highland_query",
-      "label": "TOURS_BY_HIGHLAND_QUERY",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tours_by_highland_query",
-      "source_file": "front-end/src/lib/server/sanity/queries/tours.ts",
-      "source_location": "L36"
-    },
-    {
       "id": "front_end_src_lib_server_services_blog_service",
       "label": "blog.service.ts",
       "_origin": "ast",
@@ -7145,61 +6963,6 @@
       "source_location": "L14"
     },
     {
-      "id": "front_end_src_lib_server_services_tour_service",
-      "label": "tour.service.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tour.service.ts",
-      "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_server_services_tour_service_tourservice",
-      "label": "TourService",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "tourservice",
-      "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L14"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store",
-      "label": "exchange-rates-store.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "exchange-rates-store.ts",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_defaultrates",
-      "label": "defaultRates",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "defaultrates",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_exchange_rates_store",
-      "label": "exchange_rates_store",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "exchange_rates_store",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "front_end_src_lib_types_blog_type",
       "label": "blog.type.ts",
       "_origin": "ast",
@@ -7233,28 +6996,6 @@
       "source_location": "L1"
     },
     {
-      "id": "front_end_src_routes_lang_tourtype_page_server",
-      "label": "[tourtype]/+page.server.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "[tourtype]/+page.server.ts",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_lang_tourtype_slug_page_server",
-      "label": "[tourtype]/[slug]/+page.server.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "[tourtype]/[slug]/+page.server.ts",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_routes_layout_server",
       "label": "+layout.server.ts",
       "_origin": "ast",
@@ -7263,17 +7004,6 @@
       "file_type": "code",
       "norm_label": "+layout.server.ts",
       "source_file": "front-end/src/routes/+layout.server.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_routes_sitemap_xml_server",
-      "label": "sitemap.xml/+server.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "blog.service.ts",
-      "file_type": "code",
-      "norm_label": "sitemap.xml/+server.ts",
-      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L1"
     },
     {
@@ -7450,6 +7180,105 @@
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "tailwindcss"
+    },
+    {
+      "id": "client",
+      "label": "sveltekit-superforms/client",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "sveltekit-superforms/client",
+      "source_file": "sveltekit-superforms/client"
+    },
+    {
+      "id": "front_end_src_routes_lang_contact_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/contact/$types"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_address",
+      "label": "contact-address.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact-address.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-address.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_form",
+      "label": "contact-form.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact-form.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-form.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_form_inputs",
+      "label": "contact-form-inputs.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact-form-inputs.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-form-inputs.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_header",
+      "label": "contact-header.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact-header.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-header.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_contact_page",
+      "label": "contact-page.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact-page.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/contact-page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_index",
+      "label": "contact-page/index.ts",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact-page/index.ts",
+      "source_file": "front-end/src/lib/modules/contact-page/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_contact_page",
+      "label": "contact/+page.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "contact-form-inputs.svelte",
+      "file_type": "code",
+      "norm_label": "contact/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/contact/+page.svelte",
+      "source_location": "L1"
     },
     {
       "id": "front_end_package_devdependencies_typescript",
@@ -7923,6 +7752,226 @@
       "norm_label": "tailwindcss",
       "source_file": "front-end/package.json",
       "source_location": "L39"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/$types"
+    },
+    {
+      "id": "front_end_src_lib_modules_tour_page_index",
+      "label": "tour-page/index.ts",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "tour-page/index.ts",
+      "source_file": "front-end/src/lib/modules/tour-page/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_seo_store",
+      "label": "seo-store.ts",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "seo-store.ts",
+      "source_file": "front-end/src/lib/stores/seo-store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_seo_store_seo_description",
+      "label": "seo_description",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "seo_description",
+      "source_file": "front-end/src/lib/stores/seo-store.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "front_end_src_lib_stores_seo_store_seo_keywords",
+      "label": "seo_keywords",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "seo_keywords",
+      "source_file": "front-end/src/lib/stores/seo-store.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "front_end_src_lib_stores_seo_store_seo_og_image",
+      "label": "seo_og_image",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "seo_og_image",
+      "source_file": "front-end/src/lib/stores/seo-store.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "front_end_src_lib_stores_seo_store_seo_title",
+      "label": "seo_title",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "seo_title",
+      "source_file": "front-end/src/lib/stores/seo-store.ts",
+      "source_location": "L9"
+    },
+    {
+      "id": "front_end_src_routes_lang_tourtype_page",
+      "label": "[tourtype]/+page.svelte",
+      "_origin": "ast",
+      "community": 86,
+      "community_name": "seo-store.ts",
+      "file_type": "code",
+      "norm_label": "[tourtype]/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_blog_types",
+      "label": "./$types",
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "blog-page.svelte",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "./$types",
+      "source_file": "front-end/src/routes/[lang]/blog/$types"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page",
+      "label": "blog-page.svelte",
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "blog-page.svelte",
+      "file_type": "code",
+      "norm_label": "blog-page.svelte",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_index",
+      "label": "blog-page/index.ts",
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "blog-page.svelte",
+      "file_type": "code",
+      "norm_label": "blog-page/index.ts",
+      "source_file": "front-end/src/lib/modules/blog-page/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_lang_blog_page",
+      "label": "blog/+page.svelte",
+      "_origin": "ast",
+      "community": 87,
+      "community_name": "blog-page.svelte",
+      "file_type": "code",
+      "norm_label": "blog/+page.svelte",
+      "source_file": "front-end/src/routes/[lang]/blog/+page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "state",
+      "label": "$app/state",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "$app/state",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "$app/state",
+      "source_file": "$app/state"
+    },
+    {
+      "id": "front_end_src_lib_base_base_seo",
+      "label": "base-seo.svelte",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "$app/state",
+      "file_type": "code",
+      "norm_label": "base-seo.svelte",
+      "source_file": "front-end/src/lib/base/base-seo.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_tour_page_tour_card",
+      "label": "tour-card.svelte",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "$app/state",
+      "file_type": "code",
+      "norm_label": "tour-card.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_tour_page_tour_gallery",
+      "label": "tour-gallery.svelte",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "$app/state",
+      "file_type": "code",
+      "norm_label": "tour-gallery.svelte",
+      "source_file": "front-end/src/lib/modules/tour-page/tour-gallery.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_routes_error",
+      "label": "+error.svelte",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "$app/state",
+      "file_type": "code",
+      "norm_label": "+error.svelte",
+      "source_file": "front-end/src/routes/+error.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_contact_page_components_contact_review",
+      "label": "contact-review.svelte",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "home-testimonials.svelte",
+      "file_type": "code",
+      "norm_label": "contact-review.svelte",
+      "source_file": "front-end/src/lib/modules/contact-page/components/contact-review.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_testimonials",
+      "label": "home-testimonials.svelte",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "home-testimonials.svelte",
+      "file_type": "code",
+      "norm_label": "home-testimonials.svelte",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-testimonials.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_types_testimonial_type",
+      "label": "testimonial.type.ts",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "home-testimonials.svelte",
+      "file_type": "code",
+      "norm_label": "testimonial.type.ts",
+      "source_file": "front-end/src/lib/types/testimonial.type.ts",
+      "source_location": "L1"
     },
     {
       "id": "front_end_src_lib_server_email",
@@ -8507,6 +8556,30 @@
       "weight": 1.0
     },
     {
+      "source": "front_end_src_lib_modules_nav_bar_components_nav_menu_items_each",
+      "target": "front_end_src_lib_modules_nav_bar_nav_bar_logic_get_menu_url",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic_get_menu_url",
+      "target": "front_end_src_lib_utils_format_data_get_category_slug",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
       "source": "front_end_src_lib_server_email_sendclientconfirmation",
       "target": "front_end_src_lib_server_email_sendmail",
       "relation": "calls",
@@ -8611,7 +8684,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L68",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_sanity_get_tour_slug",
+      "target": "front_end_src_lib_utils_format_data_slugify",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -8623,7 +8708,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L46",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -8699,6 +8784,30 @@
       "weight": 1.0
     },
     {
+      "source": "front_end_src_routes_lang_tourtype_page_server_load",
+      "target": "front_end_src_lib_utils_format_data_resolve_canonical_category",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_lang_tourtype_slug_page_server_load",
+      "target": "front_end_src_lib_utils_format_data_resolve_canonical_category",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
       "source": "front_end_src_routes_layout_load",
       "target": "front_end_src_i18n_i18n_util_async_loadlocaleasync",
       "relation": "calls",
@@ -8708,6 +8817,30 @@
       "context": "call",
       "source_file": "front-end/src/routes/+layout.ts",
       "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server_get",
+      "target": "front_end_src_lib_utils_format_data_get_category_slug",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server_get",
+      "target": "front_end_src_lib_utils_sanity_get_tour_slug",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -9709,18 +9842,6 @@
     {
       "source": "back_end_schemas_common_base_fields",
       "target": "back_end_schemas_common_type_tour_tour_includes_ref",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "back-end/schemas/common/base-fields.ts",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "back_end_schemas_common_base_fields",
-      "target": "back_end_schemas_common_type_tour_tour_slug",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11112,6 +11233,18 @@
     },
     {
       "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
+      "target": "front_end_src_i18n_i18n_types_locales",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
       "target": "front_end_src_i18n_i18n_types_translation",
       "relation": "imports",
       "_origin": "ast",
@@ -11120,6 +11253,18 @@
       "context": "import",
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
+      "target": "front_end_src_lib_utils_format_data_get_category_slug",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -11460,6 +11605,30 @@
     },
     {
       "source": "front_end_src_lib_server_services_tour_service",
+      "target": "front_end_src_lib_utils_format_data_slugify",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_server_services_tour_service",
+      "target": "front_end_src_lib_utils_sanity_get_tour_slug",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_server_services_tour_service",
       "target": "front_end_src_lib_server_cache_kv_snapshot_withkvsnapshot",
       "relation": "imports",
       "_origin": "ast",
@@ -11616,6 +11785,18 @@
     },
     {
       "source": "front_end_src_lib_utils_format_data_test",
+      "target": "front_end_src_lib_types_tour_type_tour",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data_test",
       "target": "front_end_src_lib_utils_format_data_format_pax_no",
       "relation": "imports",
       "_origin": "ast",
@@ -11664,14 +11845,38 @@
     },
     {
       "source": "front_end_src_lib_utils_format_data_test",
-      "target": "front_end_src_lib_types_tour_type_tour",
+      "target": "front_end_src_lib_utils_format_data_get_category_slug",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/lib/utils/format-data.test.ts",
-      "source_location": "L3",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data_test",
+      "target": "front_end_src_lib_utils_format_data_resolve_canonical_category",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data_test",
+      "target": "front_end_src_lib_utils_format_data_slugify",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -11684,6 +11889,18 @@
       "context": "import",
       "source_file": "front-end/src/lib/utils/navigation.ts",
       "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_sanity",
+      "target": "front_end_src_lib_utils_format_data_slugify",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -12084,31 +12301,19 @@
     },
     {
       "source": "front_end_src_routes_lang_tourtype_page_server",
-      "target": "front_end_src_lib_server_services_tour_service_tourtype",
+      "target": "front_end_src_lib_utils_format_data_resolve_canonical_category",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
-      "source_location": "L1",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
       "source": "front_end_src_routes_lang_tourtype_slug_page_server",
       "target": "front_end_src_lib_server_services_tour_service_tourservice",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_routes_lang_tourtype_slug_page_server",
-      "target": "front_end_src_lib_server_services_tour_service_tourtype",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12132,7 +12337,7 @@
     },
     {
       "source": "front_end_src_routes_lang_tourtype_slug_page_server",
-      "target": "front_end_src_lib_utils_logger_logger",
+      "target": "front_end_src_lib_utils_format_data_resolve_canonical_category",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12140,6 +12345,18 @@
       "context": "import",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_lang_tourtype_slug_page_server",
+      "target": "front_end_src_lib_utils_logger_logger",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -12204,7 +12421,7 @@
     },
     {
       "source": "front_end_src_routes_sitemap_xml_server",
-      "target": "front_end_src_lib_utils_logger_logger",
+      "target": "front_end_src_lib_utils_format_data_canonicaltourcategory",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -12212,6 +12429,42 @@
       "context": "import",
       "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server",
+      "target": "front_end_src_lib_utils_format_data_get_category_slug",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server",
+      "target": "front_end_src_lib_utils_logger_logger",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server",
+      "target": "front_end_src_lib_utils_sanity_get_tour_slug",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -13187,6 +13440,18 @@
       "weight": 1.0
     },
     {
+      "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
+      "target": "front_end_src_lib_utils_format_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "front_end_src_lib_server_cache_kv_snapshot",
       "target": "front_end_src_lib_utils_logger",
       "relation": "imports_from",
@@ -13468,6 +13733,30 @@
     },
     {
       "source": "front_end_src_lib_server_services_tour_service",
+      "target": "front_end_src_lib_utils_format_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_server_services_tour_service",
+      "target": "front_end_src_lib_utils_sanity",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/server/services/tour.service.ts",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_server_services_tour_service",
       "target": "front_end_src_lib_server_cache_kv_snapshot",
       "relation": "imports_from",
       "_origin": "ast",
@@ -13591,6 +13880,19 @@
     },
     {
       "source": "front_end_src_lib_utils_format_data_test",
+      "target": "front_end_src_lib_types_tour_type",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/lib/utils/format-data.test.ts",
+      "source_location": "L11",
+      "type_only": true,
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data_test",
       "target": "front_end_src_lib_utils_format_data",
       "relation": "imports_from",
       "_origin": "ast",
@@ -13599,19 +13901,6 @@
       "context": "import",
       "source_file": "front-end/src/lib/utils/format-data.test.ts",
       "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_format_data_test",
-      "target": "front_end_src_lib_types_tour_type",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "front-end/src/lib/utils/format-data.test.ts",
-      "source_location": "L3",
-      "type_only": true,
       "weight": 1.0
     },
     {
@@ -14075,6 +14364,18 @@
       "weight": 1.0
     },
     {
+      "source": "front_end_src_routes_lang_tourtype_page_server",
+      "target": "front_end_src_lib_utils_format_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
       "source": "front_end_src_routes_lang_tourtype_slug_page_server",
       "target": "front_end_src_lib_server_services_tour_service",
       "relation": "imports_from",
@@ -14101,7 +14402,7 @@
     },
     {
       "source": "front_end_src_routes_lang_tourtype_slug_page_server",
-      "target": "front_end_src_lib_utils_logger",
+      "target": "front_end_src_lib_utils_format_data",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14109,6 +14410,18 @@
       "context": "import",
       "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_lang_tourtype_slug_page_server",
+      "target": "front_end_src_lib_utils_logger",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -14173,7 +14486,7 @@
     },
     {
       "source": "front_end_src_routes_sitemap_xml_server",
-      "target": "front_end_src_lib_utils_logger",
+      "target": "front_end_src_lib_utils_format_data",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -14181,6 +14494,30 @@
       "context": "import",
       "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server",
+      "target": "front_end_src_lib_utils_logger",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_routes_sitemap_xml_server",
+      "target": "front_end_src_lib_utils_sanity",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -14952,7 +15289,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/schemas/common/base-fields.ts",
-      "source_location": "L11",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -15166,24 +15503,13 @@
     },
     {
       "source": "back_end_schemas_common_type_tour",
-      "target": "back_end_schemas_common_type_tour_tour_slug",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "back-end/schemas/common/type-tour.ts",
-      "source_location": "L66",
-      "weight": 1.0
-    },
-    {
-      "source": "back_end_schemas_common_type_tour",
       "target": "back_end_schemas_common_type_tour_exchange_rates_ref",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "back-end/schemas/common/type-tour.ts",
-      "source_location": "L80",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -16904,13 +17230,24 @@
     },
     {
       "source": "front_end_src_lib_base_base_tour_detail_modal",
+      "target": "front_end_src_lib_base_base_tour_detail_modal_close",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_base_base_tour_detail_modal",
       "target": "front_end_src_lib_base_base_tour_detail_modal_format_price",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L486",
+      "source_location": "L499",
       "weight": 1.0
     },
     {
@@ -16921,18 +17258,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L70",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_base_base_tour_detail_modal",
-      "target": "front_end_src_lib_base_base_tour_detail_modal_close",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L92",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -17002,6 +17328,17 @@
       "weight": 1.0
     },
     {
+      "source": "front_end_src_lib_modules_nav_bar_components_nav_menu_items",
+      "target": "front_end_src_lib_modules_nav_bar_components_nav_menu_items_each",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
       "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
       "target": "front_end_src_lib_modules_nav_bar_nav_bar_logic_menu_items",
       "relation": "contains",
@@ -17009,7 +17346,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L10",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_modules_nav_bar_nav_bar_logic",
+      "target": "front_end_src_lib_modules_nav_bar_nav_bar_logic_get_menu_url",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -17020,7 +17368,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -17031,7 +17379,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/modules/nav-bar/nav-bar-logic.ts",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -17460,7 +17808,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L12",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -17471,7 +17819,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L14",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -17828,6 +18176,61 @@
     },
     {
       "source": "front_end_src_lib_utils_format_data",
+      "target": "front_end_src_lib_utils_format_data_slugify",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data",
+      "target": "front_end_src_lib_utils_format_data_canonicaltourcategory",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data",
+      "target": "front_end_src_lib_utils_format_data_tour_category_slug_map",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L147",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data",
+      "target": "front_end_src_lib_utils_format_data_get_category_slug",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L165",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data",
+      "target": "front_end_src_lib_utils_format_data_resolve_canonical_category",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/utils/format-data.ts",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_format_data",
       "target": "front_end_src_lib_utils_format_data_format_pax_no",
       "relation": "contains",
       "_origin": "ast",
@@ -17988,7 +18391,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L18",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -17999,7 +18402,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L44",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -18010,7 +18413,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L54",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -18021,7 +18424,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L62",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -18032,7 +18435,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L66",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -18241,7 +18644,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/routes/[lang]/[tourtype]/+page.server.ts",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -18252,7 +18655,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/routes/[lang]/[tourtype]/[slug]/+page.server.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -18296,7 +18699,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
-      "source_location": "L7",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -18451,28 +18854,6 @@
       "confidence_score": 1.0,
       "source_file": "front-end/.typesafe-i18n.json",
       "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_\u0111\u00e2y_l\u00e0_m\u1ed9t_\u0111i\u1ec3m_kh\u00e1_quan_tr\u1ecdng_n\u1ebfu_m\u1ee5c_ti\u00eau_c\u1ee7a_b\u1ea1n_l\u00e0_d\u00f9ng_knip_l\u00e0m_dead_code_quality_gate",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L114",
-      "weight": 1.0
-    },
-    {
-      "source": "jobs",
-      "target": "jobs_priority_p0",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "jobs.md",
-      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -19097,6 +19478,15 @@
     {
       "source": "front_end_src_lib_base_base_footer",
       "target": "front_end_src_i18n_i18n_svelte",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/base/base-footer.svelte"
+    },
+    {
+      "source": "front_end_src_lib_base_base_footer",
+      "target": "front_end_src_lib_utils_format_data",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -19969,6 +20359,15 @@
     },
     {
       "source": "front_end_src_lib_modules_tour_page_tour_card",
+      "target": "front_end_src_lib_utils_format_data",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/modules/tour-page/tour-card.svelte"
+    },
+    {
+      "source": "front_end_src_lib_modules_tour_page_tour_card",
       "target": "front_end_src_lib_utils_sanity",
       "relation": "imports_from",
       "_origin": "ast",
@@ -20629,5 +21028,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "cbc2bca7ada6ca8732f638a7d853de5ea7d77897"
+  "built_at_commit": "eb20ae96e97ada8ffac86fb7e6b2b5687acd5d76"
 }

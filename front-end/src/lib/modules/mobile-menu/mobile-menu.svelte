@@ -2,7 +2,7 @@
 	import { page } from '$app/stores'
 	import { BaseLocaleSwitcher } from '$base'
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { menu_items } from '$modules/nav-bar/nav-bar-logic'
+	import { get_menu_url, menu_items } from '$modules/nav-bar/nav-bar-logic'
 	import { nav_deg, nav_mobile } from '$stores/nav-store'
 
 	const nav_click = () => {
@@ -16,15 +16,15 @@
 	class:-translate-x-full={!$nav_mobile}>
 	<div class="mt-20">
 		<ul class="flex flex-col gap-6 font-serif text-2xl tracking-wide text-foreground">
-			{#each menu_items as { id, text, url } (id)}
-				{@const fixed_url = `/${$locale}${url}`}
+			{#each menu_items as item (item.id)}
+				{@const fixed_url = get_menu_url(item, $locale)}
 				{@const active = $page.url.pathname === fixed_url}
 				<li>
 					<a
 						href={fixed_url}
 						class={`transition-colors ${active ? 'italic text-secondary' : 'hover:text-secondary'}`}
 						onclick={nav_click}>
-						{$LL.nav_bar[text]()}
+						{$LL.nav_bar[item.text]()}
 					</a>
 				</li>
 			{/each}

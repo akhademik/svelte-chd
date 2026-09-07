@@ -6,6 +6,12 @@
 	import type { Tour } from '$lib/types/tour.type'
 	import { get_tour_slug, url_for } from '$utils/sanity'
 
+	import {
+		get_category_slug,
+		resolve_canonical_category,
+		type CanonicalTourCategory,
+	} from '$lib/utils/format-data'
+
 	interface Props {
 		tour: Tour
 	}
@@ -18,17 +24,18 @@
 	let tour_intro = $derived(tour.tour_intro)
 	let title = $derived(tour_name?.[$locale] || tour_name?.en || 'Tour')
 
-	let tourType = $derived(
-		page.params.tourtype ||
-			(tour.tour_duration?.vn?.includes('ngày') ||
-			tour.tour_duration?.en?.includes('day') ||
-			tour.tour_duration?.en?.includes('Day')
-				? 'day-tours'
-				: 'highland-tours')
+	let canonicalCategory = $derived<CanonicalTourCategory>(
+		resolve_canonical_category(page.params.tourtype) ||
+			(tour._type === 'tourCentral' ||
+			tour.tour_duration?.en?.toLowerCase().includes('day') === false ||
+			tour.tour_duration?.vi?.toLowerCase().includes('ngày') === false
+				? 'highland-tours'
+				: 'day-tours')
 	)
 
+	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, $locale))
 	let slug = $derived(get_tour_slug(tour, $locale) || tour.tour_id || '')
-	let tourLink = $derived(`/${$locale}/${tourType}/${slug}`)
+	let tourLink = $derived(`/${$locale}/${localizedCategorySlug}/${slug}`)
 </script>
 
 <article

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { get_category_slug } from '$lib/utils/format-data'
 </script>
 
 <footer
@@ -23,12 +24,12 @@
 			<div
 				class="flex flex-wrap items-center justify-center gap-6 font-light text-inverse-foreground/80">
 				<a
-					href={`/${$locale}/day-tours`}
+					href={`/${$locale}/${get_category_slug('day-tours', $locale)}`}
 					class="transition-colors hover:text-white">
 					{$LL.nav_bar.day_tours()}
 				</a>
 				<a
-					href={`/${$locale}/highland-tours`}
+					href={`/${$locale}/${get_category_slug('highland-tours', $locale)}`}
 					class="transition-colors hover:text-white">
 					{$LL.nav_bar.highland_tours()}
 				</a>

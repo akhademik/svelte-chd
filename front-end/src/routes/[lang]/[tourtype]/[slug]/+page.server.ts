@@ -1,5 +1,6 @@
-import { TourService, type TourType } from '$lib/server/services/tour.service'
+import { TourService } from '$lib/server/services/tour.service'
 import type { Tour } from '$lib/types/tour.type'
+import { resolve_canonical_category } from '$lib/utils/format-data'
 import { Logger } from '$lib/utils/logger'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
@@ -7,11 +8,11 @@ import type { PageServerLoad } from './$types'
 export const load: PageServerLoad = async ({ params, setHeaders, platform }) => {
 	const { tourtype, slug } = params
 
-	if (!tourtype || !slug || !['day-tours', 'highland-tours'].includes(tourtype)) {
+	const canonicalCategory = resolve_canonical_category(tourtype)
+
+	if (!canonicalCategory || !slug) {
 		throw error(404, 'Tour not found')
 	}
-
-	const validTourType = tourtype as TourType
 
 	setHeaders({
 		'cache-control':
@@ -25,8 +26,8 @@ export const load: PageServerLoad = async ({ params, setHeaders, platform }) => 
 
 	try {
 		;[tour, allCategoryTours] = await Promise.all([
-			TourService.getTourBySlug(slug, validTourType, kv),
-			TourService.getToursByType(validTourType, kv),
+			TourService.getTourBySlug(slug, canonicalCategory, kv),
+			TourService.getToursByType(canonicalCategory, kv),
 		])
 	} catch (err) {
 		Logger.error('TourDetailLoad', 'Total failure, no snapshot available:', err)
@@ -39,6 +40,7 @@ export const load: PageServerLoad = async ({ params, setHeaders, platform }) => 
 
 	return {
 		tourtype,
+		canonicalCategory,
 		slug,
 		tour,
 		allCategoryTours,

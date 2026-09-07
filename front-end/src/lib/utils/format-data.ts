@@ -111,3 +111,77 @@ export const format_review_date = (dateStr?: string, locale: Locales | string = 
 	}
 	return `${EN_MONTHS[month - 1]} ${year}`
 }
+
+/**
+ * Normalizes and converts any string (Vietnamese with diacritics, French accents, English) into SEO-friendly URL slug.
+ */
+export const slugify = (text?: string): string => {
+	if (!text) return ''
+
+	let str = text.trim().toLowerCase()
+
+	// 1. Remove Vietnamese accents/diacritics
+	str = str
+		.replace(/[àáạảãâầấậẩẫăằắặẳẵ]/g, 'a')
+		.replace(/[èéẹẻẽêềếệểễ]/g, 'e')
+		.replace(/[ìíịỉĩ]/g, 'i')
+		.replace(/[òóọỏõôồốộổỗơờớợởỡ]/g, 'o')
+		.replace(/[ùúụủũưừứựửữ]/g, 'u')
+		.replace(/[ỳýỵỷỹ]/g, 'y')
+		.replace(/đ/g, 'd')
+
+	// 2. Remove French / Latin accents
+	str = str.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+
+	// 3. Remove non-alphanumeric chars (keep hyphens and spaces)
+	str = str.replace(/[^a-z0-9\s-]/g, '')
+
+	// 4. Collapse multiple spaces or hyphens into a single hyphen
+	str = str.replace(/[\s-]+/g, '-').replace(/^-+|-+$/g, '')
+
+	return str
+}
+
+export type CanonicalTourCategory = 'day-tours' | 'highland-tours'
+
+export const TOUR_CATEGORY_SLUG_MAP: Record<string, Record<CanonicalTourCategory, string>> = {
+	vi: {
+		'day-tours': 'tour-trong-ngay',
+		'highland-tours': 'tour-tay-nguyen',
+	},
+	en: {
+		'day-tours': 'day-tours',
+		'highland-tours': 'highland-tours',
+	},
+	fr: {
+		'day-tours': 'excursions',
+		'highland-tours': 'hauts-plateaux',
+	},
+}
+
+/**
+ * Returns localized category slug for a given canonical tour category.
+ */
+export const get_category_slug = (
+	category: CanonicalTourCategory,
+	lang: Locales | string = 'en'
+): string => {
+	const loc = lang === 'vn' ? 'vi' : lang
+	return TOUR_CATEGORY_SLUG_MAP[loc]?.[category] || TOUR_CATEGORY_SLUG_MAP['en'][category]
+}
+
+/**
+ * Resolves any raw URL category segment (localized or canonical) to CanonicalTourCategory.
+ */
+export const resolve_canonical_category = (urlCategory?: string): CanonicalTourCategory | null => {
+	if (!urlCategory) return null
+	const clean = urlCategory.toLowerCase().trim()
+
+	if (['day-tours', 'tour-trong-ngay', 'tour-ngay', 'excursions'].includes(clean)) {
+		return 'day-tours'
+	}
+	if (['highland-tours', 'tour-tay-nguyen', 'tay-nguyen', 'hauts-plateaux'].includes(clean)) {
+		return 'highland-tours'
+	}
+	return null
+}

@@ -1,11 +1,14 @@
-import { TourService, type TourType } from '$lib/server/services/tour.service'
+import { TourService } from '$lib/server/services/tour.service'
+import { resolve_canonical_category } from '$lib/utils/format-data'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params, setHeaders, platform }) => {
 	const { tourtype } = params
 
-	if (!tourtype || !['day-tours', 'highland-tours'].includes(tourtype)) {
+	const canonicalCategory = resolve_canonical_category(tourtype)
+
+	if (!canonicalCategory) {
 		throw error(404, 'Tour category not found')
 	}
 
@@ -15,10 +18,11 @@ export const load: PageServerLoad = async ({ params, setHeaders, platform }) => 
 	})
 
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
-	const tours = await TourService.getToursByType(tourtype as TourType, kv)
+	const tours = await TourService.getToursByType(canonicalCategory, kv)
 
 	return {
 		tourtype,
+		canonicalCategory,
 		tours,
 	}
 }

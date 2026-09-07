@@ -9,6 +9,9 @@ import {
 } from '$lib/server/sanity/queries/tours'
 import type { Tour } from '$lib/types/tour.type'
 
+import { slugify } from '$lib/utils/format-data'
+import { get_tour_slug } from '$lib/utils/sanity'
+
 export type TourType = 'day-tours' | 'highland-tours'
 
 export const TourService = {
@@ -31,9 +34,66 @@ export const TourService = {
 	},
 
 	/**
-	 * Fetches single tour by localized slug with multi-layer cache.
+	 * Fetches single tour by localized slug with multi-layer cache and virtual slug matching.
 	 */
 	async getTourBySlug(slug: string, tourType?: TourType, kv?: KVNamespace): Promise<Tour | null> {
+		const targetSlug = slug.toLowerCase().trim()
+
+		// 1. If category is specified, search within that category's tours first
+		if (tourType) {
+			const categoryTours = await this.getToursByType(tourType, kv)
+			const matched = categoryTours.find(t => {
+				const vVi = get_tour_slug(t, 'vi')
+				const vEn = get_tour_slug(t, 'en')
+				const vFr = get_tour_slug(t, 'fr')
+				const nameVi = slugify(t.tour_name?.vi || t.tour_name?.vn)
+				const nameEn = slugify(t.tour_name?.en)
+				const nameFr = slugify(t.tour_name?.fr)
+				const tourId = (t.tour_id || '').toLowerCase()
+
+				return (
+					vVi === targetSlug ||
+					vEn === targetSlug ||
+					vFr === targetSlug ||
+					nameVi === targetSlug ||
+					nameEn === targetSlug ||
+					nameFr === targetSlug ||
+					tourId === targetSlug
+				)
+			})
+			if (matched) return matched
+		}
+
+		// 2. If not found in specified category or category omitted, search across both categories
+		const [dayTours, highlandTours] = await Promise.all([
+			this.getToursByType('day-tours', kv),
+			this.getToursByType('highland-tours', kv),
+		])
+		const allTours = [...dayTours, ...highlandTours]
+
+		const matched = allTours.find(t => {
+			const vVi = get_tour_slug(t, 'vi')
+			const vEn = get_tour_slug(t, 'en')
+			const vFr = get_tour_slug(t, 'fr')
+			const nameVi = slugify(t.tour_name?.vi || t.tour_name?.vn)
+			const nameEn = slugify(t.tour_name?.en)
+			const nameFr = slugify(t.tour_name?.fr)
+			const tourId = (t.tour_id || '').toLowerCase()
+
+			return (
+				vVi === targetSlug ||
+				vEn === targetSlug ||
+				vFr === targetSlug ||
+				nameVi === targetSlug ||
+				nameEn === targetSlug ||
+				nameFr === targetSlug ||
+				tourId === targetSlug
+			)
+		})
+
+		if (matched) return matched
+
+		// 3. Last fallback: Direct Sanity GROQ fetch (supports old documents with raw tourSlug)
 		return cachedFetch(`tour-${tourType || 'all'}-${slug}`, 5 * 60 * 1000, async () => {
 			return withKvSnapshot(
 				kv,

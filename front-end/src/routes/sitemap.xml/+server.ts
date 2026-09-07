@@ -1,13 +1,16 @@
 import { sanityClient } from '$lib/server/sanity/client'
 import { EXTRACT_BLOG_FIELDS } from '$lib/server/sanity/queries/blogs'
 import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
+import { get_category_slug, type CanonicalTourCategory } from '$lib/utils/format-data'
 import { Logger } from '$lib/utils/logger'
+import { get_tour_slug } from '$lib/utils/sanity'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({ url }) => {
 	const siteUrl = url.origin
 	const languages = ['en', 'vi', 'fr']
-	const staticRoutes = ['', 'about', 'contact', 'blog', 'day-tours', 'highland-tours']
+	const staticRoutes = ['', 'about', 'contact', 'blog']
+	const tourCategories: CanonicalTourCategory[] = ['day-tours', 'highland-tours']
 
 	let tours: any[] = []
 	let blogs: any[] = []
@@ -27,7 +30,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	const urls: string[] = []
 
-	// 1. Static and Category pages per language
+	// 1. Static and Localized Category pages per language
 	for (const lang of languages) {
 		for (const route of staticRoutes) {
 			const path = route ? `/${lang}/${route}` : `/${lang}`
@@ -38,23 +41,31 @@ export const GET: RequestHandler = async ({ url }) => {
 		<priority>${route === '' ? '1.0' : '0.8'}</priority>
 	</url>`)
 		}
+
+		for (const cat of tourCategories) {
+			const catSlug = get_category_slug(cat, lang)
+			urls.push(`
+	<url>
+		<loc>${siteUrl}/${lang}/${catSlug}</loc>
+		<changefreq>weekly</changefreq>
+		<priority>0.8</priority>
+	</url>`)
+		}
 	}
 
-	// 2. Dynamic Tour pages per language
+	// 2. Dynamic Tour pages per language with localized category and virtual slug
 	for (const tour of tours) {
 		const isHighland = tour._type === 'tourCentral'
-		const category = isHighland ? 'highland-tours' : 'day-tours'
+		const canonicalCat: CanonicalTourCategory = isHighland ? 'highland-tours' : 'day-tours'
 
 		for (const lang of languages) {
-			const slug =
-				tour.tour_slug?.[lang]?.current ||
-				tour.tour_slug?.current ||
-				(typeof tour.tour_slug === 'string' ? tour.tour_slug : '')
+			const catSlug = get_category_slug(canonicalCat, lang)
+			const slug = get_tour_slug(tour, lang)
 
 			if (slug) {
 				urls.push(`
 	<url>
-		<loc>${siteUrl}/${lang}/${category}/${slug}</loc>
+		<loc>${siteUrl}/${lang}/${catSlug}/${slug}</loc>
 		<changefreq>weekly</changefreq>
 		<priority>0.9</priority>
 	</url>`)

@@ -1,5 +1,13 @@
 import { describe, it, expect } from 'vitest'
-import { format_price, format_pax_no, format_price_object, format_review_date } from './format-data'
+import {
+	format_price,
+	format_pax_no,
+	format_price_object,
+	format_review_date,
+	slugify,
+	get_category_slug,
+	resolve_canonical_category,
+} from './format-data'
 import type { Tour } from '$lib/types/tour.type'
 
 describe('format-data utilities', () => {
@@ -51,5 +59,51 @@ describe('format-data utilities', () => {
 		expect(format_review_date('2026-08', 'en')).toBe('Aug 2026')
 		expect(format_review_date('2026-08', 'fr')).toBe('Août 2026')
 		expect(format_review_date('', 'en')).toBe('')
+	})
+
+	describe('slugify & category helpers', () => {
+		it('should slugify Vietnamese strings with diacritics', () => {
+			expect(slugify('Khám Phá Hồ Lắk 1 Ngày')).toBe('kham-pha-ho-lak-1-ngay')
+			expect(slugify('Đắk Lắk - Thác Dray Nur & Dray Sap')).toBe('dak-lak-thac-dray-nur-dray-sap')
+			expect(slugify('  Tour Đi Bộ Rừng Yok Đôn  ')).toBe('tour-di-bo-rung-yok-don')
+		})
+
+		it('should slugify French and English strings', () => {
+			expect(slugify('Découverte du Lac Lắk & Culture M’Nông')).toBe(
+				'decouverte-du-lac-lak-culture-mnong'
+			)
+			expect(slugify('Lak Lake 1-Day Cultural Tour!')).toBe('lak-lake-1-day-cultural-tour')
+		})
+
+		it('should handle empty or undefined strings for slugify', () => {
+			expect(slugify('')).toBe('')
+			expect(slugify(undefined)).toBe('')
+		})
+
+		it('should get correct localized category slugs', () => {
+			expect(get_category_slug('day-tours', 'vi')).toBe('tour-trong-ngay')
+			expect(get_category_slug('day-tours', 'vn')).toBe('tour-trong-ngay')
+			expect(get_category_slug('day-tours', 'en')).toBe('day-tours')
+			expect(get_category_slug('day-tours', 'fr')).toBe('excursions')
+
+			expect(get_category_slug('highland-tours', 'vi')).toBe('tour-tay-nguyen')
+			expect(get_category_slug('highland-tours', 'en')).toBe('highland-tours')
+			expect(get_category_slug('highland-tours', 'fr')).toBe('hauts-plateaux')
+		})
+
+		it('should resolve canonical categories from localized and legacy aliases', () => {
+			expect(resolve_canonical_category('tour-trong-ngay')).toBe('day-tours')
+			expect(resolve_canonical_category('tour-ngay')).toBe('day-tours')
+			expect(resolve_canonical_category('excursions')).toBe('day-tours')
+			expect(resolve_canonical_category('day-tours')).toBe('day-tours')
+
+			expect(resolve_canonical_category('tour-tay-nguyen')).toBe('highland-tours')
+			expect(resolve_canonical_category('tay-nguyen')).toBe('highland-tours')
+			expect(resolve_canonical_category('hauts-plateaux')).toBe('highland-tours')
+			expect(resolve_canonical_category('highland-tours')).toBe('highland-tours')
+
+			expect(resolve_canonical_category('invalid-category')).toBeNull()
+			expect(resolve_canonical_category(undefined)).toBeNull()
+		})
 	})
 })

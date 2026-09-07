@@ -15,30 +15,41 @@ const config: ClientConfig = {
 
 const builder = imageUrlBuilder(config as SanityProjectDetails)
 
-export const get_tour_slug = (tour: Tour, lang: string = 'en') => {
-	if (!tour?.tour_slug) return ''
-	if (typeof tour.tour_slug === 'string') return tour.tour_slug
+import { slugify } from './format-data'
 
-	// 1. Direct language lookup if tour_slug is localized: { vi: { current }, en: { current }, fr: { current } }
-	if (tour.tour_slug[lang]?.current) return tour.tour_slug[lang].current
-	if (lang === 'vi' && tour.tour_slug.vn?.current) return tour.tour_slug.vn.current
-	if (lang === 'vn' && tour.tour_slug.vi?.current) return tour.tour_slug.vi.current
+export const get_tour_slug = (tour: Tour, lang: string = 'en'): string => {
+	if (!tour) return ''
 
-	// 2. Direct string value in localized slug: { vi: 'slug-vi', en: 'slug-en' }
-	if (typeof tour.tour_slug[lang] === 'string') return tour.tour_slug[lang]
-	if (lang === 'vi' && typeof tour.tour_slug.vn === 'string') return tour.tour_slug.vn
-	if (lang === 'vn' && typeof tour.tour_slug.vi === 'string') return tour.tour_slug.vi
+	const loc = lang === 'vn' ? 'vi' : lang
 
-	// 3. Fallback to standard Sanity single slug: { current: 'slug' }
-	if (tour.tour_slug.current) return tour.tour_slug.current
+	// 1. Primary: Virtual derived slug from localized tour name
+	const localizedTitle =
+		tour.tour_name?.[loc] ||
+		(loc === 'vi' ? tour.tour_name?.vn : undefined) ||
+		tour.tour_name?.en ||
+		tour.tour_name?.fr ||
+		tour.tour_name?.vi
 
-	// 4. Fallbacks across languages
-	if (tour.tour_slug.en?.current) return tour.tour_slug.en.current
-	if (tour.tour_slug.vi?.current) return tour.tour_slug.vi.current
-	if (tour.tour_slug.vn?.current) return tour.tour_slug.vn.current
-	if (tour.tour_slug.fr?.current) return tour.tour_slug.fr.current
+	if (localizedTitle && typeof localizedTitle === 'string') {
+		const derived = slugify(localizedTitle)
+		if (derived) return derived
+	}
 
-	return ''
+	// 2. Legacy fallback: Check document tour_slug if present from older Sanity docs
+	if (tour.tour_slug) {
+		if (typeof tour.tour_slug === 'string') return tour.tour_slug
+		const targetSlug =
+			tour.tour_slug[loc]?.current ||
+			tour.tour_slug[loc] ||
+			(loc === 'vi' ? tour.tour_slug.vn?.current || tour.tour_slug.vn : undefined) ||
+			tour.tour_slug.current ||
+			tour.tour_slug.en?.current ||
+			tour.tour_slug.en
+		if (typeof targetSlug === 'string' && targetSlug) return targetSlug
+	}
+
+	// 3. Last fallback: tour_id
+	return tour.tour_id || ''
 }
 
 export const tour_by_index = (tours: Tour[], index: number) => {

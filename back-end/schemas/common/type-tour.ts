@@ -63,20 +63,6 @@ export const tour_price = {
   fields: gen_price_range(PRICE_RANGE),
 }
 
-export const tour_slug = {
-  title: 'Tour Slug',
-  name: 'tourSlug',
-  type: 'slug',
-  options: {
-    source: (doc: any) => {
-      const nameObj = doc?.tourName || doc?.title
-      if (typeof nameObj === 'string') return nameObj
-      return nameObj?.vi || nameObj?.vn || nameObj?.en || nameObj?.fr || ''
-    },
-    maxLength: 96,
-  },
-}
-
 export const exchange_rates_ref = {
   title: 'Tỉ giá quy đổi',
   name: 'exchangeRates',

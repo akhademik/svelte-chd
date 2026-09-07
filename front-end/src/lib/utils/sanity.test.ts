@@ -46,6 +46,28 @@ describe('sanity utils & fallback slug parsing', () => {
 		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-discovery')
 	})
 
+	it('should derive virtual slug from tour_name when tour_slug is absent', () => {
+		const tour = {
+			tour_name: {
+				vi: 'Khám Phá Hồ Lắk 1 Ngày',
+				en: 'Lak Lake 1-Day Discovery',
+				fr: 'Découverte du Lac Lắk 1 Jour',
+			},
+		} as unknown as Tour
+
+		expect(get_tour_slug(tour, 'vi')).toBe('kham-pha-ho-lak-1-ngay')
+		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-1-day-discovery')
+		expect(get_tour_slug(tour, 'fr')).toBe('decouverte-du-lac-lak-1-jour')
+	})
+
+	it('should fallback to tour_id if neither tour_slug nor tour_name exist', () => {
+		const tour = {
+			tour_id: 'CHD-DT-01',
+		} as unknown as Tour
+
+		expect(get_tour_slug(tour, 'vi')).toBe('CHD-DT-01')
+	})
+
 	it('should get tour by index correctly', () => {
 		const tours = [
 			{ tour_slug: { current: 'tour-1' } },

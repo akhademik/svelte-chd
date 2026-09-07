@@ -7,7 +7,7 @@
 	let { data }: { data: PageData } = $props()
 
 	$effect(() => {
-		if (data.tourtype === 'day-tours') {
+		if (data.canonicalCategory === 'day-tours') {
 			set_seo($LL.seo.day_tours())
 		} else {
 			set_seo($LL.seo.highland_tours())

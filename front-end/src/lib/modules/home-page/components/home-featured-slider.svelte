@@ -2,7 +2,11 @@
 	import { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { format_price } from '$lib/utils/format-data'
+	import {
+		format_price,
+		get_category_slug,
+		type CanonicalTourCategory,
+	} from '$lib/utils/format-data'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { untrack } from 'svelte'
 	import { fade } from 'svelte/transition'
@@ -54,17 +58,19 @@
 		currentTour?.tour_duration?.[$locale] || currentTour?.tour_duration?.en || 'Full Day'
 	)
 
-	let tourType = $derived(
-		currentTour?.tour_duration?.vn?.includes('ngày') ||
-			currentTour?.tour_duration?.en?.includes('day') ||
-			currentTour?.tour_duration?.en?.includes('Day')
-			? 'day-tours'
-			: 'highland-tours'
+	let canonicalCategory = $derived<CanonicalTourCategory>(
+		currentTour?._type === 'tourCentral' ||
+			currentTour?.tour_duration?.en?.toLowerCase().includes('day') === false ||
+			currentTour?.tour_duration?.vi?.toLowerCase().includes('ngày') === false
+			? 'highland-tours'
+			: 'day-tours'
 	)
+
+	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, $locale))
 
 	let tourLink = $derived(
 		currentTour
-			? `/${$locale}/${tourType}/${get_tour_slug(currentTour, $locale) || currentTour.tour_id || ''}`
+			? `/${$locale}/${localizedCategorySlug}/${get_tour_slug(currentTour, $locale) || currentTour.tour_id || ''}`
 			: '#'
 	)
 </script>

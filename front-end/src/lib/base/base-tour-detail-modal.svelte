@@ -7,7 +7,14 @@
 	import { BaseJsonLd } from '$base'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import { tour_modal } from '$lib/stores/modal-store'
-	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
+	import {
+		format_pax_no,
+		format_price,
+		format_price_object,
+		get_category_slug,
+		resolve_canonical_category,
+		type CanonicalTourCategory,
+	} from '$lib/utils/format-data'
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
@@ -27,6 +34,18 @@
 	let imgCover = $derived(tour?.img_cover)
 	let imgTour = $derived(tour?.img_tour || [])
 	let tourTags = $derived(tour?.tour_tags || [])
+
+	let canonicalCategory = $derived<CanonicalTourCategory>(
+		resolve_canonical_category($page.params.tourtype) ||
+			(tour?._type === 'tourCentral' ||
+			tour?.tour_duration?.en?.toLowerCase().includes('day') === false ||
+			tour?.tour_duration?.vi?.toLowerCase().includes('ngày') === false
+				? 'highland-tours'
+				: 'day-tours')
+	)
+
+	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, activeLang))
+	let tourSlug = $derived(tour ? get_tour_slug(tour, activeLang) || tour.tour_id || '' : '')
 
 	let allImages = $derived.by(() => {
 		const imgs: any[] = []
@@ -51,15 +70,10 @@
 
 			if (typeof window !== 'undefined') {
 				previousPath = window.location.pathname + window.location.search
-				const slug = get_tour_slug(tour, activeLang) || tour.tour_id || ''
-				const tourType =
-					tour.tour_duration?.vn?.includes('ngày') ||
-					tour.tour_duration?.en?.includes('day') ||
-					tour.tour_duration?.en?.includes('Day')
-						? 'day-tours'
-						: 'highland-tours'
-				if (slug && !window.location.pathname.includes(slug)) {
-					pushState(`/${activeLang}/${tourType}/${slug}`, { modal: true })
+				const currentCatSlug = get_category_slug(canonicalCategory, activeLang)
+				const currentTourSlug = get_tour_slug(tour, activeLang) || tour.tour_id || ''
+				if (currentTourSlug && !window.location.pathname.includes(currentTourSlug)) {
+					pushState(`/${activeLang}/${currentCatSlug}/${currentTourSlug}`, { modal: true })
 				}
 			}
 
@@ -101,23 +115,22 @@
 <svelte:window onkeydown={handleModalKeydown} />
 
 {#if isOpen && tour}
-	{@const tourSlug = get_tour_slug(tour, activeLang) || tour.tour_id || ''}
-	{@const tourType =
-		tour.tour_duration?.vn?.includes('ngày') ||
-		tour.tour_duration?.en?.includes('day') ||
-		tour.tour_duration?.en?.includes('Day')
-			? 'day-tours'
-			: 'highland-tours'}
 	<BaseJsonLd
 		{tour}
-		url={`https://chd.travel/${activeLang}/${tourType}/${tourSlug}`}
+		url={`https://chd.travel/${activeLang}/${localizedCategorySlug}/${tourSlug}`}
 		breadcrumbs={[
 			{ name: $LL.nav_bar.home(), item: `https://chd.travel/${activeLang}` },
 			{
-				name: tourType === 'day-tours' ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours(),
-				item: `https://chd.travel/${activeLang}/${tourType}`,
+				name:
+					canonicalCategory === 'day-tours'
+						? $LL.nav_bar.day_tours()
+						: $LL.nav_bar.highland_tours(),
+				item: `https://chd.travel/${activeLang}/${localizedCategorySlug}`,
 			},
-			{ name: title, item: `https://chd.travel/${activeLang}/${tourType}/${tourSlug}` },
+			{
+				name: title,
+				item: `https://chd.travel/${activeLang}/${localizedCategorySlug}/${tourSlug}`,
+			},
 		]} />
 	<div
 		transition:fade={{ duration: 200 }}

@@ -4,7 +4,6 @@ import {
   exchange_rates_ref,
   tour_highlights_ref,
   tour_includes_ref,
-  tour_slug,
   tour_tags_ref,
 } from './type-tour'
 
@@ -14,7 +13,6 @@ export const BASE_FIELDS = [
   generate_field('Thời gian tour', 'tourDuration', 'locale_string'),
   img_cover,
   img_tour,
-  tour_slug,
   generate_field('Giới thiệu tour', 'tourIntro', 'locale_content'),
   tour_highlights_ref,
   tour_includes_ref,
