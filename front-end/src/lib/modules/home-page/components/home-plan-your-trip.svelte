@@ -61,7 +61,7 @@
 			</a>
 
 			<a
-				href="#day-tours"
+				href="#featured-tours"
 				class="inline-flex w-full items-center justify-center border border-foreground px-6 py-3 text-xs font-semibold uppercase tracking-widest text-foreground transition-all duration-300 hover:bg-foreground hover:text-white sm:w-auto">
 				{$LL.home_page.cta_explore()}
 			</a>
