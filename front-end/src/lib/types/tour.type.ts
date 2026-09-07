@@ -9,12 +9,14 @@ type Img_Cover = {
 }
 
 type Locale_String = {
+	vi?: string
 	vn?: string
 	en?: string
 	fr?: string
 } & GeneralKeyString
 
 type Locale_Array = {
+	vi?: any[]
 	vn?: any[]
 	en?: any[]
 	fr?: any[]

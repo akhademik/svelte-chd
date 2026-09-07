@@ -79,7 +79,7 @@
 					<span>•</span>
 				{/if}
 				<span class="text-foreground-muted">
-					{$locale === 'vn' ? 'Thư thái' : $locale === 'fr' ? 'Détendu' : 'Relaxed'}
+					{$locale === 'vi' ? 'Thư thái' : $locale === 'fr' ? 'Détendu' : 'Relaxed'}
 				</span>
 			</div>
 
@@ -95,7 +95,7 @@
 			<div
 				class="mb-2 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-foreground-muted">
 				<PortableText
-					value={tour_intro?.[$locale] || []}
+					value={tour_intro?.[$locale] || tour_intro?.vi || tour_intro?.vn || []}
 					components={{}} />
 			</div>
 		</div>
@@ -128,7 +128,7 @@
 		<button
 			onclick={() => booking_modal.open(title)}
 			class="bg-inverse px-4 py-2 text-xs font-medium uppercase tracking-wider text-inverse-foreground transition-colors hover:bg-inverse-dark">
-			{$locale === 'vn' ? 'Đặt Tour' : 'Book Tour'}
+			{$locale === 'vi' ? 'Đặt Tour' : 'Book Tour'}
 		</button>
 	</div>
 </article>

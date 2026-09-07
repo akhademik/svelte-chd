@@ -31,10 +31,10 @@
 		</div>
 		<p class="max-w-md text-sm font-light text-foreground-muted">
 			{isDay
-				? $locale === 'vn'
+				? $locale === 'vi'
 					? 'Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.'
 					: 'Unforgettable moments crafted into a single, enriching, unhurried day.'
-				: $locale === 'vn'
+				: $locale === 'vi'
 					? 'Hành trình nhiều ngày sâu lắng qua những cung đường sương mù, rừng thông cổ thụ và âm vang đại ngàn.'
 					: 'Multi-day mindful journeys through misty passes, ancient pine forests, and ethnic hamlets.'}
 		</p>

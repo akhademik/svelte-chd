@@ -15,31 +15,31 @@
 
 		<h1 class="mt-6 font-serif text-2xl font-bold text-foreground sm:text-3xl">
 			{#if is503}
-				{$locale === 'vn'
+				{$locale === 'vi'
 					? 'Dịch vụ tạm thời gián đoạn'
 					: $locale === 'fr'
 						? 'Service temporairement indisponible'
 						: 'Service Temporarily Unavailable'}
 			{:else if is404}
-				{$locale === 'vn'
+				{$locale === 'vi'
 					? 'Không tìm thấy trang yêu cầu'
 					: $locale === 'fr'
 						? 'Page non trouvée'
 						: 'Page Not Found'}
 			{:else}
-				{$locale === 'vn' ? 'Đã xảy ra lỗi' : 'An error occurred'}
+				{$locale === 'vi' ? 'Đã xảy ra lỗi' : 'An error occurred'}
 			{/if}
 		</h1>
 
 		<p class="mt-4 text-sm font-light leading-relaxed text-foreground-muted sm:text-base">
 			{#if is503}
-				{$locale === 'vn'
+				{$locale === 'vi'
 					? 'Hệ thống đang đồng bộ dữ liệu hoặc kết nối bị chậm. Vui lòng tải lại trang sau ít phút.'
 					: $locale === 'fr'
 						? 'Le système est en cours de synchronisation. Veuillez réessayer dans quelques instants.'
 						: 'We are experiencing temporary connection delays. Please refresh the page in a few moments.'}
 			{:else if is404}
-				{$locale === 'vn'
+				{$locale === 'vi'
 					? 'Trang bạn đang tìm kiếm không tồn tại hoặc đã được chuyển sang đường dẫn khác.'
 					: $locale === 'fr'
 						? 'La page que vous recherchez n’existe pas ou a été déplacée.'
@@ -51,12 +51,12 @@
 
 		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 			<a
-				href={`/${$locale || 'vn'}`}
+				href={`/${$locale || 'vi'}`}
 				class="bg-primary px-8 py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-primary-hover">
 				{$LL.nav_bar.home()}
 			</a>
 			<a
-				href={`/${$locale || 'vn'}/contact`}
+				href={`/${$locale || 'vi'}/contact`}
 				class="border border-border bg-surface px-8 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground shadow-sm transition-colors hover:border-foreground">
 				{$LL.nav_bar.contact()}
 			</a>

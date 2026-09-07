@@ -446,7 +446,7 @@
 						{$LL.tours.customize_trip()}
 					</h4>
 					<p class="mt-2 text-xs font-light leading-relaxed text-inverse-foreground">
-						{$locale === 'vn'
+						{$locale === 'vi'
 							? 'Đội ngũ CHD Travel sẽ cùng bạn chuẩn bị lịch trình cá nhân hóa hoàn toàn miễn phí.'
 							: 'We curate private and personalized itineraries for you and your travel companions.'}
 					</p>

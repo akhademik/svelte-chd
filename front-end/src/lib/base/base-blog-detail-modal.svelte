@@ -100,13 +100,13 @@
 	const getCategoryName = (cat?: string) => {
 		switch (cat) {
 			case 'event':
-				return activeLang === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
+				return activeLang === 'vi' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
 			case 'story':
-				return activeLang === 'vn' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
+				return activeLang === 'vi' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
 			case 'tips':
-				return activeLang === 'vn' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
+				return activeLang === 'vi' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
 			case 'destination':
-				return activeLang === 'vn' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
+				return activeLang === 'vi' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
 			default:
 				return 'Blog'
 		}
@@ -284,7 +284,7 @@
 				<button
 					onclick={close}
 					class="bg-inverse px-6 py-2.5 text-xs uppercase tracking-widest text-inverse-foreground shadow-sm transition-colors hover:bg-inverse-dark">
-					{activeLang === 'vn' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
+					{activeLang === 'vi' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
 				</button>
 			</div>
 		</div>

@@ -3,7 +3,7 @@ import type { RequestEvent } from '@sveltejs/kit'
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors'
 
 import type { Locales } from './i18n-types'
-import { detectLocale } from './i18n-util'
+import { detectLocale, isLocale } from './i18n-util'
 
 const REGEX_START_WITH_BASE = new RegExp(`^${base}`)
 
@@ -45,19 +45,9 @@ export const persist_to_cookie = (locale: Locales) => {
 }
 
 export const get_lang_cookie = (event: RequestEvent): Locales | undefined => {
-	const cookieHeader = event.request.headers.get('cookie')
-	if (!cookieHeader) return undefined
-
-	const cookies = cookieHeader.split(';').map(c => c.trim())
-	for (const cookie of cookies) {
-		if (cookie.startsWith('lang=')) {
-			const val = cookie.substring(5)
-			if (val === 'vn' || val === 'en' || val === 'fr') {
-				return val as Locales
-			}
-		}
-	}
-	return undefined
+	const lang_cookie = event.cookies.get('lang') ?? ''
+	if (lang_cookie === 'vn') return 'vi'
+	return isLocale(lang_cookie) ? lang_cookie : undefined
 }
 
 export const extract_url = (event: RequestEvent) => {

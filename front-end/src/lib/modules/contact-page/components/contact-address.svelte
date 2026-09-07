@@ -23,7 +23,7 @@
 			target="_blank"
 			rel="noopener noreferrer"
 			class="font-semibold text-secondary hover:underline">
-			{$locale === 'vn' ? 'Chỉ đường trên Google Maps ↗' : 'Get Directions ↗'}
+			{$locale === 'vi' ? 'Chỉ đường trên Google Maps ↗' : 'Get Directions ↗'}
 		</a>
 	</div>
 </section>

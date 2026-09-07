@@ -298,21 +298,21 @@
 						<div>
 							<span
 								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
-								{activeLang === 'vn' ? 'Khởi hành' : activeLang === 'fr' ? 'Départ' : 'Departure'}
+								{activeLang === 'vi' ? 'Khởi hành' : activeLang === 'fr' ? 'Départ' : 'Departure'}
 							</span>
 							<span class="font-medium text-foreground">Buôn Ma Thuột</span>
 						</div>
 						<div>
 							<span
 								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
-								{activeLang === 'vn' ? 'Thời lượng' : activeLang === 'fr' ? 'Durée' : 'Duration'}
+								{activeLang === 'vi' ? 'Thời lượng' : activeLang === 'fr' ? 'Durée' : 'Duration'}
 							</span>
 							<span class="font-medium text-foreground">{duration || '1 Day'}</span>
 						</div>
 						<div>
 							<span
 								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
-								{activeLang === 'vn'
+								{activeLang === 'vi'
 									? 'Quy mô nhóm'
 									: activeLang === 'fr'
 										? 'Groupe'
@@ -346,7 +346,12 @@
 							</h3>
 							<div class="space-y-3">
 								{#each highlights as item}
-									{@const hlText = item?.highlights?.[activeLang] || item?.highlights?.en || ''}
+									{@const hlText =
+										item?.highlights?.[activeLang] ||
+										item?.highlights?.vi ||
+										item?.highlights?.vn ||
+										item?.highlights?.en ||
+										''}
 									{#if hlText}
 										<div
 											class="flex items-start gap-3 text-sm font-light text-foreground-muted sm:text-base">
@@ -400,7 +405,7 @@
 							{#if includes.length > 0}
 								<ul class="space-y-2.5 text-xs font-light text-foreground-muted sm:text-sm">
 									{#each includes as inc}
-										{@const incText = inc?.[activeLang] || inc?.en || ''}
+										{@const incText = inc?.[activeLang] || inc?.vi || inc?.vn || inc?.en || ''}
 										{#if incText}
 											<li class="flex items-start gap-2.5">
 												<svg
@@ -421,7 +426,7 @@
 								</ul>
 							{:else}
 								<p class="text-xs font-light italic text-foreground-subtle sm:text-sm">
-									{activeLang === 'vn'
+									{activeLang === 'vi'
 										? 'Xe đưa đón, hướng dẫn viên, nước uống & vé tham quan trọn gói.'
 										: 'Transportation, local guide, entrance tickets & bottled water included.'}
 								</p>
@@ -473,7 +478,7 @@
 						<button
 							onclick={close}
 							class="w-1/2 border border-border-strong px-5 py-2.5 text-xs uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-auto">
-							{activeLang === 'vn' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
+							{activeLang === 'vi' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
 						</button>
 						<button
 							onclick={handleBook}

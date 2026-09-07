@@ -15,7 +15,7 @@
 	let availablePosts = $derived.by(() => {
 		return posts.filter(p => {
 			const hasTitle = Boolean(
-				p.title?.[$locale as 'vn' | 'en' | 'fr'] || p.title?.vn || p.title?.en
+				p.title?.[$locale as 'vi' | 'vn' | 'en' | 'fr'] || p.title?.vi || p.title?.vn || p.title?.en
 			)
 			return hasTitle
 		})
@@ -49,11 +49,13 @@
 	)
 
 	const getPostTitle = (p: BlogPost) => {
-		return p.title?.[$locale as 'vn'] || p.title?.vn || p.title?.en || ''
+		return p.title?.[$locale as 'vi' | 'vn'] || p.title?.vi || p.title?.vn || p.title?.en || ''
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return p.excerpt?.[$locale as 'vn'] || p.excerpt?.vn || p.excerpt?.en || ''
+		return (
+			p.excerpt?.[$locale as 'vi' | 'vn'] || p.excerpt?.vi || p.excerpt?.vn || p.excerpt?.en || ''
+		)
 	}
 
 	const getPostCover = (p: BlogPost) => {
@@ -65,8 +67,9 @@
 
 	const getPostSlug = (p: BlogPost) => {
 		return (
-			p.slug?.[$locale as 'vn' | 'en' | 'fr']?.current ||
+			p.slug?.[$locale as 'vi' | 'vn' | 'en' | 'fr']?.current ||
 			p.slug?.current ||
+			p.slug?.vi?.current ||
 			p.slug?.vn?.current ||
 			p.slug?.en?.current ||
 			(typeof p.slug === 'string' ? p.slug : p._id)

@@ -40,15 +40,22 @@
 		const currentUrlLang = segments[0]
 
 		try {
-			const savedLocale = localStorage.getItem('preferred_locale')
-			if (savedLocale && (savedLocale === 'vn' || savedLocale === 'en' || savedLocale === 'fr')) {
+			let savedLocale = localStorage.getItem('preferred_locale')
+			if (savedLocale === 'vn') {
+				savedLocale = 'vi'
+				localStorage.setItem('preferred_locale', 'vi')
+			}
+			if (savedLocale && (savedLocale === 'vi' || savedLocale === 'en' || savedLocale === 'fr')) {
 				// If user explicitly saved a preferred locale in localStorage, make sure cookie matches
 				document.cookie = `lang=${savedLocale}; path=/; max-age=2592000; Secure; SameSite=Lax`
 
 				// If current URL language doesn't match saved preferred locale, redirect to preferred locale
 				if (
 					currentUrlLang &&
-					(currentUrlLang === 'vn' || currentUrlLang === 'en' || currentUrlLang === 'fr')
+					(currentUrlLang === 'vi' ||
+						currentUrlLang === 'vn' ||
+						currentUrlLang === 'en' ||
+						currentUrlLang === 'fr')
 				) {
 					if (currentUrlLang !== savedLocale) {
 						segments[0] = savedLocale
@@ -61,12 +68,12 @@
 			} else {
 				// No saved preference in localStorage yet: detect system/browser locale
 				const navLangs = navigator.languages || [navigator.language || '']
-				let detected: 'vn' | 'en' | 'fr' = 'en'
+				let detected: 'vi' | 'en' | 'fr' = 'en'
 
 				for (const l of navLangs) {
 					const lower = l.toLowerCase()
 					if (lower.startsWith('vi') || lower.startsWith('vn')) {
-						detected = 'vn'
+						detected = 'vi'
 						break
 					} else if (lower.startsWith('fr')) {
 						detected = 'fr'
@@ -84,7 +91,10 @@
 				// Redirect if currently on a different locale
 				if (
 					currentUrlLang &&
-					(currentUrlLang === 'vn' || currentUrlLang === 'en' || currentUrlLang === 'fr')
+					(currentUrlLang === 'vi' ||
+						currentUrlLang === 'vn' ||
+						currentUrlLang === 'en' ||
+						currentUrlLang === 'fr')
 				) {
 					if (currentUrlLang !== detected) {
 						segments[0] = detected

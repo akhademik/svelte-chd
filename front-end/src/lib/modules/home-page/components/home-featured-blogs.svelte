@@ -12,16 +12,32 @@
 	let displayPosts = $derived.by(() => {
 		if (!posts || posts.length === 0) return []
 		return posts.filter(p =>
-			Boolean(p.title?.[$locale as 'vn' | 'en' | 'fr'] || p.title?.vn || p.title?.en)
+			Boolean(
+				p.title?.[$locale as 'vi' | 'vn' | 'en' | 'fr'] || p.title?.vi || p.title?.vn || p.title?.en
+			)
 		)
 	})
 
 	const getPostTitle = (p: BlogPost) => {
-		return p.title?.[$locale as 'vn'] || p.title?.vn || p.title?.en || p.title?.fr || ''
+		return (
+			p.title?.[$locale as 'vi' | 'vn'] ||
+			p.title?.vi ||
+			p.title?.vn ||
+			p.title?.en ||
+			p.title?.fr ||
+			''
+		)
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return p.excerpt?.[$locale as 'vn'] || p.excerpt?.vn || p.excerpt?.en || p.excerpt?.fr || ''
+		return (
+			p.excerpt?.[$locale as 'vi' | 'vn'] ||
+			p.excerpt?.vi ||
+			p.excerpt?.vn ||
+			p.excerpt?.en ||
+			p.excerpt?.fr ||
+			''
+		)
 	}
 
 	const getPostCover = (p: BlogPost) => {
@@ -33,8 +49,9 @@
 
 	const getPostSlug = (p: BlogPost) => {
 		return (
-			p.slug?.[$locale as 'vn' | 'en' | 'fr']?.current ||
+			p.slug?.[$locale as 'vi' | 'vn' | 'en' | 'fr']?.current ||
 			p.slug?.current ||
+			p.slug?.vi?.current ||
 			p.slug?.vn?.current ||
 			p.slug?.en?.current ||
 			(typeof p.slug === 'string' ? p.slug : p._id)
@@ -44,13 +61,13 @@
 	const getCategoryName = (cat: string) => {
 		switch (cat) {
 			case 'event':
-				return $locale === 'vn' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
+				return $locale === 'vi' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
 			case 'story':
-				return $locale === 'vn' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
+				return $locale === 'vi' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
 			case 'tips':
-				return $locale === 'vn' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
+				return $locale === 'vi' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
 			case 'destination':
-				return $locale === 'vn' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
+				return $locale === 'vi' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
 			default:
 				return 'Blog'
 		}
@@ -80,10 +97,10 @@
 			<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 				<div>
 					<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-secondary">
-						{$locale === 'vn' ? 'Góc Nhìn & Trải Nghiệm' : 'Stories & Insights'}
+						{$locale === 'vi' ? 'Góc Nhìn & Trải Nghiệm' : 'Stories & Insights'}
 					</span>
 					<h2 class="font-serif text-3xl font-normal text-foreground sm:text-4xl">
-						{$locale === 'vn'
+						{$locale === 'vi'
 							? 'Bài Viết Nổi Bật'
 							: $locale === 'fr'
 								? 'Articles en Vedette'
@@ -92,14 +109,14 @@
 				</div>
 				<div class="flex items-center gap-4">
 					<p class="max-w-md text-sm font-light text-foreground-muted">
-						{$locale === 'vn'
+						{$locale === 'vi'
 							? 'Những câu chuyện sống động, kinh nghiệm du lịch và khoảnh khắc văn hoá bản địa đặc sắc.'
 							: 'Authentic moments, local insights, and cultural highlights from our journeys across the Highlands.'}
 					</p>
 					<a
 						href={`/${$locale}/blog`}
 						class="hidden shrink-0 border border-foreground px-5 py-2.5 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-foreground hover:text-background md:inline-block">
-						{$locale === 'vn' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
+						{$locale === 'vi' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
 					</a>
 				</div>
 			</div>
@@ -160,7 +177,7 @@
 							<a
 								href={postLink}
 								class="flex items-center gap-1.5 hover:underline">
-								<span>{$locale === 'vn' ? 'Đọc bài viết' : 'Read Article'}</span>
+								<span>{$locale === 'vi' ? 'Đọc bài viết' : 'Read Article'}</span>
 								<span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
 							</a>
 						</div>
@@ -172,7 +189,7 @@
 				<a
 					href={`/${$locale}/blog`}
 					class="inline-block border border-foreground bg-surface px-6 py-3 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-foreground hover:text-background">
-					{$locale === 'vn' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
+					{$locale === 'vi' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
 				</a>
 			</div>
 		</div>

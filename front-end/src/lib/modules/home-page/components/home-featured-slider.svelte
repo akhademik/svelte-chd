@@ -110,12 +110,13 @@
 								fill="currentColor"
 								><path
 									d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.169-7.333-3.856-7.333 3.856 1.399-8.169-5.934-5.784 8.2-1.192zm0 5.702l-2.232 4.522-4.991.725 3.612 3.521-.852 4.972 4.463-2.347 4.463 2.347-.852-4.972 3.612-3.521-4.991-.725z" /></svg>
-							<span
-								>{$locale === 'vn'
+							<span>
+								{$locale === 'vi'
 									? 'Tour Nổi Bật / Bán Chạy'
 									: $locale === 'fr'
 										? 'Coups de Cœur'
-										: 'Featured & Best Seller'}</span>
+										: 'Featured & Best Seller'}
+							</span>
 						</span>
 						{#if currentTour.tour_id}
 							<span
@@ -145,7 +146,12 @@
 					<div class="mb-8 flex h-20 flex-col justify-center space-y-2">
 						{#if currentTour.tour_highlights?.length}
 							{#each currentTour.tour_highlights.slice(0, 3) as item}
-								{@const hlText = item?.highlights?.[$locale] || item?.highlights?.en || ''}
+								{@const hlText =
+									item?.highlights?.[$locale] ||
+									item?.highlights?.vi ||
+									item?.highlights?.vn ||
+									item?.highlights?.en ||
+									''}
 								{#if hlText}
 									<div
 										class="flex items-center gap-2.5 text-xs font-light text-inverse-foreground/90 sm:text-sm">
@@ -163,8 +169,12 @@
 							{#each currentTour.tour_tags.slice(0, 5) as tag}
 								{@const tagName =
 									tag?.tour_tags?.[$locale] ||
+									tag?.tour_tags?.vi ||
+									tag?.tour_tags?.vn ||
 									tag?.tour_tags?.en ||
 									tag?.tourTags?.[$locale] ||
+									tag?.tourTags?.vi ||
+									tag?.tourTags?.vn ||
 									tag?.tourTags?.en}
 								{#if tagName}
 									<span
@@ -181,7 +191,7 @@
 						<a
 							href={tourLink}
 							class="bg-surface px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-colors hover:bg-surface-muted">
-							{$locale === 'vn'
+							{$locale === 'vi'
 								? 'Xem Chi Tiết Tour'
 								: $locale === 'fr'
 									? 'Voir les Détails'
@@ -190,7 +200,7 @@
 						<button
 							onclick={() => booking_modal.open(title)}
 							class="border border-border-strong px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white/10">
-							{$locale === 'vn' ? 'Đặt Ngay' : $locale === 'fr' ? 'Réserver' : 'Book Now'}
+							{$locale === 'vi' ? 'Đặt Ngay' : $locale === 'fr' ? 'Réserver' : 'Book Now'}
 						</button>
 					</div>
 				</div>
@@ -200,7 +210,7 @@
 					class="flex flex-col justify-between self-stretch border-t border-inverse pt-6 lg:items-end lg:border-t-0 lg:pt-0">
 					<div class="lg:text-right">
 						<span class="block text-xs uppercase tracking-widest text-foreground-subtle">
-							{$locale === 'vn' ? 'Giá chỉ từ' : $locale === 'fr' ? 'À partir de' : 'Starting From'}
+							{$locale === 'vi' ? 'Giá chỉ từ' : $locale === 'fr' ? 'À partir de' : 'Starting From'}
 						</span>
 						<div class="mt-1 flex items-baseline gap-1 lg:justify-end">
 							<span class="font-serif text-3xl font-normal text-white sm:text-4xl">

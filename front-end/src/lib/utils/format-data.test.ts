@@ -3,9 +3,10 @@ import { format_price, format_pax_no, format_price_object, format_review_date } 
 import type { Tour } from '$lib/types/tour.type'
 
 describe('format-data utilities', () => {
-	it('should format price correctly for Vietnamese Dong (vn)', () => {
+	it('should format price correctly for Vietnamese Dong (vi / vn)', () => {
+		expect(format_price(1500000, 'vi')).toBe('1.500k')
+		expect(format_price(500000, 'vi')).toBe('500k')
 		expect(format_price(1500000, 'vn')).toBe('1.500k')
-		expect(format_price(500000, 'vn')).toBe('500k')
 	})
 
 	it('should format price correctly for USD (en)', () => {

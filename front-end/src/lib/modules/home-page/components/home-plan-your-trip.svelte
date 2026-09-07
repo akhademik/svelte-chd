@@ -7,7 +7,7 @@
 	class="border-b border-border bg-background px-6 py-12 sm:py-16">
 	<div class="mx-auto max-w-3xl text-center">
 		<span class="text-xs font-semibold uppercase tracking-[0.25em] text-secondary">
-			{$locale === 'vn'
+			{$locale === 'vi'
 				? 'Thiết Kế Chuyến Đi Riêng'
 				: $locale === 'fr'
 					? 'Voyage Sur Mesure'
@@ -15,7 +15,7 @@
 		</span>
 
 		<h2 class="mt-2 font-serif text-2xl font-bold text-primary sm:text-3xl lg:text-4xl">
-			{$locale === 'vn'
+			{$locale === 'vi'
 				? 'Chia sẻ điều bạn muốn trải nghiệm'
 				: $locale === 'fr'
 					? 'Dites-nous ce que vous souhaitez vivre'
@@ -24,7 +24,7 @@
 
 		<p
 			class="mx-auto mt-3 max-w-lg text-xs font-light leading-relaxed text-foreground-muted sm:text-sm">
-			{$locale === 'vn'
+			{$locale === 'vi'
 				? 'Dù là đi bộ qua nương rẫy cà phê, lắng nghe già làng kể khan, hay thong dong ngắm thác rừng đại ngàn — chúng tôi sẵn sàng cùng bạn tạo nên một hành trình mang đậm dấu ấn cá nhân.'
 				: $locale === 'fr'
 					? 'Qu’il s’agisse de flâner dans les plantations de café, d’écouter les légendes ancestrales ou d’admirer les cascades sauvages — nous composons votre voyage idéal.'
@@ -36,7 +36,7 @@
 				href={`/${$locale}/contact`}
 				class="inline-flex w-full items-center justify-center gap-2 bg-primary px-7 py-3 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-all duration-300 hover:bg-primary-hover sm:w-auto">
 				<span>
-					{$locale === 'vn'
+					{$locale === 'vi'
 						? 'Lên kế hoạch chuyến đi'
 						: $locale === 'fr'
 							? 'Créer mon itinéraire'

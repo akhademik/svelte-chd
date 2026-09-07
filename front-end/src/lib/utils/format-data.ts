@@ -4,8 +4,8 @@ import type { Tour } from '$lib/types/tour.type'
 import { get_exchange_rate } from './sanity'
 
 export const format_price = (price: number, locale: Locales | string = 'en') => {
-	const currentLocale = (locale || 'en') as Locales
-	if (currentLocale === 'vn') {
+	const currentLocale = (locale || 'en') as string
+	if (currentLocale === 'vi' || currentLocale === 'vn') {
 		const inThousand = Math.round(price / 1000)
 		return `${inThousand.toLocaleString('vi-VN')}k`
 	}
@@ -102,8 +102,8 @@ export const format_review_date = (dateStr?: string, locale: Locales | string = 
 
 	if (!month || month < 1 || month > 12 || !year) return trimmed
 
-	const loc = (locale || 'en') as Locales
-	if (loc === 'vn') {
+	const loc = (locale || 'en') as string
+	if (loc === 'vi' || loc === 'vn') {
 		return `Tháng ${month}, ${year}`
 	}
 	if (loc === 'fr') {

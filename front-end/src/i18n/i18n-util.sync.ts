@@ -7,12 +7,12 @@ import { loadedFormatters, loadedLocales, locales } from './i18n-util'
 
 import en from './en'
 import fr from './fr'
-import vn from './vn'
+import vi from './vi'
 
 const localeTranslations = {
 	en,
 	fr,
-	vn,
+	vi,
 }
 
 export const loadLocale = (locale: Locales): void => {

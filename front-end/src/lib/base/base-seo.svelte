@@ -42,12 +42,12 @@
 	let currentPath = $derived(page.url.pathname)
 
 	// Generate corresponding path for other languages: /<lang>/...
-	const getLangPath = (targetLang: 'vn' | 'en' | 'fr') => {
+	const getLangPath = (targetLang: 'vi' | 'en' | 'fr') => {
 		const parts = currentPath.split('/').filter(Boolean)
 		if (parts.length === 0) {
 			return `${origin}/${targetLang}`
 		}
-		if (['vn', 'en', 'fr'].includes(parts[0])) {
+		if (['vi', 'vn', 'en', 'fr'].includes(parts[0])) {
 			parts[0] = targetLang
 			return `${origin}/${parts.join('/')}`
 		}
@@ -71,7 +71,7 @@
 	<link
 		rel="alternate"
 		hreflang="vi"
-		href={getLangPath('vn')} />
+		href={getLangPath('vi')} />
 	<link
 		rel="alternate"
 		hreflang="en"

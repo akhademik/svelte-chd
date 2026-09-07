@@ -21,6 +21,7 @@ export const get_tour_slug = (tour: Tour, lang: string = 'en') => {
 	if (tour.tour_slug.current) return tour.tour_slug.current
 	if (tour.tour_slug[lang]?.current) return tour.tour_slug[lang].current
 	if (tour.tour_slug.en?.current) return tour.tour_slug.en.current
+	if (tour.tour_slug.vi?.current) return tour.tour_slug.vi.current
 	if (tour.tour_slug.vn?.current) return tour.tour_slug.vn.current
 	if (tour.tour_slug.fr?.current) return tour.tour_slug.fr.current
 	return ''

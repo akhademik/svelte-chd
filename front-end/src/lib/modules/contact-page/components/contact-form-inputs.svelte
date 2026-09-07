@@ -25,7 +25,7 @@
 
 		if (tourParam && !$form.msg) {
 			$form.msg =
-				$locale === 'vn'
+				$locale === 'vi'
 					? `Tôi muốn hỏi thêm thông tin về ${tourParam}... Xin vui lòng tư vấn lịch trình chi tiết và báo giá cho đoàn chúng tôi.`
 					: $locale === 'fr'
 						? `Je souhaite avoir plus d'informations sur le tour ${tourParam}... Merci de me communiquer les détails et le tarif pour notre groupe.`

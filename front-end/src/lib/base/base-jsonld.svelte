@@ -27,11 +27,19 @@
 	)
 
 	let postTitle = $derived(
-		post?.title?.[$locale as 'vn'] || post?.title?.vn || post?.title?.en || 'CHD Journal'
+		post?.title?.[$locale as 'vi'] ||
+			post?.title?.vi ||
+			post?.title?.vn ||
+			post?.title?.en ||
+			'CHD Journal'
 	)
 	let postImage = $derived(post?.coverImg ? url_for(post.coverImg).url() : undefined)
 	let postExcerpt = $derived(
-		post?.excerpt?.[$locale as 'vn'] || post?.excerpt?.vn || post?.excerpt?.en || ''
+		post?.excerpt?.[$locale as 'vi'] ||
+			post?.excerpt?.vi ||
+			post?.excerpt?.vn ||
+			post?.excerpt?.en ||
+			''
 	)
 
 	let scripts = $derived.by(() => {
