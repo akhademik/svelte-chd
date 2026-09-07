@@ -26,7 +26,7 @@
 
 		<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
 			<a
-				href="#day-tours"
+				href="#featured-tours"
 				class="inline-flex w-full items-center justify-center gap-2 bg-primary px-8 py-4 text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-primary-hover sm:w-auto">
 				<span>
 					{$LL.home_page.cta_explore()}

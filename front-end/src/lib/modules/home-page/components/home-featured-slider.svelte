@@ -73,6 +73,7 @@
 
 {#if hotTours.length > 0 && currentTour}
 	<section
+		id="featured-tours"
 		class="relative overflow-hidden border-b border-border bg-inverse-dark text-inverse-foreground">
 		<!-- Background image with subtle overlay -->
 		<div class="absolute inset-0 z-0 overflow-hidden bg-inverse-dark">

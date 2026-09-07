@@ -1,11 +1,9 @@
 <script lang="ts">
 	import type { BlogPost } from '$lib/types/blog.type'
 	import type { Tour } from '$lib/types/tour.type'
-	import HomeDayTours from './components/home-day-tours.svelte'
 	import HomeFeaturedBlogs from './components/home-featured-blogs.svelte'
 	import HomeFeaturedSlider from './components/home-featured-slider.svelte'
 	import HomeHero from './components/home-hero.svelte'
-	import HomeHighlandTours from './components/home-highland-tours.svelte'
 	import HomePlanYourTrip from './components/home-plan-your-trip.svelte'
 	import HomeTestimonials from './components/home-testimonials.svelte'
 	import HomeWhyChd from './components/home-why-chd.svelte'
@@ -32,8 +30,6 @@
 <HomeHero />
 <HomeWhyChd />
 <HomeFeaturedSlider tours={allTours} />
-<HomeDayTours tours={dayTours} />
-<HomeHighlandTours tours={highlandTours} />
 <HomeTestimonials {testimonials} />
 <HomeFeaturedBlogs posts={featuredPosts} />
 <HomePlanYourTrip />

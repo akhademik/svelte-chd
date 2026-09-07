@@ -1,21 +1,21 @@
 # Graph Report - svelte-chd  (2026-09-07)
 
 ## Corpus Check
-- 199 files · ~91,827 words
+- 199 files · ~91,792 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 713 nodes · 1053 edges · 89 communities (24 shown, 35 thin omitted)
+- 713 nodes · 1051 edges · 88 communities (23 shown, 35 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `dead953d`
+- Built from commit: `90f86cc2`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- sanity.ts
+- home-page.svelte
 - i18n-types.ts
 - schemas/index.ts
 - scripts
@@ -25,7 +25,7 @@
 - sanity-client.ts
 - compilerOptions
 - [lang]/+page.server.ts
-- nav-store.ts
+- base/index.ts
 - dependencies
 - en/index.ts
 - fr/index.ts
@@ -34,25 +34,24 @@
 - compilerOptions
 - devDependencies
 - tours/+server.ts
-- base-tour-detail-modal.svelte
+- icons.ts
 - blog/+server.ts
 - .typesafe-i18n.json
 - eslint-config-prettier
 - eslint-plugin-svelte
 - jsdom
 - knip
-- base/index.ts
 - prettier-plugin-svelte
 - prettier-plugin-tailwindcss
 - svelte
 - svelte-check
 - svelte-eslint-parser
-- tour.type.ts
+- base-tour-detail-modal.svelte
 - @sveltejs/adapter-auto
 - @sveltejs/adapter-cloudflare
 - @sveltejs/kit
 - @sveltejs/vite-plugin-svelte
-- format-data.ts
+- sanity.ts
 - @testing-library/svelte
 - tslib
 - @types/node
@@ -102,15 +101,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (89 total, 35 thin omitted)
-
-### Community 0 - "sanity.ts"
-Cohesion: 0.33
-Nodes (6): builder, config, get_length_and_index(), get_tour_slug(), tour_by_index(), ./$types
+## Communities (88 total, 35 thin omitted)
 
 ### Community 1 - "i18n-types.ts"
 Cohesion: 0.07
-Nodes (35): App, Locals, Platform, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base() (+27 more)
+Nodes (39): App, Locals, Platform, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base() (+31 more)
 
 ### Community 2 - "schemas/index.ts"
 Cohesion: 0.07
@@ -133,8 +128,8 @@ Cohesion: 0.13
 Nodes (14): 1.1. Vấn đề cần biết trước khi code, 1.2. Việc cần code (phần a), 1.3. Việc cần làm tay trên dashboard Cloudflare (KHÔNG code được, chỉ ghi chú lại trong PR description hoặc README để người vận hành tự làm), 1.4. Lưu ý khi code AI cần biết, 2.1. Nguyên lý, 2.2. Cấu hình binding KV, 2.3. Sửa `front-end/src/lib/server/sanity-client.ts`, 2.4. Sửa phân loại lỗi 404 thật vs lỗi kết nối (bắt buộc, liên quan trực tiếp tới Layer 2) (+6 more)
 
 ### Community 7 - "sanity-client.ts"
-Cohesion: 0.12
-Nodes (22): DEFAULT_EXCHANGE_RATES, cachedFetch(), ExchangeRatesData, EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, fetchAllBlogs(), fetchLatestExchangeRates(), fetchSingleTourBySlug() (+14 more)
+Cohesion: 0.15
+Nodes (18): cachedFetch(), ExchangeRatesData, EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, fetchAllBlogs(), fetchLatestExchangeRates(), fetchSingleTourBySlug(), fetchToursByType() (+10 more)
 
 ### Community 8 - "compilerOptions"
 Cohesion: 0.08
@@ -144,9 +139,9 @@ Nodes (23): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFi
 Cohesion: 0.13
 Nodes (19): ClientConfirmationData, getAdminNotifyEmail(), getFromEmail(), sendClientConfirmation(), sendMail(), SendMailOptions, EmailTemplateProps, generateClientEmailHtml() (+11 more)
 
-### Community 10 - "nav-store.ts"
-Cohesion: 0.06
-Nodes (13): Translation, menu_items, MenuItem, MenuLink, nav_animate_hidden, nav_deg, nav_mobile, tour_index_store (+5 more)
+### Community 10 - "base/index.ts"
+Cohesion: 0.10
+Nodes (4): nav_animate_hidden, nav_deg, nav_mobile, ./$types
 
 ### Community 11 - "dependencies"
 Cohesion: 0.10
@@ -165,8 +160,8 @@ Cohesion: 0.18
 Nodes (8): about_page, blog_page, contact_page, home_page, vn, nav_bar, seo, tours
 
 ### Community 15 - "seo-store.ts"
-Cohesion: 0.08
-Nodes (11): if(), seo_description, seo_keywords, seo_og_image, seo_title, SeoState, url_for(), ./$types (+3 more)
+Cohesion: 0.11
+Nodes (8): seo_description, seo_keywords, seo_og_image, seo_title, SeoState, ./$types, ./$types, ./$types
 
 ### Community 16 - "compilerOptions"
 Cohesion: 0.14
@@ -180,17 +175,17 @@ Nodes (9): autoprefixer, @cloudflare/workers-types, devDependencies, autoprefixe
 Cohesion: 0.39
 Nodes (7): client, config, fetch_data(), fetch_exchange_rate(), GET(), get_latest_exchange_rate_from_sanity(), sync_rate_to_sanity()
 
-### Community 19 - "base-tour-detail-modal.svelte"
-Cohesion: 0.20
-Nodes (5): blog_modal, BlogModalState, tour_modal, TourModalState, Tour
+### Community 19 - "icons.ts"
+Cohesion: 0.40
+Nodes (3): Icon, Icons, NOTE:
 
-### Community 32 - "tour.type.ts"
-Cohesion: 0.12
-Nodes (9): booking_modal, BookingModalState, GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price (+1 more)
+### Community 32 - "base-tour-detail-modal.svelte"
+Cohesion: 0.13
+Nodes (3): booking_modal, BookingModalState, ./$types
 
-### Community 37 - "format-data.ts"
-Cohesion: 0.21
-Nodes (8): Testimonial, EN_MONTHS, format_pax_no(), format_price(), format_price_object(), format_review_date(), FR_MONTHS, get_exchange_rate()
+### Community 37 - "sanity.ts"
+Cohesion: 0.06
+Nodes (32): DEFAULT_EXCHANGE_RATES, if(), defaultRates, exchange_rates_store, ExchangeRates, blog_modal, BlogModalState, tour_modal (+24 more)
 
 ### Community 71 - "🌲 CHD Travel Monorepo"
 Cohesion: 0.18
@@ -217,7 +212,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `COLOR_PALETTE`, `BlockRenderProps`, `name` to the rest of the system?**
   _238 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07272727272727272 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06766917293233082 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.07337526205450734 - nodes in this community are weakly interconnected._
 - **Should `scripts` be split into smaller, more focused modules?**
