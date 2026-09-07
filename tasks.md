@@ -1,1 +1,8 @@
-- Featured Slider trước khi tách Day/Highland Tours hơi trùng lặp — Slider đã show tour nổi bật (gộp cả dayTours + highlandTours), sau đó lại liệt kê riêng 2 khối Day Tours và Highland Tours ngay bên dưới → khách có thể thấy tour lặp lại 2-3 lần liên tiếp khi cuộn. Cân nhắc: bỏ Slider riêng và dùng luôn 2 khối Day/Highland Tours làm phần "hero sản phẩm", hoặc gộp Slider làm 1 phần trong Hero (đây là đề xuất thiết kế/UX cho phiên bản sau khi có thêm nhiều tour thực tế).
+# Danh sách công việc còn lại (Pending Tasks)
+
+1. **UX / Design Suggestion (Phiên bản sau)**:
+   - Slider tour nổi bật trang chủ: Cân nhắc gom Slider tour làm một phần trong Hero hoặc dùng luôn 2 khối Day/Highland Tours làm sản phẩm hero để tránh trùng lặp khi có thêm nhiều tour.
+
+2. **Cloudflare Operations (Thực hiện thủ công trên Cloudflare Dashboard)**:
+   - **Layer 1 CDN Cache Rules**: Tạo Cache Rule cho domain trên Cloudflare Dashboard (Eligible for Cache, Edge TTL: Respect origin).
+   - **Layer 2 KV Namespace Binding**: Tạo KV namespace `SANITY_SNAPSHOT` trên Cloudflare Dashboard / Wrangler và gắn biến môi trường binding `SANITY_SNAPSHOT_KV` vào Cloudflare Pages project (Settings -> Functions -> KV namespace bindings).
