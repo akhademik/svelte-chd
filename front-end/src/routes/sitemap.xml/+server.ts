@@ -1,4 +1,5 @@
 import { EXTRACT_BLOG_FIELDS, EXTRACT_TOUR_FIELDS, sanityClient } from '$lib/server/sanity-client'
+import { Logger } from '$lib/utils/logger'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -11,9 +12,7 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	try {
 		const [toursRes, blogsRes] = await Promise.all([
-			sanityClient.fetch(
-				`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']]{_type, ${EXTRACT_TOUR_FIELDS}}`
-			),
+			sanityClient.fetch(`*[_type in ['tourDaily', 'tourCentral']]{_type, ${EXTRACT_TOUR_FIELDS}}`),
 			sanityClient.fetch(
 				`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc){${EXTRACT_BLOG_FIELDS}}`
 			),
@@ -21,7 +20,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		tours = toursRes || []
 		blogs = blogsRes || []
 	} catch (e) {
-		console.error('[Sitemap generation Sanity fetch error]:', e)
+		Logger.error('Sitemap', 'Sanity fetch error:', e)
 	}
 
 	const urls: string[] = []
@@ -41,15 +40,13 @@ export const GET: RequestHandler = async ({ url }) => {
 
 	// 2. Dynamic Tour pages per language
 	for (const tour of tours) {
-		const isHighland = ['highland-tours', 'tourCentral', 'highland_tours'].includes(tour._type)
+		const isHighland = tour._type === 'tourCentral'
 		const category = isHighland ? 'highland-tours' : 'day-tours'
 
 		for (const lang of languages) {
 			const slug =
 				tour.tour_slug?.[lang]?.current ||
 				tour.tour_slug?.current ||
-				tour.tourSlug?.[lang]?.current ||
-				tour.tourSlug?.current ||
 				(typeof tour.tour_slug === 'string' ? tour.tour_slug : '')
 
 			if (slug) {

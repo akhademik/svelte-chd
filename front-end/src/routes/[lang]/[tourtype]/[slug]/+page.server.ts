@@ -1,4 +1,4 @@
-import { fetchSingleTourBySlug, fetchToursByType, type TourType } from '$lib/server/sanity-client'
+import { TourService, type TourType } from '$lib/server/services/tour.service'
 import type { Tour } from '$lib/types/tour.type'
 import { Logger } from '$lib/utils/logger'
 import { error } from '@sveltejs/kit'
@@ -25,8 +25,8 @@ export const load: PageServerLoad = async ({ params, setHeaders, platform }) => 
 
 	try {
 		;[tour, allCategoryTours] = await Promise.all([
-			fetchSingleTourBySlug(slug, validTourType, kv),
-			fetchToursByType(validTourType, kv),
+			TourService.getTourBySlug(slug, validTourType, kv),
+			TourService.getToursByType(validTourType, kv),
 		])
 	} catch (err) {
 		Logger.error('TourDetailLoad', 'Total failure, no snapshot available:', err)

@@ -1,7 +1,8 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
-import { fetchFeaturedBlogs, fetchToursByType } from '$lib/server/sanity-client'
+import { BlogService } from '$lib/server/services/blog.service'
+import { TourService } from '$lib/server/services/tour.service'
 import { Logger } from '$lib/utils/logger'
 import { form_schema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
@@ -56,9 +57,9 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
 
 	const [dayTours, highlandTours, featuredPosts] = await Promise.all([
-		fetchToursByType('day-tours', kv),
-		fetchToursByType('highland-tours', kv),
-		fetchFeaturedBlogs(kv),
+		TourService.getToursByType('day-tours', kv),
+		TourService.getToursByType('highland-tours', kv),
+		BlogService.getFeaturedBlogs(kv),
 	])
 
 	return {

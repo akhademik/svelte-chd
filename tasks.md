@@ -47,9 +47,9 @@
   - [x] Kiểm tra lại GitHub Actions `.github/workflows/sync-rates.yml` và script `scripts/sync-rates.js`.
   - [x] Đảm bảo cron job cập nhật tỉ giá vào `exchange-rates-latest` trong Sanity hoạt động ổn định hàng ngày.
   - [x] Rà soát các secret cần thiết (`SANITY_WRITE_TOKEN`, `EXCHANGE_API_KEY`, `VITE_SANITY_ID`).
-- [ ] **10. Tinh Gọn Cấu Trúc Module Server (Clean Layered Architecture)**
-  - [ ] Đưa `memory-cache` và `kv-snapshot` thành các utility cache riêng biệt.
-  - [ ] Tổ chức các service cụ thể: `tour-service.ts`, `blog-service.ts` tách biệt hoàn toàn với Sanity adapter.
+- [x] **10. Tinh Gọn Cấu Trúc Module Server (Clean Layered Architecture)**
+  - [x] Đưa `memory-cache` và `kv-snapshot` thành các utility cache riêng biệt (`front-end/src/lib/server/cache/`).
+  - [x] Tổ chức các service cụ thể: `tour.service.ts`, `blog.service.ts`, `exchange.service.ts` tách biệt hoàn toàn với Sanity adapter (`front-end/src/lib/server/services/`).
 
 ---
 

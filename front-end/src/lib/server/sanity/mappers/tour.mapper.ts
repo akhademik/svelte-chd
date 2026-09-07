@@ -9,19 +9,19 @@ export function mapSanityToTour(raw: any): Tour {
 
 	return {
 		...raw,
-		best_sell: Boolean(raw.best_sell ?? raw.bestSellerTour ?? raw.bestSell ?? false),
-		tour_id: String(raw.tour_id ?? raw.tourId ?? ''),
-		img_cover: raw.img_cover ?? raw.coverImg ?? raw.imgCover,
-		img_tour: raw.img_tour ?? raw.imgTour ?? [],
-		tour_duration: raw.tour_duration ?? raw.tourDuration,
-		tour_highlights: raw.tour_highlights ?? raw.tourHighlights ?? [],
-		tour_includes: raw.tour_includes ?? raw.tourIncludes ?? [],
-		tour_tags: raw.tour_tags ?? raw.tourTags ?? [],
-		tour_intro: raw.tour_intro ?? raw.tourIntro,
-		tour_itinerary: raw.tour_itinerary ?? raw.tourItinerary,
-		tour_name: raw.tour_name ?? raw.tourName,
-		tour_price: raw.tour_price ?? raw.tourPrice,
-		tour_slug: raw.tour_slug ?? raw.tourSlug,
+		best_sell: Boolean(raw.best_sell ?? false),
+		tour_id: String(raw.tour_id ?? ''),
+		img_cover: raw.img_cover,
+		img_tour: raw.img_tour ?? [],
+		tour_duration: raw.tour_duration,
+		tour_highlights: raw.tour_highlights ?? [],
+		tour_includes: raw.tour_includes ?? [],
+		tour_tags: raw.tour_tags ?? [],
+		tour_intro: raw.tour_intro,
+		tour_itinerary: raw.tour_itinerary,
+		tour_name: raw.tour_name,
+		tour_price: raw.tour_price,
+		tour_slug: raw.tour_slug,
 	}
 }
 

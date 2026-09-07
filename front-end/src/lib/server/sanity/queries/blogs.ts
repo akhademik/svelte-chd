@@ -4,30 +4,13 @@ export const EXTRACT_BLOG_FIELDS = `
 	"slug": coalesce(slug, {}),
 	"category": coalesce(category, 'story'),
 	"excerpt": coalesce(excerpt, {}),
-	"coverImg": coalesce(
-		coverImg{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		imgCover{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		img_cover{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		}
-	),
+	"coverImg": coverImg{
+		...,
+		"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+		"alt": coalesce(alt, asset->altText, asset->description, '')
+	},
 	"imgTour": coalesce(
 		imgTour[]{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		img_tour[]{
 			...,
 			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
 			"alt": coalesce(alt, asset->altText, asset->description, '')

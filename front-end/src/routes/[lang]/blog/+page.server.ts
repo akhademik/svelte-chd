@@ -1,4 +1,4 @@
-import { fetchAllBlogs } from '$lib/server/sanity-client'
+import { BlogService } from '$lib/server/services/blog.service'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ setHeaders, platform }) => {
@@ -8,6 +8,6 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 	})
 
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
-	const posts = await fetchAllBlogs(kv)
+	const posts = await BlogService.getAllBlogs(kv)
 	return { posts }
 }

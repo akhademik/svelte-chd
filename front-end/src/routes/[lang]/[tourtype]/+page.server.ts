@@ -1,4 +1,4 @@
-import { fetchToursByType, type TourType } from '$lib/server/sanity-client'
+import { TourService, type TourType } from '$lib/server/services/tour.service'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
@@ -15,7 +15,7 @@ export const load: PageServerLoad = async ({ params, setHeaders, platform }) => 
 	})
 
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
-	const tours = await fetchToursByType(tourtype as TourType, kv)
+	const tours = await TourService.getToursByType(tourtype as TourType, kv)
 
 	return {
 		tourtype,
