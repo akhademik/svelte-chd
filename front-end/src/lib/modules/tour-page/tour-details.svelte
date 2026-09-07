@@ -35,13 +35,7 @@
 
 	let activeImageIndex = $state(0)
 
-	let tourType = $derived(
-		tour.tour_duration?.vn?.includes('ngày') ||
-			tour.tour_duration?.en?.includes('day') ||
-			tour.tour_duration?.en?.includes('Day')
-			? 'day-tours'
-			: 'highland-tours'
-	)
+	let tourType = $derived(tour._type === 'tourCentral' ? 'highland-tours' : 'day-tours')
 </script>
 
 <div class="space-y-12 pb-24">
