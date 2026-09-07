@@ -16,11 +16,6 @@ export default {
       initialValue: false,
     },
     {
-      title: 'Slug bài viết',
-      name: 'slug',
-      type: 'locale_slug',
-    },
-    {
       title: 'Chuyên mục / Phân loại',
       name: 'category',
       type: 'string',

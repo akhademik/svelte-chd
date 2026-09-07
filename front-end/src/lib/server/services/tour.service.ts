@@ -14,6 +14,54 @@ import { get_tour_slug } from '$lib/utils/sanity'
 
 export type TourType = 'day-tours' | 'highland-tours'
 
+/**
+ * Checks if a tour matches a target slug string.
+ * Supports:
+ * - Hybrid format `{tour_id}-{nameSlug}` (e.g. `dl-01-kham-pha-ho-lak` or `hl-02-con-duong-xanh`)
+ * - Pure virtual name slug across all locales (`vi`, `en`, `fr`)
+ * - Raw `tour_id` (e.g. `dl-01`, `dl-1`, `hl-02`)
+ * - Legacy `tour_slug` Sanity field
+ */
+export const matchesTourSlug = (tour: Tour, targetSlug: string): boolean => {
+	if (!tour || !targetSlug) return false
+
+	const target = targetSlug.toLowerCase().trim()
+	const rawTourId = (tour.tour_id || '').toLowerCase().trim()
+
+	// 1. Direct match with tour_id (e.g. "dl-01" or "chd-dt-01")
+	if (rawTourId && rawTourId === target) return true
+
+	// 2. Direct match with virtual slugs (format `{tour_id}-{slug}` or `{slug}`)
+	const vVi = get_tour_slug(tour, 'vi').toLowerCase()
+	const vEn = get_tour_slug(tour, 'en').toLowerCase()
+	const vFr = get_tour_slug(tour, 'fr').toLowerCase()
+
+	if (vVi === target || vEn === target || vFr === target) return true
+
+	// 3. Match with raw name slugify without prefix (fallback for pure title slugs)
+	const nameVi = slugify(tour.tour_name?.vi || tour.tour_name?.vn)
+	const nameEn = slugify(tour.tour_name?.en)
+	const nameFr = slugify(tour.tour_name?.fr)
+
+	if (nameVi === target || nameEn === target || nameFr === target) return true
+
+	// 4. If target slug starts with tour_id prefix, check if prefix matches tour_id
+	if (rawTourId && target.startsWith(`${rawTourId}-`)) {
+		return true
+	}
+
+	// 5. Check if numeric suffix of tour_id matches (e.g., target "dl-1-..." vs rawTourId "dl-01")
+	if (rawTourId) {
+		const rawNormalized = rawTourId.replace(/[^a-z0-9]/g, '')
+		const targetPrefix = target.split('-')[0] + (target.split('-')[1] || '')
+		if (rawNormalized && targetPrefix.startsWith(rawNormalized)) {
+			return true
+		}
+	}
+
+	return false
+}
+
 export const TourService = {
 	/**
 	 * Fetches tours by category ('day-tours' or 'highland-tours') with multi-layer cache.
@@ -42,25 +90,7 @@ export const TourService = {
 		// 1. If category is specified, search within that category's tours first
 		if (tourType) {
 			const categoryTours = await this.getToursByType(tourType, kv)
-			const matched = categoryTours.find(t => {
-				const vVi = get_tour_slug(t, 'vi')
-				const vEn = get_tour_slug(t, 'en')
-				const vFr = get_tour_slug(t, 'fr')
-				const nameVi = slugify(t.tour_name?.vi || t.tour_name?.vn)
-				const nameEn = slugify(t.tour_name?.en)
-				const nameFr = slugify(t.tour_name?.fr)
-				const tourId = (t.tour_id || '').toLowerCase()
-
-				return (
-					vVi === targetSlug ||
-					vEn === targetSlug ||
-					vFr === targetSlug ||
-					nameVi === targetSlug ||
-					nameEn === targetSlug ||
-					nameFr === targetSlug ||
-					tourId === targetSlug
-				)
-			})
+			const matched = categoryTours.find(t => matchesTourSlug(t, targetSlug))
 			if (matched) return matched
 		}
 
@@ -71,26 +101,7 @@ export const TourService = {
 		])
 		const allTours = [...dayTours, ...highlandTours]
 
-		const matched = allTours.find(t => {
-			const vVi = get_tour_slug(t, 'vi')
-			const vEn = get_tour_slug(t, 'en')
-			const vFr = get_tour_slug(t, 'fr')
-			const nameVi = slugify(t.tour_name?.vi || t.tour_name?.vn)
-			const nameEn = slugify(t.tour_name?.en)
-			const nameFr = slugify(t.tour_name?.fr)
-			const tourId = (t.tour_id || '').toLowerCase()
-
-			return (
-				vVi === targetSlug ||
-				vEn === targetSlug ||
-				vFr === targetSlug ||
-				nameVi === targetSlug ||
-				nameEn === targetSlug ||
-				nameFr === targetSlug ||
-				tourId === targetSlug
-			)
-		})
-
+		const matched = allTours.find(t => matchesTourSlug(t, targetSlug))
 		if (matched) return matched
 
 		// 3. Last fallback: Direct Sanity GROQ fetch (supports old documents with raw tourSlug)

@@ -10,6 +10,30 @@ import {
 } from '$lib/server/sanity/queries/blogs'
 import type { BlogPost } from '$lib/types/blog.type'
 
+import { slugify } from '$lib/utils/format-data'
+import { get_blog_slug } from '$lib/utils/sanity'
+
+export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => {
+	if (!blog || !targetSlug) return false
+	const target = targetSlug.toLowerCase().trim()
+
+	if (blog._id && blog._id.toLowerCase() === target) return true
+
+	const vVi = get_blog_slug(blog, 'vi').toLowerCase()
+	const vEn = get_blog_slug(blog, 'en').toLowerCase()
+	const vFr = get_blog_slug(blog, 'fr').toLowerCase()
+
+	if (vVi === target || vEn === target || vFr === target) return true
+
+	const nameVi = slugify(blog.title?.vi || blog.title?.vn)
+	const nameEn = slugify(blog.title?.en)
+	const nameFr = slugify(blog.title?.fr)
+
+	if (nameVi === target || nameEn === target || nameFr === target) return true
+
+	return false
+}
+
 export const BlogService = {
 	/**
 	 * Fetches featured blog posts (with fallback) with multi-layer cache.
@@ -49,17 +73,27 @@ export const BlogService = {
 	},
 
 	/**
-	 * Fetches a single blog post by slug with multi-layer cache.
+	 * Fetches a single blog post by slug with multi-layer cache and virtual slug matching.
 	 */
 	async getBlogBySlug(slug: string, kv?: KVNamespace): Promise<BlogPost | null> {
+		const targetSlug = slug.toLowerCase().trim()
+
+		// 1. Search in all cached blogs
+		const allBlogs = await this.getAllBlogs(kv)
+		const matched = allBlogs.find(b => matchesBlogSlug(b, targetSlug))
+		if (matched) return matched
+
+		// 2. Direct GROQ fallback (for old documents or raw ID)
 		return cachedFetch(`blog-${slug}`, 5 * 60 * 1000, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:blog:${slug}`,
 				async () => {
 					const query = `*[_type == 'blogPost' && (
+						_id == $slug ||
 						slug.current == $slug ||
 						slug.vn.current == $slug ||
+						slug.vi.current == $slug ||
 						slug.en.current == $slug ||
 						slug.fr.current == $slug
 					)][0]{${EXTRACT_BLOG_FIELDS}}`

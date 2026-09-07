@@ -17,6 +17,9 @@ const builder = imageUrlBuilder(config as SanityProjectDetails)
 
 import { slugify } from './format-data'
 
+/**
+ * Derives SEO-friendly virtual tour slug formatted as `{tour_id}-{slug}` (e.g., `dl-01-kham-pha-ho-lak`).
+ */
 export const get_tour_slug = (tour: Tour, lang: string = 'en'): string => {
 	if (!tour) return ''
 
@@ -30,10 +33,23 @@ export const get_tour_slug = (tour: Tour, lang: string = 'en'): string => {
 		tour.tour_name?.fr ||
 		tour.tour_name?.vi
 
+	let nameSlug = ''
 	if (localizedTitle && typeof localizedTitle === 'string') {
-		const derived = slugify(localizedTitle)
-		if (derived) return derived
+		nameSlug = slugify(localizedTitle)
 	}
+
+	const rawTourId = (tour.tour_id || '').trim().toLowerCase()
+
+	// If tour has both tour_id and localized title, generate hybrid `{tour_id}-{nameSlug}`
+	if (rawTourId && nameSlug) {
+		// If nameSlug already starts with tour_id prefix, don't duplicate
+		if (nameSlug.startsWith(rawTourId)) {
+			return nameSlug
+		}
+		return `${rawTourId}-${nameSlug}`
+	}
+
+	if (nameSlug) return nameSlug
 
 	// 2. Legacy fallback: Check document tour_slug if present from older Sanity docs
 	if (tour.tour_slug) {
@@ -48,8 +64,43 @@ export const get_tour_slug = (tour: Tour, lang: string = 'en'): string => {
 		if (typeof targetSlug === 'string' && targetSlug) return targetSlug
 	}
 
-	// 3. Last fallback: tour_id
+	// 3. Last fallback: raw tour_id
 	return tour.tour_id || ''
+}
+
+/**
+ * Derives SEO-friendly virtual blog slug from localized blog title.
+ */
+export const get_blog_slug = (blog: any, lang: string = 'en'): string => {
+	if (!blog) return ''
+	const loc = lang === 'vn' ? 'vi' : lang
+
+	const localizedTitle =
+		blog.title?.[loc] ||
+		(loc === 'vi' ? blog.title?.vn : undefined) ||
+		blog.title?.en ||
+		blog.title?.fr ||
+		blog.title?.vi ||
+		(typeof blog.title === 'string' ? blog.title : '')
+
+	if (localizedTitle) {
+		const derived = slugify(localizedTitle)
+		if (derived) return derived
+	}
+
+	if (blog.slug) {
+		if (typeof blog.slug === 'string') return blog.slug
+		const targetSlug =
+			blog.slug[loc]?.current ||
+			blog.slug[loc] ||
+			(loc === 'vi' ? blog.slug.vn?.current || blog.slug.vn : undefined) ||
+			blog.slug.current ||
+			blog.slug.en?.current ||
+			blog.slug.en
+		if (typeof targetSlug === 'string' && targetSlug) return targetSlug
+	}
+
+	return blog._id || ''
 }
 
 export const tour_by_index = (tours: Tour[], index: number) => {

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
-	import { url_for } from '$lib/utils/sanity'
+	import { get_blog_slug, url_for } from '$lib/utils/sanity'
 
 	interface Props {
 		posts?: BlogPost[]
@@ -66,14 +66,7 @@
 	}
 
 	const getPostSlug = (p: BlogPost) => {
-		return (
-			p.slug?.[$locale as 'vi' | 'vn' | 'en' | 'fr']?.current ||
-			p.slug?.current ||
-			p.slug?.vi?.current ||
-			p.slug?.vn?.current ||
-			p.slug?.en?.current ||
-			(typeof p.slug === 'string' ? p.slug : p._id)
-		)
+		return get_blog_slug(p, $locale)
 	}
 
 	const getCategoryName = (cat: string) => {

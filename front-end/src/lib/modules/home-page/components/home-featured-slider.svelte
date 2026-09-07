@@ -59,11 +59,7 @@
 	)
 
 	let canonicalCategory = $derived<CanonicalTourCategory>(
-		currentTour?._type === 'tourCentral' ||
-			currentTour?.tour_duration?.en?.toLowerCase().includes('day') === false ||
-			currentTour?.tour_duration?.vi?.toLowerCase().includes('ngày') === false
-			? 'highland-tours'
-			: 'day-tours'
+		currentTour?._type === 'tourCentral' ? 'highland-tours' : 'day-tours'
 	)
 
 	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, $locale))
