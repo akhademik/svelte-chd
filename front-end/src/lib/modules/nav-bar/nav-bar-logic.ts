@@ -20,13 +20,13 @@ export const menu_items: MenuItem[] = [
 	},
 	{
 		id: 3,
-		text: 'about',
-		url: '/about',
+		text: 'blog',
+		url: '/blog',
 	},
 	{
 		id: 4,
-		text: 'blog',
-		url: '/blog',
+		text: 'about',
+		url: '/about',
 	},
 	{
 		id: 5,

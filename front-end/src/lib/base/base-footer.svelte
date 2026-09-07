@@ -33,14 +33,14 @@
 					{$LL.nav_bar.highland_tours()}
 				</a>
 				<a
-					href={`/${$locale}/about`}
-					class="transition-colors hover:text-white">
-					{$LL.nav_bar.about()}
-				</a>
-				<a
 					href={`/${$locale}/blog`}
 					class="transition-colors hover:text-white">
 					{$LL.nav_bar.blog()}
+				</a>
+				<a
+					href={`/${$locale}/about`}
+					class="transition-colors hover:text-white">
+					{$LL.nav_bar.about()}
 				</a>
 				<a
 					href={`/${$locale}/contact`}
