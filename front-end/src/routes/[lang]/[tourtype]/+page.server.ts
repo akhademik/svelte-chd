@@ -2,7 +2,7 @@ import { fetchToursByType } from '$lib/server/sanity-client'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async ({ params, setHeaders }) => {
+export const load: PageServerLoad = async ({ params, setHeaders, platform }) => {
 	const { tourtype } = params
 
 	if (!tourtype || !['day-tours', 'highland-tours'].includes(tourtype)) {
@@ -10,10 +10,12 @@ export const load: PageServerLoad = async ({ params, setHeaders }) => {
 	}
 
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=1800, stale-while-revalidate=3600',
+		'cache-control':
+			'public, max-age=0, s-maxage=1800, stale-while-revalidate=3600, stale-if-error=259200',
 	})
 
-	const tours = await fetchToursByType(tourtype)
+	const kv = platform?.env?.SANITY_SNAPSHOT_KV
+	const tours = await fetchToursByType(tourtype, kv)
 
 	return {
 		tourtype,

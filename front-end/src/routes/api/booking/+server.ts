@@ -4,7 +4,7 @@ import { json } from '@sveltejs/kit'
 
 export const POST = async ({ request }) => {
 	try {
-		const data = await request.json()
+		const data = (await request.json()) as Record<string, any>
 		const { name, contact, date, guests, tour, note, langs } = data
 
 		if (!name || !contact) {

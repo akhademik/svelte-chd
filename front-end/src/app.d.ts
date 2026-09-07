@@ -1,7 +1,6 @@
 import type { Locales } from './i18n/i18n-types'
 
 // See https://kit.svelte.dev/docs/types#app
-
 // for information about these interfaces
 declare global {
 	namespace App {
@@ -10,7 +9,11 @@ declare global {
 			locale: Locales
 		}
 		// interface PageData {}
-		// interface Platform {}
+		interface Platform {
+			env?: {
+				SANITY_SNAPSHOT_KV?: KVNamespace
+			}
+		}
 	}
 }
 

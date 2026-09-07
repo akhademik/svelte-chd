@@ -168,7 +168,7 @@ const fetch_exchange_rate = async () => {
 		const query = `${EXCHANGE_API_KEY}/latest/VND`
 		const result = await fetch(url + query, { signal: AbortSignal.timeout(4000) })
 		if (!result.ok) throw new Error(`Exchange API returned ${result.status}`)
-		const data = await result.json()
+		const data = (await result.json()) as { conversion_rates?: { USD?: number; EUR?: number } }
 
 		if (data?.conversion_rates?.USD && data?.conversion_rates?.EUR) {
 			const extracted_rates = {

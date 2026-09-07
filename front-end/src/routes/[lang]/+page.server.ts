@@ -45,17 +45,19 @@ const send_to_discord = async (data: SubmissionData) => {
 	})
 }
 
-export const load: PageServerLoad = async ({ setHeaders }) => {
+export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=1800, stale-while-revalidate=3600',
+		'cache-control':
+			'public, max-age=0, s-maxage=1800, stale-while-revalidate=3600, stale-if-error=259200',
 	})
 
 	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
+	const kv = platform?.env?.SANITY_SNAPSHOT_KV
 
 	const [dayTours, highlandTours, featuredPosts] = await Promise.all([
-		fetchToursByType('day-tours'),
-		fetchToursByType('highland-tours'),
-		fetchFeaturedBlogs(),
+		fetchToursByType('day-tours', kv),
+		fetchToursByType('highland-tours', kv),
+		fetchFeaturedBlogs(kv),
 	])
 
 	return {

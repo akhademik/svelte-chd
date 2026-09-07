@@ -35,6 +35,36 @@ export async function cachedFetch<T>(
 	return data
 }
 
+export async function withKvSnapshot<T>(
+	kv: KVNamespace | undefined,
+	snapshotKey: string,
+	fetcher: () => Promise<T>,
+	isValidResult: (data: T) => boolean
+): Promise<T> {
+	try {
+		const fresh = await fetcher()
+		if (isValidResult(fresh) && kv) {
+			// Write snapshot in background, don't block response, don't throw if KV fails
+			kv.put(snapshotKey, JSON.stringify(fresh)).catch((err: unknown) =>
+				console.warn(`[KV snapshot write failed] ${snapshotKey}:`, err)
+			)
+		}
+		if (isValidResult(fresh)) return fresh
+		throw new Error(`Invalid result for ${snapshotKey}, falling back to snapshot`)
+	} catch (err) {
+		console.warn(`[Sanity fetch failed, trying KV snapshot] ${snapshotKey}:`, err)
+		if (kv) {
+			const cached = await kv.get(snapshotKey)
+			if (cached) {
+				console.warn(`[KV snapshot HIT] ${snapshotKey}`)
+				return JSON.parse(cached) as T
+			}
+		}
+		console.error(`[KV snapshot MISS, no fallback available] ${snapshotKey}`)
+		throw err
+	}
+}
+
 export const EXTRACT_TOUR_FIELDS = `
 	"best_sell": coalesce(best_sell, bestSellerTour, bestSell, false),
 	"tour_highlights": coalesce(
@@ -99,13 +129,18 @@ export const EXTRACT_BLOG_FIELDS = `
 			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
 			"alt": coalesce(alt, asset->altText, asset->description, '')
 		},
+		imgCover{
+			...,
+			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
+			"alt": coalesce(alt, asset->altText, asset->description, '')
+		},
 		img_cover{
 			...,
 			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
 			"alt": coalesce(alt, asset->altText, asset->description, '')
 		}
 	),
-	"img_tour": coalesce(
+	"imgTour": coalesce(
 		imgTour[]{
 			...,
 			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
@@ -124,94 +159,103 @@ export const EXTRACT_BLOG_FIELDS = `
 	"author": coalesce(author, 'CHD Travel Team')
 `
 
-export const fetchToursByType = async (tourType: string): Promise<Tour[]> => {
+export const fetchToursByType = async (tourType: string, kv?: KVNamespace): Promise<Tour[]> => {
 	return cachedFetch(`tours-${tourType}`, 5 * 60 * 1000, async () => {
-		try {
-			if (tourType === 'day-tours') {
+		return withKvSnapshot(
+			kv,
+			`snapshot:tours:${tourType}`,
+			async () => {
+				if (tourType === 'day-tours') {
+					return await sanityClient.fetch(
+						`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']]{${EXTRACT_TOUR_FIELDS}}`
+					)
+				} else if (tourType === 'highland-tours') {
+					return await sanityClient.fetch(
+						`*[_type in ['highland-tours', 'tourCentral', 'highland_tours']]{${EXTRACT_TOUR_FIELDS}}`
+					)
+				} else if (['tourDaily', 'tourCentral', 'day_tours', 'highland_tours'].includes(tourType)) {
+					return await sanityClient.fetch(`*[_type == $dbName]{${EXTRACT_TOUR_FIELDS}}`, {
+						dbName: tourType,
+					})
+				}
 				return await sanityClient.fetch(
-					`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']]{${EXTRACT_TOUR_FIELDS}}`
+					`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']]{${EXTRACT_TOUR_FIELDS}}`
 				)
-			} else if (tourType === 'highland-tours') {
-				return await sanityClient.fetch(
-					`*[_type in ['highland-tours', 'tourCentral', 'highland_tours']]{${EXTRACT_TOUR_FIELDS}}`
-				)
-			} else if (['tourDaily', 'tourCentral', 'day_tours', 'highland_tours'].includes(tourType)) {
-				return await sanityClient.fetch(`*[_type == $dbName]{${EXTRACT_TOUR_FIELDS}}`, {
-					dbName: tourType,
-				})
-			}
-			return await sanityClient.fetch(
-				`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']]{${EXTRACT_TOUR_FIELDS}}`
-			)
-		} catch (error) {
-			console.error(`[Sanity Server fetchToursByType error (${tourType})]:`, error)
-			return []
-		}
+			},
+			data => Array.isArray(data) && data.length > 0
+		)
 	})
 }
 
 export const fetchSingleTourBySlug = async (
 	slug: string,
-	tourType?: string
+	tourType?: string,
+	kv?: KVNamespace
 ): Promise<Tour | null> => {
 	return cachedFetch(`tour-${tourType || 'all'}-${slug}`, 5 * 60 * 1000, async () => {
-		try {
-			const typeFilter =
-				tourType === 'day-tours'
-					? `_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']`
-					: tourType === 'highland-tours'
-						? `_type in ['highland-tours', 'tourCentral', 'highland_tours']`
-						: `_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']`
+		return withKvSnapshot(
+			kv,
+			`snapshot:tour:${tourType || 'all'}:${slug}`,
+			async () => {
+				const typeFilter =
+					tourType === 'day-tours'
+						? `_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']`
+						: tourType === 'highland-tours'
+							? `_type in ['highland-tours', 'tourCentral', 'highland_tours']`
+							: `_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']`
 
-			const query = `*[(${typeFilter}) && (
-				tour_slug.current == $slug ||
-				tourSlug.current == $slug ||
-				tour_slug.en.current == $slug ||
-				tour_slug.vn.current == $slug ||
-				tour_slug.fr.current == $slug ||
-				tourSlug.en.current == $slug ||
-				tourSlug.vn.current == $slug ||
-				tourSlug.fr.current == $slug
-			)][0]{${EXTRACT_TOUR_FIELDS}}`
+				const query = `*[(${typeFilter}) && (
+					tour_slug.current == $slug ||
+					tourSlug.current == $slug ||
+					tour_slug.en.current == $slug ||
+					tour_slug.vn.current == $slug ||
+					tour_slug.fr.current == $slug ||
+					tourSlug.en.current == $slug ||
+					tourSlug.vn.current == $slug ||
+					tourSlug.fr.current == $slug
+				)][0]{${EXTRACT_TOUR_FIELDS}}`
 
-			const res = await sanityClient.fetch(query, { slug })
-			return res || null
-		} catch (error) {
-			console.error(`[Sanity Server fetchSingleTourBySlug error (${slug})]:`, error)
-			return null
-		}
+				const res = await sanityClient.fetch(query, { slug })
+				return res || null
+			},
+			data => data !== undefined && data !== null
+		)
 	})
 }
 
-export const fetchFeaturedBlogs = async (): Promise<BlogPost[]> => {
+export const fetchFeaturedBlogs = async (kv?: KVNamespace): Promise<BlogPost[]> => {
 	return cachedFetch('featured-blogs', 5 * 60 * 1000, async () => {
-		try {
-			let posts: BlogPost[] = await sanityClient.fetch(
-				`*[_type == 'blogPost' && isFeatured == true] | order(publishedAt desc, _createdAt desc)[0...6]{${EXTRACT_BLOG_FIELDS}}`
-			)
-			if (!posts || posts.length === 0) {
-				posts = await sanityClient.fetch(
-					`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc)[0...3]{${EXTRACT_BLOG_FIELDS}}`
+		return withKvSnapshot(
+			kv,
+			'snapshot:featured-blogs',
+			async () => {
+				let posts: BlogPost[] = await sanityClient.fetch(
+					`*[_type == 'blogPost' && isFeatured == true] | order(publishedAt desc, _createdAt desc)[0...6]{${EXTRACT_BLOG_FIELDS}}`
 				)
-			}
-			return posts || []
-		} catch (err) {
-			console.warn('[Sanity Server fetchFeaturedBlogs error]:', err)
-			return []
-		}
+				if (!posts || posts.length === 0) {
+					posts = await sanityClient.fetch(
+						`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc)[0...3]{${EXTRACT_BLOG_FIELDS}}`
+					)
+				}
+				return posts || []
+			},
+			data => Array.isArray(data) && data.length > 0
+		)
 	})
 }
 
-export const fetchAllBlogs = async (): Promise<BlogPost[]> => {
+export const fetchAllBlogs = async (kv?: KVNamespace): Promise<BlogPost[]> => {
 	return cachedFetch('all-blogs', 5 * 60 * 1000, async () => {
-		try {
-			return await sanityClient.fetch(
-				`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc){${EXTRACT_BLOG_FIELDS}}`
-			)
-		} catch (err) {
-			console.warn('[Sanity Server fetchAllBlogs error]:', err)
-			return []
-		}
+		return withKvSnapshot(
+			kv,
+			'snapshot:all-blogs',
+			async () => {
+				return await sanityClient.fetch(
+					`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc){${EXTRACT_BLOG_FIELDS}}`
+				)
+			},
+			data => Array.isArray(data) && data.length > 0
+		)
 	})
 }
 
@@ -221,31 +265,34 @@ export interface ExchangeRatesData {
 	date?: string
 }
 
-export const fetchLatestExchangeRates = async (): Promise<ExchangeRatesData> => {
+export const fetchLatestExchangeRates = async (kv?: KVNamespace): Promise<ExchangeRatesData> => {
 	const defaultRates: ExchangeRatesData = { ...DEFAULT_EXCHANGE_RATES }
 	return cachedFetch('latest-exchange-rates', 60 * 60 * 1000, async () => {
 		try {
-			const doc = await sanityClient.fetch(
-				`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]{exchangeDate, rates}`
-			)
-			const usd = doc?.rates?.rateUSD
-			const eur = doc?.rates?.rateEUR
-			const isValid = (n: number) => typeof n === 'number' && n > 1000 && n < 100000
+			return await withKvSnapshot(
+				kv,
+				'snapshot:exchange-rates',
+				async () => {
+					const doc = await sanityClient.fetch(
+						`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]{exchangeDate, rates}`
+					)
+					const usd = doc?.rates?.rateUSD
+					const eur = doc?.rates?.rateEUR
+					const isValid = (n: number) => typeof n === 'number' && n > 1000 && n < 100000
 
-			if (isValid(usd) && isValid(eur)) {
-				return {
-					USD: 1 / usd,
-					EUR: 1 / eur,
-					date: doc.exchangeDate || undefined,
-				}
-			}
-			console.warn('[fetchLatestExchangeRates] rate ngoài khoảng hợp lệ, dùng default:', {
-				usd,
-				eur,
-			})
-			return defaultRates
+					if (isValid(usd) && isValid(eur)) {
+						return {
+							USD: 1 / usd,
+							EUR: 1 / eur,
+							date: doc.exchangeDate || undefined,
+						}
+					}
+					throw new Error('Exchange rates out of valid range')
+				},
+				data => Boolean(data && data.USD && data.EUR)
+			)
 		} catch (err) {
-			console.warn('[Sanity Server fetchLatestExchangeRates error]:', err)
+			console.warn('[Sanity Server fetchLatestExchangeRates error, using defaultRates]:', err)
 			return defaultRates
 		}
 	})
