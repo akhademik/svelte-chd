@@ -15,7 +15,6 @@ import {
 	FEATURED_BLOGS_QUERY,
 } from './sanity/queries/blogs'
 import {
-	ALL_TOURS_QUERY,
 	EXTRACT_TOUR_FIELDS,
 	getSingleTourQuery,
 	TOURS_BY_DAY_QUERY,
@@ -32,6 +31,8 @@ const sanityConfig: ClientConfig = {
 }
 
 export const sanityClient = createClient(sanityConfig)
+
+export type TourType = 'day-tours' | 'highland-tours'
 
 // In-memory cache for Worker isolates (extra defense layer)
 const memoryCache = new Map<string, { data: any; expires: number }>()
@@ -58,18 +59,23 @@ export async function withKvSnapshot<T>(
 	kv: KVNamespace | undefined,
 	snapshotKey: string,
 	fetcher: () => Promise<T>,
-	isValidResult: (data: T) => boolean
+	isValidResult: (data: T) => boolean = () => true,
+	ttlSeconds: number = 60 * 60 * 24 * 14 // 14 days default for disaster recovery
 ): Promise<T> {
 	try {
 		const fresh = await fetcher()
-		if (isValidResult(fresh) && kv) {
-			// Write snapshot in background, don't block response, don't throw if KV fails
-			kv.put(snapshotKey, JSON.stringify(fresh)).catch((err: unknown) =>
-				Logger.warn('SanityKV', `Snapshot write failed for ${snapshotKey}:`, err)
-			)
+		if (isValidResult(fresh)) {
+			if (kv) {
+				// Write snapshot in background with TTL, don't block response, don't throw if KV fails
+				kv.put(snapshotKey, JSON.stringify(fresh), {
+					expirationTtl: ttlSeconds,
+				}).catch((err: unknown) =>
+					Logger.warn('SanityKV', `Snapshot write failed for ${snapshotKey}:`, err)
+				)
+			}
+			return fresh
 		}
-		if (isValidResult(fresh)) return fresh
-		throw new Error(`Invalid result for ${snapshotKey}, falling back to snapshot`)
+		throw new Error(`Validation failed for ${snapshotKey}, attempting snapshot fallback`)
 	} catch (err) {
 		Logger.warn('SanityKV', `Sanity fetch failed, trying KV snapshot for ${snapshotKey}:`, err)
 		if (kv) {
@@ -84,27 +90,17 @@ export async function withKvSnapshot<T>(
 	}
 }
 
-export const fetchToursByType = async (tourType: string, kv?: KVNamespace): Promise<Tour[]> => {
+export const fetchToursByType = async (tourType: TourType, kv?: KVNamespace): Promise<Tour[]> => {
 	return cachedFetch(`tours-${tourType}`, 5 * 60 * 1000, async () => {
 		return withKvSnapshot(
 			kv,
 			`snapshot:tours:${tourType}`,
 			async () => {
-				let rawData: any[] = []
-				if (tourType === 'day-tours') {
-					rawData = await sanityClient.fetch(TOURS_BY_DAY_QUERY)
-				} else if (tourType === 'highland-tours') {
-					rawData = await sanityClient.fetch(TOURS_BY_HIGHLAND_QUERY)
-				} else if (['tourDaily', 'tourCentral', 'day_tours', 'highland_tours'].includes(tourType)) {
-					rawData = await sanityClient.fetch(`*[_type == $dbName]{${EXTRACT_TOUR_FIELDS}}`, {
-						dbName: tourType,
-					})
-				} else {
-					rawData = await sanityClient.fetch(ALL_TOURS_QUERY)
-				}
-				return mapSanityToTours(rawData)
+				const query = tourType === 'day-tours' ? TOURS_BY_DAY_QUERY : TOURS_BY_HIGHLAND_QUERY
+				const rawData: any[] = await sanityClient.fetch(query)
+				return mapSanityToTours(rawData || [])
 			},
-			data => Array.isArray(data) && data.length > 0
+			data => Array.isArray(data) // Empty array [] is a valid result (e.g. all tours intentionally deleted)
 		)
 	})
 }
@@ -147,7 +143,7 @@ export const fetchFeaturedBlogs = async (kv?: KVNamespace): Promise<BlogPost[]> 
 				}
 				return mapSanityToBlogPosts(posts || [])
 			},
-			data => Array.isArray(data) && data.length > 0
+			data => Array.isArray(data)
 		)
 	})
 }
@@ -161,7 +157,7 @@ export const fetchAllBlogs = async (kv?: KVNamespace): Promise<BlogPost[]> => {
 				const raw = await sanityClient.fetch(ALL_BLOGS_QUERY)
 				return mapSanityToBlogPosts(raw || [])
 			},
-			data => Array.isArray(data) && data.length > 0
+			data => Array.isArray(data)
 		)
 	})
 }

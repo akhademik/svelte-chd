@@ -15,42 +15,60 @@
   - [ ] Xem xét cơ chế queue / background retry an toàn cho email và Discord notification.
 - [x] **3. Đơn Giản Hóa Logic Điều Hướng Locale (Locale Redirection Refactor)**
   - [x] Tối ưu hóa điều kiện kiểm tra `url_lang` & `isLocale(url_lang)` trong `hooks` / route guards để loại bỏ logic dư thừa/redundant redirect.
+- [x] **4. Khắc Phục Logic Phân Biệt Lỗi & Kết Quả Hợp Lệ Trong `withKvSnapshot`**
+  - [x] Tách biệt rõ giữa **fetch failed / exception** với **valid empty result (`[]` hoặc empty array)**.
+  - [x] Tránh trường hợp khi cố ý xóa hết tour/blog trên Sanity mà hệ thống lại nhận diện nhầm là lỗi và fallback ngược lại snapshot KV cũ.
+  - [x] Thêm TTL `expirationTtl: 60 * 60 * 24 * 14` (14 ngày) khi ghi `kv.put` để snapshot đóng vai trò disaster recovery đúng nghĩa.
 
 ---
 
 ## ⚡ P1 — Ưu Tiên Cao (Kiến Trúc Dữ Liệu, CMS Adapter & Central Logger)
 
-- [x] **4. Triển Khai Centralized Logger System**
+- [x] **5. Triển Khai Centralized Logger System**
   - [x] Tạo module `front-end/src/lib/utils/logger.ts` (hỗ trợ các level `INFO`, `WARN`, `ERROR`, `DEBUG`, `perf`).
   - [x] Tự động bật debug trong môi trường Vite dev (`import.meta.env.DEV`), ẩn log chi tiết ở Production.
   - [x] Thay thế các lệnh gọi `console.log`, `console.warn`, `console.error` rải rác sang `Logger.*`.
-- [x] **5. Tách Lớp Sanity Adapter Khỏi Domain Model (Decoupling CMS Schema)**
+- [x] **6. Tách Lớp Sanity Adapter Khỏi Domain Model (Decoupling CMS Schema)**
   - [x] Tạo cấu trúc kiến trúc rõ ràng: `server/sanity/queries/` và `server/sanity/mappers/`.
   - [x] Xây dựng **Canonical Domain Models** (chuẩn hóa model `Tour`, `Blog`, `Review`).
   - [x] Chuyển toàn bộ logic xử lý schema legacy (`day-tours`, `tourDaily`, `tourSlug.en`, `tour_slug.vn`...) vào tầng **Mapper/Adapter**, không để rò rỉ vào Frontend UI components.
-  - [x] Canonical hóa schema phía Sanity Studio backend nếu khả thi (`_type: "tour"`, `tourType: "day" | "multi-day"`, `slug: { vi, en, fr }`).
-- [x] **6. Chuẩn Hóa Naming Convention Sang CamelCase**
+- [x] **7. Chuẩn Hóa Naming Convention Sang CamelCase**
   - [x] Refactor các hàm/biến mang phong cách snake_case sang chuẩn TypeScript camelCase:
     - `send_to_discord` ➔ `sendToDiscord`
     - `send_email` ➔ `sendEmail`
     - `clone_request` ➔ `requestClone`
     - `last_val` ➔ `submission` / `formPayload`
     - `discord_body` ➔ `discordBody`
+- [x] **8. Chuẩn Hóa Type Safety & Xóa Fallback Không An Toàn Trong `fetchToursByType`**
+  - [x] Định nghĩa `export type TourType = 'day-tours' | 'highland-tours'`.
+  - [x] Áp dụng strict type cho `fetchToursByType(tourType: TourType, kv?: KVNamespace)`.
+  - [x] Loại bỏ nhánh fallback không kiểm soát `ALL_TOURS_QUERY` khi truyền sai type để tăng tính deterministic.
+- [x] **9. Kiểm Tra & Tinh Chỉnh Cơ Chế Tỉ Giá (Exchange Rate Sync)**
+  - [x] Kiểm tra lại GitHub Actions `.github/workflows/sync-rates.yml` và script `scripts/sync-rates.js`.
+  - [x] Đảm bảo cron job cập nhật tỉ giá vào `exchange-rates-latest` trong Sanity hoạt động ổn định hàng ngày.
+  - [x] Rà soát các secret cần thiết (`SANITY_WRITE_TOKEN`, `EXCHANGE_API_KEY`, `VITE_SANITY_ID`).
+- [ ] **10. Tinh Gọn Cấu Trúc Module Server (Clean Layered Architecture)**
+  - [ ] Đưa `memory-cache` và `kv-snapshot` thành các utility cache riêng biệt.
+  - [ ] Tổ chức các service cụ thể: `tour-service.ts`, `blog-service.ts` tách biệt hoàn toàn với Sanity adapter.
 
 ---
 
-## 📈 P2 — Tối Ưu SEO Nâng Cao & Trải Nghiệm Người Dùng (SEO & UX Polish)
+## 📈 P2 — Tối Ưu SEO Nâng Cao, Bảo Mật & Trải Nghiệm Người Dùng (SEO & Security Polish)
 
-- [x] **7. Nâng Cấp Toàn Diện Hệ Thống SEO & Structured Data (Rich Snippets)**
+- [x] **11. Nâng Cấp Toàn Diện Hệ Thống SEO & Structured Data (Rich Snippets)**
   - [x] Bổ sung thẻ đa ngôn ngữ `hreflang` tương ứng cho toàn bộ tour (`/vi/...`, `/en/...`, `/fr/...`).
   - [x] Tích hợp Schema.org Structured Data (JSON-LD) cho từng loại trang:
     - `TouristTrip` & `Product` (cho trang chi tiết Tour)
     - `BreadcrumbList` (cho thanh điều hướng breadcrumb)
     - `Organization` & `LocalBusiness` (cho toàn bộ website)
   - [x] Chuẩn hóa metadata đầy đủ: `<title>`, `<meta name="description">`, `<link rel="canonical">`, OpenGraph, Twitter Cards.
-- [x] **8. Đảm Bảo Chuẩn Layout & Quality Gate Loop**
+- [x] **12. Đảm Bảo Chuẩn Layout & Quality Gate Loop**
   - [x] Tuân thủ Mobile-first container padding (`mx-auto max-w-6xl px-6 py-12`).
   - [x] Tuân thủ quy chuẩn lowercase chữ đa ngôn ngữ trên Header/Navbar theo `LAYOUT_DESIGN_CONCEPT.md`.
   - [x] Chạy trọn vẹn Quality Gate sau khi sửa đổi: `Lint` ➔ `Type Check` ➔ `Format` ➔ `Test` ➔ `Knip` ➔ `/graphify`.
+- [ ] **13. Thêm Rate Limiting & Anti-Spam Cơ Bản Cho Contact / Booking Action**
+  - [ ] Xây dựng bộ đệm rate limiting đơn giản (in-memory hoặc KV/header IP-based) cho form liên hệ & đặt tour (ví dụ tối đa 3-5 submissions / 10 phút / IP).
+  - [ ] Ngăn ngừa bot spam email và làm quá tải Discord webhook.
+
 
 

@@ -1,14 +1,17 @@
-import { fetchSingleTourBySlug, fetchToursByType } from '$lib/server/sanity-client'
+import { fetchSingleTourBySlug, fetchToursByType, type TourType } from '$lib/server/sanity-client'
 import type { Tour } from '$lib/types/tour.type'
+import { Logger } from '$lib/utils/logger'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params, setHeaders, platform }) => {
 	const { tourtype, slug } = params
 
-	if (!tourtype || !slug) {
+	if (!tourtype || !slug || !['day-tours', 'highland-tours'].includes(tourtype)) {
 		throw error(404, 'Tour not found')
 	}
+
+	const validTourType = tourtype as TourType
 
 	setHeaders({
 		'cache-control':
@@ -22,11 +25,11 @@ export const load: PageServerLoad = async ({ params, setHeaders, platform }) => 
 
 	try {
 		;[tour, allCategoryTours] = await Promise.all([
-			fetchSingleTourBySlug(slug, tourtype, kv),
-			fetchToursByType(tourtype, kv),
+			fetchSingleTourBySlug(slug, validTourType, kv),
+			fetchToursByType(validTourType, kv),
 		])
 	} catch (err) {
-		console.error('[Tour detail load — total failure, no snapshot available]:', err)
+		Logger.error('TourDetailLoad', 'Total failure, no snapshot available:', err)
 		throw error(503, 'Tạm thời không thể tải dữ liệu tour, vui lòng thử lại sau ít phút.')
 	}
 

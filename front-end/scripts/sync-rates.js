@@ -6,8 +6,17 @@ async function run() {
 	const exchangeUrl = process.env.EXCHANGE_URL || 'https://v6.exchangerate-api.com/v6/'
 	const apiKey = process.env.EXCHANGE_API_KEY
 
-	if (!writeToken || !apiKey) {
-		console.log('[Notice]: Missing SANITY_WRITE_TOKEN or EXCHANGE_API_KEY secret. Skipping sync.')
+	if (!writeToken) {
+		console.warn(
+			'[Warning]: SANITY_WRITE_TOKEN is not configured in GitHub Secrets. Cannot write sealed rate to Sanity.'
+		)
+		return
+	}
+
+	if (!apiKey) {
+		console.warn(
+			'[Warning]: EXCHANGE_API_KEY is not configured in GitHub Secrets. Cannot fetch rates from ExchangeRate API.'
+		)
 		return
 	}
 
@@ -19,27 +28,32 @@ async function run() {
 		apiVersion: '2023-11-03',
 	})
 
-	const existing = await client.fetch(`*[_id == "exchange-rates-latest"][0]{exchangeDate}`)
+	const existing = await client.fetch(`*[_id == "exchange-rates-latest"][0]{exchangeDate, rates}`)
 	const today = new Date().toISOString().split('T')[0]
 
-	if (existing?.exchangeDate === today) {
-		console.log(`[Sync]: Đã có rate ngày ${today} rồi, bỏ qua, không gọi API ngoài.`)
+	if (existing?.exchangeDate === today && existing?.rates?.rateUSD && existing?.rates?.rateEUR) {
+		console.log(
+			`[Sync]: Rate for today (${today}) already exists in Sanity. Skipping external API call.`
+		)
 		return
 	}
 
-	console.log('[Sync]: Fetching external exchange rates...')
+	console.log(`[Sync]: Fetching external exchange rates for ${today}...`)
 	const res = await fetch(`${exchangeUrl}${apiKey}/latest/VND`)
-	if (!res.ok) throw new Error(`HTTP ${res.status}`)
+	if (!res.ok) throw new Error(`Exchange API returned HTTP ${res.status}: ${res.statusText}`)
 	const data = await res.json()
 
 	const usd = data?.conversion_rates?.USD
 	const eur = data?.conversion_rates?.EUR
 
 	if (!usd || !eur) {
-		throw new Error('Invalid rate response from API')
+		throw new Error('Invalid rate response format from Exchange API')
 	}
 
-	console.log(`[Sync]: Today ${today} -> USD: ${usd}, EUR: ${eur}`)
+	const rateUSD = Math.round(1 / usd)
+	const rateEUR = Math.round(1 / eur)
+
+	console.log(`[Sync]: Today (${today}) rates -> 1 USD = ${rateUSD} VND, 1 EUR = ${rateEUR} VND`)
 
 	await client.createOrReplace({
 		_id: 'exchange-rates-latest',
@@ -47,12 +61,12 @@ async function run() {
 		exchangeDate: today,
 		rates: {
 			_type: 'object',
-			rateUSD: Math.round(1 / usd),
-			rateEUR: Math.round(1 / eur),
+			rateUSD,
+			rateEUR,
 		},
 	})
 
-	console.log('[Sync]: Successfully saved exchange-rates-latest to Sanity!')
+	console.log('[Sync]: Successfully sealed exchange-rates-latest into Sanity!')
 }
 
 run().catch(err => {
