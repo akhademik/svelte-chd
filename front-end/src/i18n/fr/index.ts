@@ -1,4 +1,5 @@
 import type { Translation } from '../i18n-types'
+import { about_page } from './t-about-page'
 import { blog_page } from './t-blog-page'
 import { contact_page } from './t-contact-page'
 import { home_page } from './t-home-page'
@@ -10,6 +11,7 @@ const fr = {
 	home_page,
 	nav_bar,
 	contact_page,
+	about_page,
 	tours,
 	blog_page,
 	seo,

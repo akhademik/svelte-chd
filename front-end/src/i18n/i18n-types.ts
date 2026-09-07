@@ -349,6 +349,218 @@ type RootTranslation = {
 			msg: string
 		}
 	}
+	about_page: {
+		hero: {
+			/**
+			 * A​b​o​u​t​ ​U​s​ ​—​ ​C​H​D​ ​T​r​a​v​e​l
+			 */
+			subtitle: string
+			/**
+			 * D​i​s​c​o​v​e​r​ ​t​h​e​ ​A​u​t​h​e​n​t​i​c​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​w​i​t​h​ ​L​o​c​a​l​ ​E​x​p​l​o​r​e​r​s
+			 */
+			title: string
+			/**
+			 * B​o​r​n​ ​f​r​o​m​ ​a​ ​d​e​e​p​ ​l​o​v​e​ ​f​o​r​ ​t​h​e​ ​r​e​d​ ​b​a​s​a​l​t​ ​s​o​i​l​ ​a​n​d​ ​a​ ​p​a​s​s​i​o​n​ ​t​o​ ​s​h​a​r​e​ ​t​h​e​ ​p​r​i​s​t​i​n​e​ ​b​e​a​u​t​y​ ​o​f​ ​t​h​e​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​,​ ​C​H​D​ ​T​r​a​v​e​l​ ​p​i​o​n​e​e​r​s​ ​a​u​t​h​e​n​t​i​c​ ​j​o​u​r​n​e​y​s​,​ ​i​n​d​i​g​e​n​o​u​s​ ​c​u​l​t​u​r​a​l​ ​i​m​m​e​r​s​i​o​n​,​ ​a​n​d​ ​r​e​s​p​o​n​s​i​b​l​e​,​ ​e​t​h​i​c​a​l​ ​t​o​u​r​i​s​m​.
+			 */
+			desc: string
+			/**
+			 * C​H​D​ ​T​r​a​v​e​l​ ​P​h​i​l​o​s​o​p​h​y
+			 */
+			philosophy_tag: string
+			/**
+			 * "​G​o​ ​l​o​c​a​l​ ​—​ ​S​e​e​ ​l​o​c​a​l​ ​—​ ​E​a​t​ ​l​o​c​a​l​"
+			 */
+			philosophy_quote: string
+			/**
+			 * T​r​a​v​e​l​ ​i​s​ ​m​o​r​e​ ​t​h​a​n​ ​v​i​s​i​t​i​n​g​ ​a​ ​p​l​a​c​e​ ​—​ ​i​t​ ​i​s​ ​a​ ​g​e​n​u​i​n​e​ ​c​o​n​n​e​c​t​i​o​n​ ​b​e​t​w​e​e​n​ ​p​e​o​p​l​e​,​ ​w​i​l​d​ ​n​a​t​u​r​e​,​ ​a​n​d​ ​t​h​e​ ​r​h​y​t​h​m​i​c​ ​h​e​a​r​t​b​e​a​t​ ​o​f​ ​i​n​d​i​g​e​n​o​u​s​ ​v​i​l​l​a​g​e​s​.
+			 */
+			philosophy_desc: string
+		}
+		difference: {
+			/**
+			 * W​h​a​t​ ​S​e​t​s​ ​C​H​D​ ​T​r​a​v​e​l​ ​A​p​a​r​t​?
+			 */
+			title: string
+			/**
+			 * M​u​l​t​i​l​i​n​g​u​a​l​ ​&​ ​D​e​e​p​ ​I​n​s​i​g​h​t
+			 */
+			pillar_1_title: string
+			/**
+			 * F​l​u​e​n​t​ ​i​n​ ​E​n​g​l​i​s​h​ ​a​n​d​ ​F​r​e​n​c​h​,​ ​w​i​t​h​ ​d​e​e​p​ ​u​n​d​e​r​s​t​a​n​d​i​n​g​ ​o​f​ ​i​n​t​e​r​n​a​t​i​o​n​a​l​ ​t​r​a​v​e​l​ ​s​t​y​l​e​s​ ​a​n​d​ ​i​n​d​i​g​e​n​o​u​s​ ​e​t​h​n​i​c​ ​h​e​r​i​t​a​g​e​.
+			 */
+			pillar_1_desc: string
+			/**
+			 * T​a​i​l​o​r​-​M​a​d​e​ ​&​ ​F​l​e​x​i​b​l​e
+			 */
+			pillar_2_title: string
+			/**
+			 * N​o​ ​r​i​g​i​d​ ​i​n​d​u​s​t​r​i​a​l​ ​p​a​c​k​a​g​e​s​.​ ​W​e​ ​h​a​n​d​c​r​a​f​t​ ​a​n​d​ ​p​e​r​s​o​n​a​l​i​z​e​ ​e​a​c​h​ ​i​t​i​n​e​r​a​r​y​ ​t​o​ ​s​u​i​t​ ​y​o​u​r​ ​p​a​c​e​,​ ​f​i​t​n​e​s​s​,​ ​a​n​d​ ​s​p​e​c​i​f​i​c​ ​i​n​t​e​r​e​s​t​s​.
+			 */
+			pillar_2_desc: string
+			/**
+			 * E​t​h​i​c​a​l​ ​&​ ​E​c​o​-​C​o​n​s​c​i​o​u​s
+			 */
+			pillar_3_title: string
+			/**
+			 * P​i​o​n​e​e​r​i​n​g​ ​e​t​h​i​c​a​l​ ​w​i​l​d​l​i​f​e​ ​i​n​t​e​r​a​c​t​i​o​n​s​ ​(​e​l​e​p​h​a​n​t​ ​c​a​r​e​ ​o​v​e​r​ ​r​i​d​i​n​g​)​,​ ​o​r​g​a​n​i​c​ ​c​o​f​f​e​e​ ​&​ ​c​a​c​a​o​ ​f​a​r​m​ ​t​o​u​r​s​,​ ​a​n​d​ ​s​u​p​p​o​r​t​i​n​g​ ​l​o​c​a​l​ ​l​i​v​e​l​i​h​o​o​d​.
+			 */
+			pillar_3_desc: string
+		}
+		team: {
+			/**
+			 * F​o​u​n​d​i​n​g​ ​T​e​a​m​ ​&​ ​T​o​u​r​ ​L​e​a​d​e​r​s
+			 */
+			title: string
+			/**
+			 * B​e​h​i​n​d​ ​e​v​e​r​y​ ​m​e​m​o​r​a​b​l​e​ ​e​x​p​e​d​i​t​i​o​n​ ​i​s​ ​o​u​r​ ​d​e​d​i​c​a​t​e​d​ ​f​o​u​n​d​i​n​g​ ​t​r​i​o​ ​—​ ​a​c​c​l​a​i​m​e​d​ ​b​y​ ​t​r​a​v​e​l​e​r​s​ ​w​o​r​l​d​w​i​d​e​ ​o​n​ ​T​r​i​p​A​d​v​i​s​o​r​ ​f​o​r​ ​t​h​e​i​r​ ​p​a​s​s​i​o​n​,​ ​w​a​r​m​t​h​,​ ​a​n​d​ ​e​x​p​e​r​t​i​s​e​.
+			 */
+			subtitle: string
+			/**
+			 * F​o​u​n​d​e​r​ ​&​ ​M​a​n​a​g​i​n​g​ ​D​i​r​e​c​t​o​r
+			 */
+			member_1_role: string
+			/**
+			 * L​e​a​d​i​n​g​ ​s​t​r​a​t​e​g​i​c​ ​v​i​s​i​o​n​ ​a​n​d​ ​u​n​i​q​u​e​ ​r​o​u​t​e​ ​d​e​s​i​g​n​.​ ​H​i​s​ ​s​e​a​m​l​e​s​s​ ​b​i​l​i​n​g​u​a​l​ ​f​l​u​e​n​c​y​ ​(​E​N​/​F​R​)​ ​a​n​d​ ​d​e​e​p​ ​n​e​t​w​o​r​k​ ​w​i​t​h​ ​i​n​d​i​g​e​n​o​u​s​ ​c​o​f​f​e​e​ ​g​r​o​w​e​r​s​ ​b​r​i​n​g​ ​p​r​o​f​o​u​n​d​ ​c​u​l​t​u​r​a​l​ ​i​n​s​i​g​h​t​ ​t​o​ ​e​v​e​r​y​ ​j​o​u​r​n​e​y​.
+			 */
+			member_1_desc: string
+			/**
+			 * C​o​r​p​o​r​a​t​e​ ​&​ ​G​r​o​u​p​s​ ​(​B​2​B​)
+			 */
+			member_1_tag: string
+			/**
+			 * C​o​-​F​o​u​n​d​e​r​ ​&​ ​F​r​e​n​c​h​-​S​p​e​a​k​i​n​g​ ​G​u​i​d​e
+			 */
+			member_2_role: string
+			/**
+			 * H​i​g​h​l​y​ ​a​c​c​l​a​i​m​e​d​ ​o​n​ ​T​r​i​p​A​d​v​i​s​o​r​ ​b​y​ ​i​n​t​e​r​n​a​t​i​o​n​a​l​ ​t​r​a​v​e​l​e​r​s​.​ ​W​i​t​h​ ​b​o​u​n​d​l​e​s​s​ ​e​n​e​r​g​y​,​ ​w​i​t​,​ ​a​n​d​ ​e​n​c​y​c​l​o​p​e​d​i​a​-​l​e​v​e​l​ ​l​o​c​a​l​ ​k​n​o​w​l​e​d​g​e​,​ ​h​e​ ​t​u​r​n​s​ ​e​v​e​r​y​ ​t​r​e​k​,​ ​r​a​f​t​i​n​g​ ​t​r​i​p​,​ ​a​n​d​ ​v​i​l​l​a​g​e​ ​v​i​s​i​t​ ​i​n​t​o​ ​a​n​ ​i​n​s​p​i​r​i​n​g​ ​s​t​o​r​y​.
+			 */
+			member_2_desc: string
+			/**
+			 * F​r​e​n​c​h​-​S​p​e​a​k​i​n​g​ ​T​r​a​v​e​l​e​r​s​ ​(​F​I​T​)
+			 */
+			member_2_tag: string
+			/**
+			 * C​o​-​F​o​u​n​d​e​r​ ​&​ ​E​n​g​l​i​s​h​-​S​p​e​a​k​i​n​g​ ​G​u​i​d​e
+			 */
+			member_3_role: string
+			/**
+			 * T​h​e​ ​a​t​t​e​n​t​i​v​e​ ​"​p​r​o​b​l​e​m​-​s​o​l​v​e​r​"​ ​b​e​l​o​v​e​d​ ​f​o​r​ ​h​i​s​ ​h​e​a​r​t​f​e​l​t​ ​c​a​r​e​ ​a​n​d​ ​e​x​c​e​l​l​e​n​t​ ​E​n​g​l​i​s​h​.​ ​M​a​s​t​e​r​f​u​l​l​y​ ​o​r​g​a​n​i​z​i​n​g​ ​l​o​g​i​s​t​i​c​s​ ​a​n​d​ ​l​e​a​d​i​n​g​ ​u​n​f​o​r​g​e​t​t​a​b​l​e​ ​e​t​h​i​c​a​l​ ​e​l​e​p​h​a​n​t​ ​e​n​c​o​u​n​t​e​r​s​ ​a​r​o​u​n​d​ ​L​a​k​ ​L​a​k​e​.
+			 */
+			member_3_desc: string
+			/**
+			 * E​n​g​l​i​s​h​-​S​p​e​a​k​i​n​g​ ​T​r​a​v​e​l​e​r​s​ ​(​F​I​T​)
+			 */
+			member_3_tag: string
+		}
+		legal: {
+			/**
+			 * L​e​g​a​l​ ​&​ ​C​o​m​m​i​t​m​e​n​t​s
+			 */
+			subtitle: string
+			/**
+			 * T​r​a​n​s​p​a​r​e​n​t​ ​L​i​c​e​n​s​i​n​g​ ​&​ ​C​o​m​m​i​t​m​e​n​t​s
+			 */
+			title: string
+			/**
+			 * L​i​c​e​n​s​e​d​ ​T​o​u​r​ ​O​p​e​r​a​t​o​r
+			 */
+			commitment_1_title: string
+			/**
+			 * C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​D​i​s​c​o​v​e​r​y​ ​T​r​a​v​e​l​ ​C​o​.​,​ ​L​t​d​ ​i​s​ ​r​e​g​i​s​t​e​r​e​d​ ​a​n​d​ ​o​p​e​r​a​t​e​s​ ​i​n​ ​s​t​r​i​c​t​ ​c​o​m​p​l​i​a​n​c​e​ ​w​i​t​h​ ​V​i​e​t​n​a​m​e​s​e​ ​t​o​u​r​i​s​m​ ​l​a​w​.
+			 */
+			commitment_1_desc: string
+			/**
+			 * C​o​m​p​r​e​h​e​n​s​i​v​e​ ​T​r​a​v​e​l​ ​I​n​s​u​r​a​n​c​e​ ​&​ ​S​a​f​e​t​y
+			 */
+			commitment_2_title: string
+			/**
+			 * A​l​l​ ​g​u​e​s​t​s​ ​a​r​e​ ​p​r​o​t​e​c​t​e​d​ ​b​y​ ​s​t​r​i​c​t​ ​s​a​f​e​t​y​ ​p​r​o​c​e​d​u​r​e​s​ ​a​n​d​ ​c​o​m​p​r​e​h​e​n​s​i​v​e​ ​t​r​a​v​e​l​ ​i​n​s​u​r​a​n​c​e​ ​c​o​v​e​r​a​g​e​.
+			 */
+			commitment_2_desc: string
+			/**
+			 * S​u​s​t​a​i​n​a​b​l​e​ ​&​ ​R​e​s​p​e​c​t​f​u​l​ ​T​o​u​r​i​s​m
+			 */
+			commitment_3_title: string
+			/**
+			 * D​i​r​e​c​t​l​y​ ​s​u​p​p​o​r​t​i​n​g​ ​i​n​d​i​g​e​n​o​u​s​ ​e​t​h​n​i​c​ ​c​o​m​m​u​n​i​t​i​e​s​ ​a​n​d​ ​a​c​t​i​v​e​l​y​ ​p​r​o​t​e​c​t​i​n​g​ ​n​a​t​u​r​a​l​ ​e​c​o​l​o​g​y​.
+			 */
+			commitment_3_desc: string
+			/**
+			 * R​e​g​i​s​t​r​a​t​i​o​n​ ​D​e​t​a​i​l​s
+			 */
+			reg_subtitle: string
+			/**
+			 * C​o​m​p​a​n​y​ ​I​n​f​o​r​m​a​t​i​o​n
+			 */
+			reg_title: string
+			/**
+			 * C​o​m​p​a​n​y​ ​N​a​m​e
+			 */
+			company_name_label: string
+			/**
+			 * C​ô​n​g​ ​t​y​ ​T​N​H​H​ ​D​ị​c​h​ ​v​ụ​ ​D​u​ ​l​ị​c​h​ ​K​h​á​m​ ​p​h​á​ ​T​â​y​ ​N​g​u​y​ê​n
+			 */
+			company_name_vn: string
+			/**
+			 * C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​D​i​s​c​o​v​e​r​y​ ​T​r​a​v​e​l​ ​C​o​.​,​ ​L​t​d
+			 */
+			company_name_en: string
+			/**
+			 * B​u​s​i​n​e​s​s​ ​R​e​g​i​s​t​r​a​t​i​o​n​ ​N​o​.
+			 */
+			tax_id_label: string
+			/**
+			 * 6​0​0​1​5​7​7​0​2​3
+			 */
+			tax_id: string
+			/**
+			 * I​n​t​e​r​n​a​t​i​o​n​a​l​ ​T​o​u​r​ ​L​i​c​e​n​s​e
+			 */
+			license_label: string
+			/**
+			 * 6​6​-​0​0​7​/​2​0​1​7​/​T​C​D​L​-​G​P​ ​L​H​Q​T
+			 */
+			license_no: string
+			/**
+			 * M​a​n​a​g​e​m​e​n​t
+			 */
+			management_label: string
+			/**
+			 * M​r​ ​Đ​ứ​c​ ​L​ê​ ​(​D​i​r​e​c​t​o​r​)
+			 */
+			management_val: string
+			/**
+			 * H​o​t​l​i​n​e
+			 */
+			hotline_label: string
+			/**
+			 * 0​9​1​3​.​4​7​1​.​3​5​2
+			 */
+			hotline_val: string
+			/**
+			 * E​m​a​i​l
+			 */
+			email_label: string
+			/**
+			 * i​n​f​o​@​c​h​d​t​r​a​v​e​l​.​c​o​m
+			 */
+			email_val: string
+		}
+		cta: {
+			/**
+			 * “​W​i​t​h​ ​C​H​D​ ​T​r​a​v​e​l​,​ ​y​o​u​ ​a​r​e​ ​n​o​t​ ​m​e​r​e​l​y​ ​a​ ​v​i​s​i​t​o​r​ ​—​ ​y​o​u​ ​a​r​e​ ​a​ ​k​i​n​d​r​e​d​ ​c​o​m​p​a​n​i​o​n​ ​j​o​i​n​i​n​g​ ​u​s​ ​o​n​ ​a​n​ ​a​u​t​h​e​n​t​i​c​ ​a​n​d​ ​d​e​e​p​l​y​ ​i​n​s​p​i​r​i​n​g​ ​j​o​u​r​n​e​y​ ​i​n​t​o​ ​t​h​e​ ​h​e​a​r​t​ ​o​f​ ​t​h​e​ ​H​i​g​h​l​a​n​d​s​.​”
+			 */
+			quote: string
+			/**
+			 * R​e​a​c​h​ ​o​u​t​ ​t​o​ ​o​u​r​ ​f​o​u​n​d​i​n​g​ ​t​e​a​m​ ​f​o​r​ ​c​u​s​t​o​m​ ​i​t​i​n​e​r​a​r​i​e​s​ ​a​n​d​ ​p​e​r​s​o​n​a​l​i​z​e​d​ ​t​r​a​v​e​l​ ​a​d​v​i​c​e​.
+			 */
+			desc: string
+			/**
+			 * c​o​n​t​a​c​t​ ​u​s
+			 */
+			btn: string
+		}
+	}
 	tours: {
 		/**
 		 * J​o​y​f​u​l​ ​J​o​u​r​n​e​y​:​ ​A​ ​D​a​y​ ​t​o​ ​R​e​m​e​m​b​e​r
@@ -970,6 +1182,218 @@ export type TranslationFunctions = {
 			 * MESSAGES *
 			 */
 			msg: () => LocalizedString
+		}
+	}
+	about_page: {
+		hero: {
+			/**
+			 * About Us — CHD Travel
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Discover the Authentic Central Highlands with Local Explorers
+			 */
+			title: () => LocalizedString
+			/**
+			 * Born from a deep love for the red basalt soil and a passion to share the pristine beauty of the Central Highlands, CHD Travel pioneers authentic journeys, indigenous cultural immersion, and responsible, ethical tourism.
+			 */
+			desc: () => LocalizedString
+			/**
+			 * CHD Travel Philosophy
+			 */
+			philosophy_tag: () => LocalizedString
+			/**
+			 * "Go local — See local — Eat local"
+			 */
+			philosophy_quote: () => LocalizedString
+			/**
+			 * Travel is more than visiting a place — it is a genuine connection between people, wild nature, and the rhythmic heartbeat of indigenous villages.
+			 */
+			philosophy_desc: () => LocalizedString
+		}
+		difference: {
+			/**
+			 * What Sets CHD Travel Apart?
+			 */
+			title: () => LocalizedString
+			/**
+			 * Multilingual & Deep Insight
+			 */
+			pillar_1_title: () => LocalizedString
+			/**
+			 * Fluent in English and French, with deep understanding of international travel styles and indigenous ethnic heritage.
+			 */
+			pillar_1_desc: () => LocalizedString
+			/**
+			 * Tailor-Made & Flexible
+			 */
+			pillar_2_title: () => LocalizedString
+			/**
+			 * No rigid industrial packages. We handcraft and personalize each itinerary to suit your pace, fitness, and specific interests.
+			 */
+			pillar_2_desc: () => LocalizedString
+			/**
+			 * Ethical & Eco-Conscious
+			 */
+			pillar_3_title: () => LocalizedString
+			/**
+			 * Pioneering ethical wildlife interactions (elephant care over riding), organic coffee & cacao farm tours, and supporting local livelihood.
+			 */
+			pillar_3_desc: () => LocalizedString
+		}
+		team: {
+			/**
+			 * Founding Team & Tour Leaders
+			 */
+			title: () => LocalizedString
+			/**
+			 * Behind every memorable expedition is our dedicated founding trio — acclaimed by travelers worldwide on TripAdvisor for their passion, warmth, and expertise.
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Founder & Managing Director
+			 */
+			member_1_role: () => LocalizedString
+			/**
+			 * Leading strategic vision and unique route design. His seamless bilingual fluency (EN/FR) and deep network with indigenous coffee growers bring profound cultural insight to every journey.
+			 */
+			member_1_desc: () => LocalizedString
+			/**
+			 * Corporate & Groups (B2B)
+			 */
+			member_1_tag: () => LocalizedString
+			/**
+			 * Co-Founder & French-Speaking Guide
+			 */
+			member_2_role: () => LocalizedString
+			/**
+			 * Highly acclaimed on TripAdvisor by international travelers. With boundless energy, wit, and encyclopedia-level local knowledge, he turns every trek, rafting trip, and village visit into an inspiring story.
+			 */
+			member_2_desc: () => LocalizedString
+			/**
+			 * French-Speaking Travelers (FIT)
+			 */
+			member_2_tag: () => LocalizedString
+			/**
+			 * Co-Founder & English-Speaking Guide
+			 */
+			member_3_role: () => LocalizedString
+			/**
+			 * The attentive "problem-solver" beloved for his heartfelt care and excellent English. Masterfully organizing logistics and leading unforgettable ethical elephant encounters around Lak Lake.
+			 */
+			member_3_desc: () => LocalizedString
+			/**
+			 * English-Speaking Travelers (FIT)
+			 */
+			member_3_tag: () => LocalizedString
+		}
+		legal: {
+			/**
+			 * Legal & Commitments
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Transparent Licensing & Commitments
+			 */
+			title: () => LocalizedString
+			/**
+			 * Licensed Tour Operator
+			 */
+			commitment_1_title: () => LocalizedString
+			/**
+			 * Central Highlands Discovery Travel Co., Ltd is registered and operates in strict compliance with Vietnamese tourism law.
+			 */
+			commitment_1_desc: () => LocalizedString
+			/**
+			 * Comprehensive Travel Insurance & Safety
+			 */
+			commitment_2_title: () => LocalizedString
+			/**
+			 * All guests are protected by strict safety procedures and comprehensive travel insurance coverage.
+			 */
+			commitment_2_desc: () => LocalizedString
+			/**
+			 * Sustainable & Respectful Tourism
+			 */
+			commitment_3_title: () => LocalizedString
+			/**
+			 * Directly supporting indigenous ethnic communities and actively protecting natural ecology.
+			 */
+			commitment_3_desc: () => LocalizedString
+			/**
+			 * Registration Details
+			 */
+			reg_subtitle: () => LocalizedString
+			/**
+			 * Company Information
+			 */
+			reg_title: () => LocalizedString
+			/**
+			 * Company Name
+			 */
+			company_name_label: () => LocalizedString
+			/**
+			 * Công ty TNHH Dịch vụ Du lịch Khám phá Tây Nguyên
+			 */
+			company_name_vn: () => LocalizedString
+			/**
+			 * Central Highlands Discovery Travel Co., Ltd
+			 */
+			company_name_en: () => LocalizedString
+			/**
+			 * Business Registration No.
+			 */
+			tax_id_label: () => LocalizedString
+			/**
+			 * 6001577023
+			 */
+			tax_id: () => LocalizedString
+			/**
+			 * International Tour License
+			 */
+			license_label: () => LocalizedString
+			/**
+			 * 66-007/2017/TCDL-GP LHQT
+			 */
+			license_no: () => LocalizedString
+			/**
+			 * Management
+			 */
+			management_label: () => LocalizedString
+			/**
+			 * Mr Đức Lê (Director)
+			 */
+			management_val: () => LocalizedString
+			/**
+			 * Hotline
+			 */
+			hotline_label: () => LocalizedString
+			/**
+			 * 0913.471.352
+			 */
+			hotline_val: () => LocalizedString
+			/**
+			 * Email
+			 */
+			email_label: () => LocalizedString
+			/**
+			 * info@chdtravel.com
+			 */
+			email_val: () => LocalizedString
+		}
+		cta: {
+			/**
+			 * “With CHD Travel, you are not merely a visitor — you are a kindred companion joining us on an authentic and deeply inspiring journey into the heart of the Highlands.”
+			 */
+			quote: () => LocalizedString
+			/**
+			 * Reach out to our founding team for custom itineraries and personalized travel advice.
+			 */
+			desc: () => LocalizedString
+			/**
+			 * contact us
+			 */
+			btn: () => LocalizedString
 		}
 	}
 	tours: {
