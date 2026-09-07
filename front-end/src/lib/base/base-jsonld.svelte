@@ -14,16 +14,28 @@
 		post?: BlogPost | null
 		breadcrumbs?: BreadcrumbItem[]
 		url?: string
+		isRoot?: boolean
 	}
 
-	let { tour, post, breadcrumbs, url }: Props = $props()
+	let { tour, post, breadcrumbs, url, isRoot = false }: Props = $props()
 
 	let tourName = $derived(
 		tour?.tour_name?.[$locale] || tour?.tour_name?.en || tour?.tour_name?.vn || 'CHD Travel Tour'
 	)
 	let tourImage = $derived(tour?.img_cover ? url_for(tour.img_cover).url() : undefined)
 	let tourPrice = $derived(
-		tour?.tour_price?.price || tour?.tour_price?.vn || tour?.tour_price?.en || undefined
+		tour?.tour_price?.price ||
+			tour?.tour_price?.pax2 ||
+			tour?.tour_price?.pax1 ||
+			tour?.tour_price?.vn ||
+			tour?.tour_price?.en ||
+			undefined
+	)
+	let tourDuration = $derived(
+		tour?.tour_duration?.[$locale] ||
+			tour?.tour_duration?.en ||
+			tour?.tour_duration?.vn ||
+			undefined
 	)
 
 	let postTitle = $derived(
@@ -45,13 +57,43 @@
 	let scripts = $derived.by(() => {
 		const out: string[] = []
 
-		// 1. Tour Schema (TouristTrip)
+		// 1. Organization & LocalBusiness Schema (Site-wide or Root)
+		if (isRoot) {
+			const orgSchema = {
+				'@context': 'https://schema.org',
+				'@type': ['TravelAgency', 'LocalBusiness', 'Organization'],
+				name: 'CHD Travel',
+				alternateName: 'Central Highlands Discovery Travel',
+				url: 'https://chd.travel',
+				logo: 'https://chd.travel/favicon.ico',
+				description:
+					'Local boutique travel agency in Central Highlands (Tay Nguyen), Buon Ma Thuot, Vietnam. Go local, See local, Eat local.',
+				telephone: '+84982470707',
+				email: 'info@chdtravel.com',
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: 'Buon Ma Thuot',
+					addressRegion: 'Dak Lak',
+					addressCountry: 'VN',
+				},
+				priceRange: '$$',
+				sameAs: [
+					'https://www.facebook.com/chdtravel',
+					'https://www.instagram.com/chdtravel',
+					'https://www.tripadvisor.com',
+				],
+			}
+			out.push('<script type="application/ld+json">' + JSON.stringify(orgSchema) + '<' + '/script>')
+		}
+
+		// 2. Tour Schema (TouristTrip & Product)
 		if (tour) {
 			const tourSchema = {
 				'@context': 'https://schema.org',
-				'@type': 'TouristTrip',
+				'@type': ['TouristTrip', 'Product'],
 				name: tourName,
 				description: tourName,
+				...(tourDuration ? { duration: tourDuration } : {}),
 				...(url ? { url } : {}),
 				...(tourImage ? { image: tourImage } : {}),
 				offers: {
@@ -59,6 +101,7 @@
 					priceCurrency: 'VND',
 					...(tourPrice ? { price: tourPrice } : {}),
 					availability: 'https://schema.org/InStock',
+					validFrom: new Date().toISOString().split('T')[0],
 				},
 				provider: {
 					'@type': 'TravelAgency',
@@ -71,7 +114,7 @@
 			)
 		}
 
-		// 2. Blog Article Schema (Article)
+		// 3. Blog Article Schema (Article)
 		if (post) {
 			const articleSchema = {
 				'@context': 'https://schema.org',
@@ -100,7 +143,7 @@
 			)
 		}
 
-		// 3. BreadcrumbList Schema
+		// 4. BreadcrumbList Schema
 		if (breadcrumbs && breadcrumbs.length > 0) {
 			const breadcrumbSchema = {
 				'@context': 'https://schema.org',

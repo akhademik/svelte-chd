@@ -41,15 +41,16 @@
 
 ## 📈 P2 — Tối Ưu SEO Nâng Cao & Trải Nghiệm Người Dùng (SEO & UX Polish)
 
-- [ ] **7. Nâng Cấp Toàn Diện Hệ Thống SEO & Structured Data (Rich Snippets)**
-  - [ ] Bổ sung thẻ đa ngôn ngữ `hreflang` tương ứng cho toàn bộ tour (`/vi/...`, `/en/...`, `/fr/...`).
-  - [ ] Tích hợp Schema.org Structured Data (JSON-LD) cho từng loại trang:
+- [x] **7. Nâng Cấp Toàn Diện Hệ Thống SEO & Structured Data (Rich Snippets)**
+  - [x] Bổ sung thẻ đa ngôn ngữ `hreflang` tương ứng cho toàn bộ tour (`/vi/...`, `/en/...`, `/fr/...`).
+  - [x] Tích hợp Schema.org Structured Data (JSON-LD) cho từng loại trang:
     - `TouristTrip` & `Product` (cho trang chi tiết Tour)
     - `BreadcrumbList` (cho thanh điều hướng breadcrumb)
     - `Organization` & `LocalBusiness` (cho toàn bộ website)
-  - [ ] Chuẩn hóa metadata đầy đủ: `<title>`, `<meta name="description">`, `<link rel="canonical">`, OpenGraph, Twitter Cards.
-- [ ] **8. Đảm Bảo Chuẩn Layout & Quality Gate Loop**
-  - [ ] Tuân thủ Mobile-first container padding (`mx-auto max-w-6xl px-6 py-12`).
-  - [ ] Tuân thủ quy chuẩn lowercase chữ đa ngôn ngữ trên Header/Navbar theo `LAYOUT_DESIGN_CONCEPT.md`.
-  - [ ] Chạy trọn vẹn Quality Gate sau khi sửa đổi: `Lint` ➔ `Type Check` ➔ `Format` ➔ `Test` ➔ `Knip` ➔ `/graphify`.
+  - [x] Chuẩn hóa metadata đầy đủ: `<title>`, `<meta name="description">`, `<link rel="canonical">`, OpenGraph, Twitter Cards.
+- [x] **8. Đảm Bảo Chuẩn Layout & Quality Gate Loop**
+  - [x] Tuân thủ Mobile-first container padding (`mx-auto max-w-6xl px-6 py-12`).
+  - [x] Tuân thủ quy chuẩn lowercase chữ đa ngôn ngữ trên Header/Navbar theo `LAYOUT_DESIGN_CONCEPT.md`.
+  - [x] Chạy trọn vẹn Quality Gate sau khi sửa đổi: `Lint` ➔ `Type Check` ➔ `Format` ➔ `Test` ➔ `Knip` ➔ `/graphify`.
+
 

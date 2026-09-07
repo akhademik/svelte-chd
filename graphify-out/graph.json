@@ -1193,7 +1193,7 @@
       "file_type": "code",
       "norm_label": "close()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L91"
+      "source_location": "L92"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_format_price",
@@ -1205,7 +1205,7 @@
       "file_type": "code",
       "norm_label": "format_price()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L467"
+      "source_location": "L486"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_if",
@@ -1217,7 +1217,7 @@
       "file_type": "code",
       "norm_label": "if()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L66"
+      "source_location": "L67"
     },
     {
       "id": "front_end_src_lib_server_sanity_client_cachedfetch",
@@ -15822,7 +15822,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L467",
+      "source_location": "L486",
       "weight": 1.0
     },
     {
@@ -15833,7 +15833,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -15844,7 +15844,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L91",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -19552,5 +19552,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a08d733d6c62b671c196179f305c9365fc4cbc30"
+  "built_at_commit": "23424d172ec03c964a1ca5f91188cd408c49575b"
 }

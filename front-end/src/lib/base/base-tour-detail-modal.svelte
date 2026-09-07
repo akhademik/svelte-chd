@@ -4,12 +4,13 @@
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Locales } from '$i18n/i18n-types'
+	import { BaseJsonLd } from '$base'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import { tour_modal } from '$lib/stores/modal-store'
 	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
+	import { portableTextComponents } from '$lib/utils/portable-text-components'
 	import { get_tour_slug, url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
-	import { portableTextComponents } from '$lib/utils/portable-text-components'
 
 	let isOpen = $derived($tour_modal.isOpen)
 	let tour = $derived($tour_modal.tour)
@@ -100,6 +101,24 @@
 <svelte:window onkeydown={handleModalKeydown} />
 
 {#if isOpen && tour}
+	{@const tourSlug = get_tour_slug(tour, activeLang) || tour.tour_id || ''}
+	{@const tourType =
+		tour.tour_duration?.vn?.includes('ngày') ||
+		tour.tour_duration?.en?.includes('day') ||
+		tour.tour_duration?.en?.includes('Day')
+			? 'day-tours'
+			: 'highland-tours'}
+	<BaseJsonLd
+		{tour}
+		url={`https://chd.travel/${activeLang}/${tourType}/${tourSlug}`}
+		breadcrumbs={[
+			{ name: $LL.nav_bar.home(), item: `https://chd.travel/${activeLang}` },
+			{
+				name: tourType === 'day-tours' ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours(),
+				item: `https://chd.travel/${activeLang}/${tourType}`,
+			},
+			{ name: title, item: `https://chd.travel/${activeLang}/${tourType}/${tourSlug}` },
+		]} />
 	<div
 		transition:fade={{ duration: 200 }}
 		class="fixed inset-0 z-[60] flex items-center justify-center bg-inverse-dark/60 p-0 backdrop-blur-sm sm:p-4 md:p-6"

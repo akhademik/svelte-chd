@@ -6,6 +6,7 @@
 		BaseBlogDetailModal,
 		BaseBookingModal,
 		BaseFooter,
+		BaseJsonLd,
 		BaseScrollToTop,
 		BaseSeo,
 		BaseTourDetailModal,
@@ -113,6 +114,7 @@
 
 <Toaster />
 <BaseSeo />
+<BaseJsonLd isRoot={true} />
 <NavBar />
 <MobileMenu />
 
