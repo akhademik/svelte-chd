@@ -5,6 +5,8 @@ import {
 	SANITY_WRITE_TOKEN,
 	VITE_SANITY_ID,
 } from '$env/static/private'
+import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
+import { Logger } from '$lib/utils/logger'
 import { type ClientConfig, createClient } from '@sanity/client'
 
 const config: ClientConfig = {
@@ -24,59 +26,7 @@ const writeClient = SANITY_WRITE_TOKEN
 		})
 	: null
 
-const extract_fields = `
-	"best_sell": coalesce(best_sell, bestSellerTour, bestSell, false),
-	"tour_highlights": coalesce(
-		tour_highlights[]->{'highlights': coalesce(tour_highlights, highlights)},
-		tourHighlights[]->{'highlights': coalesce(tour_highlights, tourHighlights, highlights)},
-		[]
-	),
-	"tour_itinerary": coalesce(tour_itinerary, tourItinerary),
-	"tour_includes": coalesce(tour_includes->tour_includes, tourIncludes->tourIncludes, tour_includes->includes, []),
-	"tour_tags": coalesce(
-		tour_tags[]->{'tour_tags': coalesce(tour_tags, tourTags)},
-		tourTags[]->{'tour_tags': coalesce(tour_tags, tourTags)},
-		[]
-	),
-	"tour_price": coalesce(tour_price, tourPrice),
-	"tour_id": coalesce(tour_id, tourId, ''),
-	"img_tour": coalesce(
-		img_tour[]{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		imgTour[]{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		[]
-	),
-	"img_cover": coalesce(
-		coverImg{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		img_cover{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		},
-		imgCover{
-			...,
-			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
-			"alt": coalesce(alt, asset->altText, asset->description, '')
-		}
-	),
-	"tour_duration": coalesce(tour_duration, tourDuration),
-	"tour_slug": coalesce(tour_slug, tourSlug),
-	"tour_intro": coalesce(tour_intro, tourIntro),
-	"tour_name": coalesce(tour_name, tourName)
-`
-
-const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
+const syncRateToSanity = async (usdRate: number, eurRate: number) => {
 	if (!writeClient) return
 	try {
 		const today = new Date().toISOString().split('T')[0]
@@ -125,15 +75,15 @@ const sync_rate_to_sanity = async (usdRate: number, eurRate: number) => {
 				await writeClient.delete(oldDoc._id)
 			} catch (delErr) {
 				// Ignore if any referenced constraint prevents deletion temporarily
-				console.warn(`[Sanity Rate Cleanup Note]: Could not delete old doc ${oldDoc._id}`, delErr)
+				Logger.warn('SanityRate', `Could not delete old doc ${oldDoc._id}`, delErr)
 			}
 		}
 	} catch (err) {
-		console.error('[Sanity Rate Sync Error]:', err)
+		Logger.error('SanityRate', 'Sanity Rate Sync Error:', err)
 	}
 }
 
-const get_latest_exchange_rate_from_sanity = async () => {
+const getLatestExchangeRateFromSanity = async () => {
 	try {
 		const doc = await client.fetch(
 			`*[_type == 'exchangeRates'] | order(exchangeDate desc, _updatedAt desc)[0]`
@@ -148,16 +98,16 @@ const get_latest_exchange_rate_from_sanity = async () => {
 			}
 		}
 	} catch (err) {
-		console.error('[Sanity Rate Fetch Error]:', err)
+		Logger.error('SanityRate', 'Sanity Rate Fetch Error:', err)
 	}
 	return null
 }
 
-const fetch_exchange_rate = async () => {
+const fetchExchangeRate = async () => {
 	const today = new Date().toISOString().split('T')[0]
 
 	// 1. Check if Sanity database already has a sealed rate for today
-	const latestFromSanity = await get_latest_exchange_rate_from_sanity()
+	const latestFromSanity = await getLatestExchangeRateFromSanity()
 	if (latestFromSanity && latestFromSanity.date === today) {
 		return latestFromSanity.rates
 	}
@@ -171,19 +121,23 @@ const fetch_exchange_rate = async () => {
 		const data = (await result.json()) as { conversion_rates?: { USD?: number; EUR?: number } }
 
 		if (data?.conversion_rates?.USD && data?.conversion_rates?.EUR) {
-			const extracted_rates = {
+			const extractedRates = {
 				USD: data.conversion_rates.USD,
 				EUR: data.conversion_rates.EUR,
 			}
 
 			// Background seal & sync to Sanity database for today
-			sync_rate_to_sanity(extracted_rates.USD, extracted_rates.EUR).catch(() => {})
+			syncRateToSanity(extractedRates.USD, extractedRates.EUR).catch(() => {})
 
-			return extracted_rates
+			return extractedRates
 		}
 		throw new Error('Invalid rate format from API')
 	} catch (error) {
-		console.warn('[Exchange Rate API Failed, using last successful Sanity rate]:', error)
+		Logger.warn(
+			'ExchangeAPI',
+			'Exchange Rate API Failed, using last successful Sanity rate:',
+			error
+		)
 		if (latestFromSanity?.rates) {
 			return latestFromSanity.rates
 		}
@@ -191,33 +145,33 @@ const fetch_exchange_rate = async () => {
 	}
 }
 
-const fetch_data = async (db_name: string) => {
+const fetchData = async (dbName: string) => {
 	let data: any[] = []
-	if (db_name === 'day-tours') {
+	if (dbName === 'day-tours') {
 		data = await client.fetch(
-			`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']]{${extract_fields}}`
+			`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour']]{${EXTRACT_TOUR_FIELDS}}`
 		)
-	} else if (db_name === 'highland-tours') {
+	} else if (dbName === 'highland-tours') {
 		data = await client.fetch(
-			`*[_type in ['highland-tours', 'tourCentral', 'highland_tours']]{${extract_fields}}`
+			`*[_type in ['highland-tours', 'tourCentral', 'highland_tours']]{${EXTRACT_TOUR_FIELDS}}`
 		)
-	} else if (['tourDaily', 'tourCentral', 'day_tours', 'highland_tours'].includes(db_name)) {
-		data = await client.fetch(`*[_type == $dbName]{${extract_fields}}`, { dbName: db_name })
+	} else if (['tourDaily', 'tourCentral', 'day_tours', 'highland_tours'].includes(dbName)) {
+		data = await client.fetch(`*[_type == $dbName]{${EXTRACT_TOUR_FIELDS}}`, { dbName })
 	} else {
-		// Default to all known tour types if db_name is empty or invalid
+		// Default to all known tour types if dbName is empty or invalid
 		data = await client.fetch(
-			`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']]{${extract_fields}}`
+			`*[_type in ['day-tours', 'tourDaily', 'day_tours', 'daily_tour', 'highland-tours', 'tourCentral', 'highland_tours']]{${EXTRACT_TOUR_FIELDS}}`
 		)
 	}
 
-	const exchange_rate = await fetch_exchange_rate()
-	const modded_data = { tours: [...data], stale_time: Date.now(), exchange_rate: exchange_rate }
-	return modded_data
+	const exchangeRate = await fetchExchangeRate()
+	const moddedData = { tours: [...data], stale_time: Date.now(), exchange_rate: exchangeRate }
+	return moddedData
 }
 
 export const GET = async ({ url }) => {
-	const db_name = url.searchParams.get('type') || url.search.substring(1)
-	const data = await fetch_data(db_name)
+	const dbName = url.searchParams.get('type') || url.search.substring(1)
+	const data = await fetchData(dbName)
 	return new Response(JSON.stringify(data), {
 		status: 200,
 		headers: { 'Content-Type': 'application/json' },

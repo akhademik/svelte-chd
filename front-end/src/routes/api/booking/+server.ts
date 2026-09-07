@@ -1,5 +1,6 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
+import { Logger } from '$lib/utils/logger'
 import { json } from '@sveltejs/kit'
 
 export const POST = async ({ request }) => {
@@ -15,7 +16,7 @@ export const POST = async ({ request }) => {
 		const email = isEmail ? contact : ''
 		const phone = isEmail ? '' : contact
 
-		const body_text = `
+		const bodyText = `
 Loại yêu cầu: Đặt tour (Booking)
 Tour: ${tour || 'Chưa chọn'}
 Tên khách hàng: ${name}
@@ -29,15 +30,15 @@ Nội dung / Ghi chú thêm:
 ${note || 'Không có ghi chú thêm.'}
 `.trim()
 
-		const send_email = async () => {
+		const sendAdminEmail = async () => {
 			return sendMail({
 				replyTo: email || undefined,
 				subject: `[Đặt Tour] ${tour || 'Tour'} - ${name}`,
-				text: body_text,
+				text: bodyText,
 			})
 		}
 
-		const send_confirmation = async () => {
+		const sendConfirmation = async () => {
 			if (!email) return null
 			return sendClientConfirmation({
 				name,
@@ -50,7 +51,7 @@ ${note || 'Không có ghi chú thêm.'}
 			})
 		}
 
-		const send_to_discord = async () => {
+		const sendToDiscord = async () => {
 			if (!DISCORD_WEBHOOK_URL) return
 			return fetch(DISCORD_WEBHOOK_URL, {
 				method: 'POST',
@@ -62,24 +63,28 @@ ${note || 'Không có ghi chú thêm.'}
 		}
 
 		// Primary notification (Admin email)
-		const emailRes = await send_email()
+		const emailRes = await sendAdminEmail()
 		if (!emailRes) {
-			console.warn('[Admin booking email]: Skipped or returned empty response')
+			Logger.warn('BookingAction', 'Admin booking email skipped or returned empty response')
 		}
 
 		// Secondary notifications (Client confirmation + Discord notification) - Wait to settle before returning
-		const secondaryResults = await Promise.allSettled([send_confirmation(), send_to_discord()])
+		const secondaryResults = await Promise.allSettled([sendConfirmation(), sendToDiscord()])
 		const [clientConf, discordRes] = secondaryResults
 		if (clientConf.status === 'rejected') {
-			console.error('[Secondary Booking: Client Confirmation failed]:', clientConf.reason)
+			Logger.error(
+				'BookingAction',
+				'Secondary Booking: Client Confirmation failed:',
+				clientConf.reason
+			)
 		}
 		if (discordRes.status === 'rejected') {
-			console.error('[Secondary Booking: Discord Webhook failed]:', discordRes.reason)
+			Logger.error('BookingAction', 'Secondary Booking: Discord Webhook failed:', discordRes.reason)
 		}
 
 		return json({ success: true }, { status: 200 })
 	} catch (err) {
-		console.error('[Booking error]:', err)
+		Logger.error('BookingAction', 'Booking error:', err)
 		return json({ message: 'Internal server error' }, { status: 500 })
 	}
 }

@@ -20,17 +20,17 @@
 
 ## ⚡ P1 — Ưu Tiên Cao (Kiến Trúc Dữ Liệu, CMS Adapter & Central Logger)
 
-- [ ] **4. Triển Khai Centralized Logger System**
-  - [ ] Tạo module `front-end/src/lib/utils/logger.ts` (hỗ trợ các level `INFO`, `WARN`, `ERROR`, `DEBUG`, `perf`).
-  - [ ] Tự động bật debug trong môi trường Vite dev (`import.meta.env.DEV`), ẩn log chi tiết ở Production.
-  - [ ] Thay thế các lệnh gọi `console.log`, `console.warn`, `console.error` rải rác sang `Logger.*`.
-- [ ] **5. Tách Lớp Sanity Adapter Khỏi Domain Model (Decoupling CMS Schema)**
-  - [ ] Tạo cấu trúc kiến trúc rõ ràng: `server/sanity/queries/` và `server/sanity/mappers/`.
-  - [ ] Xây dựng **Canonical Domain Models** (chuẩn hóa model `Tour`, `Blog`, `Review`).
-  - [ ] Chuyển toàn bộ logic xử lý schema legacy (`day-tours`, `tourDaily`, `tourSlug.en`, `tour_slug.vn`...) vào tầng **Mapper/Adapter**, không để rò rỉ vào Frontend UI components.
-  - [ ] Canonical hóa schema phía Sanity Studio backend nếu khả thi (`_type: "tour"`, `tourType: "day" | "multi-day"`, `slug: { vi, en, fr }`).
-- [ ] **6. Chuẩn Hóa Naming Convention Sang CamelCase**
-  - [ ] Refactor các hàm/biến mang phong cách snake_case sang chuẩn TypeScript camelCase:
+- [x] **4. Triển Khai Centralized Logger System**
+  - [x] Tạo module `front-end/src/lib/utils/logger.ts` (hỗ trợ các level `INFO`, `WARN`, `ERROR`, `DEBUG`, `perf`).
+  - [x] Tự động bật debug trong môi trường Vite dev (`import.meta.env.DEV`), ẩn log chi tiết ở Production.
+  - [x] Thay thế các lệnh gọi `console.log`, `console.warn`, `console.error` rải rác sang `Logger.*`.
+- [x] **5. Tách Lớp Sanity Adapter Khỏi Domain Model (Decoupling CMS Schema)**
+  - [x] Tạo cấu trúc kiến trúc rõ ràng: `server/sanity/queries/` và `server/sanity/mappers/`.
+  - [x] Xây dựng **Canonical Domain Models** (chuẩn hóa model `Tour`, `Blog`, `Review`).
+  - [x] Chuyển toàn bộ logic xử lý schema legacy (`day-tours`, `tourDaily`, `tourSlug.en`, `tour_slug.vn`...) vào tầng **Mapper/Adapter**, không để rò rỉ vào Frontend UI components.
+  - [x] Canonical hóa schema phía Sanity Studio backend nếu khả thi (`_type: "tour"`, `tourType: "day" | "multi-day"`, `slug: { vi, en, fr }`).
+- [x] **6. Chuẩn Hóa Naming Convention Sang CamelCase**
+  - [x] Refactor các hàm/biến mang phong cách snake_case sang chuẩn TypeScript camelCase:
     - `send_to_discord` ➔ `sendToDiscord`
     - `send_email` ➔ `sendEmail`
     - `clone_request` ➔ `requestClone`

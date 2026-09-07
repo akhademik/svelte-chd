@@ -1,4 +1,5 @@
 import { NOTIFY_EMAIL, RESEND_API_KEY } from '$env/static/private'
+import { Logger } from '$lib/utils/logger'
 import { Resend } from 'resend'
 import { generateClientEmailHtml } from './email-template'
 
@@ -22,7 +23,7 @@ export interface SendMailOptions {
 
 export const sendMail = async (options: SendMailOptions) => {
 	if (!resend || !RESEND_API_KEY) {
-		console.warn('[Resend]: RESEND_API_KEY not configured. Skipping email sending.')
+		Logger.warn('Resend', 'RESEND_API_KEY not configured. Skipping email sending.')
 		return null
 	}
 

@@ -1,6 +1,7 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
+import { Logger } from '$lib/utils/logger'
 import { form_schema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
 import { zod } from 'sveltekit-superforms/adapters'
@@ -11,8 +12,8 @@ interface SubmissionData extends FormSchema {
 	tags?: string[]
 }
 
-const send_email = async (data: SubmissionData) => {
-	const body_text = `
+const sendEmail = async (data: SubmissionData) => {
+	const bodyText = `
 Tên: ${data.name}
 Email: ${data.email}
 SĐT: ${data.phone}
@@ -26,21 +27,21 @@ ${data.msg}
 	return sendMail({
 		replyTo: data.email,
 		subject: `Liên hệ mới từ ${data.name}`,
-		text: body_text,
+		text: bodyText,
 	})
 }
 
-const send_to_discord = async (data: SubmissionData) => {
+const sendToDiscord = async (data: SubmissionData) => {
 	if (!DISCORD_WEBHOOK_URL) return
 
-	const discord_body = {
+	const discordBody = {
 		content: `📬 **Liên hệ mới từ CHD Travel Website**\n**Tên:** ${data.name}\n**Email:** ${data.email}\n**SĐT:** ${data.phone}\n**Ngôn ngữ:** ${data.langs}\n**Dịch vụ:** ${(data.tags || []).join(', ')}\n**Nội dung:**\n> ${data.msg.replace(/\n/g, '\n> ')}`,
 	}
 
 	return fetch(DISCORD_WEBHOOK_URL, {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(discord_body),
+		body: JSON.stringify(discordBody),
 	})
 }
 
@@ -54,17 +55,17 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
 
 export const actions = {
 	default: async ({ request }) => {
-		const clone_request = request.clone()
+		const requestClone = request.clone()
 		const form = await superValidate<FormSchema, string>(request, zod(form_schema as any) as any)
-		const tags = await clone_request.formData()
-		const all_tags = tags.getAll('selected_tag').map(t => String(t))
-		const last_val: SubmissionData = {
+		const tagsFormData = await requestClone.formData()
+		const allTags = tagsFormData.getAll('selected_tag').map(t => String(t))
+		const submission: SubmissionData = {
 			name: form.data.name,
 			email: form.data.email,
 			phone: form.data.phone,
 			langs: form.data.langs,
 			msg: form.data.msg,
-			tags: all_tags,
+			tags: allTags,
 		}
 
 		if (!form.valid) {
@@ -73,33 +74,33 @@ export const actions = {
 
 		try {
 			// Primary notification (Admin email)
-			const email_res = await send_email(last_val)
-			if (!email_res) {
-				console.warn('[Admin email]: Skipped or returned empty response')
+			const emailRes = await sendEmail(submission)
+			if (!emailRes) {
+				Logger.warn('ContactAction', 'Admin email skipped or returned empty response')
 			}
 
 			// Secondary notifications (Client confirmation + Discord notification) - Wait to settle before returning
 			const secondaryResults = await Promise.allSettled([
 				sendClientConfirmation({
-					name: last_val.name,
-					email: last_val.email,
-					langs: last_val.langs,
-					message: last_val.msg,
+					name: submission.name,
+					email: submission.email,
+					langs: submission.langs,
+					message: submission.msg,
 				}),
-				send_to_discord(last_val),
+				sendToDiscord(submission),
 			])
 
 			const [clientConf, discordRes] = secondaryResults
 			if (clientConf.status === 'rejected') {
-				console.error('[Secondary: Client Confirmation failed]:', clientConf.reason)
+				Logger.error('ContactAction', 'Secondary: Client Confirmation failed:', clientConf.reason)
 			}
 			if (discordRes.status === 'rejected') {
-				console.error('[Secondary: Discord Webhook failed]:', discordRes.reason)
+				Logger.error('ContactAction', 'Secondary: Discord Webhook failed:', discordRes.reason)
 			}
 
 			return message(form, 'success')
 		} catch (err) {
-			console.error('[Primary Contact submission error]:', err)
+			Logger.error('ContactAction', 'Primary Contact submission error:', err)
 			return message(form, 'failed')
 		}
 	},
