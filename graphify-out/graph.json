@@ -580,7 +580,7 @@
       "file_type": "code",
       "norm_label": "extract_url()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L45"
+      "source_location": "L63"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_get_lang_cookie",
@@ -592,7 +592,7 @@
       "file_type": "code",
       "norm_label": "get_lang_cookie()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L40"
+      "source_location": "L47"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_get_path_name_without_base",
@@ -7883,7 +7883,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L46",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -14937,7 +14937,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L40",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -14948,7 +14948,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L45",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -18907,5 +18907,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "4d0b35fc47074ed70e4266e1666d9f52bd973310"
+  "built_at_commit": "67cc7bd4c4106775a5cbb86a8f21b07ca29b4f6f"
 }

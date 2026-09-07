@@ -1,7 +1,7 @@
 # Graph Report - svelte-chd  (2026-09-07)
 
 ## Corpus Check
-- 183 files · ~87,296 words
+- 183 files · ~87,638 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4d0b35fc`
+- Built from commit: `67cc7bd4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

@@ -30,6 +30,75 @@
 			exchange_rates_store.setRates(data.exchangeRates)
 		}
 	})
+
+	// Client-side locale auto-detection & localStorage preference handling
+	$effect(() => {
+		if (typeof window === 'undefined') return
+
+		const currentPath = window.location.pathname
+		const segments = currentPath.split('/').filter(Boolean)
+		const currentUrlLang = segments[0]
+
+		try {
+			const savedLocale = localStorage.getItem('preferred_locale')
+			if (savedLocale && (savedLocale === 'vn' || savedLocale === 'en' || savedLocale === 'fr')) {
+				// If user explicitly saved a preferred locale in localStorage, make sure cookie matches
+				document.cookie = `lang=${savedLocale}; path=/; max-age=2592000; Secure; SameSite=Lax`
+
+				// If current URL language doesn't match saved preferred locale, redirect to preferred locale
+				if (
+					currentUrlLang &&
+					(currentUrlLang === 'vn' || currentUrlLang === 'en' || currentUrlLang === 'fr')
+				) {
+					if (currentUrlLang !== savedLocale) {
+						segments[0] = savedLocale
+						const targetPath =
+							'/' + segments.join('/') + window.location.search + window.location.hash
+						window.location.replace(targetPath)
+						return
+					}
+				}
+			} else {
+				// No saved preference in localStorage yet: detect system/browser locale
+				const navLangs = navigator.languages || [navigator.language || '']
+				let detected: 'vn' | 'en' | 'fr' = 'en'
+
+				for (const l of navLangs) {
+					const lower = l.toLowerCase()
+					if (lower.startsWith('vi') || lower.startsWith('vn')) {
+						detected = 'vn'
+						break
+					} else if (lower.startsWith('fr')) {
+						detected = 'fr'
+						break
+					} else if (lower.startsWith('en')) {
+						detected = 'en'
+						break
+					}
+				}
+
+				// Persist detected initial locale to localStorage & cookie for future visits
+				localStorage.setItem('preferred_locale', detected)
+				document.cookie = `lang=${detected}; path=/; max-age=2592000; Secure; SameSite=Lax`
+
+				// Redirect if currently on a different locale
+				if (
+					currentUrlLang &&
+					(currentUrlLang === 'vn' || currentUrlLang === 'en' || currentUrlLang === 'fr')
+				) {
+					if (currentUrlLang !== detected) {
+						segments[0] = detected
+						const targetPath =
+							'/' + segments.join('/') + window.location.search + window.location.hash
+						window.location.replace(targetPath)
+						return
+					}
+				}
+			}
+		} catch (err) {
+			console.warn('Locale storage detection error:', err)
+		}
+	})
 </script>
 
 <Toaster />

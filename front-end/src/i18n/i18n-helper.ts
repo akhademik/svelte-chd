@@ -30,16 +30,34 @@ export const get_preferred_locale = ({ request }: RequestEvent) => {
 export const persist_to_cookie = (locale: Locales) => {
 	const days = 30 // days to save the cookie
 	const date = new Date()
+	date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
 	const expire_day = `expires=${date.toUTCString()}`
 
-	date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-
 	document.cookie = `lang=${locale}; ${expire_day}; path=/; Secure; SameSite=Lax`
+
+	try {
+		if (typeof window !== 'undefined' && window.localStorage) {
+			localStorage.setItem('preferred_locale', locale)
+		}
+	} catch (e) {
+		console.warn('Could not save locale to localStorage', e)
+	}
 }
 
-export const get_lang_cookie = (event: RequestEvent) => {
-	const lang_cookie = event.request.headers.get('cookie')?.split('=')[1] as Locales
-	return lang_cookie
+export const get_lang_cookie = (event: RequestEvent): Locales | undefined => {
+	const cookieHeader = event.request.headers.get('cookie')
+	if (!cookieHeader) return undefined
+
+	const cookies = cookieHeader.split(';').map(c => c.trim())
+	for (const cookie of cookies) {
+		if (cookie.startsWith('lang=')) {
+			const val = cookie.substring(5)
+			if (val === 'vn' || val === 'en' || val === 'fr') {
+				return val as Locales
+			}
+		}
+	}
+	return undefined
 }
 
 export const extract_url = (event: RequestEvent) => {
