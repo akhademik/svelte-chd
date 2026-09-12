@@ -5,16 +5,35 @@
 	import { get_menu_url, menu_items } from '$modules/nav-bar/nav-bar-logic'
 	import { nav_deg, nav_mobile } from '$stores/nav-store'
 
-	const nav_click = () => {
-		nav_mobile.toggle()
-		nav_deg.turn()
+	const close_menu = () => {
+		if ($nav_mobile) {
+			nav_mobile.toggle()
+			nav_deg.turn()
+		}
 	}
+
+	$effect(() => {
+		if (typeof document !== 'undefined') {
+			if ($nav_mobile) {
+				document.body.style.overflow = 'hidden'
+			} else {
+				document.body.style.overflow = ''
+			}
+			return () => {
+				document.body.style.overflow = ''
+			}
+		}
+	})
 </script>
 
-<section
-	class="fixed inset-0 z-40 flex flex-col justify-between bg-surface p-8 transition-all duration-500 md:hidden"
-	class:-translate-x-full={!$nav_mobile}>
-	<div class="mt-20">
+<div
+	class="fixed inset-0 z-40 flex h-[100dvh] flex-col justify-between overflow-y-auto bg-surface px-6 pb-8 pt-24 transition-all duration-500 sm:px-8 md:hidden"
+	class:-translate-x-full={!$nav_mobile}
+	role="dialog"
+	aria-modal="true"
+	aria-label="Mobile navigation menu">
+	<!-- Menu Nav Links -->
+	<div class="my-auto py-6">
 		<ul class="flex flex-col gap-6 font-serif text-2xl tracking-wide text-foreground">
 			{#each menu_items as item (item.id)}
 				{@const fixed_url = get_menu_url(item, $locale)}
@@ -23,14 +42,16 @@
 					<a
 						href={fixed_url}
 						class={`transition-colors ${active ? 'italic text-secondary' : 'hover:text-secondary'}`}
-						onclick={nav_click}>
+						onclick={close_menu}>
 						{$LL.nav_bar[item.text]()}
 					</a>
 				</li>
 			{/each}
 		</ul>
 	</div>
-	<div class="flex items-center justify-between border-t border-border pt-6">
+
+	<!-- Bottom Section with Locale Switcher aligned to the Right -->
+	<div class="flex items-center justify-end border-t border-border/80 pt-6">
 		<BaseLocaleSwitcher />
 	</div>
-</section>
+</div>
