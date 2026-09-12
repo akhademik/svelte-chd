@@ -43,12 +43,14 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 2. Chạy toàn bộ bộ kiểm tra chất lượng (Quality Gates)      │
+│ 2. Chạy toàn bộ bộ kiểm tra chất lượng & CI/CD Verification │
 │    - pnpm format:all                                        │
 │    - pnpm lint:all                                          │
 │    - pnpm check:all (Svelte & TypeScript diagnostics)       │
-│    - pnpm test (Vitest 49/49 unit tests across 7 suites)    │
+│    - pnpm test (Vitest unit test suites)                    │
+│    - pnpm test:e2e (Playwright E2E — Đảm bảo CI/CD Green)   │
 │    - pnpm knip:all (Dead Code & Unused Dependencies)        │
+│    - pnpm build:all (Kiểm tra build production)             │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
@@ -56,11 +58,11 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 4. Báo cáo và trình bày kết quả rõ ràng cho User            │
+│ 4. Báo cáo và trình bày kết quả chi tiết cho User           │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 5. Đợi User xác nhận -> Đề xuất Commit Git                  │
+│ 5. Đợi User xác nhận -> Thực hiện Git Commit & Push         │
 └─────────────────────────────────────────────────────────────┘
 ```
 

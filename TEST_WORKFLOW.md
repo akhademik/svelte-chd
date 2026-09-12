@@ -37,8 +37,15 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
 ## 🔄 2. Quy Trình Phản Hồi & Commit
 
 1. **Thực hiện sửa đổi** (Single-pass edit bằng native tool, không dùng patch vặt).
-2. **Chạy toàn bộ chuỗi kiểm tra** (`format:all` -> `lint:all` -> `check:all` -> `test`).
-3. **Chạy `graphify update .`** cập nhật graph tri thức.
-4. **Báo cáo kết quả rõ ràng cho User**.
-5. **Khi User phê duyệt (OK)** -> Thực hiện Git Commit theo chuẩn Conventional Commits.
+2. **Chạy toàn bộ chuỗi kiểm tra & CI/CD Verification**:
+   - Format: `pnpm format:all`
+   - Linting: `pnpm lint:all`
+   - Type Checking: `pnpm check:all`
+   - Unit Tests: `pnpm test` (Vitest 49/49)
+   - E2E Tests: `pnpm test:e2e` (Playwright 5/5 — Kiểm tra và đảm bảo toàn bộ CI/CD GitHub Actions pass 100%)
+   - Dead Code: `pnpm knip:all`
+   - Build Check: `pnpm build:all`
+3. **Chạy `graphify update .`** cập nhật graph tri thức mã nguồn.
+4. **Báo cáo kết quả đầy đủ, rõ ràng cho User**.
+5. **Khi User phê duyệt (OK)** -> Thực hiện Git Commit & Push theo chuẩn Conventional Commits.
 
