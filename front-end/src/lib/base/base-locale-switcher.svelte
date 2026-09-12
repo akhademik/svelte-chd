@@ -1,37 +1,48 @@
 <script lang="ts">
-	import { browser } from '$app/environment'
-	import { goto } from '$app/navigation'
+	import { goto, preloadData } from '$app/navigation'
 	import { page } from '$app/stores'
 	import { persist_to_cookie, replace_locale_in_url } from '$i18n/i18n-helper'
 	import { locale, setLocale } from '$i18n/i18n-svelte'
 	import type { Locales } from '$i18n/i18n-types'
 	import { locales } from '$i18n/i18n-util'
 	import { loadLocaleAsync } from '$i18n/i18n-util.async'
-	import { nav_mobile } from '$stores/nav-store'
+	import { is_locale_transitioning, nav_deg, nav_mobile } from '$stores/nav-store'
+
+	let isSwitching = $state(false)
 
 	const switch_locale = async (new_locale: Locales) => {
-		if ($nav_mobile) nav_mobile.toggle()
-		if (!new_locale || $locale === new_locale) return
+		if ($nav_mobile) {
+			nav_mobile.toggle()
+			nav_deg.turn()
+		}
+		if (!new_locale || $locale === new_locale || isSwitching) return
 
-		await loadLocaleAsync(new_locale)
-		setLocale(new_locale)
-		persist_to_cookie(new_locale)
+		isSwitching = true
+		is_locale_transitioning.set(true)
 
-		const targetUrl = replace_locale_in_url(url, new_locale)
-		await goto(targetUrl, { invalidateAll: true, keepFocus: true })
+		try {
+			const targetUrl = replace_locale_in_url(url, new_locale)
+
+			// Preload dictionary and page data while fading out
+			await Promise.all([
+				loadLocaleAsync(new_locale),
+				preloadData(targetUrl).catch(() => null),
+				new Promise(r => setTimeout(r, 220)),
+			])
+
+			setLocale(new_locale)
+			persist_to_cookie(new_locale)
+
+			await goto(targetUrl, { invalidateAll: true, noScroll: true, keepFocus: true })
+		} finally {
+			setTimeout(() => {
+				is_locale_transitioning.set(false)
+				isSwitching = false
+			}, 60)
+		}
 	}
 
 	let url = $derived($page.url)
-	let lang = $derived($page.params.lang as Locales)
-
-	$effect(() => {
-		if (browser && lang && lang !== $locale) {
-			loadLocaleAsync(lang).then(() => {
-				setLocale(lang)
-				document.querySelector('html')?.setAttribute('lang', lang)
-			})
-		}
-	})
 </script>
 
 <div class="flex items-center gap-1 text-xs uppercase tracking-wider">

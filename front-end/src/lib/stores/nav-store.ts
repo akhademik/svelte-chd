@@ -23,6 +23,15 @@ const set_animate_hidden_store = () => {
 	}
 }
 
+const set_locale_transitioning_store = () => {
+	const { subscribe, set } = writable(false)
+	return {
+		subscribe,
+		set,
+	}
+}
+
 export const nav_deg = set_deg_store()
 export const nav_mobile = set_mobile_store()
 export const nav_animate_hidden = set_animate_hidden_store()
+export const is_locale_transitioning = set_locale_transitioning_store()
