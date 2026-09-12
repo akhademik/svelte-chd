@@ -25,9 +25,11 @@
 	let allTours = $derived([...dayTours, ...highlandTours])
 	let featuredPosts = $derived(data?.featuredPosts || [])
 	let testimonials = $derived(data?.testimonials || [])
+	let activeHeroImage = $derived(data?.activeHeroImage)
+	let allHeroImages = $derived(data?.allHeroImages || [])
 </script>
 
-<HomeHero />
+<HomeHero heroImage={activeHeroImage} heroImages={allHeroImages} />
 <HomeWhyChd />
 <HomeFeaturedSlider tours={allTours} />
 <HomeTestimonials {testimonials} />

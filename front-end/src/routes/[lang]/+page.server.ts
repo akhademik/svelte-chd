@@ -4,6 +4,7 @@ import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { isSpamSubmission } from '$lib/server/security/anti-spam'
 import { checkRateLimit } from '$lib/server/security/rate-limiter'
 import { BlogService } from '$lib/server/services/blog.service'
+import { HeroImageService } from '$lib/server/services/hero-image.service'
 import { TourService } from '$lib/server/services/tour.service'
 import { Logger } from '$lib/utils/logger'
 import { form_schema, type FormSchema } from '$utils/form-schema'
@@ -58,17 +59,24 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
 
-	const [dayTours, highlandTours, featuredPosts] = await Promise.all([
+	const [dayTours, highlandTours, featuredPosts, allHeroImages] = await Promise.all([
 		TourService.getToursByType('day-tours', kv),
 		TourService.getToursByType('highland-tours', kv),
 		BlogService.getFeaturedBlogs(kv),
+		HeroImageService.getHeroImages(kv),
 	])
+
+	const activeHeroImage = HeroImageService.getActiveHeroImage
+		? await HeroImageService.getActiveHeroImage(kv)
+		: null
 
 	return {
 		form,
 		dayTours,
 		highlandTours,
 		featuredPosts,
+		activeHeroImage,
+		allHeroImages,
 		testimonials: defaultTestimonials,
 	}
 }
