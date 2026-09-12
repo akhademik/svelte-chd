@@ -61,8 +61,7 @@
 		}
 	})
 
-	const FALLBACK_HERO_IMAGE =
-		'https://cdn.sanity.io/images/uzyjbxdd/production/963ada63fd50d74b09e870505890e737e80cd9b4-4000x2252.jpg?w=2000&q=85&auto=format'
+	const FALLBACK_HERO_IMAGE = '/hero-fallback.jpg'
 
 	const handleImageError = (e: Event) => {
 		const target = e.currentTarget as HTMLImageElement | null
