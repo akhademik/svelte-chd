@@ -58,8 +58,8 @@ export default {
 				},
 			},
 			fontFamily: {
-				heading: ['"Sora"', 'sans-serif'],
-				serif: ['"Sora"', 'sans-serif'],
+				heading: ['"Lora"', 'Georgia', 'serif'],
+				serif: ['"Lora"', 'Georgia', 'serif'],
 				sans: ['"Plus Jakarta Sans"', 'sans-serif'],
 			},
 		},
