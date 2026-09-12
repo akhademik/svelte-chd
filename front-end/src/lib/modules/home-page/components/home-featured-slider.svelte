@@ -77,24 +77,29 @@
 	<section
 		id="featured-tours"
 		class="relative overflow-hidden border-b border-border bg-inverse-dark text-inverse-foreground">
-		<!-- Background image with subtle overlay -->
+		<!-- Background Cover Image with Soft Parallax & Gradient Mask -->
 		<div class="absolute inset-0 z-0 overflow-hidden bg-inverse-dark">
 			{#key currentIndex}
-				{#if currentTour.img_cover?.asset}
+				{#if currentTour?.img_cover}
 					<img
-						transition:fade={{ duration: 500 }}
+						transition:fade={{ duration: 600 }}
 						src={url_for(currentTour.img_cover)
-							.width(1600)
-							.height(900)
+							.width(1920)
+							.height(1080)
 							.auto('format')
-							.quality(80)
+							.quality(85)
 							.url()}
 						alt={currentTour.img_cover?.caption || title}
-						class="absolute inset-0 h-full w-full object-cover opacity-35 brightness-90 filter" />
+						class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-700 md:opacity-85" />
 				{/if}
 			{/key}
+			<!-- Directional gradient mask: Dark on left where typography sits, smooth fade to transparent on middle/right for vibrant photo visibility -->
 			<div
-				class="absolute inset-0 bg-gradient-to-r from-inverse-dark via-inverse-dark/80 to-inverse-dark/40">
+				class="absolute inset-0 bg-gradient-to-b from-inverse-dark/90 via-inverse-dark/60 to-inverse-dark/85 lg:bg-gradient-to-r lg:from-inverse-dark/95 lg:via-inverse-dark/70 lg:via-45% lg:to-transparent">
+			</div>
+			<!-- Subtle ambient top & bottom vignettes -->
+			<div
+				class="absolute inset-0 bg-gradient-to-t from-inverse-dark/40 via-transparent to-inverse-dark/30">
 			</div>
 		</div>
 
