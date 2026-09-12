@@ -7,6 +7,7 @@ export const contact_page = {
 			'Có câu hỏi? Chỉ tò mò? Bạn không cần phải biết tất cả câu trả lời để gửi cho chúng tôi một dòng tin.',
 		chose_tag: 'Vui lòng chọn dịch vụ mà bạn quan tâm:',
 		submit: 'gửi',
+		get_directions: 'Chỉ đường trên Google Maps ↗',
 	},
 	tags: {
 		day_tour: 'Tour trong ngày',
@@ -19,6 +20,8 @@ export const contact_page = {
 		transport: 'phương tiện vận chuyển',
 		translate: 'phiên dịch',
 	},
+	inquiry_template:
+		'Tôi muốn hỏi thêm thông tin về {tour}... Xin vui lòng tư vấn lịch trình chi tiết và báo giá cho đoàn chúng tôi.',
 	err: {
 		form_all: 'Vui lòng điền đầy đủ thông tin vào tất cả các mục.',
 		form_name: 'Tên phải chứa ít nhất 3 ký tự.',
@@ -35,4 +38,4 @@ export const contact_page = {
 		langs: 'NGÔN NGỮ *',
 		msg: `TIN NHẮN *`,
 	},
-}
+} as const

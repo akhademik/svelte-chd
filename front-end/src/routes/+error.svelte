@@ -15,35 +15,19 @@
 
 		<h1 class="mt-6 font-serif text-2xl font-bold text-foreground sm:text-3xl">
 			{#if is503}
-				{$locale === 'vi'
-					? 'Dịch vụ tạm thời gián đoạn'
-					: $locale === 'fr'
-						? 'Service temporairement indisponible'
-						: 'Service Temporarily Unavailable'}
+				{$LL.error_page.title_503()}
 			{:else if is404}
-				{$locale === 'vi'
-					? 'Không tìm thấy trang yêu cầu'
-					: $locale === 'fr'
-						? 'Page non trouvée'
-						: 'Page Not Found'}
+				{$LL.error_page.title_404()}
 			{:else}
-				{$locale === 'vi' ? 'Đã xảy ra lỗi' : 'An error occurred'}
+				{$LL.error_page.title_default()}
 			{/if}
 		</h1>
 
 		<p class="mt-4 text-sm font-light leading-relaxed text-foreground-muted sm:text-base">
 			{#if is503}
-				{$locale === 'vi'
-					? 'Hệ thống đang đồng bộ dữ liệu hoặc kết nối bị chậm. Vui lòng tải lại trang sau ít phút.'
-					: $locale === 'fr'
-						? 'Le système est en cours de synchronisation. Veuillez réessayer dans quelques instants.'
-						: 'We are experiencing temporary connection delays. Please refresh the page in a few moments.'}
+				{$LL.error_page.desc_503()}
 			{:else if is404}
-				{$locale === 'vi'
-					? 'Trang bạn đang tìm kiếm không tồn tại hoặc đã được chuyển sang đường dẫn khác.'
-					: $locale === 'fr'
-						? 'La page que vous recherchez n’existe pas ou a été déplacée.'
-						: 'The page you are looking for does not exist or has been moved.'}
+				{$LL.error_page.desc_404()}
 			{:else}
 				{page.error?.message || 'Unexpected error'}
 			{/if}

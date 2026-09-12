@@ -4,11 +4,19 @@ export const tours = {
 	description:
 		'Khám phá thế giới của những hành trình bản địa chân thực. Cho dù bạn đang tìm kiếm những kỳ quan thiên nhiên, sự đắm chìm trong buôn làng hay những đồi cà phê bạt ngàn, CHD Travel luôn đồng hành cùng bạn.',
 	price_from: 'chỉ từ',
+	price_starting_from: 'Giá chỉ từ',
+	featured_badge: 'Tour Nổi Bật / Bán Chạy',
+	view_details: 'Xem Chi Tiết Tour',
+	book_now_btn: 'Đặt Ngay',
+	book_tour_btn: 'Đặt Tour',
+	pace_relaxed: 'Thư thái',
 	click_detail: 'Chi tiết',
 	back_to_tours: 'Tất cả tour',
 	plan_trip: 'Lên kế hoạch chuyến đi này',
 	book_now: 'Đặt Tour',
 	customize_trip: 'Lên kế hoạch chuyến đi',
+	customize_desc:
+		'Đội ngũ CHD Travel sẽ cùng bạn chuẩn bị lịch trình cá nhân hóa hoàn toàn miễn phí.',
 	trip_facts: {
 		title: 'Thông số hành trình',
 		route: 'Tuyến điểm',
@@ -35,12 +43,31 @@ export const tours = {
 		diet_desc:
 			'CHD Travel luôn sẵn sàng phục vụ thực đơn chay (Vegan/Vegetarian) hoặc kiêng theo yêu cầu của du khách.',
 	},
+	gallery: {
+		excursions_subtitle: '01 / Hành Trình Trong Ngày',
+		expeditions_subtitle: '02 / Hành Trình Đại Ngàn',
+		day_desc:
+			'Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.',
+		central_desc:
+			'Hành trình nhiều ngày sâu lắng qua những cung đường sương mù, rừng thông cổ thụ và âm vang đại ngàn.',
+		view_all: 'Xem tất cả',
+		view_all_photos: 'Xem tất cả {count} ảnh',
+		photos_aria: 'Bộ sưu tập hình ảnh',
+		prev_photo: 'Ảnh trước đó',
+		next_photo: 'Ảnh tiếp theo',
+		close_gallery: 'Đóng thư viện ảnh',
+	},
 	detail: {
 		intro: 'Giới Thiệu',
 		highlights: 'Các Điểm Chính',
 		itinerary: 'Lịch Trình Chi Tiết',
 		price: 'Bảng Giá Tour',
 		inclusion: 'Dịch Vụ Bao Gồm',
+		inclusion_default: 'Xe đưa đón, hướng dẫn viên, nước uống & vé tham quan trọn gói.',
+		departure_label: 'Khởi hành',
+		duration_label: 'Thời lượng',
+		group_size_label: 'Quy mô nhóm',
+		close: 'Đóng',
 		pax_no: 'Số lượng khách',
 		pax: 'khách',
 		solo: 'Khách cá nhân',
@@ -54,4 +81,4 @@ export const tours = {
 		send_enquiry: 'Đặt Ngay',
 		enquiry_title: 'Tôi muốn đặt tour này',
 	},
-}
+} as const

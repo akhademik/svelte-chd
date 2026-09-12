@@ -9,6 +9,19 @@ export const home_page = {
 		'Des itinéraires minimalistes et raffinés au cœur des forêts de pins, des plantations de caféiers et de la culture ancestrale des gongs.',
 	cta_explore: 'Découvrir nos circuits',
 	cta_contact: 'Échanger avec un guide local',
+	plan_your_trip: {
+		subtitle: 'Voyage Sur Mesure',
+		title: 'Dites-nous ce que vous souhaitez vivre',
+		desc: 'Qu’il s’agisse de flâner dans les plantations de café, d’écouter les légendes ancestrales ou d’admirer les cascades sauvages — nous composons votre voyage idéal.',
+		cta_btn: 'Créer mon itinéraire',
+	},
+	featured_blogs_section: {
+		subtitle: 'Regards & Expériences',
+		title: 'Articles en Vedette',
+		desc: 'Récits vivants, conseils pratiques et moments culturels authentiques des Hauts Plateaux.',
+		view_all: 'Voir tous les articles →',
+		read_article: "Lire l'article",
+	},
 	featured_experiences: {
 		subtitle: 'Instants Précieux',
 		title: 'Expériences Emblématiques des Hauts Plateaux',

@@ -6,6 +6,7 @@ export const contact_page = {
 		have_question: `Vous avez une question ? Juste curieux ? Vous n'avez pas besoin de connaître toutes les réponses pour nous envoyer un message.`,
 		chose_tag: 'Veuillez choisir le service qui vous intéresse :',
 		submit: 'Soumettre',
+		get_directions: 'Itinéraire sur Google Maps ↗',
 	},
 	tags: {
 		day_tour: `visite d'une journée`,
@@ -18,6 +19,8 @@ export const contact_page = {
 		transport: 'transport',
 		translate: 'traduction',
 	},
+	inquiry_template:
+		'Je souhaite avoir plus d’informations sur {tour}... Merci de me communiquer les détails et le tarif pour notre groupe.',
 	err: {
 		form_all: 'Veuillez remplir tous les champs.',
 		form_name: 'Le nom doit contenir au moins 3 caractères.',
@@ -34,4 +37,4 @@ export const contact_page = {
 		langs: 'LANGUES *',
 		msg: `MESSAGES *`,
 	},
-}
+} as const

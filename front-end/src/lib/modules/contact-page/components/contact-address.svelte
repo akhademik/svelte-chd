@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { locale } from '$i18n/i18n-svelte'
+	import LL from '$i18n/i18n-svelte'
 </script>
 
 <section class="overflow-hidden rounded-none border border-border bg-surface shadow-sm">
@@ -23,7 +23,7 @@
 			target="_blank"
 			rel="noopener noreferrer"
 			class="font-semibold text-secondary hover:underline">
-			{$locale === 'vi' ? 'Chỉ đường trên Google Maps ↗' : 'Get Directions ↗'}
+			{$LL.contact_page.page.get_directions()}
 		</a>
 	</div>
 </section>

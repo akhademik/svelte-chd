@@ -185,3 +185,64 @@ export const resolve_canonical_category = (urlCategory?: string): CanonicalTourC
 	}
 	return null
 }
+
+/**
+ * Safely extracts a localized string or value from a multilingual field object with fallback.
+ */
+export const get_localized_field = <T = string>(
+	field: Record<string, T> | undefined | null,
+	locale: Locales | string = 'en',
+	fallback: T | '' = ''
+): T | '' => {
+	if (!field || typeof field !== 'object') return fallback
+	const loc = locale === 'vn' ? 'vi' : locale
+	if (field[loc] !== undefined && field[loc] !== null && field[loc] !== '') {
+		return field[loc]
+	}
+	if (loc === 'vi' && field.vn !== undefined && field.vn !== null && field.vn !== '') {
+		return field.vn
+	}
+	if (field.en !== undefined && field.en !== null && field.en !== '') {
+		return field.en
+	}
+	if (field.vi !== undefined && field.vi !== null && field.vi !== '') {
+		return field.vi
+	}
+	if (field.vn !== undefined && field.vn !== null && field.vn !== '') {
+		return field.vn
+	}
+	if (field.fr !== undefined && field.fr !== null && field.fr !== '') {
+		return field.fr
+	}
+	return fallback
+}
+
+/**
+ * Checks if an entity has a valid localized title/name for the active locale or standard fallbacks.
+ */
+export const has_localized_title = (
+	entity:
+		| { title?: Record<string, any> | null; tour_name?: Record<string, any> | null }
+		| undefined
+		| null,
+	locale: Locales | string = 'en'
+): boolean => {
+	if (!entity) return false
+	const titleObj = entity.title || entity.tour_name
+	if (!titleObj) return false
+	const val = get_localized_field(titleObj, locale)
+	return Boolean(val && typeof val === 'string' ? val.trim() : val)
+}
+
+/**
+ * Filters a list of entities (posts, tours) ensuring only those with valid localized content are returned.
+ */
+export const filter_localized_items = <
+	T extends { title?: Record<string, any> | null; tour_name?: Record<string, any> | null },
+>(
+	items: T[] | undefined | null,
+	locale: Locales | string = 'en'
+): T[] => {
+	if (!Array.isArray(items)) return []
+	return items.filter(item => has_localized_title(item, locale))
+}

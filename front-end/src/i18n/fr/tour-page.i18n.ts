@@ -4,11 +4,19 @@ export const tours = {
 	description:
 		'Plongez dans des aventures locales authentiques ! Que vous recherchiez les brumes des plateaux, la culture des villages ou la saveur des plantations de café, CHD Travel façonne des moments inoubliables.',
 	price_from: 'à partir de',
+	price_starting_from: 'À partir de',
+	featured_badge: 'Coups de Cœur',
+	view_details: 'Voir les Détails',
+	book_now_btn: 'Réserver',
+	book_tour_btn: 'Réserver ce tour',
+	pace_relaxed: 'Détendu',
 	click_detail: 'Détails',
 	back_to_tours: 'Tous les circuits',
 	plan_trip: 'Organiser ce voyage',
 	book_now: 'Réserver ce tour',
 	customize_trip: 'Organiser votre voyage',
+	customize_desc:
+		'Notre équipe CHD Travel compose votre itinéraire sur mesure avec vous, sans frais.',
 	trip_facts: {
 		title: 'Fiche Pratique',
 		route: 'Parcours',
@@ -33,7 +41,20 @@ export const tours = {
 			'Prise en charge et retour inclus depuis les hôtels du centre de Buon Ma Thuot ou l’aéroport sur demande.',
 		diet_title: 'Régimes Alimentaires',
 		diet_desc:
-			'Repas végétariens, végétaliens et régimes spécifiques préparés avec soin sur simple demande.',
+			'Repas végétariens, végétaliens et régimes spécifiques préparés với soin sur simple demande.',
+	},
+	gallery: {
+		excursions_subtitle: '01 / Excursions',
+		expeditions_subtitle: '02 / Grandes Expéditions',
+		day_desc: 'Des instants inoubliables réunis en une journée riche et paisible.',
+		central_desc:
+			'Voyages itinérants à travers les cols brumeux, les forêts de pins et les villages traditionnels.',
+		view_all: 'Voir tout',
+		view_all_photos: 'Voir les {count} photos',
+		photos_aria: 'Galerie photos',
+		prev_photo: 'Photo précédente',
+		next_photo: 'Photo suivante',
+		close_gallery: 'Fermer la galerie',
 	},
 	detail: {
 		intro: 'Introduction',
@@ -41,6 +62,11 @@ export const tours = {
 		itinerary: 'Itinéraire Détaillé',
 		price: 'Grille Tarifaire',
 		inclusion: 'Prestations Incluses',
+		inclusion_default: 'Transport, guide local, billets d’entrée et eau minérale inclus.',
+		departure_label: 'Départ',
+		duration_label: 'Durée',
+		group_size_label: 'Groupe',
+		close: 'Fermer',
 		pax_no: 'Nombre de personnes',
 		pax: 'pax',
 		solo: 'Client seul',
@@ -55,4 +81,4 @@ export const tours = {
 		send_enquiry: 'Réserver',
 		enquiry_title: 'Je souhaite réserver ce circuit',
 	},
-}
+} as const

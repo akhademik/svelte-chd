@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores'
 	import { PortableText } from '@portabletext/svelte'
-	import { locale } from '$i18n/i18n-svelte'
+	import LL, { locale } from '$i18n/i18n-svelte'
 
 	import type { Locales } from '$i18n/i18n-types'
 	import { blog_modal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
+	import { get_localized_field } from '$lib/utils/format-data'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
@@ -15,17 +16,9 @@
 	let post = $derived($blog_modal.post as BlogPost | null)
 	let activeLang = $derived(($page.params.lang as Locales) || $locale || 'en')
 
-	let title = $derived(
-		post?.title?.[activeLang] || post?.title?.vn || post?.title?.en || post?.title?.fr || 'Blog'
-	)
-
-	let excerpt = $derived(
-		post?.excerpt?.[activeLang] || post?.excerpt?.vn || post?.excerpt?.en || post?.excerpt?.fr || ''
-	)
-
-	let content = $derived(
-		post?.content?.[activeLang] || post?.content?.vn || post?.content?.en || post?.content?.fr || []
-	)
+	let title = $derived(get_localized_field(post?.title, activeLang, 'Blog'))
+	let excerpt = $derived(get_localized_field(post?.excerpt, activeLang, ''))
+	let content = $derived(get_localized_field(post?.content, activeLang, []))
 
 	let imgCover = $derived(post?.coverImg)
 	let imgTour = $derived(post?.img_tour || post?.imgTour || (post as any)?.album || [])
@@ -99,14 +92,22 @@
 
 	const getCategoryName = (cat?: string) => {
 		switch (cat) {
-			case 'event':
-				return activeLang === 'vi' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
-			case 'story':
-				return activeLang === 'vi' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
+			case 'places':
+				return $LL.blog_page.categories.places()
+			case 'food':
+				return $LL.blog_page.categories.food()
+			case 'people':
+				return $LL.blog_page.categories.people()
+			case 'stories':
+				return $LL.blog_page.categories.stories()
 			case 'tips':
-				return activeLang === 'vi' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
+				return $LL.blog_page.categories.tips()
+			case 'event':
+				return $LL.blog_page.categories.event()
 			case 'destination':
-				return activeLang === 'vi' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
+				return $LL.blog_page.categories.destination()
+			case 'story':
+				return $LL.blog_page.categories.story()
 			default:
 				return 'Blog'
 		}
@@ -146,7 +147,7 @@
 				<button
 					onclick={close}
 					class="flex h-8 w-8 items-center justify-center rounded-full text-foreground-subtle transition-colors hover:bg-surface-muted hover:text-foreground"
-					aria-label="Close">
+					aria-label={$LL.blog_page.close()}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-5 w-5"
@@ -284,7 +285,7 @@
 				<button
 					onclick={close}
 					class="bg-inverse px-6 py-2.5 text-xs uppercase tracking-widest text-inverse-foreground shadow-sm transition-colors hover:bg-inverse-dark">
-					{activeLang === 'vi' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
+					{$LL.blog_page.close()}
 				</button>
 			</div>
 		</div>

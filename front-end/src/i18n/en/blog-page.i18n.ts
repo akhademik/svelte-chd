@@ -11,6 +11,10 @@ export const blog_page = {
 	no_posts: 'no articles available yet.',
 	author_prefix: 'author:',
 	all_articles_btn: '← all articles',
+	view_all: 'View all',
+	view_all_photos: 'View all {count} photos',
+	close: 'Close',
+	featured_badge: 'Featured',
 	categories: {
 		all: 'all',
 		places: 'places',

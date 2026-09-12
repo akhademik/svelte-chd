@@ -11,6 +11,10 @@ export const blog_page = {
 	no_posts: 'chưa có bài viết nào.',
 	author_prefix: 'tác giả:',
 	all_articles_btn: '← xem các bài viết khác',
+	view_all: 'Xem tất cả',
+	view_all_photos: 'Xem tất cả {count} ảnh',
+	close: 'Đóng',
+	featured_badge: 'Nổi bật',
 	categories: {
 		all: 'tất cả',
 		places: 'điểm đến',
@@ -22,4 +26,4 @@ export const blog_page = {
 		destination: 'điểm đến tây nguyên',
 		story: 'cảm nhận du khách',
 	},
-}
+} as const

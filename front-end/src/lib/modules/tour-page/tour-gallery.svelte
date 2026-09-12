@@ -2,6 +2,7 @@
 	import { page } from '$app/state'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
+	import { filter_localized_items } from '$lib/utils/format-data'
 	import { fly } from 'svelte/transition'
 
 	import TourCard from './tour-card.svelte'
@@ -14,15 +15,7 @@
 	let tourtype = $derived(page.params.tourtype)
 	let isDay = $derived(tourtype === 'day-tours')
 
-	let availableTours = $derived(
-		tours.filter(
-			t =>
-				Boolean(t.tour_name?.[$locale]) ||
-				($locale === 'vi' && Boolean(t.tour_name?.vn)) ||
-				Boolean(t.tour_name?.en) ||
-				Boolean(t.tour_name?.vi)
-		)
-	)
+	let availableTours = $derived(filter_localized_items(tours, $locale))
 </script>
 
 <div class="mx-auto max-w-6xl px-6 py-12">
@@ -31,20 +24,14 @@
 		<div>
 			<span
 				class="mb-3 block text-xs font-medium uppercase tracking-[0.25em] text-foreground-subtle">
-				{isDay ? '01 / Excursions' : '02 / Grand Expeditions'}
+				{isDay ? $LL.tours.gallery.excursions_subtitle() : $LL.tours.gallery.expeditions_subtitle()}
 			</span>
 			<h1 class="font-serif text-3xl font-bold text-primary sm:text-4xl">
 				{isDay ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()}
 			</h1>
 		</div>
 		<p class="max-w-md text-sm font-light text-foreground-muted">
-			{isDay
-				? $locale === 'vi'
-					? 'Gói trọn những khoảnh khắc tinh túy nhất của đất trời trong một ngày ngắn ngủi mà đáng nhớ.'
-					: 'Unforgettable moments crafted into a single, enriching, unhurried day.'
-				: $locale === 'vi'
-					? 'Hành trình nhiều ngày sâu lắng qua những cung đường sương mù, rừng thông cổ thụ và âm vang đại ngàn.'
-					: 'Multi-day mindful journeys through misty passes, ancient pine forests, and ethnic hamlets.'}
+			{isDay ? $LL.tours.gallery.day_desc() : $LL.tours.gallery.central_desc()}
 		</p>
 	</div>
 

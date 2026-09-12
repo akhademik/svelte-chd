@@ -202,11 +202,7 @@
 										class="absolute inset-0 flex flex-col items-center justify-center rounded-xl bg-black/50 text-white backdrop-blur-[2px] transition-colors group-hover:bg-black/60">
 										<span class="font-serif text-xl font-bold">+{allImages.length - 4}</span>
 										<span class="text-[11px] uppercase tracking-wider">
-											{$locale === 'vi'
-												? 'Xem tất cả'
-												: $locale === 'fr'
-													? 'Voir tout'
-													: 'View all'}
+											{$LL.tours.gallery.view_all()}
 										</span>
 									</div>
 								{/if}
@@ -278,11 +274,7 @@
 						<polyline points="21 15 16 10 5 21"></polyline>
 					</svg>
 					<span>
-						{$locale === 'vi'
-							? `Xem tất cả ${allImages.length} ảnh`
-							: $locale === 'fr'
-								? `Voir les ${allImages.length} photos`
-								: `View all ${allImages.length} photos`}
+						{$LL.tours.gallery.view_all_photos({ count: allImages.length })}
 					</span>
 				</button>
 			</section>
@@ -588,9 +580,7 @@
 						{$LL.tours.customize_trip()}
 					</h4>
 					<p class="mt-2 text-xs font-light leading-relaxed text-inverse-foreground">
-						{$locale === 'vi'
-							? 'Đội ngũ CHD Travel sẽ cùng bạn chuẩn bị lịch trình cá nhân hóa hoàn toàn miễn phí.'
-							: 'We curate private and personalized itineraries for you and your travel companions.'}
+						{$LL.tours.customize_desc()}
 					</p>
 					<a
 						href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}

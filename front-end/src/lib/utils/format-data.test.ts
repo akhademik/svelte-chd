@@ -7,6 +7,9 @@ import {
 	slugify,
 	get_category_slug,
 	resolve_canonical_category,
+	get_localized_field,
+	has_localized_title,
+	filter_localized_items,
 } from './format-data'
 import type { Tour } from '$lib/types/tour.type'
 
@@ -104,6 +107,39 @@ describe('format-data utilities', () => {
 
 			expect(resolve_canonical_category('invalid-category')).toBeNull()
 			expect(resolve_canonical_category(undefined)).toBeNull()
+		})
+	})
+
+	describe('localization helpers', () => {
+		it('should get localized field with proper priority and fallbacks', () => {
+			const obj = { vi: 'Tiêu đề VN', en: 'English Title', fr: 'Titre Français' }
+			expect(get_localized_field(obj, 'vi')).toBe('Tiêu đề VN')
+			expect(get_localized_field(obj, 'vn')).toBe('Tiêu đề VN')
+			expect(get_localized_field(obj, 'en')).toBe('English Title')
+			expect(get_localized_field(obj, 'fr')).toBe('Titre Français')
+
+			const fallbackObj = { en: 'Only English' }
+			expect(get_localized_field(fallbackObj, 'vi')).toBe('Only English')
+			expect(get_localized_field(null, 'vi', 'Default')).toBe('Default')
+		})
+
+		it('should check if entity has localized title', () => {
+			expect(has_localized_title({ title: { vi: 'Bài viết' } }, 'vi')).toBe(true)
+			expect(has_localized_title({ tour_name: { en: 'Tour' } }, 'fr')).toBe(true)
+			expect(has_localized_title({ title: null }, 'vi')).toBe(false)
+			expect(has_localized_title(undefined, 'vi')).toBe(false)
+		})
+
+		it('should filter items by localized title', () => {
+			const items = [
+				{ id: 1, title: { vi: 'Bài 1', en: 'Post 1' } },
+				{ id: 2, title: null },
+				{ id: 3, tour_name: { en: 'Tour 3' } },
+			]
+			const filtered = filter_localized_items(items, 'vi')
+			expect(filtered.length).toBe(2)
+			expect(filtered[0].id).toBe(1)
+			expect(filtered[1].id).toBe(3)
 		})
 	})
 })

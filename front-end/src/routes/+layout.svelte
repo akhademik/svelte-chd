@@ -53,7 +53,7 @@
 
 <!-- Soothing anti-glare dark green overlay for seamless locale transitions -->
 <div
-	class="pointer-events-none fixed inset-0 z-50 bg-primary-dark/90 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
+	class="pointer-events-none fixed inset-0 z-[100] bg-primary-dark/90 backdrop-blur-sm transition-opacity duration-300 ease-in-out"
 	class:opacity-100={$is_locale_transitioning}
 	class:opacity-0={!$is_locale_transitioning}
 	aria-hidden="true">

@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { locale } from '$i18n/i18n-svelte'
+	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
+	import { filter_localized_items, get_localized_field } from '$lib/utils/format-data'
 	import { get_blog_slug, url_for } from '$lib/utils/sanity'
 
 	interface Props {
@@ -9,35 +10,14 @@
 
 	let { posts = [] }: Props = $props()
 
-	let displayPosts = $derived.by(() => {
-		if (!posts || posts.length === 0) return []
-		return posts.filter(p =>
-			Boolean(
-				p.title?.[$locale as 'vi' | 'vn' | 'en' | 'fr'] || p.title?.vi || p.title?.vn || p.title?.en
-			)
-		)
-	})
+	let displayPosts = $derived(filter_localized_items(posts, $locale))
 
 	const getPostTitle = (p: BlogPost) => {
-		return (
-			p.title?.[$locale as 'vi' | 'vn'] ||
-			p.title?.vi ||
-			p.title?.vn ||
-			p.title?.en ||
-			p.title?.fr ||
-			''
-		)
+		return get_localized_field(p.title, $locale, 'CHD Journal')
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return (
-			p.excerpt?.[$locale as 'vi' | 'vn'] ||
-			p.excerpt?.vi ||
-			p.excerpt?.vn ||
-			p.excerpt?.en ||
-			p.excerpt?.fr ||
-			''
-		)
+		return get_localized_field(p.excerpt, $locale, '')
 	}
 
 	const getPostCover = (p: BlogPost) => {
@@ -53,27 +33,38 @@
 
 	const getCategoryName = (cat: string) => {
 		switch (cat) {
-			case 'event':
-				return $locale === 'vi' ? 'Sự kiện sắp diễn ra' : 'Upcoming Event'
-			case 'story':
-				return $locale === 'vi' ? 'Cảm nhận đoàn khách' : 'Traveler Stories'
+			case 'places':
+				return $LL.blog_page.categories.places()
+			case 'food':
+				return $LL.blog_page.categories.food()
+			case 'people':
+				return $LL.blog_page.categories.people()
+			case 'stories':
+				return $LL.blog_page.categories.stories()
 			case 'tips':
-				return $locale === 'vi' ? 'Kinh nghiệm du lịch' : 'Travel Tips'
+				return $LL.blog_page.categories.tips()
+			case 'event':
+				return $LL.blog_page.categories.event()
 			case 'destination':
-				return $locale === 'vi' ? 'Điểm đến Tây Nguyên' : 'Highland Destinations'
+				return $LL.blog_page.categories.destination()
+			case 'story':
+				return $LL.blog_page.categories.story()
 			default:
-				return 'Blog'
+				return 'Journal'
 		}
 	}
 
 	const getCategoryBadgeClass = (cat: string) => {
 		switch (cat) {
+			case 'food':
 			case 'event':
 				return 'bg-amber-100 text-amber-900 border-amber-300'
+			case 'stories':
 			case 'story':
 				return 'bg-orange-100 text-orange-900 border-orange-300'
 			case 'tips':
 				return 'bg-emerald-100 text-emerald-900 border-emerald-300'
+			case 'places':
 			case 'destination':
 				return 'bg-cyan-100 text-cyan-900 border-cyan-300'
 			default:
@@ -90,26 +81,20 @@
 			<div class="mb-10 flex flex-col justify-between gap-6 md:flex-row md:items-end">
 				<div>
 					<span class="mb-2 block text-xs font-medium uppercase tracking-[0.25em] text-secondary">
-						{$locale === 'vi' ? 'Góc Nhìn & Trải Nghiệm' : 'Stories & Insights'}
+						{$LL.home_page.featured_blogs_section.subtitle()}
 					</span>
 					<h2 class="font-serif text-3xl font-normal text-foreground sm:text-4xl">
-						{$locale === 'vi'
-							? 'Bài Viết Nổi Bật'
-							: $locale === 'fr'
-								? 'Articles en Vedette'
-								: 'Featured Stories'}
+						{$LL.home_page.featured_blogs_section.title()}
 					</h2>
 				</div>
 				<div class="flex items-center gap-4">
 					<p class="max-w-md text-sm font-light text-foreground-muted">
-						{$locale === 'vi'
-							? 'Những câu chuyện sống động, kinh nghiệm du lịch và khoảnh khắc văn hoá bản địa đặc sắc.'
-							: 'Authentic moments, local insights, and cultural highlights from our journeys across the Highlands.'}
+						{$LL.home_page.featured_blogs_section.desc()}
 					</p>
 					<a
 						href={`/${$locale}/blog`}
 						class="hidden shrink-0 border border-foreground px-5 py-2.5 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-foreground hover:text-background md:inline-block">
-						{$locale === 'vi' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
+						{$LL.home_page.featured_blogs_section.view_all()}
 					</a>
 				</div>
 			</div>
@@ -170,7 +155,7 @@
 							<a
 								href={postLink}
 								class="flex items-center gap-1.5 hover:underline">
-								<span>{$locale === 'vi' ? 'Đọc bài viết' : 'Read Article'}</span>
+								<span>{$LL.home_page.featured_blogs_section.read_article()}</span>
 								<span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
 							</a>
 						</div>
@@ -182,7 +167,7 @@
 				<a
 					href={`/${$locale}/blog`}
 					class="inline-block border border-foreground bg-surface px-6 py-3 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-foreground hover:text-background">
-					{$locale === 'vi' ? 'Xem tất cả bài viết →' : 'View All Posts →'}
+					{$LL.home_page.featured_blogs_section.view_all()}
 				</a>
 			</div>
 		</div>

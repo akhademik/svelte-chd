@@ -11,6 +11,10 @@ export const blog_page = {
 	no_posts: "aucun article n'est disponible pour l'instant.",
 	author_prefix: 'auteur :',
 	all_articles_btn: '← tous les articles',
+	view_all: 'Voir tout',
+	view_all_photos: 'Voir les {count} photos',
+	close: 'Fermer',
+	featured_badge: 'À la une',
 	categories: {
 		all: 'tous',
 		places: 'lieux',
@@ -22,4 +26,4 @@ export const blog_page = {
 		destination: 'destinations',
 		story: 'témoignages',
 	},
-}
+} as const

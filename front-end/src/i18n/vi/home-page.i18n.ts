@@ -9,6 +9,19 @@ export const home_page = {
 		'Những hành trình tinh tế đưa bạn hòa mình vào văn hóa bản địa, buôn làng mộc mạc, cà phê thơm lừng và âm vang đại ngàn Tây Nguyên.',
 	cta_explore: 'Khám phá các tour',
 	cta_contact: 'Trò chuyện cùng người bản địa',
+	plan_your_trip: {
+		subtitle: 'Thiết Kế Chuyến Đi Riêng',
+		title: 'Chia sẻ điều bạn muốn trải nghiệm',
+		desc: 'Dù là đi bộ qua nương rẫy cà phê, lắng nghe già làng kể khan, hay thong dong ngắm thác rừng đại ngàn — chúng tôi sẵn sàng cùng bạn tạo nên một hành trình mang đậm dấu ấn cá nhân.',
+		cta_btn: 'Lên kế hoạch chuyến đi',
+	},
+	featured_blogs_section: {
+		subtitle: 'Góc Nhìn & Trải Nghiệm',
+		title: 'Bài Viết Nổi Bật',
+		desc: 'Những câu chuyện sống động, kinh nghiệm du lịch và khoảnh khắc văn hoá bản địa đặc sắc.',
+		view_all: 'Xem tất cả bài viết →',
+		read_article: 'Đọc bài viết',
+	},
 	featured_experiences: {
 		subtitle: 'Lát cắt trải nghiệm',
 		title: 'Những khoảnh khắc chỉ có ở Tây Nguyên',

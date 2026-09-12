@@ -2,7 +2,7 @@
 	import { page } from '$app/stores'
 	import { BaseLocaleSwitcher } from '$base'
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { get_menu_url, menu_items } from '$modules/nav-bar/nav-bar-logic'
+	import { get_menu_url, is_menu_active, menu_items } from '$modules/nav-bar/nav-bar-logic'
 	import { nav_deg, nav_mobile } from '$stores/nav-store'
 
 	const close_menu = () => {
@@ -37,7 +37,7 @@
 		<ul class="flex flex-col gap-6 font-serif text-2xl tracking-wide text-foreground">
 			{#each menu_items as item (item.id)}
 				{@const fixed_url = get_menu_url(item, $locale)}
-				{@const active = $page.url.pathname === fixed_url}
+				{@const active = is_menu_active(item, $page.url.pathname, $locale)}
 				<li>
 					<a
 						href={fixed_url}

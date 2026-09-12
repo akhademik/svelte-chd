@@ -9,6 +9,19 @@ export const home_page = {
 		'Curated minimalist journeys immersing you into indigenous culture, misty pine plateaus, authentic coffee farms, and Gong heritage.',
 	cta_explore: 'Explore Tours',
 	cta_contact: 'Connect with a Local Host',
+	plan_your_trip: {
+		subtitle: 'Tailor-Made Journey',
+		title: 'Tell us what you want to experience',
+		desc: 'Whether walking through organic coffee farms, listening to village elders share ancient folklore, or wandering by wild waterfalls — we curate your private, unhurried journey.',
+		cta_btn: 'Plan Your Trip',
+	},
+	featured_blogs_section: {
+		subtitle: 'Stories & Insights',
+		title: 'Featured Stories',
+		desc: 'Authentic moments, local insights, and cultural highlights from our journeys across the Highlands.',
+		view_all: 'View All Posts →',
+		read_article: 'Read Article',
+	},
 	featured_experiences: {
 		subtitle: 'Curated Moments',
 		title: 'Signature Highland Encounters',

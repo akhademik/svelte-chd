@@ -6,6 +6,7 @@ export const contact_page = {
 		have_question: `Have a question? Just curious? You don't have to know all the answers to drop us a line.`,
 		chose_tag: 'Please chose the service you are interested in:',
 		submit: 'submit',
+		get_directions: 'Get Directions ↗',
 	},
 	tags: {
 		day_tour: 'day tour',
@@ -18,6 +19,8 @@ export const contact_page = {
 		transport: 'transportation',
 		translate: 'translation',
 	},
+	inquiry_template:
+		'I would like to ask for more information about {tour}... Please share the detailed itinerary and quote for our group.',
 	err: {
 		form_all: 'Please complete all fields',
 		form_name: 'Name must be at least 3 characters.',

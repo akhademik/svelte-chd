@@ -24,12 +24,7 @@
 		const tourParam = page.url.searchParams.get('tour')
 
 		if (tourParam && !$form.msg) {
-			$form.msg =
-				$locale === 'vi'
-					? `Tôi muốn hỏi thêm thông tin về ${tourParam}... Xin vui lòng tư vấn lịch trình chi tiết và báo giá cho đoàn chúng tôi.`
-					: $locale === 'fr'
-						? `Je souhaite avoir plus d'informations sur le tour ${tourParam}... Merci de me communiquer les détails et le tarif pour notre groupe.`
-						: `I would like to ask for more information about the tour ${tourParam}... Please share the detailed itinerary and quote for our group.`
+			$form.msg = $LL.contact_page.inquiry_template({ tour: tourParam })
 		}
 	})
 

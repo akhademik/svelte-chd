@@ -4,13 +4,13 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { get_tour_slug, url_for } from '$utils/sanity'
-
 	import {
 		get_category_slug,
+		get_localized_field,
 		resolve_canonical_category,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
+	import { get_tour_slug, url_for } from '$utils/sanity'
 
 	interface Props {
 		tour: Tour
@@ -22,7 +22,8 @@
 	let tour_duration = $derived(tour.tour_duration)
 	let tour_name = $derived(tour.tour_name)
 	let tour_intro = $derived(tour.tour_intro)
-	let title = $derived(tour_name?.[$locale] || tour_name?.en || 'Tour')
+	let title = $derived(get_localized_field(tour_name, $locale, 'Tour'))
+	let durationText = $derived(get_localized_field(tour_duration, $locale, ''))
 
 	let canonicalCategory = $derived<CanonicalTourCategory>(
 		resolve_canonical_category(page.params.tourtype) ||
@@ -60,7 +61,7 @@
 		<div class="p-5 sm:p-6">
 			<div
 				class="mb-2.5 flex items-center gap-2.5 text-xs font-light tracking-wider text-foreground-subtle">
-				{#if tour_duration?.[$locale]}
+				{#if durationText}
 					<span class="flex items-center gap-1.5 text-foreground-muted">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -77,12 +78,12 @@
 								r="10"></circle>
 							<polyline points="12 6 12 12 16 14"></polyline>
 						</svg>
-						<span>{tour_duration[$locale]}</span>
+						<span>{durationText}</span>
 					</span>
 					<span>•</span>
 				{/if}
 				<span class="text-foreground-muted">
-					{$locale === 'vi' ? 'Thư thái' : $locale === 'fr' ? 'Détendu' : 'Relaxed'}
+					{$LL.tours.pace_relaxed()}
 				</span>
 			</div>
 
@@ -98,7 +99,7 @@
 			<div
 				class="mb-2 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-foreground-muted">
 				<PortableText
-					value={tour_intro?.[$locale] || tour_intro?.vi || tour_intro?.vn || []}
+					value={get_localized_field(tour_intro, $locale, [])}
 					components={{}} />
 			</div>
 		</div>
@@ -131,7 +132,7 @@
 		<button
 			onclick={() => booking_modal.open(title)}
 			class="bg-inverse px-4 py-2 text-xs font-medium uppercase tracking-wider text-inverse-foreground transition-colors hover:bg-inverse-dark">
-			{$locale === 'vi' ? 'Đặt Tour' : 'Book Tour'}
+			{$LL.tours.book_tour_btn()}
 		</button>
 	</div>
 </article>

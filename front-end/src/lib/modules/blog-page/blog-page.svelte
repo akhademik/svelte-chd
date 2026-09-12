@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
+	import { filter_localized_items, get_localized_field } from '$lib/utils/format-data'
 	import { get_blog_slug, url_for } from '$lib/utils/sanity'
 
 	interface Props {
@@ -11,15 +12,8 @@
 
 	let activeFilter = $state<string>('all')
 
-	// Strict language filter
-	let availablePosts = $derived.by(() => {
-		return posts.filter(p => {
-			const hasTitle = Boolean(
-				p.title?.[$locale as 'vi' | 'vn' | 'en' | 'fr'] || p.title?.vi || p.title?.vn || p.title?.en
-			)
-			return hasTitle
-		})
-	})
+	// Clean language filter using central helper
+	let availablePosts = $derived(filter_localized_items(posts, $locale))
 
 	// Dynamic category list: Only show categories that have at least 1 post
 	let presentCategories = $derived.by(() => {
@@ -49,13 +43,11 @@
 	)
 
 	const getPostTitle = (p: BlogPost) => {
-		return p.title?.[$locale as 'vi' | 'vn'] || p.title?.vi || p.title?.vn || p.title?.en || ''
+		return get_localized_field(p.title, $locale, 'CHD Journal')
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return (
-			p.excerpt?.[$locale as 'vi' | 'vn'] || p.excerpt?.vi || p.excerpt?.vn || p.excerpt?.en || ''
-		)
+		return get_localized_field(p.excerpt, $locale, '')
 	}
 
 	const getPostCover = (p: BlogPost) => {
@@ -186,7 +178,7 @@
 							class={`rounded-full border px-3 py-1 text-[11px] font-medium ${getCategoryBadgeClass(featuredPost.category)}`}>
 							{getCategoryName(featuredPost.category)}
 						</span>
-						<span class="text-xs text-foreground-subtle">Featured</span>
+						<span class="text-xs text-foreground-subtle">{$LL.blog_page.featured_badge()}</span>
 					</div>
 					<div class="relative z-10 mt-8">
 						<h2

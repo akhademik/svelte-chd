@@ -326,25 +326,21 @@
 						<div>
 							<span
 								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
-								{activeLang === 'vi' ? 'Khởi hành' : activeLang === 'fr' ? 'Départ' : 'Departure'}
+								{$LL.tours.detail.departure_label()}
 							</span>
 							<span class="font-medium text-foreground">Buôn Ma Thuột</span>
 						</div>
 						<div>
 							<span
 								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
-								{activeLang === 'vi' ? 'Thời lượng' : activeLang === 'fr' ? 'Durée' : 'Duration'}
+								{$LL.tours.detail.duration_label()}
 							</span>
 							<span class="font-medium text-foreground">{duration || '1 Day'}</span>
 						</div>
 						<div>
 							<span
 								class="mb-0.5 block text-[10px] uppercase tracking-wider text-foreground-subtle">
-								{activeLang === 'vi'
-									? 'Quy mô nhóm'
-									: activeLang === 'fr'
-										? 'Groupe'
-										: 'Group Size'}
+								{$LL.tours.detail.group_size_label()}
 							</span>
 							<span class="font-medium text-foreground">1 - 10+ {$LL.tours.detail.pax()}</span>
 						</div>
@@ -454,9 +450,7 @@
 								</ul>
 							{:else}
 								<p class="text-xs font-light italic text-foreground-subtle sm:text-sm">
-									{activeLang === 'vi'
-										? 'Xe đưa đón, hướng dẫn viên, nước uống & vé tham quan trọn gói.'
-										: 'Transportation, local guide, entrance tickets & bottled water included.'}
+									{$LL.tours.detail.inclusion_default()}
 								</p>
 							{/if}
 						</div>
@@ -506,7 +500,7 @@
 						<button
 							onclick={close}
 							class="w-1/2 border border-border-strong px-5 py-2.5 text-xs uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-auto">
-							{activeLang === 'vi' ? 'Đóng' : activeLang === 'fr' ? 'Fermer' : 'Close'}
+							{$LL.tours.detail.close()}
 						</button>
 						<button
 							onclick={handleBook}
