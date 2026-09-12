@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/state'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
 	import { redirect_to_home } from '$utils/navigation'
@@ -21,10 +20,18 @@
 
 	$effect(() => {
 		// Read URL search params to auto-fill tour inquiry if redirected from Tour Details
-		const tourParam = page.url.searchParams.get('tour')
+		if (typeof window !== 'undefined') {
+			const params = new URLSearchParams(window.location.search)
+			const tourParam = params.get('tour')
+			const durationParam = params.get('duration')
+			const codeParam = params.get('code')
 
-		if (tourParam && !$form.msg) {
-			$form.msg = $LL.contact_page.inquiry_template({ tour: tourParam })
+			if (tourParam && !$form.msg) {
+				const info = [`Tour: ${tourParam}`]
+				if (durationParam) info.push(`Duration: ${durationParam}`)
+				if (codeParam) info.push(`Code: ${codeParam}`)
+				$form.msg = info.join(' | ')
+			}
 		}
 	})
 

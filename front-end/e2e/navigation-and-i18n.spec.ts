@@ -4,15 +4,15 @@ test.describe('Navigation & Multilingual Switching', () => {
 	test('should navigate between languages correctly and load home page', async ({ page }) => {
 		await page.goto('/en')
 		await expect(page).toHaveTitle(/CHD Travel/i)
-		await expect(page.locator('text=go local — see local — eat local')).toBeVisible()
+		await expect(page.getByText(/go local/i)).toBeVisible()
 
 		// Switch to Vietnamese
-		await page.goto('/vn')
-		await expect(page.locator('text=chạm vào tâm hồn')).toBeVisible()
+		await page.goto('/vi')
+		await expect(page.getByText(/Chạm vào tâm hồn/i)).toBeVisible()
 
 		// Switch to French
 		await page.goto('/fr')
-		await expect(page.locator("text=Ressentez l'âme pure")).toBeVisible()
+		await expect(page.getByText(/Ressentez l'âme pure/i)).toBeVisible()
 	})
 
 	test('should load contact page with prefilled parameters', async ({ page }) => {

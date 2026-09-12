@@ -47,11 +47,20 @@ const sendToDiscord = async (data: SubmissionData) => {
 	})
 }
 
-export const load: PageServerLoad = async ({ setHeaders }) => {
+export const load: PageServerLoad = async ({ url, setHeaders }) => {
 	setHeaders({
 		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=7200',
 	})
 	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
+	const tour = url.searchParams.get('tour')
+	const duration = url.searchParams.get('duration')
+	const code = url.searchParams.get('code')
+	if (tour) {
+		const info = [`Tour: ${tour}`]
+		if (duration) info.push(`Duration: ${duration}`)
+		if (code) info.push(`Code: ${code}`)
+		form.data.msg = info.join(' | ')
+	}
 	return { form, testimonials: defaultTestimonials }
 }
 

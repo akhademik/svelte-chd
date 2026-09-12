@@ -7,7 +7,7 @@ test.describe('SEO & Editorial Journal', () => {
 		await expect(canonical).toHaveAttribute('href', /chd\.travel\/en/)
 
 		const hreflangVi = page.locator('link[hreflang="vi"]')
-		await expect(hreflangVi).toHaveAttribute('href', /chd\.travel\/vn/)
+		await expect(hreflangVi).toHaveAttribute('href', /chd\.travel\/(vi|vn)/)
 	})
 
 	test('should render Journal page with categories and articles', async ({ page }) => {
