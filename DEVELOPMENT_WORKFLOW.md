@@ -47,7 +47,7 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 │    - pnpm format:all                                        │
 │    - pnpm lint:all                                          │
 │    - pnpm check:all (Svelte & TypeScript diagnostics)       │
-│    - pnpm test (Vitest 22/22 unit test suites)              │
+│    - pnpm test (Vitest 46/46 unit tests across 6 suites)    │
 │    - pnpm knip:all (Dead Code & Unused Dependencies)        │
 └──────────────────────────────┬──────────────────────────────┘
                                ▼

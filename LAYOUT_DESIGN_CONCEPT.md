@@ -75,8 +75,19 @@ Khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa tok
   - Viền mỏng: `border border-border/90 bg-surface` (tránh dùng `bg-white` gắt chói).
   - Radius: Bo nhẹ góc tối thiểu (`rounded-none` hoặc `rounded-sm`) để giữ phong cách tạp chí cổ điển cao cấp.
 - **Modal Behavior (Tour Detail / Blog Detail / Booking Modal)**:
-  - Mobile View (`< sm`): Fullscreen hoàn toàn (`h-full max-h-screen w-full rounded-none border-0`), lớp phủ đặt `z-[60]` để đè lên trên Navbar và Mobile menu (`z-40`).
+  - Mobile View (`< sm`): Fullscreen cho Detail Modal (`h-full max-h-screen w-full rounded-none border-0`), căn giữa dọc (`items-center justify-center p-4 sm:p-6 max-h-[90vh]`) cho Form Booking Modal. Lớp phủ đặt `z-[60]` để đè lên trên Navbar và Mobile menu (`z-40`).
   - Desktop View (`sm:` trở lên): Pop-up dạng hộp thoại (`sm:h-auto sm:max-h-[90vh] sm:border`).
+- **Media Galleries & Lightbox (Tour & Blog Detail)**:
+  - Bento Grid (1 ảnh lớn + 4 ảnh nhỏ) trên Desktop với overlay đếm ảnh `+{count}` ở ảnh thứ 4.
+  - Fullscreen Glassmorphic Lightbox (`z-[80]`) hỗ trợ touch swipe trên mobile, keyboard navigation (`ArrowLeft`, `ArrowRight`, `Escape`), thumbnail strip, zero-jitter stage.
+- **Header & Transitions Z-Index Hierarchy**:
+  - Mobile Menu: `z-40`
+  - Fixed Header Bar: `z-50`
+  - Modal Overlays: `z-[60]`
+  - Gallery Lightbox: `z-[80]`
+  - Locale Route Transition Overlay: `z-[100]` (`pointer-events-none`) che phủ 100% màn hình kể cả Header Bar khi đổi ngôn ngữ.
+- **Active Navigation & 1-Level Up Highlighting**:
+  - Hỗ trợ đánh dấu Menu Item cha ("Blog", "Day Tours", "Highland Tours") sáng khi người dùng đang xem trang con/chi tiết (`/blog/[slug]`, `/tour-trong-ngay/[slug]`, `/excursions/[slug]`).
 - **Hero Slider Title Clamping**:
   - Giới hạn tối đa 2 dòng (`line-clamp-2`) kèm `title={title}` tooltip để tránh vỡ layout khi tên tour quá dài. Badge và duration sử dụng `min-h-[1.75rem] flex-wrap gap-2.5` để tự động xuống dòng linh hoạt.
 
