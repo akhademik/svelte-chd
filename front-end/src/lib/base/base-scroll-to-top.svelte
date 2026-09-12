@@ -7,12 +7,36 @@
 	let visible = $derived(y > (innerHeight > 0 ? innerHeight * 0.75 : 400))
 
 	const scrollToTop = () => {
-		if (typeof window !== 'undefined') {
-			window.scrollTo({
-				top: 0,
-				behavior: 'smooth',
-			})
+		if (typeof window === 'undefined') return
+		const startPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop
+		if (startPosition === 0) return
+
+		// Smooth easeInOutCubic scrolling curve
+		const duration = Math.min(Math.max(startPosition * 0.35, 500), 900)
+		const startTime = performance.now()
+
+		const easeInOutCubic = (t: number): number =>
+			t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2
+
+		// Temporarily disable CSS scroll-behavior smooth during custom rAF animation to avoid browser fighting
+		const html = document.documentElement
+		const prevScrollBehavior = html.style.scrollBehavior
+		html.style.scrollBehavior = 'auto'
+
+		const step = (currentTime: number) => {
+			const elapsed = currentTime - startTime
+			const progress = Math.min(elapsed / duration, 1)
+			const ease = easeInOutCubic(progress)
+			window.scrollTo(0, startPosition * (1 - ease))
+
+			if (progress < 1) {
+				requestAnimationFrame(step)
+			} else {
+				html.style.scrollBehavior = prevScrollBehavior
+			}
 		}
+
+		requestAnimationFrame(step)
 	}
 </script>
 

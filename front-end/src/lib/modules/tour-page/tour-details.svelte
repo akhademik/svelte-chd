@@ -342,14 +342,17 @@
 				<!-- Right: Started Price & Action Buttons -->
 				<div
 					class="rounded-lg border border-border bg-surface-muted/40 p-6 shadow-sm lg:col-span-4">
-					<span class="block text-xs uppercase tracking-wider text-foreground-subtle">
-						{$LL.tours.price_from()}
-					</span>
-					<div class="mt-1 flex items-baseline gap-1.5">
-						<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
-							{format_price(minPrice, $locale)}
-						</b>
-						<span class="text-xs font-light text-foreground-subtle">/{$LL.tours.detail.pax()}</span>
+					<div class="flex items-baseline justify-between gap-2 border-b border-border/60 pb-3">
+						<span class="text-xs uppercase tracking-wider text-foreground-subtle">
+							{$LL.tours.price_from()}
+						</span>
+						<div class="flex items-baseline gap-1">
+							<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
+								{format_price(minPrice, $locale)}
+							</b>
+							<span class="text-xs font-light text-foreground-subtle"
+								>/{$LL.tours.detail.pax()}</span>
+						</div>
 					</div>
 
 					<div class="mt-6 flex flex-col gap-3">
