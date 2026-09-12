@@ -15,19 +15,28 @@
 	$effect(() => {
 		if (typeof document !== 'undefined') {
 			if ($nav_mobile) {
+				document.documentElement.style.overflow = 'hidden'
+				document.documentElement.style.touchAction = 'none'
 				document.body.style.overflow = 'hidden'
+				document.body.style.touchAction = 'none'
 			} else {
+				document.documentElement.style.overflow = ''
+				document.documentElement.style.touchAction = ''
 				document.body.style.overflow = ''
+				document.body.style.touchAction = ''
 			}
 			return () => {
+				document.documentElement.style.overflow = ''
+				document.documentElement.style.touchAction = ''
 				document.body.style.overflow = ''
+				document.body.style.touchAction = ''
 			}
 		}
 	})
 </script>
 
 <div
-	class="fixed inset-0 z-40 flex h-[100dvh] flex-col justify-between overflow-y-auto bg-surface px-6 pb-8 pt-24 transition-all duration-500 sm:px-8 md:hidden"
+	class="fixed inset-0 z-40 flex h-[100dvh] touch-pan-y flex-col justify-between overflow-y-auto overscroll-contain bg-surface px-6 pb-8 pt-24 transition-all duration-500 sm:px-8 md:hidden"
 	class:-translate-x-full={!$nav_mobile}
 	role="dialog"
 	aria-modal="true"

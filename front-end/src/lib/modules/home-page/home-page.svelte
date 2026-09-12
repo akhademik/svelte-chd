@@ -29,7 +29,9 @@
 	let allHeroImages = $derived(data?.allHeroImages || [])
 </script>
 
-<HomeHero heroImage={activeHeroImage} heroImages={allHeroImages} />
+<HomeHero
+	heroImage={activeHeroImage}
+	heroImages={allHeroImages} />
 <HomeWhyChd />
 <HomeFeaturedSlider tours={allTours} />
 <HomeTestimonials {testimonials} />

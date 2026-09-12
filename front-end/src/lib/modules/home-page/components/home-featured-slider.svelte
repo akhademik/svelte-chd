@@ -85,19 +85,19 @@
 							.width(1920)
 							.height(1080)
 							.auto('format')
-							.quality(85)
+							.quality(95)
 							.url()}
 						alt={currentTour.img_cover?.caption || title}
-						class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity duration-700 md:opacity-85" />
+						class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-700 md:opacity-90" />
 				{/if}
 			{/key}
-			<!-- Directional gradient mask: Dark on left where typography sits, smooth fade to transparent on middle/right for vibrant photo visibility -->
+			<!-- Directional gradient mask: Light breathable vertical fade on mobile, side gradient on desktop -->
 			<div
-				class="absolute inset-0 bg-gradient-to-b from-inverse-dark/90 via-inverse-dark/60 to-inverse-dark/85 lg:bg-gradient-to-r lg:from-inverse-dark/95 lg:via-inverse-dark/70 lg:via-45% lg:to-transparent">
+				class="absolute inset-0 bg-gradient-to-b from-inverse-dark/65 via-inverse-dark/25 to-inverse-dark/75 lg:bg-gradient-to-r lg:from-inverse-dark/95 lg:via-inverse-dark/70 lg:via-45% lg:to-transparent">
 			</div>
-			<!-- Subtle ambient top & bottom vignettes -->
+			<!-- Subtle ambient top & bottom vignettes (desktop only to keep mobile bright) -->
 			<div
-				class="absolute inset-0 bg-gradient-to-t from-inverse-dark/40 via-transparent to-inverse-dark/30">
+				class="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-inverse-dark/40 via-transparent to-inverse-dark/30 lg:block">
 			</div>
 		</div>
 
@@ -133,7 +133,7 @@
 					<!-- Tour Title -->
 					<div class="mb-5 flex min-h-[4rem] items-center sm:min-h-[4.5rem] lg:min-h-[5.5rem]">
 						<h2
-							class="line-clamp-2 font-serif text-xl font-normal leading-snug text-white sm:text-2xl lg:text-3xl"
+							class="line-clamp-2 font-serif text-xl font-normal leading-snug text-white [text-shadow:_0_2px_8px_rgba(0,0,0,0.85)] sm:text-2xl lg:text-3xl"
 							{title}>
 							<a
 								href={tourLink}

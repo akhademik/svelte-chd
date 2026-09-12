@@ -37,7 +37,7 @@ export const HeroImageService = {
 	 * Fetches all active hero images from Sanity with memory cache & KV snapshot backup.
 	 */
 	async getHeroImages(kv?: KVNamespace): Promise<HeroImage[]> {
-		const cacheTtl = dev ? 5 * 1000 : 30 * 60 * 1000
+		const cacheTtl = dev ? 5 * 1000 : 5 * 60 * 1000
 		return cachedFetch('active-hero-images', cacheTtl, async () => {
 			try {
 				return await withKvSnapshot(

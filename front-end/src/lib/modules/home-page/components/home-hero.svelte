@@ -31,7 +31,12 @@
 
 	// Initial index aligned with SSR heroImage
 	let initialIndex = $derived(
-		heroImage ? Math.max(0, effectiveImages.findIndex(img => img._id === heroImage._id)) : 0
+		heroImage
+			? Math.max(
+					0,
+					effectiveImages.findIndex(img => img._id === heroImage._id)
+				)
+			: 0
 	)
 	let currentIndex = $state(0)
 	let intervalId: ReturnType<typeof setInterval> | null = null
@@ -76,7 +81,7 @@
 
 	let bgImageUrl = $derived.by(() => {
 		if (currentHero?.image?.asset) {
-			return url_for(currentHero.image).width(2000).quality(85).auto('format').url()
+			return url_for(currentHero.image).width(2000).quality(95).auto('format').url()
 		}
 		return FALLBACK_HERO_IMAGE
 	})
@@ -86,7 +91,7 @@
 
 <section
 	class="relative flex min-h-[85vh] items-center justify-center overflow-hidden border-b border-border bg-black px-6 py-24">
-	<!-- 1. Full 100% Vibrant Background Image -->
+	<!-- 1. Full Vibrant Background Image -->
 	<img
 		src={bgImageUrl}
 		alt={bgImageAlt}
@@ -94,19 +99,19 @@
 		class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-1000 ease-out hover:scale-105"
 		loading="eager" />
 
-	<!-- 2. Targeted Radial Scrim (Option A: Focused contrast for text center, full vibrancy for edges) -->
+	<!-- 2. Ultra-Light Ambient Scrim: Subtle bottom fade maintaining 85% photo clarity and brightness -->
 	<div
-		class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.55)_0%,_rgba(0,0,0,0.15)_60%,_rgba(0,0,0,0.4)_100%)]"
+		class="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent"
 		aria-hidden="true">
 	</div>
 
 	<!-- 3. Streamlined Content: 3 Clean Lines (Eyebrow -> Headline -> CTA) -->
 	<div
-		class="relative z-10 mx-auto max-w-4xl text-center [text-shadow:_0_2px_8px_rgba(0,0,0,0.8),_0_4px_24px_rgba(0,0,0,0.6)]">
-		<!-- Line 1: Glowing Refined Eyebrow Tagline -->
+		class="relative z-10 mx-auto max-w-4xl text-center [text-shadow:_0_2px_8px_rgba(0,0,0,0.8),_0_4px_20px_rgba(0,0,0,0.5)]">
+		<!-- Line 1: Refined Eyebrow Tagline -->
 		<div class="mb-6 flex justify-center">
 			<p
-				class="text-xs font-bold uppercase tracking-[0.35em] text-amber-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] drop-shadow-[0_0_14px_rgba(251,191,36,0.65)] sm:text-sm">
+				class="text-xs font-bold uppercase tracking-[0.35em] text-amber-300 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-sm">
 				{$LL.home_page.tagline()}
 			</p>
 		</div>
