@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import { collect_gallery_images } from './sanity'
+import { collect_gallery_images } from './gallery'
 
-describe('sanity utils & gallery image collection', () => {
+describe('gallery utils & image collection', () => {
 	describe('collect_gallery_images', () => {
 		it('should return empty array when no images provided', () => {
 			expect(collect_gallery_images()).toEqual([])

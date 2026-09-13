@@ -1,26 +1,26 @@
 # Graph Report - svelte-chd  (2026-09-13)
 
 ## Corpus Check
-- 254 files · ~121,146 words
+- 255 files · ~121,155 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 847 nodes · 1414 edges · 87 communities (26 shown, 32 thin omitted)
+- 848 nodes · 1416 edges · 92 communities (30 shown, 33 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9b105df9`
+- Built from commit: `ebf05401`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- devDependencies
-- i18n-types.ts
+- back-end/package.json
+- i18n-util.ts
 - schemas/index.ts
 - scripts
 - scripts
-- back-end/package.json
+- dependencies
 - i18n-svelte.ts
 - seo-store.ts
 - compilerOptions
@@ -34,6 +34,7 @@
 - compilerOptions
 - devDependencies
 - hero-image.service.ts
+- format-data.ts
 - .typesafe-i18n.json
 - eslint-config-prettier
 - eslint-plugin-svelte
@@ -45,7 +46,7 @@
 - svelte
 - svelte-check
 - svelte-eslint-parser
-- nav-bar-logic.ts
+- i18n-helper.ts
 - @sveltejs/adapter-auto
 - postcss
 - @sveltejs/kit
@@ -54,11 +55,12 @@
 - @testing-library/svelte
 - tslib
 - entry
-- format-data.ts
+- base/index.ts
 - @typescript-eslint/parser
 - vite
 - vitest
 - zod
+- i18n-util.async.ts
 - svelte.config.js
 - 🚀 Tính Năng Nổi Bật & Kiến Trúc Kỹ Thuật
 - format-data.test.ts
@@ -70,8 +72,11 @@
 - @playwright/test
 - prettier
 - tailwindcss
+- nav-store.ts
 - testimonial.ts
 - blog.service.ts
+- i18n-types.ts
+- blog/[slug]/+page.svelte
 - portable-text-block-render.tsx
 
 ## God Nodes (most connected - your core abstractions)
@@ -95,21 +100,21 @@
   back-end/schemas/helper-functions.ts → back-end/components/c-number-input.tsx
 - `Locals` --references--> `Locales`  [EXTRACTED]
   front-end/src/app.d.ts → front-end/src/i18n/i18n-types.ts
-- `replace_locale_in_url()` --calls--> `get_category_slug()`  [EXTRACTED]
-  front-end/src/i18n/i18n-helper.ts → front-end/src/lib/utils/slug.ts
+- `loadFormatters()` --calls--> `initFormatters()`  [EXTRACTED]
+  front-end/src/i18n/i18n-util.async.ts → front-end/src/i18n/formatters.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (87 total, 32 thin omitted)
+## Communities (92 total, 33 thin omitted)
 
-### Community 0 - "devDependencies"
-Cohesion: 0.10
-Nodes (21): devDependencies, eslint, knip, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui (+13 more)
+### Community 0 - "back-end/package.json"
+Cohesion: 0.05
+Nodes (41): devDependencies, eslint, knip, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui (+33 more)
 
-### Community 1 - "i18n-types.ts"
-Cohesion: 0.07
-Nodes (43): App, Locals, Platform, handle(), en, initFormatters(), fr, extract_url() (+35 more)
+### Community 1 - "i18n-util.ts"
+Cohesion: 0.18
+Nodes (11): initFormatters(), Translations, baseLocale, extendDictionary, loadedFormatters, loadedLocales, locales, loadAllLocales() (+3 more)
 
 ### Community 2 - "schemas/index.ts"
 Cohesion: 0.07
@@ -123,45 +128,45 @@ Nodes (35): concurrently, author, name, dependencies, concurrently, @portabletex
 Cohesion: 0.06
 Nodes (35): description, name, private, scripts, build, build:all, build:be, build:fe (+27 more)
 
-### Community 5 - "back-end/package.json"
-Cohesion: 0.05
-Nodes (41): dependencies, react, react-dom, react-is, sanity, @sanity/color-input, @sanity/image-url, sanity-plugin-media (+33 more)
+### Community 5 - "dependencies"
+Cohesion: 0.10
+Nodes (21): dependencies, react, react-dom, react-is, sanity, @sanity/color-input, @sanity/image-url, sanity-plugin-media (+13 more)
 
 ### Community 7 - "seo-store.ts"
-Cohesion: 0.09
-Nodes (7): seo_description, seo_keywords, seo_og_image, seo_title, ./$types, ./$types, ./$types
+Cohesion: 0.12
+Nodes (6): seo_description, seo_keywords, seo_og_image, seo_title, ./$types, ./$types
 
 ### Community 8 - "compilerOptions"
 Cohesion: 0.08
 Nodes (23): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, incremental, isolatedModules, jsx, lib (+15 more)
 
 ### Community 9 - "[lang]/+page.server.ts"
-Cohesion: 0.08
-Nodes (30): ClientConfirmationData, getAdminNotifyEmail(), getFromEmail(), sendClientConfirmation(), sendMail(), SendMailOptions, EmailTemplateProps, generateClientEmailHtml() (+22 more)
+Cohesion: 0.09
+Nodes (31): ClientConfirmationData, getAdminNotifyEmail(), getFromEmail(), sendClientConfirmation(), sendMail(), SendMailOptions, EmailTemplateProps, generateClientEmailHtml() (+23 more)
 
 ### Community 10 - "tour.type.ts"
-Cohesion: 0.14
-Nodes (9): booking_modal, BookingModalState, GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price (+1 more)
+Cohesion: 0.15
+Nodes (7): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag
 
 ### Community 11 - "front-end/knip.json"
 Cohesion: 0.12
 Nodes (17): entry, ignore, ignoreDependencies, ignoreExportsUsedInFile, project, $schema, svelte, entry (+9 more)
 
 ### Community 12 - "+layout.svelte"
-Cohesion: 0.17
-Nodes (3): index(), opacity, ./$types
+Cohesion: 0.18
+Nodes (3): ./$types, opacity, ./$types
 
 ### Community 13 - "fr/index.ts"
 Cohesion: 0.11
-Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, nav_bar (+5 more)
+Nodes (14): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, fr (+6 more)
 
 ### Community 14 - "sanity.ts"
-Cohesion: 0.11
-Nodes (6): builder, collect_gallery_images(), CollectGalleryImagesParams, config, ./$types, ./$types
+Cohesion: 0.18
+Nodes (6): if(), bgImageUrl, builder, config, url_for(), ./$types
 
 ### Community 15 - "vi/index.ts"
-Cohesion: 0.12
-Nodes (12): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, nav_bar (+4 more)
+Cohesion: 0.11
+Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, vn (+5 more)
 
 ### Community 16 - "compilerOptions"
 Cohesion: 0.14
@@ -172,20 +177,24 @@ Cohesion: 0.22
 Nodes (9): autoprefixer, devDependencies, autoprefixer, @sveltejs/adapter-cloudflare, @types/node, @typescript-eslint/eslint-plugin, @sveltejs/adapter-cloudflare, @types/node (+1 more)
 
 ### Community 18 - "hero-image.service.ts"
-Cohesion: 0.12
-Nodes (20): calculateHeroSlotIndex(), getHeroRotationInterval(), getNextHeroRotationDelay(), HERO_ROTATION_DEV_MS, HERO_ROTATION_PROD_MS, if(), bgImageUrl, currentHero (+12 more)
+Cohesion: 0.15
+Nodes (15): calculateHeroSlotIndex(), getHeroRotationInterval(), getNextHeroRotationDelay(), HERO_ROTATION_DEV_MS, HERO_ROTATION_PROD_MS, currentHero, currentIndex, effectiveImages (+7 more)
 
-### Community 32 - "nav-bar-logic.ts"
-Cohesion: 0.10
-Nodes (14): #each(), get_menu_url(), is_menu_active(), menu_items, MenuItem, MenuLink, TourService, is_locale_transitioning (+6 more)
+### Community 32 - "i18n-helper.ts"
+Cohesion: 0.14
+Nodes (19): handle(), extract_url(), get_lang_cookie(), get_path_name_without_base(), get_preferred_locale(), REGEX_START_WITH_BASE, replace_locale_in_url(), detectLocale() (+11 more)
 
 ### Community 37 - "en/index.ts"
 Cohesion: 0.11
-Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, nav_bar (+5 more)
+Nodes (14): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, en (+6 more)
 
 ### Community 40 - "entry"
 Cohesion: 0.25
 Nodes (10): entry, ignoreDependencies, project, $schema, components/**/*.{ts,tsx}, react-is, sanity.cli.ts, sanity.config.ts (+2 more)
+
+### Community 47 - "i18n-util.async.ts"
+Cohesion: 0.29
+Nodes (9): importLocaleAsync(), loadAllLocalesAsync(), loadFormatters(), loadLocaleAsync(), localeTranslationLoaders, updateDictionary(), load(), trailingSlash (+1 more)
 
 ### Community 71 - "🚀 Tính Năng Nổi Bật & Kiến Trúc Kỹ Thuật"
 Cohesion: 0.18
@@ -193,24 +202,36 @@ Nodes (10): 1. **Clean Layered Architecture (Backend & Frontend Server)**, 2. **
 
 ### Community 77 - "format-data.test.ts"
 Cohesion: 0.18
-Nodes (13): DEFAULT_EXCHANGE_RATES, defaultRates, exchange_rates_store, ExchangeRates, get_avatar_initials(), filter_localized_items(), get_localized_field(), has_localized_title() (+5 more)
+Nodes (12): get_avatar_initials(), EN_MONTHS, format_review_date(), FR_MONTHS, filter_localized_items(), get_localized_field(), has_localized_title(), format_pax_no() (+4 more)
 
 ### Community 81 - "type-others.ts"
 Cohesion: 0.23
 Nodes (9): AlignCenterRender(), AlignJustifyRender(), AlignRightRender(), COLOR_DECORATORS, createColorIcon(), createColorRender(), HighlightRender(), PortableTextImagePreview() (+1 more)
 
+### Community 86 - "nav-store.ts"
+Cohesion: 0.18
+Nodes (4): is_locale_transitioning, nav_animate_hidden, nav_deg, nav_mobile
+
 ### Community 87 - "testimonial.ts"
-Cohesion: 0.33
+Cohesion: 0.30
 Nodes (4): map_testimonial(), map_testimonials(), TestimonialViewModel, Testimonial
 
 ### Community 88 - "blog.service.ts"
-Cohesion: 0.07
-Nodes (39): withKvSnapshot(), cachedFetch(), memoryCache, sanityClient, sanityConfig, mapSanityToBlogPost(), mapSanityToBlogPosts(), mapSanityToTour() (+31 more)
+Cohesion: 0.06
+Nodes (44): DEFAULT_EXCHANGE_RATES, withKvSnapshot(), cachedFetch(), memoryCache, sanityClient, sanityConfig, mapSanityToBlogPost(), mapSanityToBlogPosts() (+36 more)
+
+### Community 89 - "i18n-types.ts"
+Cohesion: 0.25
+Nodes (8): App, Locals, Platform, BaseLocale, Formatters, Locales, RootTranslation, TranslationFunctions
+
+### Community 90 - "blog/[slug]/+page.svelte"
+Cohesion: 0.40
+Nodes (3): collect_gallery_images(), CollectGalleryImagesParams, ./$types
 
 ## Knowledge Gaps
 - **250 isolated node(s):** `COLOR_PALETTE`, `BlockRenderProps`, `$schema`, `react-is`, `@types/styled-components` (+245 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 338 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **32 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -219,13 +240,13 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Why does `keywords` connect `schemas/index.ts` to `back-end/package.json`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **Why does `Locales` connect `i18n-types.ts` to `nav-bar-logic.ts`, `blog.service.ts`, `format-data.test.ts`, `i18n-svelte.ts`?**
+- **Why does `Locales` connect `i18n-types.ts` to `i18n-helper.ts`, `i18n-util.ts`, `i18n-svelte.ts`, `format-data.test.ts`, `i18n-util.async.ts`, `blog.service.ts`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `COLOR_PALETTE`, `BlockRenderProps`, `$schema` to the rest of the system?**
   _250 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `devDependencies` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
-- **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
+- **Should `back-end/package.json` be split into smaller, more focused modules?**
+  _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.0707070707070707 - nodes in this community are weakly interconnected._
+- **Should `scripts` be split into smaller, more focused modules?**
+  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

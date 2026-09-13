@@ -7,7 +7,8 @@
 	import { blog_modal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { get_localized_field } from '$lib/utils/format-data'
-	import { collect_gallery_images, url_for } from '$lib/utils/sanity'
+	import { collect_gallery_images } from '$lib/utils/gallery'
+	import { url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
 	import { portableTextComponents } from '$lib/utils/portable-text-components'

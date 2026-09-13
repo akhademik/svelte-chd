@@ -6,7 +6,8 @@
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { get_localized_field } from '$lib/utils/format-data'
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
-	import { collect_gallery_images, url_for } from '$lib/utils/sanity'
+	import { collect_gallery_images } from '$lib/utils/gallery'
+	import { url_for } from '$lib/utils/sanity'
 	import type { PageData } from './$types'
 
 	interface Props {
