@@ -305,10 +305,10 @@
 		{/if}
 
 		<!-- 3. Tour Name & Started Price + Actions (Book Now, Plan This Trip) -->
-		<section class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm sm:p-8 md:p-10">
-			<div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
-				<!-- Left: Title, Badges & Tags -->
-				<div class="space-y-4 lg:col-span-8">
+		<section class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm sm:p-8 lg:p-6">
+			<div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
+				<!-- Left: Title, Badges & Tags (Full width on desktop when isContactForPrice) -->
+				<div class={`space-y-4 ${isContactForPrice ? 'w-full' : 'flex-1'}`}>
 					<div class="flex flex-wrap items-center gap-2">
 						{#if tour.best_sell}
 							<span
@@ -366,46 +366,44 @@
 					{/if}
 				</div>
 
-				<!-- Right: Started Price & Action Buttons -->
-				<div
-					class="rounded-lg border border-border bg-surface-muted/40 p-6 shadow-sm lg:col-span-4">
-					{#if isContactForPrice}
-						<div class="border-b border-border/60 pb-3 text-center sm:text-left">
-							<span class="text-xs uppercase tracking-wider text-foreground-subtle">
-								{$LL.tours.detail.price()}
-							</span>
-							<div class="mt-1 font-serif text-xl font-bold text-primary sm:text-2xl">
-								{$LL.tours.detail.contact_for_price()}
-							</div>
-						</div>
-
-						<div class="mt-6 flex flex-col gap-3">
-							<a
-								href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
-								class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md transition-colors hover:bg-primary-hover">
-								<span>{$LL.tours.plan_trip()}</span>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"
-									stroke-linecap="round"
-									stroke-linejoin="round">
-									<line
-										x1="5"
-										y1="12"
-										x2="19"
-										y2="12"></line>
-									<polyline points="12 5 19 12 12 19"></polyline>
-								</svg>
-							</a>
-						</div>
-					{:else}
+				<!-- Right: Started Price & Action Buttons (Hidden on desktop when contactForPrice, shown on mobile only) -->
+				{#if isContactForPrice}
+					<div
+						class="rounded-lg border border-primary/20 bg-primary/5 p-6 text-center shadow-sm lg:hidden">
+						<p class="font-serif text-lg font-bold text-primary">
+							{$LL.tours.detail.contact_for_price()}
+						</p>
+						<p class="mt-2 text-xs font-light leading-relaxed text-foreground-muted">
+							{$LL.tours.detail.contact_for_price_desc()}
+						</p>
+						<a
+							href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+							class="mt-4 inline-flex items-center justify-center gap-2 bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-primary-hover">
+							<span>{$LL.tours.plan_trip()}</span>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-3.5 w-3.5"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round">
+								<line
+									x1="5"
+									y1="12"
+									x2="19"
+									y2="12"></line>
+								<polyline points="12 5 19 12 12 19"></polyline>
+							</svg>
+						</a>
+					</div>
+				{:else}
+					<div
+						class="w-full shrink-0 rounded-lg border border-border bg-surface-muted/40 p-5 shadow-sm lg:w-[calc((100%/3)-48px)]">
 						<div class="border-b border-border/60 pb-3">
-							<div class="flex items-baseline justify-between gap-2">
-								<span class="text-xs uppercase tracking-wider text-foreground-subtle">
+							<div class="flex items-center justify-between gap-2">
+								<span class="text-xs font-medium uppercase tracking-wider text-foreground-muted">
 									{$LL.tours.price_from()}
 								</span>
 								<div class="flex items-baseline gap-1">
@@ -421,7 +419,7 @@
 							</div>
 						</div>
 
-						<div class="mt-6 flex flex-col gap-3">
+						<div class="mt-5 flex flex-col gap-3">
 							<button
 								onclick={() => booking_modal.open(title)}
 								class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md transition-colors hover:bg-primary-hover">
@@ -449,8 +447,8 @@
 								{$LL.tours.plan_trip()}
 							</a>
 						</div>
-					{/if}
-				</div>
+					</div>
+				{/if}
 			</div>
 		</section>
 

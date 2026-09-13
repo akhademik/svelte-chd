@@ -10,3 +10,8 @@
    - Thêm toggle `contactForPrice` vào schema Sanity Studio (`tourDaily`, `tourCentral`).
    - Ẩn khung giá trong Sanity Studio khi bật toggle này.
    - Trên giao diện người dùng (Tour Details, Tour Modal, Tour Card, Home Featured Slider): nếu bật `contactForPrice` (hoặc tour chưa có giá), ẩn bảng giá và stepper, hiển thị thông báo & CTA *"Vui lòng liên hệ để được báo giá"* với hỗ trợ đa ngôn ngữ (VI, EN, FR).
+
+3. **Tour Details Top Section Alignment & Svelte Inspector**:
+   - Tinh chỉnh Section 3 (Tour Title & Started Price Box) trong `tour-details.svelte` giữ nguyên 1 card thống nhất nhưng căn lề thẳng hàng 100% với widget Stepper của sidebar bên dưới qua `lg:w-[calc((100%/3)-48px)]` và `lg:p-6`.
+   - Bọc toàn vẹn header giá và hai nút CTA trong wrapper viền nổi bật.
+   - Cấu hình Svelte Inspector hỗ trợ `control-shift` và nút toggle trực quan hỗ trợ debug mã nguồn nhanh.

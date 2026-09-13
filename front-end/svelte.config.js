@@ -20,7 +20,12 @@ const config = {
 		},
 	},
 	vitePlugin: {
-		inspector: true,
+		inspector: {
+			toggleKeyCombo: 'control-shift',
+			holdMode: true,
+			showToggleButton: 'always',
+			toggleButtonPos: 'bottom-right',
+		},
 	},
 }
 

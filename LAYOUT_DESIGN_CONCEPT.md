@@ -90,6 +90,10 @@ Khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa tok
   - Hỗ trợ đánh dấu Menu Item cha ("Blog", "Day Tours", "Highland Tours") sáng khi người dùng đang xem trang con/chi tiết (`/blog/[slug]`, `/tour-trong-ngay/[slug]`, `/excursions/[slug]`).
 - **Hero Slider Title Clamping**:
   - Giới hạn tối đa 2 dòng (`line-clamp-2`) kèm `title={title}` tooltip để tránh vỡ layout khi tên tour quá dài. Badge và duration sử dụng `min-h-[1.75rem] flex-wrap gap-2.5` để tự động xuống dòng linh hoạt.
+- **Tour Details Top Section & Price Box Alignment**:
+  - Section 3 (Tour Title, Badges, Tags & Price Card) sử dụng 1 card bao bọc chung (`rounded-xl border border-border/90 bg-surface p-6 sm:p-8 lg:p-6 shadow-sm`).
+  - Cụm giá & nút hành động bên phải (Box 1) được định kích thước chuẩn xác bằng `lg:w-[calc((100%/3)-48px)]` kết hợp `flex-1` cho phần tiêu đề bên trái. Cấu trúc này đảm bảo cạnh trái và cạnh phải của Box (1) căn thẳng hàng tuyệt đối với widget Stepper (Box 2) trong cột `lg:col-span-4` của sidebar bên dưới.
+  - Khi bật `isContactForPrice`, box giá được ẩn trên desktop để mở rộng không gian tiêu đề `w-full` và chỉ hiển thị ở chế độ mobile.
 
 ---
 
