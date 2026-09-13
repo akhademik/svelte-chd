@@ -93,3 +93,8 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
    - Mọi tác vụ mutate/sync dữ liệu định kỳ (ví dụ: lấy tỷ giá ngoại tệ từ bên thứ ba và ghi vào Sanity) **bắt buộc chạy dưới dạng script độc lập** (`pnpm sync:rates`), không nhúng logic write token vào HTTP routes công khai.
    - Khi cấu hình GitHub Action Cron hoặc Cloudflare Cron, trigger trực tiếp script này cùng các biến môi trường `SANITY_WRITE_TOKEN`, `VITE_SANITY_ID`, `EXCHANGE_API_KEY`, `EXCHANGE_URL`.
 
+7. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
+   - Mọi logic xoay vòng thời gian, chu kỳ timer, hoặc tính toán index định kỳ (như Hero rotation, slider interval) **bắt buộc dùng chung hằng số và hàm tính toán tại `front-end/src/lib/constants/` hoặc `front-end/src/lib/utils/`** (ví dụ: `constants/hero.ts`).
+   - Tuyệt đối không hardcode riêng rẽ mili-giây hoặc viết thuật toán chọn item phân tán ở Server (`service.ts`) và Client (`.svelte`).
+   - Component UI tương tác (như `home-hero.svelte`) phải khởi tạo `$state` khớp 100% với dữ liệu nhận từ SSR (`getInitialIndex()` thay vì `let currentIndex = $state(0)`) để triệt tiêu hoàn toàn hiện tượng hydration flash / nhấp nháy giao diện khi tải trang.
+

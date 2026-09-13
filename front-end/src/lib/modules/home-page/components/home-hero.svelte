@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { dev } from '$app/environment'
 	import LL from '$i18n/i18n-svelte'
+	import { getHeroRotationInterval } from '$lib/constants/hero'
 	import type { HeroImage } from '$lib/types/hero-image.type'
 	import { url_for } from '$lib/utils/sanity'
 
@@ -30,19 +30,22 @@
 	})
 
 	// Initial index aligned with SSR heroImage
-	let initialIndex = $derived(
-		heroImage
-			? Math.max(
-					0,
-					effectiveImages.findIndex(img => img._id === heroImage._id)
-				)
-			: 0
-	)
-	let currentIndex = $state(0)
+	function getInitialIndex() {
+		if (!heroImage) return 0
+		const idx = effectiveImages.findIndex(img => img._id === heroImage._id)
+		return idx >= 0 ? idx : 0
+	}
+
+	let currentIndex = $state(getInitialIndex())
 	let intervalId: ReturnType<typeof setInterval> | null = null
 
 	$effect(() => {
-		currentIndex = initialIndex
+		if (heroImage) {
+			const idx = effectiveImages.findIndex(img => img._id === heroImage._id)
+			if (idx >= 0) {
+				currentIndex = idx
+			}
+		}
 	})
 
 	$effect(() => {
@@ -50,8 +53,8 @@
 			clearInterval(intervalId)
 			intervalId = null
 		}
-		// Rotation: 5 seconds in DEV, 5 minutes (300,000 ms) in PRODUCTION
-		const rotationInterval = dev ? 5 * 1000 : 5 * 60 * 1000
+		// Rotation interval shared with server SSR logic (Single Source of Truth)
+		const rotationInterval = getHeroRotationInterval()
 
 		if (!stickyImage && effectiveImages.length > 1) {
 			intervalId = setInterval(() => {

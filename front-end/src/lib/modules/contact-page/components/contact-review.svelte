@@ -171,8 +171,21 @@
 							<img
 								src={currentReview.avatar}
 								alt={currentReview.name}
+								referrerpolicy="no-referrer"
+								onerror={e => {
+									const target = e.currentTarget as HTMLImageElement | null
+									if (target) {
+										target.style.display = 'none'
+										const sibling = target.nextElementSibling as HTMLElement | null
+										if (sibling) sibling.classList.remove('hidden')
+									}
+								}}
 								class="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
 								loading="lazy" />
+							<div
+								class="hidden h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
+								{currentReview.name.charAt(0).toUpperCase()}
+							</div>
 						{:else}
 							<div
 								class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">

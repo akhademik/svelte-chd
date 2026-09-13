@@ -1,4 +1,4 @@
-import { dev } from '$app/environment'
+import { calculateHeroSlotIndex, getHeroRotationInterval } from '$lib/constants/hero'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { sanityClient } from '$lib/server/sanity/client'
@@ -9,12 +9,13 @@ import { Logger } from '$lib/utils/logger'
 /**
  * Selects the active hero image based on:
  * 1. If any image has `isSticky: true`, return that sticky image.
- * 2. Otherwise, select an image based on the day of the year (or day of week)
- *    so it automatically and deterministically rotates daily.
+ * 2. Otherwise, select an image based on the shared time-slot calculation
+ *    so it automatically and deterministically rotates every 5 minutes.
  */
 export const selectDailyHeroImage = (
 	images: HeroImage[],
-	targetDate = new Date()
+	targetDate = new Date(),
+	intervalMs?: number
 ): HeroImage | null => {
 	if (!images || images.length === 0) return null
 
@@ -22,13 +23,8 @@ export const selectDailyHeroImage = (
 	const stickyImage = images.find(img => img.isSticky)
 	if (stickyImage) return stickyImage
 
-	// 2. Day-based rotation: Day of the year (1..366) mod list length
-	const startOfYear = new Date(targetDate.getFullYear(), 0, 1)
-	const dayOfYear = Math.floor(
-		(targetDate.getTime() - startOfYear.getTime()) / (1000 * 60 * 60 * 24)
-	)
-	const index = Math.abs(dayOfYear) % images.length
-
+	// 2. Periodic time-slot rotation: shared with client carousel logic
+	const index = calculateHeroSlotIndex(images.length, targetDate, intervalMs)
 	return images[index] || images[0] || null
 }
 
@@ -37,7 +33,7 @@ export const HeroImageService = {
 	 * Fetches all active hero images from Sanity with memory cache & KV snapshot backup.
 	 */
 	async getHeroImages(kv?: KVNamespace): Promise<HeroImage[]> {
-		const cacheTtl = dev ? 5 * 1000 : 5 * 60 * 1000
+		const cacheTtl = getHeroRotationInterval()
 		return cachedFetch('active-hero-images', cacheTtl, async () => {
 			try {
 				return await withKvSnapshot(

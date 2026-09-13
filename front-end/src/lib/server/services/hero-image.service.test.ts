@@ -46,15 +46,22 @@ describe('HeroImageService - selectDailyHeroImage', () => {
 		expect(selectDailyHeroImage(imagesWithSticky, tuesday)?._id).toBe('2')
 	})
 
-	it('rotates deterministically based on day of year when no image is sticky', () => {
-		const day1 = new Date(2026, 0, 1) // Day 0 -> index 0
-		const day2 = new Date(2026, 0, 2) // Day 1 -> index 1
-		const day3 = new Date(2026, 0, 3) // Day 2 -> index 2
-		const day4 = new Date(2026, 0, 4) // Day 3 -> index 0 (mod 3)
+	it('rotates deterministically based on 5-minute time slots when no image is sticky', () => {
+		const baseTime = 1757721600000 // A fixed base timestamp
+		const slot1 = new Date(baseTime) // Slot 0
+		const slot2 = new Date(baseTime + 5 * 60 * 1000) // Slot 1 (+5 min)
+		const slot3 = new Date(baseTime + 10 * 60 * 1000) // Slot 2 (+10 min)
+		const slot4 = new Date(baseTime + 15 * 60 * 1000) // Slot 3 (+15 min -> mod 3 == 0)
 
-		expect(selectDailyHeroImage(mockImages, day1)?._id).toBe('1')
-		expect(selectDailyHeroImage(mockImages, day2)?._id).toBe('2')
-		expect(selectDailyHeroImage(mockImages, day3)?._id).toBe('3')
-		expect(selectDailyHeroImage(mockImages, day4)?._id).toBe('1')
+		const interval = 5 * 60 * 1000
+		const id1 = selectDailyHeroImage(mockImages, slot1, interval)?._id
+		const id2 = selectDailyHeroImage(mockImages, slot2, interval)?._id
+		const id3 = selectDailyHeroImage(mockImages, slot3, interval)?._id
+		const id4 = selectDailyHeroImage(mockImages, slot4, interval)?._id
+
+		expect(id1).toBe('1')
+		expect(id2).toBe('2')
+		expect(id3).toBe('3')
+		expect(id4).toBe('1')
 	})
 })

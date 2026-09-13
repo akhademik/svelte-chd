@@ -25,9 +25,14 @@
 			sourceUrl: t.url,
 			date: t.date_review || '',
 		}))
+		if (items.length === 0) return []
 		const slides: (typeof items)[] = []
 		for (let i = 0; i < items.length; i += PAGE_SIZE) {
-			slides.push(items.slice(i, i + PAGE_SIZE))
+			const slide = []
+			for (let j = 0; j < Math.min(PAGE_SIZE, items.length); j++) {
+				slide.push(items[(i + j) % items.length])
+			}
+			slides.push(slide)
 		}
 		return slides
 	}
@@ -284,8 +289,21 @@
 												<img
 													src={item.authorAvatar}
 													alt={item.authorName}
+													referrerpolicy="no-referrer"
+													onerror={e => {
+														const target = e.currentTarget as HTMLImageElement | null
+														if (target) {
+															target.style.display = 'none'
+															const sibling = target.nextElementSibling as HTMLElement | null
+															if (sibling) sibling.classList.remove('hidden')
+														}
+													}}
 													class="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
 													loading="lazy" />
+												<div
+													class="hidden h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
+													{item.authorName.charAt(0).toUpperCase()}
+												</div>
 											{:else}
 												<div
 													class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
