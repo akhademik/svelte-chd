@@ -1391,7 +1391,7 @@
       "file_type": "code",
       "norm_label": "close()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L116"
+      "source_location": "L123"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_format_price",
@@ -1403,7 +1403,7 @@
       "file_type": "code",
       "norm_label": "format_price()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L596"
+      "source_location": "L610"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_if",
@@ -1415,7 +1415,7 @@
       "file_type": "code",
       "norm_label": "if()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L91"
+      "source_location": "L98"
     },
     {
       "id": "front_end_src_routes_lang_blog_slug_page_if",
@@ -19500,13 +19500,24 @@
     },
     {
       "source": "front_end_src_lib_base_base_tour_detail_modal",
+      "target": "front_end_src_lib_base_base_tour_detail_modal_if",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_base_base_tour_detail_modal",
       "target": "front_end_src_lib_base_base_tour_detail_modal_close",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L116",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -19517,18 +19528,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L596",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_base_base_tour_detail_modal",
-      "target": "front_end_src_lib_base_base_tour_detail_modal_if",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L94",
+      "source_location": "L610",
       "weight": 1.0
     },
     {
@@ -23931,5 +23931,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bbca2fc37f33acbe5dfeba753235576bb624560c"
+  "built_at_commit": "ca23cda75d04f81afcd75b853d2c6996ba9a34ab"
 }

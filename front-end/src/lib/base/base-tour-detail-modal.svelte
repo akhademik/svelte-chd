@@ -34,6 +34,13 @@
 	let minPrice = $derived(tour?.tour_price?.pax2 || tour?.tour_price?.pax1 || 0)
 	let isContactForPrice = $derived(Boolean(tour?.contact_for_price || prices.length === 0))
 
+	let levelText = $derived.by(() => {
+		const lvl = tour?.tour_level || 'easy'
+		if (lvl === 'hard') return $LL.tours.trip_facts.difficulty_hard()
+		if (lvl === 'medium') return $LL.tours.trip_facts.difficulty_medium()
+		return $LL.tours.trip_facts.difficulty_easy()
+	})
+
 	// Modal Price Stepper state
 	let guestCount = $state(2)
 	let activeTier = $derived(get_pax_tier(guestCount))
@@ -188,6 +195,17 @@
 								<span>{duration}</span>
 							</span>
 						{/if}
+						<span
+							class="inline-flex items-center gap-1 rounded border border-border bg-surface px-2 py-0.5 text-[10px] font-medium tracking-wide text-foreground-muted">
+							{#if (tour?.tour_level || 'easy') === 'hard'}
+								<span class="text-xs">⚡</span>
+							{:else if (tour?.tour_level || 'easy') === 'medium'}
+								<span class="text-xs">⚖️</span>
+							{:else}
+								<span class="text-xs">🌿</span>
+							{/if}
+							<span>{levelText}</span>
+						</span>
 					</div>
 					<button
 						onclick={close}
@@ -472,11 +490,7 @@
 						<!-- Price Table & Stepper -->
 						<div class="border border-border/90 bg-surface p-5 shadow-sm sm:p-6">
 							{#if isContactForPrice}
-								<h4
-									class="mb-3 font-serif text-xs font-semibold uppercase tracking-wider text-primary sm:text-sm">
-									{$LL.tours.detail.price()}
-								</h4>
-								<div class="rounded-lg border border-primary/20 bg-primary/5 p-4 text-center">
+								<div class="rounded-lg border border-primary/20 bg-primary/5 p-5 text-center">
 									<p class="font-serif text-base font-semibold text-primary sm:text-lg">
 										{$LL.tours.detail.contact_for_price()}
 									</p>

@@ -328,6 +328,17 @@
 								⏱ {duration}
 							</span>
 						{/if}
+						<span
+							class="inline-flex items-center gap-1 border border-border bg-surface px-2.5 py-1 text-[10px] font-medium tracking-wide text-foreground-muted">
+							{#if (tour.tour_level || 'easy') === 'hard'}
+								<span class="text-xs">⚡</span>
+							{:else if (tour.tour_level || 'easy') === 'medium'}
+								<span class="text-xs">⚖️</span>
+							{:else}
+								<span class="text-xs">🌿</span>
+							{/if}
+							<span>{levelText}</span>
+						</span>
 					</div>
 
 					<h1
@@ -359,13 +370,37 @@
 				<div
 					class="rounded-lg border border-border bg-surface-muted/40 p-6 shadow-sm lg:col-span-4">
 					{#if isContactForPrice}
-						<div class="flex items-center justify-between gap-2 border-b border-border/60 pb-3">
+						<div class="border-b border-border/60 pb-3 text-center sm:text-left">
 							<span class="text-xs uppercase tracking-wider text-foreground-subtle">
 								{$LL.tours.detail.price()}
 							</span>
-							<span class="font-serif text-lg font-bold text-primary sm:text-xl">
+							<div class="mt-1 font-serif text-xl font-bold text-primary sm:text-2xl">
 								{$LL.tours.detail.contact_for_price()}
-							</span>
+							</div>
+						</div>
+
+						<div class="mt-6 flex flex-col gap-3">
+							<a
+								href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+								class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md transition-colors hover:bg-primary-hover">
+								<span>{$LL.tours.plan_trip()}</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-4 w-4"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round">
+									<line
+										x1="5"
+										y1="12"
+										x2="19"
+										y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</a>
 						</div>
 					{:else}
 						<div class="border-b border-border/60 pb-3">
@@ -385,69 +420,36 @@
 								{$LL.tours.detail.price_for_2_pax()}
 							</div>
 						</div>
+
+						<div class="mt-6 flex flex-col gap-3">
+							<button
+								onclick={() => booking_modal.open(title)}
+								class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md transition-colors hover:bg-primary-hover">
+								<span>{$LL.tours.book_now()}</span>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									class="h-4 w-4"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round">
+									<line
+										x1="5"
+										y1="12"
+										x2="19"
+										y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</button>
+							<a
+								href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+								class="flex w-full items-center justify-center gap-2 border border-border-strong bg-surface py-3 text-xs font-medium uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:bg-surface-muted">
+								{$LL.tours.plan_trip()}
+							</a>
+						</div>
 					{/if}
-
-					<div class="mt-6 flex flex-col gap-3">
-						<button
-							onclick={() => booking_modal.open(title)}
-							class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md transition-colors hover:bg-primary-hover">
-							<span>{$LL.tours.book_now()}</span>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-4 w-4"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round">
-								<line
-									x1="5"
-									y1="12"
-									x2="19"
-									y2="12"></line>
-								<polyline points="12 5 19 12 12 19"></polyline>
-							</svg>
-						</button>
-						<a
-							href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
-							class="flex w-full items-center justify-center gap-2 border border-border-strong bg-surface py-3 text-xs font-medium uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:bg-surface-muted">
-							{$LL.tours.plan_trip()}
-						</a>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- 4. Tour Facts (Trip Facts) -->
-		<section class="rounded-xl border border-border/90 bg-surface p-6 sm:p-8">
-			<h2 class="mb-4 font-serif text-xl font-bold text-foreground">
-				{$LL.tours.trip_facts.title()}
-			</h2>
-			<div class="grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6">
-				<div class="border-l-2 border-primary pl-4">
-					<span class="block text-[11px] uppercase tracking-wider text-foreground-subtle">
-						{$LL.tours.trip_facts.duration()}
-					</span>
-					<span class="mt-1 block text-base font-medium text-foreground">
-						{duration || '1 Day'}
-					</span>
-				</div>
-				<div class="border-l-2 border-secondary pl-4">
-					<span class="block text-[11px] uppercase tracking-wider text-foreground-subtle">
-						{$LL.tours.trip_facts.style()}
-					</span>
-					<span class="mt-1 block text-base font-medium text-foreground">
-						{$LL.tours.trip_facts.style_val()}
-					</span>
-				</div>
-				<div class="border-l-2 border-border-strong pl-4">
-					<span class="block text-[11px] uppercase tracking-wider text-foreground-subtle">
-						{$LL.tours.trip_facts.difficulty()}
-					</span>
-					<span class="mt-1 block text-base font-medium text-foreground">
-						{levelText}
-					</span>
 				</div>
 			</div>
 		</section>
@@ -557,19 +559,35 @@
 			<div class="space-y-8 lg:col-span-4">
 				<!-- Pricing Section -->
 				{#if isContactForPrice}
-					<!-- Contact for Price Notice -->
-					<div class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm">
-						<h3 class="mb-3 font-serif text-lg font-bold text-foreground">
-							{$LL.tours.detail.price()}
-						</h3>
-						<div class="rounded-lg border border-primary/20 bg-primary/5 p-4 text-center">
-							<p class="font-serif text-lg font-semibold text-primary">
-								{$LL.tours.detail.contact_for_price()}
-							</p>
-							<p class="mt-2 text-xs font-light leading-relaxed text-foreground-muted">
-								{$LL.tours.detail.contact_for_price_desc()}
-							</p>
-						</div>
+					<!-- Contact for Price Notice (Clean notice box without redundant 'Pricing Table' header) -->
+					<div class="rounded-xl border border-primary/20 bg-primary/5 p-6 text-center shadow-sm">
+						<p class="font-serif text-lg font-bold text-primary">
+							{$LL.tours.detail.contact_for_price()}
+						</p>
+						<p class="mt-2 text-xs font-light leading-relaxed text-foreground-muted">
+							{$LL.tours.detail.contact_for_price_desc()}
+						</p>
+						<a
+							href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+							class="mt-4 inline-flex items-center justify-center gap-2 bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-primary-hover">
+							<span>{$LL.tours.plan_trip()}</span>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-3.5 w-3.5"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round">
+								<line
+									x1="5"
+									y1="12"
+									x2="19"
+									y2="12"></line>
+								<polyline points="12 5 19 12 12 19"></polyline>
+							</svg>
+						</a>
 					</div>
 				{:else if prices.length > 0}
 					<div class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm">
