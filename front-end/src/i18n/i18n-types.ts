@@ -883,6 +883,26 @@ type RootTranslation = {
 			 * I​'​d​ ​l​i​k​e​ ​t​o​ ​b​o​o​k​ ​t​h​i​s​ ​t​o​u​r
 			 */
 			enquiry_title: string
+			/**
+			 * G​u​e​s​t​s
+			 */
+			stepper_guest_count: string
+			/**
+			 * U​n​i​t​ ​P​r​i​c​e
+			 */
+			stepper_unit_price: string
+			/**
+			 * T​o​t​a​l​ ​P​r​i​c​e
+			 */
+			stepper_total_price: string
+			/**
+			 * C​o​n​t​a​c​t​ ​f​o​r​ ​P​r​i​c​e
+			 */
+			contact_for_price: string
+			/**
+			 * P​l​e​a​s​e​ ​c​o​n​t​a​c​t​ ​C​H​D​ ​T​r​a​v​e​l​ ​f​o​r​ ​d​e​t​a​i​l​e​d​ ​c​u​s​t​o​m​i​z​e​d​ ​p​r​i​c​i​n​g​ ​a​n​d​ ​p​e​r​s​o​n​a​l​i​z​e​d​ ​g​r​o​u​p​ ​c​o​n​s​u​l​t​a​t​i​o​n​.
+			 */
+			contact_for_price_desc: string
 		}
 	}
 	blog_page: {
@@ -2194,6 +2214,26 @@ export type TranslationFunctions = {
 			 * I'd like to book this tour
 			 */
 			enquiry_title: () => LocalizedString
+			/**
+			 * Guests
+			 */
+			stepper_guest_count: () => LocalizedString
+			/**
+			 * Unit Price
+			 */
+			stepper_unit_price: () => LocalizedString
+			/**
+			 * Total Price
+			 */
+			stepper_total_price: () => LocalizedString
+			/**
+			 * Contact for Price
+			 */
+			contact_for_price: () => LocalizedString
+			/**
+			 * Please contact CHD Travel for detailed customized pricing and personalized group consultation.
+			 */
+			contact_for_price_desc: () => LocalizedString
 		}
 	}
 	blog_page: {

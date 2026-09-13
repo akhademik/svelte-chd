@@ -4,7 +4,12 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { booking_modal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { format_pax_no, format_price, format_price_object } from '$lib/utils/format-data'
+	import {
+		format_pax_no,
+		format_price,
+		format_price_object,
+		get_pax_tier,
+	} from '$lib/utils/format-data'
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
@@ -22,6 +27,18 @@
 	let minPrice = $derived(
 		tour.tour_price?.pax2 || tour.tour_price?.pax1 || tour.tour_price?.price || 0
 	)
+	let isContactForPrice = $derived(Boolean(tour.contact_for_price || prices.length === 0))
+
+	// Stepper state
+	let guestCount = $state(2)
+	let activeTier = $derived(get_pax_tier(guestCount))
+	let unitPrice = $derived(
+		(tour.tour_price?.[activeTier] as number | undefined) ||
+			(tour.tour_price?.pax2 as number | undefined) ||
+			(tour.tour_price?.pax1 as number | undefined) ||
+			minPrice
+	)
+	let totalPrice = $derived(unitPrice * guestCount)
 
 	let allImages = $derived.by(() => {
 		const imgs: any[] = []
@@ -334,18 +351,29 @@
 				<!-- Right: Started Price & Action Buttons -->
 				<div
 					class="rounded-lg border border-border bg-surface-muted/40 p-6 shadow-sm lg:col-span-4">
-					<div class="flex items-baseline justify-between gap-2 border-b border-border/60 pb-3">
-						<span class="text-xs uppercase tracking-wider text-foreground-subtle">
-							{$LL.tours.price_from()}
-						</span>
-						<div class="flex items-baseline gap-1">
-							<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
-								{format_price(minPrice, $locale)}
-							</b>
-							<span class="text-xs font-light text-foreground-subtle"
-								>/{$LL.tours.detail.pax()}</span>
+					{#if isContactForPrice}
+						<div class="flex items-center justify-between gap-2 border-b border-border/60 pb-3">
+							<span class="text-xs uppercase tracking-wider text-foreground-subtle">
+								{$LL.tours.detail.price()}
+							</span>
+							<span class="font-serif text-lg font-bold text-primary sm:text-xl">
+								{$LL.tours.detail.contact_for_price()}
+							</span>
 						</div>
-					</div>
+					{:else}
+						<div class="flex items-baseline justify-between gap-2 border-b border-border/60 pb-3">
+							<span class="text-xs uppercase tracking-wider text-foreground-subtle">
+								{$LL.tours.price_from()}
+							</span>
+							<div class="flex items-baseline gap-1">
+								<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
+									{format_price(minPrice, $locale)}
+								</b>
+								<span class="text-xs font-light text-foreground-subtle"
+									>/{$LL.tours.detail.pax()}</span>
+							</div>
+						</div>
+					{/if}
 
 					<div class="mt-6 flex flex-col gap-3">
 						<button
@@ -515,18 +543,102 @@
 
 			<!-- Right Column: Sticky Sidebar Info & Pricing -->
 			<div class="space-y-8 lg:col-span-4">
-				<!-- Pricing Table -->
-				{#if prices.length > 0}
+				<!-- Pricing Section -->
+				{#if isContactForPrice}
+					<!-- Contact for Price Notice -->
+					<div class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm">
+						<h3 class="mb-3 font-serif text-lg font-bold text-foreground">
+							{$LL.tours.detail.price()}
+						</h3>
+						<div class="rounded-lg border border-primary/20 bg-primary/5 p-4 text-center">
+							<p class="font-serif text-lg font-semibold text-primary">
+								{$LL.tours.detail.contact_for_price()}
+							</p>
+							<p class="mt-2 text-xs font-light leading-relaxed text-foreground-muted">
+								{$LL.tours.detail.contact_for_price_desc()}
+							</p>
+						</div>
+					</div>
+				{:else if prices.length > 0}
 					<div class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm">
 						<h3 class="mb-4 font-serif text-lg font-bold text-foreground">
 							{$LL.tours.detail.price()}
 						</h3>
-						<div class="space-y-2.5 divide-y divide-border/60 text-xs sm:text-sm">
+
+						<!-- Price Stepper Widget -->
+						<div class="mb-5 rounded-lg border border-border bg-surface-muted/40 p-4">
+							<div class="flex items-center justify-between">
+								<span class="text-xs font-medium uppercase tracking-wider text-foreground-muted">
+									{$LL.tours.detail.stepper_guest_count()}
+								</span>
+								<div class="flex items-center gap-2">
+									<button
+										type="button"
+										onclick={() => {
+											if (guestCount > 1) guestCount--
+										}}
+										disabled={guestCount <= 1}
+										aria-label="Decrease guest count"
+										class="flex h-7 w-7 items-center justify-center rounded border border-border bg-surface text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-40">
+										-
+									</button>
+									<span class="w-8 text-center font-serif text-sm font-bold text-foreground">
+										{guestCount}
+									</span>
+									<button
+										type="button"
+										onclick={() => {
+											if (guestCount < 99) guestCount++
+										}}
+										aria-label="Increase guest count"
+										class="flex h-7 w-7 items-center justify-center rounded border border-border bg-surface text-sm font-semibold text-foreground transition-colors hover:bg-surface-muted">
+										+
+									</button>
+								</div>
+							</div>
+
+							<!-- Calculation Result -->
+							<div class="mt-3.5 grid grid-cols-2 gap-2 border-t border-border/60 pt-3 text-xs">
+								<div>
+									<span class="block text-[10px] uppercase tracking-wider text-foreground-subtle">
+										{$LL.tours.detail.stepper_unit_price()}
+									</span>
+									<span class="mt-0.5 block font-medium text-foreground">
+										{format_price(unitPrice, $locale)}
+										<span class="text-[10px] font-normal text-foreground-subtle"
+											>/{$LL.tours.detail.pax()}</span>
+									</span>
+								</div>
+								<div class="text-right">
+									<span class="block text-[10px] uppercase tracking-wider text-foreground-subtle">
+										{$LL.tours.detail.stepper_total_price()}
+									</span>
+									<span class="mt-0.5 block font-serif text-sm font-bold text-primary">
+										{format_price(totalPrice, $locale)}
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Pricing Table with active row highlight -->
+						<div class="space-y-1 divide-y divide-border/60 text-xs sm:text-sm">
 							{#each prices as [pax, price], idx}
 								{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
-								<div class={`flex items-center justify-between ${idx > 0 ? 'pt-2.5' : ''}`}>
-									<span class="text-foreground-muted">{paxText}</span>
-									<span class="font-medium text-foreground">
+								{@const isActiveTier = activeTier === pax}
+								<div
+									class={`flex items-center justify-between rounded-md px-2.5 py-2 transition-all ${
+										isActiveTier
+											? 'shadow-xs bg-primary/10 font-medium text-primary ring-1 ring-primary/30'
+											: 'text-foreground-muted'
+									} ${idx > 0 && !isActiveTier ? 'pt-2' : ''}`}>
+									<span class="flex items-center gap-1.5">
+										{#if isActiveTier}
+											<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+										{/if}
+										<span>{paxText}</span>
+									</span>
+									<span
+										class={isActiveTier ? 'font-bold text-primary' : 'font-medium text-foreground'}>
 										{format_price(price, $locale)}
 										<span class="text-[11px] font-normal text-foreground-subtle"
 											>/{$LL.tours.detail.pax()}</span>

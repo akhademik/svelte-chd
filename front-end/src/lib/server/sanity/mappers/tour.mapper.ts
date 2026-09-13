@@ -10,6 +10,7 @@ export function mapSanityToTour(raw: any): Tour {
 	return {
 		...raw,
 		best_sell: Boolean(raw.best_sell ?? false),
+		contact_for_price: Boolean(raw.contact_for_price ?? false),
 		tour_id: String(raw.tour_id ?? ''),
 		img_cover: raw.img_cover,
 		img_tour: raw.img_tour ?? [],

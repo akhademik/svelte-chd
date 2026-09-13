@@ -12,6 +12,7 @@
 		format_price,
 		format_price_object,
 		get_category_slug,
+		get_pax_tier,
 		resolve_canonical_category,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
@@ -31,6 +32,19 @@
 	let includes = $derived(tour?.tour_includes || [])
 	let prices = $derived(tour ? format_price_object(tour) : [])
 	let minPrice = $derived(tour?.tour_price?.pax2 || tour?.tour_price?.pax1 || 0)
+	let isContactForPrice = $derived(Boolean(tour?.contact_for_price || prices.length === 0))
+
+	// Modal Price Stepper state
+	let guestCount = $state(2)
+	let activeTier = $derived(get_pax_tier(guestCount))
+	let unitPrice = $derived(
+		(tour?.tour_price?.[activeTier] as number | undefined) ||
+			(tour?.tour_price?.pax2 as number | undefined) ||
+			(tour?.tour_price?.pax1 as number | undefined) ||
+			minPrice
+	)
+	let totalPrice = $derived(unitPrice * guestCount)
+
 	let imgCover = $derived(tour?.img_cover)
 	let imgTour = $derived(tour?.img_tour || [])
 	let tourTags = $derived(tour?.tour_tags || [])
@@ -455,26 +469,105 @@
 							{/if}
 						</div>
 
-						<!-- Price Table -->
+						<!-- Price Table & Stepper -->
 						<div class="border border-border/90 bg-surface p-5 shadow-sm sm:p-6">
-							{#if prices.length > 0}
+							{#if isContactForPrice}
+								<h4
+									class="mb-3 font-serif text-xs font-semibold uppercase tracking-wider text-primary sm:text-sm">
+									{$LL.tours.detail.price()}
+								</h4>
+								<div class="rounded-lg border border-primary/20 bg-primary/5 p-4 text-center">
+									<p class="font-serif text-base font-semibold text-primary sm:text-lg">
+										{$LL.tours.detail.contact_for_price()}
+									</p>
+									<p class="mt-2 text-xs font-light leading-relaxed text-foreground-muted">
+										{$LL.tours.detail.contact_for_price_desc()}
+									</p>
+								</div>
+							{:else if prices.length > 0}
+								<!-- Price Stepper Widget inside Modal -->
+								<div class="mb-4 rounded-lg border border-border bg-surface-muted/40 p-3.5">
+									<div class="flex items-center justify-between">
+										<span
+											class="text-xs font-medium uppercase tracking-wider text-foreground-muted">
+											{$LL.tours.detail.stepper_guest_count()}
+										</span>
+										<div class="flex items-center gap-2">
+											<button
+												type="button"
+												onclick={() => {
+													if (guestCount > 1) guestCount--
+												}}
+												disabled={guestCount <= 1}
+												aria-label="Decrease guest count"
+												class="flex h-6 w-6 items-center justify-center rounded border border-border bg-surface text-xs font-semibold text-foreground transition-colors hover:bg-surface-muted disabled:cursor-not-allowed disabled:opacity-40">
+												-
+											</button>
+											<span class="w-6 text-center font-serif text-xs font-bold text-foreground">
+												{guestCount}
+											</span>
+											<button
+												type="button"
+												onclick={() => {
+													if (guestCount < 99) guestCount++
+												}}
+												aria-label="Increase guest count"
+												class="flex h-6 w-6 items-center justify-center rounded border border-border bg-surface text-xs font-semibold text-foreground transition-colors hover:bg-surface-muted">
+												+
+											</button>
+										</div>
+									</div>
+
+									<!-- Calculation Result -->
+									<div class="mt-2.5 grid grid-cols-2 gap-2 border-t border-border/60 pt-2 text-xs">
+										<div>
+											<span
+												class="block text-[10px] uppercase tracking-wider text-foreground-subtle">
+												{$LL.tours.detail.stepper_unit_price()}
+											</span>
+											<span class="mt-0.5 block font-medium text-foreground">
+												{format_price(unitPrice, activeLang)}
+												<span class="text-[10px] font-normal text-foreground-subtle"
+													>/{$LL.tours.detail.pax()}</span>
+											</span>
+										</div>
+										<div class="text-right">
+											<span
+												class="block text-[10px] uppercase tracking-wider text-foreground-subtle">
+												{$LL.tours.detail.stepper_total_price()}
+											</span>
+											<span class="mt-0.5 block font-serif text-sm font-bold text-primary">
+												{format_price(totalPrice, activeLang)}
+											</span>
+										</div>
+									</div>
+								</div>
+
 								<div class="overflow-x-auto">
 									<table class="w-full text-left text-xs sm:text-sm">
 										<thead class="bg-surface-muted uppercase tracking-wider text-foreground">
 											<tr>
-												<th class="px-3 py-2.5 font-medium">{$LL.tours.detail.pax_no()}</th>
-												<th class="px-3 py-2.5 text-right font-medium"
-													>{$LL.tours.detail.price()}</th>
+												<th class="px-3 py-2 font-medium">{$LL.tours.detail.pax_no()}</th>
+												<th class="px-3 py-2 text-right font-medium">{$LL.tours.detail.price()}</th>
 											</tr>
 										</thead>
 										<tbody class="divide-y divide-border">
 											{#each prices as [pax, price]}
 												{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
-												<tr class="transition-colors hover:bg-surface-muted/50">
-													<td class="px-3 py-2.5 text-foreground">
-														{paxText}
+												{@const isActiveTier = activeTier === pax}
+												<tr
+													class={`transition-colors ${isActiveTier ? 'bg-primary/10 font-medium text-primary' : 'hover:bg-surface-muted/50'}`}>
+													<td class="px-3 py-2 text-foreground">
+														<span class="flex items-center gap-1.5">
+															{#if isActiveTier}
+																<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+															{/if}
+															<span class={isActiveTier ? 'font-semibold text-primary' : ''}
+																>{paxText}</span>
+														</span>
 													</td>
-													<td class="px-3 py-2.5 text-right font-medium text-foreground">
+													<td
+														class={`px-3 py-2 text-right ${isActiveTier ? 'font-bold text-primary' : 'font-medium text-foreground'}`}>
 														{format_price(price, activeLang)}
 														<span class="text-[11px] font-normal text-foreground-subtle sm:text-xs"
 															>/{$LL.tours.detail.pax()}</span>

@@ -42,7 +42,11 @@ export const gen_price_range = (_range: PriceRange[]) => {
     }
 
     if (each_price.required) {
-      price.validation = (Rule: {required: () => any}) => Rule.required()
+      price.validation = (Rule: any) =>
+        Rule.custom((value: any, context: any) => {
+          if (context?.document?.contactForPrice) return true
+          return value !== undefined && value !== null ? true : 'Vui lòng nhập giá'
+        })
     }
 
     return price

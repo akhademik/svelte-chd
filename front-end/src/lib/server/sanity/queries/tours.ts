@@ -1,5 +1,6 @@
 export const EXTRACT_TOUR_FIELDS = `
 	"best_sell": coalesce(bestSellerTour, false),
+	"contact_for_price": coalesce(contactForPrice, false),
 	"tour_highlights": coalesce(
 		tourHighlights[]->{'highlights': tourHighlights},
 		[]

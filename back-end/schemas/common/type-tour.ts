@@ -50,7 +50,12 @@ export const tour_price = {
   title: 'Khung Giá Tour',
   name: 'tour_price',
   type: 'object',
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  hidden: ({document}: {document?: any}) => Boolean(document?.contactForPrice),
+  validation: (Rule: any) =>
+    Rule.custom((value: any, context: any) => {
+      if (context?.document?.contactForPrice) return true
+      return value ? true : 'Vui lòng nhập khung giá tour'
+    }),
   fieldsets: [
     {
       title: 'Dành cho',

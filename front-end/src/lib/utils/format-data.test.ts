@@ -4,6 +4,7 @@ import {
 	format_pax_no,
 	format_price_object,
 	format_review_date,
+	get_pax_tier,
 	slugify,
 	get_category_slug,
 	resolve_canonical_category,
@@ -36,6 +37,19 @@ describe('format-data utilities', () => {
 		expect(format_pax_no('pax3_4')).toBe('03 - 04')
 		expect(format_pax_no('pax10_up')).toBe('> 10')
 		expect(format_pax_no('custom_key')).toBe('custom_key')
+	})
+
+	it('should map guest count correctly to pax tier keys', () => {
+		expect(get_pax_tier(1)).toBe('pax1')
+		expect(get_pax_tier(2)).toBe('pax2')
+		expect(get_pax_tier(3)).toBe('pax3_4')
+		expect(get_pax_tier(4)).toBe('pax3_4')
+		expect(get_pax_tier(5)).toBe('pax5_6')
+		expect(get_pax_tier(6)).toBe('pax5_6')
+		expect(get_pax_tier(7)).toBe('pax7_9')
+		expect(get_pax_tier(9)).toBe('pax7_9')
+		expect(get_pax_tier(10)).toBe('pax10_up')
+		expect(get_pax_tier(15)).toBe('pax10_up')
 	})
 
 	it('should sort price object entries numerically', () => {

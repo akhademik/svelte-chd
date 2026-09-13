@@ -35,6 +35,18 @@ export const format_pax_no = (key: string) => {
 	return result_dict[key as Key] || key
 }
 
+/**
+ * Maps guest count number to the corresponding pricing tier key.
+ */
+export const get_pax_tier = (count: number): string => {
+	if (count <= 1) return 'pax1'
+	if (count === 2) return 'pax2'
+	if (count <= 4) return 'pax3_4'
+	if (count <= 6) return 'pax5_6'
+	if (count <= 9) return 'pax7_9'
+	return 'pax10_up'
+}
+
 export const format_price_object = (tour: Tour) => {
 	if (!tour?.tour_price) return []
 	return Object.entries(tour.tour_price)

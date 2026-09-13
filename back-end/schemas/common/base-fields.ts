@@ -9,6 +9,7 @@ import {
 
 export const BASE_FIELDS = [
   generate_field('Bán chạy', 'bestSellerTour', 'boolean', false),
+  generate_field('Liên hệ để biết giá (không hiện bảng giá)', 'contactForPrice', 'boolean', false),
   generate_field('Tên tour', 'tourName', 'locale_string'),
   generate_field('Thời gian tour', 'tourDuration', 'locale_string'),
   img_cover,

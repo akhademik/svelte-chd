@@ -79,5 +79,11 @@ export const tours = {
 		notes_placeholder: 'Dietary preferences, pickup points, or any special requests...',
 		send_enquiry: 'Book Now',
 		enquiry_title: "I'd like to book this tour",
+		stepper_guest_count: 'Guests',
+		stepper_unit_price: 'Unit Price',
+		stepper_total_price: 'Total Price',
+		contact_for_price: 'Contact for Price',
+		contact_for_price_desc:
+			'Please contact CHD Travel for detailed customized pricing and personalized group consultation.',
 	},
 }

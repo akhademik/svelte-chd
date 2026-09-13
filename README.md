@@ -84,7 +84,7 @@ Tại thư mục gốc dự án, bạn có thể thực hiện mọi tác vụ q
 | `pnpm check:all` | Chạy Type Check toàn dự án (`svelte-check` + `tsc --noEmit`) |
 | `pnpm lint:all` | Kiểm tra Lint & Prettier format cho toàn bộ monorepo |
 | `pnpm format:all` | Tự động định dạng code chuẩn Prettier cho toàn bộ files |
-| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **57/57 tests** - i18n, form schema, formatters, nav-bar, hero-image, rate-limiter, anti-spam, sanity) |
+| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **58/58 tests** - i18n, form schema, formatters, pax tiers, nav-bar, hero-image, rate-limiter, anti-spam, sanity) |
 | `pnpm test:e2e` | Chạy Playwright End-to-End tests (**6/6 tests** - locale switching, category slug mapping, modal, seo) |
 | `pnpm knip:all` | Quét Dead Code, Unused Files & Unused Exports |
 | `pnpm sync:rates` | Đồng bộ tỷ giá ngoại tệ từ Exchange API vào Sanity CMS (dùng cho GitHub Action Cron) |

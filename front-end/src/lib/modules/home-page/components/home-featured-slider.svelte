@@ -195,16 +195,27 @@
 				<div
 					class="flex flex-col justify-between self-stretch border-t border-inverse pt-6 lg:items-end lg:border-t-0 lg:pt-0">
 					<div class="lg:text-right">
-						<span class="block text-xs uppercase tracking-widest text-foreground-subtle">
-							{$LL.tours.price_starting_from()}
-						</span>
-						<div class="mt-1 flex items-baseline gap-1 lg:justify-end">
-							<span class="font-serif text-3xl font-normal text-white sm:text-4xl">
-								{format_price(price, $locale)}
+						{#if currentTour?.contact_for_price || price === 0}
+							<span class="block text-xs uppercase tracking-widest text-foreground-subtle">
+								{$LL.tours.detail.price()}
 							</span>
-							<span class="text-xs font-light text-foreground-subtle"
-								>/ {$LL.tours.detail.pax()}</span>
-						</div>
+							<div class="mt-1 flex items-baseline gap-1 lg:justify-end">
+								<span class="font-serif text-2xl font-normal text-white sm:text-3xl">
+									{$LL.tours.detail.contact_for_price()}
+								</span>
+							</div>
+						{:else}
+							<span class="block text-xs uppercase tracking-widest text-foreground-subtle">
+								{$LL.tours.price_starting_from()}
+							</span>
+							<div class="mt-1 flex items-baseline gap-1 lg:justify-end">
+								<span class="font-serif text-3xl font-normal text-white sm:text-4xl">
+									{format_price(price, $locale)}
+								</span>
+								<span class="text-xs font-light text-foreground-subtle"
+									>/ {$LL.tours.detail.pax()}</span>
+							</div>
+						{/if}
 					</div>
 
 					{#if hotTours.length > 1}

@@ -18,13 +18,17 @@ export default {
       title: 'tourName.vi',
       isHot: 'bestSellerTour',
       price: 'tourPrice.pax2',
+      contactForPrice: 'contactForPrice',
     },
     prepare(selection: any) {
-      const {title, isHot, price, id, img} = selection
+      const {title, isHot, price, id, img, contactForPrice} = selection
+      const priceText = contactForPrice
+        ? 'Liên hệ để biết giá'
+        : `${isHot ? '"Best Sell" từ' : 'Từ'} ${add_thousand_separator(String(price || ''))} vnđ  `
       return {
         media: img,
         title: `${id || ''} - ${title || ''}`,
-        subtitle: `${isHot ? '"Best Sell" từ' : 'Từ'} ${add_thousand_separator(String(price || ''))} vnđ  `,
+        subtitle: priceText,
       }
     },
   },

@@ -80,5 +80,11 @@ export const tours = {
 		notes_placeholder: 'Yêu cầu đặc biệt về ẩm thực, đón trả hoặc ghi chú thêm...',
 		send_enquiry: 'Đặt Ngay',
 		enquiry_title: 'Tôi muốn đặt tour này',
+		stepper_guest_count: 'Số khách',
+		stepper_unit_price: 'Đơn giá',
+		stepper_total_price: 'Tổng tiền',
+		contact_for_price: 'Liên hệ để biết giá',
+		contact_for_price_desc:
+			'Vui lòng liên hệ với CHD Travel để nhận báo giá chi tiết và tư vấn theo yêu cầu của đoàn.',
 	},
 } as const

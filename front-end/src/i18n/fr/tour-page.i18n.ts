@@ -80,5 +80,11 @@ export const tours = {
 			'Préférences alimentaires, points de prise en charge ou demandes spéciales...',
 		send_enquiry: 'Réserver',
 		enquiry_title: 'Je souhaite réserver ce circuit',
+		stepper_guest_count: 'Voyageurs',
+		stepper_unit_price: 'Prix unitaire',
+		stepper_total_price: 'Prix total',
+		contact_for_price: 'Contactez-nous pour le tarif',
+		contact_for_price_desc:
+			'Veuillez contacter CHD Travel pour obtenir un devis personnalisé et des conseils sur mesure pour votre groupe.',
 	},
 } as const
