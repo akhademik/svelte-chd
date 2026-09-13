@@ -584,11 +584,13 @@
 									</table>
 								</div>
 
-								<!-- Disclaimer for estimated foreign exchange currency conversion -->
-								<div
-									class="mt-3.5 border-t border-border/60 pt-2.5 text-[11px] font-light leading-relaxed text-foreground-subtle">
-									{$LL.tours.detail.price_conversion_disclaimer()}
-								</div>
+								<!-- Disclaimer for estimated foreign exchange currency conversion (Only for foreign currencies EN/FR) -->
+								{#if $LL.tours.detail.price_conversion_disclaimer()}
+									<div
+										class="mt-3.5 border-t border-border/60 pt-2.5 text-[11px] font-light leading-relaxed text-foreground-subtle">
+										{$LL.tours.detail.price_conversion_disclaimer()}
+									</div>
+								{/if}
 							{:else}
 								<p class="text-xs font-light text-foreground-subtle sm:text-sm">
 									{format_price(minPrice, activeLang)} / {$LL.tours.detail.pax()}

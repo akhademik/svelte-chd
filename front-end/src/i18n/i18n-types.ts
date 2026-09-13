@@ -888,7 +888,7 @@ type RootTranslation = {
 			 */
 			price_for_2_pax: string
 			/**
-			 * A​p​p​r​o​x​i​m​a​t​e​ ​c​o​n​v​e​r​s​i​o​n​,​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.​ ​A​p​p​l​i​e​s​ ​t​o​ ​g​r​o​u​p​s​ ​o​f​ ​1​0​+​.
+			 * A​p​p​r​o​x​i​m​a​t​e​ ​c​o​n​v​e​r​s​i​o​n​,​ ​e​x​c​h​a​n​g​e​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.
 			 */
 			price_conversion_disclaimer: string
 			/**
@@ -2227,7 +2227,7 @@ export type TranslationFunctions = {
 			 */
 			price_for_2_pax: () => LocalizedString
 			/**
-			 * Approximate conversion, rate may vary at checkout. Applies to groups of 10+.
+			 * Approximate conversion, exchange rate may vary at checkout.
 			 */
 			price_conversion_disclaimer: () => LocalizedString
 			/**

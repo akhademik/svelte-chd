@@ -653,11 +653,13 @@
 							{/each}
 						</div>
 
-						<!-- Disclaimer for estimated foreign exchange currency conversion -->
-						<div
-							class="mt-4 border-t border-border/60 pt-3 text-[11px] font-light leading-relaxed text-foreground-subtle">
-							{$LL.tours.detail.price_conversion_disclaimer()}
-						</div>
+						<!-- Disclaimer for estimated foreign exchange currency conversion (Only for foreign currencies EN/FR) -->
+						{#if $LL.tours.detail.price_conversion_disclaimer()}
+							<div
+								class="mt-4 border-t border-border/60 pt-3 text-[11px] font-light leading-relaxed text-foreground-subtle">
+								{$LL.tours.detail.price_conversion_disclaimer()}
+							</div>
+						{/if}
 					</div>
 				{/if}
 

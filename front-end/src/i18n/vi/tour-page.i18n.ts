@@ -81,8 +81,7 @@ export const tours = {
 		send_enquiry: 'Đặt Ngay',
 		enquiry_title: 'Tôi muốn đặt tour này',
 		price_for_2_pax: '*giá cho nhóm 2 khách',
-		price_conversion_disclaimer:
-			'Tỷ giá quy đổi mang tính tham khảo, có thể thay đổi tại thời điểm thanh toán. Áp dụng cho đoàn từ 10 khách trở lên.',
+		price_conversion_disclaimer: '',
 		stepper_guest_count: 'Số khách',
 		stepper_unit_price: 'Đơn giá',
 		stepper_total_price: 'Tổng tiền',
