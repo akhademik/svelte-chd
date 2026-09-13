@@ -19,6 +19,19 @@
 		onclose,
 	}: Props = $props()
 
+	function portal(node: HTMLElement) {
+		if (typeof document !== 'undefined') {
+			document.body.appendChild(node)
+		}
+		return {
+			destroy() {
+				if (node.parentNode) {
+					node.parentNode.removeChild(node)
+				}
+			},
+		}
+	}
+
 	let touchStartX = $state(0)
 	let touchEndX = $state(0)
 
@@ -77,10 +90,11 @@
 <svelte:window onkeydown={handleKeydown} />
 
 {#if isOpen && images.length > 0}
-	<!-- Fixed full viewport overlay with original 50% translucent glassmorphic background -->
+	<!-- Fixed full viewport overlay with original 50% translucent glassmorphic background portaled to document.body -->
 	<div
+		use:portal
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-[100] flex h-[100dvh] h-screen w-[100dvw] w-screen flex-col justify-between overflow-hidden bg-black/50 text-white backdrop-blur-md"
+		class="fixed inset-0 z-[110] m-0 flex h-[100dvh] h-screen w-[100dvw] w-screen flex-col justify-between overflow-hidden bg-black/50 p-0 text-white backdrop-blur-md"
 		role="dialog"
 		aria-modal="true"
 		aria-label="Image gallery lightbox">
