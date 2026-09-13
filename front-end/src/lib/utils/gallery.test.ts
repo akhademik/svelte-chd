@@ -1,7 +1,37 @@
 import { describe, it, expect } from 'vitest'
-import { collect_gallery_images } from './gallery'
+import {
+	collect_gallery_images,
+	deduplicate_gallery_images,
+	extract_portable_text_images,
+} from './gallery'
 
 describe('gallery utils & image collection', () => {
+	describe('deduplicate_gallery_images', () => {
+		it('should deduplicate images with same asset _ref or _id', () => {
+			const img1 = { asset: { _ref: 'ref-1' } }
+			const img2 = { asset: { _ref: 'ref-2' } }
+			const img1Dup = { asset: { _ref: 'ref-1' } }
+			const imgId = { asset: { _id: 'ref-3' } }
+
+			const result = deduplicate_gallery_images([img1, img2, img1Dup, imgId])
+			expect(result).toEqual([img1, img2, imgId])
+		})
+	})
+
+	describe('extract_portable_text_images', () => {
+		it('should extract only image blocks that have an asset', () => {
+			const blocks = [
+				{ _type: 'block', children: [{ text: 'Para' }] },
+				{ _type: 'image', asset: { _ref: 'img-pt-1' } },
+				{ _type: 'image' }, // no asset
+				{ _type: 'customBlock' },
+			]
+			const result = extract_portable_text_images(blocks)
+			expect(result.length).toBe(1)
+			expect(result[0].asset?._ref).toBe('img-pt-1')
+		})
+	})
+
 	describe('collect_gallery_images', () => {
 		it('should return empty array when no images provided', () => {
 			expect(collect_gallery_images()).toEqual([])

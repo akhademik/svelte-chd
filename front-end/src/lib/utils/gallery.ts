@@ -1,29 +1,27 @@
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
-export type GalleryImage = SanityImageSource & {
-	caption?: string
-	alt?: string
-	_type?: string
-	_id?: string
+export interface SanityImageAsset {
 	_ref?: string
-	asset?: {
-		_ref?: string
-		_id?: string
-		_type?: string
-		[key: string]: unknown
-	}
-	url?: string
+	_id?: string
+	_type?: string
 	[key: string]: unknown
 }
 
-export interface PortableTextContentBlock {
+export type GalleryImage = SanityImageSource & {
 	_type?: string
 	_key?: string
-	asset?: {
-		_ref?: string
-		_id?: string
-		[key: string]: unknown
-	}
+	asset?: SanityImageAsset
+	caption?: string
+	alt?: string
+	hotspot?: unknown
+	crop?: unknown
+	[key: string]: unknown
+}
+
+export interface PortableTextBlock {
+	_type: string
+	_key?: string
+	asset?: SanityImageAsset
 	children?: Array<{
 		_type?: string
 		text?: string
@@ -32,15 +30,58 @@ export interface PortableTextContentBlock {
 	[key: string]: unknown
 }
 
+/**
+ * Extracts embedded image items from PortableText blocks.
+ */
+export const extract_portable_text_images = (
+	blocks?: PortableTextBlock[] | unknown[] | null
+): GalleryImage[] => {
+	if (!Array.isArray(blocks)) return []
+	const result: GalleryImage[] = []
+
+	for (const block of blocks) {
+		if (
+			block &&
+			typeof block === 'object' &&
+			(block as Record<string, unknown>)._type === 'image' &&
+			(block as Record<string, unknown>).asset
+		) {
+			result.push(block as GalleryImage)
+		}
+	}
+
+	return result
+}
+
+/**
+ * Deduplicates an array of GalleryImages based on asset reference.
+ */
+export const deduplicate_gallery_images = (images: GalleryImage[]): GalleryImage[] => {
+	const seen = new Set<string>()
+	const result: GalleryImage[] = []
+
+	for (const img of images) {
+		if (!img || typeof img !== 'object') continue
+		const ref = img.asset?._ref || img.asset?._id
+		if (ref) {
+			if (seen.has(ref)) continue
+			seen.add(ref)
+		}
+		result.push(img)
+	}
+
+	return result
+}
+
 export interface CollectGalleryImagesParams {
-	coverImage?: GalleryImage | null | unknown
-	album?: GalleryImage[] | null | unknown
-	content?: PortableTextContentBlock[] | unknown[] | null | unknown
+	coverImage?: GalleryImage | null
+	album?: GalleryImage[] | null
+	content?: PortableTextBlock[] | unknown[] | null
 	maxContentImages?: number
 }
 
 /**
- * Extracts and deduplicates gallery images from cover image, album array, and PortableText content blocks.
+ * Normalizes and collects gallery images from cover, album, and content blocks.
  */
 export const collect_gallery_images = ({
 	coverImage,
@@ -48,57 +89,24 @@ export const collect_gallery_images = ({
 	content,
 	maxContentImages = 5,
 }: CollectGalleryImagesParams = {}): GalleryImage[] => {
-	const list: GalleryImage[] = []
-	const seenRefs = new Set<string>()
+	const candidates: GalleryImage[] = []
 
-	const addImg = (img?: GalleryImage | null | unknown) => {
-		if (!img || typeof img !== 'object') return
-		const imgObj = img as Record<string, unknown>
-		const asset = imgObj.asset as Record<string, unknown> | undefined
-
-		const ref =
-			typeof asset?._ref === 'string'
-				? asset._ref
-				: typeof asset?._id === 'string'
-					? asset._id
-					: typeof imgObj._id === 'string'
-						? imgObj._id
-						: typeof imgObj._ref === 'string'
-							? imgObj._ref
-							: null
-
-		if (asset || imgObj._ref || imgObj.url) {
-			if (ref && seenRefs.has(ref)) return
-			if (ref) seenRefs.add(ref)
-			list.push(img as GalleryImage)
-		}
+	if (coverImage?.asset) {
+		candidates.push(coverImage)
 	}
 
-	// 1. Cover Image
-	if (coverImage) {
-		addImg(coverImage)
-	}
-
-	// 2. Album / Extra Images
-	if (Array.isArray(album) && album.length > 0) {
+	if (Array.isArray(album)) {
 		for (const img of album) {
-			addImg(img)
-		}
-	}
-
-	// 3. Images from PortableText content if album is short
-	if (list.length < maxContentImages && Array.isArray(content) && content.length > 0) {
-		for (const block of content) {
-			if (
-				block &&
-				typeof block === 'object' &&
-				(block as Record<string, unknown>)._type === 'image' &&
-				(block as Record<string, unknown>).asset
-			) {
-				addImg(block)
+			if (img?.asset) {
+				candidates.push(img)
 			}
 		}
 	}
 
-	return list
+	if (candidates.length < maxContentImages && Array.isArray(content) && content.length > 0) {
+		const embeddedImages = extract_portable_text_images(content)
+		candidates.push(...embeddedImages)
+	}
+
+	return deduplicate_gallery_images(candidates)
 }

@@ -13,6 +13,7 @@
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
 	import { get_tour_slug } from '$lib/utils/slug'
+	import { collect_gallery_images } from '$lib/utils/gallery'
 	import { fade } from 'svelte/transition'
 
 	import TourDetailCta from './tour-detail-cta.svelte'
@@ -54,16 +55,12 @@
 	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, activeLang))
 	let tourSlug = $derived(tour ? get_tour_slug(tour, activeLang) || tour.tour_id || '' : '')
 
-	let allImages = $derived.by(() => {
-		const imgs: any[] = []
-		if (imgCover?.asset) imgs.push(imgCover)
-		if (imgTour?.length) {
-			imgTour.forEach((img: any) => {
-				if (img?.asset) imgs.push(img)
-			})
-		}
-		return imgs
-	})
+	let allImages = $derived(
+		collect_gallery_images({
+			coverImage: imgCover,
+			album: imgTour,
+		})
+	)
 
 	let previousPath = $state('')
 

@@ -1,3 +1,5 @@
+import type { GalleryImage, PortableTextBlock } from '$lib/utils/gallery'
+
 export interface BlogPost {
 	_id: string
 	title: {
@@ -20,14 +22,14 @@ export interface BlogPost {
 		en?: string
 		fr?: string
 	}
-	coverImg?: any
-	imgTour?: any[]
-	img_tour?: any[]
+	coverImg?: GalleryImage
+	imgTour?: GalleryImage[]
+	img_tour?: GalleryImage[]
 	content?: {
-		vi?: any[]
-		vn?: any[]
-		en?: any[]
-		fr?: any[]
+		vi?: PortableTextBlock[]
+		vn?: PortableTextBlock[]
+		en?: PortableTextBlock[]
+		fr?: PortableTextBlock[]
 	}
 	isFeatured?: boolean
 	publishedAt?: string

@@ -1,13 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type Img_Cover = {
-	caption?: string
-	asset?: {
-		_ref?: string
-		_type?: string
-	}
-	_type?: string
-}
+import type { GalleryImage } from '$lib/utils/gallery'
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type Locale_String = {
 	vi?: string
 	vn?: string
@@ -44,8 +37,8 @@ export interface Tour {
 	best_sell?: boolean
 	contact_for_price?: boolean
 	tour_level?: 'easy' | 'medium' | 'hard' | string
-	img_cover?: Img_Cover
-	img_tour?: Img_Cover[]
+	img_cover?: GalleryImage
+	img_tour?: GalleryImage[]
 	tour_duration?: Locale_String
 	tour_highlights?: Highlights[]
 	tour_id?: string

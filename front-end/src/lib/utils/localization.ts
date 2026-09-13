@@ -6,8 +6,8 @@ import type { Locales } from '$i18n/i18n-types'
 export const get_localized_field = <T = string>(
 	field: Record<string, T> | undefined | null,
 	locale: Locales | string = 'en',
-	fallback: T | '' = ''
-): T | '' => {
+	fallback: T = '' as unknown as T
+): T => {
 	if (!field || typeof field !== 'object') return fallback
 	const loc = locale === 'vn' ? 'vi' : locale
 	if (field[loc] !== undefined && field[loc] !== null && field[loc] !== '') {

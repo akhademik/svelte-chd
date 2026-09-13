@@ -13,6 +13,8 @@
 	import TourDetailPricingTable from './components/tour-detail-pricing-table.svelte'
 	import TourDetailSummary from './components/tour-detail-summary.svelte'
 
+	import { collect_gallery_images } from '$lib/utils/gallery'
+
 	interface Props {
 		tour: Tour
 		allTours?: Tour[]
@@ -35,16 +37,12 @@
 		return $LL.tours.trip_facts.difficulty_easy()
 	})
 
-	let allImages = $derived.by(() => {
-		const imgs: any[] = []
-		if (tour.img_cover?.asset) imgs.push(tour.img_cover)
-		if (tour.img_tour?.length) {
-			tour.img_tour.forEach((img: any) => {
-				if (img?.asset) imgs.push(img)
-			})
-		}
-		return imgs
-	})
+	let allImages = $derived(
+		collect_gallery_images({
+			coverImage: tour.img_cover,
+			album: tour.img_tour,
+		})
+	)
 
 	let tourType = $derived(tour._type === 'tourCentral' ? 'highland-tours' : 'day-tours')
 </script>
