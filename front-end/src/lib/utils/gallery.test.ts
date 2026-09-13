@@ -23,7 +23,7 @@ describe('gallery utils & image collection', () => {
 			]
 			const res = collect_gallery_images({ coverImage: cover, album })
 			expect(res.length).toBe(3)
-			expect(res.map(i => i.asset._ref)).toEqual(['img-1', 'img-2', 'img-3'])
+			expect(res.map(i => i.asset?._ref)).toEqual(['img-1', 'img-2', 'img-3'])
 		})
 
 		it('should extract embedded images from PortableText content if album is short', () => {
@@ -36,7 +36,7 @@ describe('gallery utils & image collection', () => {
 			]
 			const res = collect_gallery_images({ coverImage: cover, content })
 			expect(res.length).toBe(3)
-			expect(res.map(i => i.asset._ref)).toEqual(['img-cover', 'img-content-1', 'img-content-2'])
+			expect(res.map(i => i.asset?._ref)).toEqual(['img-cover', 'img-content-1', 'img-content-2'])
 		})
 	})
 })

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
 	import { BaseImageLightbox } from '$lib/base'
+	import type { GalleryImage } from '$lib/utils/gallery'
 	import { url_for } from '$lib/utils/sanity'
 
 	interface Props {
-		images: any[]
+		images: GalleryImage[]
 		title: string
 	}
 

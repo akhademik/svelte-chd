@@ -1,7 +1,41 @@
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+
+export type GalleryImage = SanityImageSource & {
+	caption?: string
+	alt?: string
+	_type?: string
+	_id?: string
+	_ref?: string
+	asset?: {
+		_ref?: string
+		_id?: string
+		_type?: string
+		[key: string]: unknown
+	}
+	url?: string
+	[key: string]: unknown
+}
+
+export interface PortableTextContentBlock {
+	_type?: string
+	_key?: string
+	asset?: {
+		_ref?: string
+		_id?: string
+		[key: string]: unknown
+	}
+	children?: Array<{
+		_type?: string
+		text?: string
+		[key: string]: unknown
+	}>
+	[key: string]: unknown
+}
+
 export interface CollectGalleryImagesParams {
-	coverImage?: any
-	album?: any
-	content?: any
+	coverImage?: GalleryImage | null | unknown
+	album?: GalleryImage[] | null | unknown
+	content?: PortableTextContentBlock[] | unknown[] | null | unknown
 	maxContentImages?: number
 }
 
@@ -13,36 +47,57 @@ export const collect_gallery_images = ({
 	album,
 	content,
 	maxContentImages = 5,
-}: CollectGalleryImagesParams = {}): any[] => {
-	const list: any[] = []
+}: CollectGalleryImagesParams = {}): GalleryImage[] => {
+	const list: GalleryImage[] = []
 	const seenRefs = new Set<string>()
 
-	const addImg = (img: any) => {
-		if (!img) return
+	const addImg = (img?: GalleryImage | null | unknown) => {
+		if (!img || typeof img !== 'object') return
+		const imgObj = img as Record<string, unknown>
+		const asset = imgObj.asset as Record<string, unknown> | undefined
+
 		const ref =
-			img?.asset?._ref || img?.asset?._id || img?._id || (typeof img === 'string' ? img : null)
-		if (img?.asset || (typeof img === 'object' && (img._ref || img.url))) {
+			typeof asset?._ref === 'string'
+				? asset._ref
+				: typeof asset?._id === 'string'
+					? asset._id
+					: typeof imgObj._id === 'string'
+						? imgObj._id
+						: typeof imgObj._ref === 'string'
+							? imgObj._ref
+							: null
+
+		if (asset || imgObj._ref || imgObj.url) {
 			if (ref && seenRefs.has(ref)) return
 			if (ref) seenRefs.add(ref)
-			list.push(img)
+			list.push(img as GalleryImage)
 		}
 	}
 
 	// 1. Cover Image
-	addImg(coverImage)
+	if (coverImage) {
+		addImg(coverImage)
+	}
 
 	// 2. Album / Extra Images
 	if (Array.isArray(album) && album.length > 0) {
-		album.forEach(img => addImg(img))
+		for (const img of album) {
+			addImg(img)
+		}
 	}
 
 	// 3. Images from PortableText content if album is short
 	if (list.length < maxContentImages && Array.isArray(content) && content.length > 0) {
-		content.forEach((block: any) => {
-			if (block?._type === 'image' && block?.asset) {
+		for (const block of content) {
+			if (
+				block &&
+				typeof block === 'object' &&
+				(block as Record<string, unknown>)._type === 'image' &&
+				(block as Record<string, unknown>).asset
+			) {
 				addImg(block)
 			}
-		})
+		}
 	}
 
 	return list

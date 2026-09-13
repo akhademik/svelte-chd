@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
+	import type { GalleryImage } from '$lib/utils/gallery'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
 
 	interface Props {
-		images?: any[]
+		images?: GalleryImage[]
 		title?: string
 		isOpen?: boolean
 		index?: number
