@@ -11,7 +11,7 @@ import {
 import type { BlogPost } from '$lib/types/blog.type'
 
 import { slugify } from '$lib/utils/format-data'
-import { get_blog_slug } from '$lib/utils/sanity'
+import { get_blog_slug } from '$lib/utils/slug'
 
 export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => {
 	if (!blog || !targetSlug) return false
@@ -70,6 +70,17 @@ export const BlogService = {
 				data => Array.isArray(data)
 			)
 		})
+	},
+
+	/**
+	 * Fetches published blog posts filtered by category.
+	 */
+	async getBlogsByCategory(category?: string, kv?: KVNamespace): Promise<BlogPost[]> {
+		if (!category || category === 'all') {
+			return this.getAllBlogs(kv)
+		}
+		const all = await this.getAllBlogs(kv)
+		return all.filter(p => p.category === category)
 	},
 
 	/**

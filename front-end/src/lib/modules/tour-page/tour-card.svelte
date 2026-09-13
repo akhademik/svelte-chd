@@ -10,7 +10,8 @@
 		resolve_canonical_category,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
-	import { get_tour_slug, url_for } from '$utils/sanity'
+	import { url_for } from '$lib/utils/sanity'
+	import { get_tour_slug } from '$lib/utils/slug'
 
 	interface Props {
 		tour: Tour

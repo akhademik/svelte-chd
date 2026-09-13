@@ -2,7 +2,8 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { filter_localized_items, get_localized_field } from '$lib/utils/format-data'
-	import { get_blog_slug, url_for } from '$lib/utils/sanity'
+	import { url_for } from '$lib/utils/sanity'
+	import { get_blog_slug } from '$lib/utils/slug'
 
 	interface Props {
 		posts?: BlogPost[]

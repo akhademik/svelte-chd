@@ -9,7 +9,8 @@
 		has_localized_title,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
-	import { get_tour_slug, url_for } from '$lib/utils/sanity'
+	import { url_for } from '$lib/utils/sanity'
+	import { get_tour_slug } from '$lib/utils/slug'
 	import { untrack } from 'svelte'
 	import { fade } from 'svelte/transition'
 

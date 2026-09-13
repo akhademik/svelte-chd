@@ -3,7 +3,7 @@ import { EXTRACT_BLOG_FIELDS } from '$lib/server/sanity/queries/blogs'
 import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
 import { get_category_slug, type CanonicalTourCategory } from '$lib/utils/format-data'
 import { Logger } from '$lib/utils/logger'
-import { get_tour_slug } from '$lib/utils/sanity'
+import { get_tour_slug } from '$lib/utils/slug'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({ url }) => {

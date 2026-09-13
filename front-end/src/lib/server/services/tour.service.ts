@@ -10,7 +10,7 @@ import {
 import type { Tour } from '$lib/types/tour.type'
 
 import { slugify } from '$lib/utils/format-data'
-import { get_tour_slug } from '$lib/utils/sanity'
+import { get_tour_slug } from '$lib/utils/slug'
 
 export type TourType = 'day-tours' | 'highland-tours'
 

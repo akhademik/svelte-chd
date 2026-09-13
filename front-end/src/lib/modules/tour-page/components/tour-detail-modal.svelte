@@ -12,7 +12,7 @@
 		resolve_canonical_category,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
-	import { get_tour_slug } from '$lib/utils/sanity'
+	import { get_tour_slug } from '$lib/utils/slug'
 	import { fade } from 'svelte/transition'
 
 	import TourDetailCta from './tour-detail-cta.svelte'
