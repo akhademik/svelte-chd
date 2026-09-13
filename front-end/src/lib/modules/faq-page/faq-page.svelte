@@ -87,8 +87,8 @@
 
 	<!-- Main FAQ Content -->
 	<section class="mx-auto max-w-6xl px-6">
-		<!-- Category Filter Pills -->
-		<div class="mb-10 flex flex-wrap items-center gap-2.5 sm:gap-3">
+		<!-- Category Filter Pills (hidden on mobile to prevent layout breaking, visible on sm and up) -->
+		<div class="mb-10 hidden flex-wrap items-center gap-2.5 sm:flex sm:gap-3">
 			<button
 				type="button"
 				onclick={() => (activeCategory = 'all')}
