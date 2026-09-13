@@ -1,6 +1,4 @@
 import { dev } from '$app/environment'
-import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
-import { exchange_rates_store } from '$lib/stores/exchange-rates-store'
 import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
@@ -16,14 +14,6 @@ const builder = imageUrlBuilder(config as SanityProjectDetails)
 
 export const url_for = (source: SanityImageSource) => {
 	return builder.image(source)
-}
-
-export const get_exchange_rate = (rate: string) => {
-	const storeRates = exchange_rates_store.getRates()
-	if (storeRates?.[rate]) {
-		return storeRates[rate]
-	}
-	return DEFAULT_EXCHANGE_RATES[rate as 'USD' | 'EUR'] ?? 1
 }
 
 export interface CollectGalleryImagesParams {
