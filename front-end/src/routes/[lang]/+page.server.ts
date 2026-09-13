@@ -4,7 +4,7 @@ import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { isSpamSubmission } from '$lib/server/security/anti-spam'
 import { checkRateLimit } from '$lib/server/security/rate-limiter'
 import { BlogService } from '$lib/server/services/blog.service'
-import { HeroImageService } from '$lib/server/services/hero-image.service'
+import { HeroImageService, selectDailyHeroImage } from '$lib/server/services/hero-image.service'
 import { TourService } from '$lib/server/services/tour.service'
 import { Logger } from '$lib/utils/logger'
 import { form_schema, type FormSchema } from '$utils/form-schema'
@@ -66,9 +66,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 		HeroImageService.getHeroImages(kv),
 	])
 
-	const activeHeroImage = HeroImageService.getActiveHeroImage
-		? await HeroImageService.getActiveHeroImage(kv)
-		: null
+	const activeHeroImage = selectDailyHeroImage(allHeroImages)
 
 	return {
 		form,

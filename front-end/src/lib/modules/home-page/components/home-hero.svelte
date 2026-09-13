@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
-	import { getHeroRotationInterval } from '$lib/constants/hero'
+	import { calculateHeroSlotIndex, getNextHeroRotationDelay } from '$lib/constants/hero'
 	import type { HeroImage } from '$lib/types/hero-image.type'
 	import { url_for } from '$lib/utils/sanity'
 
@@ -29,43 +29,67 @@
 		return heroImage ? [heroImage] : []
 	})
 
-	// Initial index aligned with SSR heroImage
+	// Initial index aligned with SSR heroImage (for first paint)
 	function getInitialIndex() {
+		if (stickyImage) return 0
 		if (!heroImage) return 0
 		const idx = effectiveImages.findIndex(img => img._id === heroImage._id)
 		return idx >= 0 ? idx : 0
 	}
 
 	let currentIndex = $state(getInitialIndex())
-	let intervalId: ReturnType<typeof setInterval> | null = null
+	let timerId: ReturnType<typeof setTimeout> | null = null
+
+	function syncToClock() {
+		if (stickyImage || effectiveImages.length <= 1) {
+			if (stickyImage) currentIndex = 0
+			return
+		}
+		currentIndex = calculateHeroSlotIndex(effectiveImages.length, new Date())
+	}
+
+	function scheduleNextRotation() {
+		if (timerId) {
+			clearTimeout(timerId)
+			timerId = null
+		}
+		if (stickyImage || effectiveImages.length <= 1) {
+			return
+		}
+		const delay = getNextHeroRotationDelay(new Date())
+		timerId = setTimeout(() => {
+			syncToClock()
+			scheduleNextRotation()
+		}, delay)
+	}
 
 	$effect(() => {
-		if (heroImage) {
-			const idx = effectiveImages.findIndex(img => img._id === heroImage._id)
-			if (idx >= 0) {
-				currentIndex = idx
+		// Sync immediately after hydration / whenever images change
+		syncToClock()
+		scheduleNextRotation()
+
+		const handleVisibilityChange = () => {
+			if (document.visibilityState === 'visible') {
+				syncToClock()
+				scheduleNextRotation()
 			}
 		}
-	})
 
-	$effect(() => {
-		if (intervalId) {
-			clearInterval(intervalId)
-			intervalId = null
+		const handlePageShow = () => {
+			syncToClock()
+			scheduleNextRotation()
 		}
-		// Rotation interval shared with server SSR logic (Single Source of Truth)
-		const rotationInterval = getHeroRotationInterval()
 
-		if (!stickyImage && effectiveImages.length > 1) {
-			intervalId = setInterval(() => {
-				currentIndex = (currentIndex + 1) % effectiveImages.length
-			}, rotationInterval)
-		}
+		document.addEventListener('visibilitychange', handleVisibilityChange)
+		window.addEventListener('pageshow', handlePageShow)
+
 		return () => {
-			if (intervalId) {
-				clearInterval(intervalId)
-				intervalId = null
+			if (timerId) {
+				clearTimeout(timerId)
+				timerId = null
 			}
+			document.removeEventListener('visibilitychange', handleVisibilityChange)
+			window.removeEventListener('pageshow', handlePageShow)
 		}
 	})
 

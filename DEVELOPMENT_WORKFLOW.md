@@ -24,7 +24,7 @@ pnpm install
 - **Kiểm tra Type & Diagnostics**: `pnpm check:all` (`svelte-check` + `tsc --noEmit`)
 - **Kiểm tra Linting & Format**: `pnpm lint:all`
 - **Tự động Format Code**: `pnpm format:all`
-- **Chạy Test Suites**: `pnpm test` (Unit tests 57/57) & `pnpm test:e2e` (Playwright 6/6)
+- **Chạy Test Suites**: `pnpm test` (Unit tests 60/60) & `pnpm test:e2e` (Playwright 6/6)
 - **Kiểm tra Dead Code & Unused**: `pnpm knip:all`
 - **Đồng bộ Tỷ Giá Ngoại Tệ (Cron / Script)**: `pnpm sync:rates`
 - **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
@@ -47,7 +47,7 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 │    - pnpm format:all                                        │
 │    - pnpm lint:all                                          │
 │    - pnpm check:all (Svelte & TypeScript diagnostics)       │
-│    - pnpm test (Vitest unit test suites 57/57)              │
+│    - pnpm test (Vitest unit test suites 60/60)              │
 │    - pnpm test:e2e (Playwright E2E 6/6 — Đảm bảo Green)     │
 │    - pnpm knip:all (Dead Code & Unused Dependencies)        │
 │    - pnpm build:all (Kiểm tra build production)             │

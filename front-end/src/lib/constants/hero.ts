@@ -5,7 +5,7 @@ import { dev } from '$app/environment'
  * Acts as the Single Source of Truth (SSOT) across Server (SSR) and Client (CSR).
  */
 export const HERO_ROTATION_DEV_MS = 5 * 1000 // 5 seconds in development
-export const HERO_ROTATION_PROD_MS = 5 * 60 * 1000 // 5 minutes in production
+export const HERO_ROTATION_PROD_MS = 3 * 60 * 1000 // 3 minutes in production
 
 /**
  * Returns the active rotation interval based on current environment.
@@ -27,4 +27,15 @@ export const calculateHeroSlotIndex = (
 	const effectiveInterval = intervalMs ?? getHeroRotationInterval()
 	const timeSlot = Math.floor(targetDate.getTime() / effectiveInterval)
 	return Math.abs(timeSlot) % totalImages
+}
+
+/**
+ * Calculates the remaining milliseconds until the next hero rotation boundary.
+ */
+export const getNextHeroRotationDelay = (targetDate = new Date(), intervalMs?: number): number => {
+	const effectiveInterval = intervalMs ?? getHeroRotationInterval()
+	const now = targetDate.getTime()
+	const currentSlot = Math.floor(now / effectiveInterval)
+	const nextBoundary = (currentSlot + 1) * effectiveInterval
+	return Math.max(100, nextBoundary - now)
 }

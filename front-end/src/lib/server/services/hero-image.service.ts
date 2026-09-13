@@ -1,4 +1,4 @@
-import { calculateHeroSlotIndex, getHeroRotationInterval } from '$lib/constants/hero'
+import { calculateHeroSlotIndex } from '$lib/constants/hero'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { sanityClient } from '$lib/server/sanity/client'
@@ -10,7 +10,7 @@ import { Logger } from '$lib/utils/logger'
  * Selects the active hero image based on:
  * 1. If any image has `isSticky: true`, return that sticky image.
  * 2. Otherwise, select an image based on the shared time-slot calculation
- *    so it automatically and deterministically rotates every 5 minutes.
+ *    so it automatically and deterministically rotates every 3 minutes.
  */
 export const selectDailyHeroImage = (
 	images: HeroImage[],
@@ -33,8 +33,7 @@ export const HeroImageService = {
 	 * Fetches all active hero images from Sanity with memory cache & KV snapshot backup.
 	 */
 	async getHeroImages(kv?: KVNamespace): Promise<HeroImage[]> {
-		const cacheTtl = getHeroRotationInterval()
-		return cachedFetch('active-hero-images', cacheTtl, async () => {
+		return cachedFetch('active-hero-images', 30 * 60 * 1000, async () => {
 			try {
 				return await withKvSnapshot(
 					kv,

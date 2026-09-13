@@ -22,10 +22,10 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Data & Image Formatters & Multilingual Filter: [`format-data.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/format-data.test.ts) (14 tests)
    - Sanity URL Builder & Helpers: [`sanity.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/sanity.test.ts) (16 tests)
    - Navigation Bar & Active Route Logic: [`nav-bar-logic.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/nav-bar/nav-bar-logic.test.ts) (6 tests)
-   - Hero Image Daily Rotation & Sticky Logic: [`hero-image.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.test.ts) (3 tests)
+   - Hero Image Deterministic Rotation & Sticky Logic: [`hero-image.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.test.ts) (5 tests)
    - IP Rate Limiter: [`rate-limiter.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.test.ts) (3 tests)
    - Anti-Spam Honeypot Traps: [`anti-spam.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.test.ts) (3 tests)
-   - **Tổng cộng: 57/57 unit tests passing across 8 suites.**
+   - **Tổng cộng: 60/60 unit tests passing across 8 suites.**
 5. **Dead Code & Dependency Analysis (`pnpm knip:all`)**:
    - Quét và loại bỏ dead code, file mồ côi, export/type và package không sử dụng trên toàn bộ monorepo (`front-end` và `back-end`).
 6. **E2E Testing (`pnpm test:e2e` / Playwright)**:
@@ -44,7 +44,7 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Format: `pnpm format:all`
    - Linting: `pnpm lint:all`
    - Type Checking: `pnpm check:all`
-   - Unit Tests: `pnpm test` (Vitest 57/57)
+   - Unit Tests: `pnpm test` (Vitest 60/60)
    - E2E Tests: `pnpm test:e2e` (Playwright 6/6 — Kiểm tra và đảm bảo toàn bộ CI/CD GitHub Actions pass 100%)
    - Dead Code: `pnpm knip:all`
    - Build Check: `pnpm build:all`

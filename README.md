@@ -99,7 +99,7 @@ Mỗi thay đổi mã nguồn phải tuân thủ nghiêm ngặt theo tài liệu
 1. `pnpm format:all`
 2. `pnpm lint:all`
 3. `pnpm check:all`
-4. `pnpm test` (57/57 unit tests)
+4. `pnpm test` (60/60 unit tests)
 5. `pnpm test:e2e` (6/6 Playwright E2E tests)
 6. `pnpm knip:all`
 7. `pnpm build:all`

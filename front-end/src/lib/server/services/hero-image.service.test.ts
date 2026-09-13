@@ -1,8 +1,13 @@
 import { describe, expect, it } from 'vitest'
 import { selectDailyHeroImage } from './hero-image.service'
+import {
+	calculateHeroSlotIndex,
+	getNextHeroRotationDelay,
+	HERO_ROTATION_PROD_MS,
+} from '$lib/constants/hero'
 import type { HeroImage } from '$lib/types/hero-image.type'
 
-describe('HeroImageService - selectDailyHeroImage', () => {
+describe('HeroImageService - selectDailyHeroImage & Hero Constants', () => {
 	const mockImages: HeroImage[] = [
 		{
 			_id: '1',
@@ -46,14 +51,14 @@ describe('HeroImageService - selectDailyHeroImage', () => {
 		expect(selectDailyHeroImage(imagesWithSticky, tuesday)?._id).toBe('2')
 	})
 
-	it('rotates deterministically based on 5-minute time slots when no image is sticky', () => {
-		const baseTime = 1757721600000 // A fixed base timestamp
+	it('rotates deterministically based on 3-minute time slots when no image is sticky', () => {
+		const baseTime = 1757721600000 // A fixed base timestamp aligned to 0 mod (3 min)
 		const slot1 = new Date(baseTime) // Slot 0
-		const slot2 = new Date(baseTime + 5 * 60 * 1000) // Slot 1 (+5 min)
-		const slot3 = new Date(baseTime + 10 * 60 * 1000) // Slot 2 (+10 min)
-		const slot4 = new Date(baseTime + 15 * 60 * 1000) // Slot 3 (+15 min -> mod 3 == 0)
+		const slot2 = new Date(baseTime + 3 * 60 * 1000) // Slot 1 (+3 min)
+		const slot3 = new Date(baseTime + 6 * 60 * 1000) // Slot 2 (+6 min)
+		const slot4 = new Date(baseTime + 9 * 60 * 1000) // Slot 3 (+9 min -> mod 3 == 0)
 
-		const interval = 5 * 60 * 1000
+		const interval = HERO_ROTATION_PROD_MS
 		const id1 = selectDailyHeroImage(mockImages, slot1, interval)?._id
 		const id2 = selectDailyHeroImage(mockImages, slot2, interval)?._id
 		const id3 = selectDailyHeroImage(mockImages, slot3, interval)?._id
@@ -63,5 +68,21 @@ describe('HeroImageService - selectDailyHeroImage', () => {
 		expect(id2).toBe('2')
 		expect(id3).toBe('3')
 		expect(id4).toBe('1')
+	})
+
+	it('calculates getNextHeroRotationDelay correctly to the next slot boundary', () => {
+		const interval = 3 * 60 * 1000 // 180,000 ms
+		// Say current timestamp is at +40 seconds into the slot
+		const baseTime = 1757721600000 + 40 * 1000
+		const delay = getNextHeroRotationDelay(new Date(baseTime), interval)
+		expect(delay).toBe(140 * 1000) // 180s - 40s = 140s
+	})
+
+	it('calculates calculateHeroSlotIndex correctly for positive timestamps and total counts', () => {
+		const interval = 3 * 60 * 1000
+		const baseTime = 1757721600000
+		expect(calculateHeroSlotIndex(0, new Date(baseTime), interval)).toBe(0)
+		expect(calculateHeroSlotIndex(3, new Date(baseTime), interval)).toBe(0)
+		expect(calculateHeroSlotIndex(3, new Date(baseTime + 3 * 60 * 1000), interval)).toBe(1)
 	})
 })
