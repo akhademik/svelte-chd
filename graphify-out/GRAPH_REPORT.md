@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-13)
 
 ## Corpus Check
-- 251 files · ~121,119 words
+- 250 files · ~121,112 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 844 nodes · 1407 edges · 88 communities (25 shown, 33 thin omitted)
+- 843 nodes · 1407 edges · 88 communities (27 shown, 31 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b7d34910`
+- Built from commit: `81b058c8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -28,11 +28,11 @@
 - front-end/knip.json
 - $app/state
 - fr/index.ts
-- modal-store.ts
+- blog-detail-modal.svelte
 - vi/index.ts
 - compilerOptions
 - devDependencies
-- booking-store.ts
+- hero-image.service.ts
 - .typesafe-i18n.json
 - eslint-config-prettier
 - eslint-plugin-svelte
@@ -71,7 +71,7 @@
 - tailwindcss
 - testimonial.ts
 - blog.service.ts
-- tour.type.ts
+- home-page.svelte
 - portable-text-block-render.tsx
 
 ## God Nodes (most connected - your core abstractions)
@@ -87,22 +87,21 @@
 10. `compilerOptions` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `#each()` --calls--> `get_menu_url()`  [EXTRACTED]
+  front-end/src/lib/modules/nav-bar/components/nav-menu-items.svelte → front-end/src/lib/modules/nav-bar/nav-bar-logic.ts
+- `load()` --calls--> `selectDailyHeroImage()`  [EXTRACTED]
+  front-end/src/routes/[lang]/+page.server.ts → front-end/src/lib/server/services/hero-image.service.ts
 - `TourModalState` --references--> `Tour`  [EXTRACTED]
   front-end/src/lib/stores/modal-store.ts → front-end/src/lib/types/tour.type.ts
 - `prepare()` --calls--> `add_thousand_separator()`  [EXTRACTED]
   back-end/schemas/category/day-tours.ts → back-end/components/c-number-input.tsx
 - `prepare()` --calls--> `add_thousand_separator()`  [EXTRACTED]
   back-end/schemas/category/highland-tours.ts → back-end/components/c-number-input.tsx
-- `gen_price_range()` --indirect_call--> `CNumberInput()`  [INFERRED]
-  back-end/schemas/helper-functions.ts → back-end/components/c-number-input.tsx
-- `Locals` --references--> `Locales`  [EXTRACTED]
-  front-end/src/app.d.ts → front-end/src/i18n/i18n-types.ts
 
 ## Import Cycles
-- 3-file cycle: `front-end/src/lib/base/base-tour-detail-modal.svelte -> front-end/src/lib/modules/tour-page/components/tour-detail-modal.svelte -> front-end/src/lib/base/index.ts -> front-end/src/lib/base/base-tour-detail-modal.svelte`
-- 4-file cycle: `front-end/src/lib/base/base-tour-detail-modal.svelte -> front-end/src/lib/modules/tour-page/components/tour-detail-modal.svelte -> front-end/src/lib/modules/tour-page/components/tour-detail-gallery.svelte -> front-end/src/lib/base/index.ts -> front-end/src/lib/base/base-tour-detail-modal.svelte`
+- None detected.
 
-## Communities (88 total, 33 thin omitted)
+## Communities (88 total, 31 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.10
@@ -110,7 +109,7 @@ Nodes (21): devDependencies, eslint, knip, prettier, react-icons, @sanity/eslint
 
 ### Community 1 - "i18n-types.ts"
 Cohesion: 0.08
-Nodes (38): App, Locals, Platform, handle(), en, initFormatters(), extract_url(), get_lang_cookie() (+30 more)
+Nodes (37): App, Locals, Platform, handle(), initFormatters(), extract_url(), get_lang_cookie(), get_path_name_without_base() (+29 more)
 
 ### Community 2 - "schemas/index.ts"
 Cohesion: 0.07
@@ -129,16 +128,20 @@ Cohesion: 0.05
 Nodes (41): dependencies, react, react-dom, react-is, sanity, @sanity/color-input, @sanity/image-url, sanity-plugin-media (+33 more)
 
 ### Community 7 - "seo-store.ts"
-Cohesion: 0.12
-Nodes (6): seo_description, seo_keywords, seo_og_image, seo_title, ./$types, ./$types
+Cohesion: 0.11
+Nodes (5): seo_description, seo_keywords, seo_og_image, seo_title, ./$types
 
 ### Community 8 - "compilerOptions"
 Cohesion: 0.08
 Nodes (23): compilerOptions, allowJs, esModuleInterop, forceConsistentCasingInFileNames, incremental, isolatedModules, jsx, lib (+15 more)
 
 ### Community 9 - "[lang]/+page.server.ts"
-Cohesion: 0.09
+Cohesion: 0.08
 Nodes (31): ClientConfirmationData, getAdminNotifyEmail(), getFromEmail(), sendClientConfirmation(), sendMail(), SendMailOptions, EmailTemplateProps, generateClientEmailHtml() (+23 more)
+
+### Community 10 - "i18n-svelte.ts"
+Cohesion: 0.18
+Nodes (8): { locale, LL, setLocale }, GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag
 
 ### Community 11 - "front-end/knip.json"
 Cohesion: 0.12
@@ -146,11 +149,11 @@ Nodes (17): entry, ignore, ignoreDependencies, ignoreExportsUsedInFile, project,
 
 ### Community 13 - "fr/index.ts"
 Cohesion: 0.11
-Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, fr (+5 more)
+Nodes (14): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, fr (+6 more)
 
-### Community 14 - "modal-store.ts"
-Cohesion: 0.40
-Nodes (4): blog_modal, BlogModalState, tour_modal, TourModalState
+### Community 14 - "blog-detail-modal.svelte"
+Cohesion: 0.22
+Nodes (5): blog_modal, BlogModalState, tour_modal, TourModalState, ./$types
 
 ### Community 15 - "vi/index.ts"
 Cohesion: 0.11
@@ -164,13 +167,17 @@ Nodes (13): compilerOptions, allowJs, checkJs, esModuleInterop, forceConsistentC
 Cohesion: 0.22
 Nodes (9): autoprefixer, devDependencies, autoprefixer, @sveltejs/adapter-cloudflare, @types/node, @typescript-eslint/eslint-plugin, @sveltejs/adapter-cloudflare, @types/node (+1 more)
 
+### Community 18 - "hero-image.service.ts"
+Cohesion: 0.15
+Nodes (15): calculateHeroSlotIndex(), getHeroRotationInterval(), getNextHeroRotationDelay(), HERO_ROTATION_DEV_MS, HERO_ROTATION_PROD_MS, currentHero, currentIndex, effectiveImages (+7 more)
+
 ### Community 32 - "+layout.svelte"
-Cohesion: 0.08
-Nodes (14): Translation, index(), #each(), get_menu_url(), is_menu_active(), menu_items, MenuItem, MenuLink (+6 more)
+Cohesion: 0.11
+Nodes (7): #each(), is_locale_transitioning, nav_animate_hidden, nav_deg, nav_mobile, opacity, ./$types
 
 ### Community 37 - "en/index.ts"
 Cohesion: 0.11
-Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, nav_bar (+5 more)
+Nodes (14): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, en (+6 more)
 
 ### Community 40 - "entry"
 Cohesion: 0.25
@@ -181,8 +188,8 @@ Cohesion: 0.18
 Nodes (10): 1. **Clean Layered Architecture (Backend & Frontend Server)**, 2. **Chuyển Đổi Ngôn Ngữ Thông Minh & Mapping Slug Động (Smart Multilingual Route Translation)**, 3. **Bảo Mật & Chống Spam Toàn Diện (Security & Anti-Spam)**, 4. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Hoàn Thiện**, 5. **Centralized Logging System**, 🌲 CHD Travel Monorepo, 🏗️ Cấu Trúc Dự Án (Project Architecture), 💻 Danh Sách Lệnh Quản Trị (Root Scripts) (+2 more)
 
 ### Community 77 - "format-data.ts"
-Cohesion: 0.09
-Nodes (36): mapSanityToTour(), mapSanityToTours(), EXTRACT_TOUR_FIELDS, getSingleTourQuery(), TOURS_BY_DAY_QUERY, TOURS_BY_HIGHLAND_QUERY, matchesBlogSlug(), matchesTourSlug() (+28 more)
+Cohesion: 0.14
+Nodes (23): get_menu_url(), is_menu_active(), menu_items, MenuItem, MenuLink, TourService, EN_MONTHS, filter_localized_items() (+15 more)
 
 ### Community 78 - "sanity.ts"
 Cohesion: 0.07
@@ -198,16 +205,16 @@ Nodes (4): map_testimonial(), map_testimonials(), TestimonialViewModel, Testimon
 
 ### Community 88 - "blog.service.ts"
 Cohesion: 0.07
-Nodes (31): calculateHeroSlotIndex(), getHeroRotationInterval(), getNextHeroRotationDelay(), HERO_ROTATION_DEV_MS, HERO_ROTATION_PROD_MS, currentHero, currentIndex, effectiveImages (+23 more)
+Nodes (34): withKvSnapshot(), cachedFetch(), memoryCache, sanityClient, sanityConfig, mapSanityToBlogPost(), mapSanityToBlogPosts(), mapSanityToTour() (+26 more)
 
-### Community 89 - "tour.type.ts"
-Cohesion: 0.13
-Nodes (8): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String, Price, Tag, ./$types
+### Community 89 - "home-page.svelte"
+Cohesion: 0.20
+Nodes (3): booking_modal, BookingModalState, ./$types
 
 ## Knowledge Gaps
 - **250 isolated node(s):** `COLOR_PALETTE`, `BlockRenderProps`, `$schema`, `react-is`, `@types/styled-components` (+245 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 338 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **31 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
@@ -216,13 +223,13 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.013) - this node is a cross-community bridge._
 - **Why does `keywords` connect `schemas/index.ts` to `back-end/package.json`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **Why does `Logger` connect `[lang]/+page.server.ts` to `blog.service.ts`, `format-data.ts`?**
+- **Why does `Logger` connect `[lang]/+page.server.ts` to `blog.service.ts`, `hero-image.service.ts`, `format-data.ts`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **What connects `COLOR_PALETTE`, `BlockRenderProps`, `$schema` to the rest of the system?**
   _250 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `devDependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.07811447811447811 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08295625942684766 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.0707070707070707 - nodes in this community are weakly interconnected._

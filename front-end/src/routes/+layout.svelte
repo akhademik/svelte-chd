@@ -2,15 +2,9 @@
 	import '$assets/styles/main.css'
 	import '$assets/styles/tailwind.css'
 
-	import {
-		BaseBlogDetailModal,
-		BaseBookingModal,
-		BaseFooter,
-		BaseJsonLd,
-		BaseScrollToTop,
-		BaseSeo,
-		BaseTourDetailModal,
-	} from '$base'
+	import { BaseBookingModal, BaseFooter, BaseJsonLd, BaseScrollToTop, BaseSeo } from '$base'
+	import { BlogDetailModal } from '$modules/blog-page'
+	import { TourDetailModal } from '$modules/tour-page'
 	import { browser } from '$app/environment'
 	import { page } from '$app/state'
 	import { persist_to_cookie } from '$i18n/i18n-helper'
@@ -79,5 +73,5 @@
 <BaseScrollToTop />
 
 <BaseBookingModal />
-<BaseTourDetailModal />
-<BaseBlogDetailModal />
+<TourDetailModal />
+<BlogDetailModal />
