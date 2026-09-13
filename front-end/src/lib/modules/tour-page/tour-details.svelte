@@ -6,7 +6,9 @@
 	import TourDetailCta from './components/tour-detail-cta.svelte'
 	import TourDetailGallery from './components/tour-detail-gallery.svelte'
 	import TourDetailGoodToKnow from './components/tour-detail-good-to-know.svelte'
+	import TourDetailHighlights from './components/tour-detail-highlights.svelte'
 	import TourDetailInclusions from './components/tour-detail-inclusions.svelte'
+	import TourDetailIntro from './components/tour-detail-intro.svelte'
 	import TourDetailItinerary from './components/tour-detail-itinerary.svelte'
 	import TourDetailPricingTable from './components/tour-detail-pricing-table.svelte'
 	import TourDetailSummary from './components/tour-detail-summary.svelte'
@@ -68,29 +70,33 @@
 			{minPrice}
 			{isContactForPrice} />
 
-		<!-- 4. Main Body: Itinerary, Good to know & Sidebar (Inclusions & CTA) -->
+		<!-- 4. Main Body: Intro, Highlights, Pricing, Itinerary, Good to know, Inclusions, CTA -->
 		<div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
-			<!-- Left Column: Intro, Highlights, (Mobile Pricing Table below Highlights), Itinerary, Good to know -->
+			<!-- Left Column: Intro, Highlights, Mobile Pricing Table, Itinerary, Good to know -->
 			<div class="flex flex-col gap-10 lg:col-span-8">
-				<TourDetailItinerary {tour}>
-					{#snippet mobilePricing()}
-						<div class="block lg:hidden">
-							<TourDetailPricingTable
-								{tour}
-								{title}
-								{duration}
-								{minPrice}
-								{prices}
-								{isContactForPrice} />
-						</div>
-					{/snippet}
-				</TourDetailItinerary>
+				<TourDetailIntro {tour} />
+
+				<TourDetailHighlights {tour} />
+
+				<!-- Pricing Table (Shown here on Mobile view directly below Highlights) -->
+				<div class="block lg:hidden">
+					<TourDetailPricingTable
+						{tour}
+						{title}
+						{duration}
+						{minPrice}
+						{prices}
+						{isContactForPrice} />
+				</div>
+
+				<TourDetailItinerary {tour} />
+
 				<TourDetailGoodToKnow />
 			</div>
 
 			<!-- Right Column (Sidebar on desktop, stacked underneath on mobile): Pricing Table (desktop only), Inclusions, Plan Your Journey CTA -->
 			<div class="flex flex-col gap-10 lg:col-span-4 lg:gap-8">
-				<!-- Pricing Table (Shown here on Desktop only; on Mobile it is placed under Highlights) -->
+				<!-- Pricing Table (Shown here on Desktop only; on Mobile it is positioned under Highlights in Left Column) -->
 				<div class="hidden lg:block">
 					<TourDetailPricingTable
 						{tour}
