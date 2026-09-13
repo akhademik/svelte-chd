@@ -556,14 +556,20 @@
 												{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
 												{@const isActiveTier = activeTier === pax}
 												<tr
-													class={`transition-colors ${isActiveTier ? 'bg-primary/10 font-medium text-primary' : 'hover:bg-surface-muted/50'}`}>
+													class={`transition-all duration-200 ${
+														isActiveTier
+															? 'bg-primary/10 font-bold text-primary'
+															: 'opacity-50 blur-[0.3px] hover:opacity-85 hover:blur-none'
+													}`}>
 													<td class="px-3 py-2 text-foreground">
 														<span class="flex items-center gap-1.5">
 															{#if isActiveTier}
 																<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
 															{/if}
-															<span class={isActiveTier ? 'font-semibold text-primary' : ''}
-																>{paxText}</span>
+															<span
+																class={isActiveTier
+																	? 'font-bold text-primary'
+																	: 'text-foreground-muted'}>{paxText}</span>
 														</span>
 													</td>
 													<td
@@ -576,6 +582,12 @@
 											{/each}
 										</tbody>
 									</table>
+								</div>
+
+								<!-- Disclaimer for estimated foreign exchange currency conversion -->
+								<div
+									class="mt-3.5 border-t border-border/60 pt-2.5 text-[11px] font-light leading-relaxed text-foreground-subtle">
+									{$LL.tours.detail.price_conversion_disclaimer()}
 								</div>
 							{:else}
 								<p class="text-xs font-light text-foreground-subtle sm:text-sm">

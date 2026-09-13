@@ -80,6 +80,9 @@ export const tours = {
 			'Préférences alimentaires, points de prise en charge ou demandes spéciales...',
 		send_enquiry: 'Réserver',
 		enquiry_title: 'Je souhaite réserver ce circuit',
+		price_for_2_pax: '*tarif pour groupe de 2 personnes',
+		price_conversion_disclaimer:
+			'Conversion approximative, le taux peut varier lors du paiement. S’applique aux groupes de 10+ personnes.',
 		stepper_guest_count: 'Voyageurs',
 		stepper_unit_price: 'Prix unitaire',
 		stepper_total_price: 'Prix total',

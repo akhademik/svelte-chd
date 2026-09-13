@@ -66,7 +66,7 @@
       "file_type": "code",
       "norm_label": "formatters",
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L2680"
+      "source_location": "L2696"
     },
     {
       "id": "front_end_src_i18n_i18n_types_locales",
@@ -118,7 +118,7 @@
       "file_type": "code",
       "norm_label": "translationfunctions",
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L1350"
+      "source_location": "L1358"
     },
     {
       "id": "front_end_src_i18n_i18n_types_translations",
@@ -1271,7 +1271,7 @@
       "file_type": "code",
       "norm_label": "format_price()",
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L582"
+      "source_location": "L594"
     },
     {
       "id": "front_end_src_lib_base_base_tour_detail_modal_if",
@@ -19010,7 +19010,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L1350",
+      "source_location": "L1358",
       "weight": 1.0
     },
     {
@@ -19043,7 +19043,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-types.ts",
-      "source_location": "L2680",
+      "source_location": "L2696",
       "weight": 1.0
     },
     {
@@ -19483,7 +19483,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/base/base-tour-detail-modal.svelte",
-      "source_location": "L582",
+      "source_location": "L594",
       "weight": 1.0
     },
     {
@@ -23897,5 +23897,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "d5f0a06a95be4d1d6845773079085c3a8ef25fe5"
+  "built_at_commit": "d549873e21be662248d904213e3f11bc789c14f4"
 }

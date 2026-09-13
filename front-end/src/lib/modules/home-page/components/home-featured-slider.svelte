@@ -215,6 +215,9 @@
 								<span class="text-xs font-light text-foreground-subtle"
 									>/ {$LL.tours.detail.pax()}</span>
 							</div>
+							<div class="mt-0.5 text-[11px] font-light text-foreground-subtle lg:text-right">
+								{$LL.tours.detail.price_for_2_pax()}
+							</div>
 						{/if}
 					</div>
 

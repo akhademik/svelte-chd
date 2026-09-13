@@ -884,6 +884,14 @@ type RootTranslation = {
 			 */
 			enquiry_title: string
 			/**
+			 * *​p​r​i​c​e​ ​f​o​r​ ​g​r​o​u​p​ ​o​f​ ​2​ ​g​u​e​s​t​s
+			 */
+			price_for_2_pax: string
+			/**
+			 * A​p​p​r​o​x​i​m​a​t​e​ ​c​o​n​v​e​r​s​i​o​n​,​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.​ ​A​p​p​l​i​e​s​ ​t​o​ ​g​r​o​u​p​s​ ​o​f​ ​1​0​+​.
+			 */
+			price_conversion_disclaimer: string
+			/**
 			 * G​u​e​s​t​s
 			 */
 			stepper_guest_count: string
@@ -2214,6 +2222,14 @@ export type TranslationFunctions = {
 			 * I'd like to book this tour
 			 */
 			enquiry_title: () => LocalizedString
+			/**
+			 * *price for group of 2 guests
+			 */
+			price_for_2_pax: () => LocalizedString
+			/**
+			 * Approximate conversion, rate may vary at checkout. Applies to groups of 10+.
+			 */
+			price_conversion_disclaimer: () => LocalizedString
 			/**
 			 * Guests
 			 */

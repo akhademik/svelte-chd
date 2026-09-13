@@ -80,6 +80,9 @@ export const tours = {
 		notes_placeholder: 'Yêu cầu đặc biệt về ẩm thực, đón trả hoặc ghi chú thêm...',
 		send_enquiry: 'Đặt Ngay',
 		enquiry_title: 'Tôi muốn đặt tour này',
+		price_for_2_pax: '*giá cho nhóm 2 khách',
+		price_conversion_disclaimer:
+			'Tỷ giá quy đổi mang tính tham khảo, có thể thay đổi tại thời điểm thanh toán. Áp dụng cho đoàn từ 10 khách trở lên.',
 		stepper_guest_count: 'Số khách',
 		stepper_unit_price: 'Đơn giá',
 		stepper_total_price: 'Tổng tiền',

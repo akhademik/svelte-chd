@@ -361,16 +361,21 @@
 							</span>
 						</div>
 					{:else}
-						<div class="flex items-baseline justify-between gap-2 border-b border-border/60 pb-3">
-							<span class="text-xs uppercase tracking-wider text-foreground-subtle">
-								{$LL.tours.price_from()}
-							</span>
-							<div class="flex items-baseline gap-1">
-								<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
-									{format_price(minPrice, $locale)}
-								</b>
-								<span class="text-xs font-light text-foreground-subtle"
-									>/{$LL.tours.detail.pax()}</span>
+						<div class="border-b border-border/60 pb-3">
+							<div class="flex items-baseline justify-between gap-2">
+								<span class="text-xs uppercase tracking-wider text-foreground-subtle">
+									{$LL.tours.price_from()}
+								</span>
+								<div class="flex items-baseline gap-1">
+									<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
+										{format_price(minPrice, $locale)}
+									</b>
+									<span class="text-xs font-light text-foreground-subtle"
+										>/{$LL.tours.detail.pax()}</span>
+								</div>
+							</div>
+							<div class="mt-1 text-right text-[11px] font-light text-foreground-subtle">
+								{$LL.tours.detail.price_for_2_pax()}
 							</div>
 						</div>
 					{/if}
@@ -620,22 +625,23 @@
 							</div>
 						</div>
 
-						<!-- Pricing Table with active row highlight -->
+						<!-- Pricing Table with active row highlight & non-active blur/dim -->
 						<div class="space-y-1 divide-y divide-border/60 text-xs sm:text-sm">
 							{#each prices as [pax, price], idx}
 								{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
 								{@const isActiveTier = activeTier === pax}
 								<div
-									class={`flex items-center justify-between rounded-md px-2.5 py-2 transition-all ${
+									class={`flex items-center justify-between rounded-md px-2.5 py-2 transition-all duration-200 ${
 										isActiveTier
-											? 'shadow-xs bg-primary/10 font-medium text-primary ring-1 ring-primary/30'
-											: 'text-foreground-muted'
+											? 'scale-[1.02] bg-primary/10 font-bold text-primary shadow-sm ring-1 ring-primary/40'
+											: 'text-foreground-muted opacity-50 blur-[0.3px] hover:opacity-85 hover:blur-none'
 									} ${idx > 0 && !isActiveTier ? 'pt-2' : ''}`}>
 									<span class="flex items-center gap-1.5">
 										{#if isActiveTier}
 											<span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
 										{/if}
-										<span>{paxText}</span>
+										<span class={isActiveTier ? 'font-bold text-primary' : 'font-normal'}
+											>{paxText}</span>
 									</span>
 									<span
 										class={isActiveTier ? 'font-bold text-primary' : 'font-medium text-foreground'}>
@@ -645,6 +651,12 @@
 									</span>
 								</div>
 							{/each}
+						</div>
+
+						<!-- Disclaimer for estimated foreign exchange currency conversion -->
+						<div
+							class="mt-4 border-t border-border/60 pt-3 text-[11px] font-light leading-relaxed text-foreground-subtle">
+							{$LL.tours.detail.price_conversion_disclaimer()}
 						</div>
 					</div>
 				{/if}
