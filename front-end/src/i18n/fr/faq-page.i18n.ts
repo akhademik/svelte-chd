@@ -1,0 +1,38 @@
+export const faq_page = {
+	hero: {
+		subtitle: 'Centre d’aide & Foire aux questions',
+		title: 'Foire aux questions',
+		desc: 'Tout ce que vous devez savoir sur la réservation, le déroulement des excursions, le tourisme éthique avec les éléphants et vos voyages dans les Hauts Plateaux avec CHD Travel.',
+	},
+	categories: {
+		all: 'Toutes les questions',
+		booking: 'Réservation & Paiement',
+		tours: 'Circuits & Logistique',
+		ethics: 'Éléphants & Écotourisme',
+		prep: 'Préparation & Climat',
+		cancellation: 'Annulations & Remboursements',
+	},
+	items: {
+		q1: 'Comment réserver un circuit avec CHD Travel ?',
+		a1: 'Vous pouvez soumettre une demande via notre formulaire de réservation en ligne sur la page de chaque circuit ou via notre page Contact. Notre équipe vérifiera la disponibilité, vous enverra un itinéraire personnalisé et vous guidera pour le paiement sous 24 heures.',
+		q2: 'Quels modes de paiement acceptez-vous ?',
+		a2: 'Nous acceptons les virements bancaires (VND pour les comptes locaux, USD/EUR par virement SWIFT international), les cartes bancaires via des liens de paiement sécurisés, ainsi que les paiements en espèces à notre bureau de Buon Ma Thuot.',
+		q3: 'Pourquoi CHD Travel privilégie-t-il l’observation éthique des éléphants ?',
+		a3: 'Nous sommes profondément engagés dans le bien-être animal. Nous refusons les balades à dos d’éléphant et privilégions l’observation bienveillante en milieu naturel dans le parc national de Yok Don et au lac Lak, garantissant le respect total de leur liberté.',
+		q4: 'Quelle est la meilleure période pour visiter les Hauts Plateaux ?',
+		a4: 'La saison sèche (novembre à avril) offre un climat idéal avec un ciel dégagé et la floraison des caféiers (nov–fév). La saison verte (mai à octobre) dévoile de splendides cascades et des paysages tropicaux verdoyants.',
+		q5: 'Vos guides parlent-ils français ?',
+		a5: 'Oui ! Nos guides et co-fondateurs parlent couramment français et anglais. Forts d’une connaissance encyclopédique de la région et des ethnies Ede et M’nong, ils vous garantissent une immersion culturelle inoubliable.',
+		q6: 'Peut-on personnaliser un circuit pour une famille ou un groupe privé ?',
+		a6: 'Absolument. Nous sommes spécialistes des circuits sur-mesure adaptés à votre rythme, à vos préférences familiales, ou à des thématiques spécifiques comme le café d’exception ou la photographie.',
+		q7: 'Que faut-il emporter pour les excursions ?',
+		a7: 'Nous recommandons de bonnes chaussures de marche, des vêtements légers et respirants en coton, une petite laine pour les soirées fraîches, un répulsif anti-moustiques respectueux de l’environnement, un chapeau et une gourde réutilisable.',
+		q8: 'Quelle est votre politique d’annulation ?',
+		a8: 'Les annulations effectuées plus de 7 jours avant le départ sont remboursées à 100% (hors frais bancaires éventuels). Consultez nos conditions générales pour les détails relatifs aux annulations tardives.',
+	},
+	cta: {
+		title: 'Vous avez d’autres questions ?',
+		desc: 'Notre équipe locale est à votre entière disposition pour vous guider et concevoir votre séjour.',
+		btn: 'contactez-nous',
+	},
+}

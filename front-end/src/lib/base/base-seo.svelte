@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state'
+	import { replace_locale_in_url } from '$i18n/i18n-helper'
 	import {
 		DEFAULT_DESC,
 		DEFAULT_KEYWORDS,
@@ -43,15 +44,8 @@
 
 	// Generate corresponding path for other languages: /<lang>/...
 	const getLangPath = (targetLang: 'vi' | 'en' | 'fr') => {
-		const parts = currentPath.split('/').filter(Boolean)
-		if (parts.length === 0) {
-			return `${origin}/${targetLang}`
-		}
-		if (['vi', 'vn', 'en', 'fr'].includes(parts[0])) {
-			parts[0] = targetLang
-			return `${origin}/${parts.join('/')}`
-		}
-		return `${origin}/${targetLang}/${parts.join('/')}`
+		const targetUrl = new URL(currentPath, origin)
+		return replace_locale_in_url(targetUrl, targetLang)
 	}
 </script>
 

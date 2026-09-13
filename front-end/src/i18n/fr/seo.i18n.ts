@@ -5,4 +5,7 @@ export const seo = {
 	about: 'À Propos',
 	blog: 'Blog',
 	contact: 'Contactez',
+	faq: 'Foire Aux Questions',
+	terms: `Conditions d'Utilisation`,
+	privacy: 'Politique de Confidentialité',
 }

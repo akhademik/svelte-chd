@@ -1,0 +1,38 @@
+export const faq_page = {
+	hero: {
+		subtitle: 'Trung tâm trợ giúp & Giải đáp',
+		title: 'Câu hỏi thường gặp',
+		desc: 'Tất cả thông tin chi tiết về đặt tour, trải nghiệm thực tế, quy chuẩn du lịch voi thân thiện và hành trình khám phá Tây Nguyên cùng CHD Travel.',
+	},
+	categories: {
+		all: 'Tất cả câu hỏi',
+		booking: 'Đặt tour & Thanh toán',
+		tours: 'Lịch trình & Tổ chức',
+		ethics: 'Bảo tồn voi & Du lịch bền vững',
+		prep: 'Chuẩn bị & Thời tiết',
+		cancellation: 'Chính sách hoàn hủy',
+	},
+	items: {
+		q1: 'Làm thế nào để đặt tour cùng CHD Travel?',
+		a1: 'Quý khách có thể dễ dàng đặt tour qua form đặt tour trực tuyến trên từng trang tour hoặc gửi yêu cầu tại trang Liên hệ. Đội ngũ tư vấn sẽ kiểm tra tình trạng chỗ, gửi lịch trình chi tiết và hướng dẫn thanh toán trong vòng 24 giờ.',
+		q2: 'CHD Travel chấp nhận các hình thức thanh toán nào?',
+		a2: 'Chúng tôi hỗ trợ chuyển khoản ngân hàng (VND cho tài khoản nội địa, USD/EUR qua cổng thanh toán quốc tế), thẻ tín dụng/ghi nợ quốc tế qua liên kết thanh toán bảo mật, và tiền mặt tại văn phòng Buôn Ma Thuột.',
+		q3: 'Tại sao CHD Travel cam kết du lịch voi thân thiện, không cưỡi voi?',
+		a3: 'Chúng tôi kiên quyết bảo vệ phúc lợi động vật và tôn trọng thiên nhiên hoang dã. Thay vì cưỡi voi, du khách sẽ được trải nghiệm quan sát voi trong môi trường sống tự nhiên tại Vườn Quốc gia Yok Đôn và Hồ Lắk, giúp voi sống tự do, không bị bóc lột.',
+		q4: 'Thời điểm lý tưởng nhất để du lịch Tây Nguyên là khi nào?',
+		a4: 'Mùa khô từ tháng 11 đến tháng 4 năm sau là thời điểm đẹp nhất với tiết trời mát mẻ, nắng vàng, mùa hoa dã quỳ và mùa hoa cà phê nở trắng bạt ngàn (tháng 11–2). Mùa mưa từ tháng 5 đến tháng 10 mang lại vẻ đẹp hùng vĩ của các dòng thác cuồn cuộn.',
+		q5: 'Hướng dẫn viên của CHD Travel có nói được ngoại ngữ không?',
+		a5: 'Có! Đội ngũ sáng lập và hướng dẫn viên của CHD Travel sử dụng thành thạo tiếng Anh và tiếng Pháp, am hiểu sâu sắc văn hóa bản địa các dân tộc Ê Đê, M’nông và có nhiều năm kinh nghiệm phục vụ du khách quốc tế.',
+		q6: 'CHD Travel có thiết kế tour riêng cho gia đình hoặc đoàn riêng không?',
+		a6: 'Chắc chắn có. Chúng tôi chuyên thiết kế các tour may đo riêng (tailor-made) phù hợp với thể lực, thời gian, nhu cầu gia đình hoặc các đoàn có sở thích chuyên sâu như cà phê đặc sản, nhiếp ảnh, văn hóa nhân chủng học.',
+		q7: 'Cần chuẩn bị trang phục và vật dụng gì khi đi tour?',
+		a7: 'Quý khách nên chuẩn bị giày đi bộ/leo núi êm chân, trang phục cotton thoáng mát, áo khoác nhẹ cho buổi tối vùng cao, kem chống côn trùng thân thiện môi trường, mũ nón, kem chống nắng và bình nước cá nhân.',
+		q8: 'Chính sách hoàn hủy tour của CHD Travel như thế nào?',
+		a8: 'Trường hợp hủy tour trước 7 ngày so với ngày khởi hành, quý khách được hoàn 100% chi phí (chỉ trừ phí giao dịch ngân hàng nếu có). Vui lòng xem thêm Điều khoản Dịch vụ để biết chi tiết các mốc hoàn hủy.',
+	},
+	cta: {
+		title: 'Bạn còn thắc mắc khác?',
+		desc: 'Đội ngũ chuyên gia du lịch địa phương luôn sẵn sàng tư vấn và hỗ trợ bạn xây dựng hành trình hoàn hảo.',
+		btn: 'liên hệ ngay',
+	},
+}

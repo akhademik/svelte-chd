@@ -3,9 +3,13 @@ import { about_page } from './about-page.i18n'
 import { blog_page } from './blog-page.i18n'
 import { contact_page } from './contact-page.i18n'
 import { error_page } from './error-page.i18n'
+import { faq_page } from './faq-page.i18n'
+import { footer } from './footer.i18n'
 import { home_page } from './home-page.i18n'
 import { nav_bar } from './nav-bar.i18n'
+import { privacy_page } from './privacy-page.i18n'
 import { seo } from './seo.i18n'
+import { terms_page } from './terms-page.i18n'
 import { tours } from './tour-page.i18n'
 
 const vn = {
@@ -17,6 +21,10 @@ const vn = {
 	blog_page,
 	seo,
 	error_page,
+	footer,
+	faq_page,
+	terms_page,
+	privacy_page,
 } satisfies Translation
 
 export default vn

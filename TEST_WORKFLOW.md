@@ -1,6 +1,6 @@
 # 🧪 HỆ THỐNG KIỂM THỬ VÀ KIỂM TRA CHẤT LƯỢNG (TESTING & QUALITY WORKFLOW)
 
-> **Mục tiêu**: Đảm bảo mọi thay đổi trong `front-end/` và `back-end/` luôn vượt qua đầy đủ các tầng kiểm tra chất lượng (Format -> Lint -> Type Check -> Unit Test -> Graphify).
+> **Mục tiêu**: Đảm bảo mọi thay đổi trong `front-end/` và `back-end/` luôn vượt qua đầy đủ các tầng kiểm tra chất lượng (Format -> Lint -> Type Check -> Unit Test -> E2E -> Dead Code -> Build -> Graphify).
 
 ---
 
@@ -17,6 +17,7 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Frontend: `svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`
    - Backend: `tsc --noEmit`
 4. **Unit Testing (`pnpm test` / Vitest)**:
+   - i18n URL & Slug Translation: [`i18n-helper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.test.ts) (8 tests)
    - Form Schema Validation: [`form-schema.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/form-schema.test.ts) (4 tests)
    - Data & Image Formatters & Multilingual Filter: [`format-data.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/format-data.test.ts) (14 tests)
    - Sanity URL Builder & Helpers: [`sanity.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/sanity.test.ts) (16 tests)
@@ -24,12 +25,14 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Hero Image Daily Rotation & Sticky Logic: [`hero-image.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.test.ts) (3 tests)
    - IP Rate Limiter: [`rate-limiter.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.test.ts) (3 tests)
    - Anti-Spam Honeypot Traps: [`anti-spam.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.test.ts) (3 tests)
-   - **Tổng cộng: 49/49 unit tests passing across 7 suites.**
+   - **Tổng cộng: 57/57 unit tests passing across 8 suites.**
 5. **Dead Code & Dependency Analysis (`pnpm knip:all`)**:
    - Quét và loại bỏ dead code, file mồ côi, export/type và package không sử dụng trên toàn bộ monorepo (`front-end` và `back-end`).
 6. **E2E Testing (`pnpm test:e2e` / Playwright)**:
-   - Chạy kiểm thử tương tác người dùng, điều hướng đa ngôn ngữ, form submission.
-7. **Đồng Bộ Knowledge Graph (`graphify update .`)**:
+   - Chạy kiểm thử tương tác người dùng, điều hướng đa ngôn ngữ, chuyển đổi slug tour động, form submission, SEO metadata (**6/6 tests passing**).
+7. **Production Build (`pnpm build:all`)**:
+   - Biên dịch kiểm tra Cloudflare Workers adapter và Sanity Studio build.
+8. **Đồng Bộ Knowledge Graph (`graphify update .`)**:
    - Cập nhật đồ thị phụ thuộc kiến trúc mã nguồn trong `graphify-out/`.
 
 ---
@@ -41,11 +44,10 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Format: `pnpm format:all`
    - Linting: `pnpm lint:all`
    - Type Checking: `pnpm check:all`
-   - Unit Tests: `pnpm test` (Vitest 49/49)
-   - E2E Tests: `pnpm test:e2e` (Playwright 5/5 — Kiểm tra và đảm bảo toàn bộ CI/CD GitHub Actions pass 100%)
+   - Unit Tests: `pnpm test` (Vitest 57/57)
+   - E2E Tests: `pnpm test:e2e` (Playwright 6/6 — Kiểm tra và đảm bảo toàn bộ CI/CD GitHub Actions pass 100%)
    - Dead Code: `pnpm knip:all`
    - Build Check: `pnpm build:all`
 3. **Chạy `graphify update .`** cập nhật graph tri thức mã nguồn.
 4. **Báo cáo kết quả đầy đủ, rõ ràng cho User**.
 5. **Khi User phê duyệt (OK)** -> Thực hiện Git Commit & Push theo chuẩn Conventional Commits.
-

@@ -11,11 +11,11 @@ Monorepo chứa toàn bộ mã nguồn của dự án **CHD Travel**, bao gồm 
 ```
 svelte-chd/
 ├── front-end/               # Ứng dụng Web chính (SvelteKit + Svelte 5 Runes + TailwindCSS)
-│   ├── e2e/                 # Test end-to-end (Playwright)
+│   ├── e2e/                 # Test end-to-end (Playwright: navigation, i18n, booking, seo)
 │   ├── scripts/             # Batch scripts & Cron Workers (sync-rates.js)
 │   ├── src/
-│   │   ├── i18n/            # Hệ thống đa ngôn ngữ typesafe-i18n (vn, en, fr)
-│   │   ├── lib/             # Modules, Base UI components, Stores
+│   │   ├── i18n/            # Hệ thống đa ngôn ngữ typesafe-i18n (vi, en, fr) & URL slug translation
+│   │   ├── lib/             # Feature Modules (home, about, tours, blog, contact, faq, terms, privacy)
 │   │   │   └── server/      # Clean Server Layer:
 │   │   │       ├── cache/   # Memory Cache & Cloudflare KV Disaster Recovery Snapshot
 │   │   │       ├── sanity/  # Sanity Client, GROQ Queries, Canonical Mappers
@@ -25,14 +25,14 @@ svelte-chd/
 │   │   └── routes/          # SvelteKit SSR Routes theo ngôn ngữ /[lang]/ & API endpoints
 │   └── static/              # Favicon, static assets, schema icons
 ├── back-end/                # Sanity Content Studio v3 (React + TypeScript)
-├── schemas/             # Sanity Document & Object Schemas (Tours, Blog, Rates)
+│   ├── schemas/             # Sanity Document & Object Schemas (Tours, Blog, Rates)
 │   ├── components/          # Custom Sanity Studio UI Components
 │   └── sanity.config.ts     # Cấu hình Sanity Studio workspace
 ├── graphify-out/            # Persistent Knowledge Graph & Codebase Reports
 ├── DEVELOPMENT_WORKFLOW.md  # Quy chuẩn phát triển & Quality Gate bắt buộc
 ├── LAYOUT_DESIGN_CONCEPT.md # Hệ thống Design tokens & Quy chuẩn UI/UX
 ├── TEST_WORKFLOW.md         # Quy trình kiểm thử Vitest, Playwright & Quality Gates
-└── tasks.md                 # Nhật ký theo dõi & hoàn thành hạng mục dự án
+└── jobs.md                  # Nhật ký theo dõi & hoàn thành hạng mục dự án
 ```
 
 ---
@@ -47,16 +47,26 @@ svelte-chd/
   - Tầng 1: In-memory cache với TTL cho Worker isolates ([`memory-cache.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/cache/memory-cache.ts)).
   - Tầng 2: Cloudflare KV Snapshot 14-ngày đảm bảo website vẫn hoạt động 100% khi Sanity bảo trì hoặc gặp sự cố ([`kv-snapshot.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/cache/kv-snapshot.ts)).
 
-### 2. **Bảo Mật & Chống Spam Toàn Diện (Security & Anti-Spam)**
+### 2. **Chuyển Đổi Ngôn Ngữ Thông Minh & Mapping Slug Động (Smart Multilingual Route Translation)**
+- **Bidirectional Slug Translation**: Khi người dùng chuyển đổi ngôn ngữ (VI/EN/FR), hàm [`replace_locale_in_url`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.ts) tự động phân giải slug danh mục tour sang đúng ngôn ngữ đích thay vì chỉ thay đổi tiền tố locale:
+  - `/vi/tour-trong-ngay` ↔ `/en/day-tours` ↔ `/fr/excursions`
+  - `/vi/tour-tay-nguyen` ↔ `/en/highland-tours` ↔ `/fr/hauts-plateaux`
+  - `/vi/tour-trong-ngay/[slug]` ↔ `/en/day-tours/[slug]` ↔ `/fr/excursions/[slug]`
+- **Bảo toàn Query Params & Hash**: Các tham số lọc, prefill form (`?tour=...`) và anchor link (`#section`) được giữ nguyên toàn vẹn khi đổi ngôn ngữ.
+
+### 3. **Bảo Mật & Chống Spam Toàn Diện (Security & Anti-Spam)**
 - **IP Rate Limiting**: Giới hạn 5 submissions / 10 phút / IP đối với mọi hành động gửi Contact & Booking ([`rate-limiter.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.ts)).
 - **Invisible Honeypot Protection**: Bẫy bot ngầm chống spam email và ngăn tràn webhook Discord ([`anti-spam.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.ts)).
 - **Async Settled Notification**: Đảm bảo `Promise.allSettled` hoàn thành gửi Admin Email, Client Confirmation, và Discord Webhook trước khi trả response trên Edge runtime.
 
-### 3. **Hệ Thống SEO & Rich Snippets (Structured Data)**
-- Tự động tạo JSON-LD Schema.org chuẩn cho mọi trang: `TravelAgency`, `TouristTrip`, `Product`, `BreadcrumbList`.
-- Tự động sinh thẻ `hreflang` 3 ngôn ngữ (`/vi/`, `/en/`, `/fr/`) cho toàn bộ Tour và Sitemap XML ([`sitemap.xml/+server.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/sitemap.xml/+server.ts)).
+### 4. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Hoàn Thiện**
+- **Trang Chức Năng Mới**:
+  - `/faq`: Hệ thống giải đáp câu hỏi thường gặp với bộ lọc danh mục và accordion tương tác.
+  - `/terms`: Điều khoản dịch vụ và cam kết pháp lý lữ hành quốc tế của CHD Travel.
+  - `/privacy`: Chính sách bảo vệ dữ liệu, chống spam và bảo mật thông tin du khách.
+- **Rich Snippets & Structured Data**: Tự động sinh JSON-LD (`TravelAgency`, `TouristTrip`, `Product`, `BreadcrumbList`) và thẻ `hreflang` 3 ngôn ngữ tương ứng chuẩn SEO quốc tế ([`sitemap.xml/+server.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/sitemap.xml/+server.ts)).
 
-### 4. **Centralized Logging System**
+### 5. **Centralized Logging System**
 - Module [`logger.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/logger.ts) chuẩn hóa các mức `INFO`, `WARN`, `ERROR`, `DEBUG`, tự động ẩn log nhạy cảm trên Production.
 
 ---
@@ -74,8 +84,8 @@ Tại thư mục gốc dự án, bạn có thể thực hiện mọi tác vụ q
 | `pnpm check:all` | Chạy Type Check toàn dự án (`svelte-check` + `tsc --noEmit`) |
 | `pnpm lint:all` | Kiểm tra Lint & Prettier format cho toàn bộ monorepo |
 | `pnpm format:all` | Tự động định dạng code chuẩn Prettier cho toàn bộ files |
-| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: 49/49 tests - form schema, formatters, nav-bar, hero-image, rate-limiter, anti-spam, sanity) |
-| `pnpm test:e2e` | Chạy Playwright End-to-End tests |
+| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **57/57 tests** - i18n, form schema, formatters, nav-bar, hero-image, rate-limiter, anti-spam, sanity) |
+| `pnpm test:e2e` | Chạy Playwright End-to-End tests (**6/6 tests** - locale switching, category slug mapping, modal, seo) |
 | `pnpm knip:all` | Quét Dead Code, Unused Files & Unused Exports |
 | `pnpm sync:rates` | Đồng bộ tỷ giá ngoại tệ từ Exchange API vào Sanity CMS (dùng cho GitHub Action Cron) |
 | `pnpm i18n` | Đồng bộ và sinh types tự động cho `typesafe-i18n` |
@@ -89,6 +99,8 @@ Mỗi thay đổi mã nguồn phải tuân thủ nghiêm ngặt theo tài liệu
 1. `pnpm format:all`
 2. `pnpm lint:all`
 3. `pnpm check:all`
-4. `pnpm test`
-5. `graphify update .`
-
+4. `pnpm test` (57/57 unit tests)
+5. `pnpm test:e2e` (6/6 Playwright E2E tests)
+6. `pnpm knip:all`
+7. `pnpm build:all`
+8. `graphify update .`

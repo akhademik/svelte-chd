@@ -1,4 +1,5 @@
 import { base } from '$app/paths'
+import { get_category_slug, resolve_canonical_category } from '$lib/utils/format-data'
 import type { RequestEvent } from '@sveltejs/kit'
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors'
 
@@ -11,8 +12,26 @@ export const get_path_name_without_base = (url: URL) =>
 	url.pathname.replace(REGEX_START_WITH_BASE, '')
 
 export const replace_locale_in_url = (url: URL, locale: string): string => {
-	const [, , ...rest] = get_path_name_without_base(url).split('/')
-	const new_pathname = `/${[locale, ...rest].join('/')}`
+	const pathnameWithoutBase = get_path_name_without_base(url)
+	const segments = pathnameWithoutBase.split('/').filter(Boolean)
+
+	const targetLocale = locale === 'vn' ? 'vi' : locale
+
+	// Remove current locale prefix if present
+	if (segments.length > 0 && (isLocale(segments[0]) || segments[0] === 'vn')) {
+		segments.shift()
+	}
+
+	// If the first path segment is a localized or canonical tour category, translate it to target locale
+	if (segments.length > 0) {
+		const canonicalCategory = resolve_canonical_category(segments[0])
+		if (canonicalCategory) {
+			segments[0] = get_category_slug(canonicalCategory, targetLocale)
+		}
+	}
+
+	const new_pathname =
+		segments.length > 0 ? `/${targetLocale}/${segments.join('/')}` : `/${targetLocale}`
 
 	const new_url = new URL(url.toString())
 	new_url.pathname = base + new_pathname

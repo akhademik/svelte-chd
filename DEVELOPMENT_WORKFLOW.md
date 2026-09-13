@@ -8,7 +8,7 @@
 
 - **BẮT BUỘC DÙNG `pnpm`** (Tuyệt đối không dùng `npm` hoặc `yarn`).
 - Dự án gồm 2 workspace chính:
-  - `front-end/`: SvelteKit (Svelte 5 Runes), TypeScript, TailwindCSS Minimalist UI, Typesafe-i18n, Multi-layer Cache & Disaster Recovery, Security (Rate Limiting & Honeypot).
+  - `front-end/`: SvelteKit (Svelte 5 Runes), TypeScript, TailwindCSS Minimalist UI, Typesafe-i18n, Smart Multilingual Route Switching, Multi-layer Cache & Disaster Recovery, Security (Rate Limiting & Honeypot).
   - `back-end/`: Sanity Content Studio v3, React 18, TypeScript schemas (`tourDaily`, `tourCentral`, `blogPost`, `exchangeRates`).
 
 ```bash
@@ -24,7 +24,7 @@ pnpm install
 - **Kiểm tra Type & Diagnostics**: `pnpm check:all` (`svelte-check` + `tsc --noEmit`)
 - **Kiểm tra Linting & Format**: `pnpm lint:all`
 - **Tự động Format Code**: `pnpm format:all`
-- **Chạy Test Suites**: `pnpm test` (Unit tests) & `pnpm test:e2e` (Playwright)
+- **Chạy Test Suites**: `pnpm test` (Unit tests 57/57) & `pnpm test:e2e` (Playwright 6/6)
 - **Kiểm tra Dead Code & Unused**: `pnpm knip:all`
 - **Đồng bộ Tỷ Giá Ngoại Tệ (Cron / Script)**: `pnpm sync:rates`
 - **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
@@ -47,8 +47,8 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 │    - pnpm format:all                                        │
 │    - pnpm lint:all                                          │
 │    - pnpm check:all (Svelte & TypeScript diagnostics)       │
-│    - pnpm test (Vitest unit test suites)                    │
-│    - pnpm test:e2e (Playwright E2E — Đảm bảo CI/CD Green)   │
+│    - pnpm test (Vitest unit test suites 57/57)              │
+│    - pnpm test:e2e (Playwright E2E 6/6 — Đảm bảo Green)     │
 │    - pnpm knip:all (Dead Code & Unused Dependencies)        │
 │    - pnpm build:all (Kiểm tra build production)             │
 └──────────────────────────────┬──────────────────────────────┘
@@ -63,7 +63,7 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 5. Đợi User xác nhận -> Thực hiện Git Commit & Push         │
-└─────────────────────────────────────────────────────────────┘
+└──────────────────────────────┬──────────────────────────────┘
 ```
 
 ---
@@ -78,23 +78,25 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
    - `queries/`: Chỉ chứa GROQ queries chuẩn khớp với schema backend (`tourDaily`, `tourCentral`, `blogPost`).
    - `mappers/`: Chuyển đổi dữ liệu thô từ Sanity thành Domain Model (`Tour`, `BlogPost`).
 
-3. **Multi-layer Cache & Disaster Recovery (`front-end/src/lib/server/cache/`)**:
+3. **Smart Multilingual Route Switching (`front-end/src/i18n/i18n-helper.ts`)**:
+   - Hàm `replace_locale_in_url` tự động phân giải slug danh mục tour theo bảng ánh xạ chuẩn `TOUR_CATEGORY_SLUG_MAP` khi người dùng đổi ngôn ngữ (`/vi/tour-trong-ngay` ↔ `/fr/excursions` ↔ `/en/day-tours`).
+   - Mọi thành phần chuyển đổi ngôn ngữ (Desktop switcher, Mobile menu switcher, Canonical/hreflang tags) đều tái sử dụng hàm này để đảm bảo tính nhất quán (SSOT).
+
+4. **Multi-layer Cache & Disaster Recovery (`front-end/src/lib/server/cache/`)**:
    - `memory-cache.ts`: Cache in-memory theo TTL cho Worker isolates (bỏ qua trong chế độ Dev).
    - `kv-snapshot.ts`: Lưu snapshot dự phòng 14 ngày trên Cloudflare KV. Khi Sanity gặp sự cố, hệ thống tự động fallback snapshot để web vẫn phục vụ bình thường.
 
-4. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
+5. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
    - Mọi form submission (Contact, Booking) phải qua `checkRateLimit` (5 requests / 10 phút / IP) và `isSpamSubmission` (Honeypot trap).
    - Toàn bộ email/Discord notification phải được xử lý qua `Promise.allSettled` trước khi return response.
 
-5. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
+6. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
    - Tuyệt đối không dùng `console.log` / `console.error` rải rác. Luôn sử dụng `Logger.info`, `Logger.warn`, `Logger.error`, `Logger.debug`.
 
-6. **Batch Jobs & Cron Synchronization (`front-end/scripts/sync-rates.js`)**:
+7. **Batch Jobs & Cron Synchronization (`front-end/scripts/sync-rates.js`)**:
    - Mọi tác vụ mutate/sync dữ liệu định kỳ (ví dụ: lấy tỷ giá ngoại tệ từ bên thứ ba và ghi vào Sanity) **bắt buộc chạy dưới dạng script độc lập** (`pnpm sync:rates`), không nhúng logic write token vào HTTP routes công khai.
    - Khi cấu hình GitHub Action Cron hoặc Cloudflare Cron, trigger trực tiếp script này cùng các biến môi trường `SANITY_WRITE_TOKEN`, `VITE_SANITY_ID`, `EXCHANGE_API_KEY`, `EXCHANGE_URL`.
 
-7. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
+8. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
    - Mọi logic xoay vòng thời gian, chu kỳ timer, hoặc tính toán index định kỳ (như Hero rotation, slider interval) **bắt buộc dùng chung hằng số và hàm tính toán tại `front-end/src/lib/constants/` hoặc `front-end/src/lib/utils/`** (ví dụ: `constants/hero.ts`).
-   - Tuyệt đối không hardcode riêng rẽ mili-giây hoặc viết thuật toán chọn item phân tán ở Server (`service.ts`) và Client (`.svelte`).
-   - Component UI tương tác (như `home-hero.svelte`) phải khởi tạo `$state` khớp 100% với dữ liệu nhận từ SSR (`getInitialIndex()` thay vì `let currentIndex = $state(0)`) để triệt tiêu hoàn toàn hiện tượng hydration flash / nhấp nháy giao diện khi tải trang.
-
+   - Component UI tương tác (như `home-hero.svelte`) phải khởi tạo `$state` khớp 100% với dữ liệu nhận từ SSR (`getInitialIndex()` thay vì `let currentIndex = $state(0)`) để triệt tiêu hoàn toàn hiện tượng hydration flash.

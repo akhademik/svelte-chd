@@ -86,6 +86,28 @@
 			</div>
 		</div>
 
+		<!-- Legal / Utility Links -->
+		<div class="flex justify-center border-t border-inverse-dark/60 pt-3.5">
+			<div
+				class="flex flex-wrap items-center justify-center gap-5 text-[11px] font-light text-inverse-foreground/50">
+				<a
+					href={`/${$locale}/faq`}
+					class="transition-colors hover:text-inverse-foreground/80">
+					{$LL.footer.faq()}
+				</a>
+				<a
+					href={`/${$locale}/terms`}
+					class="transition-colors hover:text-inverse-foreground/80">
+					{$LL.footer.terms()}
+				</a>
+				<a
+					href={`/${$locale}/privacy`}
+					class="transition-colors hover:text-inverse-foreground/80">
+					{$LL.footer.privacy()}
+				</a>
+			</div>
+		</div>
+
 		<!-- Bottom Copyright -->
 		<div
 			class="border-t border-inverse-dark/80 pt-4 text-center text-[11px] font-light text-foreground-subtle">

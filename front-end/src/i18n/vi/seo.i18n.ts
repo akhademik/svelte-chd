@@ -5,4 +5,7 @@ export const seo = {
 	about: 'Giới Thiệu',
 	blog: 'Blog',
 	contact: 'Liên Hệ',
+	faq: 'Câu Hỏi Thường Gặp',
+	terms: 'Điều Khoản Dịch Vụ',
+	privacy: 'Chính Sách Bảo Mật',
 }

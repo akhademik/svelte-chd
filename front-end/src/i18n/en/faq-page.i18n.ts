@@ -1,0 +1,38 @@
+export const faq_page = {
+	hero: {
+		subtitle: 'Help & Knowledge Base',
+		title: 'Frequently Asked Questions',
+		desc: 'Everything you need to know about booking, traveling, ethical wildlife guidelines, and exploring the Central Highlands with CHD Travel.',
+	},
+	categories: {
+		all: 'All Questions',
+		booking: 'Booking & Payment',
+		tours: 'Tours & Logistics',
+		ethics: 'Elephant Ethics & Sustainability',
+		prep: 'Preparation & Climate',
+		cancellation: 'Refunds & Policy',
+	},
+	items: {
+		q1: 'How do I book a tour with CHD Travel?',
+		a1: 'You can easily request a booking through our online booking modal on any tour page or via our Contact form. Our team will verify availability, send you a detailed personalized itinerary, and guide you through the payment steps within 24 hours.',
+		q2: 'What payment methods do you accept?',
+		a2: 'We accept bank transfers (VND for local accounts, USD/EUR via international SWIFT transfer), major credit/debit cards via secure online payment links, and cash upon arrival at our Buon Ma Thuot office.',
+		q3: 'Why does CHD Travel emphasize ethical elephant tourism?',
+		a3: 'We are committed to animal welfare. We do not support or conduct elephant riding. Instead, we offer ethical elephant observation and care experiences in Yok Don National Park and Lak Lake, allowing elephants to live naturally without exploitation or stress.',
+		q4: 'What is the best time of year to visit the Central Highlands?',
+		a4: 'The dry season from November to April offers ideal sunny weather, blooming wildflowers, and vibrant coffee blossom/harvest seasons (Nov–Feb). The green season from May to October brings dramatic waterfalls and lush tropical landscapes.',
+		q5: 'Are CHD Travel guides fluent in foreign languages?',
+		a5: 'Yes! Our tour leaders and co-founders are fluent in English and French, equipped with extensive regional knowledge, international storytelling experience, and deep connections with local ethnic minority communities (Ede, M’nong).',
+		q6: 'Can tours be customized for private groups or families?',
+		a6: 'Absolutely. We specialize in tailor-made itineraries tailored to your fitness level, travel dates, family needs, and special interests like specialty coffee, photography, or cultural ethnography.',
+		q7: 'What should I pack for highland trekking and excursions?',
+		a7: 'We recommend comfortable walking/hiking shoes, breathable cotton clothing, light layers for cool evenings, eco-friendly insect repellent, a hat, sun protection, and a refillable water bottle.',
+		q8: 'What is your cancellation and refund policy?',
+		a8: 'Cancellations made more than 7 days prior to departure receive a full refund minus minimal banking fees. Please review our Terms of Service for specific details on late cancellations and peak-season adjustments.',
+	},
+	cta: {
+		title: 'Still have questions?',
+		desc: 'Our local travel specialists are here to assist you with custom planning and advice.',
+		btn: 'contact our team',
+	},
+}

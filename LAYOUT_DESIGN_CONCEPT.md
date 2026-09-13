@@ -145,17 +145,20 @@ Khi muốn thay đổi color scheme, chỉ cần cập nhật định nghĩa tok
 ## 6. Cấu trúc Thư mục & Tiêu chuẩn Đa ngôn ngữ (i18n & Svelte 5)
 
 1. **Routes Structure**: `front-end/src/routes/[lang]/<feature>/+page.svelte`
+   - Static / Legal Pages: `about/`, `faq/`, `terms/`, `privacy/`, `contact/`, `blog/`.
 2. **Feature Modules**: `front-end/src/lib/modules/<feature>/`
-   - Chứa `index.ts` export component chính và các sub-components trong thư mục `components/`.
+   - Chứa `index.ts` export component chính và các sub-components trong thư mục `components/` (ví dụ `faq-page`, `terms-page`, `privacy-page`, `about-page`...).
 3. **i18n Translation Files**:
-   - `front-end/src/i18n/vn/t-<feature>.ts`
-   - `front-end/src/i18n/en/t-<feature>.ts`
-   - `front-end/src/i18n/fr/t-<feature>.ts`
-   - Đăng ký vào `index.ts` và chạy `pnpm --filter chd-travel-2023 typesafe-i18n`.
-4. **Svelte 5 Runes**:
+   - `front-end/src/i18n/vi/<feature>.i18n.ts`
+   - `front-end/src/i18n/en/<feature>.i18n.ts`
+   - `front-end/src/i18n/fr/<feature>.i18n.ts`
+   - Đăng ký vào `index.ts` và chạy `pnpm i18n`.
+4. **Footer & Utility Links**:
+   - Cụm liên kết pháp lý (`faq`, `terms`, `privacy`) đặt giữa Navigation Links và Copyright, dùng token `text-inverse-foreground/50` và `border-inverse-dark/60`.
+5. **Svelte 5 Runes**:
    - Dùng `$props()`, `$state()`, `$derived()`, `$effect()`.
    - Đối với biến form từ superForm, đặt `// svelte-ignore state_referenced_locally` khi cần thiết.
-5. **Section Spacing & Proportions**:
+6. **Section Spacing & Proportions**:
    - Trang chủ (`home-page`): Giữ padding section đồng bộ `py-14 sm:py-18` (Why CHD, Day Tours, Highland Tours, Testimonials, Featured Blogs).
    - Component CTA Plan Your Trip: Thu gọn `py-12 sm:py-16`, tiêu đề `text-2xl sm:text-4xl`, nội dung `max-w-3xl` tạo điểm kết trang nhã, không choán hết tầm nhìn.
 

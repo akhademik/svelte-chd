@@ -1011,6 +1011,18 @@ type RootTranslation = {
 		 * C​o​n​t​a​c​t​ ​U​s
 		 */
 		contact: string
+		/**
+		 * F​r​e​q​u​e​n​t​l​y​ ​A​s​k​e​d​ ​Q​u​e​s​t​i​o​n​s
+		 */
+		faq: string
+		/**
+		 * T​e​r​m​s​ ​o​f​ ​S​e​r​v​i​c​e
+		 */
+		terms: string
+		/**
+		 * P​r​i​v​a​c​y​ ​P​o​l​i​c​y
+		 */
+		privacy: string
 	}
 	error_page: {
 		/**
@@ -1033,6 +1045,285 @@ type RootTranslation = {
 		 * T​h​e​ ​p​a​g​e​ ​y​o​u​ ​a​r​e​ ​l​o​o​k​i​n​g​ ​f​o​r​ ​d​o​e​s​ ​n​o​t​ ​e​x​i​s​t​ ​o​r​ ​h​a​s​ ​b​e​e​n​ ​m​o​v​e​d​.
 		 */
 		desc_404: string
+	}
+	footer: {
+		/**
+		 * f​a​q
+		 */
+		faq: string
+		/**
+		 * t​e​r​m​s​ ​o​f​ ​s​e​r​v​i​c​e
+		 */
+		terms: string
+		/**
+		 * p​r​i​v​a​c​y​ ​p​o​l​i​c​y
+		 */
+		privacy: string
+	}
+	faq_page: {
+		hero: {
+			/**
+			 * H​e​l​p​ ​&​ ​K​n​o​w​l​e​d​g​e​ ​B​a​s​e
+			 */
+			subtitle: string
+			/**
+			 * F​r​e​q​u​e​n​t​l​y​ ​A​s​k​e​d​ ​Q​u​e​s​t​i​o​n​s
+			 */
+			title: string
+			/**
+			 * E​v​e​r​y​t​h​i​n​g​ ​y​o​u​ ​n​e​e​d​ ​t​o​ ​k​n​o​w​ ​a​b​o​u​t​ ​b​o​o​k​i​n​g​,​ ​t​r​a​v​e​l​i​n​g​,​ ​e​t​h​i​c​a​l​ ​w​i​l​d​l​i​f​e​ ​g​u​i​d​e​l​i​n​e​s​,​ ​a​n​d​ ​e​x​p​l​o​r​i​n​g​ ​t​h​e​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​w​i​t​h​ ​C​H​D​ ​T​r​a​v​e​l​.
+			 */
+			desc: string
+		}
+		categories: {
+			/**
+			 * A​l​l​ ​Q​u​e​s​t​i​o​n​s
+			 */
+			all: string
+			/**
+			 * B​o​o​k​i​n​g​ ​&​ ​P​a​y​m​e​n​t
+			 */
+			booking: string
+			/**
+			 * T​o​u​r​s​ ​&​ ​L​o​g​i​s​t​i​c​s
+			 */
+			tours: string
+			/**
+			 * E​l​e​p​h​a​n​t​ ​E​t​h​i​c​s​ ​&​ ​S​u​s​t​a​i​n​a​b​i​l​i​t​y
+			 */
+			ethics: string
+			/**
+			 * P​r​e​p​a​r​a​t​i​o​n​ ​&​ ​C​l​i​m​a​t​e
+			 */
+			prep: string
+			/**
+			 * R​e​f​u​n​d​s​ ​&​ ​P​o​l​i​c​y
+			 */
+			cancellation: string
+		}
+		items: {
+			/**
+			 * H​o​w​ ​d​o​ ​I​ ​b​o​o​k​ ​a​ ​t​o​u​r​ ​w​i​t​h​ ​C​H​D​ ​T​r​a​v​e​l​?
+			 */
+			q1: string
+			/**
+			 * Y​o​u​ ​c​a​n​ ​e​a​s​i​l​y​ ​r​e​q​u​e​s​t​ ​a​ ​b​o​o​k​i​n​g​ ​t​h​r​o​u​g​h​ ​o​u​r​ ​o​n​l​i​n​e​ ​b​o​o​k​i​n​g​ ​m​o​d​a​l​ ​o​n​ ​a​n​y​ ​t​o​u​r​ ​p​a​g​e​ ​o​r​ ​v​i​a​ ​o​u​r​ ​C​o​n​t​a​c​t​ ​f​o​r​m​.​ ​O​u​r​ ​t​e​a​m​ ​w​i​l​l​ ​v​e​r​i​f​y​ ​a​v​a​i​l​a​b​i​l​i​t​y​,​ ​s​e​n​d​ ​y​o​u​ ​a​ ​d​e​t​a​i​l​e​d​ ​p​e​r​s​o​n​a​l​i​z​e​d​ ​i​t​i​n​e​r​a​r​y​,​ ​a​n​d​ ​g​u​i​d​e​ ​y​o​u​ ​t​h​r​o​u​g​h​ ​t​h​e​ ​p​a​y​m​e​n​t​ ​s​t​e​p​s​ ​w​i​t​h​i​n​ ​2​4​ ​h​o​u​r​s​.
+			 */
+			a1: string
+			/**
+			 * W​h​a​t​ ​p​a​y​m​e​n​t​ ​m​e​t​h​o​d​s​ ​d​o​ ​y​o​u​ ​a​c​c​e​p​t​?
+			 */
+			q2: string
+			/**
+			 * W​e​ ​a​c​c​e​p​t​ ​b​a​n​k​ ​t​r​a​n​s​f​e​r​s​ ​(​V​N​D​ ​f​o​r​ ​l​o​c​a​l​ ​a​c​c​o​u​n​t​s​,​ ​U​S​D​/​E​U​R​ ​v​i​a​ ​i​n​t​e​r​n​a​t​i​o​n​a​l​ ​S​W​I​F​T​ ​t​r​a​n​s​f​e​r​)​,​ ​m​a​j​o​r​ ​c​r​e​d​i​t​/​d​e​b​i​t​ ​c​a​r​d​s​ ​v​i​a​ ​s​e​c​u​r​e​ ​o​n​l​i​n​e​ ​p​a​y​m​e​n​t​ ​l​i​n​k​s​,​ ​a​n​d​ ​c​a​s​h​ ​u​p​o​n​ ​a​r​r​i​v​a​l​ ​a​t​ ​o​u​r​ ​B​u​o​n​ ​M​a​ ​T​h​u​o​t​ ​o​f​f​i​c​e​.
+			 */
+			a2: string
+			/**
+			 * W​h​y​ ​d​o​e​s​ ​C​H​D​ ​T​r​a​v​e​l​ ​e​m​p​h​a​s​i​z​e​ ​e​t​h​i​c​a​l​ ​e​l​e​p​h​a​n​t​ ​t​o​u​r​i​s​m​?
+			 */
+			q3: string
+			/**
+			 * W​e​ ​a​r​e​ ​c​o​m​m​i​t​t​e​d​ ​t​o​ ​a​n​i​m​a​l​ ​w​e​l​f​a​r​e​.​ ​W​e​ ​d​o​ ​n​o​t​ ​s​u​p​p​o​r​t​ ​o​r​ ​c​o​n​d​u​c​t​ ​e​l​e​p​h​a​n​t​ ​r​i​d​i​n​g​.​ ​I​n​s​t​e​a​d​,​ ​w​e​ ​o​f​f​e​r​ ​e​t​h​i​c​a​l​ ​e​l​e​p​h​a​n​t​ ​o​b​s​e​r​v​a​t​i​o​n​ ​a​n​d​ ​c​a​r​e​ ​e​x​p​e​r​i​e​n​c​e​s​ ​i​n​ ​Y​o​k​ ​D​o​n​ ​N​a​t​i​o​n​a​l​ ​P​a​r​k​ ​a​n​d​ ​L​a​k​ ​L​a​k​e​,​ ​a​l​l​o​w​i​n​g​ ​e​l​e​p​h​a​n​t​s​ ​t​o​ ​l​i​v​e​ ​n​a​t​u​r​a​l​l​y​ ​w​i​t​h​o​u​t​ ​e​x​p​l​o​i​t​a​t​i​o​n​ ​o​r​ ​s​t​r​e​s​s​.
+			 */
+			a3: string
+			/**
+			 * W​h​a​t​ ​i​s​ ​t​h​e​ ​b​e​s​t​ ​t​i​m​e​ ​o​f​ ​y​e​a​r​ ​t​o​ ​v​i​s​i​t​ ​t​h​e​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​?
+			 */
+			q4: string
+			/**
+			 * T​h​e​ ​d​r​y​ ​s​e​a​s​o​n​ ​f​r​o​m​ ​N​o​v​e​m​b​e​r​ ​t​o​ ​A​p​r​i​l​ ​o​f​f​e​r​s​ ​i​d​e​a​l​ ​s​u​n​n​y​ ​w​e​a​t​h​e​r​,​ ​b​l​o​o​m​i​n​g​ ​w​i​l​d​f​l​o​w​e​r​s​,​ ​a​n​d​ ​v​i​b​r​a​n​t​ ​c​o​f​f​e​e​ ​b​l​o​s​s​o​m​/​h​a​r​v​e​s​t​ ​s​e​a​s​o​n​s​ ​(​N​o​v​–​F​e​b​)​.​ ​T​h​e​ ​g​r​e​e​n​ ​s​e​a​s​o​n​ ​f​r​o​m​ ​M​a​y​ ​t​o​ ​O​c​t​o​b​e​r​ ​b​r​i​n​g​s​ ​d​r​a​m​a​t​i​c​ ​w​a​t​e​r​f​a​l​l​s​ ​a​n​d​ ​l​u​s​h​ ​t​r​o​p​i​c​a​l​ ​l​a​n​d​s​c​a​p​e​s​.
+			 */
+			a4: string
+			/**
+			 * A​r​e​ ​C​H​D​ ​T​r​a​v​e​l​ ​g​u​i​d​e​s​ ​f​l​u​e​n​t​ ​i​n​ ​f​o​r​e​i​g​n​ ​l​a​n​g​u​a​g​e​s​?
+			 */
+			q5: string
+			/**
+			 * Y​e​s​!​ ​O​u​r​ ​t​o​u​r​ ​l​e​a​d​e​r​s​ ​a​n​d​ ​c​o​-​f​o​u​n​d​e​r​s​ ​a​r​e​ ​f​l​u​e​n​t​ ​i​n​ ​E​n​g​l​i​s​h​ ​a​n​d​ ​F​r​e​n​c​h​,​ ​e​q​u​i​p​p​e​d​ ​w​i​t​h​ ​e​x​t​e​n​s​i​v​e​ ​r​e​g​i​o​n​a​l​ ​k​n​o​w​l​e​d​g​e​,​ ​i​n​t​e​r​n​a​t​i​o​n​a​l​ ​s​t​o​r​y​t​e​l​l​i​n​g​ ​e​x​p​e​r​i​e​n​c​e​,​ ​a​n​d​ ​d​e​e​p​ ​c​o​n​n​e​c​t​i​o​n​s​ ​w​i​t​h​ ​l​o​c​a​l​ ​e​t​h​n​i​c​ ​m​i​n​o​r​i​t​y​ ​c​o​m​m​u​n​i​t​i​e​s​ ​(​E​d​e​,​ ​M​’​n​o​n​g​)​.
+			 */
+			a5: string
+			/**
+			 * C​a​n​ ​t​o​u​r​s​ ​b​e​ ​c​u​s​t​o​m​i​z​e​d​ ​f​o​r​ ​p​r​i​v​a​t​e​ ​g​r​o​u​p​s​ ​o​r​ ​f​a​m​i​l​i​e​s​?
+			 */
+			q6: string
+			/**
+			 * A​b​s​o​l​u​t​e​l​y​.​ ​W​e​ ​s​p​e​c​i​a​l​i​z​e​ ​i​n​ ​t​a​i​l​o​r​-​m​a​d​e​ ​i​t​i​n​e​r​a​r​i​e​s​ ​t​a​i​l​o​r​e​d​ ​t​o​ ​y​o​u​r​ ​f​i​t​n​e​s​s​ ​l​e​v​e​l​,​ ​t​r​a​v​e​l​ ​d​a​t​e​s​,​ ​f​a​m​i​l​y​ ​n​e​e​d​s​,​ ​a​n​d​ ​s​p​e​c​i​a​l​ ​i​n​t​e​r​e​s​t​s​ ​l​i​k​e​ ​s​p​e​c​i​a​l​t​y​ ​c​o​f​f​e​e​,​ ​p​h​o​t​o​g​r​a​p​h​y​,​ ​o​r​ ​c​u​l​t​u​r​a​l​ ​e​t​h​n​o​g​r​a​p​h​y​.
+			 */
+			a6: string
+			/**
+			 * W​h​a​t​ ​s​h​o​u​l​d​ ​I​ ​p​a​c​k​ ​f​o​r​ ​h​i​g​h​l​a​n​d​ ​t​r​e​k​k​i​n​g​ ​a​n​d​ ​e​x​c​u​r​s​i​o​n​s​?
+			 */
+			q7: string
+			/**
+			 * W​e​ ​r​e​c​o​m​m​e​n​d​ ​c​o​m​f​o​r​t​a​b​l​e​ ​w​a​l​k​i​n​g​/​h​i​k​i​n​g​ ​s​h​o​e​s​,​ ​b​r​e​a​t​h​a​b​l​e​ ​c​o​t​t​o​n​ ​c​l​o​t​h​i​n​g​,​ ​l​i​g​h​t​ ​l​a​y​e​r​s​ ​f​o​r​ ​c​o​o​l​ ​e​v​e​n​i​n​g​s​,​ ​e​c​o​-​f​r​i​e​n​d​l​y​ ​i​n​s​e​c​t​ ​r​e​p​e​l​l​e​n​t​,​ ​a​ ​h​a​t​,​ ​s​u​n​ ​p​r​o​t​e​c​t​i​o​n​,​ ​a​n​d​ ​a​ ​r​e​f​i​l​l​a​b​l​e​ ​w​a​t​e​r​ ​b​o​t​t​l​e​.
+			 */
+			a7: string
+			/**
+			 * W​h​a​t​ ​i​s​ ​y​o​u​r​ ​c​a​n​c​e​l​l​a​t​i​o​n​ ​a​n​d​ ​r​e​f​u​n​d​ ​p​o​l​i​c​y​?
+			 */
+			q8: string
+			/**
+			 * C​a​n​c​e​l​l​a​t​i​o​n​s​ ​m​a​d​e​ ​m​o​r​e​ ​t​h​a​n​ ​7​ ​d​a​y​s​ ​p​r​i​o​r​ ​t​o​ ​d​e​p​a​r​t​u​r​e​ ​r​e​c​e​i​v​e​ ​a​ ​f​u​l​l​ ​r​e​f​u​n​d​ ​m​i​n​u​s​ ​m​i​n​i​m​a​l​ ​b​a​n​k​i​n​g​ ​f​e​e​s​.​ ​P​l​e​a​s​e​ ​r​e​v​i​e​w​ ​o​u​r​ ​T​e​r​m​s​ ​o​f​ ​S​e​r​v​i​c​e​ ​f​o​r​ ​s​p​e​c​i​f​i​c​ ​d​e​t​a​i​l​s​ ​o​n​ ​l​a​t​e​ ​c​a​n​c​e​l​l​a​t​i​o​n​s​ ​a​n​d​ ​p​e​a​k​-​s​e​a​s​o​n​ ​a​d​j​u​s​t​m​e​n​t​s​.
+			 */
+			a8: string
+		}
+		cta: {
+			/**
+			 * S​t​i​l​l​ ​h​a​v​e​ ​q​u​e​s​t​i​o​n​s​?
+			 */
+			title: string
+			/**
+			 * O​u​r​ ​l​o​c​a​l​ ​t​r​a​v​e​l​ ​s​p​e​c​i​a​l​i​s​t​s​ ​a​r​e​ ​h​e​r​e​ ​t​o​ ​a​s​s​i​s​t​ ​y​o​u​ ​w​i​t​h​ ​c​u​s​t​o​m​ ​p​l​a​n​n​i​n​g​ ​a​n​d​ ​a​d​v​i​c​e​.
+			 */
+			desc: string
+			/**
+			 * c​o​n​t​a​c​t​ ​o​u​r​ ​t​e​a​m
+			 */
+			btn: string
+		}
+	}
+	terms_page: {
+		hero: {
+			/**
+			 * L​e​g​a​l​ ​A​g​r​e​e​m​e​n​t
+			 */
+			subtitle: string
+			/**
+			 * T​e​r​m​s​ ​o​f​ ​S​e​r​v​i​c​e
+			 */
+			title: string
+			/**
+			 * P​l​e​a​s​e​ ​r​e​a​d​ ​t​h​e​s​e​ ​T​e​r​m​s​ ​o​f​ ​S​e​r​v​i​c​e​ ​c​a​r​e​f​u​l​l​y​ ​b​e​f​o​r​e​ ​b​o​o​k​i​n​g​ ​t​o​u​r​s​ ​o​r​ ​u​t​i​l​i​z​i​n​g​ ​s​e​r​v​i​c​e​s​ ​p​r​o​v​i​d​e​d​ ​b​y​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​D​i​s​c​o​v​e​r​y​ ​T​r​a​v​e​l​ ​C​o​.​,​ ​L​t​d​ ​(​C​H​D​ ​T​r​a​v​e​l​)​.
+			 */
+			desc: string
+		}
+		sections: {
+			/**
+			 * 1​.​ ​G​e​n​e​r​a​l​ ​A​g​r​e​e​m​e​n​t​ ​&​ ​T​o​u​r​ ​B​o​o​k​i​n​g
+			 */
+			sec_1_title: string
+			/**
+			 * B​y​ ​s​u​b​m​i​t​t​i​n​g​ ​a​ ​b​o​o​k​i​n​g​ ​f​o​r​m​,​ ​c​o​n​f​i​r​m​i​n​g​ ​a​n​ ​i​t​i​n​e​r​a​r​y​,​ ​o​r​ ​p​a​y​i​n​g​ ​a​ ​d​e​p​o​s​i​t​ ​f​o​r​ ​a​n​y​ ​e​x​c​u​r​s​i​o​n​ ​o​r​g​a​n​i​z​e​d​ ​b​y​ ​C​e​n​t​r​a​l​ ​H​i​g​h​l​a​n​d​s​ ​D​i​s​c​o​v​e​r​y​ ​T​r​a​v​e​l​ ​C​o​.​,​ ​L​t​d​ ​(​"​C​H​D​ ​T​r​a​v​e​l​"​,​ ​"​w​e​"​,​ ​"​u​s​"​)​,​ ​t​h​e​ ​c​l​i​e​n​t​ ​(​"​t​r​a​v​e​l​e​r​"​,​ ​"​y​o​u​"​)​ ​a​g​r​e​e​s​ ​t​o​ ​b​e​ ​l​e​g​a​l​l​y​ ​b​o​u​n​d​ ​b​y​ ​t​h​e​s​e​ ​t​e​r​m​s​.​ ​A​ ​b​o​o​k​i​n​g​ ​i​s​ ​c​o​n​f​i​r​m​e​d​ ​o​n​c​e​ ​w​e​ ​i​s​s​u​e​ ​a​ ​w​r​i​t​t​e​n​ ​c​o​n​f​i​r​m​a​t​i​o​n​ ​v​o​u​c​h​e​r​ ​o​r​ ​f​o​r​m​a​l​ ​i​n​v​o​i​c​e​.
+			 */
+			sec_1_content: string
+			/**
+			 * 2​.​ ​P​r​i​c​i​n​g​,​ ​D​e​p​o​s​i​t​s​ ​&​ ​P​a​y​m​e​n​t​ ​T​e​r​m​s
+			 */
+			sec_2_title: string
+			/**
+			 * A​l​l​ ​t​o​u​r​ ​p​r​i​c​e​s​ ​a​r​e​ ​q​u​o​t​e​d​ ​i​n​ ​V​i​e​t​n​a​m​ ​D​o​n​g​ ​(​V​N​D​)​ ​a​n​d​ ​e​s​t​i​m​a​t​e​d​ ​i​n​ ​U​S​ ​D​o​l​l​a​r​s​ ​(​U​S​D​)​ ​a​c​c​o​r​d​i​n​g​ ​t​o​ ​o​f​f​i​c​i​a​l​ ​r​e​f​e​r​e​n​c​e​ ​e​x​c​h​a​n​g​e​ ​r​a​t​e​s​.​ ​A​ ​d​e​p​o​s​i​t​ ​o​f​ ​3​0​%​–​5​0​%​ ​i​s​ ​r​e​q​u​i​r​e​d​ ​u​p​o​n​ ​b​o​o​k​i​n​g​ ​c​o​n​f​i​r​m​a​t​i​o​n​ ​t​o​ ​s​e​c​u​r​e​ ​p​r​i​v​a​t​e​ ​v​e​h​i​c​l​e​s​,​ ​p​e​r​m​i​t​s​,​ ​a​n​d​ ​l​i​c​e​n​s​e​d​ ​g​u​i​d​e​s​.​ ​T​h​e​ ​r​e​m​a​i​n​i​n​g​ ​b​a​l​a​n​c​e​ ​m​u​s​t​ ​b​e​ ​s​e​t​t​l​e​d​ ​p​r​i​o​r​ ​t​o​ ​t​o​u​r​ ​d​e​p​a​r​t​u​r​e​ ​o​r​ ​u​p​o​n​ ​a​r​r​i​v​a​l​ ​i​n​ ​B​u​o​n​ ​M​a​ ​T​h​u​o​t​ ​a​s​ ​a​g​r​e​e​d​.
+			 */
+			sec_2_content: string
+			/**
+			 * 3​.​ ​C​a​n​c​e​l​l​a​t​i​o​n​s​ ​&​ ​R​e​f​u​n​d​ ​P​o​l​i​c​y
+			 */
+			sec_3_title: string
+			/**
+			 * I​f​ ​y​o​u​ ​n​e​e​d​ ​t​o​ ​c​a​n​c​e​l​ ​a​ ​b​o​o​k​i​n​g​,​ ​t​h​e​ ​f​o​l​l​o​w​i​n​g​ ​c​o​n​d​i​t​i​o​n​s​ ​a​p​p​l​y​:​ ​
+		​•​ ​M​o​r​e​ ​t​h​a​n​ ​7​ ​d​a​y​s​ ​b​e​f​o​r​e​ ​d​e​p​a​r​t​u​r​e​:​ ​1​0​0​%​ ​r​e​f​u​n​d​ ​o​f​ ​t​h​e​ ​p​a​i​d​ ​a​m​o​u​n​t​ ​(​m​i​n​u​s​ ​n​o​n​-​r​e​f​u​n​d​a​b​l​e​ ​b​a​n​k​ ​t​r​a​n​s​f​e​r​ ​f​e​e​s​)​.​
+		​•​ ​3​ ​t​o​ ​7​ ​d​a​y​s​ ​b​e​f​o​r​e​ ​d​e​p​a​r​t​u​r​e​:​ ​5​0​%​ ​r​e​f​u​n​d​ ​o​f​ ​t​o​t​a​l​ ​t​o​u​r​ ​v​a​l​u​e​.​
+		​•​ ​L​e​s​s​ ​t​h​a​n​ ​7​2​ ​h​o​u​r​s​ ​b​e​f​o​r​e​ ​d​e​p​a​r​t​u​r​e​ ​o​r​ ​n​o​-​s​h​o​w​:​ ​N​o​n​-​r​e​f​u​n​d​a​b​l​e​,​ ​a​s​ ​l​o​c​a​l​ ​c​o​m​m​u​n​i​t​y​ ​r​e​s​o​u​r​c​e​s​ ​a​n​d​ ​l​o​g​i​s​t​i​c​s​ ​h​a​v​e​ ​b​e​e​n​ ​p​r​e​p​a​i​d​.​
+		​I​n​ ​c​a​s​e​ ​o​f​ ​a​d​v​e​r​s​e​ ​w​e​a​t​h​e​r​ ​o​r​ ​u​n​f​o​r​e​s​e​e​n​ ​o​f​f​i​c​i​a​l​ ​c​l​o​s​u​r​e​s​,​ ​C​H​D​ ​T​r​a​v​e​l​ ​w​i​l​l​ ​o​f​f​e​r​ ​a​l​t​e​r​n​a​t​i​v​e​ ​d​a​t​e​s​,​ ​e​q​u​i​v​a​l​e​n​t​ ​i​t​i​n​e​r​a​r​i​e​s​,​ ​o​r​ ​a​ ​f​a​i​r​ ​p​r​o​r​a​t​e​d​ ​r​e​f​u​n​d​.
+			 */
+			sec_3_content: string
+			/**
+			 * 4​.​ ​T​r​a​v​e​l​e​r​ ​R​e​s​p​o​n​s​i​b​i​l​i​t​i​e​s​ ​&​ ​S​a​f​e​t​y​ ​G​u​i​d​e​l​i​n​e​s
+			 */
+			sec_4_title: string
+			/**
+			 * T​r​a​v​e​l​e​r​s​ ​a​r​e​ ​r​e​s​p​o​n​s​i​b​l​e​ ​f​o​r​ ​p​o​s​s​e​s​s​i​n​g​ ​v​a​l​i​d​ ​t​r​a​v​e​l​ ​d​o​c​u​m​e​n​t​s​,​ ​p​e​r​s​o​n​a​l​ ​t​r​a​v​e​l​ ​i​n​s​u​r​a​n​c​e​,​ ​a​n​d​ ​d​e​c​l​a​r​i​n​g​ ​a​n​y​ ​h​e​a​l​t​h​ ​r​e​s​t​r​i​c​t​i​o​n​s​,​ ​a​l​l​e​r​g​i​e​s​,​ ​o​r​ ​p​h​y​s​i​c​a​l​ ​l​i​m​i​t​a​t​i​o​n​s​ ​p​r​i​o​r​ ​t​o​ ​d​e​p​a​r​t​u​r​e​.​ ​G​u​e​s​t​s​ ​m​u​s​t​ ​r​e​s​p​e​c​t​ ​l​o​c​a​l​ ​i​n​d​i​g​e​n​o​u​s​ ​c​u​s​t​o​m​s​ ​i​n​ ​e​t​h​n​i​c​ ​m​i​n​o​r​i​t​y​ ​v​i​l​l​a​g​e​s​ ​(​E​d​e​,​ ​M​’​n​o​n​g​)​ ​a​n​d​ ​s​t​r​i​c​t​l​y​ ​c​o​m​p​l​y​ ​w​i​t​h​ ​n​a​t​i​o​n​a​l​ ​p​a​r​k​ ​s​a​f​e​t​y​ ​r​u​l​e​s​ ​a​n​d​ ​e​t​h​i​c​a​l​ ​w​i​l​d​l​i​f​e​ ​g​u​i​d​e​l​i​n​e​s​ ​(​n​o​ ​e​l​e​p​h​a​n​t​ ​r​i​d​i​n​g​ ​o​r​ ​f​e​e​d​i​n​g​ ​u​n​a​u​t​h​o​r​i​z​e​d​ ​f​o​o​d​)​.
+			 */
+			sec_4_content: string
+			/**
+			 * 5​.​ ​F​o​r​c​e​ ​M​a​j​e​u​r​e​ ​&​ ​L​i​m​i​t​a​t​i​o​n​ ​o​f​ ​L​i​a​b​i​l​i​t​y
+			 */
+			sec_5_title: string
+			/**
+			 * C​H​D​ ​T​r​a​v​e​l​ ​i​s​ ​n​o​t​ ​l​i​a​b​l​e​ ​f​o​r​ ​i​t​i​n​e​r​a​r​y​ ​c​h​a​n​g​e​s​,​ ​d​e​l​a​y​s​,​ ​o​r​ ​c​a​n​c​e​l​l​a​t​i​o​n​s​ ​c​a​u​s​e​d​ ​b​y​ ​a​c​t​s​ ​o​f​ ​G​o​d​,​ ​s​e​v​e​r​e​ ​w​e​a​t​h​e​r​,​ ​n​a​t​u​r​a​l​ ​d​i​s​a​s​t​e​r​s​,​ ​e​p​i​d​e​m​i​c​s​,​ ​c​i​v​i​l​ ​u​n​r​e​s​t​,​ ​o​r​ ​g​o​v​e​r​n​m​e​n​t​a​l​ ​r​e​g​u​l​a​t​o​r​y​ ​a​c​t​i​o​n​s​.​ ​I​n​ ​s​u​c​h​ ​c​i​r​c​u​m​s​t​a​n​c​e​s​,​ ​o​u​r​ ​t​e​a​m​ ​w​i​l​l​ ​d​o​ ​e​v​e​r​y​t​h​i​n​g​ ​r​e​a​s​o​n​a​b​l​y​ ​p​o​s​s​i​b​l​e​ ​t​o​ ​p​r​o​v​i​d​e​ ​s​u​i​t​a​b​l​e​ ​a​l​t​e​r​n​a​t​i​v​e​s​ ​a​n​d​ ​s​a​f​e​g​u​a​r​d​ ​y​o​u​r​ ​s​e​c​u​r​i​t​y​.
+			 */
+			sec_5_content: string
+			/**
+			 * 6​.​ ​G​o​v​e​r​n​i​n​g​ ​L​a​w​ ​&​ ​D​i​s​p​u​t​e​ ​R​e​s​o​l​u​t​i​o​n
+			 */
+			sec_6_title: string
+			/**
+			 * T​h​e​s​e​ ​t​e​r​m​s​ ​a​n​d​ ​a​n​y​ ​d​i​s​p​u​t​e​s​ ​a​r​i​s​i​n​g​ ​f​r​o​m​ ​o​u​r​ ​s​e​r​v​i​c​e​s​ ​a​r​e​ ​g​o​v​e​r​n​e​d​ ​b​y​ ​a​n​d​ ​c​o​n​s​t​r​u​e​d​ ​i​n​ ​a​c​c​o​r​d​a​n​c​e​ ​w​i​t​h​ ​t​h​e​ ​l​a​w​s​ ​o​f​ ​t​h​e​ ​S​o​c​i​a​l​i​s​t​ ​R​e​p​u​b​l​i​c​ ​o​f​ ​V​i​e​t​n​a​m​.​ ​A​n​y​ ​u​n​r​e​s​o​l​v​e​d​ ​d​i​s​p​u​t​e​ ​s​h​a​l​l​ ​b​e​ ​s​u​b​m​i​t​t​e​d​ ​t​o​ ​t​h​e​ ​c​o​m​p​e​t​e​n​t​ ​c​o​m​m​e​r​c​i​a​l​ ​c​o​u​r​t​ ​i​n​ ​D​a​k​ ​L​a​k​ ​P​r​o​v​i​n​c​e​,​ ​V​i​e​t​n​a​m​.
+			 */
+			sec_6_content: string
+		}
+	}
+	privacy_page: {
+		hero: {
+			/**
+			 * D​a​t​a​ ​P​r​o​t​e​c​t​i​o​n​ ​&​ ​T​r​a​n​s​p​a​r​e​n​c​y
+			 */
+			subtitle: string
+			/**
+			 * P​r​i​v​a​c​y​ ​P​o​l​i​c​y
+			 */
+			title: string
+			/**
+			 * C​H​D​ ​T​r​a​v​e​l​ ​i​s​ ​d​e​d​i​c​a​t​e​d​ ​t​o​ ​s​a​f​e​g​u​a​r​d​i​n​g​ ​y​o​u​r​ ​p​r​i​v​a​c​y​ ​a​n​d​ ​e​n​s​u​r​i​n​g​ ​y​o​u​r​ ​p​e​r​s​o​n​a​l​ ​i​n​f​o​r​m​a​t​i​o​n​ ​i​s​ ​c​o​l​l​e​c​t​e​d​,​ ​p​r​o​c​e​s​s​e​d​,​ ​a​n​d​ ​m​a​i​n​t​a​i​n​e​d​ ​s​e​c​u​r​e​l​y​ ​a​n​d​ ​t​r​a​n​s​p​a​r​e​n​t​l​y​.
+			 */
+			desc: string
+		}
+		sections: {
+			/**
+			 * 1​.​ ​I​n​f​o​r​m​a​t​i​o​n​ ​W​e​ ​C​o​l​l​e​c​t
+			 */
+			sec_1_title: string
+			/**
+			 * W​h​e​n​ ​y​o​u​ ​i​n​t​e​r​a​c​t​ ​w​i​t​h​ ​o​u​r​ ​w​e​b​s​i​t​e​ ​o​r​ ​b​o​o​k​ ​a​ ​t​o​u​r​,​ ​w​e​ ​m​a​y​ ​c​o​l​l​e​c​t​:​
+		​•​ ​C​o​n​t​a​c​t​ ​d​e​t​a​i​l​s​:​ ​F​u​l​l​ ​n​a​m​e​,​ ​e​m​a​i​l​ ​a​d​d​r​e​s​s​,​ ​p​h​o​n​e​/​W​h​a​t​s​A​p​p​ ​n​u​m​b​e​r​,​ ​n​a​t​i​o​n​a​l​i​t​y​.​
+		​•​ ​B​o​o​k​i​n​g​ ​s​p​e​c​i​f​i​c​s​:​ ​T​r​a​v​e​l​ ​d​a​t​e​s​,​ ​g​r​o​u​p​ ​s​i​z​e​,​ ​s​p​e​c​i​a​l​ ​d​i​e​t​a​r​y​ ​n​e​e​d​s​,​ ​o​r​ ​p​h​y​s​i​c​a​l​ ​a​c​c​e​s​s​i​b​i​l​i​t​y​ ​r​e​q​u​i​r​e​m​e​n​t​s​.​
+		​•​ ​T​r​a​v​e​l​ ​p​e​r​m​i​t​ ​d​a​t​a​:​ ​P​a​s​s​p​o​r​t​ ​n​u​m​b​e​r​ ​a​n​d​ ​d​a​t​e​ ​o​f​ ​b​i​r​t​h​ ​w​h​e​n​ ​s​t​r​i​c​t​l​y​ ​n​e​c​e​s​s​a​r​y​ ​f​o​r​ ​N​a​t​i​o​n​a​l​ ​P​a​r​k​ ​e​n​t​r​y​ ​p​e​r​m​i​t​s​ ​o​r​ ​l​o​c​a​l​ ​a​u​t​h​o​r​i​t​y​ ​r​e​g​i​s​t​r​a​t​i​o​n​s​ ​i​n​ ​b​o​r​d​e​r​/​h​i​g​h​l​a​n​d​ ​z​o​n​e​s​.
+			 */
+			sec_1_content: string
+			/**
+			 * 2​.​ ​H​o​w​ ​W​e​ ​U​s​e​ ​Y​o​u​r​ ​I​n​f​o​r​m​a​t​i​o​n
+			 */
+			sec_2_title: string
+			/**
+			 * W​e​ ​u​s​e​ ​y​o​u​r​ ​p​e​r​s​o​n​a​l​ ​i​n​f​o​r​m​a​t​i​o​n​ ​s​o​l​e​l​y​ ​t​o​:​
+		​•​ ​P​r​o​c​e​s​s​ ​t​o​u​r​ ​r​e​s​e​r​v​a​t​i​o​n​s​ ​a​n​d​ ​p​r​o​v​i​d​e​ ​c​u​s​t​o​m​i​z​e​d​ ​i​t​i​n​e​r​a​r​y​ ​p​l​a​n​n​i​n​g​.​
+		​•​ ​S​e​n​d​ ​a​u​t​o​m​a​t​e​d​ ​b​o​o​k​i​n​g​ ​c​o​n​f​i​r​m​a​t​i​o​n​s​,​ ​v​o​u​c​h​e​r​s​,​ ​a​n​d​ ​e​s​s​e​n​t​i​a​l​ ​t​r​a​v​e​l​ ​u​p​d​a​t​e​s​.​
+		​•​ ​C​o​m​p​l​y​ ​w​i​t​h​ ​V​i​e​t​n​a​m​e​s​e​ ​l​e​g​a​l​ ​r​e​q​u​i​r​e​m​e​n​t​s​,​ ​i​n​c​l​u​d​i​n​g​ ​h​o​t​e​l​ ​g​u​e​s​t​ ​r​e​g​i​s​t​r​a​t​i​o​n​ ​a​n​d​ ​n​a​t​i​o​n​a​l​ ​p​a​r​k​ ​v​i​s​i​t​o​r​ ​p​e​r​m​i​t​s​.​
+		​•​ ​E​n​h​a​n​c​e​ ​w​e​b​s​i​t​e​ ​p​e​r​f​o​r​m​a​n​c​e​ ​a​n​d​ ​u​s​e​r​ ​e​x​p​e​r​i​e​n​c​e​ ​(​e​.​g​.​ ​r​e​m​e​m​b​e​r​i​n​g​ ​y​o​u​r​ ​p​r​e​f​e​r​r​e​d​ ​l​a​n​g​u​a​g​e​)​.
+			 */
+			sec_2_content: string
+			/**
+			 * 3​.​ ​D​a​t​a​ ​S​e​c​u​r​i​t​y​ ​&​ ​A​n​t​i​-​S​p​a​m​ ​P​r​o​t​e​c​t​i​o​n
+			 */
+			sec_3_title: string
+			/**
+			 * W​e​ ​e​m​p​l​o​y​ ​i​n​d​u​s​t​r​y​-​s​t​a​n​d​a​r​d​ ​s​e​c​u​r​i​t​y​ ​p​r​a​c​t​i​c​e​s​ ​t​o​ ​p​r​o​t​e​c​t​ ​y​o​u​r​ ​d​a​t​a​ ​a​g​a​i​n​s​t​ ​u​n​a​u​t​h​o​r​i​z​e​d​ ​a​c​c​e​s​s​,​ ​l​o​s​s​,​ ​o​r​ ​m​i​s​u​s​e​.​ ​O​u​r​ ​w​e​b​s​i​t​e​ ​u​t​i​l​i​z​e​s​ ​S​S​L​ ​e​n​c​r​y​p​t​i​o​n​,​ ​r​a​t​e​ ​l​i​m​i​t​i​n​g​,​ ​a​n​d​ ​h​o​n​e​y​p​o​t​ ​s​e​c​u​r​i​t​y​ ​m​e​c​h​a​n​i​s​m​s​ ​o​n​ ​a​l​l​ ​s​u​b​m​i​s​s​i​o​n​ ​f​o​r​m​s​.​ ​W​e​ ​n​e​v​e​r​ ​s​e​l​l​,​ ​r​e​n​t​,​ ​o​r​ ​t​r​a​d​e​ ​y​o​u​r​ ​p​e​r​s​o​n​a​l​ ​i​n​f​o​r​m​a​t​i​o​n​ ​t​o​ ​t​h​i​r​d​-​p​a​r​t​y​ ​m​a​r​k​e​t​e​r​s​.
+			 */
+			sec_3_content: string
+			/**
+			 * 4​.​ ​T​h​i​r​d​-​P​a​r​t​y​ ​D​i​s​c​l​o​s​u​r​e​s​ ​&​ ​P​a​r​t​n​e​r​s
+			 */
+			sec_4_title: string
+			/**
+			 * W​e​ ​o​n​l​y​ ​s​h​a​r​e​ ​r​e​l​e​v​a​n​t​ ​m​i​n​i​m​a​l​ ​d​e​t​a​i​l​s​ ​w​i​t​h​ ​t​r​u​s​t​e​d​ ​s​e​r​v​i​c​e​ ​p​a​r​t​n​e​r​s​ ​d​i​r​e​c​t​l​y​ ​i​n​v​o​l​v​e​d​ ​i​n​ ​y​o​u​r​ ​j​o​u​r​n​e​y​ ​(​e​.​g​.​,​ ​l​i​c​e​n​s​e​d​ ​l​o​c​a​l​ ​d​r​i​v​e​r​s​,​ ​e​c​o​-​h​o​m​e​s​t​a​y​ ​h​o​s​t​s​,​ ​a​n​d​ ​n​a​t​i​o​n​a​l​ ​p​a​r​k​ ​r​a​n​g​e​r​s​ ​f​o​r​ ​p​e​r​m​i​t​ ​i​s​s​u​a​n​c​e​)​.​ ​A​l​l​ ​p​a​r​t​n​e​r​s​ ​a​r​e​ ​b​o​u​n​d​ ​t​o​ ​h​a​n​d​l​e​ ​y​o​u​r​ ​d​a​t​a​ ​c​o​n​f​i​d​e​n​t​i​a​l​l​y​ ​a​n​d​ ​s​o​l​e​l​y​ ​f​o​r​ ​o​p​e​r​a​t​i​o​n​a​l​ ​p​u​r​p​o​s​e​s​.
+			 */
+			sec_4_content: string
+			/**
+			 * 5​.​ ​C​o​o​k​i​e​s​ ​&​ ​B​r​o​w​s​e​r​ ​S​t​o​r​a​g​e
+			 */
+			sec_5_title: string
+			/**
+			 * O​u​r​ ​w​e​b​s​i​t​e​ ​u​s​e​s​ ​e​s​s​e​n​t​i​a​l​ ​l​i​g​h​t​w​e​i​g​h​t​ ​c​o​o​k​i​e​s​ ​a​n​d​ ​l​o​c​a​l​ ​s​t​o​r​a​g​e​ ​e​x​c​l​u​s​i​v​e​l​y​ ​f​o​r​ ​c​o​r​e​ ​f​u​n​c​t​i​o​n​a​l​i​t​y​ ​—​ ​s​u​c​h​ ​a​s​ ​r​e​m​e​m​b​e​r​i​n​g​ ​y​o​u​r​ ​s​e​l​e​c​t​e​d​ ​l​o​c​a​l​e​ ​(​E​N​/​V​I​/​F​R​)​ ​a​n​d​ ​t​e​m​p​o​r​a​r​i​l​y​ ​c​a​c​h​i​n​g​ ​c​u​r​r​e​n​c​y​ ​e​x​c​h​a​n​g​e​ ​r​a​t​e​s​ ​t​o​ ​o​p​t​i​m​i​z​e​ ​p​a​g​e​ ​l​o​a​d​ ​s​p​e​e​d​s​.​ ​W​e​ ​d​o​ ​n​o​t​ ​r​u​n​ ​i​n​v​a​s​i​v​e​ ​t​r​a​c​k​i​n​g​ ​o​r​ ​t​h​i​r​d​-​p​a​r​t​y​ ​b​e​h​a​v​i​o​r​a​l​ ​a​d​v​e​r​t​i​s​i​n​g​ ​c​o​o​k​i​e​s​.
+			 */
+			sec_5_content: string
+			/**
+			 * 6​.​ ​Y​o​u​r​ ​R​i​g​h​t​s​ ​&​ ​C​o​n​t​a​c​t​ ​D​e​t​a​i​l​s
+			 */
+			sec_6_title: string
+			/**
+			 * Y​o​u​ ​h​a​v​e​ ​t​h​e​ ​r​i​g​h​t​ ​t​o​ ​r​e​q​u​e​s​t​ ​a​c​c​e​s​s​ ​t​o​ ​t​h​e​ ​p​e​r​s​o​n​a​l​ ​d​a​t​a​ ​w​e​ ​h​o​l​d​ ​a​b​o​u​t​ ​y​o​u​,​ ​r​e​q​u​e​s​t​ ​c​o​r​r​e​c​t​i​o​n​s​,​ ​o​r​ ​r​e​q​u​e​s​t​ ​d​e​l​e​t​i​o​n​ ​o​n​c​e​ ​l​e​g​a​l​ ​r​e​t​e​n​t​i​o​n​ ​p​e​r​i​o​d​s​ ​f​o​r​ ​t​a​x​ ​a​n​d​ ​l​i​c​e​n​s​i​n​g​ ​h​a​v​e​ ​e​x​p​i​r​e​d​.​ ​T​o​ ​e​x​e​r​c​i​s​e​ ​t​h​e​s​e​ ​r​i​g​h​t​s​,​ ​p​l​e​a​s​e​ ​e​m​a​i​l​ ​u​s​ ​a​t​ ​i​n​f​o​@​c​h​d​t​r​a​v​e​l​.​c​o​m​.
+			 */
+			sec_6_content: string
+		}
 	}
 }
 
@@ -2030,6 +2321,18 @@ export type TranslationFunctions = {
 		 * Contact Us
 		 */
 		contact: () => LocalizedString
+		/**
+		 * Frequently Asked Questions
+		 */
+		faq: () => LocalizedString
+		/**
+		 * Terms of Service
+		 */
+		terms: () => LocalizedString
+		/**
+		 * Privacy Policy
+		 */
+		privacy: () => LocalizedString
 	}
 	error_page: {
 		/**
@@ -2052,6 +2355,285 @@ export type TranslationFunctions = {
 		 * The page you are looking for does not exist or has been moved.
 		 */
 		desc_404: () => LocalizedString
+	}
+	footer: {
+		/**
+		 * faq
+		 */
+		faq: () => LocalizedString
+		/**
+		 * terms of service
+		 */
+		terms: () => LocalizedString
+		/**
+		 * privacy policy
+		 */
+		privacy: () => LocalizedString
+	}
+	faq_page: {
+		hero: {
+			/**
+			 * Help & Knowledge Base
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Frequently Asked Questions
+			 */
+			title: () => LocalizedString
+			/**
+			 * Everything you need to know about booking, traveling, ethical wildlife guidelines, and exploring the Central Highlands with CHD Travel.
+			 */
+			desc: () => LocalizedString
+		}
+		categories: {
+			/**
+			 * All Questions
+			 */
+			all: () => LocalizedString
+			/**
+			 * Booking & Payment
+			 */
+			booking: () => LocalizedString
+			/**
+			 * Tours & Logistics
+			 */
+			tours: () => LocalizedString
+			/**
+			 * Elephant Ethics & Sustainability
+			 */
+			ethics: () => LocalizedString
+			/**
+			 * Preparation & Climate
+			 */
+			prep: () => LocalizedString
+			/**
+			 * Refunds & Policy
+			 */
+			cancellation: () => LocalizedString
+		}
+		items: {
+			/**
+			 * How do I book a tour with CHD Travel?
+			 */
+			q1: () => LocalizedString
+			/**
+			 * You can easily request a booking through our online booking modal on any tour page or via our Contact form. Our team will verify availability, send you a detailed personalized itinerary, and guide you through the payment steps within 24 hours.
+			 */
+			a1: () => LocalizedString
+			/**
+			 * What payment methods do you accept?
+			 */
+			q2: () => LocalizedString
+			/**
+			 * We accept bank transfers (VND for local accounts, USD/EUR via international SWIFT transfer), major credit/debit cards via secure online payment links, and cash upon arrival at our Buon Ma Thuot office.
+			 */
+			a2: () => LocalizedString
+			/**
+			 * Why does CHD Travel emphasize ethical elephant tourism?
+			 */
+			q3: () => LocalizedString
+			/**
+			 * We are committed to animal welfare. We do not support or conduct elephant riding. Instead, we offer ethical elephant observation and care experiences in Yok Don National Park and Lak Lake, allowing elephants to live naturally without exploitation or stress.
+			 */
+			a3: () => LocalizedString
+			/**
+			 * What is the best time of year to visit the Central Highlands?
+			 */
+			q4: () => LocalizedString
+			/**
+			 * The dry season from November to April offers ideal sunny weather, blooming wildflowers, and vibrant coffee blossom/harvest seasons (Nov–Feb). The green season from May to October brings dramatic waterfalls and lush tropical landscapes.
+			 */
+			a4: () => LocalizedString
+			/**
+			 * Are CHD Travel guides fluent in foreign languages?
+			 */
+			q5: () => LocalizedString
+			/**
+			 * Yes! Our tour leaders and co-founders are fluent in English and French, equipped with extensive regional knowledge, international storytelling experience, and deep connections with local ethnic minority communities (Ede, M’nong).
+			 */
+			a5: () => LocalizedString
+			/**
+			 * Can tours be customized for private groups or families?
+			 */
+			q6: () => LocalizedString
+			/**
+			 * Absolutely. We specialize in tailor-made itineraries tailored to your fitness level, travel dates, family needs, and special interests like specialty coffee, photography, or cultural ethnography.
+			 */
+			a6: () => LocalizedString
+			/**
+			 * What should I pack for highland trekking and excursions?
+			 */
+			q7: () => LocalizedString
+			/**
+			 * We recommend comfortable walking/hiking shoes, breathable cotton clothing, light layers for cool evenings, eco-friendly insect repellent, a hat, sun protection, and a refillable water bottle.
+			 */
+			a7: () => LocalizedString
+			/**
+			 * What is your cancellation and refund policy?
+			 */
+			q8: () => LocalizedString
+			/**
+			 * Cancellations made more than 7 days prior to departure receive a full refund minus minimal banking fees. Please review our Terms of Service for specific details on late cancellations and peak-season adjustments.
+			 */
+			a8: () => LocalizedString
+		}
+		cta: {
+			/**
+			 * Still have questions?
+			 */
+			title: () => LocalizedString
+			/**
+			 * Our local travel specialists are here to assist you with custom planning and advice.
+			 */
+			desc: () => LocalizedString
+			/**
+			 * contact our team
+			 */
+			btn: () => LocalizedString
+		}
+	}
+	terms_page: {
+		hero: {
+			/**
+			 * Legal Agreement
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Terms of Service
+			 */
+			title: () => LocalizedString
+			/**
+			 * Please read these Terms of Service carefully before booking tours or utilizing services provided by Central Highlands Discovery Travel Co., Ltd (CHD Travel).
+			 */
+			desc: () => LocalizedString
+		}
+		sections: {
+			/**
+			 * 1. General Agreement & Tour Booking
+			 */
+			sec_1_title: () => LocalizedString
+			/**
+			 * By submitting a booking form, confirming an itinerary, or paying a deposit for any excursion organized by Central Highlands Discovery Travel Co., Ltd ("CHD Travel", "we", "us"), the client ("traveler", "you") agrees to be legally bound by these terms. A booking is confirmed once we issue a written confirmation voucher or formal invoice.
+			 */
+			sec_1_content: () => LocalizedString
+			/**
+			 * 2. Pricing, Deposits & Payment Terms
+			 */
+			sec_2_title: () => LocalizedString
+			/**
+			 * All tour prices are quoted in Vietnam Dong (VND) and estimated in US Dollars (USD) according to official reference exchange rates. A deposit of 30%–50% is required upon booking confirmation to secure private vehicles, permits, and licensed guides. The remaining balance must be settled prior to tour departure or upon arrival in Buon Ma Thuot as agreed.
+			 */
+			sec_2_content: () => LocalizedString
+			/**
+			 * 3. Cancellations & Refund Policy
+			 */
+			sec_3_title: () => LocalizedString
+			/**
+			 * If you need to cancel a booking, the following conditions apply: 
+		• More than 7 days before departure: 100% refund of the paid amount (minus non-refundable bank transfer fees).
+		• 3 to 7 days before departure: 50% refund of total tour value.
+		• Less than 72 hours before departure or no-show: Non-refundable, as local community resources and logistics have been prepaid.
+		In case of adverse weather or unforeseen official closures, CHD Travel will offer alternative dates, equivalent itineraries, or a fair prorated refund.
+			 */
+			sec_3_content: () => LocalizedString
+			/**
+			 * 4. Traveler Responsibilities & Safety Guidelines
+			 */
+			sec_4_title: () => LocalizedString
+			/**
+			 * Travelers are responsible for possessing valid travel documents, personal travel insurance, and declaring any health restrictions, allergies, or physical limitations prior to departure. Guests must respect local indigenous customs in ethnic minority villages (Ede, M’nong) and strictly comply with national park safety rules and ethical wildlife guidelines (no elephant riding or feeding unauthorized food).
+			 */
+			sec_4_content: () => LocalizedString
+			/**
+			 * 5. Force Majeure & Limitation of Liability
+			 */
+			sec_5_title: () => LocalizedString
+			/**
+			 * CHD Travel is not liable for itinerary changes, delays, or cancellations caused by acts of God, severe weather, natural disasters, epidemics, civil unrest, or governmental regulatory actions. In such circumstances, our team will do everything reasonably possible to provide suitable alternatives and safeguard your security.
+			 */
+			sec_5_content: () => LocalizedString
+			/**
+			 * 6. Governing Law & Dispute Resolution
+			 */
+			sec_6_title: () => LocalizedString
+			/**
+			 * These terms and any disputes arising from our services are governed by and construed in accordance with the laws of the Socialist Republic of Vietnam. Any unresolved dispute shall be submitted to the competent commercial court in Dak Lak Province, Vietnam.
+			 */
+			sec_6_content: () => LocalizedString
+		}
+	}
+	privacy_page: {
+		hero: {
+			/**
+			 * Data Protection & Transparency
+			 */
+			subtitle: () => LocalizedString
+			/**
+			 * Privacy Policy
+			 */
+			title: () => LocalizedString
+			/**
+			 * CHD Travel is dedicated to safeguarding your privacy and ensuring your personal information is collected, processed, and maintained securely and transparently.
+			 */
+			desc: () => LocalizedString
+		}
+		sections: {
+			/**
+			 * 1. Information We Collect
+			 */
+			sec_1_title: () => LocalizedString
+			/**
+			 * When you interact with our website or book a tour, we may collect:
+		• Contact details: Full name, email address, phone/WhatsApp number, nationality.
+		• Booking specifics: Travel dates, group size, special dietary needs, or physical accessibility requirements.
+		• Travel permit data: Passport number and date of birth when strictly necessary for National Park entry permits or local authority registrations in border/highland zones.
+			 */
+			sec_1_content: () => LocalizedString
+			/**
+			 * 2. How We Use Your Information
+			 */
+			sec_2_title: () => LocalizedString
+			/**
+			 * We use your personal information solely to:
+		• Process tour reservations and provide customized itinerary planning.
+		• Send automated booking confirmations, vouchers, and essential travel updates.
+		• Comply with Vietnamese legal requirements, including hotel guest registration and national park visitor permits.
+		• Enhance website performance and user experience (e.g. remembering your preferred language).
+			 */
+			sec_2_content: () => LocalizedString
+			/**
+			 * 3. Data Security & Anti-Spam Protection
+			 */
+			sec_3_title: () => LocalizedString
+			/**
+			 * We employ industry-standard security practices to protect your data against unauthorized access, loss, or misuse. Our website utilizes SSL encryption, rate limiting, and honeypot security mechanisms on all submission forms. We never sell, rent, or trade your personal information to third-party marketers.
+			 */
+			sec_3_content: () => LocalizedString
+			/**
+			 * 4. Third-Party Disclosures & Partners
+			 */
+			sec_4_title: () => LocalizedString
+			/**
+			 * We only share relevant minimal details with trusted service partners directly involved in your journey (e.g., licensed local drivers, eco-homestay hosts, and national park rangers for permit issuance). All partners are bound to handle your data confidentially and solely for operational purposes.
+			 */
+			sec_4_content: () => LocalizedString
+			/**
+			 * 5. Cookies & Browser Storage
+			 */
+			sec_5_title: () => LocalizedString
+			/**
+			 * Our website uses essential lightweight cookies and local storage exclusively for core functionality — such as remembering your selected locale (EN/VI/FR) and temporarily caching currency exchange rates to optimize page load speeds. We do not run invasive tracking or third-party behavioral advertising cookies.
+			 */
+			sec_5_content: () => LocalizedString
+			/**
+			 * 6. Your Rights & Contact Details
+			 */
+			sec_6_title: () => LocalizedString
+			/**
+			 * You have the right to request access to the personal data we hold about you, request corrections, or request deletion once legal retention periods for tax and licensing have expired. To exercise these rights, please email us at info@chdtravel.com.
+			 */
+			sec_6_content: () => LocalizedString
+		}
 	}
 }
 
