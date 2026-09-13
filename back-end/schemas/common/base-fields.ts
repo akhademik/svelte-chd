@@ -4,6 +4,7 @@ import {
   exchange_rates_ref,
   tour_highlights_ref,
   tour_includes_ref,
+  tour_level_field,
   tour_tags_ref,
 } from './type-tour'
 
@@ -12,6 +13,7 @@ export const BASE_FIELDS = [
   generate_field('Liên hệ để biết giá (không hiện bảng giá)', 'contactForPrice', 'boolean', false),
   generate_field('Tên tour', 'tourName', 'locale_string'),
   generate_field('Thời gian tour', 'tourDuration', 'locale_string'),
+  tour_level_field,
   img_cover,
   img_tour,
   generate_field('Giới thiệu tour', 'tourIntro', 'locale_content'),

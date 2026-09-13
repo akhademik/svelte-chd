@@ -1,6 +1,22 @@
 import {gen_price_range} from '../helper-functions'
 import {PRICE_RANGE} from './constants'
 
+export const tour_level_field = {
+  name: 'tourLevel',
+  title: 'Cấp độ tour (Tour Level)',
+  type: 'string',
+  initialValue: 'easy',
+  options: {
+    list: [
+      {title: 'Dễ (Easy)', value: 'easy'},
+      {title: 'Trung bình (Medium)', value: 'medium'},
+      {title: 'Thử thách / Khó (Hard)', value: 'hard'},
+    ],
+    layout: 'radio',
+  },
+  validation: (Rule: {required: () => any}) => Rule.required(),
+}
+
 export const tour_highlights_ref = {
   name: 'tourHighlights',
   title: 'Các điểm chính trong tour',

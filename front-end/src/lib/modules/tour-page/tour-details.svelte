@@ -29,6 +29,13 @@
 	)
 	let isContactForPrice = $derived(Boolean(tour.contact_for_price || prices.length === 0))
 
+	let levelText = $derived.by(() => {
+		const lvl = tour.tour_level || 'easy'
+		if (lvl === 'hard') return $LL.tours.trip_facts.difficulty_hard()
+		if (lvl === 'medium') return $LL.tours.trip_facts.difficulty_medium()
+		return $LL.tours.trip_facts.difficulty_easy()
+	})
+
 	// Stepper state
 	let guestCount = $state(2)
 	let activeTier = $derived(get_pax_tier(guestCount))
@@ -439,7 +446,7 @@
 						{$LL.tours.trip_facts.difficulty()}
 					</span>
 					<span class="mt-1 block text-base font-medium text-foreground">
-						{$LL.tours.trip_facts.difficulty_val()}
+						{levelText}
 					</span>
 				</div>
 			</div>

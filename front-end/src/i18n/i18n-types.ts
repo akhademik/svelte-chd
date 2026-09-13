@@ -705,6 +705,18 @@ type RootTranslation = {
 			 */
 			difficulty_val: string
 			/**
+			 * E​a​s​y​ ​/​ ​M​i​n​d​f​u​l​ ​W​a​l​k
+			 */
+			difficulty_easy: string
+			/**
+			 * M​o​d​e​r​a​t​e​ ​/​ ​A​c​t​i​v​e
+			 */
+			difficulty_medium: string
+			/**
+			 * C​h​a​l​l​e​n​g​i​n​g​ ​/​ ​T​r​e​k​s
+			 */
+			difficulty_hard: string
+			/**
 			 * D​e​p​a​r​t​u​r​e
 			 */
 			departure: string
@@ -2044,6 +2056,18 @@ export type TranslationFunctions = {
 			 * Easy / Mindful Walk
 			 */
 			difficulty_val: () => LocalizedString
+			/**
+			 * Easy / Mindful Walk
+			 */
+			difficulty_easy: () => LocalizedString
+			/**
+			 * Moderate / Active
+			 */
+			difficulty_medium: () => LocalizedString
+			/**
+			 * Challenging / Treks
+			 */
+			difficulty_hard: () => LocalizedString
 			/**
 			 * Departure
 			 */

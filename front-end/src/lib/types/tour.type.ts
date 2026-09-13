@@ -43,6 +43,7 @@ type Tag = {
 export interface Tour {
 	best_sell?: boolean
 	contact_for_price?: boolean
+	tour_level?: 'easy' | 'medium' | 'hard' | string
 	img_cover?: Img_Cover
 	img_tour?: Img_Cover[]
 	tour_duration?: Locale_String
