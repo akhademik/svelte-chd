@@ -1,6 +1,5 @@
 import type { Locales } from '$i18n/i18n-types'
 import type { Tour } from '$lib/types/tour.type'
-
 import { get_exchange_rate } from './sanity'
 
 export const format_price = (price: number, locale: Locales | string = 'en') => {

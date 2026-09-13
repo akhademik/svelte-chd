@@ -277,19 +277,6 @@
       "source_location": "L15"
     },
     {
-      "id": "front_end_src_lib_stores_exchange_rates_store_exchangerates",
-      "label": "ExchangeRates",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "exchangerates",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L4"
-    },
-    {
       "id": "front_end_src_lib_types_tour_type_tour",
       "label": "Tour",
       "_callable": true,
@@ -313,7 +300,20 @@
       "file_type": "code",
       "norm_label": "canonicaltourcategory",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L157"
+      "source_location": "L156"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_exchangerates",
+      "label": "ExchangeRates",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "exchangerates",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L4"
     },
     {
       "id": "front_end_src_lib_utils_sanity_collectgalleryimagesparams",
@@ -321,12 +321,12 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
+      "community": 78,
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "collectgalleryimagesparams",
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L33"
+      "source_location": "L29"
     },
     {
       "id": "front_end_src_lib_modules_testimonials_testimonial_testimonialviewmodel",
@@ -1240,42 +1240,6 @@
       "source_location": "L14"
     },
     {
-      "id": "front_end_src_lib_modules_blog_page_blog_page_each",
-      "label": "#each()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "#each()",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L228"
-    },
-    {
-      "id": "front_end_src_lib_modules_blog_page_blog_page_if",
-      "label": "if()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "if()",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L55"
-    },
-    {
-      "id": "front_end_src_lib_modules_blog_page_blog_page_switch",
-      "label": "switch()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "switch()",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L89"
-    },
-    {
       "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs_each",
       "label": "#each()",
       "_callable": true,
@@ -1369,7 +1333,7 @@
       "file_type": "code",
       "norm_label": "filter_localized_items()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L252"
+      "source_location": "L251"
     },
     {
       "id": "front_end_src_lib_utils_format_data_format_pax_no",
@@ -1381,7 +1345,7 @@
       "file_type": "code",
       "norm_label": "format_pax_no()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L25"
+      "source_location": "L24"
     },
     {
       "id": "front_end_src_lib_utils_format_data_format_price",
@@ -1393,7 +1357,7 @@
       "file_type": "code",
       "norm_label": "format_price()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L6"
+      "source_location": "L5"
     },
     {
       "id": "front_end_src_lib_utils_format_data_format_price_object",
@@ -1405,7 +1369,7 @@
       "file_type": "code",
       "norm_label": "format_price_object()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L50"
+      "source_location": "L49"
     },
     {
       "id": "front_end_src_lib_utils_format_data_format_review_date",
@@ -1417,7 +1381,7 @@
       "file_type": "code",
       "norm_label": "format_review_date()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L93"
+      "source_location": "L92"
     },
     {
       "id": "front_end_src_lib_utils_format_data_get_avatar_initials",
@@ -1429,7 +1393,7 @@
       "file_type": "code",
       "norm_label": "get_avatar_initials()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L268"
+      "source_location": "L267"
     },
     {
       "id": "front_end_src_lib_utils_format_data_get_category_slug",
@@ -1441,7 +1405,7 @@
       "file_type": "code",
       "norm_label": "get_category_slug()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L177"
+      "source_location": "L176"
     },
     {
       "id": "front_end_src_lib_utils_format_data_get_localized_field",
@@ -1453,7 +1417,7 @@
       "file_type": "code",
       "norm_label": "get_localized_field()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L204"
+      "source_location": "L203"
     },
     {
       "id": "front_end_src_lib_utils_format_data_get_pax_tier",
@@ -1465,7 +1429,7 @@
       "file_type": "code",
       "norm_label": "get_pax_tier()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L41"
+      "source_location": "L40"
     },
     {
       "id": "front_end_src_lib_utils_format_data_has_localized_title",
@@ -1477,7 +1441,7 @@
       "file_type": "code",
       "norm_label": "has_localized_title()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L235"
+      "source_location": "L234"
     },
     {
       "id": "front_end_src_lib_utils_format_data_resolve_canonical_category",
@@ -1489,7 +1453,7 @@
       "file_type": "code",
       "norm_label": "resolve_canonical_category()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L188"
+      "source_location": "L187"
     },
     {
       "id": "front_end_src_lib_utils_format_data_slugify",
@@ -1501,7 +1465,7 @@
       "file_type": "code",
       "norm_label": "slugify()",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L130"
+      "source_location": "L129"
     },
     {
       "id": "front_end_src_lib_utils_navigation_get_length_and_index",
@@ -1540,18 +1504,6 @@
       "source_location": "L9"
     },
     {
-      "id": "front_end_src_lib_utils_sanity_collect_gallery_images",
-      "label": "collect_gallery_images()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "collect_gallery_images()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L43"
-    },
-    {
       "id": "front_end_src_lib_utils_sanity_get_exchange_rate",
       "label": "get_exchange_rate()",
       "_callable": true,
@@ -1560,18 +1512,6 @@
       "community_name": "format-data.ts",
       "file_type": "code",
       "norm_label": "get_exchange_rate()",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L25"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_url_for",
-      "label": "url_for()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "url_for()",
       "source_file": "front-end/src/lib/utils/sanity.ts",
       "source_location": "L21"
     },
@@ -1634,6 +1574,66 @@
       "norm_label": "get()",
       "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L9"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page_each",
+      "label": "#each()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "#each()",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L228"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page_if",
+      "label": "if()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "if()",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L55"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page_switch",
+      "label": "switch()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "switch()",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L89"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_collect_gallery_images",
+      "label": "collect_gallery_images()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "collect_gallery_images()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_url_for",
+      "label": "url_for()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "url_for()",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L17"
     },
     {
       "id": "back_end_components_portable_text_align_render_aligncenterrender",
@@ -7545,39 +7545,6 @@
       "source_file": "tailwindcss"
     },
     {
-      "id": "front_end_src_lib_constants_exchange_rates",
-      "label": "constants/exchange-rates.ts",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "constants/exchange-rates.ts",
-      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_constants_exchange_rates_default_exchange_rates",
-      "label": "DEFAULT_EXCHANGE_RATES",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "default_exchange_rates",
-      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_blog_page_blog_page",
-      "label": "blog-page.svelte",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "blog-page.svelte",
-      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
-      "source_location": "L1"
-    },
-    {
       "id": "front_end_src_lib_modules_home_page_components_home_featured_blogs",
       "label": "home-featured-blogs.svelte",
       "_origin": "ast",
@@ -7587,17 +7554,6 @@
       "norm_label": "home-featured-blogs.svelte",
       "source_file": "front-end/src/lib/modules/home-page/components/home-featured-blogs.svelte",
       "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_modules_home_page_components_home_hero_bgimageurl",
-      "label": "bgImageUrl",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "bgimageurl",
-      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
-      "source_location": "L109"
     },
     {
       "id": "front_end_src_lib_server_sanity_mappers_tour_mapper",
@@ -7677,39 +7633,6 @@
       "source_location": "L65"
     },
     {
-      "id": "front_end_src_lib_stores_exchange_rates_store",
-      "label": "exchange-rates-store.ts",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "exchange-rates-store.ts",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_defaultrates",
-      "label": "defaultRates",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "defaultrates",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L11"
-    },
-    {
-      "id": "front_end_src_lib_stores_exchange_rates_store_exchange_rates_store",
-      "label": "exchange_rates_store",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "exchange_rates_store",
-      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "front_end_src_lib_utils_format_data",
       "label": "format-data.ts",
       "_origin": "ast",
@@ -7729,7 +7652,7 @@
       "file_type": "code",
       "norm_label": "en_months",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L63"
+      "source_location": "L62"
     },
     {
       "id": "front_end_src_lib_utils_format_data_fr_months",
@@ -7740,7 +7663,7 @@
       "file_type": "code",
       "norm_label": "fr_months",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L78"
+      "source_location": "L77"
     },
     {
       "id": "front_end_src_lib_utils_format_data_test",
@@ -7762,7 +7685,7 @@
       "file_type": "code",
       "norm_label": "tour_category_slug_map",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L159"
+      "source_location": "L158"
     },
     {
       "id": "front_end_src_lib_utils_navigation",
@@ -7784,50 +7707,6 @@
       "file_type": "code",
       "norm_label": "navigation.test.ts",
       "source_file": "front-end/src/lib/utils/navigation.test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity",
-      "label": "sanity.ts",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "sanity.ts",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_builder",
-      "label": "builder",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L19"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L12"
-    },
-    {
-      "id": "front_end_src_lib_utils_sanity_test",
-      "label": "sanity.test.ts",
-      "_origin": "ast",
-      "community": 77,
-      "community_name": "format-data.ts",
-      "file_type": "code",
-      "norm_label": "sanity.test.ts",
-      "source_file": "front-end/src/lib/utils/sanity.test.ts",
       "source_location": "L1"
     },
     {
@@ -7890,7 +7769,7 @@
       "label": "./$types",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "confidence": "EXTRACTED",
       "file_type": "code",
       "norm_label": "./$types",
@@ -7901,7 +7780,7 @@
       "label": "base-portable-text-align.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-align.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-align.svelte",
@@ -7912,7 +7791,7 @@
       "label": "base-portable-text-block.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-block.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-block.svelte",
@@ -7923,7 +7802,7 @@
       "label": "base-portable-text-file-attachment.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-file-attachment.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-file-attachment.svelte",
@@ -7934,7 +7813,7 @@
       "label": "base-portable-text-highlight.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-highlight.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-highlight.svelte",
@@ -7945,7 +7824,7 @@
       "label": "base-portable-text-image.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-image.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-image.svelte",
@@ -7956,7 +7835,7 @@
       "label": "base-portable-text-link.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-link.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-link.svelte",
@@ -7967,7 +7846,7 @@
       "label": "base-portable-text-list.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-list.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-list.svelte",
@@ -7978,7 +7857,7 @@
       "label": "base-portable-text-list-item.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-list-item.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-list-item.svelte",
@@ -7989,7 +7868,7 @@
       "label": "base-portable-text-table.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-table.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-table.svelte",
@@ -8000,7 +7879,7 @@
       "label": "base-portable-text-text-color.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-text-color.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-text-color.svelte",
@@ -8011,18 +7890,95 @@
       "label": "base-portable-text-youtube.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "base-portable-text-youtube.svelte",
       "source_file": "front-end/src/lib/base/base-portable-text-youtube.svelte",
       "source_location": "L1"
     },
     {
+      "id": "front_end_src_lib_constants_exchange_rates",
+      "label": "constants/exchange-rates.ts",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "constants/exchange-rates.ts",
+      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_constants_exchange_rates_default_exchange_rates",
+      "label": "DEFAULT_EXCHANGE_RATES",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "default_exchange_rates",
+      "source_file": "front-end/src/lib/constants/exchange-rates.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_blog_page_blog_page",
+      "label": "blog-page.svelte",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "blog-page.svelte",
+      "source_file": "front-end/src/lib/modules/blog-page/blog-page.svelte",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_modules_home_page_components_home_hero_bgimageurl",
+      "label": "bgImageUrl",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "bgimageurl",
+      "source_file": "front-end/src/lib/modules/home-page/components/home-hero.svelte",
+      "source_location": "L109"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store",
+      "label": "exchange-rates-store.ts",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "exchange-rates-store.ts",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_defaultrates",
+      "label": "defaultRates",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "defaultrates",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L11"
+    },
+    {
+      "id": "front_end_src_lib_stores_exchange_rates_store_exchange_rates_store",
+      "label": "exchange_rates_store",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "exchange_rates_store",
+      "source_file": "front-end/src/lib/stores/exchange-rates-store.ts",
+      "source_location": "L13"
+    },
+    {
       "id": "front_end_src_lib_utils_portable_text_components",
       "label": "portable-text-components.ts",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "portable-text-components.ts",
       "source_file": "front-end/src/lib/utils/portable-text-components.ts",
@@ -8033,18 +7989,62 @@
       "label": "portableTextComponents",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "portabletextcomponents",
       "source_file": "front-end/src/lib/utils/portable-text-components.ts",
       "source_location": "L14"
     },
     {
+      "id": "front_end_src_lib_utils_sanity",
+      "label": "sanity.ts",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "sanity.ts",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_builder",
+      "label": "builder",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_config",
+      "label": "config",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "front_end_src_lib_utils_sanity_test",
+      "label": "sanity.test.ts",
+      "_origin": "ast",
+      "community": 78,
+      "community_name": "sanity.ts",
+      "file_type": "code",
+      "norm_label": "sanity.test.ts",
+      "source_file": "front-end/src/lib/utils/sanity.test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "front_end_src_routes_lang_blog_slug_page",
       "label": "blog/[slug]/+page.svelte",
       "_origin": "ast",
       "community": 78,
-      "community_name": "portable-text-components.ts",
+      "community_name": "sanity.ts",
       "file_type": "code",
       "norm_label": "blog/[slug]/+page.svelte",
       "source_file": "front-end/src/routes/[lang]/blog/[slug]/+page.svelte",
@@ -10074,7 +10074,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L259",
+      "source_location": "L258",
       "weight": 1.0
     },
     {
@@ -10086,7 +10086,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L14",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -10098,7 +10098,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L245",
+      "source_location": "L244",
       "weight": 1.0
     },
     {
@@ -10627,30 +10627,6 @@
       "context": "export",
       "source_file": "front-end/src/lib/modules/tour-page/index.ts",
       "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_navigation",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "export",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_slug",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "export",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -13890,7 +13866,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L4",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -16601,7 +16577,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L4",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -17377,54 +17353,6 @@
       "context": "import",
       "source_file": "front-end/src/routes/sitemap.xml/+server.ts",
       "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_navigation_get_length_and_index",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "re-export",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_navigation_tour_by_index",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "re-export",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_slug_get_blog_slug",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "re-export",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L9",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_slug_get_tour_slug",
-      "relation": "re_exports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "re-export",
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -21573,7 +21501,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L130",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -21584,7 +21512,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L157",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -21595,7 +21523,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L159",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -21606,7 +21534,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L177",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -21617,7 +21545,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L188",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -21628,7 +21556,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L204",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -21639,7 +21567,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L235",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -21650,7 +21578,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L25",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -21661,7 +21589,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L252",
+      "source_location": "L251",
       "weight": 1.0
     },
     {
@@ -21672,7 +21600,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L268",
+      "source_location": "L267",
       "weight": 1.0
     },
     {
@@ -21683,7 +21611,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L41",
+      "source_location": "L40",
       "weight": 1.0
     },
     {
@@ -21694,7 +21622,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L50",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -21705,7 +21633,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -21716,7 +21644,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L63",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -21727,7 +21655,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L78",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -21738,7 +21666,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/format-data.ts",
-      "source_location": "L93",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -21842,24 +21770,13 @@
     },
     {
       "source": "front_end_src_lib_utils_sanity",
-      "target": "front_end_src_lib_utils_sanity_config",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L12",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_utils_sanity",
       "target": "front_end_src_lib_utils_sanity_builder",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L19",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -21870,7 +21787,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L21",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -21881,7 +21798,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L25",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -21892,7 +21809,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L33",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -21903,7 +21820,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/sanity.ts",
-      "source_location": "L43",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_utils_sanity",
+      "target": "front_end_src_lib_utils_sanity_config",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/utils/sanity.ts",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -25271,5 +25199,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a8c6282ffb061c70e258f362f61945c354396607"
+  "built_at_commit": "b7d349106d15c627c74fffc8312016e8903c2d2a"
 }

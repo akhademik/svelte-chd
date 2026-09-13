@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-13)
 
 ## Corpus Check
-- 251 files · ~121,141 words
+- 251 files · ~121,119 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 844 nodes · 1413 edges · 88 communities (24 shown, 34 thin omitted)
+- 844 nodes · 1407 edges · 88 communities (25 shown, 33 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a8c6282f`
+- Built from commit: `b7d34910`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -61,7 +61,7 @@
 - svelte.config.js
 - 🚀 Tính Năng Nổi Bật & Kiến Trúc Kỹ Thuật
 - format-data.ts
-- portable-text-components.ts
+- sanity.ts
 - typescript
 - sveltekit-superforms
 - type-others.ts
@@ -81,9 +81,9 @@
 4. `Logger` - 14 edges
 5. `Tour` - 12 edges
 6. `Locales` - 11 edges
-7. `get_tour_slug()` - 11 edges
-8. `sendMail()` - 10 edges
-9. `resolve_canonical_category()` - 10 edges
+7. `sendMail()` - 10 edges
+8. `resolve_canonical_category()` - 10 edges
+9. `get_tour_slug()` - 10 edges
 10. `compilerOptions` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -100,11 +100,9 @@
 
 ## Import Cycles
 - 3-file cycle: `front-end/src/lib/base/base-tour-detail-modal.svelte -> front-end/src/lib/modules/tour-page/components/tour-detail-modal.svelte -> front-end/src/lib/base/index.ts -> front-end/src/lib/base/base-tour-detail-modal.svelte`
-- 3-file cycle: `front-end/src/lib/utils/format-data.ts -> front-end/src/lib/utils/sanity.ts -> front-end/src/lib/utils/slug.ts -> front-end/src/lib/utils/format-data.ts`
 - 4-file cycle: `front-end/src/lib/base/base-tour-detail-modal.svelte -> front-end/src/lib/modules/tour-page/components/tour-detail-modal.svelte -> front-end/src/lib/modules/tour-page/components/tour-detail-gallery.svelte -> front-end/src/lib/base/index.ts -> front-end/src/lib/base/base-tour-detail-modal.svelte`
-- 4-file cycle: `front-end/src/lib/utils/format-data.ts -> front-end/src/lib/utils/sanity.ts -> front-end/src/lib/utils/navigation.ts -> front-end/src/lib/utils/slug.ts -> front-end/src/lib/utils/format-data.ts`
 
-## Communities (88 total, 34 thin omitted)
+## Communities (88 total, 33 thin omitted)
 
 ### Community 0 - "devDependencies"
 Cohesion: 0.10
@@ -183,8 +181,12 @@ Cohesion: 0.18
 Nodes (10): 1. **Clean Layered Architecture (Backend & Frontend Server)**, 2. **Chuyển Đổi Ngôn Ngữ Thông Minh & Mapping Slug Động (Smart Multilingual Route Translation)**, 3. **Bảo Mật & Chống Spam Toàn Diện (Security & Anti-Spam)**, 4. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Hoàn Thiện**, 5. **Centralized Logging System**, 🌲 CHD Travel Monorepo, 🏗️ Cấu Trúc Dự Án (Project Architecture), 💻 Danh Sách Lệnh Quản Trị (Root Scripts) (+2 more)
 
 ### Community 77 - "format-data.ts"
-Cohesion: 0.06
-Nodes (47): DEFAULT_EXCHANGE_RATES, if(), bgImageUrl, mapSanityToTour(), mapSanityToTours(), EXTRACT_TOUR_FIELDS, getSingleTourQuery(), TOURS_BY_DAY_QUERY (+39 more)
+Cohesion: 0.09
+Nodes (36): mapSanityToTour(), mapSanityToTours(), EXTRACT_TOUR_FIELDS, getSingleTourQuery(), TOURS_BY_DAY_QUERY, TOURS_BY_HIGHLAND_QUERY, matchesBlogSlug(), matchesTourSlug() (+28 more)
+
+### Community 78 - "sanity.ts"
+Cohesion: 0.07
+Nodes (13): DEFAULT_EXCHANGE_RATES, if(), bgImageUrl, defaultRates, exchange_rates_store, ExchangeRates, portableTextComponents, builder (+5 more)
 
 ### Community 81 - "type-others.ts"
 Cohesion: 0.23
@@ -205,7 +207,7 @@ Nodes (8): GeneralKeyString, Highlights, Img_Cover, Locale_Array, Locale_String,
 ## Knowledge Gaps
 - **250 isolated node(s):** `COLOR_PALETTE`, `BlockRenderProps`, `$schema`, `react-is`, `@types/styled-components` (+245 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 338 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **34 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **33 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_

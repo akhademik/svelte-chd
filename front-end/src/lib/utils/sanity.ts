@@ -5,10 +5,6 @@ import type { ClientConfig } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 import type { SanityImageSource, SanityProjectDetails } from '@sanity/image-url/lib/types/types'
 
-// Re-exports for backwards compatibility and clean cohesion
-export { get_tour_slug, get_blog_slug } from './slug'
-export { tour_by_index, get_length_and_index } from './navigation'
-
 const config: ClientConfig = {
 	projectId: import.meta.env.VITE_SANITY_ID,
 	dataset: 'production',
