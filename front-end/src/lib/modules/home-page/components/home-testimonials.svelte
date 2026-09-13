@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { locale } from '$i18n/i18n-svelte'
 	import LL from '$i18n/i18n-svelte'
-	import { BaseAvatar } from '$lib/base'
+	import {
+		map_testimonials,
+		TestimonialCard,
+		type TestimonialViewModel,
+	} from '$lib/modules/testimonials'
 	import type { Testimonial } from '$lib/types/testimonial.type'
-	import { format_review_date } from '$lib/utils/format-data'
 	import { onMount, untrack } from 'svelte'
 
 	interface Props {
@@ -15,19 +17,9 @@
 	const PAGE_SIZE = 3
 
 	function getSlides(rawList: Testimonial[]) {
-		const list = rawList && rawList.length > 0 ? rawList : []
-		const items = list.map(t => ({
-			quote: t.review_content,
-			title: t.review_title,
-			authorName: t.name,
-			authorAvatar: t.avatar || '',
-			authorLocation: t.country || '',
-			rating: t.stars || 5,
-			sourceUrl: t.url,
-			date: t.date_review || '',
-		}))
+		const items = map_testimonials(rawList)
 		if (items.length === 0) return []
-		const slides: (typeof items)[] = []
+		const slides: TestimonialViewModel[][] = []
 		for (let i = 0; i < items.length; i += PAGE_SIZE) {
 			const slide = []
 			for (let j = 0; j < Math.min(PAGE_SIZE, items.length); j++) {
@@ -228,77 +220,9 @@
 						aria-label={`Slide ${sIdx + 1} of ${displaySlides.length}`}>
 						<div class="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
 							{#each slide as item}
-								<article
-									class="flex min-h-[220px] flex-col justify-between border border-border/90 bg-surface p-5 shadow-sm transition-shadow hover:shadow-md sm:h-[360px] sm:p-8">
-									<div class="overflow-hidden">
-										<!-- Header: Rating (Always 5 stars with active/dimmed) & Date ({Month} {Year}) -->
-										<div class="mb-3 flex items-center justify-between sm:mb-4">
-											<div
-												class="flex items-center gap-1"
-												role="img"
-												aria-label={`${item.rating || 5} out of 5 stars`}>
-												{#each [1, 2, 3, 4, 5] as starNum}
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														class={`h-4 w-4 ${starNum <= (item.rating || 5) ? 'text-amber-600' : 'text-border-strong'}`}>
-														<path
-															fill-rule="evenodd"
-															d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
-															clip-rule="evenodd" />
-													</svg>
-												{/each}
-											</div>
-
-											{#if item.date}
-												<span class="font-mono text-xs text-foreground-subtle">
-													{format_review_date(item.date, $locale)}
-												</span>
-											{/if}
-										</div>
-
-										<!-- Review Title: Link to TripAdvisor -->
-										{#if item.title}
-											<h3 class="mb-2 line-clamp-2 font-serif text-base font-bold text-foreground">
-												{#if item.sourceUrl}
-													<a
-														href={item.sourceUrl}
-														target="_blank"
-														rel="noopener noreferrer"
-														class="transition-colors hover:text-secondary hover:underline">
-														{item.title}
-													</a>
-												{:else}
-													{item.title}
-												{/if}
-											</h3>
-										{/if}
-
-										<!-- Review Content with flexible line clamp -->
-										<p
-											class="line-clamp-4 font-serif text-sm font-light italic leading-relaxed text-foreground-muted sm:line-clamp-5">
-											"{item.quote}"
-										</p>
-									</div>
-
-									<!-- Author Footer: [Avatar] [Username] -->
-									<div
-										class="mt-3 flex items-center justify-between border-t border-border/60 pt-3 text-xs sm:mt-4 sm:pt-4">
-										<div class="flex items-center gap-2.5 overflow-hidden">
-											<BaseAvatar
-												name={item.authorName}
-												src={item.authorAvatar}
-												class="h-7 w-7" />
-											<span class="truncate font-serif font-bold text-foreground">
-												{item.authorName}
-											</span>
-										</div>
-										{#if item.authorLocation}
-											<div class="shrink-0 text-foreground-muted">{item.authorLocation}</div>
-										{/if}
-									</div>
-								</article>
+								<TestimonialCard
+									testimonial={item}
+									class="border border-border/90 bg-surface shadow-sm transition-shadow hover:shadow-md" />
 							{/each}
 						</div>
 					</div>

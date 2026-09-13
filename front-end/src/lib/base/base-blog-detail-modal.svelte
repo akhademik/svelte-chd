@@ -7,7 +7,7 @@
 	import { blog_modal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { get_localized_field } from '$lib/utils/format-data'
-	import { url_for } from '$lib/utils/sanity'
+	import { collect_gallery_images, url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
@@ -23,40 +23,13 @@
 	let imgCover = $derived(post?.coverImg)
 	let imgTour = $derived(post?.img_tour || post?.imgTour || (post as any)?.album || [])
 
-	let allImages = $derived.by(() => {
-		const imgs: any[] = []
-		const seenRefs = new Set<string>()
-
-		const addImg = (img: any) => {
-			if (!img) return
-			const ref =
-				img?.asset?._ref || img?.asset?._id || img?._id || (typeof img === 'string' ? img : null)
-			if (img?.asset || (typeof img === 'object' && (img._ref || img.url))) {
-				if (ref && seenRefs.has(ref)) return
-				if (ref) seenRefs.add(ref)
-				imgs.push(img)
-			}
-		}
-
-		// 1. Add Cover Image
-		addImg(imgCover)
-
-		// 2. Add Album Images
-		if (Array.isArray(imgTour) && imgTour.length > 0) {
-			imgTour.forEach(img => addImg(img))
-		}
-
-		// 3. Extract any image blocks embedded inside Rich Content
-		if (Array.isArray(content) && content.length > 0) {
-			content.forEach(block => {
-				if (block?._type === 'image' && block?.asset) {
-					addImg(block)
-				}
-			})
-		}
-
-		return imgs
-	})
+	let allImages = $derived(
+		collect_gallery_images({
+			coverImage: imgCover,
+			album: imgTour,
+			content,
+		})
+	)
 
 	let activeImageIndex = $state(0)
 

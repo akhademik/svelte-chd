@@ -13,7 +13,7 @@
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
 	import { get_tour_slug } from '$lib/utils/sanity'
-	import { fade, scale } from 'svelte/transition'
+	import { fade } from 'svelte/transition'
 
 	import TourDetailCta from './tour-detail-cta.svelte'
 	import TourDetailGallery from './tour-detail-gallery.svelte'
@@ -133,31 +133,24 @@
 				item: `https://chd.travel/${activeLang}/${localizedCategorySlug}/${tourSlug}`,
 			},
 		]} />
+	<!-- Fullscreen Modal covering 100vw and 100vh with margin: 0 -->
 	<div
 		transition:fade={{ duration: 200 }}
-		class="fixed inset-0 z-[60] flex items-center justify-center bg-inverse-dark/60 p-0 backdrop-blur-sm sm:p-4 md:p-6"
+		class="fixed inset-0 z-[60] flex h-[100dvh] h-screen w-[100dvw] w-screen flex-col overflow-hidden bg-surface text-foreground"
 		role="dialog"
 		aria-modal="true"
 		aria-labelledby="modal-tour-title">
-		<button
-			type="button"
-			class="fixed inset-0 h-full w-full cursor-default bg-transparent focus:outline-none"
-			aria-label="Close modal overlay"
-			onclick={close}
-			tabindex="-1"></button>
-		<div
-			transition:scale={{ start: 0.96, duration: 200 }}
-			class="relative z-10 flex h-full max-h-screen w-full max-w-5xl flex-col overflow-hidden rounded-none border-0 bg-surface text-foreground shadow-2xl sm:h-auto sm:max-h-[90vh] sm:border sm:border-border">
-			{#key activeLang}
-				<!-- 1. Modal Header (Sticky top) -->
-				<TourDetailHeader
-					{tour}
-					{duration}
-					{levelText}
-					onclose={close} />
+		{#key activeLang}
+			<!-- 1. Modal Header (Sticky top) -->
+			<TourDetailHeader
+				{tour}
+				{duration}
+				{levelText}
+				onclose={close} />
 
-				<!-- 2. Modal Body (Scrollable - Composed cleanly of Atomic Components) -->
-				<div class="space-y-10 overflow-y-auto p-4 sm:p-6 md:p-8">
+			<!-- 2. Modal Body (Scrollable full-width container) -->
+			<div class="flex-1 overflow-y-auto">
+				<div class="mx-auto max-w-6xl space-y-10 px-4 py-6 sm:px-6 sm:py-8">
 					<!-- Gallery (Bento Grid & Lightbox) -->
 					<TourDetailGallery
 						images={allImages}
@@ -220,26 +213,26 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
-				<!-- 3. Modal Footer (Sticky bottom) -->
-				<div
-					class="sticky bottom-0 z-10 flex items-center justify-end gap-3 border-t border-border bg-surface px-4 py-3.5 sm:px-6 sm:py-4">
-					<div class="flex w-full items-center justify-end gap-3 sm:w-auto">
-						<button
-							type="button"
-							onclick={close}
-							class="w-1/2 border border-border-strong px-5 py-2.5 text-xs uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-auto">
-							{$LL.tours.detail.close()}
-						</button>
-						<button
-							type="button"
-							onclick={handleBook}
-							class="w-1/2 bg-primary px-6 py-2.5 text-xs uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-primary-hover sm:w-auto">
-							{$LL.tours.detail.plan_this_trip()}
-						</button>
-					</div>
+			<!-- 3. Modal Footer (Sticky bottom) -->
+			<div
+				class="sticky bottom-0 z-10 flex shrink-0 items-center justify-end gap-3 border-t border-border bg-surface px-4 py-3.5 sm:px-6 sm:py-4">
+				<div class="flex w-full items-center justify-end gap-3 sm:w-auto">
+					<button
+						type="button"
+						onclick={close}
+						class="w-1/2 border border-border-strong px-5 py-2.5 text-xs uppercase tracking-wider text-foreground transition-colors hover:border-foreground hover:text-foreground sm:w-auto">
+						{$LL.tours.detail.close()}
+					</button>
+					<button
+						type="button"
+						onclick={handleBook}
+						class="w-1/2 bg-primary px-6 py-2.5 text-xs uppercase tracking-widest text-white shadow-sm transition-colors hover:bg-primary-hover sm:w-auto">
+						{$LL.tours.detail.plan_this_trip()}
+					</button>
 				</div>
-			{/key}
-		</div>
+			</div>
+		{/key}
 	</div>
 {/if}
