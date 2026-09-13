@@ -11,7 +11,9 @@ import {
 	get_localized_field,
 	has_localized_title,
 	filter_localized_items,
+	get_avatar_initials,
 } from './format-data'
+
 import type { Tour } from '$lib/types/tour.type'
 
 describe('format-data utilities', () => {
@@ -154,6 +156,30 @@ describe('format-data utilities', () => {
 			expect(filtered.length).toBe(2)
 			expect(filtered[0].id).toBe(1)
 			expect(filtered[1].id).toBe(3)
+		})
+	})
+
+	describe('get_avatar_initials', () => {
+		it('should handle multi-word names by taking first letter of first word and first letter of last word', () => {
+			expect(get_avatar_initials('Nguyễn Văn Anh')).toBe('NA')
+			expect(get_avatar_initials('John Doe')).toBe('JD')
+			expect(get_avatar_initials('Mary Jane Watson')).toBe('MW')
+		})
+
+		it('should handle single-word names by taking the first 2 characters', () => {
+			expect(get_avatar_initials('Nguyễn')).toBe('NG')
+			expect(get_avatar_initials('John')).toBe('JO')
+			expect(get_avatar_initials('Alex')).toBe('AL')
+		})
+
+		it('should handle single-character names', () => {
+			expect(get_avatar_initials('A')).toBe('A')
+		})
+
+		it('should handle empty or whitespace-only strings with fallback question mark', () => {
+			expect(get_avatar_initials('')).toBe('?')
+			expect(get_avatar_initials('   ')).toBe('?')
+			expect(get_avatar_initials(undefined)).toBe('?')
 		})
 	})
 })

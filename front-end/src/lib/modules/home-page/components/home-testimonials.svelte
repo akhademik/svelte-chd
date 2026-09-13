@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
 	import LL from '$i18n/i18n-svelte'
+	import { BaseAvatar } from '$lib/base'
 	import type { Testimonial } from '$lib/types/testimonial.type'
 	import { format_review_date } from '$lib/utils/format-data'
 	import { onMount, untrack } from 'svelte'
@@ -285,31 +286,10 @@
 									<div
 										class="mt-3 flex items-center justify-between border-t border-border/60 pt-3 text-xs sm:mt-4 sm:pt-4">
 										<div class="flex items-center gap-2.5 overflow-hidden">
-											{#if item.authorAvatar}
-												<img
-													src={item.authorAvatar}
-													alt={item.authorName}
-													referrerpolicy="no-referrer"
-													onerror={e => {
-														const target = e.currentTarget as HTMLImageElement | null
-														if (target) {
-															target.style.display = 'none'
-															const sibling = target.nextElementSibling as HTMLElement | null
-															if (sibling) sibling.classList.remove('hidden')
-														}
-													}}
-													class="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
-													loading="lazy" />
-												<div
-													class="hidden h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
-													{item.authorName.charAt(0).toUpperCase()}
-												</div>
-											{:else}
-												<div
-													class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
-													{item.authorName.charAt(0).toUpperCase()}
-												</div>
-											{/if}
+											<BaseAvatar
+												name={item.authorName}
+												src={item.authorAvatar}
+												class="h-7 w-7" />
 											<span class="truncate font-serif font-bold text-foreground">
 												{item.authorName}
 											</span>
