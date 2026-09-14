@@ -11,23 +11,34 @@ export const getExchangeRate = (rate: string): number => {
 	return DEFAULT_EXCHANGE_RATES[rate as 'USD' | 'EUR'] ?? 1
 }
 
-export const formatPrice = (price: number, locale: Locales | string = 'en'): string => {
+export interface FormatPriceOptions {
+	full?: boolean
+}
+
+export const formatPrice = (
+	price: number,
+	locale: Locales | string = 'en',
+	options: FormatPriceOptions = {}
+): string => {
 	const currentLocale = (locale || 'en') as string
 	if (currentLocale === 'vi' || currentLocale === 'vn') {
+		if (options.full) {
+			return `${price.toLocaleString('vi-VN')} VND`
+		}
 		const inThousand = Math.round(price / 1000)
 		return `${inThousand.toLocaleString('vi-VN')}k`
 	}
 
 	if (currentLocale === 'fr') {
 		const rate = getExchangeRate('EUR')
-		const final_price = Math.round(price * rate)
-		return `€${final_price.toLocaleString('fr-FR')}`
+		const finalPrice = Math.round(price * rate)
+		return `€${finalPrice.toLocaleString('fr-FR')}`
 	}
 
 	// Default to 'en' (USD)
 	const rate = getExchangeRate('USD')
-	const final_price = Math.round(price * rate)
-	return `$${final_price.toLocaleString('en-US')}`
+	const finalPrice = Math.round(price * rate)
+	return `$${finalPrice.toLocaleString('en-US')}`
 }
 
 export const formatPaxNo = (key: string): string => {

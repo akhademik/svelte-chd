@@ -29,7 +29,7 @@
 				{/if}
 				{#if tour.tour_id}
 					<span
-						class="bg-inverse px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-inverse-foreground">
+						class="bg-primary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
 						{tour.tour_id}
 					</span>
 				{/if}

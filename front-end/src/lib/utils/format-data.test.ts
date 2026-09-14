@@ -21,6 +21,8 @@ describe('format-data utilities', () => {
 		expect(formatPrice(1500000, 'vi')).toBe('1.500k')
 		expect(formatPrice(500000, 'vi')).toBe('500k')
 		expect(formatPrice(1500000, 'vn')).toBe('1.500k')
+		expect(formatPrice(2330000, 'vi', { full: true })).toBe('2.330.000 VND')
+		expect(formatPrice(4660000, 'vn', { full: true })).toBe('4.660.000 VND')
 	})
 
 	it('should format price correctly for USD (en)', () => {

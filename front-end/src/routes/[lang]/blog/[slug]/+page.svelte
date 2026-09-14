@@ -305,15 +305,6 @@
 						value={content}
 						components={portableTextComponents} />
 				</div>
-
-				<!-- Bottom Back Navigation -->
-				<div class="mt-10 flex items-center justify-between border-t border-border pt-8">
-					<a
-						href={`/${$locale}/blog`}
-						class="inline-flex items-center gap-2 border border-foreground px-6 py-3 text-xs uppercase tracking-widest text-foreground transition-colors hover:bg-inverse hover:text-white">
-						{$LL.blog_page.all_articles_btn()}
-					</a>
-				</div>
 			</article>
 		{/if}
 	</div>

@@ -112,7 +112,7 @@
 						{$LL.tours.detail.stepper_total_price()}
 					</span>
 					<span class="mt-0.5 block font-serif text-sm font-bold text-primary">
-						{formatPrice(totalPrice, $locale)}
+						{formatPrice(totalPrice, $locale, { full: true })}
 					</span>
 				</div>
 			</div>
