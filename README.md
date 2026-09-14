@@ -37,6 +37,19 @@ svelte-chd/
 
 ---
 
+## ⚡ Bắt Đầu Nhanh (Quick Start)
+
+```bash
+# 1. Cài đặt toàn bộ dependencies (Monorepo)
+pnpm install
+
+# 2. Khởi tạo file môi trường cho frontend (bắt buộc trước khi chạy type check / dev)
+cp front-end/.env.example front-end/.env
+
+# 3. Khởi chạy môi trường phát triển
+pnpm dev:all
+```
+
 ## 🚀 Tính Năng Nổi Bật & Kiến Trúc Kỹ Thuật
 
 ### 1. **Clean Layered Architecture (Backend & Frontend Server)**

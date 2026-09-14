@@ -12,8 +12,11 @@
   - `back-end/`: Sanity Content Studio v3, React 18, TypeScript schemas (`tourDaily`, `tourCentral`, `blogPost`, `exchangeRates`).
 
 ```bash
-# Cài đặt toàn bộ dự án từ thư mục gốc
+# 1. Cài đặt toàn bộ dependencies monorepo
 pnpm install
+
+# 2. Khởi tạo file biến môi trường cho front-end (bắt buộc để SvelteKit sync static private env)
+cp front-end/.env.example front-end/.env
 ```
 
 ### 🚀 Lệnh Nhanh Tại Thư Mục Gốc (Root Scripts):

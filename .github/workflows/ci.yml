@@ -51,9 +51,13 @@ jobs:
         run: pnpm test:unit
 
       - name: Install Playwright Browsers
-        run: |
-          cd front-end
-          npx playwright install chromium --with-deps
+        run: pnpm --filter ./front-end exec playwright install chromium --with-deps
 
       - name: Run E2E Tests (Playwright)
         run: pnpm test:e2e
+
+      - name: Run Dead Code & Unused Dependencies Check (Knip)
+        run: pnpm knip:all
+
+      - name: Run Production Build
+        run: pnpm build:all
