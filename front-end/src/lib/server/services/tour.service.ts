@@ -1,3 +1,4 @@
+import { CACHE_POLICY } from '$lib/server/cache/cache-policy'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
@@ -74,7 +75,7 @@ export const TourService = {
 	 * Fetches tours by category ('day-tours' or 'highland-tours') with multi-layer cache.
 	 */
 	async getToursByType(tourType: TourType, kv?: KVNamespace): Promise<Tour[]> {
-		return cachedFetch(`tours-${tourType}`, 5 * 60 * 1000, async () => {
+		return cachedFetch(`tours-${tourType}`, CACHE_POLICY.TOURS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:tours:${tourType}`,
@@ -112,7 +113,7 @@ export const TourService = {
 		if (matched) return matched
 
 		// 3. Last fallback: Direct Sanity GROQ fetch (supports old documents with raw tourSlug)
-		return cachedFetch(`tour-${tourType || 'all'}-${slug}`, 5 * 60 * 1000, async () => {
+		return cachedFetch(`tour-${tourType || 'all'}-${slug}`, CACHE_POLICY.TOURS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:tour:${tourType || 'all'}:${slug}`,

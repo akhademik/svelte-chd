@@ -89,8 +89,8 @@ Tại thư mục gốc dự án, bạn có thể thực hiện mọi tác vụ q
 | `pnpm check:all` | Chạy Type Check toàn dự án (`svelte-check` + `tsc --noEmit`) |
 | `pnpm lint:all` | Kiểm tra Lint & Prettier format cho toàn bộ monorepo |
 | `pnpm format:all` | Tự động định dạng code chuẩn Prettier cho toàn bộ files |
-| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **77/77 tests across 11 suites**) |
-| `pnpm test:e2e` | Chạy Playwright End-to-End tests (**6/6 tests** - locale switching, category slug mapping, modal, seo) |
+| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest) |
+| `pnpm test:e2e` | Chạy End-to-End tests (Playwright - locale switching, category slug mapping, modal, seo) |
 | `pnpm knip:all` | Quét Dead Code, Unused Files & Unused Exports |
 | `pnpm sync:rates` | Đồng bộ tỷ giá ngoại tệ từ Exchange API vào Sanity CMS (dùng cho GitHub Action Cron) |
 | `pnpm i18n` | Đồng bộ và sinh types tự động cho `typesafe-i18n` |
@@ -104,8 +104,8 @@ Mỗi thay đổi mã nguồn phải tuân thủ nghiêm ngặt theo tài liệu
 1. `pnpm format:all`
 2. `pnpm lint:all`
 3. `pnpm check:all`
-4. `pnpm test` (77/77 unit tests across 11 suites)
-5. `pnpm test:e2e` (6/6 Playwright E2E tests)
+4. `pnpm test` (Vitest Unit tests)
+5. `pnpm test:e2e` (Playwright E2E tests)
 6. `pnpm knip:all`
 7. `pnpm build:all`
 8. `graphify update .`

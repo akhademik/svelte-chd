@@ -17,29 +17,29 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Frontend: `svelte-kit sync && svelte-check --tsconfig ./tsconfig.json`
    - Backend: `tsc --noEmit`
 4. **Unit Testing (`pnpm test` / Vitest)**:
-   - i18n URL & Slug Translation: [`i18n-helper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.test.ts) (8 tests)
-   - Form Schema Validation: [`form-schema.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/form-schema.test.ts) (8 tests)
-   - Data & Image Formatters & Multilingual Filter: [`format-data.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/format-data.test.ts) (19 tests)
-   - Slug Resolution & Mapping: [`slug.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/slug.test.ts) (14 tests)
-   - Gallery Image Collection & PortableText: [`gallery.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/gallery.test.ts) (8 tests)
-   - Testimonial Utilities: [`testimonial.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/testimonials/testimonial.test.ts) (4 tests)
-   - Navigation Link Helpers: [`navigation.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/navigation.test.ts) (3 tests)
-   - Navigation Bar & Active Route Logic: [`nav-bar-logic.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/nav-bar/nav-bar-logic.test.ts) (6 tests)
-   - Tour Service Layer: [`tour.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/tour.service.test.ts) (9 tests)
-   - Blog Service Layer: [`blog.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/blog.service.test.ts) (8 tests)
-   - Exchange Service Layer: [`exchange.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/exchange.service.test.ts) (3 tests)
-   - Hero Image Deterministic Rotation & Sticky Logic: [`hero-image.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.test.ts) (5 tests)
-   - Sanity Tour Mapper: [`tour.mapper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/tour.mapper.test.ts) (4 tests)
-   - Sanity Blog Mapper: [`blog.mapper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/blog.mapper.test.ts) (4 tests)
-   - IP Rate Limiter: [`rate-limiter.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.test.ts) (4 tests)
-   - Anti-Spam Honeypot Traps: [`anti-spam.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.test.ts) (3 tests)
-   - HTML Sanitizer / Escaper: [`html-escape.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/html-escape.test.ts) (2 tests)
-   - Email Template Compiler: [`email-template.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/email-template.test.ts) (1 test)
-   - **Tổng cộng: 113/113 unit tests passing across 18 suites.**
+   - i18n URL & Slug Translation: [`i18n-helper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.test.ts)
+   - Form Schema Validation: [`form-schema.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/form-schema.test.ts)
+   - Data & Image Formatters & Multilingual Filter: [`format-data.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/format-data.test.ts)
+   - Slug Resolution & Mapping: [`slug.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/slug.test.ts)
+   - Gallery Image Collection & PortableText: [`gallery.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/gallery.test.ts)
+   - Testimonial Utilities: [`testimonial.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/testimonials/testimonial.test.ts)
+   - Navigation Link Helpers: [`navigation.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/navigation.test.ts)
+   - Navigation Bar & Active Route Logic: [`nav-bar-logic.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/nav-bar/nav-bar-logic.test.ts)
+   - Tour Service Layer: [`tour.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/tour.service.test.ts)
+   - Blog Service Layer: [`blog.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/blog.service.test.ts)
+   - Exchange Service Layer: [`exchange.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/exchange.service.test.ts)
+   - Hero Image Deterministic Rotation & Sticky Logic: [`hero-image.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.test.ts)
+   - Sanity Tour Mapper: [`tour.mapper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/tour.mapper.test.ts)
+   - Sanity Blog Mapper: [`blog.mapper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/blog.mapper.test.ts)
+   - IP Rate Limiter: [`rate-limiter.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.test.ts)
+   - Anti-Spam Honeypot Traps: [`anti-spam.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.test.ts)
+   - HTML Sanitizer / Escaper: [`html-escape.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/html-escape.test.ts)
+   - Security Headers: [`headers.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/headers.test.ts)
+   - Email Template Compiler: [`email-template.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/email-template.test.ts)
 5. **Dead Code & Dependency Analysis (`pnpm knip:all`)**:
    - Quét và loại bỏ dead code, file mồ côi, export/type và package không sử dụng trên toàn bộ monorepo (`front-end` và `back-end`).
 6. **E2E Testing (`pnpm test:e2e` / Playwright)**:
-   - Chạy kiểm thử tương tác người dùng, điều hướng đa ngôn ngữ, chuyển đổi slug tour động, form submission, SEO metadata (**6/6 tests passing**).
+   - Chạy kiểm thử tương tác người dùng, điều hướng đa ngôn ngữ, chuyển đổi slug tour động, form submission, SEO metadata.
 7. **Production Build (`pnpm build:all`)**:
    - Biên dịch kiểm tra Cloudflare Workers adapter và Sanity Studio build.
 8. **Đồng Bộ Knowledge Graph (`graphify update .`)**:
@@ -54,12 +54,10 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
    - Format: `pnpm format:all`
    - Linting: `pnpm lint:all`
    - Type Checking: `pnpm check:all`
-   - Unit Tests: `pnpm test` (Vitest 113/113 across 18 suites)
-   - E2E Tests: `pnpm test:e2e` (Playwright 6/6 — Kiểm tra và đảm bảo toàn bộ CI/CD GitHub Actions pass 100%)
+   - Unit Tests: `pnpm test` (Vitest unit test suites)
+   - E2E Tests: `pnpm test:e2e` (Playwright E2E tests — Đảm bảo Green 100%)
    - Dead Code: `pnpm knip:all`
    - Build Check: `pnpm build:all`
 3. **Chạy `graphify update .`** cập nhật graph tri thức mã nguồn.
 4. **Báo cáo kết quả đầy đủ, rõ ràng cho User**.
 5. **Khi User phê duyệt (OK)** -> Thực hiện Git Commit & Push theo chuẩn Conventional Commits.
-
-

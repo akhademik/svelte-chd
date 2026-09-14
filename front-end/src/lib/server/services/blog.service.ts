@@ -1,3 +1,4 @@
+import { CACHE_POLICY } from '$lib/server/cache/cache-policy'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
@@ -34,7 +35,7 @@ export const BlogService = {
 	 * Fetches featured blog posts (with fallback) with multi-layer cache.
 	 */
 	async getFeaturedBlogs(kv?: KVNamespace): Promise<BlogPost[]> {
-		return cachedFetch('featured-blogs', 5 * 60 * 1000, async () => {
+		return cachedFetch('featured-blogs', CACHE_POLICY.BLOGS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				'snapshot:featured-blogs',
@@ -54,7 +55,7 @@ export const BlogService = {
 	 * Fetches all published blog posts with multi-layer cache.
 	 */
 	async getAllBlogs(kv?: KVNamespace): Promise<BlogPost[]> {
-		return cachedFetch('all-blogs', 5 * 60 * 1000, async () => {
+		return cachedFetch('all-blogs', CACHE_POLICY.BLOGS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				'snapshot:all-blogs',
@@ -90,7 +91,7 @@ export const BlogService = {
 		if (matched) return matched
 
 		// 2. Direct GROQ fallback (for old documents or raw ID)
-		return cachedFetch(`blog-${slug}`, 5 * 60 * 1000, async () => {
+		return cachedFetch(`blog-${slug}`, CACHE_POLICY.BLOGS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:blog:${slug}`,

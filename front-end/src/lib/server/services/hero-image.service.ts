@@ -1,4 +1,5 @@
 import { calculateHeroSlotIndex } from '$lib/constants/hero'
+import { CACHE_POLICY } from '$lib/server/cache/cache-policy'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { sanityClient } from '$lib/server/sanity/client'
@@ -33,7 +34,7 @@ export const HeroImageService = {
 	 * Fetches all active hero images from Sanity with memory cache & KV snapshot backup.
 	 */
 	async getHeroImages(kv?: KVNamespace): Promise<HeroImage[]> {
-		return cachedFetch('active-hero-images', 30 * 60 * 1000, async () => {
+		return cachedFetch('active-hero-images', CACHE_POLICY.HERO_IMAGES_TTL_MS, async () => {
 			try {
 				return await withKvSnapshot(
 					kv,
