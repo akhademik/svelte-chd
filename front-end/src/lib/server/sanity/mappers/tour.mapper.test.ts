@@ -19,7 +19,6 @@ describe('tour.mapper', () => {
 		expect(mapped.img_tour).toEqual([])
 		expect(mapped.tour_highlights).toEqual([])
 		expect(mapped.tour_includes).toEqual([])
-		expect(mapped.tour_tags).toEqual([])
 	})
 
 	it('preserves existing flags and complex nested attributes including good_to_know', () => {
@@ -30,11 +29,9 @@ describe('tour.mapper', () => {
 			contact_for_price: true,
 			tour_duration: '3 Days 2 Nights',
 			tour_highlights: [{ vi: 'Điểm 1' }],
-			tour_tags: [{ title: { vi: 'Tây Nguyên' } }],
 			img_tour: [{ asset: { _ref: 'img-1' } }],
 			good_to_know: {
 				whatToPack: {
-					icon: '🎒',
 					title: { vi: 'Áo khoác' },
 					description: { vi: 'Nên mang áo khoác mỏng' },
 				},
@@ -47,9 +44,8 @@ describe('tour.mapper', () => {
 		expect(mapped.contact_for_price).toBe(true)
 		expect(mapped.tour_duration).toBe('3 Days 2 Nights')
 		expect(mapped.tour_highlights?.length).toBe(1)
-		expect(mapped.tour_tags?.length).toBe(1)
 		expect(mapped.img_tour?.length).toBe(1)
-		expect(mapped.good_to_know?.whatToPack?.icon).toBe('🎒')
+		expect(mapped.good_to_know?.whatToPack?.title?.vi).toBe('Áo khoác')
 	})
 
 	it('handles null, undefined, and non-array raw inputs gracefully', () => {

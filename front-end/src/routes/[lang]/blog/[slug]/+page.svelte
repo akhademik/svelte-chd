@@ -3,6 +3,7 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 
 	import { BaseImageLightbox, BaseJsonLd, BaseSeo } from '$lib/base'
+	import { IconChevronLeft, IconImageGallery } from '$lib/icons'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { getLocalizedField } from '$lib/utils/format-data'
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
@@ -94,17 +95,7 @@
 				<a
 					href={`/${$locale}/blog`}
 					class="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-foreground-muted transition-colors hover:text-foreground">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-3.5 w-3.5"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2.5"
-						stroke-linecap="round"
-						stroke-linejoin="round">
-						<polyline points="15 18 9 12 15 6"></polyline>
-					</svg>
+					<IconChevronLeft class="h-3.5 w-3.5" />
 					CHD Journal
 				</a>
 			</div>
@@ -235,28 +226,7 @@
 					type="button"
 					onclick={() => openLightbox(0)}
 					class="absolute bottom-4 right-4 hidden items-center gap-2 rounded-md border border-border bg-surface/95 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground shadow-lg backdrop-blur-md transition-all hover:border-foreground hover:bg-surface hover:text-primary md:inline-flex">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-4 w-4"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round">
-						<rect
-							x="3"
-							y="3"
-							width="18"
-							height="18"
-							rx="2"
-							ry="2"></rect>
-						<circle
-							cx="8.5"
-							cy="8.5"
-							r="1.5"></circle>
-						<polyline points="21 15 16 10 5 21"></polyline>
-					</svg>
+					<IconImageGallery class="h-4 w-4" />
 					<span>
 						{$LL.blog_page.view_all_photos({ count: allImages.length })}
 					</span>

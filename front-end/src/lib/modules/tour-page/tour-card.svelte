@@ -2,6 +2,7 @@
 	import { page } from '$app/state'
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconArrowRight, IconClock } from '$lib/icons'
 	import { bookingModal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import {
@@ -64,21 +65,7 @@
 				class="mb-2.5 flex items-center gap-2.5 text-xs font-light tracking-wider text-foreground-subtle">
 				{#if durationText}
 					<span class="flex items-center gap-1.5 text-foreground-muted">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-3.5 w-3.5 text-foreground-subtle"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round">
-							<circle
-								cx="12"
-								cy="12"
-								r="10"></circle>
-							<polyline points="12 6 12 12 16 14"></polyline>
-						</svg>
+						<IconClock class="h-3.5 w-3.5 text-foreground-subtle" />
 						<span>{durationText}</span>
 					</span>
 					<span>•</span>
@@ -113,22 +100,7 @@
 			href={tourLink}
 			class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-foreground-muted transition-colors hover:text-foreground">
 			<span>{$LL.tours.click_detail()}</span>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-3.5 w-3.5"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round">
-				<line
-					x1="5"
-					y1="12"
-					x2="19"
-					y2="12"></line>
-				<polyline points="12 5 19 12 12 19"></polyline>
-			</svg>
+			<IconArrowRight class="h-3.5 w-3.5" />
 		</a>
 		<button
 			onclick={() => bookingModal.open(title)}

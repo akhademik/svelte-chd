@@ -10,34 +10,30 @@ export default {
       title: 'Phân loại nhóm (Category)',
       name: 'category',
       type: 'string',
+      hidden: true,
+      readOnly: true,
       options: {
         list: [
           {
-            title: '1. Thời điểm & Mức độ vận động (Season & Activity)',
-            value: 'activity_season',
+            title: 'Mức độ vận động',
+            value: 'activity_level',
           },
           {
-            title: '2. Hành trang & Trang phục (What to pack / Attire)',
+            title: 'Hành trang',
             value: 'what_to_pack',
           },
           {
-            title: '3. Đón trả & Quy mô nhóm (Pickup & Group size)',
-            value: 'transport_group',
+            title: 'Quy mô nhóm',
+            value: 'group_size',
           },
           {
-            title: '4. Ăn uống & Lưu ý khác (Diet & Special notes)',
-            value: 'diet_notes',
+            title: 'Lưu ý khác',
+            value: 'other_notes',
           },
         ],
         layout: 'radio',
       },
       validation: (Rule: any) => Rule.required(),
-    },
-    {
-      title: 'Biểu tượng Icon (Emoji, vd: 🌤, 🎒, 🚐, 🥗, 👟, ☕, 🌿)',
-      name: 'icon',
-      type: 'string',
-      description: 'Nhập 1 emoji đại diện (tùy chọn, mặc định sẽ dùng icon theo phân loại)',
     },
     {
       title: 'Tiêu đề mục',
@@ -57,18 +53,17 @@ export default {
       titleVi: 'title.vi',
       titleEn: 'title.en',
       category: 'category',
-      icon: 'icon',
     },
     prepare(selection: any) {
-      const {titleVi, titleEn, category, icon} = selection
+      const {titleVi, titleEn, category} = selection
       const categoryLabels: Record<string, string> = {
-        activity_season: '🌤 Thời điểm & Vận động',
-        what_to_pack: '🎒 Hành trang & Trang phục',
-        transport_group: '🚐 Đón trả & Quy mô',
-        diet_notes: '🥗 Ăn uống & Lưu ý',
+        activity_level: 'Mức độ vận động',
+        what_to_pack: 'Hành trang',
+        group_size: 'Quy mô nhóm',
+        other_notes: 'Lưu ý khác',
       }
       return {
-        title: `${icon ? `${icon} ` : ''}${titleVi || titleEn || 'Chưa đặt tiêu đề'}`,
+        title: titleVi || titleEn || 'Chưa đặt tiêu đề',
         subtitle: categoryLabels[category] || category || 'Chưa phân loại',
       }
     },

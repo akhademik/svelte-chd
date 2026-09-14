@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
 	import { calculateHeroSlotIndex, getNextHeroRotationDelay } from '$lib/constants/hero'
+	import { IconArrowRight } from '$lib/icons'
 	import type { HeroImage } from '$lib/types/hero-image.type'
 	import { urlFor } from '$lib/utils/sanity'
 
@@ -156,22 +157,7 @@
 				href="#featured-tours"
 				class="inline-flex w-full items-center justify-center gap-3 bg-primary px-9 py-4 text-xs font-semibold uppercase tracking-widest text-white shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-primary-hover sm:w-auto">
 				<span>{$LL.home_page.cta_explore()}</span>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-4 w-4"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2.5"
-					stroke-linecap="round"
-					stroke-linejoin="round">
-					<line
-						x1="5"
-						y1="12"
-						x2="19"
-						y2="12"></line>
-					<polyline points="12 5 19 12 12 19"></polyline>
-				</svg>
+				<IconArrowRight class="h-4 w-4" />
 			</a>
 		</div>
 	</div>

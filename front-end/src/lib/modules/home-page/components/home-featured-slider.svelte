@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconChevronLeft, IconChevronRight, IconStar } from '$lib/icons'
 	import { bookingModal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import {
@@ -109,13 +110,7 @@
 					<div class="mb-4 flex min-h-[1.75rem] flex-wrap items-center gap-2.5 sm:gap-3">
 						<span
 							class="inline-flex shrink-0 items-center gap-1.5 bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-3.5 w-3.5"
-								viewBox="0 0 24 24"
-								fill="currentColor"
-								><path
-									d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.169-7.333-3.856-7.333 3.856 1.399-8.169-5.934-5.784 8.2-1.192zm0 5.702l-2.232 4.522-4.991.725 3.612 3.521-.852 4.972 4.463-2.347 4.463 2.347-.852-4.972 3.612-3.521-4.991-.725z" /></svg>
+							<IconStar class="h-3.5 w-3.5" />
 							<span>
 								{$LL.tours.featured_badge()}
 							</span>
@@ -155,23 +150,6 @@
 										<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 										<span class="line-clamp-1">{hlText}</span>
 									</div>
-								{/if}
-							{/each}
-						{/if}
-					</div>
-
-					<!-- Tags -->
-					<div class="mb-8 flex h-7 flex-wrap items-center gap-2 overflow-hidden">
-						{#if currentTour.tour_tags?.length}
-							{#each currentTour.tour_tags.slice(0, 5) as tag}
-								{@const tagName =
-									getLocalizedField(tag?.tour_tags, $locale, '') ||
-									getLocalizedField(tag?.tourTags, $locale, '')}
-								{#if tagName}
-									<span
-										class="border border-inverse-dark/60 bg-inverse/60 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-inverse-foreground backdrop-blur-sm">
-										#{tagName}
-									</span>
 								{/if}
 							{/each}
 						{/if}
@@ -229,13 +207,7 @@
 								onclick={prevSlide}
 								class="flex h-11 w-11 items-center justify-center border border-inverse-dark bg-inverse/80 text-inverse-foreground transition-colors hover:border-white hover:text-white"
 								aria-label="Previous featured tour">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+								<IconChevronLeft class="h-4 w-4" />
 							</button>
 
 							<div class="flex gap-1.5 px-2">
@@ -257,13 +229,7 @@
 								onclick={nextSlide}
 								class="flex h-11 w-11 items-center justify-center border border-inverse-dark bg-inverse/80 text-inverse-foreground transition-colors hover:border-white hover:text-white"
 								aria-label="Next featured tour">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+								<IconChevronRight class="h-4 w-4" />
 							</button>
 						</div>
 					{/if}

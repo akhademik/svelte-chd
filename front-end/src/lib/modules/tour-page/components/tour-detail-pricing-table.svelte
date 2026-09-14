@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconArrowRight } from '$lib/icons'
 	import type { Tour } from '$lib/types/tour.type'
 	import { formatPaxNo, formatPrice, getPaxTier } from '$lib/utils/format-data'
 
@@ -39,22 +40,7 @@
 			href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
 			class="mt-4 inline-flex items-center justify-center gap-2 bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-primary-hover">
 			<span>{$LL.tours.plan_trip()}</span>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-3.5 w-3.5"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round">
-				<line
-					x1="5"
-					y1="12"
-					x2="19"
-					y2="12"></line>
-				<polyline points="12 5 19 12 12 19"></polyline>
-			</svg>
+			<IconArrowRight class="h-3.5 w-3.5" />
 		</a>
 	</div>
 {:else if prices.length > 0}

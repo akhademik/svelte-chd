@@ -24,7 +24,7 @@ pnpm install
 - **Kiểm tra Type & Diagnostics**: `pnpm check:all` (`svelte-check` + `tsc --noEmit`)
 - **Kiểm tra Linting & Format**: `pnpm lint:all`
 - **Tự động Format Code**: `pnpm format:all`
-- **Chạy Test Suites**: `pnpm test` (Unit tests 77/77 across 11 suites) & `pnpm test:e2e` (Playwright 6/6)
+- **Chạy Test Suites**: `pnpm test` (Unit tests 113/113 across 18 suites) & `pnpm test:e2e` (Playwright 6/6)
 - **Kiểm tra Dead Code & Unused**: `pnpm knip:all`
 - **Đồng bộ Tỷ Giá Ngoại Tệ (Cron / Script)**: `pnpm sync:rates`
 - **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
@@ -105,4 +105,8 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 9. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
    - Mọi logic xoay vòng thời gian, chu kỳ timer, hoặc tính toán index định kỳ (như Hero rotation, slider interval) **bắt buộc dùng chung hằng số và hàm tính toán tại `front-end/src/lib/constants/` hoặc `front-end/src/lib/utils/`** (ví dụ: `constants/hero.ts`).
    - Component UI tương tác (như `home-hero.svelte`) phải khởi tạo `$state` khớp 100% với dữ liệu nhận từ SSR (`getInitialIndex()` thay vì `let currentIndex = $state(0)`) để triệt tiêu hoàn toàn hiện tượng hydration flash.
+
+10. **Hệ Thống Biểu Tượng Tái Sử Dụng (`front-end/src/lib/icons/`)**:
+    - Mọi biểu tượng SVG dùng trên giao diện frontend **bắt buộc tách thành component tái sử dụng** trong thư mục `src/lib/icons/` (e.g. `IconActivity`, `IconGroup`, `IconPack`, `IconNotes`, `IconClose`, `IconChevronLeft`, `IconChevronRight`, `IconChevronDown`, `IconArrowRight`, `IconArrowUp`, `IconSend`, `IconImageGallery`, `IconClock`, `IconCheck`, `IconCheckCircle`, `IconFacebook`, `IconTripadvisor`, `IconStar`, `IconPhone`, `IconFileText`, `IconDownload`).
+    - Tất cả icons được export tập trung qua `src/lib/icons/index.ts` (barrel export) và hỗ trợ prop `class` (default `h-4 w-4` hoặc thích hợp). Không nhúng mã SVG thô trực tiếp trong các components nghiệp vụ.
 

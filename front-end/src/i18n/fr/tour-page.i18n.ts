@@ -28,18 +28,10 @@ export const tours = {
 	},
 	good_to_know: {
 		title: 'Bon à Savoir',
-		season_title: 'Saison Idéale',
-		season_desc:
-			'Saison sèche (Nov–Avr) ensoleillée avec floraison des caféiers (Fév–Avr). Saison verte (Mai–Oct) avec des cascades spectaculaires.',
-		packing_title: 'À Emporter',
-		packing_desc:
-			'Chaussures de marche confortables, veste légère pour les soirées fraîches, crème solaire et répulsif anti-moustiques.',
-		pickup_title: 'Prise en Charge',
-		pickup_desc:
-			'Prise en charge et retour inclus depuis les hôtels du centre de Buon Ma Thuot ou l’aéroport sur demande.',
-		diet_title: 'Régimes Alimentaires',
-		diet_desc:
-			'Repas végétariens, végétaliens et régimes spécifiques préparés với soin sur simple demande.',
+		activity_level: "Niveau d'activité",
+		what_to_pack: 'À emporter',
+		group_size: 'Taille du groupe',
+		other_notes: 'Autres remarques',
 	},
 	gallery: {
 		excursions_subtitle: '01 / Excursions',

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
+	import { IconSend } from '$lib/icons'
 	import { redirectToHome } from '$utils/navigation'
 	import toast from 'svelte-french-toast'
 
@@ -151,21 +152,6 @@
 		disabled={$submitting}
 		class="mt-2 flex w-full items-center justify-center gap-2 bg-inverse py-4 text-xs uppercase tracking-widest text-inverse-foreground transition-colors hover:bg-inverse-dark disabled:opacity-50">
 		<span>{$submitting ? 'Sending...' : $LL.contact_page.page.submit()}</span>
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			class="h-3.5 w-3.5"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="2"
-			stroke-linecap="round"
-			stroke-linejoin="round">
-			<line
-				x1="22"
-				y1="2"
-				x2="11"
-				y2="13"></line>
-			<polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-		</svg>
+		<IconSend class="h-3.5 w-3.5" />
 	</button>
 </div>

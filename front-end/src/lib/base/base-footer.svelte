@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconFacebook, IconTripadvisor } from '$lib/icons'
 	import { getCategorySlug } from '$lib/utils/format-data'
 </script>
 
@@ -59,13 +60,7 @@
 					rel="noopener noreferrer"
 					aria-label="Facebook"
 					class="flex h-11 w-11 items-center justify-center rounded-full border border-inverse-dark bg-inverse-dark/60 text-inverse-foreground/80 transition-all hover:border-white hover:bg-inverse-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
-					<svg
-						class="h-4 w-4 fill-current"
-						viewBox="0 0 24 24">
-						<path
-							d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
-						></path>
-					</svg>
+					<IconFacebook class="h-4 w-4 fill-current" />
 				</a>
 
 				<!-- TripAdvisor -->
@@ -75,13 +70,7 @@
 					rel="noopener noreferrer"
 					aria-label="TripAdvisor"
 					class="flex h-11 w-11 items-center justify-center rounded-full border border-inverse-dark bg-inverse-dark/60 text-inverse-foreground/80 transition-all hover:border-white hover:bg-inverse-dark hover:text-white focus:outline-none focus:ring-2 focus:ring-primary">
-					<svg
-						class="h-4 w-4 fill-current"
-						viewBox="0 0 24 24">
-						<path
-							d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3.12c1.47 0 2.8.52 3.84 1.39l-1.04 1.3a4.67 4.67 0 0 0-5.6 0l-1.04-1.3A6.16 6.16 0 0 1 12 5.12zM5.5 14.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0zm13 0a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0zm-11.5 0a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0zm10 0a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0z"
-						></path>
-					</svg>
+					<IconTripadvisor class="h-4 w-4 fill-current" />
 				</a>
 			</div>
 		</div>

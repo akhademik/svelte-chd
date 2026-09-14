@@ -28,18 +28,10 @@ export const tours = {
 	},
 	good_to_know: {
 		title: 'Good to Know',
-		season_title: 'Best Season',
-		season_desc:
-			'Dry season (Nov–Apr) brings sunny days and white coffee blossoms (Feb–Apr). Green season (May–Oct) showcases majestic cascading waterfalls.',
-		packing_title: 'What to Pack',
-		packing_desc:
-			'Comfortable walking shoes, light jacket for cool highland evenings, sunscreen, eco insect repellent, and camera.',
-		pickup_title: 'Hotel Pickup',
-		pickup_desc:
-			'Complimentary round-trip pickup from central Buon Ma Thuot hotels or BMT airport upon request.',
-		diet_title: 'Dietary Options',
-		diet_desc:
-			'Special dietary requirements, vegetarian, and vegan options are warmly accommodated on all meals.',
+		activity_level: 'Activity Level',
+		what_to_pack: 'What to Pack',
+		group_size: 'Group Size',
+		other_notes: 'Other Notes',
 	},
 	gallery: {
 		excursions_subtitle: '01 / Excursions',

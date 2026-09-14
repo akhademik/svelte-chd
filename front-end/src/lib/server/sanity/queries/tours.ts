@@ -7,17 +7,13 @@ export const EXTRACT_TOUR_FIELDS = `
 	),
 	"tour_itinerary": tourItinerary,
 	"tour_includes": coalesce(tourIncludes->tourIncludes, []),
-	"tour_tags": coalesce(
-		tourTags[]->{'tour_tags': tourTags, 'tourTags': tourTags},
-		[]
-	),
 	"tour_price": tourPrice,
 	"tour_id": coalesce(tourID, ''),
 	"good_to_know": goodToKnow{
-		"activitySeason": activitySeason->{ icon, title, description },
-		"whatToPack": whatToPack->{ icon, title, description },
-		"transportGroup": transportGroup->{ icon, title, description },
-		"dietNotes": dietNotes->{ icon, title, description }
+		"activityLevel": activityLevel->{ title, description },
+		"whatToPack": whatToPack->{ title, description },
+		"groupSize": groupSize->{ title, description },
+		"otherNotes": otherNotes->{ title, description }
 	},
 	"img_tour": coalesce(
 		imgTour[]{

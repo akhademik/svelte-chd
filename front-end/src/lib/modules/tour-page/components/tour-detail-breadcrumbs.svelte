@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconChevronLeft } from '$lib/icons'
 
 	interface Props {
 		tourType: string
@@ -16,17 +17,7 @@
 			<a
 				href={`/${$locale}/${tourType}`}
 				class="inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-foreground-muted transition-colors hover:text-foreground">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-3.5 w-3.5"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2.5"
-					stroke-linecap="round"
-					stroke-linejoin="round">
-					<polyline points="15 18 9 12 15 6"></polyline>
-				</svg>
+				<IconChevronLeft class="h-3.5 w-3.5" />
 				{tourType === 'day-tours' ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()}
 			</a>
 		</div>

@@ -17,7 +17,6 @@ export function mapSanityToTour(raw: any): Tour {
 		tour_duration: raw.tour_duration,
 		tour_highlights: raw.tour_highlights ?? [],
 		tour_includes: raw.tour_includes ?? [],
-		tour_tags: raw.tour_tags ?? [],
 		tour_intro: raw.tour_intro,
 		tour_itinerary: raw.tour_itinerary,
 		tour_name: raw.tour_name,
