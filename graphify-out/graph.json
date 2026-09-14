@@ -664,7 +664,7 @@
       "file_type": "code",
       "norm_label": "kvnamespacelike",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L50"
+      "source_location": "L61"
     },
     {
       "id": "front_end_src_lib_server_security_rate_limiter_ratelimitoptions",
@@ -765,7 +765,7 @@
       "file_type": "code",
       "norm_label": "extracturl()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L72"
+      "source_location": "L73"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_getlangcookie",
@@ -777,7 +777,7 @@
       "file_type": "code",
       "norm_label": "getlangcookie()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L66"
+      "source_location": "L67"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_getpathnamewithoutbase",
@@ -789,7 +789,7 @@
       "file_type": "code",
       "norm_label": "getpathnamewithoutbase()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L11"
+      "source_location": "L12"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_getpreferredlocale",
@@ -801,7 +801,7 @@
       "file_type": "code",
       "norm_label": "getpreferredlocale()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L41"
+      "source_location": "L42"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_persisttocookie",
@@ -813,7 +813,7 @@
       "file_type": "code",
       "norm_label": "persisttocookie()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L49"
+      "source_location": "L50"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_replacelocaleinurl",
@@ -825,7 +825,7 @@
       "file_type": "code",
       "norm_label": "replacelocaleinurl()",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L14"
+      "source_location": "L15"
     },
     {
       "id": "front_end_src_i18n_i18n_util_async_importlocaleasync",
@@ -2289,7 +2289,7 @@
       "file_type": "code",
       "norm_label": "checkratelimit()",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L59"
+      "source_location": "L70"
     },
     {
       "id": "front_end_src_lib_server_security_rate_limiter_checkratelimitasync",
@@ -2301,7 +2301,7 @@
       "file_type": "code",
       "norm_label": "checkratelimitasync()",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L104"
+      "source_location": "L115"
     },
     {
       "id": "front_end_src_lib_server_security_rate_limiter_cleanupexpiredrecords",
@@ -2337,7 +2337,7 @@
       "file_type": "code",
       "norm_label": ".get()",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L51"
+      "source_location": "L62"
     },
     {
       "id": "front_end_src_lib_server_security_rate_limiter_kvnamespacelike_put",
@@ -2349,7 +2349,7 @@
       "file_type": "code",
       "norm_label": ".put()",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L52"
+      "source_location": "L63"
     },
     {
       "id": "front_end_src_lib_server_security_rate_limiter_test_get",
@@ -2361,7 +2361,7 @@
       "file_type": "code",
       "norm_label": "get()",
       "source_file": "front-end/src/lib/server/security/rate-limiter.test.ts",
-      "source_location": "L54"
+      "source_location": "L66"
     },
     {
       "id": "front_end_src_lib_server_security_rate_limiter_test_put",
@@ -2373,7 +2373,7 @@
       "file_type": "code",
       "norm_label": "put()",
       "source_file": "front-end/src/lib/server/security/rate-limiter.test.ts",
-      "source_location": "L57"
+      "source_location": "L69"
     },
     {
       "id": "front_end_src_lib_modules_mobile_menu_mobile_menu_if",
@@ -2971,7 +2971,7 @@
       "file_type": "code",
       "norm_label": "regex_start_with_base",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "front_end_src_i18n_i18n_helper_test",
@@ -10332,7 +10332,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L73",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -10344,7 +10344,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L69",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -10356,7 +10356,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L46",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -10368,7 +10368,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L15",
+      "source_location": "L16",
       "weight": 1.0
     },
     {
@@ -10380,7 +10380,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L21",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -10392,7 +10392,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L27",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -10404,7 +10404,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L29",
+      "source_location": "L30",
       "weight": 1.0
     },
     {
@@ -10692,7 +10692,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L63",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -10704,7 +10704,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L65",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -10716,7 +10716,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L69",
+      "source_location": "L80",
       "weight": 1.0
     },
     {
@@ -10728,7 +10728,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L110",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -10740,7 +10740,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L114",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -10752,7 +10752,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L118",
+      "source_location": "L129",
       "weight": 1.0
     },
     {
@@ -10764,7 +10764,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L131",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -10776,7 +10776,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L43",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -13661,6 +13661,18 @@
     },
     {
       "source": "front_end_src_i18n_i18n_helper",
+      "target": "front_end_src_lib_utils_logger_logger",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_i18n_i18n_helper",
       "target": "front_end_src_i18n_i18n_types_locales",
       "relation": "imports",
       "_origin": "ast",
@@ -13668,7 +13680,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L6",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -13680,7 +13692,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13692,7 +13704,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -17098,6 +17110,18 @@
     },
     {
       "source": "front_end_src_i18n_i18n_helper",
+      "target": "front_end_src_lib_utils_logger",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_i18n_i18n_helper",
       "target": "front_end_src_i18n_i18n_types",
       "relation": "imports_from",
       "_origin": "ast",
@@ -17105,7 +17129,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L6",
+      "source_location": "L7",
       "type_only": true,
       "weight": 1.0
     },
@@ -17118,7 +17142,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -21420,13 +21444,24 @@
     },
     {
       "source": "front_end_src_i18n_i18n_helper",
+      "target": "front_end_src_i18n_i18n_helper_regex_start_with_base",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/i18n/i18n-helper.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_i18n_i18n_helper",
       "target": "front_end_src_i18n_i18n_helper_getpathnamewithoutbase",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L11",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -21437,7 +21472,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -21448,7 +21483,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L41",
+      "source_location": "L42",
       "weight": 1.0
     },
     {
@@ -21459,7 +21494,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -21470,7 +21505,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L66",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -21481,18 +21516,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L72",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_i18n_i18n_helper",
-      "target": "front_end_src_i18n_i18n_helper_regex_start_with_base",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front-end/src/i18n/i18n-helper.ts",
-      "source_location": "L9",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -22746,7 +22770,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L104",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -22823,7 +22847,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L50",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -22834,7 +22858,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L59",
+      "source_location": "L70",
       "weight": 1.0
     },
     {
@@ -22856,7 +22880,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.test.ts",
-      "source_location": "L54",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -22867,7 +22891,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.test.ts",
-      "source_location": "L57",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -27323,7 +27347,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L51",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -27334,7 +27358,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/security/rate-limiter.ts",
-      "source_location": "L52",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -27495,5 +27519,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "689ede8dfc7bcf015d202af6748566a39c2b2a8b"
+  "built_at_commit": "8ad6641f654b954e5e6ee80d702d2d9037a17ae1"
 }

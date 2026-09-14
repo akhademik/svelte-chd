@@ -39,12 +39,23 @@ export interface RateLimitResult {
  * Extracts client IP from standard reverse proxy / Cloudflare headers.
  */
 export function getClientIp(request: Request): string {
-	return (
-		request.headers.get('cf-connecting-ip') ||
-		request.headers.get('x-real-ip') ||
-		request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-		'127.0.0.1'
-	)
+	const cfIp = request.headers.get('cf-connecting-ip')
+	if (cfIp) {
+		return cfIp.trim()
+	}
+
+	const forwardedFor = request.headers.get('x-forwarded-for')
+	if (forwardedFor) {
+		const firstIp = forwardedFor.split(',')[0]?.trim()
+		if (firstIp) return firstIp
+	}
+
+	const realIp = request.headers.get('x-real-ip')
+	if (realIp) {
+		return realIp.trim()
+	}
+
+	return '127.0.0.1'
 }
 
 export interface KVNamespaceLike {

@@ -1,5 +1,6 @@
 import { base } from '$app/paths'
 import { getCategorySlug, resolveCanonicalCategory } from '$lib/utils/format-data'
+import { Logger } from '$lib/utils/logger'
 import type { RequestEvent } from '@sveltejs/kit'
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors'
 
@@ -50,29 +51,29 @@ export const persistToCookie = (locale: Locales) => {
 	const days = 30 // days to save the cookie
 	const date = new Date()
 	date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-	const expire_day = `expires=${date.toUTCString()}`
+	const expireDay = `expires=${date.toUTCString()}`
 
-	document.cookie = `lang=${locale}; ${expire_day}; path=/; Secure; SameSite=Lax`
+	document.cookie = `lang=${locale}; ${expireDay}; path=/; Secure; SameSite=Lax`
 
 	try {
 		if (typeof window !== 'undefined' && window.localStorage) {
 			localStorage.setItem('preferred_locale', locale)
 		}
 	} catch (e) {
-		console.warn('Could not save locale to localStorage', e)
+		Logger.warn('i18n', 'Could not save locale to localStorage', e)
 	}
 }
 
 export const getLangCookie = (event: RequestEvent): Locales | undefined => {
-	const lang_cookie = event.cookies.get('lang') ?? ''
-	if (lang_cookie === 'vn') return 'vi'
-	return isLocale(lang_cookie) ? lang_cookie : undefined
+	const langCookie = event.cookies.get('lang') ?? ''
+	if (langCookie === 'vn') return 'vi'
+	return isLocale(langCookie) ? langCookie : undefined
 }
 
 export const extractUrl = (event: RequestEvent) => {
-	const path_parts = getPathNameWithoutBase(event.url).split('/')
-	const url_lang = path_parts[1]
-	const url_path = path_parts.slice(2)
-	return { url_lang, url_path }
+	const pathParts = getPathNameWithoutBase(event.url).split('/')
+	const urlLang = pathParts[1]
+	const urlPath = pathParts.slice(2)
+	return { urlLang, urlPath }
 }
 

@@ -17,7 +17,7 @@ export function isSpamSubmission(
 		}
 
 		if (typeof val === 'string' && val.trim().length > 0) {
-			Logger.warn('AntiSpam', `Honeypot trap triggered on field "${field}" with value "${val}"`)
+			Logger.warn('AntiSpam', `Honeypot trap triggered on field "${field}"`)
 			return true
 		}
 	}

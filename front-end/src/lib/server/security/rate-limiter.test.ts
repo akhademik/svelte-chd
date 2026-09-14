@@ -14,11 +14,23 @@ describe('Rate Limiter', () => {
 		expect(getClientIp(req)).toBe('203.0.113.195')
 	})
 
-	it('extracts client IP from X-Forwarded-For header', () => {
+	it('extracts client IP from X-Forwarded-For header when cf-connecting-ip is absent', () => {
 		const req = new Request('http://localhost', {
 			headers: { 'x-forwarded-for': '198.51.100.1, 10.0.0.1' },
 		})
 		expect(getClientIp(req)).toBe('198.51.100.1')
+	})
+
+	it('extracts client IP from X-Real-IP header when other headers are absent', () => {
+		const req = new Request('http://localhost', {
+			headers: { 'x-real-ip': '198.51.100.42' },
+		})
+		expect(getClientIp(req)).toBe('198.51.100.42')
+	})
+
+	it('falls back to 127.0.0.1 when no IP headers are present', () => {
+		const req = new Request('http://localhost')
+		expect(getClientIp(req)).toBe('127.0.0.1')
 	})
 
 	it('allows requests within limit and blocks when exceeded', () => {

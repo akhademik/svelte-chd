@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-14)
 
 ## Corpus Check
-- 289 files · ~124,964 words
+- 289 files · ~125,048 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 903 nodes · 1552 edges · 94 communities (30 shown, 34 thin omitted)
+- 903 nodes · 1554 edges · 94 communities (30 shown, 34 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `689ede8d`
+- Built from commit: `8ad6641f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -83,10 +83,10 @@
 ## God Nodes (most connected - your core abstractions)
 1. `scripts` - 31 edges
 2. `compilerOptions` - 15 edges
-3. `scripts` - 14 edges
-4. `Locales` - 14 edges
-5. `Tour` - 14 edges
-6. `Logger` - 14 edges
+3. `Logger` - 15 edges
+4. `scripts` - 14 edges
+5. `Locales` - 14 edges
+6. `Tour` - 14 edges
 7. `sendMail()` - 10 edges
 8. `checkRateLimitAsync()` - 10 edges
 9. `resolveCanonicalCategory()` - 10 edges
@@ -237,10 +237,10 @@ Nodes (3): EmailTemplateProps, generateClientEmailHtml(), escapeHtml()
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Logger` connect `logger.ts` to `[lang]/+page.server.ts`, `rate-limiter.ts`, `hero-image.service.ts`, `nav-bar-logic.ts`, `tour.service.ts`, `contact/+page.server.ts`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+- **Why does `Logger` connect `logger.ts` to `[lang]/+page.server.ts`, `i18n-types.ts`, `rate-limiter.ts`, `hero-image.service.ts`, `nav-bar-logic.ts`, `tour.service.ts`, `contact/+page.server.ts`?**
+  _High betweenness centrality (0.025) - this node is a cross-community bridge._
 - **Why does `Locales` connect `i18n-types.ts` to `format-data.ts`, `format-data.test.ts`, `nav-bar-logic.ts`, `i18n-svelte.ts`?**
-  _High betweenness centrality (0.012) - this node is a cross-community bridge._
+  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **Why does `sanity` connect `schemas/index.ts` to `type-others.ts`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `COLOR_PALETTE`, `BlockRenderProps`, `$schema` to the rest of the system?**
