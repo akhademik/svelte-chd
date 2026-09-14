@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
+	import { SITE_CONFIG } from '$lib/constants/site'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import type { Tour } from '$lib/types/tour.type'
+	import { extractPlainText, getLocalizedField } from '$lib/utils/format-data'
 	import { urlFor } from '$lib/utils/sanity'
 
 	interface BreadcrumbItem {
@@ -19,40 +21,17 @@
 
 	let { tour, post, breadcrumbs, url, isRoot = false }: Props = $props()
 
-	let tourName = $derived(
-		tour?.tour_name?.[$locale] || tour?.tour_name?.en || tour?.tour_name?.vn || 'CHD Travel Tour'
-	)
+	let tourName = $derived(getLocalizedField(tour?.tour_name, $locale, 'CHD Travel Tour'))
 	let tourImage = $derived(tour?.img_cover ? urlFor(tour.img_cover).url() : undefined)
-	let tourPrice = $derived(
-		tour?.tour_price?.price ||
-			tour?.tour_price?.pax2 ||
-			tour?.tour_price?.pax1 ||
-			tour?.tour_price?.vn ||
-			tour?.tour_price?.en ||
-			undefined
+	let tourIntro = $derived(
+		extractPlainText(tour?.tour_intro?.[$locale] || tour?.tour_intro?.vi || tour?.tour_intro?.en)
 	)
-	let tourDuration = $derived(
-		tour?.tour_duration?.[$locale] ||
-			tour?.tour_duration?.en ||
-			tour?.tour_duration?.vn ||
-			undefined
-	)
+	let tourDescription = $derived(tourIntro || tourName)
+	let isContactForPrice = $derived(Boolean(tour?.contact_for_price))
 
-	let postTitle = $derived(
-		post?.title?.[$locale as 'vi'] ||
-			post?.title?.vi ||
-			post?.title?.vn ||
-			post?.title?.en ||
-			'CHD Journal'
-	)
+	let postTitle = $derived(getLocalizedField(post?.title, $locale, 'CHD Journal'))
 	let postImage = $derived(post?.coverImg ? urlFor(post.coverImg).url() : undefined)
-	let postExcerpt = $derived(
-		post?.excerpt?.[$locale as 'vi'] ||
-			post?.excerpt?.vi ||
-			post?.excerpt?.vn ||
-			post?.excerpt?.en ||
-			''
-	)
+	let postExcerpt = $derived(getLocalizedField(post?.excerpt, $locale, ''))
 
 	let scripts = $derived.by(() => {
 		const out: string[] = []
@@ -62,51 +41,48 @@
 			const orgSchema = {
 				'@context': 'https://schema.org',
 				'@type': ['TravelAgency', 'LocalBusiness', 'Organization'],
-				name: 'CHD Travel',
-				alternateName: 'Central Highlands Discovery Travel',
-				url: 'https://chd.travel',
-				logo: 'https://chd.travel/favicon.ico',
-				description:
-					'Local boutique travel agency in Central Highlands (Tay Nguyen), Buon Ma Thuot, Vietnam. Go local, See local, Eat local.',
-				telephone: '+84982470707',
-				email: 'info@chdtravel.com',
+				name: SITE_CONFIG.name,
+				alternateName: SITE_CONFIG.alternateName,
+				url: SITE_CONFIG.url,
+				logo: SITE_CONFIG.logo,
+				description: SITE_CONFIG.description,
+				telephone: SITE_CONFIG.telephone,
+				email: SITE_CONFIG.email,
 				address: {
 					'@type': 'PostalAddress',
-					addressLocality: 'Buon Ma Thuot',
-					addressRegion: 'Dak Lak',
-					addressCountry: 'VN',
+					addressLocality: SITE_CONFIG.address.addressLocality,
+					addressRegion: SITE_CONFIG.address.addressRegion,
+					addressCountry: SITE_CONFIG.address.addressCountry,
 				},
-				priceRange: '$$',
-				sameAs: [
-					'https://www.facebook.com/chdtravel',
-					'https://www.instagram.com/chdtravel',
-					'https://www.tripadvisor.com',
-				],
+				priceRange: SITE_CONFIG.priceRange,
+				sameAs: [...SITE_CONFIG.socialLinks],
 			}
 			out.push('<script type="application/ld+json">' + JSON.stringify(orgSchema) + '<' + '/script>')
 		}
 
-		// 2. Tour Schema (TouristTrip & Product)
+		// 2. Tour Schema (TouristTrip)
 		if (tour) {
 			const tourSchema = {
 				'@context': 'https://schema.org',
-				'@type': ['TouristTrip', 'Product'],
+				'@type': 'TouristTrip',
 				name: tourName,
-				description: tourName,
-				...(tourDuration ? { duration: tourDuration } : {}),
+				description: tourDescription,
 				...(url ? { url } : {}),
 				...(tourImage ? { image: tourImage } : {}),
-				offers: {
-					'@type': 'Offer',
-					priceCurrency: 'VND',
-					...(tourPrice ? { price: tourPrice } : {}),
-					availability: 'https://schema.org/InStock',
-					validFrom: new Date().toISOString().split('T')[0],
-				},
+				...(!isContactForPrice && tour?.tour_price?.price
+					? {
+							offers: {
+								'@type': 'Offer',
+								priceCurrency: 'VND',
+								price: tour.tour_price.price,
+								validFrom: new Date().toISOString().split('T')[0],
+							},
+						}
+					: {}),
 				provider: {
 					'@type': 'TravelAgency',
-					name: 'CHD Travel',
-					url: 'https://chd.travel',
+					name: SITE_CONFIG.name,
+					url: SITE_CONFIG.url,
 				},
 			}
 			out.push(
@@ -120,7 +96,7 @@
 				'@context': 'https://schema.org',
 				'@type': 'Article',
 				headline: postTitle,
-				description: postExcerpt,
+				description: postExcerpt || postTitle,
 				...(url ? { url } : {}),
 				...(postImage ? { image: postImage } : {}),
 				datePublished: post.publishedAt || undefined,
@@ -130,11 +106,11 @@
 				},
 				publisher: {
 					'@type': 'Organization',
-					name: 'CHD Travel',
-					url: 'https://chd.travel',
+					name: SITE_CONFIG.name,
+					url: SITE_CONFIG.url,
 					logo: {
 						'@type': 'ImageObject',
-						url: 'https://chd.travel/favicon.ico',
+						url: SITE_CONFIG.logo,
 					},
 				},
 			}

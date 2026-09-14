@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { SITE_CONFIG } from '$lib/constants/site'
 	import { IconFacebook, IconTripadvisor } from '$lib/icons'
 	import { getCategorySlug } from '$lib/utils/format-data'
 </script>
@@ -12,12 +13,13 @@
 			<div class="flex flex-col items-center gap-1 md:items-start">
 				<div class="flex items-center gap-2">
 					<span class="font-serif text-lg uppercase tracking-widest text-inverse-foreground"
-						>CHD</span>
+						>{SITE_CONFIG.name.split(' ')[0]}</span>
 					<span class="text-inverse-dark">|</span>
-					<span class="text-xs uppercase tracking-widest text-inverse-foreground/70">Travel</span>
+					<span class="text-xs uppercase tracking-widest text-inverse-foreground/70"
+						>{SITE_CONFIG.name.split(' ')[1] || 'Travel'}</span>
 				</div>
 				<span class="font-serif text-[11px] italic tracking-widest text-secondary">
-					"go local — see local — eat local"
+					"{SITE_CONFIG.slogan}"
 				</span>
 			</div>
 
@@ -55,7 +57,7 @@
 			<div class="flex items-center gap-3">
 				<!-- Facebook -->
 				<a
-					href="https://www.facebook.com/chdtravelDOTcom"
+					href={SITE_CONFIG.socialLinks[0]}
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="Facebook"
@@ -65,7 +67,7 @@
 
 				<!-- TripAdvisor -->
 				<a
-					href="https://www.tripadvisor.com/Attraction_Review-g670918-d12708025-Reviews-CHD_Travel-Buon_Ma_Thuot_Dak_Lak_Province.html"
+					href={SITE_CONFIG.socialLinks[1]}
 					target="_blank"
 					rel="noopener noreferrer"
 					aria-label="TripAdvisor"

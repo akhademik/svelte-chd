@@ -60,3 +60,34 @@ export const filterLocalizedItems = <
 	if (!Array.isArray(items)) return []
 	return items.filter(item => hasLocalizedTitle(item, locale))
 }
+
+/**
+ * Extracts plain text from PortableText blocks, strings, or arrays for SEO descriptions.
+ */
+export const extractPlainText = (blocks: unknown): string => {
+	if (!blocks) return ''
+	if (typeof blocks === 'string') return blocks.trim()
+	if (Array.isArray(blocks)) {
+		return blocks
+			.map(block => {
+				if (typeof block === 'string') return block
+				if (
+					block &&
+					typeof block === 'object' &&
+					'children' in block &&
+					Array.isArray(block.children)
+				) {
+					return block.children
+						.map((c: any) =>
+							c && typeof c === 'object' && 'text' in c ? String(c.text || '') : ''
+						)
+						.join('')
+				}
+				return ''
+			})
+			.filter(Boolean)
+			.join(' ')
+			.trim()
+	}
+	return ''
+}
