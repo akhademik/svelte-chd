@@ -2,7 +2,7 @@ import {Stack, Text, TextInput} from '@sanity/ui'
 import {useCallback} from 'react'
 import {NumberInputProps, set, unset} from 'sanity'
 
-export const add_thousand_separator = (value?: string | number | null) => {
+export const addThousandSeparator = (value?: string | number | null) => {
   if (value === undefined || value === null || value === '') return ''
   const str = String(value)
   return str
@@ -32,7 +32,7 @@ export const CNumberInput = (props: NumberInputProps) => {
         <TextInput
           {...elementProps}
           onChange={handleChange}
-          value={add_thousand_separator(value)}
+          value={addThousandSeparator(value)}
           style={{width: '150px'}}
         />
         <Text size={1} style={{fontWeight: 'bold'}}>

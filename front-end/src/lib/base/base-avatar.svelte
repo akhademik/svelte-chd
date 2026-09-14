@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { get_avatar_initials } from '$lib/utils/format-data'
+	import { getAvatarInitials } from '$lib/utils/format-data'
 
 	interface Props {
 		name: string
@@ -18,7 +18,7 @@
 		}
 	})
 
-	let initials = $derived(get_avatar_initials(name))
+	let initials = $derived(getAvatarInitials(name))
 </script>
 
 <div

@@ -1,4 +1,4 @@
-import {gen_price_range} from '../helper-functions'
+import {genPriceRange} from '../helper-functions'
 import {PRICE_RANGE} from './constants'
 
 export const tour_level_field = {
@@ -81,7 +81,7 @@ export const tour_price = {
       },
     },
   ],
-  fields: gen_price_range(PRICE_RANGE),
+  fields: genPriceRange(PRICE_RANGE),
 }
 
 export const exchange_rates_ref = {

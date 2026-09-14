@@ -1,14 +1,14 @@
 <script lang="ts">
 	import { page } from '$app/state'
-	import { replace_locale_in_url } from '$i18n/i18n-helper'
+	import { replaceLocaleInUrl } from '$i18n/i18n-helper'
 	import {
 		DEFAULT_DESC,
 		DEFAULT_KEYWORDS,
 		DEFAULT_TITLE,
-		seo_description,
-		seo_keywords,
-		seo_og_image,
-		seo_title,
+		seoDescription,
+		seoKeywords,
+		seoOgImage,
+		seoTitle,
 	} from '$stores/seo-store'
 
 	interface Props {
@@ -27,10 +27,10 @@
 		ogType = 'website',
 	}: Props = $props()
 
-	let rawTitle = $derived(propTitle ?? $seo_title)
-	let rawDesc = $derived(propDescription ?? $seo_description)
-	let rawKeywords = $derived(propKeywords ?? $seo_keywords)
-	let rawOgImage = $derived(propOgImage ?? $seo_og_image)
+	let rawTitle = $derived(propTitle ?? $seoTitle)
+	let rawDesc = $derived(propDescription ?? $seoDescription)
+	let rawKeywords = $derived(propKeywords ?? $seoKeywords)
+	let rawOgImage = $derived(propOgImage ?? $seoOgImage)
 
 	let pageTitle = $derived(rawTitle ? `${rawTitle} | CHD Travel` : DEFAULT_TITLE)
 	let pageDescription = $derived(rawDesc ? `${rawDesc} | ${DEFAULT_DESC}` : DEFAULT_DESC)
@@ -45,7 +45,7 @@
 	// Generate corresponding path for other languages: /<lang>/...
 	const getLangPath = (targetLang: 'vi' | 'en' | 'fr') => {
 		const targetUrl = new URL(currentPath, origin)
-		return replace_locale_in_url(targetUrl, targetLang)
+		return replaceLocaleInUrl(targetUrl, targetLang)
 	}
 </script>
 

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
-import { form_schema } from './form-schema'
+import { formSchema } from './form-schema'
 
-describe('form_schema validation', () => {
+describe('formSchema validation', () => {
 	it('should validate correct contact form inputs', () => {
 		const validData = {
 			name: 'John Doe',
@@ -10,7 +10,7 @@ describe('form_schema validation', () => {
 			langs: 'en',
 			msg: 'I want to book Lak lake tour',
 		}
-		const result = form_schema.safeParse(validData)
+		const result = formSchema.safeParse(validData)
 		expect(result.success).toBe(true)
 	})
 
@@ -22,7 +22,7 @@ describe('form_schema validation', () => {
 			langs: 'en',
 			msg: 'Test message',
 		}
-		const result = form_schema.safeParse(invalidData)
+		const result = formSchema.safeParse(invalidData)
 		expect(result.success).toBe(false)
 		if (!result.success) {
 			expect(result.error.issues[0].message).toBe('form_name')
@@ -37,7 +37,7 @@ describe('form_schema validation', () => {
 			langs: 'en',
 			msg: 'Test message',
 		}
-		const result = form_schema.safeParse(invalidData)
+		const result = formSchema.safeParse(invalidData)
 		expect(result.success).toBe(false)
 		if (!result.success) {
 			expect(result.error.issues[0].message).toBe('form_email')
@@ -52,7 +52,7 @@ describe('form_schema validation', () => {
 			langs: 'en',
 			msg: 'Test message',
 		}
-		const result = form_schema.safeParse(invalidData)
+		const result = formSchema.safeParse(invalidData)
 		expect(result.success).toBe(false)
 		if (!result.success) {
 			expect(result.error.issues[0].message).toBe('form_phone')

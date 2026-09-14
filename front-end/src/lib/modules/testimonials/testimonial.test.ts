@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { map_testimonial, map_testimonials } from './testimonial'
+import { mapTestimonial, mapTestimonials } from './testimonial'
 import type { Testimonial } from '$lib/types/testimonial.type'
 
 describe('testimonial mapping utilities', () => {
@@ -16,7 +16,7 @@ describe('testimonial mapping utilities', () => {
 			date_review: '2026-05-10',
 		}
 
-		const vm = map_testimonial(raw)
+		const vm = mapTestimonial(raw)
 		expect(vm.id).toBe('t-1')
 		expect(vm.authorName).toBe('John Doe')
 		expect(vm.title).toBe('Amazing Tour')
@@ -34,7 +34,7 @@ describe('testimonial mapping utilities', () => {
 			review_content: 'Great!',
 		}
 
-		const vm = map_testimonial(raw)
+		const vm = mapTestimonial(raw)
 		expect(vm.id).toBe('Jane-')
 		expect(vm.authorName).toBe('Jane')
 		expect(vm.quote).toBe('Great!')
@@ -50,14 +50,14 @@ describe('testimonial mapping utilities', () => {
 			{ _id: '2', name: 'Bob', review_content: 'Good' },
 		]
 
-		const result = map_testimonials(list)
+		const result = mapTestimonials(list)
 		expect(result.length).toBe(2)
 		expect(result[0].authorName).toBe('Alice')
 		expect(result[1].authorName).toBe('Bob')
 	})
 
 	it('should handle undefined or non-array inputs gracefully', () => {
-		expect(map_testimonials()).toEqual([])
-		expect(map_testimonials(undefined)).toEqual([])
+		expect(mapTestimonials()).toEqual([])
+		expect(mapTestimonials(undefined)).toEqual([])
 	})
 })

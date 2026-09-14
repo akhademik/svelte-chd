@@ -10,7 +10,7 @@ export interface ExchangeRates {
 
 const defaultRates: ExchangeRates = { ...DEFAULT_EXCHANGE_RATES }
 
-export const exchange_rates_store = (() => {
+export const exchangeRatesStore = (() => {
 	const { subscribe, set, update } = writable<ExchangeRates>(defaultRates)
 
 	return {

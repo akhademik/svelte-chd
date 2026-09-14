@@ -4,10 +4,10 @@
 
 	import { BaseImageLightbox, BaseJsonLd, BaseSeo } from '$lib/base'
 	import type { BlogPost } from '$lib/types/blog.type'
-	import { get_localized_field } from '$lib/utils/format-data'
+	import { getLocalizedField } from '$lib/utils/format-data'
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
 	import { collectGalleryImages } from '$lib/utils/gallery'
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 	import type { PageData } from './$types'
 
 	interface Props {
@@ -17,9 +17,9 @@
 	let { data }: Props = $props()
 
 	let post: BlogPost = $derived(data.post)
-	let title = $derived(get_localized_field(post?.title, $locale, 'CHD Journal'))
-	let excerpt = $derived(get_localized_field(post?.excerpt, $locale, ''))
-	let content = $derived(get_localized_field(post?.content, $locale, []))
+	let title = $derived(getLocalizedField(post?.title, $locale, 'CHD Journal'))
+	let excerpt = $derived(getLocalizedField(post?.excerpt, $locale, ''))
+	let content = $derived(getLocalizedField(post?.content, $locale, []))
 
 	let allImages = $derived(
 		collectGalleryImages({
@@ -40,7 +40,7 @@
 
 	let primaryCoverUrl = $derived(
 		allImages.length > 0
-			? url_for(allImages[0]).width(1200).height(650).auto('format').quality(85).url()
+			? urlFor(allImages[0]).width(1200).height(650).auto('format').quality(85).url()
 			: undefined
 	)
 
@@ -151,7 +151,7 @@
 						onkeydown={e => e.key === 'Enter' && openLightbox(0)}
 						class="group relative col-span-2 h-full cursor-pointer overflow-hidden rounded-xl bg-surface-muted/30">
 						<img
-							src={url_for(allImages[0]).width(1200).height(800).auto('format').quality(85).url()}
+							src={urlFor(allImages[0]).width(1200).height(800).auto('format').quality(85).url()}
 							alt={allImages[0]?.caption || title}
 							class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 						<div
@@ -173,7 +173,7 @@
 									e.key === 'Enter' && openLightbox(imgIdx < allImages.length ? imgIdx : 0)}
 								class="group relative h-full cursor-pointer overflow-hidden rounded-xl bg-surface-muted/30">
 								<img
-									src={url_for(imageItem).width(600).height(400).auto('format').quality(80).url()}
+									src={urlFor(imageItem).width(600).height(400).auto('format').quality(80).url()}
 									alt={imageItem?.caption || title}
 									class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 								<div
@@ -204,7 +204,7 @@
 						onkeydown={e => e.key === 'Enter' && openLightbox(0)}
 						class="relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-xl bg-surface-muted/30 shadow-sm">
 						<img
-							src={url_for(allImages[0]).width(800).height(500).auto('format').quality(85).url()}
+							src={urlFor(allImages[0]).width(800).height(500).auto('format').quality(85).url()}
 							alt={allImages[0]?.caption || title}
 							class="h-full w-full object-cover" />
 						<div
@@ -221,7 +221,7 @@
 									onclick={() => openLightbox(idx)}
 									class="relative aspect-[16/10] h-16 shrink-0 overflow-hidden rounded-lg border border-border/80 bg-surface-muted/30">
 									<img
-										src={url_for(imgItem).width(160).height(100).auto('format').quality(70).url()}
+										src={urlFor(imgItem).width(160).height(100).auto('format').quality(70).url()}
 										alt={imgItem?.caption || `Thumbnail ${idx + 1}`}
 										class="h-full w-full object-cover" />
 								</button>

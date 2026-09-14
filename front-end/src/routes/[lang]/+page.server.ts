@@ -7,7 +7,7 @@ import { BlogService } from '$lib/server/services/blog.service'
 import { HeroImageService, selectDailyHeroImage } from '$lib/server/services/hero-image.service'
 import { TourService } from '$lib/server/services/tour.service'
 import { Logger } from '$lib/utils/logger'
-import { form_schema, type FormSchema } from '$utils/form-schema'
+import { formSchema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
 import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
@@ -56,7 +56,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 			'public, max-age=0, s-maxage=1800, stale-while-revalidate=3600, stale-if-error=259200',
 	})
 
-	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
+	const form = await superValidate<FormSchema, string>(zod(formSchema as any) as any)
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
 
 	const [dayTours, highlandTours, featuredPosts, allHeroImages] = await Promise.all([
@@ -82,7 +82,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 export const actions = {
 	default: async ({ request }) => {
 		const requestClone = request.clone()
-		const form = await superValidate<FormSchema, string>(request, zod(form_schema as any) as any)
+		const form = await superValidate<FormSchema, string>(request, zod(formSchema as any) as any)
 		const tagsFormData = await requestClone.formData()
 		const allTags = tagsFormData.getAll('selected_tag').map(t => String(t))
 		const submission: SubmissionData = {

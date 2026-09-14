@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
 	import {
-		map_testimonials,
+		mapTestimonials,
 		TestimonialCard,
 		type TestimonialViewModel,
 	} from '$lib/modules/testimonials'
@@ -17,7 +17,7 @@
 	const PAGE_SIZE = 3
 
 	function getSlides(rawList: Testimonial[]) {
-		const items = map_testimonials(rawList)
+		const items = mapTestimonials(rawList)
 		if (items.length === 0) return []
 		const slides: TestimonialViewModel[][] = []
 		for (let i = 0; i < items.length; i += PAGE_SIZE) {

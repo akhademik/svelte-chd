@@ -1,18 +1,18 @@
 import { base } from '$app/paths'
 import { type Handle, redirect } from '@sveltejs/kit'
 
-import { extract_url, get_lang_cookie, get_preferred_locale } from './i18n/i18n-helper.js'
+import { extractUrl, getLangCookie, getPreferredLocale } from './i18n/i18n-helper.js'
 import { isLocale } from './i18n/i18n-util.js'
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// extract url to get the lang and the rest
-	const { url_lang, url_path } = extract_url(event)
+	const { url_lang, url_path } = extractUrl(event)
 
 	// get lang previously saved in cookie
-	const cookie = get_lang_cookie(event)
+	const cookie = getLangCookie(event)
 
 	// if no lang in cookie then use lang preferred in setting
-	const user_locale = cookie || get_preferred_locale(event)
+	const user_locale = cookie || getPreferredLocale(event)
 	if (url_lang === 'api') {
 		return resolve(event)
 	}

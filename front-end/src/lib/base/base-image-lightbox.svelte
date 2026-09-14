@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
 	import type { GalleryImage } from '$lib/utils/gallery'
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
 
 	interface Props {
@@ -169,7 +169,7 @@
 			<!-- Active Centered Image -->
 			<div class="relative flex h-full w-full items-center justify-center overflow-hidden">
 				<img
-					src={url_for(images[index]).width(1600).height(1000).auto('format').quality(90).url()}
+					src={urlFor(images[index]).width(1600).height(1000).auto('format').quality(90).url()}
 					alt=""
 					class="max-h-full max-w-full select-none rounded-lg object-contain shadow-2xl transition-all duration-200" />
 			</div>
@@ -209,7 +209,7 @@
 									: 'border-transparent opacity-40 hover:opacity-80'
 							}`}>
 							<img
-								src={url_for(imgItem).width(120).height(80).auto('format').quality(70).url()}
+								src={urlFor(imgItem).width(120).height(80).auto('format').quality(70).url()}
 								alt=""
 								class="h-full w-full object-cover" />
 						</button>

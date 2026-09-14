@@ -1,6 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { booking_modal } from '$lib/stores/booking-store'
+	import { bookingModal } from '$lib/stores/booking-store'
 	import toast from 'svelte-french-toast'
 	import { fade, scale } from 'svelte/transition'
 
@@ -12,7 +12,7 @@
 	let isSubmitting = $state(false)
 
 	$effect(() => {
-		if ($booking_modal.isOpen) {
+		if ($bookingModal.isOpen) {
 			if (typeof document !== 'undefined') {
 				document.body.style.overflow = 'hidden'
 			}
@@ -25,7 +25,7 @@
 	})
 
 	const close = () => {
-		booking_modal.close()
+		bookingModal.close()
 	}
 
 	const handleSubmit = async (e: SubmitEvent) => {
@@ -36,7 +36,7 @@
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({
-					tour: $booking_modal.tourName,
+					tour: $bookingModal.tourName,
 					name,
 					contact,
 					date,
@@ -64,7 +64,7 @@
 	}
 </script>
 
-{#if $booking_modal.isOpen}
+{#if $bookingModal.isOpen}
 	<div
 		transition:fade={{ duration: 200 }}
 		class="fixed inset-0 z-[60] flex items-center justify-center bg-inverse-dark/60 p-4 backdrop-blur-sm sm:p-6"
@@ -126,7 +126,7 @@
 						id="booking-tour"
 						type="text"
 						readonly
-						value={$booking_modal.tourName}
+						value={$bookingModal.tourName}
 						class="w-full border border-border-strong bg-surface/70 px-3.5 py-2.5 text-sm font-medium text-foreground focus:outline-none" />
 				</div>
 

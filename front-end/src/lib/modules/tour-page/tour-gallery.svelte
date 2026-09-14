@@ -2,7 +2,7 @@
 	import { page } from '$app/state'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
-	import { filter_localized_items } from '$lib/utils/format-data'
+	import { filterLocalizedItems } from '$lib/utils/format-data'
 	import { fly } from 'svelte/transition'
 
 	import TourCard from './tour-card.svelte'
@@ -15,7 +15,7 @@
 	let tourtype = $derived(page.params.tourtype)
 	let isDay = $derived(tourtype === 'day-tours')
 
-	let availableTours = $derived(filter_localized_items(tours, $locale))
+	let availableTours = $derived(filterLocalizedItems(tours, $locale))
 </script>
 
 <div class="mx-auto max-w-6xl px-6 py-12">

@@ -2,7 +2,7 @@
 	import LL from '$i18n/i18n-svelte'
 	import { BaseImageLightbox } from '$lib/base'
 	import type { GalleryImage } from '$lib/utils/gallery'
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 
 	interface Props {
 		images: GalleryImage[]
@@ -34,7 +34,7 @@
 				onkeydown={e => e.key === 'Enter' && openLightbox(0)}
 				class="group relative col-span-2 h-full cursor-pointer overflow-hidden rounded-xl bg-surface-muted/30">
 				<img
-					src={url_for(images[0]).width(1200).height(800).auto('format').quality(85).url()}
+					src={urlFor(images[0]).width(1200).height(800).auto('format').quality(85).url()}
 					alt=""
 					class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 				<div
@@ -55,7 +55,7 @@
 						onkeydown={e => e.key === 'Enter' && openLightbox(imgIdx < images.length ? imgIdx : 0)}
 						class="group relative h-full cursor-pointer overflow-hidden rounded-xl bg-surface-muted/30">
 						<img
-							src={url_for(imageItem).width(600).height(400).auto('format').quality(80).url()}
+							src={urlFor(imageItem).width(600).height(400).auto('format').quality(80).url()}
 							alt=""
 							class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
 						<div
@@ -86,7 +86,7 @@
 				onkeydown={e => e.key === 'Enter' && openLightbox(0)}
 				class="relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-xl bg-surface-muted/30 shadow-sm">
 				<img
-					src={url_for(images[0]).width(800).height(500).auto('format').quality(85).url()}
+					src={urlFor(images[0]).width(800).height(500).auto('format').quality(85).url()}
 					alt=""
 					class="h-full w-full object-cover" />
 				<div
@@ -103,7 +103,7 @@
 							onclick={() => openLightbox(idx)}
 							class="relative aspect-[16/10] h-16 shrink-0 overflow-hidden rounded-lg border border-border/80 bg-surface-muted/30">
 							<img
-								src={url_for(imgItem).width(160).height(100).auto('format').quality(70).url()}
+								src={urlFor(imgItem).width(160).height(100).auto('format').quality(70).url()}
 								alt=""
 								class="h-full w-full object-cover" />
 						</button>

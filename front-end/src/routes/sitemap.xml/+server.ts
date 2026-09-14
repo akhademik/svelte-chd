@@ -1,9 +1,9 @@
 import { sanityClient } from '$lib/server/sanity/client'
 import { EXTRACT_BLOG_FIELDS } from '$lib/server/sanity/queries/blogs'
 import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
-import { get_category_slug, type CanonicalTourCategory } from '$lib/utils/format-data'
+import { getCategorySlug, type CanonicalTourCategory } from '$lib/utils/format-data'
 import { Logger } from '$lib/utils/logger'
-import { get_tour_slug } from '$lib/utils/slug'
+import { getTourSlug } from '$lib/utils/slug'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -43,7 +43,7 @@ export const GET: RequestHandler = async ({ url }) => {
 		}
 
 		for (const cat of tourCategories) {
-			const catSlug = get_category_slug(cat, lang)
+			const catSlug = getCategorySlug(cat, lang)
 			urls.push(`
 	<url>
 		<loc>${siteUrl}/${lang}/${catSlug}</loc>
@@ -59,8 +59,8 @@ export const GET: RequestHandler = async ({ url }) => {
 		const canonicalCat: CanonicalTourCategory = isHighland ? 'highland-tours' : 'day-tours'
 
 		for (const lang of languages) {
-			const catSlug = get_category_slug(canonicalCat, lang)
-			const slug = get_tour_slug(tour, lang)
+			const catSlug = getCategorySlug(canonicalCat, lang)
+			const slug = getTourSlug(tour, lang)
 
 			if (slug) {
 				urls.push(`

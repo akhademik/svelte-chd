@@ -4,15 +4,15 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Locales } from '$i18n/i18n-types'
 	import { BaseJsonLd } from '$base'
-	import { booking_modal } from '$lib/stores/booking-store'
-	import { tour_modal } from '$lib/stores/modal-store'
+	import { bookingModal } from '$lib/stores/booking-store'
+	import { tourModal } from '$lib/stores/modal-store'
 	import {
-		format_price_object,
-		get_category_slug,
-		resolve_canonical_category,
+		formatPriceObject,
+		getCategorySlug,
+		resolveCanonicalCategory,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
-	import { get_tour_slug } from '$lib/utils/slug'
+	import { getTourSlug } from '$lib/utils/slug'
 	import { collectGalleryImages } from '$lib/utils/gallery'
 	import { fade } from 'svelte/transition'
 
@@ -27,13 +27,13 @@
 	import TourDetailPricingTable from './tour-detail-pricing-table.svelte'
 	import TourDetailSummary from './tour-detail-summary.svelte'
 
-	let isOpen = $derived($tour_modal.isOpen)
-	let tour = $derived($tour_modal.tour)
+	let isOpen = $derived($tourModal.isOpen)
+	let tour = $derived($tourModal.tour)
 	let activeLang = $derived(($page.params.lang as Locales) || $locale || 'en')
 
 	let title = $derived(tour?.tour_name?.[activeLang] || tour?.tour_name?.en || 'Tour')
 	let duration = $derived(tour?.tour_duration?.[activeLang] || tour?.tour_duration?.en || '')
-	let prices = $derived(tour ? format_price_object(tour) : [])
+	let prices = $derived(tour ? formatPriceObject(tour) : [])
 	let minPrice = $derived(tour?.tour_price?.pax2 || tour?.tour_price?.pax1 || 0)
 	let isContactForPrice = $derived(Boolean(tour?.contact_for_price || prices.length === 0))
 
@@ -48,12 +48,12 @@
 	let imgTour = $derived(tour?.img_tour || [])
 
 	let canonicalCategory = $derived<CanonicalTourCategory>(
-		resolve_canonical_category($page.params.tourtype) ||
+		resolveCanonicalCategory($page.params.tourtype) ||
 			(tour?._type === 'tourCentral' ? 'highland-tours' : 'day-tours')
 	)
 
-	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, activeLang))
-	let tourSlug = $derived(tour ? get_tour_slug(tour, activeLang) || tour.tour_id || '' : '')
+	let localizedCategorySlug = $derived(getCategorySlug(canonicalCategory, activeLang))
+	let tourSlug = $derived(tour ? getTourSlug(tour, activeLang) || tour.tour_id || '' : '')
 
 	let allImages = $derived(
 		collectGalleryImages({
@@ -72,8 +72,8 @@
 
 			if (typeof window !== 'undefined') {
 				previousPath = window.location.pathname + window.location.search
-				const currentCatSlug = get_category_slug(canonicalCategory, activeLang)
-				const currentTourSlug = get_tour_slug(tour, activeLang) || tour.tour_id || ''
+				const currentCatSlug = getCategorySlug(canonicalCategory, activeLang)
+				const currentTourSlug = getTourSlug(tour, activeLang) || tour.tour_id || ''
 				if (currentTourSlug && !window.location.pathname.includes(currentTourSlug)) {
 					pushState(`/${activeLang}/${currentCatSlug}/${currentTourSlug}`, { modal: true })
 				}
@@ -91,14 +91,14 @@
 	})
 
 	const close = () => {
-		tour_modal.close()
+		tourModal.close()
 	}
 
 	const handleBook = () => {
 		if (tour) {
 			const tourTitle = title
 			close()
-			booking_modal.open(tourTitle)
+			bookingModal.open(tourTitle)
 		}
 	}
 

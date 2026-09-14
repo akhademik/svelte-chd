@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { map_testimonials, TestimonialCard } from '$lib/modules/testimonials'
+	import { mapTestimonials, TestimonialCard } from '$lib/modules/testimonials'
 	import type { Testimonial } from '$lib/types/testimonial.type'
 	import { onMount } from 'svelte'
 
@@ -9,7 +9,7 @@
 
 	let { testimonials = [] }: Props = $props()
 
-	const list = $derived(map_testimonials(testimonials))
+	const list = $derived(mapTestimonials(testimonials))
 	const totalReal = $derived(list.length)
 
 	// Infinite loop with prepended last item and appended first item

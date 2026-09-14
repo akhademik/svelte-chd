@@ -1,16 +1,16 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { booking_modal } from '$lib/stores/booking-store'
+	import { bookingModal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import {
-		format_price,
-		get_category_slug,
-		get_localized_field,
-		has_localized_title,
+		formatPrice,
+		getCategorySlug,
+		getLocalizedField,
+		hasLocalizedTitle,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
-	import { url_for } from '$lib/utils/sanity'
-	import { get_tour_slug } from '$lib/utils/slug'
+	import { urlFor } from '$lib/utils/sanity'
+	import { getTourSlug } from '$lib/utils/slug'
 	import { untrack } from 'svelte'
 	import { fade } from 'svelte/transition'
 
@@ -20,7 +20,7 @@
 
 	let { tours }: Props = $props()
 
-	let hotTours = $derived(tours.filter(t => t.best_sell && has_localized_title(t, $locale)))
+	let hotTours = $derived(tours.filter(t => t.best_sell && hasLocalizedTitle(t, $locale)))
 	let currentIndex = $state(0)
 
 	const nextSlide = () => {
@@ -53,19 +53,19 @@
 	})
 
 	let currentTour = $derived(hotTours[currentIndex])
-	let title = $derived(get_localized_field(currentTour?.tour_name, $locale, 'Featured Tour'))
+	let title = $derived(getLocalizedField(currentTour?.tour_name, $locale, 'Featured Tour'))
 	let price = $derived(currentTour?.tour_price?.pax2 || currentTour?.tour_price?.pax1 || 0)
-	let duration = $derived(get_localized_field(currentTour?.tour_duration, $locale, 'Full Day'))
+	let duration = $derived(getLocalizedField(currentTour?.tour_duration, $locale, 'Full Day'))
 
 	let canonicalCategory = $derived<CanonicalTourCategory>(
 		currentTour?._type === 'tourCentral' ? 'highland-tours' : 'day-tours'
 	)
 
-	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, $locale))
+	let localizedCategorySlug = $derived(getCategorySlug(canonicalCategory, $locale))
 
 	let tourLink = $derived(
 		currentTour
-			? `/${$locale}/${localizedCategorySlug}/${get_tour_slug(currentTour, $locale) || currentTour.tour_id || ''}`
+			? `/${$locale}/${localizedCategorySlug}/${getTourSlug(currentTour, $locale) || currentTour.tour_id || ''}`
 			: '#'
 	)
 </script>
@@ -82,7 +82,7 @@
 				{#if currentTour?.img_cover}
 					<img
 						transition:fade={{ duration: 600 }}
-						src={url_for(currentTour.img_cover)
+						src={urlFor(currentTour.img_cover)
 							.width(1920)
 							.height(1080)
 							.auto('format')
@@ -148,7 +148,7 @@
 					<div class="mb-8 flex h-20 flex-col justify-center space-y-2">
 						{#if currentTour.tour_highlights?.length}
 							{#each currentTour.tour_highlights.slice(0, 3) as item}
-								{@const hlText = get_localized_field(item?.highlights, $locale, '')}
+								{@const hlText = getLocalizedField(item?.highlights, $locale, '')}
 								{#if hlText}
 									<div
 										class="flex items-center gap-2.5 text-xs font-light text-inverse-foreground/90 sm:text-sm">
@@ -165,8 +165,8 @@
 						{#if currentTour.tour_tags?.length}
 							{#each currentTour.tour_tags.slice(0, 5) as tag}
 								{@const tagName =
-									get_localized_field(tag?.tour_tags, $locale, '') ||
-									get_localized_field(tag?.tourTags, $locale, '')}
+									getLocalizedField(tag?.tour_tags, $locale, '') ||
+									getLocalizedField(tag?.tourTags, $locale, '')}
 								{#if tagName}
 									<span
 										class="border border-inverse-dark/60 bg-inverse/60 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-inverse-foreground backdrop-blur-sm">
@@ -185,7 +185,7 @@
 							{$LL.tours.view_details()}
 						</a>
 						<button
-							onclick={() => booking_modal.open(title)}
+							onclick={() => bookingModal.open(title)}
 							class="border border-border-strong px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white/10">
 							{$LL.tours.book_now_btn()}
 						</button>
@@ -211,7 +211,7 @@
 							</span>
 							<div class="mt-1 flex items-baseline gap-1 lg:justify-end">
 								<span class="font-serif text-3xl font-normal text-white sm:text-4xl">
-									{format_price(price, $locale)}
+									{formatPrice(price, $locale)}
 								</span>
 								<span class="text-xs font-light text-foreground-subtle"
 									>/ {$LL.tours.detail.pax()}</span>

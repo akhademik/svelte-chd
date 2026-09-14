@@ -51,7 +51,7 @@ export const TOUR_CATEGORY_SLUG_MAP: Record<string, Record<CanonicalTourCategory
 /**
  * Returns localized category slug for a given canonical tour category.
  */
-export const get_category_slug = (
+export const getCategorySlug = (
 	category: CanonicalTourCategory,
 	lang: Locales | string = 'en'
 ): string => {
@@ -62,7 +62,7 @@ export const get_category_slug = (
 /**
  * Resolves any raw URL category segment (localized or canonical) to CanonicalTourCategory.
  */
-export const resolve_canonical_category = (urlCategory?: string): CanonicalTourCategory | null => {
+export const resolveCanonicalCategory = (urlCategory?: string): CanonicalTourCategory | null => {
 	if (!urlCategory) return null
 	const clean = urlCategory.toLowerCase().trim()
 
@@ -78,7 +78,7 @@ export const resolve_canonical_category = (urlCategory?: string): CanonicalTourC
 /**
  * Derives SEO-friendly virtual tour slug formatted as `{tour_id}-{slug}` (e.g., `dl-01-kham-pha-ho-lak`).
  */
-export const get_tour_slug = (tour: Tour, lang: string = 'en'): string => {
+export const getTourSlug = (tour: Tour, lang: string = 'en'): string => {
 	if (!tour) return ''
 
 	const loc = lang === 'vn' ? 'vi' : lang
@@ -129,7 +129,7 @@ export const get_tour_slug = (tour: Tour, lang: string = 'en'): string => {
 /**
  * Derives SEO-friendly virtual blog slug from localized blog title.
  */
-export const get_blog_slug = (blog: any, lang: string = 'en'): string => {
+export const getBlogSlug = (blog: any, lang: string = 'en'): string => {
 	if (!blog) return ''
 	const loc = lang === 'vn' ? 'vi' : lang
 

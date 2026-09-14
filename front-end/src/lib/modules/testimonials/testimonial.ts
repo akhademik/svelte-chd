@@ -15,7 +15,7 @@ export interface TestimonialViewModel {
 /**
  * Maps raw Sanity Testimonial entity into clean UI TestimonialViewModel.
  */
-export const map_testimonial = (t: Testimonial): TestimonialViewModel => ({
+export const mapTestimonial = (t: Testimonial): TestimonialViewModel => ({
 	id: t._id || t.url || `${t.name}-${t.date_review || ''}`,
 	quote: t.review_content || '',
 	title: t.review_title || '',
@@ -30,7 +30,7 @@ export const map_testimonial = (t: Testimonial): TestimonialViewModel => ({
 /**
  * Maps a list of raw Testimonials.
  */
-export const map_testimonials = (rawList?: Testimonial[]): TestimonialViewModel[] => {
+export const mapTestimonials = (rawList?: Testimonial[]): TestimonialViewModel[] => {
 	if (!rawList || !Array.isArray(rawList)) return []
-	return rawList.map(map_testimonial)
+	return rawList.map(mapTestimonial)
 }

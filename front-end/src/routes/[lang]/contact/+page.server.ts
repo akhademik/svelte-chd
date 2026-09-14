@@ -4,7 +4,7 @@ import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { isSpamSubmission } from '$lib/server/security/anti-spam'
 import { checkRateLimit } from '$lib/server/security/rate-limiter'
 import { Logger } from '$lib/utils/logger'
-import { form_schema, type FormSchema } from '$utils/form-schema'
+import { formSchema, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
 import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
@@ -51,7 +51,7 @@ export const load: PageServerLoad = async ({ url, setHeaders }) => {
 	setHeaders({
 		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=7200',
 	})
-	const form = await superValidate<FormSchema, string>(zod(form_schema as any) as any)
+	const form = await superValidate<FormSchema, string>(zod(formSchema as any) as any)
 	const tour = url.searchParams.get('tour')
 	const duration = url.searchParams.get('duration')
 	const code = url.searchParams.get('code')
@@ -67,7 +67,7 @@ export const load: PageServerLoad = async ({ url, setHeaders }) => {
 export const actions = {
 	default: async ({ request }) => {
 		const requestClone = request.clone()
-		const form = await superValidate<FormSchema, string>(request, zod(form_schema as any) as any)
+		const form = await superValidate<FormSchema, string>(request, zod(formSchema as any) as any)
 		const tagsFormData = await requestClone.formData()
 		const allTags = tagsFormData.getAll('selected_tag').map(t => String(t))
 		const submission: SubmissionData = {

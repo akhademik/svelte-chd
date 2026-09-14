@@ -2,16 +2,16 @@
 	import { page } from '$app/state'
 	import { PortableText } from '@portabletext/svelte'
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { booking_modal } from '$lib/stores/booking-store'
+	import { bookingModal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import {
-		get_category_slug,
-		get_localized_field,
-		resolve_canonical_category,
+		getCategorySlug,
+		getLocalizedField,
+		resolveCanonicalCategory,
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
-	import { url_for } from '$lib/utils/sanity'
-	import { get_tour_slug } from '$lib/utils/slug'
+	import { urlFor } from '$lib/utils/sanity'
+	import { getTourSlug } from '$lib/utils/slug'
 
 	interface Props {
 		tour: Tour
@@ -19,20 +19,20 @@
 
 	let { tour }: Props = $props()
 
-	let img_cover = $derived(tour.img_cover)
-	let tour_duration = $derived(tour.tour_duration)
-	let tour_name = $derived(tour.tour_name)
-	let tour_intro = $derived(tour.tour_intro)
-	let title = $derived(get_localized_field(tour_name, $locale, 'Tour'))
-	let durationText = $derived(get_localized_field(tour_duration, $locale, ''))
+	let imgCover = $derived(tour.img_cover)
+	let tourDuration = $derived(tour.tour_duration)
+	let tourName = $derived(tour.tour_name)
+	let tourIntro = $derived(tour.tour_intro)
+	let title = $derived(getLocalizedField(tourName, $locale, 'Tour'))
+	let durationText = $derived(getLocalizedField(tourDuration, $locale, ''))
 
 	let canonicalCategory = $derived<CanonicalTourCategory>(
-		resolve_canonical_category(page.params.tourtype) ||
+		resolveCanonicalCategory(page.params.tourtype) ||
 			(tour._type === 'tourCentral' ? 'highland-tours' : 'day-tours')
 	)
 
-	let localizedCategorySlug = $derived(get_category_slug(canonicalCategory, $locale))
-	let slug = $derived(get_tour_slug(tour, $locale) || tour.tour_id || '')
+	let localizedCategorySlug = $derived(getCategorySlug(canonicalCategory, $locale))
+	let slug = $derived(getTourSlug(tour, $locale) || tour.tour_id || '')
 	let tourLink = $derived(`/${$locale}/${localizedCategorySlug}/${slug}`)
 </script>
 
@@ -43,10 +43,10 @@
 		<a
 			href={tourLink}
 			class="relative block aspect-[16/11] overflow-hidden bg-surface">
-			{#if img_cover?.asset}
+			{#if imgCover?.asset}
 				<img
-					src={url_for(img_cover).width(600).height(412).auto('format').quality(75).url()}
-					alt={img_cover.caption || title}
+					src={urlFor(imgCover).width(600).height(412).auto('format').quality(75).url()}
+					alt={imgCover.caption || title}
 					class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 					loading="lazy" />
 			{/if}
@@ -100,7 +100,7 @@
 			<div
 				class="mb-2 line-clamp-3 h-14 overflow-hidden text-xs font-light leading-relaxed text-foreground-muted">
 				<PortableText
-					value={get_localized_field(tour_intro, $locale, [])}
+					value={getLocalizedField(tourIntro, $locale, [])}
 					components={{}} />
 			</div>
 		</div>
@@ -131,7 +131,7 @@
 			</svg>
 		</a>
 		<button
-			onclick={() => booking_modal.open(title)}
+			onclick={() => bookingModal.open(title)}
 			class="bg-inverse px-4 py-2 text-xs font-medium uppercase tracking-wider text-inverse-foreground transition-colors hover:bg-inverse-dark">
 			{$LL.tours.book_tour_btn()}
 		</button>

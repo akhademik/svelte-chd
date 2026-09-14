@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
-	import { format_price_object } from '$lib/utils/format-data'
+	import { formatPriceObject } from '$lib/utils/format-data'
 	import TourDetailBreadcrumbs from './components/tour-detail-breadcrumbs.svelte'
 	import TourDetailCta from './components/tour-detail-cta.svelte'
 	import TourDetailGallery from './components/tour-detail-gallery.svelte'
@@ -24,7 +24,7 @@
 
 	let title = $derived(tour.tour_name?.[$locale] || tour.tour_name?.en || 'Tour')
 	let duration = $derived(tour.tour_duration?.[$locale] || tour.tour_duration?.en || '')
-	let prices = $derived(format_price_object(tour))
+	let prices = $derived(formatPriceObject(tour))
 	let minPrice = $derived(
 		tour.tour_price?.pax2 || tour.tour_price?.pax1 || tour.tour_price?.price || 0
 	)

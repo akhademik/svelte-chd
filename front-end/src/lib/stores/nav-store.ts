@@ -1,21 +1,22 @@
 import { writable } from 'svelte/store'
 
-const set_deg_store = () => {
+const createDegStore = () => {
 	const { subscribe, update } = writable(0)
 	return {
 		subscribe,
 		turn: () => update(deg => (deg += 0.25)),
 	}
 }
-const set_mobile_store = () => {
+
+const createMobileStore = () => {
 	const { subscribe, update } = writable(false)
 	return {
 		subscribe,
-		toggle: () => update(is_open => !is_open),
+		toggle: () => update(isOpen => !isOpen),
 	}
 }
 
-const set_animate_hidden_store = () => {
+const createAnimateHiddenStore = () => {
 	const { subscribe, set } = writable(false)
 	return {
 		subscribe,
@@ -23,7 +24,7 @@ const set_animate_hidden_store = () => {
 	}
 }
 
-const set_locale_transitioning_store = () => {
+const createLocaleTransitioningStore = () => {
 	const { subscribe, set } = writable(false)
 	return {
 		subscribe,
@@ -31,7 +32,7 @@ const set_locale_transitioning_store = () => {
 	}
 }
 
-export const nav_deg = set_deg_store()
-export const nav_mobile = set_mobile_store()
-export const nav_animate_hidden = set_animate_hidden_store()
-export const is_locale_transitioning = set_locale_transitioning_store()
+export const navDeg = createDegStore()
+export const navMobile = createMobileStore()
+export const navAnimateHidden = createAnimateHiddenStore()
+export const isLocaleTransitioning = createLocaleTransitioningStore()

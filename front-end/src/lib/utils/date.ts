@@ -30,7 +30,7 @@ const FR_MONTHS = [
 	'Déc',
 ]
 
-export const format_review_date = (dateStr?: string, locale: Locales | string = 'en'): string => {
+export const formatReviewDate = (dateStr?: string, locale: Locales | string = 'en'): string => {
 	if (!dateStr || !dateStr.trim()) return ''
 
 	const trimmed = dateStr.trim()

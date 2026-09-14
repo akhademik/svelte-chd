@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
-	import { format_pax_no, format_price, get_pax_tier } from '$lib/utils/format-data'
+	import { formatPaxNo, formatPrice, getPaxTier } from '$lib/utils/format-data'
 
 	interface Props {
 		tour: Tour
@@ -16,7 +16,7 @@
 
 	// Stepper state
 	let guestCount = $state(2)
-	let activeTier = $derived(get_pax_tier(guestCount))
+	let activeTier = $derived(getPaxTier(guestCount))
 	let unitPrice = $derived(
 		(tour.tour_price?.[activeTier] as number | undefined) ||
 			(tour.tour_price?.pax2 as number | undefined) ||
@@ -102,7 +102,7 @@
 						{$LL.tours.detail.stepper_unit_price()}
 					</span>
 					<span class="mt-0.5 block font-medium text-foreground">
-						{format_price(unitPrice, $locale)}
+						{formatPrice(unitPrice, $locale)}
 						<span class="text-[10px] font-normal text-foreground-subtle"
 							>/{$LL.tours.detail.pax()}</span>
 					</span>
@@ -112,7 +112,7 @@
 						{$LL.tours.detail.stepper_total_price()}
 					</span>
 					<span class="mt-0.5 block font-serif text-sm font-bold text-primary">
-						{format_price(totalPrice, $locale)}
+						{formatPrice(totalPrice, $locale)}
 					</span>
 				</div>
 			</div>
@@ -121,7 +121,7 @@
 		<!-- Pricing Table with active row highlight & non-active blur/dim -->
 		<div class="space-y-1 divide-y divide-border/60 text-xs sm:text-sm">
 			{#each prices as [pax, price], idx}
-				{@const paxText = `${format_pax_no(pax)} ${$LL.tours.detail.pax()}`}
+				{@const paxText = `${formatPaxNo(pax)} ${$LL.tours.detail.pax()}`}
 				{@const isActiveTier = activeTier === pax}
 				<div
 					class={`flex items-center justify-between rounded-md px-2.5 py-2 transition-all duration-200 ${
@@ -136,7 +136,7 @@
 						<span class={isActiveTier ? 'font-bold text-primary' : 'font-normal'}>{paxText}</span>
 					</span>
 					<span class={isActiveTier ? 'font-bold text-primary' : 'font-medium text-foreground'}>
-						{format_price(price, $locale)}
+						{formatPrice(price, $locale)}
 						<span class="text-[11px] font-normal text-foreground-subtle"
 							>/{$LL.tours.detail.pax()}</span>
 					</span>

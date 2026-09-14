@@ -12,6 +12,6 @@ const config: ClientConfig = {
 
 const builder = imageUrlBuilder(config as SanityProjectDetails)
 
-export const url_for = (source: SanityImageSource) => {
+export const urlFor = (source: SanityImageSource) => {
 	return builder.image(source)
 }

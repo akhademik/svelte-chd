@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { nav_deg, nav_mobile } from '$stores/nav-store'
+	import { navDeg, navMobile } from '$stores/nav-store'
 
 	const click = () => {
-		nav_deg.turn()
-		nav_mobile.toggle()
+		navDeg.turn()
+		navMobile.toggle()
 	}
 </script>
 
@@ -12,7 +12,7 @@
 	aria-label="Toggle navigation menu"
 	onclick={click}>
 	<p
-		style={`--deg: ${$nav_deg}turn`}
+		style={`--deg: ${$navDeg}turn`}
 		class="h-[12px] w-6 rotate-[var(--deg)] border-y-[3px] border-foreground transition-all duration-300 ease-in-out group-hover:py-[6px]">
 	</p>
 </button>

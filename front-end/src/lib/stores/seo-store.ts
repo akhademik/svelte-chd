@@ -6,30 +6,30 @@ const DEFAULT_DESC =
 const DEFAULT_KEYWORDS =
 	'Vietnam Travel Agency, Highlands Tour, Minority People Lifestyle, Cultural Immersion, Traditional Ceremonies, Sustainable Tourism, Responsible Tourism, Scenic Hikes, Ethnic Minorities, Local Folklore, Breathtaking Landscapes, Vietnam Highlands, Rural Life Experience'
 
-export const seo_title = writable('')
-export const seo_description = writable('')
-export const seo_keywords = writable('')
-export const seo_og_image = writable('')
+export const seoTitle = writable('')
+export const seoDescription = writable('')
+export const seoKeywords = writable('')
+export const seoOgImage = writable('')
 
-export const set_seo = (
+export const setSeo = (
 	title?: string,
 	description?: string,
 	keywords?: string,
 	ogImage?: string
 ) => {
 	if (title && title !== 'default') {
-		seo_title.set(title)
+		seoTitle.set(title)
 	} else if (title === 'default') {
-		seo_title.set('')
+		seoTitle.set('')
 	}
 	if (description !== undefined) {
-		seo_description.set(description || '')
+		seoDescription.set(description || '')
 	}
 	if (keywords !== undefined) {
-		seo_keywords.set(keywords || '')
+		seoKeywords.set(keywords || '')
 	}
 	if (ogImage !== undefined) {
-		seo_og_image.set(ogImage || '')
+		seoOgImage.set(ogImage || '')
 	}
 }
 

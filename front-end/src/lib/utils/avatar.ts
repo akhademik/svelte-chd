@@ -4,7 +4,7 @@
  * - If multiple words: returns first letter of first word + first letter of last word uppercase (e.g. "Nguyễn Văn Anh" -> "NA", "John Doe" -> "JD").
  * - If empty: returns "?".
  */
-export const get_avatar_initials = (name?: string): string => {
+export const getAvatarInitials = (name?: string): string => {
 	const words = (name || '').trim().split(/\s+/).filter(Boolean)
 
 	if (words.length === 0) return '?'

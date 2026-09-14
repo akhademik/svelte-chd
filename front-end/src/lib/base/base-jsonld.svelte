@@ -2,7 +2,7 @@
 	import { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import type { Tour } from '$lib/types/tour.type'
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 
 	interface BreadcrumbItem {
 		name: string
@@ -22,7 +22,7 @@
 	let tourName = $derived(
 		tour?.tour_name?.[$locale] || tour?.tour_name?.en || tour?.tour_name?.vn || 'CHD Travel Tour'
 	)
-	let tourImage = $derived(tour?.img_cover ? url_for(tour.img_cover).url() : undefined)
+	let tourImage = $derived(tour?.img_cover ? urlFor(tour.img_cover).url() : undefined)
 	let tourPrice = $derived(
 		tour?.tour_price?.price ||
 			tour?.tour_price?.pax2 ||
@@ -45,7 +45,7 @@
 			post?.title?.en ||
 			'CHD Journal'
 	)
-	let postImage = $derived(post?.coverImg ? url_for(post.coverImg).url() : undefined)
+	let postImage = $derived(post?.coverImg ? urlFor(post.coverImg).url() : undefined)
 	let postExcerpt = $derived(
 		post?.excerpt?.[$locale as 'vi'] ||
 			post?.excerpt?.vi ||

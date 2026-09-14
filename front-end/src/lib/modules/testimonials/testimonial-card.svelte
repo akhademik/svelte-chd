@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { locale } from '$i18n/i18n-svelte'
 	import { BaseAvatar } from '$lib/base'
-	import { format_review_date } from '$lib/utils/format-data'
+	import { formatReviewDate } from '$lib/utils/format-data'
 	import type { TestimonialViewModel } from './testimonial'
 
 	interface Props {
@@ -43,7 +43,7 @@
 
 			{#if testimonial.date}
 				<span class="font-mono text-xs text-foreground-subtle">
-					{format_review_date(testimonial.date, $locale)}
+					{formatReviewDate(testimonial.date, $locale)}
 				</span>
 			{/if}
 		</div>

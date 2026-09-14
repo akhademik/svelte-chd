@@ -1,8 +1,8 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { booking_modal } from '$lib/stores/booking-store'
+	import { bookingModal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
-	import { format_price } from '$lib/utils/format-data'
+	import { formatPrice } from '$lib/utils/format-data'
 
 	interface Props {
 		tour: Tour
@@ -118,7 +118,7 @@
 						</span>
 						<div class="flex items-baseline gap-1">
 							<b class="font-serif text-2xl font-bold text-foreground sm:text-3xl">
-								{format_price(minPrice, $locale)}
+								{formatPrice(minPrice, $locale)}
 							</b>
 							<span class="text-xs font-light text-foreground-subtle"
 								>/{$LL.tours.detail.pax()}</span>
@@ -131,7 +131,7 @@
 
 				<div class="mt-5 flex flex-col gap-3">
 					<button
-						onclick={() => booking_modal.open(title)}
+						onclick={() => bookingModal.open(title)}
 						class="flex w-full items-center justify-center gap-2 bg-primary py-3.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md transition-colors hover:bg-primary-hover">
 						<span>{$LL.tours.book_now()}</span>
 						<svg

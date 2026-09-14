@@ -3,7 +3,7 @@ import type { Locales } from '$i18n/i18n-types'
 /**
  * Safely extracts a localized string or value from a multilingual field object with fallback.
  */
-export const get_localized_field = <T = string>(
+export const getLocalizedField = <T = string>(
 	field: Record<string, T> | undefined | null,
 	locale: Locales | string = 'en',
 	fallback: T = '' as unknown as T
@@ -34,7 +34,7 @@ export const get_localized_field = <T = string>(
 /**
  * Checks if an entity has a valid localized title/name for the active locale or standard fallbacks.
  */
-export const has_localized_title = (
+export const hasLocalizedTitle = (
 	entity:
 		| { title?: Record<string, any> | null; tour_name?: Record<string, any> | null }
 		| undefined
@@ -44,19 +44,19 @@ export const has_localized_title = (
 	if (!entity) return false
 	const titleObj = entity.title || entity.tour_name
 	if (!titleObj) return false
-	const val = get_localized_field(titleObj, locale)
+	const val = getLocalizedField(titleObj, locale)
 	return Boolean(val && typeof val === 'string' ? val.trim() : val)
 }
 
 /**
  * Filters a list of entities (posts, tours) ensuring only those with valid localized content are returned.
  */
-export const filter_localized_items = <
+export const filterLocalizedItems = <
 	T extends { title?: Record<string, any> | null; tour_name?: Record<string, any> | null },
 >(
 	items: T[] | undefined | null,
 	locale: Locales | string = 'en'
 ): T[] => {
 	if (!Array.isArray(items)) return []
-	return items.filter(item => has_localized_title(item, locale))
+	return items.filter(item => hasLocalizedTitle(item, locale))
 }

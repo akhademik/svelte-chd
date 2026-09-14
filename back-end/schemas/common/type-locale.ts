@@ -1,4 +1,4 @@
-import {gen_locale_field} from '../helper-functions'
+import {genLocaleField} from '../helper-functions'
 import {LOCALES} from './constants'
 
 const locale_translations = {
@@ -15,7 +15,7 @@ export const locale_string = {
   name: 'locale_string',
   type: 'object',
   fieldsets: [locale_translations],
-  fields: gen_locale_field(LOCALES, 'string'),
+  fields: genLocaleField(LOCALES, 'string'),
 }
 
 export const localeString = {
@@ -23,7 +23,7 @@ export const localeString = {
   name: 'localeString',
   type: 'object',
   fieldsets: [locale_translations],
-  fields: gen_locale_field(LOCALES, 'string'),
+  fields: genLocaleField(LOCALES, 'string'),
 }
 
 export const locale_content = {
@@ -31,5 +31,5 @@ export const locale_content = {
   name: 'locale_content',
   type: 'object',
   fieldsets: [locale_translations],
-  fields: gen_locale_field(LOCALES, 'content_block'),
+  fields: genLocaleField(LOCALES, 'content_block'),
 }

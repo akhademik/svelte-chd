@@ -2,7 +2,7 @@
 	import { page } from '$app/state'
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import { BaseJsonLd, BaseSeo } from '$lib/base'
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 	import TourDetails from '$modules/tour-page/tour-details.svelte'
 	import type { PageData } from './$types'
 
@@ -12,7 +12,7 @@
 	let title = $derived(
 		tour?.tour_name?.[$locale] || tour?.tour_name?.en || tour?.tour_name?.vn || ''
 	)
-	let imgUrl = $derived(tour?.img_cover ? url_for(tour.img_cover).url() : undefined)
+	let imgUrl = $derived(tour?.img_cover ? urlFor(tour.img_cover).url() : undefined)
 
 	let tourType = $derived(
 		page.params.tourtype === 'day-tours' ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()
