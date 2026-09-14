@@ -62,7 +62,7 @@ describe('formSchema validation', () => {
 
 describe('bookingApiSchema validation', () => {
 	it('should validate correct booking payloads with email contact', () => {
-		const valid = {
+		const valid: BookingApiSchema = {
 			name: 'Nguyen Van A',
 			contact: 'test@example.com',
 			tour: 'Lak Lake Tour',
