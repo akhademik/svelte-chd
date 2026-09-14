@@ -8,12 +8,11 @@
 		tour: Tour
 		title: string
 		duration: string
-		levelText: string
 		minPrice: number
 		isContactForPrice: boolean
 	}
 
-	let { tour, title, duration, levelText, minPrice, isContactForPrice }: Props = $props()
+	let { tour, title, duration, minPrice, isContactForPrice }: Props = $props()
 </script>
 
 <section class="rounded-xl border border-border/90 bg-surface p-6 shadow-sm sm:p-8 lg:p-6">
@@ -39,17 +38,6 @@
 						⏱ {duration}
 					</span>
 				{/if}
-				<span
-					class="inline-flex items-center gap-1 border border-border bg-surface px-2.5 py-1 text-[10px] font-medium tracking-wide text-foreground-muted">
-					{#if (tour.tour_level || 'easy') === 'hard'}
-						<span class="text-xs">⚡</span>
-					{:else if (tour.tour_level || 'easy') === 'medium'}
-						<span class="text-xs">⚖️</span>
-					{:else}
-						<span class="text-xs">🌿</span>
-					{/if}
-					<span>{levelText}</span>
-				</span>
 			</div>
 
 			<h1 class="font-serif text-3xl font-bold leading-tight text-primary sm:text-4xl lg:text-5xl">

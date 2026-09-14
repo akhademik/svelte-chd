@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LL, { locale } from '$i18n/i18n-svelte'
+	import { locale } from '$i18n/i18n-svelte'
 	import type { Tour } from '$lib/types/tour.type'
 	import { formatPriceObject } from '$lib/utils/format-data'
 	import TourDetailBreadcrumbs from './components/tour-detail-breadcrumbs.svelte'
@@ -30,13 +30,6 @@
 	)
 	let isContactForPrice = $derived(Boolean(tour.contact_for_price || prices.length === 0))
 
-	let levelText = $derived.by(() => {
-		const lvl = tour.tour_level || 'easy'
-		if (lvl === 'hard') return $LL.tours.trip_facts.difficulty_hard()
-		if (lvl === 'medium') return $LL.tours.trip_facts.difficulty_medium()
-		return $LL.tours.trip_facts.difficulty_easy()
-	})
-
 	let allImages = $derived(
 		collectGalleryImages({
 			coverImage: tour.img_cover,
@@ -64,7 +57,6 @@
 			{tour}
 			{title}
 			{duration}
-			{levelText}
 			{minPrice}
 			{isContactForPrice} />
 
@@ -89,7 +81,7 @@
 
 				<TourDetailItinerary {tour} />
 
-				<TourDetailGoodToKnow />
+				<TourDetailGoodToKnow {tour} />
 			</div>
 
 			<!-- Right Column (Sidebar on desktop, stacked underneath on mobile): Pricing Table (desktop only), Inclusions, Plan Your Journey CTA -->

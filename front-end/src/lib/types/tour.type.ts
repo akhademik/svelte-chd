@@ -33,10 +33,23 @@ type Tag = {
 	[key: string]: any
 }
 
+export interface GoodToKnowItem {
+	icon?: string
+	title?: Locale_String
+	description?: Locale_String
+}
+
+export interface TourGoodToKnow {
+	activitySeason?: GoodToKnowItem
+	whatToPack?: GoodToKnowItem
+	transportGroup?: GoodToKnowItem
+	dietNotes?: GoodToKnowItem
+	[key: string]: any
+}
+
 export interface Tour {
 	best_sell?: boolean
 	contact_for_price?: boolean
-	tour_level?: 'easy' | 'medium' | 'hard' | string
 	img_cover?: GalleryImage
 	img_tour?: GalleryImage[]
 	tour_duration?: Locale_String
@@ -49,5 +62,7 @@ export interface Tour {
 	tour_name?: Locale_String
 	tour_price?: Price
 	tour_slug?: any
+	good_to_know?: TourGoodToKnow
+	goodToKnow?: TourGoodToKnow
 	[key: string]: any
 }

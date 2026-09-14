@@ -11,7 +11,6 @@ export function mapSanityToTour(raw: any): Tour {
 		...raw,
 		best_sell: Boolean(raw.best_sell ?? false),
 		contact_for_price: Boolean(raw.contact_for_price ?? false),
-		tour_level: raw.tour_level || 'easy',
 		tour_id: String(raw.tour_id ?? ''),
 		img_cover: raw.img_cover,
 		img_tour: raw.img_tour ?? [],
@@ -24,6 +23,7 @@ export function mapSanityToTour(raw: any): Tour {
 		tour_name: raw.tour_name,
 		tour_price: raw.tour_price,
 		tour_slug: raw.tour_slug,
+		good_to_know: raw.good_to_know || raw.goodToKnow || undefined,
 	}
 }
 

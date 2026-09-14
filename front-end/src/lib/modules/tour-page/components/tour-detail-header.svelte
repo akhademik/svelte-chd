@@ -4,11 +4,10 @@
 	interface Props {
 		tour: Tour
 		duration: string
-		levelText: string
 		onclose: () => void
 	}
 
-	let { tour, duration, levelText, onclose }: Props = $props()
+	let { tour, duration, onclose }: Props = $props()
 </script>
 
 <!-- Modal Header (Sticky top) -->
@@ -41,17 +40,6 @@
 				<span>{duration}</span>
 			</span>
 		{/if}
-		<span
-			class="inline-flex items-center gap-1 rounded border border-border bg-surface px-2 py-0.5 text-[10px] font-medium tracking-wide text-foreground-muted">
-			{#if (tour?.tour_level || 'easy') === 'hard'}
-				<span class="text-xs">⚡</span>
-			{:else if (tour?.tour_level || 'easy') === 'medium'}
-				<span class="text-xs">⚖️</span>
-			{:else}
-				<span class="text-xs">🌿</span>
-			{/if}
-			<span>{levelText}</span>
-		</span>
 	</div>
 	<button
 		type="button"

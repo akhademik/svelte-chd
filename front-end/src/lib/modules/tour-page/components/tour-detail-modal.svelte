@@ -37,13 +37,6 @@
 	let minPrice = $derived(tour?.tour_price?.pax2 || tour?.tour_price?.pax1 || 0)
 	let isContactForPrice = $derived(Boolean(tour?.contact_for_price || prices.length === 0))
 
-	let levelText = $derived.by(() => {
-		const lvl = tour?.tour_level || 'easy'
-		if (lvl === 'hard') return $LL.tours.trip_facts.difficulty_hard()
-		if (lvl === 'medium') return $LL.tours.trip_facts.difficulty_medium()
-		return $LL.tours.trip_facts.difficulty_easy()
-	})
-
 	let imgCover = $derived(tour?.img_cover)
 	let imgTour = $derived(tour?.img_tour || [])
 
@@ -142,7 +135,6 @@
 			<TourDetailHeader
 				{tour}
 				{duration}
-				{levelText}
 				onclose={close} />
 
 			<!-- 2. Modal Body (Scrollable full-width container) -->
@@ -158,7 +150,6 @@
 						{tour}
 						{title}
 						{duration}
-						{levelText}
 						{minPrice}
 						{isContactForPrice} />
 
@@ -183,7 +174,7 @@
 
 							<TourDetailItinerary {tour} />
 
-							<TourDetailGoodToKnow />
+							<TourDetailGoodToKnow {tour} />
 						</div>
 
 						<!-- Right Column (Sidebar on desktop, stacked underneath on mobile) -->

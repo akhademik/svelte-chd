@@ -697,26 +697,6 @@ type RootTranslation = {
 			 */
 			style_val: string
 			/**
-			 * P​a​c​i​n​g
-			 */
-			difficulty: string
-			/**
-			 * E​a​s​y​ ​/​ ​M​i​n​d​f​u​l​ ​W​a​l​k
-			 */
-			difficulty_val: string
-			/**
-			 * E​a​s​y​ ​/​ ​M​i​n​d​f​u​l​ ​W​a​l​k
-			 */
-			difficulty_easy: string
-			/**
-			 * M​o​d​e​r​a​t​e​ ​/​ ​A​c​t​i​v​e
-			 */
-			difficulty_medium: string
-			/**
-			 * C​h​a​l​l​e​n​g​i​n​g​ ​/​ ​T​r​e​k​s
-			 */
-			difficulty_hard: string
-			/**
 			 * D​e​p​a​r​t​u​r​e
 			 */
 			departure: string
@@ -900,7 +880,7 @@ type RootTranslation = {
 			 */
 			price_for_2_pax: string
 			/**
-			 * A​p​p​r​o​x​i​m​a​t​e​ ​c​o​n​v​e​r​s​i​o​n​,​ ​e​x​c​h​a​n​g​e​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.
+			 * E​x​c​h​a​n​g​e​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.
 			 */
 			price_conversion_disclaimer: string
 			/**
@@ -2049,26 +2029,6 @@ export type TranslationFunctions = {
 			 */
 			style_val: () => LocalizedString
 			/**
-			 * Pacing
-			 */
-			difficulty: () => LocalizedString
-			/**
-			 * Easy / Mindful Walk
-			 */
-			difficulty_val: () => LocalizedString
-			/**
-			 * Easy / Mindful Walk
-			 */
-			difficulty_easy: () => LocalizedString
-			/**
-			 * Moderate / Active
-			 */
-			difficulty_medium: () => LocalizedString
-			/**
-			 * Challenging / Treks
-			 */
-			difficulty_hard: () => LocalizedString
-			/**
 			 * Departure
 			 */
 			departure: () => LocalizedString
@@ -2251,7 +2211,7 @@ export type TranslationFunctions = {
 			 */
 			price_for_2_pax: () => LocalizedString
 			/**
-			 * Approximate conversion, exchange rate may vary at checkout.
+			 * Exchange rate may vary at checkout.
 			 */
 			price_conversion_disclaimer: () => LocalizedString
 			/**

@@ -1,20 +1,57 @@
 import {genPriceRange} from '../helper-functions'
 import {PRICE_RANGE} from './constants'
 
-export const tour_level_field = {
-  name: 'tourLevel',
-  title: 'Cấp độ tour (Tour Level)',
-  type: 'string',
-  initialValue: 'easy',
+export const tour_good_to_know = {
+  name: 'goodToKnow',
+  title: 'Thông tin cần biết (Tùy chọn)',
+  description: 'Chọn các mục thông tin tương ứng cho tour từ 4 danh mục thông tin cần biết',
+  type: 'object',
   options: {
-    list: [
-      {title: 'Dễ (Easy)', value: 'easy'},
-      {title: 'Trung bình (Medium)', value: 'medium'},
-      {title: 'Thử thách / Khó (Hard)', value: 'hard'},
-    ],
-    layout: 'radio',
+    collapsible: true,
+    collapsed: false,
   },
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  fields: [
+    {
+      name: 'activitySeason',
+      title: 'Thời điểm & Mức độ vận động (Season & Activity)',
+      description: 'Chọn từ kho danh mục "Thời điểm & Mức độ vận động"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "activity_season"',
+      },
+    },
+    {
+      name: 'whatToPack',
+      title: 'Hành trang & Trang phục khuyến nghị (What to pack)',
+      description: 'Chọn từ kho danh mục "Hành trang & Trang phục"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "what_to_pack"',
+      },
+    },
+    {
+      name: 'transportGroup',
+      title: 'Đón trả & Quy mô nhóm (Pickup & Group size)',
+      description: 'Chọn từ kho danh mục "Đón trả & Quy mô nhóm"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "transport_group"',
+      },
+    },
+    {
+      name: 'dietNotes',
+      title: 'Ăn uống & Các lưu ý khác (Diet & Special notes)',
+      description: 'Chọn từ kho danh mục "Ăn uống & Lưu ý khác"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "diet_notes"',
+      },
+    },
+  ],
 }
 
 export const tour_highlights_ref = {
