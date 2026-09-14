@@ -10,7 +10,7 @@ import {structure} from './desk-structure'
 
 export default defineConfig({
   name: 'default',
-  title: 'chd-backend-v2',
+  title: 'chd-backend',
 
   projectId: 'uzyjbxdd',
   dataset: 'production',

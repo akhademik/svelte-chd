@@ -1,16 +1,16 @@
 # Graph Report - svelte-chd  (2026-09-14)
 
 ## Corpus Check
-- 290 files · ~125,379 words
+- 290 files · ~125,385 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 906 nodes · 1564 edges · 88 communities (28 shown, 30 thin omitted)
+- 906 nodes · 1568 edges · 88 communities (28 shown, 30 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 13 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `929f07ed`
+- Built from commit: `a25ca988`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -26,7 +26,7 @@
 - rate-limiter.ts
 - i18n-svelte.ts
 - front-end/knip.json
-- devDependencies
+- dependencies
 - fr/index.ts
 - format-data.ts
 - vi/index.ts
@@ -105,7 +105,7 @@
 
 ### Community 0 - "back-end/package.json"
 Cohesion: 0.05
-Nodes (41): dependencies, react, react-dom, react-is, sanity, @sanity/color-input, @sanity/image-url, sanity-plugin-media (+33 more)
+Nodes (42): devDependencies, eslint, knip, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui (+34 more)
 
 ### Community 1 - "i18n-types.ts"
 Cohesion: 0.09
@@ -113,7 +113,7 @@ Nodes (31): App, Locals, Platform, initFormatters(), BaseLocale, Formatters, Loc
 
 ### Community 2 - "schemas/index.ts"
 Cohesion: 0.07
-Nodes (32): addThousandSeparator(), CNumberInput(), parseNumber(), COLOR_PALETTE, structure(), keywords, prepare(), prepare() (+24 more)
+Nodes (31): addThousandSeparator(), CNumberInput(), parseNumber(), COLOR_PALETTE, structure(), prepare(), prepare(), BASE_FIELDS (+23 more)
 
 ### Community 3 - "scripts"
 Cohesion: 0.05
@@ -147,13 +147,13 @@ Nodes (6): { locale, LL, setLocale }, GoodToKnowItem, LocaleArray, LocaleString,
 Cohesion: 0.12
 Nodes (17): entry, ignore, ignoreDependencies, ignoreExportsUsedInFile, project, $schema, svelte, entry (+9 more)
 
-### Community 12 - "devDependencies"
+### Community 12 - "dependencies"
 Cohesion: 0.10
-Nodes (21): devDependencies, eslint, knip, prettier, react-icons, @sanity/eslint-config-studio, sanity-plugin-asset-source-unsplash, @sanity/ui (+13 more)
+Nodes (21): dependencies, react, react-dom, react-is, sanity, @sanity/color-input, @sanity/image-url, sanity-plugin-media (+13 more)
 
 ### Community 13 - "fr/index.ts"
 Cohesion: 0.11
-Nodes (14): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, fr (+6 more)
+Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, fr (+5 more)
 
 ### Community 14 - "format-data.ts"
 Cohesion: 0.13
@@ -161,7 +161,7 @@ Nodes (5): SITE_CONFIG, builder, config, TOUR_CATEGORY_SLUG_MAP, ./$types
 
 ### Community 15 - "vi/index.ts"
 Cohesion: 0.11
-Nodes (13): about_page, blog_page, contact_page, error_page, faq_page, footer, home_page, vn (+5 more)
+Nodes (14): Translation, about_page, blog_page, contact_page, error_page, faq_page, footer, home_page (+6 more)
 
 ### Community 16 - "compilerOptions"
 Cohesion: 0.14
@@ -225,15 +225,15 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Logger` connect `tour.service.ts` to `rate-limiter.ts`, `i18n-helper.ts`?**
   _High betweenness centrality (0.025) - this node is a cross-community bridge._
+- **Why does `sanity` connect `schemas/index.ts` to `back-end/package.json`, `type-others.ts`?**
+  _High betweenness centrality (0.012) - this node is a cross-community bridge._
 - **Why does `Locales` connect `i18n-types.ts` to `format-data.test.ts`, `i18n-helper.ts`, `i18n-svelte.ts`, `format-data.ts`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `sanity` connect `schemas/index.ts` to `type-others.ts`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `COLOR_PALETTE`, `BlockRenderProps`, `$schema` to the rest of the system?**
   _254 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `back-end/package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.047619047619047616 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.046511627906976744 - nodes in this community are weakly interconnected._
 - **Should `i18n-types.ts` be split into smaller, more focused modules?**
   _Cohesion score 0.08859357696567 - nodes in this community are weakly interconnected._
 - **Should `schemas/index.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06578947368421052 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07012987012987013 - nodes in this community are weakly interconnected._

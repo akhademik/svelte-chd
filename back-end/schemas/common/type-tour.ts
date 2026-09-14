@@ -1,3 +1,4 @@
+import type {Rule} from 'sanity'
 import {genPriceRange} from '../helper-functions'
 import {PRICE_RANGE} from './constants'
 
@@ -58,7 +59,7 @@ export const tour_highlights_ref = {
   name: 'tourHighlights',
   title: 'Các điểm chính trong tour',
   type: 'array',
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  validation: (rule: Rule) => rule.required(),
   of: [
     {
       type: 'reference',
@@ -75,7 +76,7 @@ export const tour_includes_ref = {
   name: 'tourIncludes',
   title: 'Tour bao gồm',
   type: 'reference',
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  validation: (rule: Rule) => rule.required(),
   to: [
     {
       type: 'tourIncludes',
