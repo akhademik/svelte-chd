@@ -22,18 +22,18 @@
 
 	let { tour }: Props = $props()
 
-	let title = $derived(tour.tour_name?.[$locale] || tour.tour_name?.en || 'Tour')
-	let duration = $derived(tour.tour_duration?.[$locale] || tour.tour_duration?.en || '')
+	let title = $derived(tour.tourName?.[$locale] || tour.tourName?.en || 'Tour')
+	let duration = $derived(tour.tourDuration?.[$locale] || tour.tourDuration?.en || '')
 	let prices = $derived(formatPriceObject(tour))
 	let minPrice = $derived(
-		tour.tour_price?.pax2 || tour.tour_price?.pax1 || tour.tour_price?.price || 0
+		tour.tourPrice?.pax2 || tour.tourPrice?.pax1 || tour.tourPrice?.price || 0
 	)
-	let isContactForPrice = $derived(Boolean(tour.contact_for_price || prices.length === 0))
+	let isContactForPrice = $derived(Boolean(tour.contactForPrice || prices.length === 0))
 
 	let allImages = $derived(
 		collectGalleryImages({
-			coverImage: tour.img_cover,
-			album: tour.img_tour,
+			coverImage: tour.coverImg,
+			album: tour.imgTour,
 		})
 	)
 

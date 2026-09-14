@@ -1,15 +1,14 @@
 import type { GalleryImage } from '$lib/utils/gallery'
 
-export type Locale_String = {
+export type LocaleString = {
 	vi?: string
 	vn?: string
 	en?: string
 	fr?: string
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	[key: string]: any
+	[key: string]: string | undefined
 }
 
-export type Locale_Array = {
+export type LocaleArray = {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	vi?: any[]
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,16 +23,24 @@ export type Locale_Array = {
 
 export type Price = {
 	_type?: string
-} & { [key: string]: number }
+	pax1?: number
+	pax2?: number
+	pax3_4?: number
+	pax5_6?: number
+	pax7_9?: number
+	pax10_up?: number
+	price?: number
+	[key: string]: unknown
+}
 
 export type Highlights = {
-	highlights?: Locale_String | Record<string, unknown>
+	highlights?: LocaleString | Record<string, unknown>
 	[key: string]: unknown
 }
 
 export interface GoodToKnowItem {
-	title?: Locale_String
-	description?: Locale_String
+	title?: LocaleString
+	description?: LocaleString
 }
 
 export interface TourGoodToKnow {
@@ -46,21 +53,20 @@ export interface TourGoodToKnow {
 
 export interface Tour {
 	_id?: string
-	best_sell?: boolean
-	contact_for_price?: boolean
-	img_cover?: GalleryImage
-	img_tour?: GalleryImage[]
-	tour_duration?: Locale_String
-	tour_highlights?: Highlights[]
-	tour_id?: string
-	tour_includes?: Locale_String[]
-	tour_intro?: Locale_Array
-	tour_itinerary?: Locale_Array
-	tour_name?: Locale_String
-	tour_price?: Price
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	tour_slug?: any
-	good_to_know?: TourGoodToKnow
+	_type?: string
+	tourId?: string
+	tourName?: LocaleString
+	tourDuration?: LocaleString
+	coverImg?: GalleryImage
+	imgTour?: GalleryImage[]
+	tourIntro?: LocaleArray
+	tourItinerary?: LocaleArray
+	tourPrice?: Price
+	tourHighlights?: Highlights[]
+	tourIncludes?: LocaleString[]
+	contactForPrice?: boolean
+	bestSellerTour?: boolean
+	tourSlug?: Record<string, { current?: string } | string> | string | null
 	goodToKnow?: TourGoodToKnow
 	[key: string]: unknown
 }

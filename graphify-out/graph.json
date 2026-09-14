@@ -157,31 +157,31 @@
       "file_type": "code",
       "norm_label": "goodtoknowitem",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L34"
+      "source_location": "L41"
     },
     {
-      "id": "front_end_src_lib_types_tour_type_locale_array",
-      "label": "Locale_Array",
+      "id": "front_end_src_lib_types_tour_type_localearray",
+      "label": "LocaleArray",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "tour.type.ts",
       "file_type": "code",
-      "norm_label": "locale_array",
+      "norm_label": "localearray",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L12"
+      "source_location": "L11"
     },
     {
-      "id": "front_end_src_lib_types_tour_type_locale_string",
-      "label": "Locale_String",
+      "id": "front_end_src_lib_types_tour_type_localestring",
+      "label": "LocaleString",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "tour.type.ts",
       "file_type": "code",
-      "norm_label": "locale_string",
+      "norm_label": "localestring",
       "source_file": "front-end/src/lib/types/tour.type.ts",
       "source_location": "L3"
     },
@@ -196,7 +196,7 @@
       "file_type": "code",
       "norm_label": "price",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L25"
+      "source_location": "L24"
     },
     {
       "id": "front_end_src_lib_types_tour_type_tourgoodtoknow",
@@ -209,7 +209,7 @@
       "file_type": "code",
       "norm_label": "tourgoodtoknow",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L39"
+      "source_location": "L46"
     },
     {
       "id": "front_end_src_i18n_i18n_types_translation",
@@ -534,7 +534,7 @@
       "file_type": "code",
       "norm_label": "highlights",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L29"
+      "source_location": "L36"
     },
     {
       "id": "front_end_src_lib_types_tour_type_tour",
@@ -547,7 +547,7 @@
       "file_type": "code",
       "norm_label": "tour",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L47"
+      "source_location": "L54"
     },
     {
       "id": "front_end_src_lib_utils_gallery_collectgalleryimagesparams",
@@ -1653,7 +1653,7 @@
       "file_type": "code",
       "norm_label": "extractplaintext()",
       "source_file": "front-end/src/lib/utils/localization.ts",
-      "source_location": "L67"
+      "source_location": "L75"
     },
     {
       "id": "front_end_src_lib_utils_localization_filterlocalizeditems",
@@ -1665,7 +1665,7 @@
       "file_type": "code",
       "norm_label": "filterlocalizeditems()",
       "source_file": "front-end/src/lib/utils/localization.ts",
-      "source_location": "L54"
+      "source_location": "L58"
     },
     {
       "id": "front_end_src_lib_utils_localization_getlocalizedfield",
@@ -2049,7 +2049,7 @@
       "file_type": "code",
       "norm_label": "mapsanitytotour()",
       "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L30"
+      "source_location": "L45"
     },
     {
       "id": "front_end_src_lib_server_sanity_mappers_tour_mapper_mapsanitytotours",
@@ -2061,7 +2061,7 @@
       "file_type": "code",
       "norm_label": "mapsanitytotours()",
       "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L52"
+      "source_location": "L82"
     },
     {
       "id": "front_end_src_lib_server_sanity_queries_tours_getsingletourquery",
@@ -2181,7 +2181,7 @@
       "file_type": "code",
       "norm_label": "getblogslug()",
       "source_file": "front-end/src/lib/utils/slug.ts",
-      "source_location": "L132"
+      "source_location": "L136"
     },
     {
       "id": "front_end_src_lib_utils_slug_gettourslug",
@@ -9199,7 +9199,7 @@
       "file_type": "code",
       "norm_label": "tourservice",
       "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L69"
+      "source_location": "L72"
     },
     {
       "id": "front_end_src_lib_stores_nav_store",
@@ -10812,7 +10812,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L39",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -10824,7 +10824,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L46",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -10860,7 +10860,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/localization.ts",
-      "source_location": "L61",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -10872,7 +10872,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/localization.ts",
-      "source_location": "L47",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -10920,7 +10920,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/slug.ts",
-      "source_location": "L145",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -10932,7 +10932,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "front-end/src/lib/utils/slug.ts",
-      "source_location": "L96",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -11784,7 +11784,7 @@
       "confidence_score": 1.0,
       "context": "field",
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L51",
+      "source_location": "L60",
       "weight": 1.0
     },
     {
@@ -22572,7 +22572,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L30",
+      "source_location": "L45",
       "weight": 1.0
     },
     {
@@ -22583,7 +22583,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L52",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -22990,7 +22990,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/server/services/tour.service.ts",
-      "source_location": "L69",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -23270,13 +23270,13 @@
     },
     {
       "source": "front_end_src_lib_types_tour_type",
-      "target": "front_end_src_lib_types_tour_type_locale_array",
+      "target": "front_end_src_lib_types_tour_type_localearray",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L12",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -23287,23 +23287,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L25",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
       "source": "front_end_src_lib_types_tour_type",
-      "target": "front_end_src_lib_types_tour_type_highlights",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L29",
-      "weight": 1.0
-    },
-    {
-      "source": "front_end_src_lib_types_tour_type",
-      "target": "front_end_src_lib_types_tour_type_locale_string",
+      "target": "front_end_src_lib_types_tour_type_localestring",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -23314,13 +23303,24 @@
     },
     {
       "source": "front_end_src_lib_types_tour_type",
+      "target": "front_end_src_lib_types_tour_type_highlights",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "front-end/src/lib/types/tour.type.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "front_end_src_lib_types_tour_type",
       "target": "front_end_src_lib_types_tour_type_goodtoknowitem",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L34",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -23331,7 +23331,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L39",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -23342,7 +23342,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/types/tour.type.ts",
-      "source_location": "L47",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -23507,7 +23507,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/localization.ts",
-      "source_location": "L54",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -23529,7 +23529,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/localization.ts",
-      "source_location": "L67",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -23738,7 +23738,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "front-end/src/lib/utils/slug.ts",
-      "source_location": "L132",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -27418,7 +27418,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "front-end/src/lib/server/sanity/mappers/tour.mapper.ts",
-      "source_location": "L56",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -27519,5 +27519,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8ad6641f654b954e5e6ee80d702d2d9037a17ae1"
+  "built_at_commit": "059050851ce50d5fc46b2abf39a43b879a341f98"
 }

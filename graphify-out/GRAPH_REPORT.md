@@ -1,7 +1,7 @@
 # Graph Report - svelte-chd  (2026-09-14)
 
 ## Corpus Check
-- 289 files · ~125,048 words
+- 289 files · ~125,275 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8ad6641f`
+- Built from commit: `05905085`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -143,7 +143,7 @@ Nodes (10): checkRateLimit(), checkRateLimitAsync(), cleanupExpiredRecords(), ge
 
 ### Community 10 - "tour.type.ts"
 Cohesion: 0.17
-Nodes (7): bookingModal, BookingModalState, GoodToKnowItem, Locale_Array, Locale_String, Price, TourGoodToKnow
+Nodes (7): bookingModal, BookingModalState, GoodToKnowItem, LocaleArray, LocaleString, Price, TourGoodToKnow
 
 ### Community 11 - "front-end/knip.json"
 Cohesion: 0.12

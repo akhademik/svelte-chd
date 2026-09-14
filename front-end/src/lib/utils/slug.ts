@@ -82,25 +82,28 @@ export const getTourSlug = (tour: Tour, lang: string = 'en'): string => {
 	if (!tour) return ''
 
 	const loc = lang === 'vn' ? 'vi' : lang
+	const tourName = tour.tourName ?? (tour as { tour_name?: Tour['tourName'] }).tour_name
 
 	// 1. Primary: Virtual derived slug from localized tour name
 	const localizedTitle =
-		tour.tour_name?.[loc] ||
-		(loc === 'vi' ? tour.tour_name?.vn : undefined) ||
-		tour.tour_name?.en ||
-		tour.tour_name?.fr ||
-		tour.tour_name?.vi
+		tourName?.[loc] ||
+		(loc === 'vi' ? tourName?.vn : undefined) ||
+		tourName?.en ||
+		tourName?.fr ||
+		tourName?.vi
 
 	let nameSlug = ''
 	if (localizedTitle && typeof localizedTitle === 'string') {
 		nameSlug = slugify(localizedTitle)
 	}
 
-	const rawTourId = (tour.tour_id || '').trim().toLowerCase()
+	const rawTourId = (tour.tourId ?? (tour as { tour_id?: string }).tour_id ?? '')
+		.trim()
+		.toLowerCase()
 
-	// If tour has both tour_id and localized title, generate hybrid `{tour_id}-{nameSlug}`
+	// If tour has both tourId and localized title, generate hybrid `{tourId}-{nameSlug}`
 	if (rawTourId && nameSlug) {
-		// If nameSlug already starts with tour_id prefix, don't duplicate
+		// If nameSlug already starts with tourId prefix, don't duplicate
 		if (nameSlug.startsWith(rawTourId)) {
 			return nameSlug
 		}
@@ -109,21 +112,22 @@ export const getTourSlug = (tour: Tour, lang: string = 'en'): string => {
 
 	if (nameSlug) return nameSlug
 
-	// 2. Legacy fallback: Check document tour_slug if present from older Sanity docs
-	if (tour.tour_slug) {
-		if (typeof tour.tour_slug === 'string') return tour.tour_slug
+	// 2. Legacy fallback: Check document tourSlug if present from older Sanity docs
+	const tourSlug = tour.tourSlug ?? (tour as { tour_slug?: any }).tour_slug
+	if (tourSlug) {
+		if (typeof tourSlug === 'string') return tourSlug
 		const targetSlug =
-			tour.tour_slug[loc]?.current ||
-			tour.tour_slug[loc] ||
-			(loc === 'vi' ? tour.tour_slug.vn?.current || tour.tour_slug.vn : undefined) ||
-			tour.tour_slug.current ||
-			tour.tour_slug.en?.current ||
-			tour.tour_slug.en
+			tourSlug[loc]?.current ||
+			tourSlug[loc] ||
+			(loc === 'vi' ? tourSlug.vn?.current || tourSlug.vn : undefined) ||
+			tourSlug.current ||
+			tourSlug.en?.current ||
+			tourSlug.en
 		if (typeof targetSlug === 'string' && targetSlug) return targetSlug
 	}
 
-	// 3. Last fallback: raw tour_id
-	return tour.tour_id || ''
+	// 3. Last fallback: raw tourId
+	return rawTourId
 }
 
 /**

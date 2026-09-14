@@ -8,19 +8,19 @@ export const redirectToHome = (locale: string = 'en') => {
 
 export const tourByIndex = (tours: Tour[], index: number) => {
 	if (!tours || !tours[index]) return tours?.[0]
-	const target_slug = getTourSlug(tours[index])
+	const targetSlug = getTourSlug(tours[index])
 	const tour = tours.find((t: Tour) => {
 		const s = getTourSlug(t)
-		return s === target_slug
+		return s === targetSlug
 	})
 	return tour || tours[index]
 }
 
 export const getLengthAndIndex = (tours: Tour[], slug: string) => {
 	if (!tours || tours.length === 0) return { length: 0, index: 0 }
-	const slugs_array = tours.map(tour => getTourSlug(tour))
-	const length = slugs_array.length - 1
-	const found_index = slugs_array.indexOf(slug)
-	const index = found_index > -1 ? found_index : 0
+	const slugsArray = tours.map(tour => getTourSlug(tour))
+	const length = slugsArray.length - 1
+	const foundIndex = slugsArray.indexOf(slug)
+	const index = foundIndex > -1 ? foundIndex : 0
 	return { length, index }
 }

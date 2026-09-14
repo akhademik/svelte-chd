@@ -9,10 +9,8 @@
 	let { data }: { data: PageData } = $props()
 
 	let tour = $derived(data.tour)
-	let title = $derived(
-		tour?.tour_name?.[$locale] || tour?.tour_name?.en || tour?.tour_name?.vn || ''
-	)
-	let imgUrl = $derived(tour?.img_cover ? urlFor(tour.img_cover).url() : undefined)
+	let title = $derived(tour?.tourName?.[$locale] || tour?.tourName?.en || tour?.tourName?.vn || '')
+	let imgUrl = $derived(tour?.coverImg ? urlFor(tour.coverImg).url() : undefined)
 
 	let tourType = $derived(
 		page.params.tourtype === 'day-tours' ? $LL.nav_bar.day_tours() : $LL.nav_bar.highland_tours()

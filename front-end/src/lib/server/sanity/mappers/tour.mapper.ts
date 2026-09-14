@@ -2,21 +2,36 @@ import type { Tour, Highlights } from '$lib/types/tour.type'
 
 export type SanityTourRaw = {
 	_id?: string
+	_type?: string
+	tourID?: string
+	tourId?: string
 	tour_id?: string
+	bestSellerTour?: boolean
 	best_sell?: boolean
+	contactForPrice?: boolean
 	contact_for_price?: boolean
-	img_cover?: Tour['img_cover']
-	img_tour?: Tour['img_tour']
-	tour_duration?: Tour['tour_duration'] | string
+	coverImg?: Tour['coverImg']
+	img_cover?: Tour['coverImg']
+	imgTour?: Tour['imgTour']
+	img_tour?: Tour['imgTour']
+	tourDuration?: Tour['tourDuration'] | string
+	tour_duration?: Tour['tourDuration'] | string
+	tourHighlights?: Highlights[] | Array<Record<string, unknown>>
 	tour_highlights?: Highlights[] | Array<Record<string, unknown>>
-	tour_includes?: Tour['tour_includes']
-	tour_intro?: Tour['tour_intro']
-	tour_itinerary?: Tour['tour_itinerary']
-	tour_name?: Tour['tour_name']
-	tour_price?: Tour['tour_price']
-	tour_slug?: Tour['tour_slug']
-	good_to_know?: Tour['good_to_know']
-	goodToKnow?: Tour['good_to_know']
+	tourIncludes?: Tour['tourIncludes']
+	tour_includes?: Tour['tourIncludes']
+	tourIntro?: Tour['tourIntro']
+	tour_intro?: Tour['tourIntro']
+	tourItinerary?: Tour['tourItinerary']
+	tour_itinerary?: Tour['tourItinerary']
+	tourName?: Tour['tourName']
+	tour_name?: Tour['tourName']
+	tourPrice?: Tour['tourPrice']
+	tour_price?: Tour['tourPrice']
+	tourSlug?: Tour['tourSlug']
+	tour_slug?: Tour['tourSlug']
+	goodToKnow?: Tour['goodToKnow']
+	good_to_know?: Tour['goodToKnow']
 	[key: string]: unknown
 }
 
@@ -30,22 +45,37 @@ export function mapSanityToTour(raw: SanityTourRaw | null | undefined): Tour | n
 export function mapSanityToTour(raw: SanityTourRaw | null | undefined): Tour | null {
 	if (!raw) return null
 
+	const tourId = String(raw.tourId ?? raw.tourID ?? raw.tour_id ?? '')
+	const bestSellerTour = Boolean(raw.bestSellerTour ?? raw.best_sell ?? false)
+	const contactForPrice = Boolean(raw.contactForPrice ?? raw.contact_for_price ?? false)
+	const coverImg = raw.coverImg ?? raw.img_cover
+	const imgTour = (raw.imgTour ?? raw.img_tour ?? []) as Tour['imgTour']
+	const tourDuration = (raw.tourDuration ?? raw.tour_duration) as Tour['tourDuration']
+	const tourHighlights = (raw.tourHighlights ?? raw.tour_highlights ?? []) as Highlights[]
+	const tourIncludes = (raw.tourIncludes ?? raw.tour_includes ?? []) as Tour['tourIncludes']
+	const tourIntro = (raw.tourIntro ?? raw.tour_intro) as Tour['tourIntro']
+	const tourItinerary = (raw.tourItinerary ?? raw.tour_itinerary) as Tour['tourItinerary']
+	const tourName = (raw.tourName ?? raw.tour_name) as Tour['tourName']
+	const tourPrice = (raw.tourPrice ?? raw.tour_price) as Tour['tourPrice']
+	const tourSlug = raw.tourSlug ?? raw.tour_slug
+	const goodToKnow = (raw.goodToKnow ?? raw.good_to_know) as Tour['goodToKnow']
+
 	return {
 		...raw,
-		best_sell: Boolean(raw.best_sell ?? false),
-		contact_for_price: Boolean(raw.contact_for_price ?? false),
-		tour_id: String(raw.tour_id ?? ''),
-		img_cover: raw.img_cover,
-		img_tour: raw.img_tour ?? [],
-		tour_duration: raw.tour_duration as Tour['tour_duration'],
-		tour_highlights: (raw.tour_highlights as Highlights[]) ?? [],
-		tour_includes: raw.tour_includes ?? [],
-		tour_intro: raw.tour_intro,
-		tour_itinerary: raw.tour_itinerary,
-		tour_name: raw.tour_name,
-		tour_price: raw.tour_price,
-		tour_slug: raw.tour_slug,
-		good_to_know: (raw.good_to_know || raw.goodToKnow || undefined) as Tour['good_to_know'],
+		tourId,
+		bestSellerTour,
+		contactForPrice,
+		coverImg,
+		imgTour,
+		tourDuration,
+		tourHighlights,
+		tourIncludes,
+		tourIntro,
+		tourItinerary,
+		tourName,
+		tourPrice,
+		tourSlug,
+		goodToKnow,
 	}
 }
 

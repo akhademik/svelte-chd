@@ -20,10 +20,10 @@
 
 	let { tour }: Props = $props()
 
-	let imgCover = $derived(tour.img_cover)
-	let tourDuration = $derived(tour.tour_duration)
-	let tourName = $derived(tour.tour_name)
-	let tourIntro = $derived(tour.tour_intro)
+	let imgCover = $derived(tour.coverImg)
+	let tourDuration = $derived(tour.tourDuration)
+	let tourName = $derived(tour.tourName)
+	let tourIntro = $derived(tour.tourIntro)
 	let title = $derived(getLocalizedField(tourName, $locale, 'Tour'))
 	let durationText = $derived(getLocalizedField(tourDuration, $locale, ''))
 
@@ -33,7 +33,7 @@
 	)
 
 	let localizedCategorySlug = $derived(getCategorySlug(canonicalCategory, $locale))
-	let slug = $derived(getTourSlug(tour, $locale) || tour.tour_id || '')
+	let slug = $derived(getTourSlug(tour, $locale) || tour.tourId || '')
 	let tourLink = $derived(`/${$locale}/${localizedCategorySlug}/${slug}`)
 </script>
 
@@ -51,10 +51,10 @@
 					class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
 					loading="lazy" />
 			{/if}
-			{#if tour.tour_id}
+			{#if tour.tourId}
 				<span
 					class="absolute left-3 top-3 rounded bg-secondary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-white backdrop-blur-sm">
-					{tour.tour_id}
+					{tour.tourId}
 				</span>
 			{/if}
 		</a>
@@ -103,7 +103,7 @@
 			<IconArrowRight class="h-3.5 w-3.5" />
 		</a>
 		<button
-			onclick={() => bookingModal.open(title)}
+			onclick={() => bookingModal.open(title || 'Tour')}
 			class="bg-inverse px-4 py-2 text-xs font-medium uppercase tracking-wider text-inverse-foreground transition-colors hover:bg-inverse-dark">
 			{$LL.tours.book_tour_btn()}
 		</button>

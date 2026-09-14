@@ -19,9 +19,9 @@
 	let guestCount = $state(2)
 	let activeTier = $derived(getPaxTier(guestCount))
 	let unitPrice = $derived(
-		(tour.tour_price?.[activeTier] as number | undefined) ||
-			(tour.tour_price?.pax2 as number | undefined) ||
-			(tour.tour_price?.pax1 as number | undefined) ||
+		(tour.tourPrice?.[activeTier] as number | undefined) ||
+			(tour.tourPrice?.pax2 as number | undefined) ||
+			(tour.tourPrice?.pax1 as number | undefined) ||
 			minPrice
 	)
 	let totalPrice = $derived(unitPrice * guestCount)
@@ -37,7 +37,7 @@
 			{$LL.tours.detail.contact_for_price_desc()}
 		</p>
 		<a
-			href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+			href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tourId || '')}`}
 			class="mt-4 inline-flex items-center justify-center gap-2 bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-primary-hover">
 			<span>{$LL.tours.plan_trip()}</span>
 			<IconArrowRight class="h-3.5 w-3.5" />

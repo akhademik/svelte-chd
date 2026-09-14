@@ -36,13 +36,17 @@ export const getLocalizedField = <T = string>(
  */
 export const hasLocalizedTitle = (
 	entity:
-		| { title?: Record<string, any> | null; tour_name?: Record<string, any> | null }
+		| {
+				title?: Record<string, any> | null
+				tourName?: Record<string, any> | null
+				tour_name?: Record<string, any> | null
+		  }
 		| undefined
 		| null,
 	locale: Locales | string = 'en'
 ): boolean => {
 	if (!entity) return false
-	const titleObj = entity.title || entity.tour_name
+	const titleObj = entity.title || entity.tourName || entity.tour_name
 	if (!titleObj) return false
 	const val = getLocalizedField(titleObj, locale)
 	return Boolean(val && typeof val === 'string' ? val.trim() : val)
@@ -52,7 +56,11 @@ export const hasLocalizedTitle = (
  * Filters a list of entities (posts, tours) ensuring only those with valid localized content are returned.
  */
 export const filterLocalizedItems = <
-	T extends { title?: Record<string, any> | null; tour_name?: Record<string, any> | null },
+	T extends {
+		title?: Record<string, any> | null
+		tourName?: Record<string, any> | null
+		tour_name?: Record<string, any> | null
+	},
 >(
 	items: T[] | undefined | null,
 	locale: Locales | string = 'en'

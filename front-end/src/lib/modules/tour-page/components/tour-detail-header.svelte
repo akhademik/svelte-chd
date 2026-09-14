@@ -15,10 +15,10 @@
 <div
 	class="sticky top-0 z-20 flex items-center justify-between border-b border-border bg-surface/95 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
 	<div class="flex items-center gap-2 text-foreground-muted">
-		{#if tour.tour_id}
+		{#if tour.tourId}
 			<span
 				class="bg-inverse px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-inverse-foreground">
-				{tour.tour_id}
+				{tour.tourId}
 			</span>
 		{/if}
 		{#if duration}

@@ -10,7 +10,7 @@
 	let { tour }: Props = $props()
 
 	let items = $derived.by(() => {
-		const gtk = tour?.good_to_know || tour?.goodToKnow
+		const gtk = tour?.goodToKnow
 		if (!gtk) return []
 
 		const categoryConfigs = [

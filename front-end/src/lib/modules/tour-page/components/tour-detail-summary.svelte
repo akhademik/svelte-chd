@@ -21,16 +21,16 @@
 		<!-- Left: Title, Badges & Tags (Full width on desktop when isContactForPrice) -->
 		<div class={`space-y-4 ${isContactForPrice ? 'w-full' : 'flex-1'}`}>
 			<div class="flex flex-wrap items-center gap-2">
-				{#if tour.best_sell}
+				{#if tour.bestSellerTour}
 					<span
 						class="bg-secondary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white shadow-sm">
 						★ Best Sell
 					</span>
 				{/if}
-				{#if tour.tour_id}
+				{#if tour.tourId}
 					<span
 						class="bg-primary px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white">
-						{tour.tour_id}
+						{tour.tourId}
 					</span>
 				{/if}
 				{#if duration}
@@ -57,7 +57,7 @@
 					{$LL.tours.detail.contact_for_price_desc()}
 				</p>
 				<a
-					href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+					href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tourId || '')}`}
 					class="mt-4 inline-flex items-center justify-center gap-2 bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white shadow-sm transition-colors hover:bg-primary-hover">
 					<span>{$LL.tours.plan_trip()}</span>
 					<IconArrowRight class="h-3.5 w-3.5" />

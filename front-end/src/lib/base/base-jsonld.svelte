@@ -21,13 +21,13 @@
 
 	let { tour, post, breadcrumbs, url, isRoot = false }: Props = $props()
 
-	let tourName = $derived(getLocalizedField(tour?.tour_name, $locale, 'CHD Travel Tour'))
-	let tourImage = $derived(tour?.img_cover ? urlFor(tour.img_cover).url() : undefined)
+	let tourName = $derived(getLocalizedField(tour?.tourName, $locale, 'CHD Travel Tour'))
+	let tourImage = $derived(tour?.coverImg ? urlFor(tour.coverImg).url() : undefined)
 	let tourIntro = $derived(
-		extractPlainText(tour?.tour_intro?.[$locale] || tour?.tour_intro?.vi || tour?.tour_intro?.en)
+		extractPlainText(tour?.tourIntro?.[$locale] || tour?.tourIntro?.vi || tour?.tourIntro?.en)
 	)
 	let tourDescription = $derived(tourIntro || tourName)
-	let isContactForPrice = $derived(Boolean(tour?.contact_for_price))
+	let isContactForPrice = $derived(Boolean(tour?.contactForPrice))
 
 	let postTitle = $derived(getLocalizedField(post?.title, $locale, 'CHD Journal'))
 	let postImage = $derived(post?.coverImg ? urlFor(post.coverImg).url() : undefined)
@@ -69,12 +69,12 @@
 				description: tourDescription,
 				...(url ? { url } : {}),
 				...(tourImage ? { image: tourImage } : {}),
-				...(!isContactForPrice && tour?.tour_price?.price
+				...(!isContactForPrice && tour?.tourPrice?.price
 					? {
 							offers: {
 								'@type': 'Offer',
 								priceCurrency: 'VND',
-								price: tour.tour_price.price,
+								price: tour.tourPrice.price,
 								validFrom: new Date().toISOString().split('T')[0],
 							},
 						}

@@ -30,12 +30,14 @@ export const matchesTourSlug = (tour: Tour, targetSlug: string): boolean => {
 	if (!tour || !targetSlug) return false
 
 	const target = targetSlug.toLowerCase().trim()
-	const rawTourId = (tour.tour_id || '').toLowerCase().trim()
+	const rawTourId = (tour.tourId ?? (tour as { tour_id?: string }).tour_id ?? '')
+		.toLowerCase()
+		.trim()
 
-	// 1. Direct match with tour_id (e.g. "dl-01" or "chd-dt-01")
+	// 1. Direct match with tourId (e.g. "dl-01" or "chd-dt-01")
 	if (rawTourId && rawTourId === target) return true
 
-	// 2. Direct match with virtual slugs (format `{tour_id}-{slug}` or `{slug}`)
+	// 2. Direct match with virtual slugs (format `{tourId}-{slug}` or `{slug}`)
 	const vVi = getTourSlug(tour, 'vi').toLowerCase()
 	const vEn = getTourSlug(tour, 'en').toLowerCase()
 	const vFr = getTourSlug(tour, 'fr').toLowerCase()
@@ -43,18 +45,19 @@ export const matchesTourSlug = (tour: Tour, targetSlug: string): boolean => {
 	if (vVi === target || vEn === target || vFr === target) return true
 
 	// 3. Match with raw name slugify without prefix (fallback for pure title slugs)
-	const nameVi = slugify(tour.tour_name?.vi || tour.tour_name?.vn)
-	const nameEn = slugify(tour.tour_name?.en)
-	const nameFr = slugify(tour.tour_name?.fr)
+	const tourName = tour.tourName ?? (tour as { tour_name?: Tour['tourName'] }).tour_name
+	const nameVi = slugify(tourName?.vi || tourName?.vn)
+	const nameEn = slugify(tourName?.en)
+	const nameFr = slugify(tourName?.fr)
 
 	if (nameVi === target || nameEn === target || nameFr === target) return true
 
-	// 4. If target slug starts with tour_id prefix, check if prefix matches tour_id
+	// 4. If target slug starts with tourId prefix, check if prefix matches tourId
 	if (rawTourId && target.startsWith(`${rawTourId}-`)) {
 		return true
 	}
 
-	// 5. Check if numeric suffix of tour_id matches (e.g., target "dl-1-..." vs rawTourId "dl-01")
+	// 5. Check if numeric suffix of tourId matches (e.g., target "dl-1-..." vs rawTourId "dl-01")
 	if (rawTourId) {
 		const rawNormalized = rawTourId.replace(/[^a-z0-9]/g, '')
 		const targetPrefix = target.split('-')[0] + (target.split('-')[1] || '')
