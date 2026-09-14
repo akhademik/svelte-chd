@@ -33,7 +33,7 @@
 	let rawOgImage = $derived(propOgImage ?? $seoOgImage)
 
 	let pageTitle = $derived(rawTitle ? `${rawTitle} | CHD Travel` : DEFAULT_TITLE)
-	let pageDescription = $derived(rawDesc ? `${rawDesc} | ${DEFAULT_DESC}` : DEFAULT_DESC)
+	let pageDescription = $derived(rawDesc || DEFAULT_DESC)
 	let pageKeywords = $derived(
 		rawKeywords ? `${rawKeywords}, ${DEFAULT_KEYWORDS}` : DEFAULT_KEYWORDS
 	)

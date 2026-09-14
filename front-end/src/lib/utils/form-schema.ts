@@ -1,3 +1,4 @@
+import { zod, type ValidationAdapter } from 'sveltekit-superforms/adapters'
 import { z } from 'zod'
 
 const phoneCheck = /^(?:\(\+\d+\)|\+\d+)?[-.\s\d]+$/
@@ -11,6 +12,7 @@ export const formSchema = z.object({
 })
 
 export type FormSchema = z.infer<typeof formSchema>
+export const formAdapter = zod(formSchema as any) as ValidationAdapter<FormSchema>
 
 export const bookingApiSchema = z.object({
 	name: z.string().trim().min(2, 'form_name_min').max(100, 'form_name_max'),

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconChevronDown } from '$lib/icons'
 
 	type FaqCategory = 'all' | 'booking' | 'tours' | 'ethics' | 'prep' | 'cancellation'
 
@@ -162,16 +163,7 @@
 						<span
 							class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-surface text-foreground-muted transition-transform duration-200"
 							class:rotate-180={openItem === faq.id}>
-							<svg
-								class="h-4 w-4 stroke-current"
-								fill="none"
-								viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M19 9l-7 7-7-7"></path>
-							</svg>
+							<IconChevronDown class="h-4 w-4" />
 						</span>
 					</button>
 

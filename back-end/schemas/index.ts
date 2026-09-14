@@ -3,9 +3,9 @@ import day_tours from './category/day-tours'
 import exchangeRates from './category/exchange-rates'
 import heroImage from './category/hero-image'
 import highland_tours from './category/highland-tours'
+import tourGoodToKnow from './category/tour-good-to-know'
 import tour_highlights from './category/tour-highlights'
 import tour_includes from './category/tour-includes'
-import tour_tags from './category/tour-tags'
 import {locale_content, locale_string, localeString} from './common/type-locale'
 import {content_block} from './common/type-others'
 import {tour_price} from './common/type-tour'
@@ -22,9 +22,9 @@ export const schemaTypes = [
   heroImage,
   day_tours,
   highland_tours,
+  tourGoodToKnow,
   tour_highlights,
   tour_includes,
-  tour_tags,
   exchangeRates,
   blogPost,
 ]

@@ -2,14 +2,13 @@ import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { isSpamSubmission } from '$lib/server/security/anti-spam'
-import { checkRateLimit } from '$lib/server/security/rate-limiter'
+import { checkRateLimitAsync } from '$lib/server/security/rate-limiter'
 import { BlogService } from '$lib/server/services/blog.service'
 import { HeroImageService, selectDailyHeroImage } from '$lib/server/services/hero-image.service'
 import { TourService } from '$lib/server/services/tour.service'
 import { Logger } from '$lib/utils/logger'
-import { formSchema, type FormSchema } from '$utils/form-schema'
+import { formAdapter, type FormSchema } from '$utils/form-schema'
 import { fail } from '@sveltejs/kit'
-import { zod } from 'sveltekit-superforms/adapters'
 import { message, superValidate } from 'sveltekit-superforms/server'
 import type { PageServerLoad } from './$types'
 
@@ -56,7 +55,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 			'public, max-age=0, s-maxage=1800, stale-while-revalidate=3600, stale-if-error=259200',
 	})
 
-	const form = await superValidate<FormSchema, string>(zod(formSchema as any) as any)
+	const form = await superValidate(formAdapter)
 	const kv = platform?.env?.SANITY_SNAPSHOT_KV
 
 	const [dayTours, highlandTours, featuredPosts, allHeroImages] = await Promise.all([
@@ -80,9 +79,9 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 }
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, platform }) => {
 		const requestClone = request.clone()
-		const form = await superValidate<FormSchema, string>(request, zod(formSchema as any) as any)
+		const form = await superValidate(request, formAdapter)
 		const tagsFormData = await requestClone.formData()
 		const allTags = tagsFormData.getAll('selected_tag').map(t => String(t))
 		const submission: SubmissionData = {
@@ -104,12 +103,16 @@ export const actions = {
 			return message(form, 'success')
 		}
 
-		// Rate Limiting: 5 submissions per 10 minutes per IP
-		const rateLimit = checkRateLimit(request, {
-			maxRequests: 5,
-			windowMs: 10 * 60 * 1000,
-			keyPrefix: 'contact-form',
-		})
+		// Rate Limiting: 5 submissions per 10 minutes per IP (with KV support if bound)
+		const rateLimit = await checkRateLimitAsync(
+			request,
+			{
+				maxRequests: 5,
+				windowMs: 10 * 60 * 1000,
+				keyPrefix: 'contact-form',
+			},
+			platform?.env?.RATE_LIMIT_KV
+		)
 
 		if (!rateLimit.allowed) {
 			return fail(429, {

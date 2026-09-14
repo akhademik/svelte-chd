@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
+	import { IconChevronLeft, IconChevronRight, IconClose } from '$lib/icons'
 	import type { GalleryImage } from '$lib/utils/gallery'
 	import { urlFor } from '$lib/utils/sanity'
 	import { fade } from 'svelte/transition'
@@ -118,26 +119,7 @@
 				onclick={close}
 				class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white/80 transition-colors hover:bg-white/15 hover:text-white"
 				aria-label="Close lightbox">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round">
-					<line
-						x1="18"
-						y1="6"
-						x2="6"
-						y2="18"></line>
-					<line
-						x1="6"
-						y1="6"
-						x2="18"
-						y2="18"></line>
-				</svg>
+				<IconClose class="h-6 w-6" />
 			</button>
 		</div>
 
@@ -153,17 +135,7 @@
 				onclick={prevImage}
 				class="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white/90 backdrop-blur-md transition-all hover:scale-110 hover:bg-black/80 hover:text-white focus:outline-none sm:left-4 sm:h-12 sm:w-12"
 				aria-label="Previous photo">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round">
-					<polyline points="15 18 9 12 15 6"></polyline>
-				</svg>
+				<IconChevronLeft class="h-6 w-6" />
 			</button>
 
 			<!-- Active Centered Image -->
@@ -180,17 +152,7 @@
 				onclick={nextImage}
 				class="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/50 text-white/90 backdrop-blur-md transition-all hover:scale-110 hover:bg-black/80 hover:text-white focus:outline-none sm:right-4 sm:h-12 sm:w-12"
 				aria-label="Next photo">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-6 w-6"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round">
-					<polyline points="9 18 15 12 9 6"></polyline>
-				</svg>
+				<IconChevronRight class="h-6 w-6" />
 			</button>
 		</div>
 

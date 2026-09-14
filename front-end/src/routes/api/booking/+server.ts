@@ -8,7 +8,7 @@ import { json } from '@sveltejs/kit'
 
 export const POST = async ({ request, platform }) => {
 	try {
-		const rawData = (await request.json()) as Record<string, any>
+		const rawData = (await request.json()) as Record<string, unknown>
 
 		// Anti-Spam: Honeypot trap check
 		if (isSpamSubmission(rawData)) {
@@ -24,7 +24,7 @@ export const POST = async ({ request, platform }) => {
 				windowMs: 10 * 60 * 1000,
 				keyPrefix: 'booking-api',
 			},
-			(platform as any)?.env?.RATE_LIMIT_KV
+			platform?.env?.RATE_LIMIT_KV
 		)
 
 		if (!rateLimit.allowed) {

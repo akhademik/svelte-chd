@@ -19,7 +19,7 @@
 		{$LL.tours.customize_desc()}
 	</p>
 	<a
-		href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tour_id || '')}`}
+		href={`/${$locale}/contact?tour=${encodeURIComponent(title)}&duration=${encodeURIComponent(duration || '')}&code=${encodeURIComponent(tour.tourId || '')}`}
 		class="mt-5 flex w-full items-center justify-center gap-2 bg-secondary py-3.5 text-xs font-medium uppercase tracking-widest text-white transition-colors hover:bg-secondary-hover">
 		{$LL.tours.plan_trip()}
 	</a>

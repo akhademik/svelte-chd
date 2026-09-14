@@ -57,14 +57,14 @@ describe('format-data utilities', () => {
 	})
 
 	it('should sort price object entries numerically', () => {
-		const dummyTour = {
-			tour_price: {
+		const dummyTour: Tour = {
+			tourPrice: {
 				_type: 'price_matrix',
 				pax5_6: 500,
 				pax1: 1000,
 				pax2: 800,
 			},
-		} as unknown as Tour
+		}
 
 		const sorted = formatPriceObject(dummyTour)
 		expect(sorted[0][0]).toBe('pax1')
@@ -143,7 +143,8 @@ describe('format-data utilities', () => {
 
 		it('should check if entity has localized title', () => {
 			expect(hasLocalizedTitle({ title: { vi: 'Bài viết' } }, 'vi')).toBe(true)
-			expect(hasLocalizedTitle({ tour_name: { en: 'Tour' } }, 'fr')).toBe(true)
+			expect(hasLocalizedTitle({ tourName: { en: 'Tour' } }, 'fr')).toBe(true)
+			expect(hasLocalizedTitle({ tour_name: { en: 'Tour Cũ' } }, 'fr')).toBe(true)
 			expect(hasLocalizedTitle({ title: null }, 'vi')).toBe(false)
 			expect(hasLocalizedTitle(undefined, 'vi')).toBe(false)
 		})
@@ -152,7 +153,7 @@ describe('format-data utilities', () => {
 			const items = [
 				{ id: 1, title: { vi: 'Bài 1', en: 'Post 1' } },
 				{ id: 2, title: null },
-				{ id: 3, tour_name: { en: 'Tour 3' } },
+				{ id: 3, tourName: { en: 'Tour 3' } },
 			]
 			const filtered = filterLocalizedItems(items, 'vi')
 			expect(filtered.length).toBe(2)

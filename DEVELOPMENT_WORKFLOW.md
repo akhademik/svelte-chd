@@ -12,8 +12,11 @@
   - `back-end/`: Sanity Content Studio v3, React 18, TypeScript schemas (`tourDaily`, `tourCentral`, `blogPost`, `exchangeRates`).
 
 ```bash
-# Cài đặt toàn bộ dự án từ thư mục gốc
+# 1. Cài đặt toàn bộ dependencies monorepo
 pnpm install
+
+# 2. Khởi tạo file biến môi trường cho front-end (bắt buộc để SvelteKit sync static private env)
+cp front-end/.env.example front-end/.env
 ```
 
 ### 🚀 Lệnh Nhanh Tại Thư Mục Gốc (Root Scripts):
@@ -24,7 +27,7 @@ pnpm install
 - **Kiểm tra Type & Diagnostics**: `pnpm check:all` (`svelte-check` + `tsc --noEmit`)
 - **Kiểm tra Linting & Format**: `pnpm lint:all`
 - **Tự động Format Code**: `pnpm format:all`
-- **Chạy Test Suites**: `pnpm test` (Unit tests 77/77 across 11 suites) & `pnpm test:e2e` (Playwright 6/6)
+- **Chạy Test Suites**: `pnpm test` (Vitest Unit tests) & `pnpm test:e2e` (Playwright E2E)
 - **Kiểm tra Dead Code & Unused**: `pnpm knip:all`
 - **Đồng bộ Tỷ Giá Ngoại Tệ (Cron / Script)**: `pnpm sync:rates`
 - **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
@@ -47,8 +50,8 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 │    - pnpm format:all                                        │
 │    - pnpm lint:all                                          │
 │    - pnpm check:all (Svelte & TypeScript diagnostics)       │
-│    - pnpm test (Vitest unit test suites 77/77)              │
-│    - pnpm test:e2e (Playwright E2E 6/6 — Đảm bảo Green)     │
+│    - pnpm test (Vitest unit test suites)                    │
+│    - pnpm test:e2e (Playwright E2E tests — Đảm bảo Green)   │
 │    - pnpm knip:all (Dead Code & Unused Dependencies)        │
 │    - pnpm build:all (Kiểm tra build production)             │
 └──────────────────────────────┬──────────────────────────────┘
@@ -92,7 +95,8 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
    - `kv-snapshot.ts`: Lưu snapshot dự phòng 14 ngày trên Cloudflare KV. Khi Sanity gặp sự cố, hệ thống tự động fallback snapshot để web vẫn phục vụ bình thường.
 
 6. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
-   - Mọi form submission (Contact, Booking) phải qua `checkRateLimit` (5 requests / 10 phút / IP) và `isSpamSubmission` (Honeypot trap).
+   - Mọi form submission và API endpoint (Contact, Booking) phải qua `checkRateLimitAsync` (5 requests / 10 phút / IP, đồng bộ qua Cloudflare KV `RATE_LIMIT_KV` và tự động fallback in-memory) và `isSpamSubmission` (Honeypot trap).
+   - Toàn bộ HTTP responses (SSR pages, static assets, API) bắt buộc đi qua `applySecurityHeaders` với đầy đủ `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` và Content-Security-Policy (CSP).
    - Toàn bộ email/Discord notification phải được xử lý qua `Promise.allSettled` trước khi return response.
 
 7. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
@@ -105,4 +109,19 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 9. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
    - Mọi logic xoay vòng thời gian, chu kỳ timer, hoặc tính toán index định kỳ (như Hero rotation, slider interval) **bắt buộc dùng chung hằng số và hàm tính toán tại `front-end/src/lib/constants/` hoặc `front-end/src/lib/utils/`** (ví dụ: `constants/hero.ts`).
    - Component UI tương tác (như `home-hero.svelte`) phải khởi tạo `$state` khớp 100% với dữ liệu nhận từ SSR (`getInitialIndex()` thay vì `let currentIndex = $state(0)`) để triệt tiêu hoàn toàn hiện tượng hydration flash.
+
+10. **Hệ Thống Biểu Tượng Tái Sử Dụng (`front-end/src/lib/icons/`)**:
+    - Mọi biểu tượng SVG dùng trên giao diện frontend **bắt buộc tách thành component tái sử dụng** trong thư mục `src/lib/icons/` (e.g. `IconActivity`, `IconGroup`, `IconPack`, `IconNotes`, `IconClose`, `IconChevronLeft`, `IconChevronRight`, `IconChevronDown`, `IconArrowRight`, `IconArrowUp`, `IconSend`, `IconImageGallery`, `IconClock`, `IconCheck`, `IconCheckCircle`, `IconFacebook`, `IconTripadvisor`, `IconStar`, `IconPhone`, `IconFileText`, `IconDownload`).
+    - Tất cả icons được export tập trung qua `src/lib/icons/index.ts` (barrel export) và hỗ trợ prop `class` (default `h-4 w-4` hoặc thích hợp). Không nhúng mã SVG thô trực tiếp trong các components nghiệp vụ.
+
+11. **Superforms & Zod Adapter Type Safety (`front-end/src/lib/utils/form-schema.ts`)**:
+    - Validation adapter phải được đóng gói và export tập trung (`formAdapter: ValidationAdapter<FormSchema>`) tại tầng schema.
+    - Tuyệt đối không dùng `zod(formSchema as any) as any` rải rác trong `+page.server.ts` loaders hay form actions; luôn import `formAdapter` để đảm bảo kiểu dữ liệu `form.data` chuẩn `FormSchema` trong suốt ứng dụng.
+
+12. **Sitemap & SEO Metadata (`front-end/src/routes/sitemap.xml/+server.ts`)**:
+    - Route `sitemap.xml` bắt buộc tiêu thụ dữ liệu thông qua Service Layer (`BlogService.getAllBlogs(kv)`, `TourService.getToursByType(kv)`), không query Sanity client trực tiếp.
+    - Thuộc tính `<lastmod>` cho bài viết phải ưu tiên ngày cập nhật gần nhất (`blog.updatedAt ?? blog.publishedAt`) để crawler nhận diện chính xác các bản cập nhật nội dung.
+
+13. **Deterministic Slug Matching (`front-end/src/lib/server/services/`)**:
+    - Các hàm phân giải slug như `matchesTourSlug()` hay `matchesBlogSlug()` phải vận hành theo cơ chế phân giải 4 tầng xác định (1: Direct ID, 2: Multilingual Virtual Slug, 3: Raw Title Slug, 4: Prefixed ID `${rawTourId}-`), tuyệt đối không dùng heuristic chuỗi lỏng lẻo (`startsWith`/`contains` mơ hồ) gây false-positive matching.
 

@@ -1,20 +1,21 @@
 export const EXTRACT_TOUR_FIELDS = `
-	"best_sell": coalesce(bestSellerTour, false),
-	"contact_for_price": coalesce(contactForPrice, false),
-	"tour_level": coalesce(tourLevel, 'easy'),
-	"tour_highlights": coalesce(
+	"bestSellerTour": coalesce(bestSellerTour, false),
+	"contactForPrice": coalesce(contactForPrice, false),
+	"tourHighlights": coalesce(
 		tourHighlights[]->{'highlights': tourHighlights},
 		[]
 	),
-	"tour_itinerary": tourItinerary,
-	"tour_includes": coalesce(tourIncludes->tourIncludes, []),
-	"tour_tags": coalesce(
-		tourTags[]->{'tour_tags': tourTags, 'tourTags': tourTags},
-		[]
-	),
-	"tour_price": tourPrice,
-	"tour_id": coalesce(tourID, ''),
-	"img_tour": coalesce(
+	"tourItinerary": tourItinerary,
+	"tourIncludes": coalesce(tourIncludes->tourIncludes, []),
+	"tourPrice": tourPrice,
+	"tourId": coalesce(tourID, ''),
+	"goodToKnow": goodToKnow{
+		"activityLevel": activityLevel->{ title, description },
+		"whatToPack": whatToPack->{ title, description },
+		"groupSize": groupSize->{ title, description },
+		"otherNotes": otherNotes->{ title, description }
+	},
+	"imgTour": coalesce(
 		imgTour[]{
 			...,
 			"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
@@ -22,15 +23,15 @@ export const EXTRACT_TOUR_FIELDS = `
 		},
 		[]
 	),
-	"img_cover": coverImg{
+	"coverImg": coverImg{
 		...,
 		"caption": coalesce(caption, asset->title, asset->originalFilename, ''),
 		"alt": coalesce(alt, asset->altText, asset->description, '')
 	},
-	"tour_duration": tourDuration,
-	"tour_slug": tourSlug,
-	"tour_intro": tourIntro,
-	"tour_name": tourName
+	"tourDuration": tourDuration,
+	"tourSlug": tourSlug,
+	"tourIntro": tourIntro,
+	"tourName": tourName
 `
 
 export const TOURS_BY_DAY_QUERY = `*[_type == 'tourDaily']{${EXTRACT_TOUR_FIELDS}}`

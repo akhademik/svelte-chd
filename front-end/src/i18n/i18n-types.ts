@@ -697,26 +697,6 @@ type RootTranslation = {
 			 */
 			style_val: string
 			/**
-			 * P​a​c​i​n​g
-			 */
-			difficulty: string
-			/**
-			 * E​a​s​y​ ​/​ ​M​i​n​d​f​u​l​ ​W​a​l​k
-			 */
-			difficulty_val: string
-			/**
-			 * E​a​s​y​ ​/​ ​M​i​n​d​f​u​l​ ​W​a​l​k
-			 */
-			difficulty_easy: string
-			/**
-			 * M​o​d​e​r​a​t​e​ ​/​ ​A​c​t​i​v​e
-			 */
-			difficulty_medium: string
-			/**
-			 * C​h​a​l​l​e​n​g​i​n​g​ ​/​ ​T​r​e​k​s
-			 */
-			difficulty_hard: string
-			/**
 			 * D​e​p​a​r​t​u​r​e
 			 */
 			departure: string
@@ -731,37 +711,21 @@ type RootTranslation = {
 			 */
 			title: string
 			/**
-			 * B​e​s​t​ ​S​e​a​s​o​n
+			 * A​c​t​i​v​i​t​y​ ​L​e​v​e​l
 			 */
-			season_title: string
-			/**
-			 * D​r​y​ ​s​e​a​s​o​n​ ​(​N​o​v​–​A​p​r​)​ ​b​r​i​n​g​s​ ​s​u​n​n​y​ ​d​a​y​s​ ​a​n​d​ ​w​h​i​t​e​ ​c​o​f​f​e​e​ ​b​l​o​s​s​o​m​s​ ​(​F​e​b​–​A​p​r​)​.​ ​G​r​e​e​n​ ​s​e​a​s​o​n​ ​(​M​a​y​–​O​c​t​)​ ​s​h​o​w​c​a​s​e​s​ ​m​a​j​e​s​t​i​c​ ​c​a​s​c​a​d​i​n​g​ ​w​a​t​e​r​f​a​l​l​s​.
-			 */
-			season_desc: string
+			activity_level: string
 			/**
 			 * W​h​a​t​ ​t​o​ ​P​a​c​k
 			 */
-			packing_title: string
+			what_to_pack: string
 			/**
-			 * C​o​m​f​o​r​t​a​b​l​e​ ​w​a​l​k​i​n​g​ ​s​h​o​e​s​,​ ​l​i​g​h​t​ ​j​a​c​k​e​t​ ​f​o​r​ ​c​o​o​l​ ​h​i​g​h​l​a​n​d​ ​e​v​e​n​i​n​g​s​,​ ​s​u​n​s​c​r​e​e​n​,​ ​e​c​o​ ​i​n​s​e​c​t​ ​r​e​p​e​l​l​e​n​t​,​ ​a​n​d​ ​c​a​m​e​r​a​.
+			 * G​r​o​u​p​ ​S​i​z​e
 			 */
-			packing_desc: string
+			group_size: string
 			/**
-			 * H​o​t​e​l​ ​P​i​c​k​u​p
+			 * O​t​h​e​r​ ​N​o​t​e​s
 			 */
-			pickup_title: string
-			/**
-			 * C​o​m​p​l​i​m​e​n​t​a​r​y​ ​r​o​u​n​d​-​t​r​i​p​ ​p​i​c​k​u​p​ ​f​r​o​m​ ​c​e​n​t​r​a​l​ ​B​u​o​n​ ​M​a​ ​T​h​u​o​t​ ​h​o​t​e​l​s​ ​o​r​ ​B​M​T​ ​a​i​r​p​o​r​t​ ​u​p​o​n​ ​r​e​q​u​e​s​t​.
-			 */
-			pickup_desc: string
-			/**
-			 * D​i​e​t​a​r​y​ ​O​p​t​i​o​n​s
-			 */
-			diet_title: string
-			/**
-			 * S​p​e​c​i​a​l​ ​d​i​e​t​a​r​y​ ​r​e​q​u​i​r​e​m​e​n​t​s​,​ ​v​e​g​e​t​a​r​i​a​n​,​ ​a​n​d​ ​v​e​g​a​n​ ​o​p​t​i​o​n​s​ ​a​r​e​ ​w​a​r​m​l​y​ ​a​c​c​o​m​m​o​d​a​t​e​d​ ​o​n​ ​a​l​l​ ​m​e​a​l​s​.
-			 */
-			diet_desc: string
+			other_notes: string
 		}
 		gallery: {
 			/**
@@ -900,7 +864,7 @@ type RootTranslation = {
 			 */
 			price_for_2_pax: string
 			/**
-			 * A​p​p​r​o​x​i​m​a​t​e​ ​c​o​n​v​e​r​s​i​o​n​,​ ​e​x​c​h​a​n​g​e​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.
+			 * E​x​c​h​a​n​g​e​ ​r​a​t​e​ ​m​a​y​ ​v​a​r​y​ ​a​t​ ​c​h​e​c​k​o​u​t​.
 			 */
 			price_conversion_disclaimer: string
 			/**
@@ -2049,26 +2013,6 @@ export type TranslationFunctions = {
 			 */
 			style_val: () => LocalizedString
 			/**
-			 * Pacing
-			 */
-			difficulty: () => LocalizedString
-			/**
-			 * Easy / Mindful Walk
-			 */
-			difficulty_val: () => LocalizedString
-			/**
-			 * Easy / Mindful Walk
-			 */
-			difficulty_easy: () => LocalizedString
-			/**
-			 * Moderate / Active
-			 */
-			difficulty_medium: () => LocalizedString
-			/**
-			 * Challenging / Treks
-			 */
-			difficulty_hard: () => LocalizedString
-			/**
 			 * Departure
 			 */
 			departure: () => LocalizedString
@@ -2083,37 +2027,21 @@ export type TranslationFunctions = {
 			 */
 			title: () => LocalizedString
 			/**
-			 * Best Season
+			 * Activity Level
 			 */
-			season_title: () => LocalizedString
-			/**
-			 * Dry season (Nov–Apr) brings sunny days and white coffee blossoms (Feb–Apr). Green season (May–Oct) showcases majestic cascading waterfalls.
-			 */
-			season_desc: () => LocalizedString
+			activity_level: () => LocalizedString
 			/**
 			 * What to Pack
 			 */
-			packing_title: () => LocalizedString
+			what_to_pack: () => LocalizedString
 			/**
-			 * Comfortable walking shoes, light jacket for cool highland evenings, sunscreen, eco insect repellent, and camera.
+			 * Group Size
 			 */
-			packing_desc: () => LocalizedString
+			group_size: () => LocalizedString
 			/**
-			 * Hotel Pickup
+			 * Other Notes
 			 */
-			pickup_title: () => LocalizedString
-			/**
-			 * Complimentary round-trip pickup from central Buon Ma Thuot hotels or BMT airport upon request.
-			 */
-			pickup_desc: () => LocalizedString
-			/**
-			 * Dietary Options
-			 */
-			diet_title: () => LocalizedString
-			/**
-			 * Special dietary requirements, vegetarian, and vegan options are warmly accommodated on all meals.
-			 */
-			diet_desc: () => LocalizedString
+			other_notes: () => LocalizedString
 		}
 		gallery: {
 			/**
@@ -2251,7 +2179,7 @@ export type TranslationFunctions = {
 			 */
 			price_for_2_pax: () => LocalizedString
 			/**
-			 * Approximate conversion, exchange rate may vary at checkout.
+			 * Exchange rate may vary at checkout.
 			 */
 			price_conversion_disclaimer: () => LocalizedString
 			/**

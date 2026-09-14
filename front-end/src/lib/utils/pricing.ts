@@ -67,8 +67,9 @@ export const getPaxTier = (count: number): string => {
 }
 
 export const formatPriceObject = (tour: Tour): [string, number][] => {
-	if (!tour?.tour_price) return []
-	return Object.entries(tour.tour_price)
+	const priceObj = tour?.tourPrice ?? (tour as { tour_price?: Tour['tourPrice'] })?.tour_price
+	if (!priceObj) return []
+	return Object.entries(priceObj)
 		.filter(([key]) => key !== '_type')
 		.sort((a, b) => {
 			const matchA = a[0].match(/\d+/)

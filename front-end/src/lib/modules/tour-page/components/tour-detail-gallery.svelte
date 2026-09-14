@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
 	import { BaseImageLightbox } from '$lib/base'
+	import { IconImageGallery } from '$lib/icons'
 	import type { GalleryImage } from '$lib/utils/gallery'
 	import { urlFor } from '$lib/utils/sanity'
 
@@ -117,28 +118,7 @@
 			type="button"
 			onclick={() => openLightbox(0)}
 			class="absolute bottom-4 right-4 hidden items-center gap-2 rounded-md border border-border bg-surface/95 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-foreground shadow-lg backdrop-blur-md transition-all hover:border-foreground hover:bg-surface hover:text-primary md:inline-flex">
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-4 w-4"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round">
-				<rect
-					x="3"
-					y="3"
-					width="18"
-					height="18"
-					rx="2"
-					ry="2"></rect>
-				<circle
-					cx="8.5"
-					cy="8.5"
-					r="1.5"></circle>
-				<polyline points="21 15 16 10 5 21"></polyline>
-			</svg>
+			<IconImageGallery class="h-4 w-4" />
 			<span>
 				{$LL.tours.gallery.view_all_photos({ count: images.length })}
 			</span>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconChevronLeft, IconChevronRight, IconStar } from '$lib/icons'
 	import { bookingModal } from '$lib/stores/booking-store'
 	import type { Tour } from '$lib/types/tour.type'
 	import {
@@ -53,9 +54,9 @@
 	})
 
 	let currentTour = $derived(hotTours[currentIndex])
-	let title = $derived(getLocalizedField(currentTour?.tour_name, $locale, 'Featured Tour'))
-	let price = $derived(currentTour?.tour_price?.pax2 || currentTour?.tour_price?.pax1 || 0)
-	let duration = $derived(getLocalizedField(currentTour?.tour_duration, $locale, 'Full Day'))
+	let title = $derived(getLocalizedField(currentTour?.tourName, $locale, 'Featured Tour'))
+	let price = $derived(currentTour?.tourPrice?.pax2 || currentTour?.tourPrice?.pax1 || 0)
+	let duration = $derived(getLocalizedField(currentTour?.tourDuration, $locale, 'Full Day'))
 
 	let canonicalCategory = $derived<CanonicalTourCategory>(
 		currentTour?._type === 'tourCentral' ? 'highland-tours' : 'day-tours'
@@ -65,7 +66,7 @@
 
 	let tourLink = $derived(
 		currentTour
-			? `/${$locale}/${localizedCategorySlug}/${getTourSlug(currentTour, $locale) || currentTour.tour_id || ''}`
+			? `/${$locale}/${localizedCategorySlug}/${getTourSlug(currentTour, $locale) || currentTour.tourId || ''}`
 			: '#'
 	)
 </script>
@@ -79,16 +80,16 @@
 		<!-- Background Cover Image with Soft Parallax & Gradient Mask -->
 		<div class="absolute inset-0 z-0 overflow-hidden bg-inverse-dark">
 			{#key currentIndex}
-				{#if currentTour?.img_cover}
+				{#if currentTour?.coverImg}
 					<img
 						transition:fade={{ duration: 600 }}
-						src={urlFor(currentTour.img_cover)
+						src={urlFor(currentTour.coverImg)
 							.width(1920)
 							.height(1080)
 							.auto('format')
 							.quality(95)
 							.url()}
-						alt={currentTour.img_cover?.caption || title}
+						alt={currentTour.coverImg?.caption || title}
 						class="absolute inset-0 h-full w-full object-cover opacity-90 transition-opacity duration-700 md:opacity-90" />
 				{/if}
 			{/key}
@@ -109,21 +110,15 @@
 					<div class="mb-4 flex min-h-[1.75rem] flex-wrap items-center gap-2.5 sm:gap-3">
 						<span
 							class="inline-flex shrink-0 items-center gap-1.5 bg-secondary px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white shadow-md">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								class="h-3.5 w-3.5"
-								viewBox="0 0 24 24"
-								fill="currentColor"
-								><path
-									d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.784 1.399 8.169-7.333-3.856-7.333 3.856 1.399-8.169-5.934-5.784 8.2-1.192zm0 5.702l-2.232 4.522-4.991.725 3.612 3.521-.852 4.972 4.463-2.347 4.463 2.347-.852-4.972 3.612-3.521-4.991-.725z" /></svg>
+							<IconStar class="h-3.5 w-3.5" />
 							<span>
 								{$LL.tours.featured_badge()}
 							</span>
 						</span>
-						{#if currentTour.tour_id}
+						{#if currentTour.tourId}
 							<span
 								class="shrink-0 border border-inverse-dark bg-inverse/80 px-2.5 py-0.5 font-mono text-xs text-inverse-foreground">
-								{currentTour.tour_id}
+								{currentTour.tourId}
 							</span>
 						{/if}
 						<span class="text-xs uppercase tracking-wider text-foreground-subtle">
@@ -146,8 +141,8 @@
 
 					<!-- Tour Highlights List -->
 					<div class="mb-8 flex h-20 flex-col justify-center space-y-2">
-						{#if currentTour.tour_highlights?.length}
-							{#each currentTour.tour_highlights.slice(0, 3) as item}
+						{#if currentTour.tourHighlights?.length}
+							{#each currentTour.tourHighlights.slice(0, 3) as item}
 								{@const hlText = getLocalizedField(item?.highlights, $locale, '')}
 								{#if hlText}
 									<div
@@ -155,23 +150,6 @@
 										<span class="h-1.5 w-1.5 shrink-0 rounded-full bg-secondary"></span>
 										<span class="line-clamp-1">{hlText}</span>
 									</div>
-								{/if}
-							{/each}
-						{/if}
-					</div>
-
-					<!-- Tags -->
-					<div class="mb-8 flex h-7 flex-wrap items-center gap-2 overflow-hidden">
-						{#if currentTour.tour_tags?.length}
-							{#each currentTour.tour_tags.slice(0, 5) as tag}
-								{@const tagName =
-									getLocalizedField(tag?.tour_tags, $locale, '') ||
-									getLocalizedField(tag?.tourTags, $locale, '')}
-								{#if tagName}
-									<span
-										class="border border-inverse-dark/60 bg-inverse/60 px-2.5 py-0.5 text-[11px] font-medium tracking-wide text-inverse-foreground backdrop-blur-sm">
-										#{tagName}
-									</span>
 								{/if}
 							{/each}
 						{/if}
@@ -185,7 +163,7 @@
 							{$LL.tours.view_details()}
 						</a>
 						<button
-							onclick={() => bookingModal.open(title)}
+							onclick={() => bookingModal.open(title || 'Tour')}
 							class="border border-border-strong px-7 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors hover:border-white hover:bg-white/10">
 							{$LL.tours.book_now_btn()}
 						</button>
@@ -196,7 +174,7 @@
 				<div
 					class="flex flex-col justify-between self-stretch border-t border-inverse pt-6 lg:items-end lg:border-t-0 lg:pt-0">
 					<div class="lg:text-right">
-						{#if currentTour?.contact_for_price || price === 0}
+						{#if currentTour?.contactForPrice || price === 0}
 							<span class="block text-xs uppercase tracking-widest text-foreground-subtle">
 								{$LL.tours.detail.price()}
 							</span>
@@ -229,13 +207,7 @@
 								onclick={prevSlide}
 								class="flex h-11 w-11 items-center justify-center border border-inverse-dark bg-inverse/80 text-inverse-foreground transition-colors hover:border-white hover:text-white"
 								aria-label="Previous featured tour">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+								<IconChevronLeft class="h-4 w-4" />
 							</button>
 
 							<div class="flex gap-1.5 px-2">
@@ -257,13 +229,7 @@
 								onclick={nextSlide}
 								class="flex h-11 w-11 items-center justify-center border border-inverse-dark bg-inverse/80 text-inverse-foreground transition-colors hover:border-white hover:text-white"
 								aria-label="Next featured tour">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="h-4 w-4"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+								<IconChevronRight class="h-4 w-4" />
 							</button>
 						</div>
 					{/if}

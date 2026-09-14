@@ -1,3 +1,5 @@
+import type {Rule} from 'sanity'
+
 // TYPE DEFINITION
 export type Locale = {
   id: string
@@ -17,7 +19,7 @@ export type Field = {
   title: string
   default?: boolean
   initialValue?: string | boolean
-  validation: (Rule: {required: () => any}) => any
+  validation: (rule: Rule) => Rule
 }
 export type GenerateField = (
   _title: string,

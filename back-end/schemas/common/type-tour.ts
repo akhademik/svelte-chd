@@ -1,27 +1,65 @@
+import type {Rule} from 'sanity'
 import {genPriceRange} from '../helper-functions'
 import {PRICE_RANGE} from './constants'
 
-export const tour_level_field = {
-  name: 'tourLevel',
-  title: 'Cấp độ tour (Tour Level)',
-  type: 'string',
-  initialValue: 'easy',
+export const tour_good_to_know = {
+  name: 'goodToKnow',
+  title: 'Thông tin cần biết (Tùy chọn)',
+  description: 'Chọn các mục thông tin tương ứng cho tour từ 4 danh mục thông tin cần biết',
+  type: 'object',
   options: {
-    list: [
-      {title: 'Dễ (Easy)', value: 'easy'},
-      {title: 'Trung bình (Medium)', value: 'medium'},
-      {title: 'Thử thách / Khó (Hard)', value: 'hard'},
-    ],
-    layout: 'radio',
+    collapsible: true,
+    collapsed: false,
   },
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  fields: [
+    {
+      name: 'activityLevel',
+      title: 'Mức độ vận động',
+      description: 'Chọn từ kho danh mục "Mức độ vận động"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "activity_level"',
+      },
+    },
+    {
+      name: 'whatToPack',
+      title: 'Hành trang',
+      description: 'Chọn từ kho danh mục "Hành trang"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "what_to_pack"',
+      },
+    },
+    {
+      name: 'groupSize',
+      title: 'Quy mô nhóm',
+      description: 'Chọn từ kho danh mục "Quy mô nhóm"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "group_size"',
+      },
+    },
+    {
+      name: 'otherNotes',
+      title: 'Lưu ý khác',
+      description: 'Chọn từ kho danh mục "Lưu ý khác"',
+      type: 'reference',
+      to: [{type: 'tourGoodToKnow'}],
+      options: {
+        filter: 'category == "other_notes"',
+      },
+    },
+  ],
 }
 
 export const tour_highlights_ref = {
   name: 'tourHighlights',
   title: 'Các điểm chính trong tour',
   type: 'array',
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  validation: (rule: Rule) => rule.required(),
   of: [
     {
       type: 'reference',
@@ -34,27 +72,11 @@ export const tour_highlights_ref = {
   ],
 }
 
-export const tour_tags_ref = {
-  name: 'tourTags',
-  title: 'Tour Tags',
-  type: 'array',
-  of: [
-    {
-      type: 'reference',
-      to: [
-        {
-          type: 'tourTags',
-        },
-      ],
-    },
-  ],
-}
-
 export const tour_includes_ref = {
   name: 'tourIncludes',
   title: 'Tour bao gồm',
   type: 'reference',
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  validation: (rule: Rule) => rule.required(),
   to: [
     {
       type: 'tourIncludes',

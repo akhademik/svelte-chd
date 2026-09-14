@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
+	import { IconChevronLeft, IconChevronRight } from '$lib/icons'
 	import {
 		mapTestimonials,
 		TestimonialCard,
@@ -166,13 +167,7 @@
 						onblur={() => (isPaused = false)}
 						class="flex h-11 w-11 items-center justify-center border border-border-strong bg-surface text-foreground-muted transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
 						aria-label="Previous testimonials slide">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-4 w-4"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+						<IconChevronLeft class="h-4 w-4" />
 					</button>
 
 					<button
@@ -184,13 +179,7 @@
 						onblur={() => (isPaused = false)}
 						class="flex h-11 w-11 items-center justify-center border border-border-strong bg-surface text-foreground-muted transition-all hover:border-primary hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-primary"
 						aria-label="Next testimonials slide">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							class="h-4 w-4"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+						<IconChevronRight class="h-4 w-4" />
 					</button>
 				</div>
 			{/if}

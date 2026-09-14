@@ -1,3 +1,4 @@
+import type {Rule} from 'sanity'
 import {CNumberInput} from '../components/c-number-input'
 import type {Field, GenerateField, Locale, PriceRange} from './common/constants'
 
@@ -7,7 +8,7 @@ export const generateField: GenerateField = (_title, _name, _type, _init_value) 
     name: _name,
     title: _title,
     type: _type,
-    validation: (Rule) => Rule.required(),
+    validation: (rule: Rule) => rule.required(),
   }
 
   if (_init_value !== undefined) {
@@ -23,7 +24,7 @@ export const genLocaleField = (_locales: Locale[], _type: string) => {
     title: locale.title,
     name: locale.id,
     type: _type,
-    ...(locale.isDefault ? {validation: (Rule: {required: () => any}) => Rule.required()} : {}),
+    ...(locale.isDefault ? {validation: (rule: Rule) => rule.required()} : {}),
     fieldset: locale.isDefault ? null : 'translations',
   }))
 }

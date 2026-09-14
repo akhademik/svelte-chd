@@ -1,31 +1,34 @@
-import { sanityClient } from '$lib/server/sanity/client'
-import { EXTRACT_BLOG_FIELDS } from '$lib/server/sanity/queries/blogs'
-import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
+import { BlogService } from '$lib/server/services/blog.service'
+import { TourService } from '$lib/server/services/tour.service'
+import type { BlogPost } from '$lib/types/blog.type'
+import type { Tour } from '$lib/types/tour.type'
 import { getCategorySlug, type CanonicalTourCategory } from '$lib/utils/format-data'
 import { Logger } from '$lib/utils/logger'
-import { getTourSlug } from '$lib/utils/slug'
+import { getBlogSlug, getTourSlug } from '$lib/utils/slug'
 import type { RequestHandler } from '@sveltejs/kit'
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url, platform }) => {
 	const siteUrl = url.origin
 	const languages = ['en', 'vi', 'fr']
 	const staticRoutes = ['', 'about', 'contact', 'blog']
 	const tourCategories: CanonicalTourCategory[] = ['day-tours', 'highland-tours']
+	const kv = platform?.env?.SANITY_SNAPSHOT_KV
 
-	let tours: any[] = []
-	let blogs: any[] = []
+	let dayTours: Tour[] = []
+	let highlandTours: Tour[] = []
+	let blogs: BlogPost[] = []
 
 	try {
-		const [toursRes, blogsRes] = await Promise.all([
-			sanityClient.fetch(`*[_type in ['tourDaily', 'tourCentral']]{_type, ${EXTRACT_TOUR_FIELDS}}`),
-			sanityClient.fetch(
-				`*[_type == 'blogPost'] | order(publishedAt desc, _createdAt desc){${EXTRACT_BLOG_FIELDS}}`
-			),
+		const [dayRes, highlandRes, blogsRes] = await Promise.all([
+			TourService.getToursByType('day-tours', kv),
+			TourService.getToursByType('highland-tours', kv),
+			BlogService.getAllBlogs(kv),
 		])
-		tours = toursRes || []
+		dayTours = dayRes || []
+		highlandTours = highlandRes || []
 		blogs = blogsRes || []
 	} catch (e) {
-		Logger.error('Sitemap', 'Sanity fetch error:', e)
+		Logger.error('Sitemap', 'Error fetching sitemap data from Service Layer:', e)
 	}
 
 	const urls: string[] = []
@@ -54,10 +57,12 @@ export const GET: RequestHandler = async ({ url }) => {
 	}
 
 	// 2. Dynamic Tour pages per language with localized category and virtual slug
-	for (const tour of tours) {
-		const isHighland = tour._type === 'tourCentral'
-		const canonicalCat: CanonicalTourCategory = isHighland ? 'highland-tours' : 'day-tours'
+	const categorizedTours: Array<{ tour: Tour; canonicalCat: CanonicalTourCategory }> = [
+		...dayTours.map(tour => ({ tour, canonicalCat: 'day-tours' as const })),
+		...highlandTours.map(tour => ({ tour, canonicalCat: 'highland-tours' as const })),
+	]
 
+	for (const { tour, canonicalCat } of categorizedTours) {
 		for (const lang of languages) {
 			const catSlug = getCategorySlug(canonicalCat, lang)
 			const slug = getTourSlug(tour, lang)
@@ -73,16 +78,21 @@ export const GET: RequestHandler = async ({ url }) => {
 		}
 	}
 
-	// 3. Dynamic Blog pages per language
+	// 3. Dynamic Blog pages per language with localized virtual slug and accurate lastmod
 	for (const blog of blogs) {
-		const slug = blog.slug?.current || (typeof blog.slug === 'string' ? blog.slug : '')
+		const lastmodDate = new Date(blog.updatedAt ?? blog.publishedAt ?? Date.now())
+		const lastmod = isNaN(lastmodDate.getTime())
+			? new Date().toISOString().split('T')[0]
+			: lastmodDate.toISOString().split('T')[0]
 
-		if (slug) {
-			for (const lang of languages) {
+		for (const lang of languages) {
+			const slug = getBlogSlug(blog, lang)
+
+			if (slug) {
 				urls.push(`
 	<url>
 		<loc>${siteUrl}/${lang}/blog/${slug}</loc>
-		<lastmod>${new Date(blog.publishedAt || Date.now()).toISOString().split('T')[0]}</lastmod>
+		<lastmod>${lastmod}</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.7</priority>
 	</url>`)

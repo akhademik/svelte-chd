@@ -1,5 +1,6 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
+	import { IconClose } from '$lib/icons'
 	import { bookingModal } from '$lib/stores/booking-store'
 	import toast from 'svelte-french-toast'
 	import { fade, scale } from 'svelte/transition'
@@ -85,26 +86,7 @@
 				onclick={close}
 				class="absolute right-4 top-4 rounded-full p-2 text-foreground-subtle transition-colors hover:bg-surface-muted hover:text-foreground sm:right-6 sm:top-6"
 				aria-label="Close modal">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-5 w-5"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"
-					stroke-linecap="round"
-					stroke-linejoin="round">
-					<line
-						x1="18"
-						y1="6"
-						x2="6"
-						y2="18"></line>
-					<line
-						x1="6"
-						y1="6"
-						x2="18"
-						y2="18"></line>
-				</svg>
+				<IconClose class="h-5 w-5" />
 			</button>
 
 			<h3

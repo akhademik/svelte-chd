@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { IconChevronLeft, IconChevronRight } from '$lib/icons'
 	import { mapTestimonials, TestimonialCard } from '$lib/modules/testimonials'
 	import type { Testimonial } from '$lib/types/testimonial.type'
 	import { onMount } from 'svelte'
@@ -69,26 +70,14 @@
 				onclick={prevSlide}
 				class="flex h-7 w-7 items-center justify-center border border-border-strong bg-surface text-foreground-muted shadow-sm transition-colors hover:border-primary hover:bg-primary hover:text-white"
 				aria-label="Previous review">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-3.5 w-3.5"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+				<IconChevronLeft class="h-3.5 w-3.5" />
 			</button>
 			<button
 				type="button"
 				onclick={nextSlide}
 				class="flex h-7 w-7 items-center justify-center border border-border-strong bg-surface text-foreground-muted shadow-sm transition-colors hover:border-primary hover:bg-primary hover:text-white"
 				aria-label="Next review">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					class="h-3.5 w-3.5"
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+				<IconChevronRight class="h-3.5 w-3.5" />
 			</button>
 		</div>
 	{/if}

@@ -1,4 +1,5 @@
 import { DEFAULT_EXCHANGE_RATES } from '$lib/constants/exchange-rates'
+import { CACHE_POLICY } from '$lib/server/cache/cache-policy'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
@@ -17,7 +18,7 @@ export const ExchangeService = {
 	 */
 	async getLatestRates(kv?: KVNamespace): Promise<ExchangeRatesData> {
 		const defaultRates: ExchangeRatesData = { ...DEFAULT_EXCHANGE_RATES }
-		return cachedFetch('latest-exchange-rates', 60 * 60 * 1000, async () => {
+		return cachedFetch('latest-exchange-rates', CACHE_POLICY.EXCHANGE_RATES_TTL_MS, async () => {
 			try {
 				return await withKvSnapshot(
 					kv,

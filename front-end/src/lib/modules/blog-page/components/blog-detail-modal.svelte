@@ -4,6 +4,7 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 
 	import type { Locales } from '$i18n/i18n-types'
+	import { IconChevronLeft, IconChevronRight, IconClose } from '$lib/icons'
 	import { blogModal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { getLocalizedField } from '$lib/utils/format-data'
@@ -122,26 +123,7 @@
 					onclick={close}
 					class="flex h-8 w-8 items-center justify-center rounded-full text-foreground-subtle transition-colors hover:bg-surface-muted hover:text-foreground"
 					aria-label={$LL.blog_page.close()}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="1.5"
-						stroke-linecap="round"
-						stroke-linejoin="round">
-						<line
-							x1="18"
-							y1="6"
-							x2="6"
-							y2="18"></line>
-						<line
-							x1="6"
-							y1="6"
-							x2="18"
-							y2="18"></line>
-					</svg>
+					<IconClose class="h-5 w-5" />
 				</button>
 			</div>
 
@@ -192,26 +174,14 @@
 											(activeImageIndex - 1 + allImages.length) % allImages.length)}
 									class="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
 									aria-label="Previous image">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+									<IconChevronLeft class="h-4 w-4" />
 								</button>
 								<button
 									type="button"
 									onclick={() => (activeImageIndex = (activeImageIndex + 1) % allImages.length)}
 									class="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/70"
 									aria-label="Next image">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+									<IconChevronRight class="h-4 w-4" />
 								</button>
 								<div
 									class="absolute bottom-3 right-3 z-10 rounded-full bg-black/60 px-2.5 py-0.5 text-[11px] font-light text-white backdrop-blur-sm">

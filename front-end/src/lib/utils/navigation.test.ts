@@ -9,20 +9,14 @@ vi.mock('$app/navigation', () => ({
 
 describe('navigation utils', () => {
 	it('should get tour by index correctly', () => {
-		const tours = [
-			{ tour_slug: { current: 'tour-1' } },
-			{ tour_slug: { current: 'tour-2' } },
-		] as Tour[]
+		const tours: Tour[] = [{ tourSlug: { current: 'tour-1' } }, { tourSlug: { current: 'tour-2' } }]
 
-		expect(tourByIndex(tours, 1)?.tour_slug).toEqual({ current: 'tour-2' })
-		expect(tourByIndex(tours, 99)?.tour_slug).toEqual({ current: 'tour-1' })
+		expect(tourByIndex(tours, 1)?.tourSlug).toEqual({ current: 'tour-2' })
+		expect(tourByIndex(tours, 99)?.tourSlug).toEqual({ current: 'tour-1' })
 	})
 
 	it('should calculate length and index correctly', () => {
-		const tours = [
-			{ tour_slug: { current: 'tour-1' } },
-			{ tour_slug: { current: 'tour-2' } },
-		] as Tour[]
+		const tours: Tour[] = [{ tourSlug: { current: 'tour-1' } }, { tourSlug: { current: 'tour-2' } }]
 
 		const res = getLengthAndIndex(tours, 'tour-2')
 		expect(res.length).toBe(1)

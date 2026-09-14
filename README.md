@@ -37,11 +37,25 @@ svelte-chd/
 
 ---
 
+## ⚡ Bắt Đầu Nhanh (Quick Start)
+
+```bash
+# 1. Cài đặt toàn bộ dependencies (Monorepo)
+pnpm install
+
+# 2. Khởi tạo file môi trường cho frontend (bắt buộc trước khi chạy type check / dev)
+cp front-end/.env.example front-end/.env
+
+# 3. Khởi chạy môi trường phát triển
+pnpm dev:all
+```
+
 ## 🚀 Tính Năng Nổi Bật & Kiến Trúc Kỹ Thuật
 
 ### 1. **Clean Layered Architecture (Backend & Frontend Server)**
 - **Decoupled CMS Adapter**: Phân tách hoàn toàn Sanity schema khỏi tầng domain thông qua **Canonical Mappers** ([`tour.mapper.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/tour.mapper.ts), [`blog.mapper.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/sanity/mappers/blog.mapper.ts)).
-- **Domain Services**: [`TourService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/tour.service.ts), [`BlogService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/blog.service.ts), [`ExchangeService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/exchange.service.ts) đóng gói toàn bộ nghiệp vụ truy xuất dữ liệu.
+- **Domain Services**: [`TourService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/tour.service.ts), [`BlogService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/blog.service.ts), [`HeroImageService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.ts), [`ExchangeService`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/exchange.service.ts) đóng gói toàn bộ nghiệp vụ truy xuất dữ liệu (bao gồm cả dynamic sitemap consumption).
+- **Deterministic Slug Resolution**: `matchesTourSlug()` và `matchesBlogSlug()` thực thi phân giải 4 tầng xác định (Direct ID -> Multilingual Virtual Slug -> Raw Title Slug -> Prefixed ID), triệt tiêu hoàn toàn heuristic prefix matching lỏng lẻo.
 - **Tách Biệt Luồng Batch Sync (Cron)**: Toàn bộ quá trình fetch tỷ giá ngoại tệ từ bên thứ ba và seal vào Sanity CMS được chuyển giao cho [`scripts/sync-rates.js`](file:///home/hajtran/dev/svelte-chd/front-end/scripts/sync-rates.js) (chạy qua GitHub Action cron), loại bỏ hoàn toàn quyền write/delete Sanity khỏi public HTTP routes của frontend.
 - **Multi-layer Caching & Disaster Recovery**:
   - Tầng 1: In-memory cache với TTL cho Worker isolates ([`memory-cache.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/cache/memory-cache.ts)).
@@ -54,8 +68,9 @@ svelte-chd/
   - `/vi/tour-trong-ngay/[slug]` ↔ `/en/day-tours/[slug]` ↔ `/fr/excursions/[slug]`
 - **Bảo toàn Query Params & Hash**: Các tham số lọc, prefill form (`?tour=...`) và anchor link (`#section`) được giữ nguyên toàn vẹn khi đổi ngôn ngữ.
 
-### 3. **Quy Chuẩn Đặt Tên Mã Nguồn (Code Style & Naming Conventions)**
+### 3. **Quy Chuẩn Đặt Tên Mã Nguồn & Form Validation Type Safety**
 - **Quy tắc chuẩn `camelCase`**: Toàn bộ hàm (functions), phương thức (methods), biến (variables), helper utilities và custom hooks bắt buộc sử dụng chuẩn **`camelCase`** (ví dụ: `collectGalleryImages`, `extractPortableTextImages`, `deduplicateGalleryImages`, `replaceLocaleInUrl`, `formatPriceObject`, `getTourSlug`).
+- **Type-safe Form Adapters**: Đóng gói `formAdapter: ValidationAdapter<FormSchema>` tập trung tại [`form-schema.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/form-schema.ts), loại bỏ toàn bộ `as any` type-cast khỏi Superforms loaders và form actions.
 - **PascalCase**: Component Svelte (`BaseButton.svelte`), React component, Class/Interface/Type (`BlogPost`, `Tour`, `CollectGalleryImagesParams`).
 - **UPPER_SNAKE_CASE**: Hằng số toàn cục (Constants / Configuration maps như `TOUR_CATEGORY_SLUG_MAP`).
 
@@ -64,12 +79,13 @@ svelte-chd/
 - **Invisible Honeypot Protection**: Bẫy bot ngầm chống spam email và ngăn tràn webhook Discord ([`anti-spam.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.ts)).
 - **Async Settled Notification**: Đảm bảo `Promise.allSettled` hoàn thành gửi Admin Email, Client Confirmation, và Discord Webhook trước khi trả response trên Edge runtime.
 
-### 5. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Hoàn Thiện**
+### 5. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Sitemap Hoàn Thiện**
 - **Trang Chức Năng Mới**:
   - `/faq`: Hệ thống giải đáp câu hỏi thường gặp với bộ lọc danh mục và accordion tương tác.
   - `/terms`: Điều khoản dịch vụ và cam kết pháp lý lữ hành quốc tế của CHD Travel.
   - `/privacy`: Chính sách bảo vệ dữ liệu, chống spam và bảo mật thông tin du khách.
-- **Rich Snippets & Structured Data**: Tự động sinh JSON-LD (`TravelAgency`, `TouristTrip`, `Product`, `BreadcrumbList`) và thẻ `hreflang` 3 ngôn ngữ tương ứng chuẩn SEO quốc tế ([`sitemap.xml/+server.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/sitemap.xml/+server.ts)).
+- **Sitemap Service Layer & Dynamic Lastmod**: [`sitemap.xml/+server.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/sitemap.xml/+server.ts) tiêu thụ dữ liệu qua `TourService` và `BlogService`, tự động sinh `<lastmod>` chính xác từ ngày cập nhật (`blog.updatedAt ?? blog.publishedAt`) cho SEO crawlers.
+- **Rich Snippets & Structured Data**: Tự động sinh JSON-LD (`TravelAgency`, `TouristTrip`, `Product`, `BreadcrumbList`) và thẻ `hreflang` 3 ngôn ngữ tương ứng chuẩn SEO quốc tế.
 
 ### 6. **Centralized Logging System**
 - Module [`logger.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/logger.ts) chuẩn hóa các mức `INFO`, `WARN`, `ERROR`, `DEBUG`, tự động ẩn log nhạy cảm trên Production.
@@ -89,8 +105,8 @@ Tại thư mục gốc dự án, bạn có thể thực hiện mọi tác vụ q
 | `pnpm check:all` | Chạy Type Check toàn dự án (`svelte-check` + `tsc --noEmit`) |
 | `pnpm lint:all` | Kiểm tra Lint & Prettier format cho toàn bộ monorepo |
 | `pnpm format:all` | Tự động định dạng code chuẩn Prettier cho toàn bộ files |
-| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **77/77 tests across 11 suites**) |
-| `pnpm test:e2e` | Chạy Playwright End-to-End tests (**6/6 tests** - locale switching, category slug mapping, modal, seo) |
+| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest) |
+| `pnpm test:e2e` | Chạy End-to-End tests (Playwright - locale switching, category slug mapping, modal, seo) |
 | `pnpm knip:all` | Quét Dead Code, Unused Files & Unused Exports |
 | `pnpm sync:rates` | Đồng bộ tỷ giá ngoại tệ từ Exchange API vào Sanity CMS (dùng cho GitHub Action Cron) |
 | `pnpm i18n` | Đồng bộ và sinh types tự động cho `typesafe-i18n` |
@@ -104,8 +120,8 @@ Mỗi thay đổi mã nguồn phải tuân thủ nghiêm ngặt theo tài liệu
 1. `pnpm format:all`
 2. `pnpm lint:all`
 3. `pnpm check:all`
-4. `pnpm test` (77/77 unit tests across 11 suites)
-5. `pnpm test:e2e` (6/6 Playwright E2E tests)
+4. `pnpm test` (Vitest Unit tests)
+5. `pnpm test:e2e` (Playwright E2E tests)
 6. `pnpm knip:all`
 7. `pnpm build:all`
 8. `graphify update .`

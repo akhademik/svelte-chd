@@ -47,50 +47,50 @@ describe('slug utils', () => {
 		expect(getTourSlug(tour, 'en')).toBe('lak-lake-discovery')
 	})
 
-	it('should derive virtual slug from tour_name when tour_slug is absent', () => {
-		const tour = {
-			tour_name: {
+	it('should derive virtual slug from tourName when tourSlug is absent', () => {
+		const tour: Tour = {
+			tourName: {
 				vi: 'Khám Phá Hồ Lắk 1 Ngày',
 				en: 'Lak Lake 1-Day Discovery',
 				fr: 'Découverte du Lac Lắk 1 Jour',
 			},
-		} as unknown as Tour
+		}
 
 		expect(getTourSlug(tour, 'vi')).toBe('kham-pha-ho-lak-1-ngay')
 		expect(getTourSlug(tour, 'en')).toBe('lak-lake-1-day-discovery')
 		expect(getTourSlug(tour, 'fr')).toBe('decouverte-du-lac-lak-1-jour')
 	})
 
-	it('should derive hybrid {tour_id}-{nameSlug} when tour_id is provided', () => {
-		const dayTour = {
-			tour_id: 'DL-01',
-			tour_name: {
+	it('should derive hybrid {tourId}-{nameSlug} when tourId is provided', () => {
+		const dayTour: Tour = {
+			tourId: 'DL-01',
+			tourName: {
 				vi: 'Khám Phá Hồ Lắk 1 Ngày',
 				en: 'Lak Lake 1-Day Discovery',
 			},
-		} as unknown as Tour
+		}
 
 		expect(getTourSlug(dayTour, 'vi')).toBe('dl-01-kham-pha-ho-lak-1-ngay')
 		expect(getTourSlug(dayTour, 'en')).toBe('dl-01-lak-lake-1-day-discovery')
 
-		const highlandTour = {
-			tour_id: 'HL-03',
-			tour_name: {
+		const highlandTour: Tour = {
+			tourId: 'HL-03',
+			tourName: {
 				vi: 'Hành Trình Đại Ngàn 3 Ngày',
 				fr: 'Voyage au Coeur des Hauts Plateaux',
 			},
-		} as unknown as Tour
+		}
 
 		expect(getTourSlug(highlandTour, 'vi')).toBe('hl-03-hanh-trinh-dai-ngan-3-ngay')
 		expect(getTourSlug(highlandTour, 'fr')).toBe('hl-03-voyage-au-coeur-des-hauts-plateaux')
 	})
 
-	it('should fallback to tour_id if neither tour_slug nor tour_name exist', () => {
-		const tour = {
-			tour_id: 'DL-01',
-		} as unknown as Tour
+	it('should fallback to tourId if neither tourSlug nor tourName exist', () => {
+		const tour: Tour = {
+			tourId: 'DL-01',
+		}
 
-		expect(getTourSlug(tour, 'vi')).toBe('DL-01')
+		expect(getTourSlug(tour, 'vi')).toBe('dl-01')
 	})
 
 	it('should derive virtual slug for blog posts from title', () => {
@@ -105,21 +105,21 @@ describe('slug utils', () => {
 	})
 
 	describe('matchesTourSlug matching engine', () => {
-		const sampleTour = {
-			tour_id: 'DL-01',
-			tour_name: {
+		const sampleTour: Tour = {
+			tourId: 'DL-01',
+			tourName: {
 				vi: 'Khám Phá Hồ Lắk 1 Ngày',
 				en: 'Lak Lake 1-Day Discovery',
 				fr: 'Découverte du Lac Lắk 1 Jour',
 			},
-		} as unknown as Tour
+		}
 
-		it('should match direct tour_id in any case', () => {
+		it('should match direct tourId in any case', () => {
 			expect(matchesTourSlug(sampleTour, 'dl-01')).toBe(true)
 			expect(matchesTourSlug(sampleTour, 'DL-01')).toBe(true)
 		})
 
-		it('should match hybrid slug format {tour_id}-{nameSlug}', () => {
+		it('should match hybrid slug format {tourId}-{nameSlug}', () => {
 			expect(matchesTourSlug(sampleTour, 'dl-01-kham-pha-ho-lak-1-ngay')).toBe(true)
 			expect(matchesTourSlug(sampleTour, 'dl-01-lak-lake-1-day-discovery')).toBe(true)
 			expect(matchesTourSlug(sampleTour, 'dl-01-decouverte-du-lac-lak-1-jour')).toBe(true)

@@ -12,6 +12,7 @@ declare global {
 		interface Platform {
 			env?: {
 				SANITY_SNAPSHOT_KV?: KVNamespace
+				RATE_LIMIT_KV?: KVNamespace
 			}
 		}
 	}

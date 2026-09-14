@@ -1,7 +1,12 @@
+import { CACHE_POLICY } from '$lib/server/cache/cache-policy'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
-import { mapSanityToBlogPost, mapSanityToBlogPosts } from '$lib/server/sanity/mappers/blog.mapper'
+import {
+	mapSanityToBlogPost,
+	mapSanityToBlogPosts,
+	type SanityBlogPostRaw,
+} from '$lib/server/sanity/mappers/blog.mapper'
 import {
 	ALL_BLOGS_QUERY,
 	EXTRACT_BLOG_FIELDS,
@@ -10,7 +15,6 @@ import {
 } from '$lib/server/sanity/queries/blogs'
 import type { BlogPost } from '$lib/types/blog.type'
 
-import { slugify } from '$lib/utils/format-data'
 import { getBlogSlug } from '$lib/utils/slug'
 
 export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => {
@@ -23,15 +27,7 @@ export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => 
 	const vEn = getBlogSlug(blog, 'en').toLowerCase()
 	const vFr = getBlogSlug(blog, 'fr').toLowerCase()
 
-	if (vVi === target || vEn === target || vFr === target) return true
-
-	const nameVi = slugify(blog.title?.vi || blog.title?.vn)
-	const nameEn = slugify(blog.title?.en)
-	const nameFr = slugify(blog.title?.fr)
-
-	if (nameVi === target || nameEn === target || nameFr === target) return true
-
-	return false
+	return vVi === target || vEn === target || vFr === target
 }
 
 export const BlogService = {
@@ -39,14 +35,14 @@ export const BlogService = {
 	 * Fetches featured blog posts (with fallback) with multi-layer cache.
 	 */
 	async getFeaturedBlogs(kv?: KVNamespace): Promise<BlogPost[]> {
-		return cachedFetch('featured-blogs', 5 * 60 * 1000, async () => {
+		return cachedFetch('featured-blogs', CACHE_POLICY.BLOGS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				'snapshot:featured-blogs',
 				async () => {
-					let posts: any[] = await sanityClient.fetch(FEATURED_BLOGS_QUERY)
+					let posts = await sanityClient.fetch<SanityBlogPostRaw[]>(FEATURED_BLOGS_QUERY)
 					if (!posts || posts.length === 0) {
-						posts = await sanityClient.fetch(FALLBACK_BLOGS_QUERY)
+						posts = await sanityClient.fetch<SanityBlogPostRaw[]>(FALLBACK_BLOGS_QUERY)
 					}
 					return mapSanityToBlogPosts(posts || [])
 				},
@@ -59,12 +55,12 @@ export const BlogService = {
 	 * Fetches all published blog posts with multi-layer cache.
 	 */
 	async getAllBlogs(kv?: KVNamespace): Promise<BlogPost[]> {
-		return cachedFetch('all-blogs', 5 * 60 * 1000, async () => {
+		return cachedFetch('all-blogs', CACHE_POLICY.BLOGS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				'snapshot:all-blogs',
 				async () => {
-					const raw = await sanityClient.fetch(ALL_BLOGS_QUERY)
+					const raw = await sanityClient.fetch<SanityBlogPostRaw[]>(ALL_BLOGS_QUERY)
 					return mapSanityToBlogPosts(raw || [])
 				},
 				data => Array.isArray(data)
@@ -95,7 +91,7 @@ export const BlogService = {
 		if (matched) return matched
 
 		// 2. Direct GROQ fallback (for old documents or raw ID)
-		return cachedFetch(`blog-${slug}`, 5 * 60 * 1000, async () => {
+		return cachedFetch(`blog-${slug}`, CACHE_POLICY.BLOGS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:blog:${slug}`,
@@ -109,7 +105,7 @@ export const BlogService = {
 						slug.fr.current == $slug
 					)][0]{${EXTRACT_BLOG_FIELDS}}`
 
-					const res = await sanityClient.fetch(query, { slug })
+					const res = await sanityClient.fetch<SanityBlogPostRaw | null>(query, { slug })
 					return res ? mapSanityToBlogPost(res) : null
 				},
 				data => data !== undefined && data !== null

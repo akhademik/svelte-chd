@@ -23,28 +23,15 @@ export const tours = {
 		duration: 'Thời lượng',
 		style: 'Hình thức',
 		style_val: 'Tour riêng / Nhóm nhỏ',
-		difficulty: 'Độ khó',
-		difficulty_val: 'Dễ tiếp cận / Nhẹ nhàng',
-		difficulty_easy: 'Dễ / Nhẹ nhàng',
-		difficulty_medium: 'Trung bình',
-		difficulty_hard: 'Thử thách / Khó',
 		departure: 'Điểm khởi hành',
 		departure_val: 'Buôn Ma Thuột',
 	},
 	good_to_know: {
 		title: 'Thông tin cần biết',
-		season_title: 'Thời điểm lý tưởng',
-		season_desc:
-			'Mùa khô từ tháng 11 đến tháng 4 mát mẻ, mùa hoa cà phê nở rộ (T2–T4). Mùa mưa thác nước hùng vĩ và cây cối xanh tươi (T5–T10).',
-		packing_title: 'Hành trang chuẩn bị',
-		packing_desc:
-			'Giày đi bộ thoải mái, áo khoác mỏng (buổi tối Tây Nguyên se lạnh), kem chống nắng, thuốc chống côn trùng và máy ảnh.',
-		pickup_title: 'Đón & Trả khách',
-		pickup_desc:
-			'Đón và trả tận nơi tại mọi khách sạn trung tâm TP. Buôn Ma Thuột hoặc sân bay theo yêu cầu.',
-		diet_title: 'Tùy chọn ăn uống',
-		diet_desc:
-			'CHD Travel luôn sẵn sàng phục vụ thực đơn chay (Vegan/Vegetarian) hoặc kiêng theo yêu cầu của du khách.',
+		activity_level: 'Mức độ vận động',
+		what_to_pack: 'Hành trang',
+		group_size: 'Quy mô nhóm',
+		other_notes: 'Lưu ý khác',
 	},
 	gallery: {
 		excursions_subtitle: '01 / Hành Trình Trong Ngày',

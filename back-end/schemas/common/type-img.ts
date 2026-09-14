@@ -1,8 +1,10 @@
+import type {Rule} from 'sanity'
+
 export const img_cover = {
   name: 'coverImg',
   title: 'Hình đại diện',
   type: 'image',
-  validation: (Rule: {required: () => any}) => Rule.required(),
+  validation: (rule: Rule) => rule.required(),
   options: {
     hotspot: true,
   },

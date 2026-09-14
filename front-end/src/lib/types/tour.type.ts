@@ -1,53 +1,72 @@
 import type { GalleryImage } from '$lib/utils/gallery'
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type Locale_String = {
+export type LocaleString = {
 	vi?: string
 	vn?: string
 	en?: string
 	fr?: string
-} & GeneralKeyString
+	[key: string]: string | undefined
+}
 
-type Locale_Array = {
+export type LocaleArray = {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	vi?: any[]
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	vn?: any[]
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	en?: any[]
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	fr?: any[]
-} & GeneralKeyString
-
-type GeneralKeyString = {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	[key: string]: any
 }
+
 export type Price = {
 	_type?: string
-} & { [key: string]: number }
-
-type Highlights = {
-	highlights?: Locale_String
+	pax1?: number
+	pax2?: number
+	pax3_4?: number
+	pax5_6?: number
+	pax7_9?: number
+	pax10_up?: number
+	price?: number
+	[key: string]: unknown
 }
 
-type Tag = {
-	_id?: string
-	tour_tags?: Locale_String
-	tourTags?: Locale_String
-	[key: string]: any
+export type Highlights = {
+	highlights?: LocaleString | Record<string, unknown>
+	[key: string]: unknown
+}
+
+export interface GoodToKnowItem {
+	title?: LocaleString
+	description?: LocaleString
+}
+
+export interface TourGoodToKnow {
+	activityLevel?: GoodToKnowItem
+	whatToPack?: GoodToKnowItem
+	groupSize?: GoodToKnowItem
+	otherNotes?: GoodToKnowItem
+	[key: string]: unknown
 }
 
 export interface Tour {
-	best_sell?: boolean
-	contact_for_price?: boolean
-	tour_level?: 'easy' | 'medium' | 'hard' | string
-	img_cover?: GalleryImage
-	img_tour?: GalleryImage[]
-	tour_duration?: Locale_String
-	tour_highlights?: Highlights[]
-	tour_id?: string
-	tour_includes?: Locale_String[]
-	tour_tags?: Tag[]
-	tour_intro?: Locale_Array
-	tour_itinerary?: Locale_Array
-	tour_name?: Locale_String
-	tour_price?: Price
-	tour_slug?: any
-	[key: string]: any
+	_id?: string
+	_type?: string
+	tourId?: string
+	tourName?: LocaleString
+	tourDuration?: LocaleString
+	coverImg?: GalleryImage
+	imgTour?: GalleryImage[]
+	tourIntro?: LocaleArray
+	tourItinerary?: LocaleArray
+	tourPrice?: Price
+	tourHighlights?: Highlights[]
+	tourIncludes?: LocaleString[]
+	contactForPrice?: boolean
+	bestSellerTour?: boolean
+	tourSlug?: Record<string, { current?: string } | string> | string | null
+	goodToKnow?: TourGoodToKnow
+	[key: string]: unknown
 }

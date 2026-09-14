@@ -1,7 +1,12 @@
+import { CACHE_POLICY } from '$lib/server/cache/cache-policy'
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
-import { mapSanityToTour, mapSanityToTours } from '$lib/server/sanity/mappers/tour.mapper'
+import {
+	mapSanityToTour,
+	mapSanityToTours,
+	type SanityTourRaw,
+} from '$lib/server/sanity/mappers/tour.mapper'
 import {
 	getSingleTourQuery,
 	TOURS_BY_DAY_QUERY,
@@ -26,37 +31,28 @@ export const matchesTourSlug = (tour: Tour, targetSlug: string): boolean => {
 	if (!tour || !targetSlug) return false
 
 	const target = targetSlug.toLowerCase().trim()
-	const rawTourId = (tour.tour_id || '').toLowerCase().trim()
+	const rawTourId = (tour.tourId ?? '').toLowerCase().trim()
 
-	// 1. Direct match with tour_id (e.g. "dl-01" or "chd-dt-01")
+	// 1. Direct match with tourId (e.g. "dl-01" or "chd-dt-01")
 	if (rawTourId && rawTourId === target) return true
 
-	// 2. Direct match with virtual slugs (format `{tour_id}-{slug}` or `{slug}`)
+	// 2. Direct match with virtual slugs (format `{tourId}-{slug}` or `{slug}`) across all supported locales
 	const vVi = getTourSlug(tour, 'vi').toLowerCase()
 	const vEn = getTourSlug(tour, 'en').toLowerCase()
 	const vFr = getTourSlug(tour, 'fr').toLowerCase()
 
 	if (vVi === target || vEn === target || vFr === target) return true
 
-	// 3. Match with raw name slugify without prefix (fallback for pure title slugs)
-	const nameVi = slugify(tour.tour_name?.vi || tour.tour_name?.vn)
-	const nameEn = slugify(tour.tour_name?.en)
-	const nameFr = slugify(tour.tour_name?.fr)
+	// 3. Match with raw name slug without prefix (fallback for pure title slugs)
+	const nameVi = slugify(tour.tourName?.vi || tour.tourName?.vn)
+	const nameEn = slugify(tour.tourName?.en)
+	const nameFr = slugify(tour.tourName?.fr)
 
 	if (nameVi === target || nameEn === target || nameFr === target) return true
 
-	// 4. If target slug starts with tour_id prefix, check if prefix matches tour_id
+	// 4. If target slug starts with tourId prefix (e.g. "dl-01-...")
 	if (rawTourId && target.startsWith(`${rawTourId}-`)) {
 		return true
-	}
-
-	// 5. Check if numeric suffix of tour_id matches (e.g., target "dl-1-..." vs rawTourId "dl-01")
-	if (rawTourId) {
-		const rawNormalized = rawTourId.replace(/[^a-z0-9]/g, '')
-		const targetPrefix = target.split('-')[0] + (target.split('-')[1] || '')
-		if (rawNormalized && targetPrefix.startsWith(rawNormalized)) {
-			return true
-		}
 	}
 
 	return false
@@ -67,18 +63,29 @@ export const TourService = {
 	 * Fetches tours by category ('day-tours' or 'highland-tours') with multi-layer cache.
 	 */
 	async getToursByType(tourType: TourType, kv?: KVNamespace): Promise<Tour[]> {
-		return cachedFetch(`tours-${tourType}`, 5 * 60 * 1000, async () => {
+		return cachedFetch(`tours-${tourType}`, CACHE_POLICY.TOURS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:tours:${tourType}`,
 				async () => {
 					const query = tourType === 'day-tours' ? TOURS_BY_DAY_QUERY : TOURS_BY_HIGHLAND_QUERY
-					const rawData: any[] = await sanityClient.fetch(query)
+					const rawData = await sanityClient.fetch<SanityTourRaw[]>(query)
 					return mapSanityToTours(rawData || [])
 				},
 				data => Array.isArray(data) // Empty array [] is a valid result
 			)
 		})
+	},
+
+	/**
+	 * Fetches all tours across all categories ('day-tours' and 'highland-tours').
+	 */
+	async getAllTours(kv?: KVNamespace): Promise<Tour[]> {
+		const [dayTours, highlandTours] = await Promise.all([
+			this.getToursByType('day-tours', kv),
+			this.getToursByType('highland-tours', kv),
+		])
+		return [...dayTours, ...highlandTours]
 	},
 
 	/**
@@ -105,7 +112,7 @@ export const TourService = {
 		if (matched) return matched
 
 		// 3. Last fallback: Direct Sanity GROQ fetch (supports old documents with raw tourSlug)
-		return cachedFetch(`tour-${tourType || 'all'}-${slug}`, 5 * 60 * 1000, async () => {
+		return cachedFetch(`tour-${tourType || 'all'}-${slug}`, CACHE_POLICY.TOURS_TTL_MS, async () => {
 			return withKvSnapshot(
 				kv,
 				`snapshot:tour:${tourType || 'all'}:${slug}`,
@@ -118,7 +125,7 @@ export const TourService = {
 								: `_type in ['tourDaily', 'tourCentral']`
 
 					const query = getSingleTourQuery(typeFilter)
-					const res = await sanityClient.fetch(query, { slug })
+					const res = await sanityClient.fetch<SanityTourRaw | null>(query, { slug })
 					return res ? mapSanityToTour(res) : null
 				},
 				data => data !== undefined && data !== null
