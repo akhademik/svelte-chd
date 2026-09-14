@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { formSchema } from './form-schema'
+import { bookingApiSchema, formSchema, type BookingApiSchema } from './form-schema'
 
 describe('formSchema validation', () => {
 	it('should validate correct contact form inputs', () => {
@@ -57,5 +57,53 @@ describe('formSchema validation', () => {
 		if (!result.success) {
 			expect(result.error.issues[0].message).toBe('form_phone')
 		}
+	})
+})
+
+describe('bookingApiSchema validation', () => {
+	it('should validate correct booking payloads with email contact', () => {
+		const valid = {
+			name: 'Nguyen Van A',
+			contact: 'test@example.com',
+			tour: 'Lak Lake Tour',
+			date: '2026-10-01',
+			guests: 2,
+			note: 'Vegetarian meals',
+			langs: 'vi',
+		}
+		const result = bookingApiSchema.safeParse(valid)
+		expect(result.success).toBe(true)
+	})
+
+	it('should validate correct booking payloads with phone contact', () => {
+		const valid = {
+			name: 'Nguyen Van A',
+			contact: '+84901234567',
+			guests: '4',
+		}
+		const result = bookingApiSchema.safeParse(valid)
+		expect(result.success).toBe(true)
+		if (result.success) {
+			expect(result.data.guests).toBe(4)
+			expect(result.data.langs).toBe('vi')
+		}
+	})
+
+	it('should reject invalid contact that is neither email nor valid phone', () => {
+		const invalid = {
+			name: 'Nguyen Van A',
+			contact: 'abc',
+		}
+		const result = bookingApiSchema.safeParse(invalid)
+		expect(result.success).toBe(false)
+	})
+
+	it('should reject missing name or short name', () => {
+		const invalid = {
+			name: 'A',
+			contact: 'test@example.com',
+		}
+		const result = bookingApiSchema.safeParse(invalid)
+		expect(result.success).toBe(false)
 	})
 })
