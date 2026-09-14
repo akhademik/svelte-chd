@@ -29,6 +29,7 @@ describe('blog.mapper', () => {
 			author: 'Jane Doe',
 			imgTour: [{ asset: { _ref: 'img-1' } }],
 			publishedAt: '2026-09-01T00:00:00.000Z',
+			_updatedAt: '2026-09-14T10:00:00.000Z',
 		}
 
 		const mapped = mapSanityToBlogPost(raw)
@@ -37,6 +38,7 @@ describe('blog.mapper', () => {
 		expect(mapped.isFeatured).toBe(true)
 		expect(mapped.author).toBe('Jane Doe')
 		expect(mapped.publishedAt).toBe('2026-09-01T00:00:00.000Z')
+		expect(mapped.updatedAt).toBe('2026-09-14T10:00:00.000Z')
 		expect(mapped.imgTour).toEqual([{ asset: { _ref: 'img-1' } }])
 		expect(mapped.img_tour).toEqual([{ asset: { _ref: 'img-1' } }])
 	})

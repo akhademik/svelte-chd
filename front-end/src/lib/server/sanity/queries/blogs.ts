@@ -20,6 +20,7 @@ export const EXTRACT_BLOG_FIELDS = `
 	"content": coalesce(content, {}),
 	"isFeatured": coalesce(isFeatured, false),
 	"publishedAt": coalesce(publishedAt, _createdAt),
+	_updatedAt,
 	"author": coalesce(author, 'CHD Travel Team')
 `
 

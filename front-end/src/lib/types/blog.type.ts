@@ -33,5 +33,6 @@ export interface BlogPost {
 	}
 	isFeatured?: boolean
 	publishedAt?: string
+	updatedAt?: string
 	author?: string
 }

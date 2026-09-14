@@ -3,6 +3,8 @@ import type { BlogPost } from '$lib/types/blog.type'
 export type SanityBlogPostRaw = {
 	_id?: string
 	_createdAt?: string
+	_updatedAt?: string
+	updatedAt?: string
 	title?: BlogPost['title']
 	slug?: BlogPost['slug']
 	category?: string
@@ -27,6 +29,10 @@ export function mapSanityToBlogPost(raw: SanityBlogPostRaw | null | undefined): 
 export function mapSanityToBlogPost(raw: SanityBlogPostRaw | null | undefined): BlogPost | null {
 	if (!raw) return null
 
+	const publishedAt = String(raw.publishedAt ?? raw._createdAt ?? new Date().toISOString())
+	const rawUpdatedAt = raw.updatedAt ?? raw._updatedAt
+	const updatedAt = rawUpdatedAt ? String(rawUpdatedAt) : undefined
+
 	return {
 		...raw,
 		_id: String(raw._id ?? ''),
@@ -39,7 +45,8 @@ export function mapSanityToBlogPost(raw: SanityBlogPostRaw | null | undefined): 
 		img_tour: raw.imgTour ?? [],
 		content: raw.content ?? {},
 		isFeatured: Boolean(raw.isFeatured ?? false),
-		publishedAt: String(raw.publishedAt ?? raw._createdAt ?? new Date().toISOString()),
+		publishedAt,
+		updatedAt,
 		author: String(raw.author ?? 'CHD Travel Team'),
 	}
 }

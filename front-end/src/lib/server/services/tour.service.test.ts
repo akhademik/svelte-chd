@@ -76,6 +76,29 @@ describe('tour.service', () => {
 			expect(tours[0].bestSellerTour).toBe(false)
 		})
 
+		it('fetches all tours across categories', async () => {
+			;(vi.mocked(sanityClient.fetch) as any)
+				.mockResolvedValueOnce([
+					{
+						_id: 'doc-1',
+						tourId: 'DL-01',
+						tourName: { vi: 'Hồ Lắk' },
+					},
+				])
+				.mockResolvedValueOnce([
+					{
+						_id: 'doc-2',
+						tourId: 'HL-01',
+						tourName: { vi: 'Măng Đen' },
+					},
+				])
+
+			const all = await TourService.getAllTours()
+			expect(all.length).toBe(2)
+			expect(all[0].tourId).toBe('DL-01')
+			expect(all[1].tourId).toBe('HL-01')
+		})
+
 		it('finds a tour by matching virtual slug within category', async () => {
 			;(vi.mocked(sanityClient.fetch) as any).mockResolvedValue([
 				{

@@ -90,6 +90,17 @@ export const TourService = {
 	},
 
 	/**
+	 * Fetches all tours across all categories ('day-tours' and 'highland-tours').
+	 */
+	async getAllTours(kv?: KVNamespace): Promise<Tour[]> {
+		const [dayTours, highlandTours] = await Promise.all([
+			this.getToursByType('day-tours', kv),
+			this.getToursByType('highland-tours', kv),
+		])
+		return [...dayTours, ...highlandTours]
+	},
+
+	/**
 	 * Fetches single tour by localized slug with multi-layer cache and virtual slug matching.
 	 */
 	async getTourBySlug(slug: string, tourType?: TourType, kv?: KVNamespace): Promise<Tour | null> {
