@@ -1,5 +1,5 @@
 import {FaRegNewspaper} from 'react-icons/fa'
-import {generate_field} from '../helper-functions'
+import {generateField} from '../helper-functions'
 import {img_blog, img_cover} from '../common/type-img'
 
 export default {
@@ -8,7 +8,7 @@ export default {
   icon: FaRegNewspaper,
   title: 'Bài Viết Blog',
   fields: [
-    generate_field('Tiêu đề bài viết', 'title', 'locale_string'),
+    generateField('Tiêu đề bài viết', 'title', 'locale_string'),
     {
       title: 'Bài viết nổi bật (Featured)',
       name: 'isFeatured',
@@ -30,10 +30,10 @@ export default {
       },
       initialValue: 'story',
     },
-    generate_field('Mô tả ngắn (Excerpt)', 'excerpt', 'locale_string'),
+    generateField('Mô tả ngắn (Excerpt)', 'excerpt', 'locale_string'),
     img_cover,
     img_blog,
-    generate_field('Nội dung chi tiết', 'content', 'locale_content'),
+    generateField('Nội dung chi tiết', 'content', 'locale_content'),
 
     {
       title: 'Ngày đăng (Publish Date)',

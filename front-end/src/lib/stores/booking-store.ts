@@ -5,7 +5,7 @@ export interface BookingModalState {
 	tourName: string
 }
 
-export const booking_modal = (() => {
+export const bookingModal = (() => {
 	const { subscribe, set, update } = writable<BookingModalState>({
 		isOpen: false,
 		tourName: '',

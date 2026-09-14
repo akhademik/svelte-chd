@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { BaseLocaleSwitcher, BaseLogo } from '$base'
-	import { nav_animate_hidden } from '$lib/stores/nav-store'
+	import { navAnimateHidden } from '$lib/stores/nav-store'
 
 	import NavBurgerButton from './components/nav-burger-button.svelte'
 	import NavMenuItems from './components/nav-menu-items.svelte'
@@ -8,7 +8,7 @@
 
 <header
 	class="fixed left-0 right-0 top-0 z-50 border-b border-border/60 bg-surface/95 backdrop-blur-md transition-all duration-300"
-	class:hidden={$nav_animate_hidden}>
+	class:hidden={$navAnimateHidden}>
 	<div class="mx-auto flex h-20 max-w-6xl items-center justify-between px-6">
 		<BaseLogo />
 		<NavMenuItems />

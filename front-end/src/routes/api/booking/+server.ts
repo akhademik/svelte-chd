@@ -1,27 +1,31 @@
 import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { isSpamSubmission } from '$lib/server/security/anti-spam'
-import { checkRateLimit } from '$lib/server/security/rate-limiter'
+import { checkRateLimitAsync } from '$lib/server/security/rate-limiter'
+import { bookingApiSchema } from '$lib/utils/form-schema'
 import { Logger } from '$lib/utils/logger'
 import { json } from '@sveltejs/kit'
 
-export const POST = async ({ request }) => {
+export const POST = async ({ request, platform }) => {
 	try {
-		const data = (await request.json()) as Record<string, any>
-		const { name, contact, date, guests, tour, note, langs } = data
+		const rawData = (await request.json()) as Record<string, any>
 
 		// Anti-Spam: Honeypot trap check
-		if (isSpamSubmission(data)) {
+		if (isSpamSubmission(rawData)) {
 			Logger.warn('BookingAction', 'Bot booking spam trapped by honeypot')
 			return json({ success: true }, { status: 200 })
 		}
 
-		// Rate Limiting: 5 requests per 10 minutes per IP
-		const rateLimit = checkRateLimit(request, {
-			maxRequests: 5,
-			windowMs: 10 * 60 * 1000,
-			keyPrefix: 'booking-api',
-		})
+		// Rate Limiting: 5 requests per 10 minutes per IP (with KV support if bound)
+		const rateLimit = await checkRateLimitAsync(
+			request,
+			{
+				maxRequests: 5,
+				windowMs: 10 * 60 * 1000,
+				keyPrefix: 'booking-api',
+			},
+			(platform as any)?.env?.RATE_LIMIT_KV
+		)
 
 		if (!rateLimit.allowed) {
 			return json(
@@ -30,9 +34,20 @@ export const POST = async ({ request }) => {
 			)
 		}
 
-		if (!name || !contact) {
-			return json({ message: 'Missing required fields' }, { status: 400 })
+		// Zod Schema Validation
+		const parseResult = bookingApiSchema.safeParse(rawData)
+		if (!parseResult.success) {
+			Logger.warn('BookingAction', 'Invalid booking payload:', parseResult.error.flatten())
+			return json(
+				{
+					message: 'Dữ liệu không hợp lệ',
+					errors: parseResult.error.flatten().fieldErrors,
+				},
+				{ status: 400 }
+			)
 		}
+
+		const { name, contact, date, guests, tour, note, langs } = parseResult.data
 
 		const isEmail = contact.includes('@')
 		const email = isEmail ? contact : ''

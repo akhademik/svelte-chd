@@ -1,12 +1,12 @@
 import { TourService } from '$lib/server/services/tour.service'
-import { resolve_canonical_category } from '$lib/utils/format-data'
+import { resolveCanonicalCategory } from '$lib/utils/format-data'
 import { error } from '@sveltejs/kit'
 import type { PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async ({ params, setHeaders, platform }) => {
 	const { tourtype } = params
 
-	const canonicalCategory = resolve_canonical_category(tourtype)
+	const canonicalCategory = resolveCanonicalCategory(tourtype)
 
 	if (!canonicalCategory) {
 		throw error(404, 'Tour category not found')

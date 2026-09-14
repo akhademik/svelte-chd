@@ -1,3 +1,5 @@
+import { escapeHtml } from './security/html-escape'
+
 export interface EmailTemplateProps {
 	greeting: string
 	confirmationMsg: string
@@ -10,6 +12,14 @@ export interface EmailTemplateProps {
 
 export function generateClientEmailHtml(props: EmailTemplateProps): string {
 	const { greeting, confirmationMsg, detailsTitle, tour, date, guests, message } = props
+
+	const safeGreeting = escapeHtml(greeting)
+	const safeConfirmationMsg = escapeHtml(confirmationMsg)
+	const safeDetailsTitle = escapeHtml(detailsTitle)
+	const safeTour = tour ? escapeHtml(tour) : ''
+	const safeDate = date ? escapeHtml(date) : ''
+	const safeGuests = guests !== undefined && guests !== null ? escapeHtml(guests) : ''
+	const safeMessage = message ? escapeHtml(message).replace(/\n/g, '<br/>') : ''
 
 	return `<!DOCTYPE html>
 <html>
@@ -37,14 +47,14 @@ export function generateClientEmailHtml(props: EmailTemplateProps): string {
       <p>Go local · See local · Eat local</p>
     </div>
     <div class="content">
-      <p><strong>${greeting}</strong></p>
-      <p>${confirmationMsg}</p>
+      <p><strong>${safeGreeting}</strong></p>
+      <p>${safeConfirmationMsg}</p>
       <div class="summary-box">
-        <div class="summary-title">${detailsTitle}</div>
-        ${tour ? `<div class="summary-item"><strong>Tour:</strong> ${tour}</div>` : ''}
-        ${date ? `<div class="summary-item"><strong>Date:</strong> ${date}</div>` : ''}
-        ${guests ? `<div class="summary-item"><strong>Guests:</strong> ${guests}</div>` : ''}
-        ${message ? `<div class="summary-item"><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</div>` : ''}
+        <div class="summary-title">${safeDetailsTitle}</div>
+        ${safeTour ? `<div class="summary-item"><strong>Tour:</strong> ${safeTour}</div>` : ''}
+        ${safeDate ? `<div class="summary-item"><strong>Date:</strong> ${safeDate}</div>` : ''}
+        ${safeGuests ? `<div class="summary-item"><strong>Guests:</strong> ${safeGuests}</div>` : ''}
+        ${safeMessage ? `<div class="summary-item"><strong>Message:</strong><br/>${safeMessage}</div>` : ''}
       </div>
       <p style="font-size: 14px; color: #5C5646;">We look forward to sharing our beloved Central Highlands with you.</p>
     </div>

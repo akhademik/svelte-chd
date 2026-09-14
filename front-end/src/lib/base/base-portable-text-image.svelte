@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 
 	interface Props {
 		portableText: {
@@ -29,7 +29,7 @@
 {#if value?.asset}
 	<figure class="my-6 space-y-2 overflow-hidden rounded-sm {currentSize.container}">
 		<img
-			src={url_for(value).width(currentSize.imgWidth).auto('format').quality(85).url()}
+			src={urlFor(value).width(currentSize.imgWidth).auto('format').quality(85).url()}
 			alt={value?.alt || value?.caption || 'CHD Travel Blog Image'}
 			class="h-auto w-full object-cover"
 			loading="lazy" />

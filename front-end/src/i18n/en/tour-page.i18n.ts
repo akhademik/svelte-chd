@@ -83,7 +83,7 @@ export const tours = {
 		send_enquiry: 'Book Now',
 		enquiry_title: "I'd like to book this tour",
 		price_for_2_pax: '*price for group of 2 guests',
-		price_conversion_disclaimer: 'Approximate conversion, exchange rate may vary at checkout.',
+		price_conversion_disclaimer: 'Exchange rate may vary at checkout.',
 		stepper_guest_count: 'Guests',
 		stepper_unit_price: 'Unit Price',
 		stepper_total_price: 'Total Price',

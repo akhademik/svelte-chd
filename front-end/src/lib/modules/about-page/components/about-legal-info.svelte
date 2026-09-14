@@ -1,5 +1,10 @@
 <script lang="ts">
 	import LL from '$i18n/i18n-svelte'
+	const legalInfo = {
+		taxNo: 'https://masothue.com/6001577023-cong-ty-tnhh-dich-vu-du-lich-kham-pha-tay-nguyen',
+		internationalLicense:
+			'https://quanlyluhanh.vn/search?tendn=CENTRAL+HIGHLANDS+DISCOVERY+TRAVEL+SERIVICE+COMPANY+LIMITED&sogiayphep=66-007%2F2017%2FCDLQGVN-GP&diaphuong=66%2C+54&phamvihd=1&keyword=',
+	}
 </script>
 
 <section class="py-16 sm:py-24">
@@ -79,16 +84,22 @@
 								<span class="text-foreground-subtle">
 									{$LL.about_page.legal.tax_id_label()}
 								</span>
-								<span class="font-medium text-foreground">
-									{$LL.about_page.legal.tax_id()}
-								</span>
+
+								<span class="font-medium text-foreground"
+									><a
+										href={legalInfo.taxNo}
+										target="_blank">{$LL.about_page.legal.tax_id()}</a
+									></span>
 							</div>
 							<div class="flex flex-col gap-1 py-3 sm:flex-row sm:justify-between">
 								<span class="text-foreground-subtle">
 									{$LL.about_page.legal.license_label()}
 								</span>
 								<span class="font-medium text-foreground sm:text-right">
-									{$LL.about_page.legal.license_no()}
+									<a
+										href={legalInfo.internationalLicense}
+										target="_blank">
+										{$LL.about_page.legal.license_no()}</a>
 								</span>
 							</div>
 							<div class="flex justify-between py-3">

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { BlogPost } from '$lib/types/blog.type'
-	import { filter_localized_items, get_localized_field } from '$lib/utils/format-data'
-	import { get_blog_slug, url_for } from '$lib/utils/sanity'
+	import { filterLocalizedItems, getLocalizedField } from '$lib/utils/format-data'
+	import { urlFor } from '$lib/utils/sanity'
+	import { getBlogSlug } from '$lib/utils/slug'
 
 	interface Props {
 		posts?: BlogPost[]
@@ -13,7 +14,7 @@
 	let activeFilter = $state<string>('all')
 
 	// Clean language filter using central helper
-	let availablePosts = $derived(filter_localized_items(posts, $locale))
+	let availablePosts = $derived(filterLocalizedItems(posts, $locale))
 
 	// Dynamic category list: Only show categories that have at least 1 post
 	let presentCategories = $derived.by(() => {
@@ -43,22 +44,22 @@
 	)
 
 	const getPostTitle = (p: BlogPost) => {
-		return get_localized_field(p.title, $locale, 'CHD Journal')
+		return getLocalizedField(p.title, $locale, 'CHD Journal')
 	}
 
 	const getPostExcerpt = (p: BlogPost) => {
-		return get_localized_field(p.excerpt, $locale, '')
+		return getLocalizedField(p.excerpt, $locale, '')
 	}
 
 	const getPostCover = (p: BlogPost) => {
 		if (p.coverImg?.asset) {
-			return url_for(p.coverImg).width(800).height(450).auto('format').url()
+			return urlFor(p.coverImg).width(800).height(450).auto('format').url()
 		}
 		return null
 	}
 
 	const getPostSlug = (p: BlogPost) => {
-		return get_blog_slug(p, $locale)
+		return getBlogSlug(p, $locale)
 	}
 
 	const getCategoryName = (cat: string) => {

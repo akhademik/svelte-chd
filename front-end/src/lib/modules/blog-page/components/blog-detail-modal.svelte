@@ -4,59 +4,33 @@
 	import LL, { locale } from '$i18n/i18n-svelte'
 
 	import type { Locales } from '$i18n/i18n-types'
-	import { blog_modal } from '$lib/stores/modal-store'
+	import { blogModal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
-	import { get_localized_field } from '$lib/utils/format-data'
-	import { url_for } from '$lib/utils/sanity'
+	import { getLocalizedField } from '$lib/utils/format-data'
+	import { collectGalleryImages } from '$lib/utils/gallery'
+	import { urlFor } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
 
-	let isOpen = $derived($blog_modal.isOpen)
-	let post = $derived($blog_modal.post as BlogPost | null)
+	let isOpen = $derived($blogModal.isOpen)
+	let post = $derived($blogModal.post as BlogPost | null)
 	let activeLang = $derived(($page.params.lang as Locales) || $locale || 'en')
 
-	let title = $derived(get_localized_field(post?.title, activeLang, 'Blog'))
-	let excerpt = $derived(get_localized_field(post?.excerpt, activeLang, ''))
-	let content = $derived(get_localized_field(post?.content, activeLang, []))
+	let title = $derived(getLocalizedField(post?.title, activeLang, 'Blog'))
+	let excerpt = $derived(getLocalizedField(post?.excerpt, activeLang, ''))
+	let content = $derived(getLocalizedField(post?.content, activeLang, []))
 
 	let imgCover = $derived(post?.coverImg)
 	let imgTour = $derived(post?.img_tour || post?.imgTour || (post as any)?.album || [])
 
-	let allImages = $derived.by(() => {
-		const imgs: any[] = []
-		const seenRefs = new Set<string>()
-
-		const addImg = (img: any) => {
-			if (!img) return
-			const ref =
-				img?.asset?._ref || img?.asset?._id || img?._id || (typeof img === 'string' ? img : null)
-			if (img?.asset || (typeof img === 'object' && (img._ref || img.url))) {
-				if (ref && seenRefs.has(ref)) return
-				if (ref) seenRefs.add(ref)
-				imgs.push(img)
-			}
-		}
-
-		// 1. Add Cover Image
-		addImg(imgCover)
-
-		// 2. Add Album Images
-		if (Array.isArray(imgTour) && imgTour.length > 0) {
-			imgTour.forEach(img => addImg(img))
-		}
-
-		// 3. Extract any image blocks embedded inside Rich Content
-		if (Array.isArray(content) && content.length > 0) {
-			content.forEach(block => {
-				if (block?._type === 'image' && block?.asset) {
-					addImg(block)
-				}
-			})
-		}
-
-		return imgs
-	})
+	let allImages = $derived(
+		collectGalleryImages({
+			coverImage: imgCover,
+			album: imgTour,
+			content,
+		})
+	)
 
 	let activeImageIndex = $state(0)
 
@@ -76,7 +50,7 @@
 	})
 
 	const close = () => {
-		blog_modal.close()
+		blogModal.close()
 	}
 
 	const handleModalKeydown = (e: KeyboardEvent) => {
@@ -200,7 +174,7 @@
 							{#key activeImageIndex}
 								<img
 									transition:fade={{ duration: 200 }}
-									src={url_for(allImages[activeImageIndex])
+									src={urlFor(allImages[activeImageIndex])
 										.width(1000)
 										.height(625)
 										.auto('format')
@@ -259,7 +233,7 @@
 												: 'border-transparent opacity-60 hover:opacity-100'
 										}`}>
 										<img
-											src={url_for(imgItem).width(160).height(100).auto('format').quality(70).url()}
+											src={urlFor(imgItem).width(160).height(100).auto('format').quality(70).url()}
 											alt={`Thumbnail ${idx + 1}`}
 											class="h-full w-full object-cover" />
 									</button>

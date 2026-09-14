@@ -10,7 +10,7 @@ import {
 import type { Tour } from '$lib/types/tour.type'
 
 import { slugify } from '$lib/utils/format-data'
-import { get_tour_slug } from '$lib/utils/sanity'
+import { getTourSlug } from '$lib/utils/slug'
 
 export type TourType = 'day-tours' | 'highland-tours'
 
@@ -32,9 +32,9 @@ export const matchesTourSlug = (tour: Tour, targetSlug: string): boolean => {
 	if (rawTourId && rawTourId === target) return true
 
 	// 2. Direct match with virtual slugs (format `{tour_id}-{slug}` or `{slug}`)
-	const vVi = get_tour_slug(tour, 'vi').toLowerCase()
-	const vEn = get_tour_slug(tour, 'en').toLowerCase()
-	const vFr = get_tour_slug(tour, 'fr').toLowerCase()
+	const vVi = getTourSlug(tour, 'vi').toLowerCase()
+	const vEn = getTourSlug(tour, 'en').toLowerCase()
+	const vFr = getTourSlug(tour, 'fr').toLowerCase()
 
 	if (vVi === target || vEn === target || vFr === target) return true
 

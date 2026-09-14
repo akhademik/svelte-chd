@@ -24,7 +24,7 @@ pnpm install
 - **Kiểm tra Type & Diagnostics**: `pnpm check:all` (`svelte-check` + `tsc --noEmit`)
 - **Kiểm tra Linting & Format**: `pnpm lint:all`
 - **Tự động Format Code**: `pnpm format:all`
-- **Chạy Test Suites**: `pnpm test` (Unit tests 60/60) & `pnpm test:e2e` (Playwright 6/6)
+- **Chạy Test Suites**: `pnpm test` (Unit tests 77/77 across 11 suites) & `pnpm test:e2e` (Playwright 6/6)
 - **Kiểm tra Dead Code & Unused**: `pnpm knip:all`
 - **Đồng bộ Tỷ Giá Ngoại Tệ (Cron / Script)**: `pnpm sync:rates`
 - **Đồng bộ i18n**: `pnpm i18n` (Typesafe-i18n)
@@ -47,7 +47,7 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 │    - pnpm format:all                                        │
 │    - pnpm lint:all                                          │
 │    - pnpm check:all (Svelte & TypeScript diagnostics)       │
-│    - pnpm test (Vitest unit test suites 60/60)              │
+│    - pnpm test (Vitest unit test suites 77/77)              │
 │    - pnpm test:e2e (Playwright E2E 6/6 — Đảm bảo Green)     │
 │    - pnpm knip:all (Dead Code & Unused Dependencies)        │
 │    - pnpm build:all (Kiểm tra build production)             │
@@ -79,24 +79,30 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
    - `mappers/`: Chuyển đổi dữ liệu thô từ Sanity thành Domain Model (`Tour`, `BlogPost`).
 
 3. **Smart Multilingual Route Switching (`front-end/src/i18n/i18n-helper.ts`)**:
-   - Hàm `replace_locale_in_url` tự động phân giải slug danh mục tour theo bảng ánh xạ chuẩn `TOUR_CATEGORY_SLUG_MAP` khi người dùng đổi ngôn ngữ (`/vi/tour-trong-ngay` ↔ `/fr/excursions` ↔ `/en/day-tours`).
+   - Hàm `replaceLocaleInUrl` / `replace_locale_in_url` tự động phân giải slug danh mục tour theo bảng ánh xạ chuẩn `TOUR_CATEGORY_SLUG_MAP` khi người dùng đổi ngôn ngữ (`/vi/tour-trong-ngay` ↔ `/fr/excursions` ↔ `/en/day-tours`).
    - Mọi thành phần chuyển đổi ngôn ngữ (Desktop switcher, Mobile menu switcher, Canonical/hreflang tags) đều tái sử dụng hàm này để đảm bảo tính nhất quán (SSOT).
 
-4. **Multi-layer Cache & Disaster Recovery (`front-end/src/lib/server/cache/`)**:
+4. **Quy Chuẩn Đặt Tên Mã Nguồn (Code Style & Naming Conventions)**:
+   - **Bắt buộc dùng `camelCase`**: Cho toàn bộ functions, methods, variables, parameters, helper utilities và custom hooks (ví dụ: `collectGalleryImages`, `extractPortableTextImages`, `deduplicateGalleryImages`, `replaceLocaleInUrl`, `formatPriceObject`, `getTourSlug`).
+   - **`PascalCase`**: Cho các component Svelte/React, Classes, Types và Interfaces (`Tour`, `BlogPost`, `CollectGalleryImagesParams`).
+   - **`UPPER_SNAKE_CASE`**: Cho constants toàn cục và config maps (`TOUR_CATEGORY_SLUG_MAP`).
+
+5. **Multi-layer Cache & Disaster Recovery (`front-end/src/lib/server/cache/`)**:
    - `memory-cache.ts`: Cache in-memory theo TTL cho Worker isolates (bỏ qua trong chế độ Dev).
    - `kv-snapshot.ts`: Lưu snapshot dự phòng 14 ngày trên Cloudflare KV. Khi Sanity gặp sự cố, hệ thống tự động fallback snapshot để web vẫn phục vụ bình thường.
 
-5. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
+6. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
    - Mọi form submission (Contact, Booking) phải qua `checkRateLimit` (5 requests / 10 phút / IP) và `isSpamSubmission` (Honeypot trap).
    - Toàn bộ email/Discord notification phải được xử lý qua `Promise.allSettled` trước khi return response.
 
-6. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
+7. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:
    - Tuyệt đối không dùng `console.log` / `console.error` rải rác. Luôn sử dụng `Logger.info`, `Logger.warn`, `Logger.error`, `Logger.debug`.
 
-7. **Batch Jobs & Cron Synchronization (`front-end/scripts/sync-rates.js`)**:
+8. **Batch Jobs & Cron Synchronization (`front-end/scripts/sync-rates.js`)**:
    - Mọi tác vụ mutate/sync dữ liệu định kỳ (ví dụ: lấy tỷ giá ngoại tệ từ bên thứ ba và ghi vào Sanity) **bắt buộc chạy dưới dạng script độc lập** (`pnpm sync:rates`), không nhúng logic write token vào HTTP routes công khai.
    - Khi cấu hình GitHub Action Cron hoặc Cloudflare Cron, trigger trực tiếp script này cùng các biến môi trường `SANITY_WRITE_TOKEN`, `VITE_SANITY_ID`, `EXCHANGE_API_KEY`, `EXCHANGE_URL`.
 
-8. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
+9. **Đồng Bộ Dữ Liệu SSR & Client Timing (Single Source of Truth - SSOT)**:
    - Mọi logic xoay vòng thời gian, chu kỳ timer, hoặc tính toán index định kỳ (như Hero rotation, slider interval) **bắt buộc dùng chung hằng số và hàm tính toán tại `front-end/src/lib/constants/` hoặc `front-end/src/lib/utils/`** (ví dụ: `constants/hero.ts`).
    - Component UI tương tác (như `home-hero.svelte`) phải khởi tạo `$state` khớp 100% với dữ liệu nhận từ SSR (`getInitialIndex()` thay vì `let currentIndex = $state(0)`) để triệt tiêu hoàn toàn hiện tượng hydration flash.
+

@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { locale } from '$i18n/i18n-svelte'
+	import { mapTestimonials, TestimonialCard } from '$lib/modules/testimonials'
 	import type { Testimonial } from '$lib/types/testimonial.type'
-	import { format_review_date } from '$lib/utils/format-data'
 	import { onMount } from 'svelte'
 
 	interface Props {
@@ -10,19 +9,7 @@
 
 	let { testimonials = [] }: Props = $props()
 
-	const list = $derived(
-		(testimonials && testimonials.length > 0 ? testimonials : []).map(t => ({
-			name: t.name,
-			avatar: t.avatar || '',
-			country: t.country || 'Verified Traveler',
-			title: t.review_title,
-			content: t.review_content,
-			stars: t.stars || 5,
-			url: t.url,
-			date: t.date_review || '',
-		}))
-	)
-
+	const list = $derived(mapTestimonials(testimonials))
 	const totalReal = $derived(list.length)
 
 	// Infinite loop with prepended last item and appended first item
@@ -115,91 +102,12 @@
 		style="transform: translateX(-{currentTrackIndex * 100}%);"
 		ontransitionend={handleTransitionEnd}>
 		{#each displayList as currentReview}
-			<div class="flex h-full w-full shrink-0 flex-col justify-between p-5 sm:p-8">
-				<div class="overflow-hidden">
-					<!-- Top Bar: Stars (Always 5 stars with active/dimmed) + Date ({Month} {Year}) -->
-					<div class="mb-3 flex items-center gap-3 pr-20 sm:mb-4">
-						<div class="flex items-center gap-1">
-							{#each [1, 2, 3, 4, 5] as starNum}
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class={`h-4 w-4 fill-current ${starNum <= (currentReview.stars || 5) ? 'text-amber-600' : 'text-border-strong'}`}
-									viewBox="0 0 24 24">
-									<polygon
-										points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-									></polygon>
-								</svg>
-							{/each}
-						</div>
-
-						{#if currentReview.date}
-							<span class="font-mono text-xs text-foreground-subtle">
-								{format_review_date(currentReview.date, $locale)}
-							</span>
-						{/if}
-					</div>
-
-					<!-- Review Title (With link) -->
-					{#if currentReview.title}
-						<h4 class="mb-2 line-clamp-1 font-serif text-base font-bold text-foreground">
-							{#if currentReview.url}
-								<a
-									href={currentReview.url}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="transition-colors hover:text-secondary hover:underline">
-									{currentReview.title}
-								</a>
-							{:else}
-								{currentReview.title}
-							{/if}
-						</h4>
-					{/if}
-
-					<!-- Review Content -->
-					<p
-						class="line-clamp-4 font-serif text-sm font-light italic leading-relaxed text-foreground-muted sm:line-clamp-5 sm:text-base">
-						"{currentReview.content}"
-					</p>
-				</div>
-
-				<!-- Review Author Footer: [Avatar] [Username] [Country] -->
-				<div
-					class="mt-3 flex items-center justify-between border-t border-border/80 pt-3 text-xs sm:mt-4 sm:pt-4">
-					<div class="flex items-center gap-2.5 overflow-hidden">
-						{#if currentReview.avatar}
-							<img
-								src={currentReview.avatar}
-								alt={currentReview.name}
-								referrerpolicy="no-referrer"
-								onerror={e => {
-									const target = e.currentTarget as HTMLImageElement | null
-									if (target) {
-										target.style.display = 'none'
-										const sibling = target.nextElementSibling as HTMLElement | null
-										if (sibling) sibling.classList.remove('hidden')
-									}
-								}}
-								class="h-7 w-7 shrink-0 rounded-full border border-border object-cover"
-								loading="lazy" />
-							<div
-								class="hidden h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
-								{currentReview.name.charAt(0).toUpperCase()}
-							</div>
-						{:else}
-							<div
-								class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-surface-muted font-serif text-xs font-bold text-foreground-muted">
-								{currentReview.name.charAt(0).toUpperCase()}
-							</div>
-						{/if}
-						<span class="truncate font-serif font-bold text-foreground">
-							{currentReview.name}
-						</span>
-					</div>
-					{#if currentReview.country}
-						<div class="shrink-0 text-foreground-muted">{currentReview.country}</div>
-					{/if}
-				</div>
+			<div class="h-full w-full shrink-0">
+				<TestimonialCard
+					testimonial={currentReview}
+					titleClass="line-clamp-1"
+					headerPaddingClass="pr-20"
+					class="h-full w-full" />
 			</div>
 		{/each}
 	</div>

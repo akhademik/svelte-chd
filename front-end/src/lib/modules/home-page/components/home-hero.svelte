@@ -2,7 +2,7 @@
 	import LL from '$i18n/i18n-svelte'
 	import { calculateHeroSlotIndex, getNextHeroRotationDelay } from '$lib/constants/hero'
 	import type { HeroImage } from '$lib/types/hero-image.type'
-	import { url_for } from '$lib/utils/sanity'
+	import { urlFor } from '$lib/utils/sanity'
 
 	interface Props {
 		heroImage?: HeroImage | null
@@ -108,7 +108,7 @@
 
 	let bgImageUrl = $derived.by(() => {
 		if (currentHero?.image?.asset) {
-			return url_for(currentHero.image).width(2000).quality(95).auto('format').url()
+			return urlFor(currentHero.image).width(2000).quality(95).auto('format').url()
 		}
 		return FALLBACK_HERO_IMAGE
 	})

@@ -11,7 +11,7 @@ import {
 import type { BlogPost } from '$lib/types/blog.type'
 
 import { slugify } from '$lib/utils/format-data'
-import { get_blog_slug } from '$lib/utils/sanity'
+import { getBlogSlug } from '$lib/utils/slug'
 
 export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => {
 	if (!blog || !targetSlug) return false
@@ -19,9 +19,9 @@ export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => 
 
 	if (blog._id && blog._id.toLowerCase() === target) return true
 
-	const vVi = get_blog_slug(blog, 'vi').toLowerCase()
-	const vEn = get_blog_slug(blog, 'en').toLowerCase()
-	const vFr = get_blog_slug(blog, 'fr').toLowerCase()
+	const vVi = getBlogSlug(blog, 'vi').toLowerCase()
+	const vEn = getBlogSlug(blog, 'en').toLowerCase()
+	const vFr = getBlogSlug(blog, 'fr').toLowerCase()
 
 	if (vVi === target || vEn === target || vFr === target) return true
 
@@ -70,6 +70,17 @@ export const BlogService = {
 				data => Array.isArray(data)
 			)
 		})
+	},
+
+	/**
+	 * Fetches published blog posts filtered by category.
+	 */
+	async getBlogsByCategory(category?: string, kv?: KVNamespace): Promise<BlogPost[]> {
+		if (!category || category === 'all') {
+			return this.getAllBlogs(kv)
+		}
+		const all = await this.getAllBlogs(kv)
+		return all.filter(p => p.category === category)
 	},
 
 	/**

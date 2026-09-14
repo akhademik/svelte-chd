@@ -1,5 +1,5 @@
 import type { Translation, Locales } from '$i18n/i18n-types'
-import { get_category_slug, resolve_canonical_category } from '$lib/utils/format-data'
+import { getCategorySlug, resolveCanonicalCategory } from '$lib/utils/format-data'
 
 type MenuLink = keyof Translation['nav_bar']
 export type MenuItem = {
@@ -8,7 +8,7 @@ export type MenuItem = {
 	canonicalPath: string
 }
 
-export const menu_items: MenuItem[] = [
+export const menuItems: MenuItem[] = [
 	{
 		id: 1,
 		text: 'day_tours',
@@ -36,13 +36,13 @@ export const menu_items: MenuItem[] = [
 	},
 ]
 
-export const get_menu_url = (item: MenuItem, lang: Locales | string = 'en'): string => {
+export const getMenuUrl = (item: MenuItem, lang: Locales | string = 'en'): string => {
 	const loc = lang === 'vn' ? 'vi' : lang
 	if (item.canonicalPath === '/day-tours') {
-		return `/${loc}/${get_category_slug('day-tours', loc)}`
+		return `/${loc}/${getCategorySlug('day-tours', loc)}`
 	}
 	if (item.canonicalPath === '/highland-tours') {
-		return `/${loc}/${get_category_slug('highland-tours', loc)}`
+		return `/${loc}/${getCategorySlug('highland-tours', loc)}`
 	}
 	return `/${loc}${item.canonicalPath}`
 }
@@ -52,14 +52,14 @@ export const get_menu_url = (item: MenuItem, lang: Locales | string = 'en'): str
  * Handles exact page matches, child/detail pages (e.g. /en/blog/slug, /vi/tour-trong-ngay/slug),
  * and localized category path aliases.
  */
-export const is_menu_active = (
+export const isMenuActive = (
 	item: MenuItem,
 	pathname: string,
 	lang: Locales | string = 'en'
 ): boolean => {
 	if (!pathname) return false
 	const loc = lang === 'vn' ? 'vi' : lang
-	const targetUrl = get_menu_url(item, loc)
+	const targetUrl = getMenuUrl(item, loc)
 
 	// 1. Direct exact or prefix match against localized menu URL
 	if (pathname === targetUrl || pathname.startsWith(`${targetUrl}/`)) {
@@ -71,7 +71,7 @@ export const is_menu_active = (
 	const segments = pathname.split('/').filter(Boolean)
 	if (segments.length >= 2) {
 		const categorySegment = segments[1]
-		const resolvedCategory = resolve_canonical_category(categorySegment)
+		const resolvedCategory = resolveCanonicalCategory(categorySegment)
 		if (resolvedCategory === 'day-tours' && item.canonicalPath === '/day-tours') {
 			return true
 		}

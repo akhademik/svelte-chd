@@ -1,20 +1,23 @@
 import { base } from '$app/paths'
 import { type Handle, redirect } from '@sveltejs/kit'
 
-import { extract_url, get_lang_cookie, get_preferred_locale } from './i18n/i18n-helper.js'
+import { extractUrl, getLangCookie, getPreferredLocale } from './i18n/i18n-helper.js'
 import { isLocale } from './i18n/i18n-util.js'
 
 export const handle: Handle = async ({ event, resolve }) => {
 	// extract url to get the lang and the rest
-	const { url_lang, url_path } = extract_url(event)
+	const { url_lang, url_path } = extractUrl(event)
 
 	// get lang previously saved in cookie
-	const cookie = get_lang_cookie(event)
+	const cookie = getLangCookie(event)
 
 	// if no lang in cookie then use lang preferred in setting
-	const user_locale = cookie || get_preferred_locale(event)
+	const user_locale = cookie || getPreferredLocale(event)
 	if (url_lang === 'api') {
-		return resolve(event)
+		const response = await resolve(event)
+		response.headers.set('X-Content-Type-Options', 'nosniff')
+		response.headers.set('X-Frame-Options', 'DENY')
+		return response
 	}
 	// redirect to user_locale if no lang was found or lang is not a correct locale
 	if (!url_lang || !isLocale(url_lang)) {
@@ -25,6 +28,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// url_lang is now guaranteed to be a valid Locale
 	event.locals.locale = url_lang
 
-	// replace html lang attribute with correct language
-	return resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', url_lang) })
+	// replace html lang attribute with correct language and set security headers
+	const response = await resolve(event, {
+		transformPageChunk: ({ html }) => html.replace('%lang%', url_lang),
+	})
+
+	response.headers.set('X-Frame-Options', 'SAMEORIGIN')
+	response.headers.set('X-Content-Type-Options', 'nosniff')
+	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
+	response.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
+
+	return response
 }

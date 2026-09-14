@@ -6,7 +6,7 @@ export interface TourModalState {
 	tour: Tour | null
 }
 
-export const tour_modal = (() => {
+export const tourModal = (() => {
 	const { subscribe, set, update } = writable<TourModalState>({
 		isOpen: false,
 		tour: null,
@@ -24,7 +24,7 @@ export interface BlogModalState {
 	post: any | null
 }
 
-export const blog_modal = (() => {
+export const blogModal = (() => {
 	const { subscribe, set, update } = writable<BlogModalState>({
 		isOpen: false,
 		post: null,

@@ -48,25 +48,30 @@ svelte-chd/
   - Tầng 2: Cloudflare KV Snapshot 14-ngày đảm bảo website vẫn hoạt động 100% khi Sanity bảo trì hoặc gặp sự cố ([`kv-snapshot.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/cache/kv-snapshot.ts)).
 
 ### 2. **Chuyển Đổi Ngôn Ngữ Thông Minh & Mapping Slug Động (Smart Multilingual Route Translation)**
-- **Bidirectional Slug Translation**: Khi người dùng chuyển đổi ngôn ngữ (VI/EN/FR), hàm [`replace_locale_in_url`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.ts) tự động phân giải slug danh mục tour sang đúng ngôn ngữ đích thay vì chỉ thay đổi tiền tố locale:
+- **Bidirectional Slug Translation**: Khi người dùng chuyển đổi ngôn ngữ (VI/EN/FR), hàm [`replace_locale_in_url`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.ts) / [`replaceLocaleInUrl`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.ts) tự động phân giải slug danh mục tour sang đúng ngôn ngữ đích thay vì chỉ thay đổi tiền tố locale:
   - `/vi/tour-trong-ngay` ↔ `/en/day-tours` ↔ `/fr/excursions`
   - `/vi/tour-tay-nguyen` ↔ `/en/highland-tours` ↔ `/fr/hauts-plateaux`
   - `/vi/tour-trong-ngay/[slug]` ↔ `/en/day-tours/[slug]` ↔ `/fr/excursions/[slug]`
 - **Bảo toàn Query Params & Hash**: Các tham số lọc, prefill form (`?tour=...`) và anchor link (`#section`) được giữ nguyên toàn vẹn khi đổi ngôn ngữ.
 
-### 3. **Bảo Mật & Chống Spam Toàn Diện (Security & Anti-Spam)**
+### 3. **Quy Chuẩn Đặt Tên Mã Nguồn (Code Style & Naming Conventions)**
+- **Quy tắc chuẩn `camelCase`**: Toàn bộ hàm (functions), phương thức (methods), biến (variables), helper utilities và custom hooks bắt buộc sử dụng chuẩn **`camelCase`** (ví dụ: `collectGalleryImages`, `extractPortableTextImages`, `deduplicateGalleryImages`, `replaceLocaleInUrl`, `formatPriceObject`, `getTourSlug`).
+- **PascalCase**: Component Svelte (`BaseButton.svelte`), React component, Class/Interface/Type (`BlogPost`, `Tour`, `CollectGalleryImagesParams`).
+- **UPPER_SNAKE_CASE**: Hằng số toàn cục (Constants / Configuration maps như `TOUR_CATEGORY_SLUG_MAP`).
+
+### 4. **Bảo Mật & Chống Spam Toàn Diện (Security & Anti-Spam)**
 - **IP Rate Limiting**: Giới hạn 5 submissions / 10 phút / IP đối với mọi hành động gửi Contact & Booking ([`rate-limiter.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.ts)).
 - **Invisible Honeypot Protection**: Bẫy bot ngầm chống spam email và ngăn tràn webhook Discord ([`anti-spam.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.ts)).
 - **Async Settled Notification**: Đảm bảo `Promise.allSettled` hoàn thành gửi Admin Email, Client Confirmation, và Discord Webhook trước khi trả response trên Edge runtime.
 
-### 4. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Hoàn Thiện**
+### 5. **Hệ Thống Trang Pháp Lý, Tiện Ích & SEO Hoàn Thiện**
 - **Trang Chức Năng Mới**:
   - `/faq`: Hệ thống giải đáp câu hỏi thường gặp với bộ lọc danh mục và accordion tương tác.
   - `/terms`: Điều khoản dịch vụ và cam kết pháp lý lữ hành quốc tế của CHD Travel.
   - `/privacy`: Chính sách bảo vệ dữ liệu, chống spam và bảo mật thông tin du khách.
 - **Rich Snippets & Structured Data**: Tự động sinh JSON-LD (`TravelAgency`, `TouristTrip`, `Product`, `BreadcrumbList`) và thẻ `hreflang` 3 ngôn ngữ tương ứng chuẩn SEO quốc tế ([`sitemap.xml/+server.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/routes/sitemap.xml/+server.ts)).
 
-### 5. **Centralized Logging System**
+### 6. **Centralized Logging System**
 - Module [`logger.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/logger.ts) chuẩn hóa các mức `INFO`, `WARN`, `ERROR`, `DEBUG`, tự động ẩn log nhạy cảm trên Production.
 
 ---
@@ -84,7 +89,7 @@ Tại thư mục gốc dự án, bạn có thể thực hiện mọi tác vụ q
 | `pnpm check:all` | Chạy Type Check toàn dự án (`svelte-check` + `tsc --noEmit`) |
 | `pnpm lint:all` | Kiểm tra Lint & Prettier format cho toàn bộ monorepo |
 | `pnpm format:all` | Tự động định dạng code chuẩn Prettier cho toàn bộ files |
-| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **58/58 tests** - i18n, form schema, formatters, pax tiers, nav-bar, hero-image, rate-limiter, anti-spam, sanity) |
+| `pnpm test` | Chạy toàn bộ Unit test suites (Vitest: **77/77 tests across 11 suites**) |
 | `pnpm test:e2e` | Chạy Playwright End-to-End tests (**6/6 tests** - locale switching, category slug mapping, modal, seo) |
 | `pnpm knip:all` | Quét Dead Code, Unused Files & Unused Exports |
 | `pnpm sync:rates` | Đồng bộ tỷ giá ngoại tệ từ Exchange API vào Sanity CMS (dùng cho GitHub Action Cron) |
@@ -99,8 +104,9 @@ Mỗi thay đổi mã nguồn phải tuân thủ nghiêm ngặt theo tài liệu
 1. `pnpm format:all`
 2. `pnpm lint:all`
 3. `pnpm check:all`
-4. `pnpm test` (60/60 unit tests)
+4. `pnpm test` (77/77 unit tests across 11 suites)
 5. `pnpm test:e2e` (6/6 Playwright E2E tests)
 6. `pnpm knip:all`
 7. `pnpm build:all`
 8. `graphify update .`
+

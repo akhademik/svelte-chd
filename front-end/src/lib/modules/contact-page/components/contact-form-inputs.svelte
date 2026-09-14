@@ -1,7 +1,7 @@
 <script lang="ts">
 	import LL, { locale } from '$i18n/i18n-svelte'
 	import type { Translation } from '$i18n/i18n-types'
-	import { redirect_to_home } from '$utils/navigation'
+	import { redirectToHome } from '$utils/navigation'
 	import toast from 'svelte-french-toast'
 
 	type ErrKey = keyof Translation['contact_page']['err']
@@ -37,7 +37,7 @@
 
 	$effect(() => {
 		if ($message === 'success') {
-			redirect_to_home($locale)
+			redirectToHome($locale)
 			toast.success($LL.contact_page.success())
 		} else if ($message === 'failed') {
 			toast.error($LL.contact_page.err.err_submit())

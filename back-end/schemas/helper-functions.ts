@@ -2,7 +2,7 @@ import {CNumberInput} from '../components/c-number-input'
 import type {Field, GenerateField, Locale, PriceRange} from './common/constants'
 
 // GENERATE TYPICAL FIELD
-export const generate_field: GenerateField = (_title, _name, _type, _init_value) => {
+export const generateField: GenerateField = (_title, _name, _type, _init_value) => {
   const field: Field = {
     name: _name,
     title: _title,
@@ -18,7 +18,7 @@ export const generate_field: GenerateField = (_title, _name, _type, _init_value)
 }
 
 // GENERATE FIELD FOR LOCALES (Only require default locale, other languages are optional)
-export const gen_locale_field = (_locales: Locale[], _type: string) => {
+export const genLocaleField = (_locales: Locale[], _type: string) => {
   return _locales.map((locale) => ({
     title: locale.title,
     name: locale.id,
@@ -29,7 +29,7 @@ export const gen_locale_field = (_locales: Locale[], _type: string) => {
 }
 
 // GENERATE PRICE RANGE
-export const gen_price_range = (_range: PriceRange[]) => {
+export const genPriceRange = (_range: PriceRange[]) => {
   return _range.map((each_price) => {
     const price: any = {
       title: each_price.title,

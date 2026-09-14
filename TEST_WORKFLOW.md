@@ -19,13 +19,16 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
 4. **Unit Testing (`pnpm test` / Vitest)**:
    - i18n URL & Slug Translation: [`i18n-helper.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/i18n/i18n-helper.test.ts) (8 tests)
    - Form Schema Validation: [`form-schema.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/form-schema.test.ts) (4 tests)
-   - Data & Image Formatters & Multilingual Filter: [`format-data.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/format-data.test.ts) (14 tests)
-   - Sanity URL Builder & Helpers: [`sanity.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/sanity.test.ts) (16 tests)
+   - Data & Image Formatters & Multilingual Filter: [`format-data.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/format-data.test.ts) (19 tests)
+   - Slug Resolution & Mapping: [`slug.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/slug.test.ts) (14 tests)
+   - Gallery Image Collection & PortableText: [`gallery.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/gallery.test.ts) (8 tests)
+   - Testimonial Utilities: [`testimonial.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/testimonials/testimonial.test.ts) (4 tests)
+   - Navigation Link Helpers: [`navigation.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/utils/navigation.test.ts) (3 tests)
    - Navigation Bar & Active Route Logic: [`nav-bar-logic.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/modules/nav-bar/nav-bar-logic.test.ts) (6 tests)
    - Hero Image Deterministic Rotation & Sticky Logic: [`hero-image.service.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/services/hero-image.service.test.ts) (5 tests)
    - IP Rate Limiter: [`rate-limiter.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/rate-limiter.test.ts) (3 tests)
    - Anti-Spam Honeypot Traps: [`anti-spam.test.ts`](file:///home/hajtran/dev/svelte-chd/front-end/src/lib/server/security/anti-spam.test.ts) (3 tests)
-   - **Tổng cộng: 60/60 unit tests passing across 8 suites.**
+   - **Tổng cộng: 77/77 unit tests passing across 11 suites.**
 5. **Dead Code & Dependency Analysis (`pnpm knip:all`)**:
    - Quét và loại bỏ dead code, file mồ côi, export/type và package không sử dụng trên toàn bộ monorepo (`front-end` và `back-end`).
 6. **E2E Testing (`pnpm test:e2e` / Playwright)**:
@@ -39,15 +42,16 @@ Sau mỗi lần sửa đổi code, thực hiện lần lượt các bước sau 
 
 ## 🔄 2. Quy Trình Phản Hồi & Commit
 
-1. **Thực hiện sửa đổi** (Single-pass edit bằng native tool, không dùng patch vặt).
+1. **Thực hiện sửa đổi** (Single-pass edit bằng native tool, không dùng patch vặt, tuân thủ `camelCase` cho functions/methods).
 2. **Chạy toàn bộ chuỗi kiểm tra & CI/CD Verification**:
    - Format: `pnpm format:all`
    - Linting: `pnpm lint:all`
    - Type Checking: `pnpm check:all`
-   - Unit Tests: `pnpm test` (Vitest 60/60)
+   - Unit Tests: `pnpm test` (Vitest 77/77 across 11 suites)
    - E2E Tests: `pnpm test:e2e` (Playwright 6/6 — Kiểm tra và đảm bảo toàn bộ CI/CD GitHub Actions pass 100%)
    - Dead Code: `pnpm knip:all`
    - Build Check: `pnpm build:all`
 3. **Chạy `graphify update .`** cập nhật graph tri thức mã nguồn.
 4. **Báo cáo kết quả đầy đủ, rõ ràng cho User**.
 5. **Khi User phê duyệt (OK)** -> Thực hiện Git Commit & Push theo chuẩn Conventional Commits.
+

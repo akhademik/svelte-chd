@@ -1,55 +1,59 @@
 import { describe, it, expect } from 'vitest'
 import {
-	format_price,
-	format_pax_no,
-	format_price_object,
-	format_review_date,
-	get_pax_tier,
+	formatPrice,
+	formatPaxNo,
+	formatPriceObject,
+	formatReviewDate,
+	getPaxTier,
 	slugify,
-	get_category_slug,
-	resolve_canonical_category,
-	get_localized_field,
-	has_localized_title,
-	filter_localized_items,
+	getCategorySlug,
+	resolveCanonicalCategory,
+	getLocalizedField,
+	hasLocalizedTitle,
+	filterLocalizedItems,
+	getAvatarInitials,
 } from './format-data'
+
 import type { Tour } from '$lib/types/tour.type'
 
 describe('format-data utilities', () => {
 	it('should format price correctly for Vietnamese Dong (vi / vn)', () => {
-		expect(format_price(1500000, 'vi')).toBe('1.500k')
-		expect(format_price(500000, 'vi')).toBe('500k')
-		expect(format_price(1500000, 'vn')).toBe('1.500k')
+		expect(formatPrice(1500000, 'vi')).toBe('1.500k')
+		expect(formatPrice(500000, 'vi')).toBe('500k')
+		expect(formatPrice(1500000, 'vn')).toBe('1.500k')
+		expect(formatPrice(2330000, 'vi', { full: true })).toBe('2.330.000 VND')
+		expect(formatPrice(4660000, 'vn', { full: true })).toBe('4.660.000 VND')
 	})
 
 	it('should format price correctly for USD (en)', () => {
 		// default rate 0.000041
-		expect(format_price(1000000, 'en')).toContain('$')
+		expect(formatPrice(1000000, 'en')).toContain('$')
 	})
 
 	it('should format price correctly for EUR (fr)', () => {
 		// default rate 0.000038
-		expect(format_price(1000000, 'fr')).toContain('€')
+		expect(formatPrice(1000000, 'fr')).toContain('€')
 	})
 
 	it('should format pax ranges accurately', () => {
-		expect(format_pax_no('pax1')).toBe('01')
-		expect(format_pax_no('pax2')).toBe('02')
-		expect(format_pax_no('pax3_4')).toBe('03 - 04')
-		expect(format_pax_no('pax10_up')).toBe('> 10')
-		expect(format_pax_no('custom_key')).toBe('custom_key')
+		expect(formatPaxNo('pax1')).toBe('01')
+		expect(formatPaxNo('pax2')).toBe('02')
+		expect(formatPaxNo('pax3_4')).toBe('03 - 04')
+		expect(formatPaxNo('pax10_up')).toBe('> 10')
+		expect(formatPaxNo('custom_key')).toBe('custom_key')
 	})
 
 	it('should map guest count correctly to pax tier keys', () => {
-		expect(get_pax_tier(1)).toBe('pax1')
-		expect(get_pax_tier(2)).toBe('pax2')
-		expect(get_pax_tier(3)).toBe('pax3_4')
-		expect(get_pax_tier(4)).toBe('pax3_4')
-		expect(get_pax_tier(5)).toBe('pax5_6')
-		expect(get_pax_tier(6)).toBe('pax5_6')
-		expect(get_pax_tier(7)).toBe('pax7_9')
-		expect(get_pax_tier(9)).toBe('pax7_9')
-		expect(get_pax_tier(10)).toBe('pax10_up')
-		expect(get_pax_tier(15)).toBe('pax10_up')
+		expect(getPaxTier(1)).toBe('pax1')
+		expect(getPaxTier(2)).toBe('pax2')
+		expect(getPaxTier(3)).toBe('pax3_4')
+		expect(getPaxTier(4)).toBe('pax3_4')
+		expect(getPaxTier(5)).toBe('pax5_6')
+		expect(getPaxTier(6)).toBe('pax5_6')
+		expect(getPaxTier(7)).toBe('pax7_9')
+		expect(getPaxTier(9)).toBe('pax7_9')
+		expect(getPaxTier(10)).toBe('pax10_up')
+		expect(getPaxTier(15)).toBe('pax10_up')
 	})
 
 	it('should sort price object entries numerically', () => {
@@ -62,20 +66,20 @@ describe('format-data utilities', () => {
 			},
 		} as unknown as Tour
 
-		const sorted = format_price_object(dummyTour)
+		const sorted = formatPriceObject(dummyTour)
 		expect(sorted[0][0]).toBe('pax1')
 		expect(sorted[1][0]).toBe('pax2')
 		expect(sorted[2][0]).toBe('pax5_6')
 	})
 
 	it('should format review dates according to locale', () => {
-		expect(format_review_date('07-2026', 'vn')).toBe('Tháng 7, 2026')
-		expect(format_review_date('07-2026', 'en')).toBe('Jul 2026')
-		expect(format_review_date('07-2026', 'fr')).toBe('Juil 2026')
-		expect(format_review_date('2026-08', 'vn')).toBe('Tháng 8, 2026')
-		expect(format_review_date('2026-08', 'en')).toBe('Aug 2026')
-		expect(format_review_date('2026-08', 'fr')).toBe('Août 2026')
-		expect(format_review_date('', 'en')).toBe('')
+		expect(formatReviewDate('07-2026', 'vn')).toBe('Tháng 7, 2026')
+		expect(formatReviewDate('07-2026', 'en')).toBe('Jul 2026')
+		expect(formatReviewDate('07-2026', 'fr')).toBe('Juil 2026')
+		expect(formatReviewDate('2026-08', 'vn')).toBe('Tháng 8, 2026')
+		expect(formatReviewDate('2026-08', 'en')).toBe('Aug 2026')
+		expect(formatReviewDate('2026-08', 'fr')).toBe('Août 2026')
+		expect(formatReviewDate('', 'en')).toBe('')
 	})
 
 	describe('slugify & category helpers', () => {
@@ -98,50 +102,50 @@ describe('format-data utilities', () => {
 		})
 
 		it('should get correct localized category slugs', () => {
-			expect(get_category_slug('day-tours', 'vi')).toBe('tour-trong-ngay')
-			expect(get_category_slug('day-tours', 'vn')).toBe('tour-trong-ngay')
-			expect(get_category_slug('day-tours', 'en')).toBe('day-tours')
-			expect(get_category_slug('day-tours', 'fr')).toBe('excursions')
+			expect(getCategorySlug('day-tours', 'vi')).toBe('tour-trong-ngay')
+			expect(getCategorySlug('day-tours', 'vn')).toBe('tour-trong-ngay')
+			expect(getCategorySlug('day-tours', 'en')).toBe('day-tours')
+			expect(getCategorySlug('day-tours', 'fr')).toBe('excursions')
 
-			expect(get_category_slug('highland-tours', 'vi')).toBe('tour-tay-nguyen')
-			expect(get_category_slug('highland-tours', 'en')).toBe('highland-tours')
-			expect(get_category_slug('highland-tours', 'fr')).toBe('hauts-plateaux')
+			expect(getCategorySlug('highland-tours', 'vi')).toBe('tour-tay-nguyen')
+			expect(getCategorySlug('highland-tours', 'en')).toBe('highland-tours')
+			expect(getCategorySlug('highland-tours', 'fr')).toBe('hauts-plateaux')
 		})
 
 		it('should resolve canonical categories from localized and legacy aliases', () => {
-			expect(resolve_canonical_category('tour-trong-ngay')).toBe('day-tours')
-			expect(resolve_canonical_category('tour-ngay')).toBe('day-tours')
-			expect(resolve_canonical_category('excursions')).toBe('day-tours')
-			expect(resolve_canonical_category('day-tours')).toBe('day-tours')
+			expect(resolveCanonicalCategory('tour-trong-ngay')).toBe('day-tours')
+			expect(resolveCanonicalCategory('tour-ngay')).toBe('day-tours')
+			expect(resolveCanonicalCategory('excursions')).toBe('day-tours')
+			expect(resolveCanonicalCategory('day-tours')).toBe('day-tours')
 
-			expect(resolve_canonical_category('tour-tay-nguyen')).toBe('highland-tours')
-			expect(resolve_canonical_category('tay-nguyen')).toBe('highland-tours')
-			expect(resolve_canonical_category('hauts-plateaux')).toBe('highland-tours')
-			expect(resolve_canonical_category('highland-tours')).toBe('highland-tours')
+			expect(resolveCanonicalCategory('tour-tay-nguyen')).toBe('highland-tours')
+			expect(resolveCanonicalCategory('tay-nguyen')).toBe('highland-tours')
+			expect(resolveCanonicalCategory('hauts-plateaux')).toBe('highland-tours')
+			expect(resolveCanonicalCategory('highland-tours')).toBe('highland-tours')
 
-			expect(resolve_canonical_category('invalid-category')).toBeNull()
-			expect(resolve_canonical_category(undefined)).toBeNull()
+			expect(resolveCanonicalCategory('invalid-category')).toBeNull()
+			expect(resolveCanonicalCategory(undefined)).toBeNull()
 		})
 	})
 
 	describe('localization helpers', () => {
 		it('should get localized field with proper priority and fallbacks', () => {
 			const obj = { vi: 'Tiêu đề VN', en: 'English Title', fr: 'Titre Français' }
-			expect(get_localized_field(obj, 'vi')).toBe('Tiêu đề VN')
-			expect(get_localized_field(obj, 'vn')).toBe('Tiêu đề VN')
-			expect(get_localized_field(obj, 'en')).toBe('English Title')
-			expect(get_localized_field(obj, 'fr')).toBe('Titre Français')
+			expect(getLocalizedField(obj, 'vi')).toBe('Tiêu đề VN')
+			expect(getLocalizedField(obj, 'vn')).toBe('Tiêu đề VN')
+			expect(getLocalizedField(obj, 'en')).toBe('English Title')
+			expect(getLocalizedField(obj, 'fr')).toBe('Titre Français')
 
 			const fallbackObj = { en: 'Only English' }
-			expect(get_localized_field(fallbackObj, 'vi')).toBe('Only English')
-			expect(get_localized_field(null, 'vi', 'Default')).toBe('Default')
+			expect(getLocalizedField(fallbackObj, 'vi')).toBe('Only English')
+			expect(getLocalizedField(null, 'vi', 'Default')).toBe('Default')
 		})
 
 		it('should check if entity has localized title', () => {
-			expect(has_localized_title({ title: { vi: 'Bài viết' } }, 'vi')).toBe(true)
-			expect(has_localized_title({ tour_name: { en: 'Tour' } }, 'fr')).toBe(true)
-			expect(has_localized_title({ title: null }, 'vi')).toBe(false)
-			expect(has_localized_title(undefined, 'vi')).toBe(false)
+			expect(hasLocalizedTitle({ title: { vi: 'Bài viết' } }, 'vi')).toBe(true)
+			expect(hasLocalizedTitle({ tour_name: { en: 'Tour' } }, 'fr')).toBe(true)
+			expect(hasLocalizedTitle({ title: null }, 'vi')).toBe(false)
+			expect(hasLocalizedTitle(undefined, 'vi')).toBe(false)
 		})
 
 		it('should filter items by localized title', () => {
@@ -150,10 +154,34 @@ describe('format-data utilities', () => {
 				{ id: 2, title: null },
 				{ id: 3, tour_name: { en: 'Tour 3' } },
 			]
-			const filtered = filter_localized_items(items, 'vi')
+			const filtered = filterLocalizedItems(items, 'vi')
 			expect(filtered.length).toBe(2)
 			expect(filtered[0].id).toBe(1)
 			expect(filtered[1].id).toBe(3)
+		})
+	})
+
+	describe('getAvatarInitials', () => {
+		it('should handle multi-word names by taking first letter of first word and first letter of last word', () => {
+			expect(getAvatarInitials('Nguyễn Văn Anh')).toBe('NA')
+			expect(getAvatarInitials('John Doe')).toBe('JD')
+			expect(getAvatarInitials('Mary Jane Watson')).toBe('MW')
+		})
+
+		it('should handle single-word names by taking the first 2 characters', () => {
+			expect(getAvatarInitials('Nguyễn')).toBe('NG')
+			expect(getAvatarInitials('John')).toBe('JO')
+			expect(getAvatarInitials('Alex')).toBe('AL')
+		})
+
+		it('should handle single-character names', () => {
+			expect(getAvatarInitials('A')).toBe('A')
+		})
+
+		it('should handle empty or whitespace-only strings with fallback question mark', () => {
+			expect(getAvatarInitials('')).toBe('?')
+			expect(getAvatarInitials('   ')).toBe('?')
+			expect(getAvatarInitials(undefined)).toBe('?')
 		})
 	})
 })

@@ -1,22 +1,22 @@
 import { describe, it, expect } from 'vitest'
-import { get_tour_slug, get_blog_slug, get_length_and_index, tour_by_index } from './sanity'
+import { getTourSlug, getBlogSlug } from './slug'
 import { matchesTourSlug } from '$lib/server/services/tour.service'
 import type { Tour } from '$lib/types/tour.type'
 
-describe('sanity utils & fallback slug parsing', () => {
+describe('slug utils', () => {
 	it('should return empty string when tour or slug is undefined', () => {
-		expect(get_tour_slug(null as unknown as Tour)).toBe('')
-		expect(get_tour_slug({} as Tour)).toBe('')
+		expect(getTourSlug(null as unknown as Tour)).toBe('')
+		expect(getTourSlug({} as Tour)).toBe('')
 	})
 
 	it('should handle raw string slugs', () => {
 		const tour = { tour_slug: 'lak-lake-adventure' } as unknown as Tour
-		expect(get_tour_slug(tour)).toBe('lak-lake-adventure')
+		expect(getTourSlug(tour)).toBe('lak-lake-adventure')
 	})
 
 	it('should handle standard Sanity slug object { current: string }', () => {
 		const tour = { tour_slug: { current: 'dray-nur-waterfall' } } as unknown as Tour
-		expect(get_tour_slug(tour)).toBe('dray-nur-waterfall')
+		expect(getTourSlug(tour)).toBe('dray-nur-waterfall')
 	})
 
 	it('should fallback to localized slug when nested by language', () => {
@@ -28,11 +28,11 @@ describe('sanity utils & fallback slug parsing', () => {
 			},
 		} as unknown as Tour
 
-		expect(get_tour_slug(tour, 'vn')).toBe('kham-pha-ho-lak')
-		expect(get_tour_slug(tour, 'vi')).toBe('kham-pha-ho-lak')
-		expect(get_tour_slug(tour, 'fr')).toBe('decouverte-du-lac-lak')
-		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-discovery')
-		expect(get_tour_slug(tour, 'de')).toBe('lak-lake-discovery') // falls back to en
+		expect(getTourSlug(tour, 'vn')).toBe('kham-pha-ho-lak')
+		expect(getTourSlug(tour, 'vi')).toBe('kham-pha-ho-lak')
+		expect(getTourSlug(tour, 'fr')).toBe('decouverte-du-lac-lak')
+		expect(getTourSlug(tour, 'en')).toBe('lak-lake-discovery')
+		expect(getTourSlug(tour, 'de')).toBe('lak-lake-discovery') // falls back to en
 	})
 
 	it('should support direct string slugs per language', () => {
@@ -43,8 +43,8 @@ describe('sanity utils & fallback slug parsing', () => {
 			},
 		} as unknown as Tour
 
-		expect(get_tour_slug(tour, 'vi')).toBe('kham-pha-ho-lak')
-		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-discovery')
+		expect(getTourSlug(tour, 'vi')).toBe('kham-pha-ho-lak')
+		expect(getTourSlug(tour, 'en')).toBe('lak-lake-discovery')
 	})
 
 	it('should derive virtual slug from tour_name when tour_slug is absent', () => {
@@ -56,9 +56,9 @@ describe('sanity utils & fallback slug parsing', () => {
 			},
 		} as unknown as Tour
 
-		expect(get_tour_slug(tour, 'vi')).toBe('kham-pha-ho-lak-1-ngay')
-		expect(get_tour_slug(tour, 'en')).toBe('lak-lake-1-day-discovery')
-		expect(get_tour_slug(tour, 'fr')).toBe('decouverte-du-lac-lak-1-jour')
+		expect(getTourSlug(tour, 'vi')).toBe('kham-pha-ho-lak-1-ngay')
+		expect(getTourSlug(tour, 'en')).toBe('lak-lake-1-day-discovery')
+		expect(getTourSlug(tour, 'fr')).toBe('decouverte-du-lac-lak-1-jour')
 	})
 
 	it('should derive hybrid {tour_id}-{nameSlug} when tour_id is provided', () => {
@@ -70,8 +70,8 @@ describe('sanity utils & fallback slug parsing', () => {
 			},
 		} as unknown as Tour
 
-		expect(get_tour_slug(dayTour, 'vi')).toBe('dl-01-kham-pha-ho-lak-1-ngay')
-		expect(get_tour_slug(dayTour, 'en')).toBe('dl-01-lak-lake-1-day-discovery')
+		expect(getTourSlug(dayTour, 'vi')).toBe('dl-01-kham-pha-ho-lak-1-ngay')
+		expect(getTourSlug(dayTour, 'en')).toBe('dl-01-lak-lake-1-day-discovery')
 
 		const highlandTour = {
 			tour_id: 'HL-03',
@@ -81,8 +81,8 @@ describe('sanity utils & fallback slug parsing', () => {
 			},
 		} as unknown as Tour
 
-		expect(get_tour_slug(highlandTour, 'vi')).toBe('hl-03-hanh-trinh-dai-ngan-3-ngay')
-		expect(get_tour_slug(highlandTour, 'fr')).toBe('hl-03-voyage-au-coeur-des-hauts-plateaux')
+		expect(getTourSlug(highlandTour, 'vi')).toBe('hl-03-hanh-trinh-dai-ngan-3-ngay')
+		expect(getTourSlug(highlandTour, 'fr')).toBe('hl-03-voyage-au-coeur-des-hauts-plateaux')
 	})
 
 	it('should fallback to tour_id if neither tour_slug nor tour_name exist', () => {
@@ -90,7 +90,7 @@ describe('sanity utils & fallback slug parsing', () => {
 			tour_id: 'DL-01',
 		} as unknown as Tour
 
-		expect(get_tour_slug(tour, 'vi')).toBe('DL-01')
+		expect(getTourSlug(tour, 'vi')).toBe('DL-01')
 	})
 
 	it('should derive virtual slug for blog posts from title', () => {
@@ -100,32 +100,8 @@ describe('sanity utils & fallback slug parsing', () => {
 				en: 'Buon Ma Thuot Travel Tips',
 			},
 		}
-		expect(get_blog_slug(blog, 'vi')).toBe('kinh-nghiem-phuot-buon-ma-thuot')
-		expect(get_blog_slug(blog, 'en')).toBe('buon-ma-thuot-travel-tips')
-	})
-
-	it('should get tour by index correctly', () => {
-		const tours = [
-			{ tour_slug: { current: 'tour-1' } },
-			{ tour_slug: { current: 'tour-2' } },
-		] as Tour[]
-
-		expect(tour_by_index(tours, 1)?.tour_slug).toEqual({ current: 'tour-2' })
-		expect(tour_by_index(tours, 99)?.tour_slug).toEqual({ current: 'tour-1' })
-	})
-
-	it('should calculate length and index correctly', () => {
-		const tours = [
-			{ tour_slug: { current: 'tour-1' } },
-			{ tour_slug: { current: 'tour-2' } },
-		] as Tour[]
-
-		const res = get_length_and_index(tours, 'tour-2')
-		expect(res.length).toBe(1)
-		expect(res.index).toBe(1)
-
-		const notFound = get_length_and_index(tours, 'non-existent')
-		expect(notFound.index).toBe(0)
+		expect(getBlogSlug(blog, 'vi')).toBe('kinh-nghiem-phuot-buon-ma-thuot')
+		expect(getBlogSlug(blog, 'en')).toBe('buon-ma-thuot-travel-tips')
 	})
 
 	describe('matchesTourSlug matching engine', () => {

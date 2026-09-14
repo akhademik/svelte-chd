@@ -2,19 +2,19 @@
 	import { page } from '$app/stores'
 	import { BaseLocaleSwitcher } from '$base'
 	import LL, { locale } from '$i18n/i18n-svelte'
-	import { get_menu_url, is_menu_active, menu_items } from '$modules/nav-bar/nav-bar-logic'
-	import { nav_deg, nav_mobile } from '$stores/nav-store'
+	import { getMenuUrl, isMenuActive, menuItems } from '$modules/nav-bar/nav-bar-logic'
+	import { navDeg, navMobile } from '$stores/nav-store'
 
-	const close_menu = () => {
-		if ($nav_mobile) {
-			nav_mobile.toggle()
-			nav_deg.turn()
+	const closeMenu = () => {
+		if ($navMobile) {
+			navMobile.toggle()
+			navDeg.turn()
 		}
 	}
 
 	$effect(() => {
 		if (typeof document !== 'undefined') {
-			if ($nav_mobile) {
+			if ($navMobile) {
 				document.documentElement.style.overflow = 'hidden'
 				document.documentElement.style.touchAction = 'none'
 				document.body.style.overflow = 'hidden'
@@ -37,21 +37,21 @@
 
 <div
 	class="fixed inset-0 z-40 flex h-[100dvh] touch-pan-y flex-col justify-between overflow-y-auto overscroll-contain bg-surface px-6 pb-8 pt-24 transition-all duration-500 sm:px-8 md:hidden"
-	class:-translate-x-full={!$nav_mobile}
+	class:-translate-x-full={!$navMobile}
 	role="dialog"
 	aria-modal="true"
 	aria-label="Mobile navigation menu">
 	<!-- Menu Nav Links -->
 	<div class="my-auto py-6">
 		<ul class="flex flex-col gap-6 font-serif text-2xl tracking-wide text-foreground">
-			{#each menu_items as item (item.id)}
-				{@const fixed_url = get_menu_url(item, $locale)}
-				{@const active = is_menu_active(item, $page.url.pathname, $locale)}
+			{#each menuItems as item (item.id)}
+				{@const fixedUrl = getMenuUrl(item, $locale)}
+				{@const active = isMenuActive(item, $page.url.pathname, $locale)}
 				<li>
 					<a
-						href={fixed_url}
+						href={fixedUrl}
 						class={`transition-colors ${active ? 'italic text-secondary' : 'hover:text-secondary'}`}
-						onclick={close_menu}>
+						onclick={closeMenu}>
 						{$LL.nav_bar[item.text]()}
 					</a>
 				</li>
