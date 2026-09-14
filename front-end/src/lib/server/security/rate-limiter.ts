@@ -48,7 +48,7 @@ export function getClientIp(request: Request): string {
 }
 
 export interface KVNamespaceLike {
-	get(key: string, type?: 'text' | 'json'): Promise<any>
+	get(key: string, type?: 'text' | 'json'): Promise<string | null | unknown>
 	put(key: string, value: string, options?: { expirationTtl?: number }): Promise<void>
 }
 
@@ -81,12 +81,11 @@ export function checkRateLimit(
 	}
 
 	if (record.count >= options.maxRequests) {
-		const resetInSeconds = Math.max(1, Math.ceil((record.resetAt - now) / 1000))
 		Logger.warn('RateLimiter', `Rate limit exceeded for IP: ${ip} (key: ${key})`)
 		return {
 			allowed: false,
 			remaining: 0,
-			resetInSeconds,
+			resetInSeconds: Math.ceil((record.resetAt - now) / 1000),
 		}
 	}
 
@@ -116,8 +115,8 @@ export async function checkRateLimitAsync(
 		const key = `${options.keyPrefix || 'rl'}:${ip}`
 		const ttlSeconds = Math.max(60, Math.ceil(options.windowMs / 1000))
 
-		const currentStr = await kv.get(key, 'text')
-		const currentCount = currentStr ? parseInt(currentStr, 10) : 0
+		const currentVal = await kv.get(key, 'text')
+		const currentCount = typeof currentVal === 'string' ? parseInt(currentVal, 10) : 0
 
 		if (currentCount >= options.maxRequests) {
 			Logger.warn('RateLimiter', `[KV] Rate limit exceeded for IP: ${ip} (key: ${key})`)

@@ -5,7 +5,7 @@ import { Logger } from '$lib/utils/logger'
  * If any honeypot field is filled by a bot, returns true (isSpam = true).
  */
 export function isSpamSubmission(
-	formData: FormData | Record<string, any>,
+	formData: FormData | Record<string, unknown>,
 	honeypotFields: string[] = ['website', 'company_fax', 'fax']
 ): boolean {
 	for (const field of honeypotFields) {

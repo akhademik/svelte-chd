@@ -1,7 +1,11 @@
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
-import { mapSanityToBlogPost, mapSanityToBlogPosts } from '$lib/server/sanity/mappers/blog.mapper'
+import {
+	mapSanityToBlogPost,
+	mapSanityToBlogPosts,
+	type SanityBlogPostRaw,
+} from '$lib/server/sanity/mappers/blog.mapper'
 import {
 	ALL_BLOGS_QUERY,
 	EXTRACT_BLOG_FIELDS,
@@ -44,9 +48,9 @@ export const BlogService = {
 				kv,
 				'snapshot:featured-blogs',
 				async () => {
-					let posts: any[] = await sanityClient.fetch(FEATURED_BLOGS_QUERY)
+					let posts = await sanityClient.fetch<SanityBlogPostRaw[]>(FEATURED_BLOGS_QUERY)
 					if (!posts || posts.length === 0) {
-						posts = await sanityClient.fetch(FALLBACK_BLOGS_QUERY)
+						posts = await sanityClient.fetch<SanityBlogPostRaw[]>(FALLBACK_BLOGS_QUERY)
 					}
 					return mapSanityToBlogPosts(posts || [])
 				},
@@ -64,7 +68,7 @@ export const BlogService = {
 				kv,
 				'snapshot:all-blogs',
 				async () => {
-					const raw = await sanityClient.fetch(ALL_BLOGS_QUERY)
+					const raw = await sanityClient.fetch<SanityBlogPostRaw[]>(ALL_BLOGS_QUERY)
 					return mapSanityToBlogPosts(raw || [])
 				},
 				data => Array.isArray(data)
@@ -109,7 +113,7 @@ export const BlogService = {
 						slug.fr.current == $slug
 					)][0]{${EXTRACT_BLOG_FIELDS}}`
 
-					const res = await sanityClient.fetch(query, { slug })
+					const res = await sanityClient.fetch<SanityBlogPostRaw | null>(query, { slug })
 					return res ? mapSanityToBlogPost(res) : null
 				},
 				data => data !== undefined && data !== null

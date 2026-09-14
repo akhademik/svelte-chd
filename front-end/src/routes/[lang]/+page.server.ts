@@ -2,7 +2,7 @@ import { DISCORD_WEBHOOK_URL } from '$env/static/private'
 import defaultTestimonials from '$lib/constants/testimonials.json'
 import { sendClientConfirmation, sendMail } from '$lib/server/email'
 import { isSpamSubmission } from '$lib/server/security/anti-spam'
-import { checkRateLimit } from '$lib/server/security/rate-limiter'
+import { checkRateLimitAsync } from '$lib/server/security/rate-limiter'
 import { BlogService } from '$lib/server/services/blog.service'
 import { HeroImageService, selectDailyHeroImage } from '$lib/server/services/hero-image.service'
 import { TourService } from '$lib/server/services/tour.service'
@@ -80,7 +80,7 @@ export const load: PageServerLoad = async ({ setHeaders, platform }) => {
 }
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, platform }) => {
 		const requestClone = request.clone()
 		const form = await superValidate<FormSchema, string>(request, zod(formSchema as any) as any)
 		const tagsFormData = await requestClone.formData()
@@ -104,12 +104,16 @@ export const actions = {
 			return message(form, 'success')
 		}
 
-		// Rate Limiting: 5 submissions per 10 minutes per IP
-		const rateLimit = checkRateLimit(request, {
-			maxRequests: 5,
-			windowMs: 10 * 60 * 1000,
-			keyPrefix: 'contact-form',
-		})
+		// Rate Limiting: 5 submissions per 10 minutes per IP (with KV support if bound)
+		const rateLimit = await checkRateLimitAsync(
+			request,
+			{
+				maxRequests: 5,
+				windowMs: 10 * 60 * 1000,
+				keyPrefix: 'contact-form',
+			},
+			(platform as any)?.env?.RATE_LIMIT_KV
+		)
 
 		if (!rateLimit.allowed) {
 			return fail(429, {

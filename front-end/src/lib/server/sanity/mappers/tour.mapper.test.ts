@@ -50,9 +50,9 @@ describe('tour.mapper', () => {
 
 	it('handles null, undefined, and non-array raw inputs gracefully', () => {
 		expect(mapSanityToTour(null)).toBeNull()
-		expect(mapSanityToTour(undefined)).toBeUndefined()
-		expect(mapSanityToTours(null as any)).toEqual([])
-		expect(mapSanityToTours(undefined as any)).toEqual([])
+		expect(mapSanityToTour(undefined)).toBeNull()
+		expect(mapSanityToTours(null)).toEqual([])
+		expect(mapSanityToTours(undefined)).toEqual([])
 	})
 
 	it('maps an array of raw documents filtering out null items', () => {

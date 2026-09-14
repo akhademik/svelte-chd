@@ -1,7 +1,11 @@
 import { cachedFetch } from '$lib/server/cache/memory-cache'
 import { withKvSnapshot } from '$lib/server/cache/kv-snapshot'
 import { sanityClient } from '$lib/server/sanity/client'
-import { mapSanityToTour, mapSanityToTours } from '$lib/server/sanity/mappers/tour.mapper'
+import {
+	mapSanityToTour,
+	mapSanityToTours,
+	type SanityTourRaw,
+} from '$lib/server/sanity/mappers/tour.mapper'
 import {
 	getSingleTourQuery,
 	TOURS_BY_DAY_QUERY,
@@ -73,7 +77,7 @@ export const TourService = {
 				`snapshot:tours:${tourType}`,
 				async () => {
 					const query = tourType === 'day-tours' ? TOURS_BY_DAY_QUERY : TOURS_BY_HIGHLAND_QUERY
-					const rawData: any[] = await sanityClient.fetch(query)
+					const rawData = await sanityClient.fetch<SanityTourRaw[]>(query)
 					return mapSanityToTours(rawData || [])
 				},
 				data => Array.isArray(data) // Empty array [] is a valid result
@@ -118,7 +122,7 @@ export const TourService = {
 								: `_type in ['tourDaily', 'tourCentral']`
 
 					const query = getSingleTourQuery(typeFilter)
-					const res = await sanityClient.fetch(query, { slug })
+					const res = await sanityClient.fetch<SanityTourRaw | null>(query, { slug })
 					return res ? mapSanityToTour(res) : null
 				},
 				data => data !== undefined && data !== null

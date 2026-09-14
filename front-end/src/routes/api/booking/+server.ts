@@ -8,7 +8,7 @@ import { json } from '@sveltejs/kit'
 
 export const POST = async ({ request, platform }) => {
 	try {
-		const rawData = (await request.json()) as Record<string, any>
+		const rawData = (await request.json()) as Record<string, unknown>
 
 		// Anti-Spam: Honeypot trap check
 		if (isSpamSubmission(rawData)) {

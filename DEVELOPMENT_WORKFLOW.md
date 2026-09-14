@@ -92,7 +92,7 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
    - `kv-snapshot.ts`: Lưu snapshot dự phòng 14 ngày trên Cloudflare KV. Khi Sanity gặp sự cố, hệ thống tự động fallback snapshot để web vẫn phục vụ bình thường.
 
 6. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
-   - Mọi form submission (Contact, Booking) phải qua `checkRateLimit` (5 requests / 10 phút / IP) và `isSpamSubmission` (Honeypot trap).
+   - Mọi form submission và API endpoint (Contact, Booking) phải qua `checkRateLimitAsync` (5 requests / 10 phút / IP, đồng bộ qua Cloudflare KV `RATE_LIMIT_KV` và tự động fallback in-memory) và `isSpamSubmission` (Honeypot trap).
    - Toàn bộ email/Discord notification phải được xử lý qua `Promise.allSettled` trước khi return response.
 
 7. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:

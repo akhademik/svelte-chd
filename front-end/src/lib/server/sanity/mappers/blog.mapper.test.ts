@@ -43,9 +43,9 @@ describe('blog.mapper', () => {
 
 	it('handles null and undefined safely', () => {
 		expect(mapSanityToBlogPost(null)).toBeNull()
-		expect(mapSanityToBlogPost(undefined)).toBeUndefined()
-		expect(mapSanityToBlogPosts(null as any)).toEqual([])
-		expect(mapSanityToBlogPosts(undefined as any)).toEqual([])
+		expect(mapSanityToBlogPost(undefined)).toBeNull()
+		expect(mapSanityToBlogPosts(null)).toEqual([])
+		expect(mapSanityToBlogPosts(undefined)).toEqual([])
 	})
 
 	it('maps an array of blog posts filtering out falsy entries', () => {
