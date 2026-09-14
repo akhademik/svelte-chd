@@ -93,6 +93,7 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
 
 6. **Security & Anti-Spam (`front-end/src/lib/server/security/`)**:
    - Mọi form submission và API endpoint (Contact, Booking) phải qua `checkRateLimitAsync` (5 requests / 10 phút / IP, đồng bộ qua Cloudflare KV `RATE_LIMIT_KV` và tự động fallback in-memory) và `isSpamSubmission` (Honeypot trap).
+   - Toàn bộ HTTP responses (SSR pages, static assets, API) bắt buộc đi qua `applySecurityHeaders` với đầy đủ `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` và Content-Security-Policy (CSP).
    - Toàn bộ email/Discord notification phải được xử lý qua `Promise.allSettled` trước khi return response.
 
 7. **Central Logger (`front-end/src/lib/utils/logger.ts`)**:

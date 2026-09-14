@@ -1,4 +1,5 @@
 import { base } from '$app/paths'
+import { applySecurityHeaders } from '$lib/server/security/headers'
 import { type Handle, redirect } from '@sveltejs/kit'
 
 import { extractUrl, getLangCookie, getPreferredLocale } from './i18n/i18n-helper.js'
@@ -15,9 +16,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	const user_locale = cookie || getPreferredLocale(event)
 	if (url_lang === 'api') {
 		const response = await resolve(event)
-		response.headers.set('X-Content-Type-Options', 'nosniff')
-		response.headers.set('X-Frame-Options', 'DENY')
-		return response
+		return applySecurityHeaders(response, { isApi: true })
 	}
 	// redirect to user_locale if no lang was found or lang is not a correct locale
 	if (!url_lang || !isLocale(url_lang)) {
@@ -33,11 +32,5 @@ export const handle: Handle = async ({ event, resolve }) => {
 		transformPageChunk: ({ html }) => html.replace('%lang%', url_lang),
 	})
 
-	response.headers.set('X-Frame-Options', 'SAMEORIGIN')
-	response.headers.set('X-Content-Type-Options', 'nosniff')
-	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
-	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()')
-	response.headers.set('Cross-Origin-Opener-Policy', 'same-origin')
-
-	return response
+	return applySecurityHeaders(response, { isApi: false })
 }
