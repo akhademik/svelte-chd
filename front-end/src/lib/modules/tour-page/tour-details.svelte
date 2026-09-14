@@ -13,7 +13,7 @@
 	import TourDetailPricingTable from './components/tour-detail-pricing-table.svelte'
 	import TourDetailSummary from './components/tour-detail-summary.svelte'
 
-	import { collect_gallery_images } from '$lib/utils/gallery'
+	import { collectGalleryImages } from '$lib/utils/gallery'
 
 	interface Props {
 		tour: Tour
@@ -38,7 +38,7 @@
 	})
 
 	let allImages = $derived(
-		collect_gallery_images({
+		collectGalleryImages({
 			coverImage: tour.img_cover,
 			album: tour.img_tour,
 		})

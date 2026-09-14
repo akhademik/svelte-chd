@@ -6,7 +6,7 @@
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { get_localized_field } from '$lib/utils/format-data'
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
-	import { collect_gallery_images } from '$lib/utils/gallery'
+	import { collectGalleryImages } from '$lib/utils/gallery'
 	import { url_for } from '$lib/utils/sanity'
 	import type { PageData } from './$types'
 
@@ -22,7 +22,7 @@
 	let content = $derived(get_localized_field(post?.content, $locale, []))
 
 	let allImages = $derived(
-		collect_gallery_images({
+		collectGalleryImages({
 			coverImage: post?.coverImg,
 			album: post?.imgTour || post?.img_tour,
 			content,
@@ -184,7 +184,7 @@
 								{#if isLastVisible && hasMoreImages}
 									<div
 										class="absolute inset-0 flex flex-col items-center justify-center rounded-xl bg-black/50 text-white backdrop-blur-[2px] transition-colors group-hover:bg-black/60">
-										<span class="font-serif text-xl font-bold">+{allImages.length - 4}</span>
+										<span class="font-serif text-xl font-bold">+{allImages.length - 5}</span>
 										<span class="text-[11px] uppercase tracking-wider">
 											{$LL.blog_page.view_all()}
 										</span>

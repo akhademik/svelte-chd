@@ -33,7 +33,7 @@ export interface PortableTextBlock {
 /**
  * Extracts embedded image items from PortableText blocks.
  */
-export const extract_portable_text_images = (
+export const extractPortableTextImages = (
 	blocks?: PortableTextBlock[] | unknown[] | null
 ): GalleryImage[] => {
 	if (!Array.isArray(blocks)) return []
@@ -56,7 +56,7 @@ export const extract_portable_text_images = (
 /**
  * Deduplicates an array of GalleryImages based on asset reference.
  */
-export const deduplicate_gallery_images = (images: GalleryImage[]): GalleryImage[] => {
+export const deduplicateGalleryImages = (images: GalleryImage[]): GalleryImage[] => {
 	const seen = new Set<string>()
 	const result: GalleryImage[] = []
 
@@ -77,17 +77,17 @@ export interface CollectGalleryImagesParams {
 	coverImage?: GalleryImage | null
 	album?: GalleryImage[] | null
 	content?: PortableTextBlock[] | unknown[] | null
-	maxContentImages?: number
+	maxImages?: number
 }
 
 /**
  * Normalizes and collects gallery images from cover, album, and content blocks.
  */
-export const collect_gallery_images = ({
+export const collectGalleryImages = ({
 	coverImage,
 	album,
 	content,
-	maxContentImages = 5,
+	maxImages = 5,
 }: CollectGalleryImagesParams = {}): GalleryImage[] => {
 	const candidates: GalleryImage[] = []
 
@@ -103,10 +103,10 @@ export const collect_gallery_images = ({
 		}
 	}
 
-	if (candidates.length < maxContentImages && Array.isArray(content) && content.length > 0) {
-		const embeddedImages = extract_portable_text_images(content)
+	if (candidates.length < maxImages && Array.isArray(content) && content.length > 0) {
+		const embeddedImages = extractPortableTextImages(content)
 		candidates.push(...embeddedImages)
 	}
 
-	return deduplicate_gallery_images(candidates)
+	return deduplicateGalleryImages(candidates).slice(0, maxImages)
 }

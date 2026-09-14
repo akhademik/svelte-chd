@@ -13,7 +13,7 @@
 		type CanonicalTourCategory,
 	} from '$lib/utils/format-data'
 	import { get_tour_slug } from '$lib/utils/slug'
-	import { collect_gallery_images } from '$lib/utils/gallery'
+	import { collectGalleryImages } from '$lib/utils/gallery'
 	import { fade } from 'svelte/transition'
 
 	import TourDetailCta from './tour-detail-cta.svelte'
@@ -56,7 +56,7 @@
 	let tourSlug = $derived(tour ? get_tour_slug(tour, activeLang) || tour.tour_id || '' : '')
 
 	let allImages = $derived(
-		collect_gallery_images({
+		collectGalleryImages({
 			coverImage: imgCover,
 			album: imgTour,
 		})

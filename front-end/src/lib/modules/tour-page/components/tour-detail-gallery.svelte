@@ -66,7 +66,7 @@
 						{#if isLastVisible && hasMoreImages}
 							<div
 								class="absolute inset-0 flex flex-col items-center justify-center rounded-xl bg-black/50 text-white backdrop-blur-[2px] transition-colors group-hover:bg-black/60">
-								<span class="font-serif text-xl font-bold">+{images.length - 4}</span>
+								<span class="font-serif text-xl font-bold">+{images.length - 5}</span>
 								<span class="text-[11px] uppercase tracking-wider">
 									{$LL.tours.gallery.view_all()}
 								</span>

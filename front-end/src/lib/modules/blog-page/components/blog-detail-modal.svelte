@@ -7,7 +7,7 @@
 	import { blog_modal } from '$lib/stores/modal-store'
 	import type { BlogPost } from '$lib/types/blog.type'
 	import { get_localized_field } from '$lib/utils/format-data'
-	import { collect_gallery_images } from '$lib/utils/gallery'
+	import { collectGalleryImages } from '$lib/utils/gallery'
 	import { url_for } from '$lib/utils/sanity'
 	import { fade, scale } from 'svelte/transition'
 
@@ -25,7 +25,7 @@
 	let imgTour = $derived(post?.img_tour || post?.imgTour || (post as any)?.album || [])
 
 	let allImages = $derived(
-		collect_gallery_images({
+		collectGalleryImages({
 			coverImage: imgCover,
 			album: imgTour,
 			content,
