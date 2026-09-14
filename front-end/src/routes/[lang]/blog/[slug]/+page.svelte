@@ -9,6 +9,7 @@
 	import { portableTextComponents } from '$lib/utils/portable-text-components'
 	import { collectGalleryImages } from '$lib/utils/gallery'
 	import { urlFor } from '$lib/utils/sanity'
+	import { getBlogSlug } from '$lib/utils/slug'
 	import type { PageData } from './$types'
 
 	interface Props {
@@ -68,10 +69,13 @@
 		}
 	}
 
+	let currentSlug = $derived(getBlogSlug(post, $locale) || data.slug || '')
+	let canonicalBlogUrl = $derived(`https://chd.travel/${$locale}/blog/${currentSlug}`)
+
 	let breadcrumbItems = $derived([
 		{ name: $LL.nav_bar.home(), item: `https://chd.travel/${$locale}` },
 		{ name: 'CHD Journal', item: `https://chd.travel/${$locale}/blog` },
-		{ name: title, item: `https://chd.travel/${$locale}/blog/${post?.slug?.current || ''}` },
+		{ name: title, item: canonicalBlogUrl },
 	])
 </script>
 
@@ -84,7 +88,7 @@
 <BaseJsonLd
 	{post}
 	breadcrumbs={breadcrumbItems}
-	url={`https://chd.travel/${$locale}/blog/${post?.slug?.current || ''}`} />
+	url={canonicalBlogUrl} />
 
 <div class="space-y-10 pb-24">
 	<!-- 1. Top Breadcrumb & Header Navigation -->

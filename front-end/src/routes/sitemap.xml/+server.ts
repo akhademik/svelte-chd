@@ -3,7 +3,7 @@ import { EXTRACT_BLOG_FIELDS } from '$lib/server/sanity/queries/blogs'
 import { EXTRACT_TOUR_FIELDS } from '$lib/server/sanity/queries/tours'
 import { getCategorySlug, type CanonicalTourCategory } from '$lib/utils/format-data'
 import { Logger } from '$lib/utils/logger'
-import { getTourSlug } from '$lib/utils/slug'
+import { getBlogSlug, getTourSlug } from '$lib/utils/slug'
 import type { RequestHandler } from '@sveltejs/kit'
 
 export const GET: RequestHandler = async ({ url }) => {
@@ -73,12 +73,12 @@ export const GET: RequestHandler = async ({ url }) => {
 		}
 	}
 
-	// 3. Dynamic Blog pages per language
+	// 3. Dynamic Blog pages per language with localized virtual slug
 	for (const blog of blogs) {
-		const slug = blog.slug?.current || (typeof blog.slug === 'string' ? blog.slug : '')
+		for (const lang of languages) {
+			const slug = getBlogSlug(blog, lang)
 
-		if (slug) {
-			for (const lang of languages) {
+			if (slug) {
 				urls.push(`
 	<url>
 		<loc>${siteUrl}/${lang}/blog/${slug}</loc>

@@ -14,7 +14,6 @@ import {
 } from '$lib/server/sanity/queries/blogs'
 import type { BlogPost } from '$lib/types/blog.type'
 
-import { slugify } from '$lib/utils/format-data'
 import { getBlogSlug } from '$lib/utils/slug'
 
 export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => {
@@ -27,15 +26,7 @@ export const matchesBlogSlug = (blog: BlogPost, targetSlug: string): boolean => 
 	const vEn = getBlogSlug(blog, 'en').toLowerCase()
 	const vFr = getBlogSlug(blog, 'fr').toLowerCase()
 
-	if (vVi === target || vEn === target || vFr === target) return true
-
-	const nameVi = slugify(blog.title?.vi || blog.title?.vn)
-	const nameEn = slugify(blog.title?.en)
-	const nameFr = slugify(blog.title?.fr)
-
-	if (nameVi === target || nameEn === target || nameFr === target) return true
-
-	return false
+	return vVi === target || vEn === target || vFr === target
 }
 
 export const BlogService = {
