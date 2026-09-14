@@ -114,3 +114,14 @@ Mỗi khi chỉnh sửa mã nguồn, bắt buộc tuân thủ đúng 5 bước s
     - Mọi biểu tượng SVG dùng trên giao diện frontend **bắt buộc tách thành component tái sử dụng** trong thư mục `src/lib/icons/` (e.g. `IconActivity`, `IconGroup`, `IconPack`, `IconNotes`, `IconClose`, `IconChevronLeft`, `IconChevronRight`, `IconChevronDown`, `IconArrowRight`, `IconArrowUp`, `IconSend`, `IconImageGallery`, `IconClock`, `IconCheck`, `IconCheckCircle`, `IconFacebook`, `IconTripadvisor`, `IconStar`, `IconPhone`, `IconFileText`, `IconDownload`).
     - Tất cả icons được export tập trung qua `src/lib/icons/index.ts` (barrel export) và hỗ trợ prop `class` (default `h-4 w-4` hoặc thích hợp). Không nhúng mã SVG thô trực tiếp trong các components nghiệp vụ.
 
+11. **Superforms & Zod Adapter Type Safety (`front-end/src/lib/utils/form-schema.ts`)**:
+    - Validation adapter phải được đóng gói và export tập trung (`formAdapter: ValidationAdapter<FormSchema>`) tại tầng schema.
+    - Tuyệt đối không dùng `zod(formSchema as any) as any` rải rác trong `+page.server.ts` loaders hay form actions; luôn import `formAdapter` để đảm bảo kiểu dữ liệu `form.data` chuẩn `FormSchema` trong suốt ứng dụng.
+
+12. **Sitemap & SEO Metadata (`front-end/src/routes/sitemap.xml/+server.ts`)**:
+    - Route `sitemap.xml` bắt buộc tiêu thụ dữ liệu thông qua Service Layer (`BlogService.getAllBlogs(kv)`, `TourService.getToursByType(kv)`), không query Sanity client trực tiếp.
+    - Thuộc tính `<lastmod>` cho bài viết phải ưu tiên ngày cập nhật gần nhất (`blog.updatedAt ?? blog.publishedAt`) để crawler nhận diện chính xác các bản cập nhật nội dung.
+
+13. **Deterministic Slug Matching (`front-end/src/lib/server/services/`)**:
+    - Các hàm phân giải slug như `matchesTourSlug()` hay `matchesBlogSlug()` phải vận hành theo cơ chế phân giải 4 tầng xác định (1: Direct ID, 2: Multilingual Virtual Slug, 3: Raw Title Slug, 4: Prefixed ID `${rawTourId}-`), tuyệt đối không dùng heuristic chuỗi lỏng lẻo (`startsWith`/`contains` mơ hồ) gây false-positive matching.
+

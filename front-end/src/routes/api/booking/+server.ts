@@ -24,7 +24,7 @@ export const POST = async ({ request, platform }) => {
 				windowMs: 10 * 60 * 1000,
 				keyPrefix: 'booking-api',
 			},
-			(platform as any)?.env?.RATE_LIMIT_KV
+			platform?.env?.RATE_LIMIT_KV
 		)
 
 		if (!rateLimit.allowed) {
